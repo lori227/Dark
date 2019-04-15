@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="KFMatchClientModule.cpp" />
+    <ClCompile Include="KFMatchClientPlugin.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="KFMatchClientInterface.h" />
+    <ClInclude Include="KFMatchClientModule.hpp" />
+    <ClInclude Include="KFMatchClientPlugin.hpp" />
+  </ItemGroup>
+</Project>

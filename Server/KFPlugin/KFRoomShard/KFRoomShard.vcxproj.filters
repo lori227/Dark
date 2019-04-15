@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="KFRoomShardModule.cpp" />
+    <ClCompile Include="KFRoomShardPlugin.cpp" />
+    <ClCompile Include="KFBattleRoom.cpp">
+      <Filter>KFBattle</Filter>
+    </ClCompile>
+    <ClCompile Include="KFBattlePlayer.cpp">
+      <Filter>KFBattle</Filter>
+    </ClCompile>
+    <ClCompile Include="KFBattleAllot.cpp">
+      <Filter>KFBattle</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="KFRoomShardInterface.h" />
+    <ClInclude Include="KFRoomShardModule.hpp" />
+    <ClInclude Include="KFRoomShardPlugin.hpp" />
+    <ClInclude Include="KFBattleRoom.h">
+      <Filter>KFBattle</Filter>
+    </ClInclude>
+    <ClInclude Include="KFBattlePlayer.h">
+      <Filter>KFBattle</Filter>
+    </ClInclude>
+    <ClInclude Include="KFBattleAllot.h">
+      <Filter>KFBattle</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="KFBattle">
+      <UniqueIdentifier>{652fbaa9-dcd5-4c56-8250-849693eae575}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

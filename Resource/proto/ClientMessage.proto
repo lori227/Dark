@@ -1,0 +1,73 @@
+syntax = "proto3";
+import "DefineMessage.proto";
+
+package KFMsg;
+
+// 协议号区间 : 3000-10000
+enum ClientProtocol
+ {
+	MSG_CLIENT_BEGIN 			= 0;	// pb3 需要0
+
+	// match
+	MSG_START_MATCH_REQ  		= 3001;	// 开始匹配 
+	MSG_CANCEL_MATCH_REQ		= 3002;	// 取消匹配
+	MSG_INFORM_MATCH_RESULT 	= 3003;	// 通知匹配结果
+	MSG_AFFIRM_MATCH_REQ 		= 3004;	// 请求确认匹配
+	MSG_INFORM_BATTLE_REQ		= 3005;	// 服务器通知战场信息
+	MSG_INFORM_BATTLE_ACK		= 3006;	// 客户端确认战场信息
+	MSG_FINISH_ROOM_REQ			= 3007;	// 服务器通知战场房间结束
+ }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 开始匹配
+// MSG_START_MATCH_REQ
+message MsgStartMatchReq
+{
+	bytes version = 1;		// 客户端版本号
+	uint32 matchid = 2;		// 匹配模式
+	uint64 serverid = 3;	// 指定的battle服务器id
+}
+
+// 取消匹配
+// MSG_CANCEL_MATCH_REQ
+message MsgCancelMatchReq
+{
+	uint32 matchid = 1;		// 匹配模式
+}
+
+// 通知匹配成功
+// MSG_INFORM_MATCH_RESULT
+message MsgInformMatchResult
+{
+	uint32 time = 1;		// 等待确认时间( 单位: 秒 )
+}
+
+// 请求确认
+// MSG_AFFIRM_MATCH_REQ
+message MsgAffirmMatchReq
+{
+}
+
+// 通知战场信息
+// MSG_INFORM_BATTLE_REQ
+message MsgInformBattleReq
+{
+	uint64 roomid = 1;			// 房间id
+	uint64 battleid = 2;		// 战斗服务器id
+	bytes ip = 3;				// ip
+	uint32 port = 4;			// 端口
+}
+
+// 确认战场信息
+// MSG_INFORM_BATTLE_ACK
+message MsgInformBattleAck
+{
+}
+
+// 房间结束
+// MSG_FINISH_ROOM_REQ
+message MsgFinishRoomReq
+{
+	uint64 roomid = 1;			// 房间id
+}

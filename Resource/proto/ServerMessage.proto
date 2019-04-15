@@ -1,0 +1,234 @@
+syntax = "proto3";
+import "DefineMessage.proto";
+import "FrameDefineMessage.proto";
+package KFMsg;
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
+// 30000-
+enum ServerProtocol
+{	
+	S2S_SERVER_PROTOCOL_BEGIN 		= 0;		// pb3 0 开始
+
+	// match/room
+	S2S_START_MATCH_TO_SHARD_REQ 		= 31001;	// 开始匹配	
+	S2S_START_MATCH_TO_GAME_ACK 		= 31002;	// 匹配反馈	
+	S2S_CANCEL_MATCH_TO_SHARD_REQ		= 31003;	// 取消匹配
+	S2S_AFFIRM_MATCH_TIMEOUT_TO_GAME 	= 31004;	// 确认匹配超时
+	S2S_AFFIRM_MATCH_TO_SHARD_REQ		= 31005;	// 请求确认
+
+	// 战斗服和房间集群的消息 begin
+	S2S_REGISTER_BATTLE_TO_ROOM_REQ		= 31101;	// 注册战场
+	S2S_REGISTER_BATTLE_TO_BATTLE_ACK	= 31102;	// 注册战场
+	S2S_OPEN_ROOM_TO_BATTLE_REQ			= 31103;	// 开启房间
+	S2S_OPEN_ROOM_TO_ROOM_ACK			= 31104;	// 开启房间
+	S2S_FINISH_ROOM_TO_ROOM_REQ			= 31105;	// 结束房间
+	S2S_FINISH_ROOM_TO_BATTLE_ACK		= 31106;	// 结束房间
+	S2S_HEART_BEAT_TO_ROOM_REQ			= 31107;	// 心跳消息
+	// 战斗服和房间集群的消息 end
+
+	S2S_CREATE_ROOM_TO_ROOM_REQ			= 31201;	// 创建房间
+	S2S_CREATE_ROOM_TO_MATCH_ACK		= 31202;	// 创建房间
+	S2S_INFORM_BATTLE_TO_GAME_REQ		= 31203;	// 通知战场
+	S2S_INFORM_BATTLE_TO_ROOM_ACK		= 31204;	// 通知战场
+	S2S_QUERY_ROOM_TO_ROOM_REQ			= 31205;	// 查询房间
+	S2S_QUERY_ROOM_TO_GAME_ACK			= 31206;	// 查询房间
+	S2S_FINISH_ROOM_TO_GAME_REQ			= 31207;	// 结束房间
+	S2S_QUERY_MATCH_TO_MATCH_REQ		= 31208;	// 查询匹配
+	S2S_QUERY_MATCH_TO_GAME_ACK			= 31209;	// 查询匹配
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+// 战斗服和房间集群的消息 begin
+
+// 注册战场
+// 战斗服务器给房间服务器集群注册, 开启心跳发送( 大概6秒一次 )
+// 收到 S2SRegisterBattleToBattleAck 消息注册成功以后, 停止发送注册
+// 如果房间已经开启, 断线重连成功, 不需要发送注册消息
+// S2S_REGISTER_BATTLE_TO_ROOM_REQ
+message S2SRegisterBattleToRoomReq
+{
+	uint64 serverid = 1;	// battle 服务器id
+	bytes version = 2;		// battle 版本号
+	bytes ip = 3;			// battle ip
+	uint32 port = 4;		// battle 端口
+}
+
+// 注册战场
+// 房间集群返回注册结果 true 成功
+// S2S_REGISTER_BATTLE_TO_BATTLE_ACK
+message S2SRegisterBattleToBattleAck
+{
+	bool result = 1;		// 注册结果 
+}
+
+// 开启房间请求
+// 房间服务器给战斗服务器发送开启房间消息, 
+// S2S_OPEN_ROOM_TO_BATTLE_REQ
+message S2SOpenRoomToBattleReq
+{
+	uint64 roomid = 1;			// 房间id
+	uint32 matchid = 2;			// 匹配模式
+	uint64 roomserverid = 3;	// 房间服务器id
+	repeated PBMatchPlayer pbplayer = 4;	// 玩家列表
+}
+
+// 开启房间回应
+// 如果战场未开启或者已经开启房间,并且房间id相同, 返回 true
+// 已经开启房间, 房间id不同, 返回false
+// 房间开启失败, 如内存,资源等问题, 返回false
+// S2S_OPEN_ROOM_TO_ROOM_ACK
+message S2SOpenRoomToRoomAck
+{
+	uint64 roomid = 1;			// 房间id
+	bool result = 2;			// 开启结果
+}
+
+// 通知房间结束
+// 战斗服务器给房间集群发送结束消息, 需要心跳发送
+// 直到收到S2SFinishRoomToBattleAck消息确认关闭以后停止
+// S2S_FINISH_ROOM_TO_ROOM_REQ
+message S2SFinishRoomToRoomReq
+{
+	uint64 roomid = 1;			// 房间id
+}
+
+// 确认房间结束
+// 房间集群给战斗服务器确认关闭房间,
+// S2S_FINISH_ROOM_TO_BATTLE_ACK
+message S2SFinishRoomToBattleAck
+{
+	uint64 roomid = 1;			// 房间id
+}
+
+// 心跳消息( 30秒一次 )
+// 房间集群超过2分钟以后没收到此消息, 则认为该战斗服务器挂了
+// 在确认 S2SOpenRoomToRoomAck 后开始发送此消息
+// S2S_HEART_BEAT_TO_ROOM_REQ
+message S2SHeartBeatToRoomReq
+{
+	uint64 roomid = 1;
+}
+
+
+// 战斗服和房间集群的消息 end
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+// 开始匹配
+// S2S_START_MATCH_TO_SHARD_REQ
+message S2SStartMatchToShardReq
+{
+	bytes version = 1;			// 客户端版本号
+	uint32 matchid = 2;			// 匹配模式
+	uint64 serverid = 3;		// 指定的battle服务器id
+	PBMatchPlayer pbplayer = 4;	// 玩家数据
+}
+
+// 匹配反馈
+// S2S_START_MATCH_TO_GAME_ACK
+message S2SStartMatchToGameAck
+{
+	uint32 result = 1;			// 结果
+	uint32 matchid = 2;			// 匹配模式
+	uint64 playerid = 3;		// 玩家id
+	uint64 serverid = 4;		// 服务器id
+}
+
+// 取消匹配
+// S2S_CANCEL_MATCH_TO_SHARD_REQ
+message S2SCancelMatchToShardReq
+{
+	uint32 matchid = 1;			// 匹配模式
+	uint64 playerid = 2;		// 玩家id
+}
+
+// 创建房间
+// S2S_CREATE_ROOM_TO_ROOM_REQ
+message S2SCreateRoomToRoomReq
+{
+	uint32 matchid = 1;		// 匹配模式
+	uint64 roomid = 2;		// 房间id
+	bytes version = 3;		// 房间版本号
+	uint64 serverid = 4;	// 指定服务器id
+	repeated PBMatchPlayer pbplayer = 5;	// 玩家列表
+}
+
+// 创建房间
+// S2S_CREATE_ROOM_TO_MATCH_ACK
+message S2SCreateRoomToMatchAck
+{
+	uint64 roomid = 1;		// 房间id
+}
+
+// 确认匹配超时
+// S2S_AFFIRM_MATCH_TIMEOUT_TO_GAME
+message S2SAffirmMatchTimeoutToGame
+{
+	uint64 playerid = 1;
+}
+
+// 请求确认匹配
+// S2S_AFFIRM_MATCH_TO_SHARD_REQ
+message S2SAffirmMatchToShardReq
+{
+	uint64 playerid = 1;
+	map< uint64, PBObject > hero = 2;	
+}
+
+// 通知战场服务器信息
+// S2S_INFORM_BATTLE_TO_GAME_REQ
+message S2SInformBattleToGameReq
+{
+	uint64 playerid = 1;		// 玩家id
+	uint64 roomid = 2;			// 房间id
+	uint64 battleid = 3;		// 战斗服务器id
+	bytes ip = 4;				// ip
+	uint32 port = 5;			// 端口
+}
+
+// 通知战场服务器信息
+// S2S_INFORM_BATTLE_TO_ROOM_ACK
+message S2SInformBattleToRoomAck
+{
+	uint64 playerid = 1;		// 玩家id
+	uint64 roomid = 2;			// 房间id
+}
+
+// 上线查询房间信息
+// S2S_QUERY_ROOM_TO_ROOM_REQ
+message S2SQueryRoomToRoomReq
+{
+	uint64 playerid = 1;
+	uint64 roomid = 2;
+}
+
+// 上线查询房间信息回应( 没有查询到对应房间 )
+// S2S_QUERY_ROOM_TO_GAME_ACK
+message S2SQueryRoomToGameAck
+{
+	uint64 playerid = 1;
+}
+
+// 通知房间结束
+// S2S_FINISH_ROOM_TO_GAME_REQ
+message S2SFinishRoomToGameReq
+{
+	uint64 playerid = 1;
+	uint64 roomid = 2;
+}
+
+// 查询匹配信息
+// S2S_QUERY_MATCH_TO_MATCH_REQ
+message S2SQueryMatchToMatchReq
+{
+	uint64 playerid = 1;
+	uint32 matchid = 2;
+}
+
+// 上线查询匹配信息回应( 没有查询到对应匹配 )
+// S2S_QUERY_MATCH_TO_GAME_ACK
+message S2SQueryMatchToGameAck
+{
+	uint64 playerid = 1;
+}

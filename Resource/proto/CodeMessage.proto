@@ -1,0 +1,19 @@
+syntax = "proto3";
+package KFMsg;
+
+//////////////////////////////////////////////////////////////////////////////////
+// 20000-30000
+enum ProjectCodeEnum
+{
+	LogicError			= 0;		// 失败	
+	
+	// battle
+	MatchRequestOk 		= 31001;	// 请求匹配成功, 请等待...
+	MatchAlreadyWait	= 31002;	// 正在匹配中, 不要重复请求
+	MatchInRoom			= 31003;	// 已经在匹配房间中, 请等待...
+	MatchNotInMatch     = 31004;	// 不在匹配中, 不需要取消
+	MatchCancelOk	    = 31005;	// 取消匹配成功
+	MatchAffirmTimeout  = 31007;	// 确认匹配超时
+
+	RoomAllotBattle		= 31008;	// 正在分配战场服务器, 请等待
+}

@@ -1,0 +1,10 @@
+syntax = "proto3";
+package KFMsg;
+
+//////////////////////////////////////////////////////////////////////////////////
+enum CampEnum
+{
+	UnknowCamp 	= 0;		// 无效
+	RedCamp 	= 1;		// 红色阵营
+	BlueCamp 	= 2;		// 蓝色阵营
+}
