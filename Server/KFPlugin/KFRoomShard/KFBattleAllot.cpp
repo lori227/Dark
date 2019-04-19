@@ -55,6 +55,10 @@ namespace KFrame
             {
                 __LOG_ERROR__( "battle[{}:{}] data error!", allotid, KFAppId::ToString( serverid ) );
             }
+
+            // 删除列表
+            auto version = mapresult->_value[ __KF_STRING__( version ) ];
+            _room_redis->Append( "srem {}:{} {}", __KF_STRING__( battlelist ), version, allotid );
         }
         else
         {

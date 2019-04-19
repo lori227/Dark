@@ -90,7 +90,7 @@ namespace KFrame
         uint32 _state = AllotState;
 
         // 定时器
-        KFClockTimer _timer;
+        KFTimer _timer;
 
         // 分配的服务器id
         uint64 _allot_id = _invalid_int;

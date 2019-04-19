@@ -39,7 +39,7 @@ namespace KFrame
     void KFRobotModule::OnceRun()
     {
         _kf_state_manage->Initialize();
-        __REGISTER_LOOP_TIMER__( 0, _kf_robot_config->_login_interval_time, &KFRobotModule::OnTimerCreateRobot );
+        __REGISTER_LOOP_TIMER__( 0, _kf_robot_config->_login_interval_time, 1000, &KFRobotModule::OnTimerCreateRobot );
 
         _net_client = new KFNetClientEngine();
         _net_client->InitEngine( 200, KFMessageEnum::Client );

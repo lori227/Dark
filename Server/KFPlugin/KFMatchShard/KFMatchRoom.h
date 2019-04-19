@@ -72,7 +72,7 @@ namespace KFrame
         uint32 _state = _invalid_int;
 
         // 定时器
-        KFClockTimer _timer;
+        KFTimer _timer;
 
         // 匹配队列
         KFMatchQueue* _match_queue;

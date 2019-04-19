@@ -43,7 +43,7 @@ namespace KFrame
         // 有效时间过了
         if ( KFGlobal::Instance()->_game_time > _valid_time )
         {
-            __LOG_ERROR__( "room=[{}] valid timeout!", _id );
+            __LOG_ERROR__( "room=[{}] battle=[{}|{}:{}] valid timeout!", _id, KFAppId::ToString( _allot_id ), _allot_ip, _allot_port );
 
             SendFinishToPlayer();
             return false;
@@ -51,7 +51,7 @@ namespace KFrame
 
         if ( _heartbeat_timeout > 0 && KFGlobal::Instance()->_game_time > _heartbeat_timeout )
         {
-            __LOG_ERROR__( "room=[{}] heartbeat timeout!", _id );
+            __LOG_ERROR__( "room=[{}] battle=[{}|{}:{}] heartbeat timeout!", _id, KFAppId::ToString( _allot_id ), _allot_ip, _allot_port );
 
             SendFinishToPlayer();
             return false;
@@ -69,9 +69,7 @@ namespace KFrame
     void KFBattleRoom::ChangeState( uint32 state, uint32 time )
     {
         _state = state;
-
-        _timer.StopTimer();
-        _timer.StartTimer( KFGlobal::Instance()->_game_time, time );
+        _timer.StartLoop( time );
 
         __LOG_DEBUG__( "room=[{}] state=[{}] time=[{}]", _id, _state, time );
     }
@@ -87,6 +85,10 @@ namespace KFrame
 
     void KFBattleRoom::RunAllotBattle()
     {
+        _allot_id = _invalid_int;
+        _allot_ip.clear();
+        _allot_port = _invalid_int;
+
         std::tie( _allot_id, _allot_ip, _allot_port ) = _battle_allot->AllotBattle( _battle_server_id, _version );
         if ( _allot_id == _invalid_int || _allot_ip.empty() || _allot_port == _invalid_int )
         {
@@ -103,6 +105,9 @@ namespace KFrame
         {
             _battle_open_count = _invalid_int;
             ChangeState( OpenState, 10 );
+
+            __LOG_INFO__( "room=[{}] serverid=[{}] version=[{}] allot=[{}|{}:{}]",
+                          _id, KFAppId::ToString( _battle_server_id ), _version, KFAppId::ToString( _allot_id ), _allot_ip, _allot_port );
         }
     }
 
@@ -110,6 +115,8 @@ namespace KFrame
     {
         if ( _battle_open_count > 10u )
         {
+            __LOG_ERROR__( "room=[{}] allot=[{}|{}:{}] open failed!", _id, KFAppId::ToString( _allot_id ), _allot_ip, _allot_port );
+
             return ChangeState( AllotState, 10 );
         }
 
@@ -133,7 +140,7 @@ namespace KFrame
     {
         if ( !ok )
         {
-            ChangeState( OpenState, 10 );
+            ChangeState( AllotState, 10 );
         }
         else
         {

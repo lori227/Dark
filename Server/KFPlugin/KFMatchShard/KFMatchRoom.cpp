@@ -17,9 +17,7 @@ namespace KFrame
     void KFMatchRoom::ChangeState( uint32 state, uint32 time )
     {
         _state = state;
-
-        _timer.StopTimer();
-        _timer.StartTimer( KFGlobal::Instance()->_game_time, time );
+        _timer.StartLoop( time );
 
         __LOG_DEBUG__( "room=[{}] state=[{}] time=[{}]", _id, _state, time );
     }
@@ -78,7 +76,7 @@ namespace KFrame
     {
         if ( _state == AffirmState )
         {
-            auto lefttime = _timer.GetLeftKeepTime( KFGlobal::Instance()->_game_time );
+            auto lefttime = _timer.GetLeftTime();
             kfplayer->TellMatchResult( lefttime );
         }
     }

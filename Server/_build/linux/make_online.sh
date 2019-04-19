@@ -1,1 +1,1 @@
-sh make_version.sh 1 online release $1
+﻿sh make_version.sh 1.8 online release $1

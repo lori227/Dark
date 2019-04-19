@@ -14,6 +14,8 @@ if  [ ! -n "$3" ] ;then
 	exit 0
 fi
 
+svn up ../../../Resource
+
 build="1"
 if  [ "$4" = "0" ] ;then
 	build="0"
@@ -41,6 +43,9 @@ defineversion=`cat ../Resource/proto/6.version.txt | cut -d "." -f 1`
 clientversion=`cat ../Resource/proto/6.version.txt | cut -d "." -f 2`
 version=$defineversion.$clientversion.$days.$svnversion
 echo $version
+
+# config
+cp -rf ../Resource/config/ _bin/
 
 cd _bin/_gcm/builder/
 chmod 777 gcm_build

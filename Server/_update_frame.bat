@@ -77,8 +77,8 @@ if not exist  %localpath%\%binpath%\config (
 rem script=================================
 if not exist  %localpath%\%binpath%\script ( 
     mkdir %localpath%\%binpath%\script
-    xcopy /y /S %framepath%\%binpath%\script\* %localpath%\%binpath%\script
 )
+xcopy /y /S %framepath%\%binpath%\script\* %localpath%\%binpath%\script
 
 echo "update _bin path end"
 
@@ -113,51 +113,61 @@ if not exist %localpath%\%contribpath%\CMakeLists.txt (
 )
 
 set subcontribpath=KFCore
+rd /s /q %localpath%\%contribpath%\%subcontribpath%
 if not exist %localpath%\%contribpath%\%subcontribpath% (mkdir %localpath%\%contribpath%\%subcontribpath% )
 xcopy /y %framepath%\%contribpath%\%subcontribpath%\*.h %localpath%\%contribpath%\%subcontribpath%\
 xcopy /y %framepath%\%contribpath%\%subcontribpath%\*.inl %localpath%\%contribpath%\%subcontribpath%\
 
 set subcontribpath=KFGlobal
+rd /s /q %localpath%\%contribpath%\%subcontribpath%
 if not exist %localpath%\%contribpath%\%subcontribpath% (mkdir %localpath%\%contribpath%\%subcontribpath% )
 xcopy /y %framepath%\%contribpath%\%subcontribpath%\*.h %localpath%\%contribpath%\%subcontribpath%\
 xcopy /y %framepath%\%contribpath%\%subcontribpath%\*.inl %localpath%\%contribpath%\%subcontribpath%\
 
 set subcontribpath=KFHttp
+rd /s /q %localpath%\%contribpath%\%subcontribpath%
 if not exist %localpath%\%contribpath%\%subcontribpath% (mkdir %localpath%\%contribpath%\%subcontribpath% )
 xcopy /y %framepath%\%contribpath%\%subcontribpath%\*.h %localpath%\%contribpath%\%subcontribpath%\
 xcopy /y %framepath%\%contribpath%\%subcontribpath%\*.inl %localpath%\%contribpath%\%subcontribpath%\
 
 set subcontribpath=KFLogger
+rd /s /q %localpath%\%contribpath%\%subcontribpath%
 if not exist %localpath%\%contribpath%\%subcontribpath% (mkdir %localpath%\%contribpath%\%subcontribpath% )
 xcopy /y %framepath%\%contribpath%\%subcontribpath%\*.h %localpath%\%contribpath%\%subcontribpath%\
 xcopy /y %framepath%\%contribpath%\%subcontribpath%\*.inl %localpath%\%contribpath%\%subcontribpath%\
 
 set subcontribpath=KFMath3D
+rd /s /q %localpath%\%contribpath%\%subcontribpath%
 if not exist %localpath%\%contribpath%\%subcontribpath% (mkdir %localpath%\%contribpath%\%subcontribpath% )
 xcopy /y %framepath%\%contribpath%\%subcontribpath%\*.h %localpath%\%contribpath%\%subcontribpath%\
 xcopy /y %framepath%\%contribpath%\%subcontribpath%\*.inl %localpath%\%contribpath%\%subcontribpath%\
 
 set subcontribpath=KFMemory
+rd /s /q %localpath%\%contribpath%\%subcontribpath%
 if not exist %localpath%\%contribpath%\%subcontribpath% (mkdir %localpath%\%contribpath%\%subcontribpath% )
 xcopy /y %framepath%\%contribpath%\%subcontribpath%\*.h %localpath%\%contribpath%\%subcontribpath%\
 xcopy /y %framepath%\%contribpath%\%subcontribpath%\*.inl %localpath%\%contribpath%\%subcontribpath%\
 
 set subcontribpath=KFNetwork
+rd /s /q %localpath%\%contribpath%\%subcontribpath%
 if not exist %localpath%\%contribpath%\%subcontribpath% (mkdir %localpath%\%contribpath%\%subcontribpath% )
 xcopy /y %framepath%\%contribpath%\%subcontribpath%\*.h %localpath%\%contribpath%\%subcontribpath%\
 xcopy /y %framepath%\%contribpath%\%subcontribpath%\*.inl %localpath%\%contribpath%\%subcontribpath%\
 
 set subcontribpath=KFPlugin
+rd /s /q %localpath%\%contribpath%\%subcontribpath%
 if not exist %localpath%\%contribpath%\%subcontribpath% (mkdir %localpath%\%contribpath%\%subcontribpath% )
 xcopy /y %framepath%\%contribpath%\%subcontribpath%\*.h %localpath%\%contribpath%\%subcontribpath%\
 xcopy /y %framepath%\%contribpath%\%subcontribpath%\*.inl %localpath%\%contribpath%\%subcontribpath%\
 
 set subcontribpath=KFProto
+rd /s /q %localpath%\%contribpath%\%subcontribpath%
 if not exist %localpath%\%contribpath%\%subcontribpath% (mkdir %localpath%\%contribpath%\%subcontribpath% )
 xcopy /y %framepath%\%contribpath%\%subcontribpath%\*.h %localpath%\%contribpath%\%subcontribpath%\
 xcopy /y %framepath%\%contribpath%\%subcontribpath%\*.inl %localpath%\%contribpath%\%subcontribpath%\
 
 set subcontribpath=KFUtility
+rd /s /q %localpath%\%contribpath%\%subcontribpath%
 if not exist %localpath%\%contribpath%\%subcontribpath% (mkdir %localpath%\%contribpath%\%subcontribpath% )
 xcopy /y %framepath%\%contribpath%\%subcontribpath%\*.h %localpath%\%contribpath%\%subcontribpath%\
 xcopy /y %framepath%\%contribpath%\%subcontribpath%\*.inl %localpath%\%contribpath%\%subcontribpath%\
