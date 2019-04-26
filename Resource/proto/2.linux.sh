@@ -9,7 +9,7 @@ do
 	./4.protoc -I=./ --cpp_out=dllexport_decl=LIBPROTOC_EXPORT:./ $file
 done  
 
-\cp *.pb.* ../../Server/KFContrib/KFProtocol/
+cp -a -f *.pb.* ../../Server/KFContrib/KFProtocol/
 rm -f *.pb.*
 
 # make proto version
@@ -29,7 +29,7 @@ function makeversion()
 }
 
 # client proto
-makeversion KFDefineMessage.proto
+makeversion DefineMessage.proto
 defineversion=$?
 echo "define version=$defineversion"
 
