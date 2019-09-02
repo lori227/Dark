@@ -54,21 +54,36 @@ namespace KFrame
             }
         }
 
+        SendAffirmToPlayer();
         return IsValid();
     }
 
     void KFMatchRoom::AffirmToPlayer()
     {
-        // 等待时间
         static uint32 _affirm_time = 1000u;
 
+        // 等待时间
         ChangeState( AffirmState, ( _affirm_time + 1 ) * 1000 );
         //////////////////////////////////////////////////////
+    }
+
+    void KFMatchRoom::SendAffirmToPlayer()
+    {
+        if ( _state == DestroyState || KFGlobal::Instance()->_game_time < _next_affirm_time )
+        {
+            return;
+        }
+
+        _next_affirm_time = KFGlobal::Instance()->_game_time + 5000;
+
         // 发送消息
         for ( auto& iter : _player_list._objects )
         {
             auto player = iter.second;
-            player->TellMatchResult( _affirm_time );
+            if ( !player->_is_affirm )
+            {
+                player->TellMatchResult( 10000 );
+            }
         }
     }
 
@@ -142,7 +157,7 @@ namespace KFrame
         req.set_roomid( _id );
         req.set_version( _version );
         req.set_serverid( _battle_server_id );
-        req.set_matchid( _match_queue->_match_id );
+        req.set_matchid( _match_queue->_kf_setting->_id );
 
         for ( auto& iter : _player_list._objects )
         {
@@ -150,7 +165,7 @@ namespace KFrame
             player->SaveTo( req.add_pbplayer() );
         }
 
-        _kf_route->SendToBalance( __KF_STRING__( room ), KFMsg::S2S_CREATE_ROOM_TO_ROOM_REQ, &req );
+        _kf_route->SendToBalance( __KF_STRING__( room ), KFMsg::S2S_CREATE_ROOM_TO_ROOM_REQ, &req, false );
     }
 
     void KFMatchRoom::AffirmCreate()

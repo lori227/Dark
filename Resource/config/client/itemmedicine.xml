@@ -1,0 +1,5 @@
+<root version="00000">
+	<item Id="1000006" MedicineType="1" BuffId="1"/>
+	<item Id="1000007" MedicineType="2" Restore="20"/>
+	<item Id="1000008" MedicineType="2" Restore="100"/>
+</root>

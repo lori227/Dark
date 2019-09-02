@@ -2,6 +2,7 @@
 #define __KF_MATCH_QUEUE_H__
 
 #include "KFMatchRoom.h"
+#include "KFZConfig/KFMatchConfig.hpp"
 
 namespace KFrame
 {
@@ -34,7 +35,7 @@ namespace KFrame
 
     public:
         // 匹配id
-        uint32 _match_id = 0u;
+        const KFMatchSetting* _kf_setting = nullptr;
 
         // 匹配模式
         KFMatchShardModule* _match_module;

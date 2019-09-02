@@ -1,0 +1,1 @@
+start "robot" bin\win64\debug\KFStartupd.exe app=zone.robot id=1.0.1

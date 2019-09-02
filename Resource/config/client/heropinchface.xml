@@ -1,0 +1,17 @@
+<root version="00000">
+	<item Id="1" Name="eye_size" MaxValue="1"/>
+	<item Id="2" Name="eye_horizontal" MaxValue="1"/>
+	<item Id="3" Name="eye_vertical" MaxValue="1"/>
+	<item Id="4" Name="eye_rotate" MaxValue="1"/>
+	<item Id="5" Name="eye_height" MaxValue="1"/>
+	<item Id="6" Name="nose_front" MaxValue="1"/>
+	<item Id="7" Name="nose_width" MaxValue="1"/>
+	<item Id="8" Name="nose_vertical" MaxValue="1"/>
+	<item Id="9" Name="nose_high" MaxValue="1"/>
+	<item Id="10" Name="mouth_vertical" MaxValue="1"/>
+	<item Id="11" Name="mouth_width" MaxValue="1"/>
+	<item Id="12" Name="lipUp_thickness" MaxValue="1"/>
+	<item Id="13" Name="lipDown_thickness" MaxValue="1"/>
+	<item Id="14" Name="jaw_size" MaxValue="1"/>
+	<item Id="15" Name="cheek_size" MaxValue="1"/>
+</root>

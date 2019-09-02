@@ -2,12 +2,17 @@
 
 # lib
 libpath=../../_lib/linux
-rm -rf $libpath
-mkdir -p "$libpath"
 
-framelibpath=../../../../../../frame/trunk/_lib/linux
-cp -rf $framelibpath/* $libpath/ 
+rm -rf $libpath/3rd
+mkdir -p $libpath/3rd
 
+rm -rf $libpath/$1
+mkdir -p $libpath/$1
+
+framepath=../../../../../../frame/trunk
+framelibpath=$framepath/_lib/linux
+cp -rf $framelibpath/3rd/* $libpath/3rd
+cp -rf $framelibpath/$1/* $libpath/$1
 
 # bin
 binpath=../../_bin/bin/linux/$1
@@ -19,11 +24,12 @@ if [ $1 == "debug" ];then
 	filename="d"
 fi
 
-framebinpath=../../../../../../frame/trunk/_bin/bin/linux/$1
+framebinpath=$framepath/_bin/bin/linux/$1
 cp -f $framebinpath/KFStartup$filename $binpath/
 cp -f $framebinpath/KFConfig$filename.so $binpath/
 cp -f $framebinpath/KFMySQL$filename.so $binpath/
 cp -f $framebinpath/KFRedis$filename.so $binpath/
+cp -f $framebinpath/KFMongo$filename.so $binpath/
 cp -f $framebinpath/KFDeployClient$filename.so $binpath/
 cp -f $framebinpath/KFClusterClient$filename.so $binpath/
 cp -f $framebinpath/KFClusterMaster$filename.so $binpath/
@@ -57,9 +63,9 @@ cp -f $framebinpath/KFGame$filename.so $binpath/
 cp -f $framebinpath/KFGate$filename.so $binpath/
 cp -f $framebinpath/KFLogin$filename.so $binpath/
 cp -f $framebinpath/KFWorld$filename.so $binpath/
-cp -f $framebinpath/KFZone$filename.so $binpath/
 cp -f $framebinpath/KFCommand$filename.so $binpath/
-cp -f $framebinpath/KFEnter$filename.so $binpath/
-cp -f $framebinpath/KFLeave$filename.so $binpath/
 cp -f $framebinpath/KFReset$filename.so $binpath/
-
+cp -f $framebinpath/KFLua$filename.so $binpath/
+cp -f $framebinpath/KFPublicClient$filename.so $binpath/
+cp -f $framebinpath/KFPublicShard$filename.so $binpath/
+cp -f $framebinpath/KFDrop$filename.so $binpath/

@@ -1,0 +1,42 @@
+<root version="00000">
+	<item Id="1"/>
+	<item Id="2" Exp="30" Floor="3" Upper="3"/>
+	<item Id="3" Exp="80" Floor="3" Upper="3"/>
+	<item Id="4" Exp="150" Floor="3" Upper="3"/>
+	<item Id="5" Exp="220" Floor="3" Upper="3"/>
+	<item Id="6" Exp="300" Floor="3" Upper="3"/>
+	<item Id="7" Exp="400" Floor="3" Upper="3"/>
+	<item Id="8" Exp="520" Floor="3" Upper="3"/>
+	<item Id="9" Exp="640" Floor="3" Upper="3"/>
+	<item Id="10" Exp="790" Floor="3" Upper="3"/>
+	<item Id="11" Exp="950" Floor="3" Upper="3"/>
+	<item Id="12" Exp="1120" Floor="3" Upper="3"/>
+	<item Id="13" Exp="1330" Floor="3" Upper="3"/>
+	<item Id="14" Exp="1550" Floor="3" Upper="3"/>
+	<item Id="15" Exp="1780" Floor="3" Upper="3"/>
+	<item Id="16" Exp="2060" Floor="3" Upper="3"/>
+	<item Id="17" Exp="2350" Floor="3" Upper="3"/>
+	<item Id="18" Exp="2640" Floor="3" Upper="3"/>
+	<item Id="19" Exp="2990" Floor="3" Upper="3"/>
+	<item Id="20" Exp="3350" Floor="3" Upper="3"/>
+	<item Id="21" Exp="3720" Floor="3" Upper="3"/>
+	<item Id="22" Exp="4150" Floor="3" Upper="3"/>
+	<item Id="23" Exp="4600" Floor="3" Upper="3"/>
+	<item Id="24" Exp="5050" Floor="3" Upper="3"/>
+	<item Id="25" Exp="5570" Floor="3" Upper="3"/>
+	<item Id="26" Exp="6110" Floor="3" Upper="3"/>
+	<item Id="27" Exp="6650" Floor="3" Upper="3"/>
+	<item Id="28" Exp="7270" Floor="3" Upper="3"/>
+	<item Id="29" Exp="7910" Floor="3" Upper="3"/>
+	<item Id="30" Exp="8560" Floor="3" Upper="3"/>
+	<item Id="31" Exp="13720" Floor="3" Upper="3"/>
+	<item Id="32" Exp="14150" Floor="3" Upper="3"/>
+	<item Id="33" Exp="14600" Floor="3" Upper="3"/>
+	<item Id="34" Exp="15050" Floor="3" Upper="3"/>
+	<item Id="35" Exp="15570" Floor="3" Upper="3"/>
+	<item Id="36" Exp="16110" Floor="3" Upper="3"/>
+	<item Id="37" Exp="16650" Floor="3" Upper="3"/>
+	<item Id="38" Exp="17270" Floor="3" Upper="3"/>
+	<item Id="39" Exp="17910" Floor="3" Upper="3"/>
+	<item Id="40" Exp="18560" Floor="3" Upper="3"/>
+</root>

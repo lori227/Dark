@@ -12,6 +12,7 @@ namespace KFrame
 
             //////////////////////////////////////
             // 操作类型
+            Null = 0,
             Add = 1,		// +
             Dec = 2,		// -
             Set = 3,		// =
@@ -22,9 +23,11 @@ namespace KFrame
             Div = 8,		// /
 
 
-            Greater = 11,	// >=
-            Less = 12,		// =<
-            Equal = 13,		// ==
+            Greater = 11,		// >
+            Less = 12,			// <
+            Equal = 13,			// ==
+            GreaterEqual = 14,	// >=
+            LessEqual = 15,		// <=
             //////////////////////////////////////
             // 任务 成就系统
             UseOperate = 1,
@@ -101,7 +104,6 @@ namespace KFrame
         };
     }
 
-
     namespace KFThreadEnum
     {
         enum MyEnum
@@ -155,14 +157,16 @@ namespace KFrame
         };
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////
-    namespace KFRatioEnum
+    namespace KFRandEnum
     {
         enum MyEnum
         {
-            Ratio = 10000,	// 积分比率
+            Hundred = 100,
+            Thousand = 1000,
+            TenThousand = 10000,
         };
     }
-
+    //////////////////////////////////////////////////////////////////////////////////////////////////
     namespace KFCompressEnum
     {
         enum MyEnum
@@ -182,7 +186,26 @@ namespace KFrame
             Read = 2,	// 读数据
         };
     }
-
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    namespace KFSaveEnum
+    {
+        enum MyEnum
+        {
+            UpdateSave = 1,	    // 更新保存数据
+            OfflineSave = 2,	// 离线保存数据
+        };
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    namespace KFConfigEnum
+    {
+        enum MyEnum
+        {
+            None = 0x0,				// 无操作
+            CanReload = 0x1,	    // 支持重新加载
+            NeedClearData = 0x2,	// 加载需要清除数据
+        };
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////
 }
 
 #endif

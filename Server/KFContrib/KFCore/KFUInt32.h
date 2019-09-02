@@ -8,13 +8,19 @@ namespace KFrame
     class KFUInt32 : public KFData
     {
     public:
-        KFUInt32();
-        virtual ~KFUInt32();
+        KFUInt32() = default;
+        virtual ~KFUInt32() = default;
 
         virtual void Reset();
 
         // 是否有效
         virtual bool IsValid();
+
+        // 是否达到了最大值
+        virtual bool IsFull();
+
+        // 初始化数值
+        virtual void InitData();
 
         // 保存 赋值
         virtual void CopyFrom( KFData* kfother );
@@ -26,17 +32,13 @@ namespace KFrame
 
     protected:
         //////////////////////////////////////////////////////////////////////////////////////////////////////
-        virtual uint32 GetUInt32() {
-            return _data;
-        }
-        virtual void SetUInt32( uint32 value ) {
-            _data = value;
-        }
+        virtual uint32 GetUInt32();
+        virtual uint32 SetUInt32( uint32 value );
         //////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private:
         // 属性
-        uint32 _data;
+        uint32 _data = 0u;
     };
 }
 

@@ -8,8 +8,8 @@ namespace KFrame
     class KFString : public KFData
     {
     public:
-        KFString();
-        virtual ~KFString();
+        KFString() = default;
+        virtual ~KFString() = default;
 
         virtual void Reset();
 
@@ -26,12 +26,8 @@ namespace KFrame
 
     protected:
         //////////////////////////////////////////////////////////////////////////////////////////////////////
-        virtual const std::string& GetString() {
-            return _data;
-        }
-        virtual void SetString( const std::string& value ) {
-            _data = value;
-        }
+        virtual const std::string& GetString();
+        virtual const std::string& SetString( const std::string& value );
         //////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private:

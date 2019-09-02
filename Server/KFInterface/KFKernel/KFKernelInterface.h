@@ -1,7 +1,6 @@
 ﻿#ifndef __KF_KERNEL_INTERFACE_H__
 #define __KF_KERNEL_INTERFACE_H__
 
-#include "KFrame.h"
 #include "KFEntity.h"
 #include "KFComponent.h"
 
@@ -29,13 +28,16 @@ namespace KFrame
         // 释放数据
         virtual void ReleaseObject( KFData* kfdata ) = 0;
         /////////////////////////////////////////////////////////////////////////////////////////////
-
-        // proto 序列化
+        // 反序列化
         virtual bool ParseFromProto( KFData* kfdata, const KFMsg::PBObject* proto ) = 0;
 
-        virtual void SerializeToClient( KFData* kfdata, KFMsg::PBObject* proto ) = 0;
-        virtual void SerializeToData( KFData* kfdata, KFMsg::PBObject* proto ) = 0;
-        virtual void SerializeToView( KFData* kfdata, KFMsg::PBObject* proto ) = 0;
+        // 序列化
+        virtual KFMsg::PBObject* SerializeToClient( KFData* kfdata ) = 0;
+        virtual KFMsg::PBObject* SerializeToData( KFData* kfdata ) = 0;
+        virtual KFMsg::PBObject* SerializeToView( KFData* kfdata ) = 0;
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        // 判断属性条件
+        virtual bool CheckCondition( KFEntity* kfentity, const KFConditions* kfconditions ) = 0;
     };
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     __KF_INTERFACE__( _kf_kernel, KFKernelInterface );

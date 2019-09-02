@@ -1,0 +1,3 @@
+function NewPlayerFunction( playerid )
+
+end

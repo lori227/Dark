@@ -9,8 +9,8 @@ namespace KFrame
     class KFVector3D : public KFData
     {
     public:
-        KFVector3D();
-        virtual ~KFVector3D();
+        KFVector3D() = default;
+        virtual ~KFVector3D() = default;
 
         virtual void Reset();
 
@@ -27,12 +27,8 @@ namespace KFrame
 
     protected:
         //////////////////////////////////////////////////////////////////////////////////////////////////////
-        virtual const Math3D::Vector3D& GetVector3D() {
-            return _data;
-        }
-        virtual void SetVector3D( Math3D::Vector3D& value ) {
-            _data = value;
-        }
+        virtual const Math3D::Vector3D& GetVector3D();
+        virtual const Math3D::Vector3D& SetVector3D( Math3D::Vector3D& value );
         //////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private:

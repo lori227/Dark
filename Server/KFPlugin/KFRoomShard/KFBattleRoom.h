@@ -25,7 +25,7 @@ namespace KFrame
         bool Run();
 
         // 发送消息
-        void SendToRoom( uint32 msgid, google::protobuf::Message* message );
+        void SendToRoom( uint32 msgid, google::protobuf::Message* message, bool resend );
 
         // 确认开启战场
         void AffirmOpenBattle( bool ok );
@@ -46,7 +46,7 @@ namespace KFrame
         bool IsValid();
 
         // 改变状态
-        void ChangeState( uint32 state, uint32 time );
+        void ChangeState( uint32 state, uint32 time, const char* function, uint32 line );
 
         // 分配战场
         void RunAllotBattle();

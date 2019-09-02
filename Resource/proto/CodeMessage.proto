@@ -5,15 +5,64 @@ package KFMsg;
 // 20000-30000
 enum ProjectCodeEnum
 {
-	LogicError			= 0;		// 失败	
+	LogicError					= 0;		// 失败	
 	
 	// battle
-	MatchRequestOk 		= 31001;	// 请求匹配成功, 请等待...
-	MatchAlreadyWait	= 31002;	// 正在匹配中, 不要重复请求
-	MatchInRoom			= 31003;	// 已经在匹配房间中, 请等待...
-	MatchNotInMatch     = 31004;	// 不在匹配中, 不需要取消
-	MatchCancelOk	    = 31005;	// 取消匹配成功
-	MatchAffirmTimeout  = 31007;	// 确认匹配超时
+	MatchRequestOk 				= 31001;	// 请求匹配成功, 请等待...
+	MatchAlreadyWait			= 31002;	// 正在匹配中, 不要重复请求
+	MatchInRoom					= 31003;	// 已经在匹配房间中, 请等待...
+	MatchNotInMatch    	 		= 31004;	// 不在匹配中, 不需要取消
+	MatchCancelOk	    		= 31005;	// 取消匹配成功
+	MatchAffirmTimeout  		= 31007;	// 确认匹配超时
+	RoomAllotBattle				= 31008;	// 正在分配战场服务器, 请等待
+	MatchIdError				= 31009;	// 匹配id错误
 
-	RoomAllotBattle		= 31008;	// 正在分配战场服务器, 请等待
+	// hero
+	HeroDivisorError			= 31101;	// 偏好因子Id错误
+	HeroDivisorExist			= 31102;	// 偏好因子已经存在
+	HeroRecruitRefresh			= 31103;	// 刷新招募列表成功
+	HeroRecruitRefreshFreeError = 31104;	// 不支持主动免费刷新
+	HeroRecruitRefreshTypeError	= 31105;	// 刷新类型错误
+	HeroRecruitNotExist			= 31106;	// 招募英雄不存在
+	HeroRecruitCostError		= 31107;	// 招募花费解析失败
+	HeroRecruitDataError		= 31108;	// 招募英雄数据错误
+	HeroRecruitOk				= 31109;	// 招募英雄成功
+	HeroDivisorMaxCount			= 31110;	// 偏好因子同类型已经达到最大个数
+	HeroNotExist				= 31111;	// 英雄列表没有这个英雄
+	HeroTeamIndexError			= 31112;	// 英雄队伍位置错误
+	HeroTeamDataInvalid			= 31113;	// 英雄队伍数据无效
+	HeroNotInHeroList			= 31114;	// 该英雄不在英雄列表
+	HeroLevelIsMax				= 31115;	// 该英雄已满级	
+	HeroLockNotChange			= 31116;	// 英雄锁定标记未改变
+	HeroIsLocked				= 31117;	// 英雄被锁定了
+	HeroLockFlagError			= 31118;	// 英雄锁定标记错误
+	HeroNameNotChange			= 31119;	// 英雄名字没有改变
+	HeroSkillNotChange			= 31120;	// 英雄技能没有改变
+	HeroSkillIndexError			= 31121;	// 英雄技能索引错误
+	HeroHpIsMax					= 31122;	// 英雄血量已满
+	HeroTransferDataError		= 31123;	// 英雄转职数据错误
+	HeroLevelNotEnough			= 31124;	// 英雄等级不足
+	HeroTransferCostError		= 31125;	// 转职消耗配置错误
+	HeroCanNotTransfer			= 31126;	// 当前职业不能转职
+	HeroProfessionIsError		= 31127;	// 英雄职业数据错误
+
+	// build
+	TrainCampLevelError			= 31200;	// 训练营等级错误
+	TrainCampIndexError			= 31201;	// 训练栏位置错误
+	TrainCampHeroNotExist		= 31202;	// 当前训练栏位没有英雄
+	TrainCampHeroIsExist		= 31203;	// 当前英雄已经在训练栏了
+	BuildFuncNotActive			= 31204;	// 建筑功能还未开启
+	MainCampSkinNotExist		= 31205;	// 营地外观不存在
+	MainCampSkinNotActive		= 31206;	// 营地外观未激活
+	ClinicSettingError			= 31207;	// 医疗所配置错误
+	ClinicItemIsNotEnough		= 31208;	// 医疗所道具不足
+	ClinicMoneyIsError			= 31209;	// 医疗所金钱配置错误
+
+	// explore
+	ExploreMapLimit				= 31303;	// 只能同时探索一个地图
+	ExploreMapError				= 31304;	// 探索地图错误
+	FighterNotInExplore			= 31305;	// 不在探索状态不能请求战斗
+	
+
+	
 }

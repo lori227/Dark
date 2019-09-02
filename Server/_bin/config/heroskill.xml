@@ -1,0 +1,37 @@
+<root version="00000">
+	<item Id="160012" ProfessionLimit="1100" WeaponLimit="1801"/>
+	<item Id="160013" ProfessionLimit="1100" WeaponLimit="1802"/>
+	<item Id="160014" ProfessionLimit="1100" WeaponLimit="1803"/>
+	<item Id="160015" ProfessionLimit="1100" WeaponLimit="1801"/>
+	<item Id="160016" ProfessionLimit="1100" WeaponLimit="1802"/>
+	<item Id="160017" ProfessionLimit="1100" WeaponLimit="1803"/>
+	<item Id="160018" ProfessionLimit="1115" WeaponLimit="1805"/>
+	<item Id="160019" ProfessionLimit="1105" WeaponLimit="1801"/>
+	<item Id="160020" ProfessionLimit="1105" WeaponLimit="1802"/>
+	<item Id="160021" ProfessionLimit="1105" WeaponLimit="1803"/>
+	<item Id="160022" ProfessionLimit="1110" WeaponLimit="1804"/>
+	<item Id="160023" ProfessionLimit="1126" WeaponLimit="1801"/>
+	<item Id="160024" ProfessionLimit="1126" WeaponLimit="1802"/>
+	<item Id="160025" ProfessionLimit="1126" WeaponLimit="1803"/>
+	<item Id="160026" ProfessionLimit="1115" WeaponLimit="1805"/>
+	<item Id="160027" ProfessionLimit="1115" WeaponLimit="1805"/>
+	<item Id="160028" ProfessionLimit="1118" WeaponLimit="1805"/>
+	<item Id="160029" ProfessionLimit="1118" WeaponLimit="1805"/>
+	<item Id="160030" ProfessionLimit="1118" WeaponLimit="1805"/>
+	<item Id="120000" ProfessionLimit="1100"/>
+	<item Id="120001" ProfessionLimit="1105"/>
+	<item Id="120002" ProfessionLimit="1115"/>
+	<item Id="120003" ProfessionLimit="1118"/>
+	<item Id="120004" ProfessionLimit="1110"/>
+	<item Id="120005" ProfessionLimit="1126"/>
+	<item Id="120007" RaceLimit="1602"/>
+	<item Id="120008" RaceLimit="1602"/>
+	<item Id="120009" RaceLimit="1602"/>
+	<item Id="120010" RaceLimit="1602"/>
+	<item Id="120011" RaceLimit="1602"/>
+	<item Id="120012" RaceLimit="1603"/>
+	<item Id="120013" RaceLimit="1603"/>
+	<item Id="120014" RaceLimit="1603"/>
+	<item Id="120015" RaceLimit="1603"/>
+	<item Id="120016" RaceLimit="1603"/>
+</root>

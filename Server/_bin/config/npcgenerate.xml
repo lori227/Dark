@@ -1,0 +1,8 @@
+<root version="00000">
+	<item RandDip="0-10:10|11-90:90|91-100:100" Id="1" Race="1602" Profession="1100" Weapon="1000009" Level="0.05" RandSkill="1:100" RandAttr="4090001" Attr_atk="68" Attr_def="74" Attr_res="32" Attr_maxhp="170"/>
+	<item RandDip="0-10:10|11-90:90|91-100:100" Id="2" Race="1602" Profession="1100" Weapon="1000010" Sex="1" Level="0.05" RandSkill="2:100" RandAttr="4090001" Attr_atk="68" Attr_def="74" Attr_res="32" Attr_maxhp="170"/>
+	<item RandDip="0-10:10|11-90:90|91-100:100" Id="3" Race="1602" Profession="1100" Weapon="1000011" Sex="2" Level="0.05" RandSkill="3:100" RandAttr="4090001" Attr_atk="68" Attr_def="74" Attr_res="32" Attr_maxhp="170"/>
+	<item RandDip="0-10:10|11-90:90|91-100:100" Id="4" Race="1602" Profession="1110" Weapon="1000012" Level="0.05" RandSkill="4:100" RandAttr="4090001" Attr_atk="68" Attr_def="74" Attr_res="32" Attr_maxhp="170"/>
+	<item RandDip="0-10:10|11-90:90|91-100:100" Id="5" Race="1602" Profession="1115" Weapon="1000013" Sex="1" Level="0.05" RandSkill="5:100" RandAttr="4090001" Attr_atk="68" Attr_def="74" Attr_res="32" Attr_maxhp="170"/>
+	<item RandDip="0-10:10|11-90:90|91-100:100" Id="6" Race="1602" Profession="1118" Weapon="1000013" Sex="2" Level="0.05" RandSkill="6:100" RandAttr="4090001" Attr_atk="68" Attr_def="74" Attr_res="32" Attr_maxhp="170"/>
+</root>

@@ -9,15 +9,31 @@
 	</Includes>
 
 	<Plugins>
-		<Plugin Name="KFZone" Config="./setting/{}_{}_zone.setting"/>	
-		<Plugin Name="KFKernel" Config="./config/class.config"/>	
+		<Plugin Name="KFKernel" Config=""/>	
+		<Plugin Name="KFOption" Config=""/>	
+		<Plugin Name="KFFilter" Config=""/>		
+		<Plugin Name="KFLua" Config=""/>	
 		<Plugin Name="KFGame" Config=""/>	
+		<Plugin Name="KFDisplay" Config=""/>	
+		<Plugin Name="KFPlayer" Config=""/>	
+		<Plugin Name="KFAttribute" Config=""/>	
+		<Plugin Name="KFCommand" Config=""/>
 		<Plugin Name="KFDataClient" Config=""/>	
 		<Plugin Name="KFMatchClient" Config=""/>	
 		<Plugin Name="KFRoomClient" Config=""/>	
-		<Plugin Name="KFDisplay" Config=""/>	
-		<Plugin Name="KFPlayer" Config=""/>	
-		<Plugin Name="KFCommand" Config=""/>	
-		<Plugin Name="KFHero" Config=""/>	
+		<Plugin Name="KFPublicClient" Config=""/>	
+		<Plugin Name="KFReset" Config=""/>
+		<Plugin Name="KFHero" Config=""/>			
+		<Plugin Name="KFTrainCamp" Config=""/>			
+		<Plugin Name="KFRecruit" Config=""/>			
+		<Plugin Name="KFGenerate" Config=""/>
+		<Plugin Name="KFItem" Config=""/>
+		<Plugin Name="KFDrop" Config=""/>
+		<Plugin Name="KFClinic" Config=""/>
+		<Plugin Name="KFExplore" Config=""/>
+		<Plugin Name="KFChapter" Config=""/>
+		<Plugin Name="KFMainCamp" Config=""/>
+		<Plugin Name="KFRecordClient" Config=""/>
+		<Plugin Name="KFChancelClient" Config=""/>
 	</Plugins>
 </Setting>

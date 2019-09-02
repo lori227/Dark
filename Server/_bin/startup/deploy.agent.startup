@@ -6,7 +6,7 @@
 	</Includes>
 
 	<Plugins>
-		<Plugin Name="KFMySQL" Config="./setting/{}_{}_mysql.setting"/>
+		<Plugin Name="KFMySQL" Config=""/>
 		<Plugin Name="KFDeployAgent" Config=""/>
 		<Plugin Name="KFSchedule" Config=""/>
 		<Plugin Name="KFTimer" Config=""/>

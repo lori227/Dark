@@ -4,6 +4,11 @@
 #ifndef PROTOBUF_INCLUDED_CodeMessage_2eproto
 #define PROTOBUF_INCLUDED_CodeMessage_2eproto
 
+#ifdef _MSC_VER
+	#pragma warning(push)
+	#pragma warning(disable : 4946)
+#endif
+
 #include <string>
 
 #include <google/protobuf/stubs/common.h>
@@ -57,12 +62,53 @@ enum ProjectCodeEnum {
   MatchCancelOk = 31005,
   MatchAffirmTimeout = 31007,
   RoomAllotBattle = 31008,
+  MatchIdError = 31009,
+  HeroDivisorError = 31101,
+  HeroDivisorExist = 31102,
+  HeroRecruitRefresh = 31103,
+  HeroRecruitRefreshFreeError = 31104,
+  HeroRecruitRefreshTypeError = 31105,
+  HeroRecruitNotExist = 31106,
+  HeroRecruitCostError = 31107,
+  HeroRecruitDataError = 31108,
+  HeroRecruitOk = 31109,
+  HeroDivisorMaxCount = 31110,
+  HeroNotExist = 31111,
+  HeroTeamIndexError = 31112,
+  HeroTeamDataInvalid = 31113,
+  HeroNotInHeroList = 31114,
+  HeroLevelIsMax = 31115,
+  HeroLockNotChange = 31116,
+  HeroIsLocked = 31117,
+  HeroLockFlagError = 31118,
+  HeroNameNotChange = 31119,
+  HeroSkillNotChange = 31120,
+  HeroSkillIndexError = 31121,
+  HeroHpIsMax = 31122,
+  HeroTransferDataError = 31123,
+  HeroLevelNotEnough = 31124,
+  HeroTransferCostError = 31125,
+  HeroCanNotTransfer = 31126,
+  HeroProfessionIsError = 31127,
+  TrainCampLevelError = 31200,
+  TrainCampIndexError = 31201,
+  TrainCampHeroNotExist = 31202,
+  TrainCampHeroIsExist = 31203,
+  BuildFuncNotActive = 31204,
+  MainCampSkinNotExist = 31205,
+  MainCampSkinNotActive = 31206,
+  ClinicSettingError = 31207,
+  ClinicItemIsNotEnough = 31208,
+  ClinicMoneyIsError = 31209,
+  ExploreMapLimit = 31303,
+  ExploreMapError = 31304,
+  FighterNotInExplore = 31305,
   ProjectCodeEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   ProjectCodeEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 LIBPROTOC_EXPORT bool ProjectCodeEnum_IsValid(int value);
 const ProjectCodeEnum ProjectCodeEnum_MIN = LogicError;
-const ProjectCodeEnum ProjectCodeEnum_MAX = RoomAllotBattle;
+const ProjectCodeEnum ProjectCodeEnum_MAX = FighterNotInExplore;
 const int ProjectCodeEnum_ARRAYSIZE = ProjectCodeEnum_MAX + 1;
 
 LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* ProjectCodeEnum_descriptor();
@@ -109,4 +155,8 @@ inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::ProjectCodeEnum>() {
 
 // @@protoc_insertion_point(global_scope)
 
+
+#ifdef _MSC_VER
+	#pragma warning(  pop  )
+#endif
 #endif  // PROTOBUF_INCLUDED_CodeMessage_2eproto

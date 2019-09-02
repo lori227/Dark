@@ -1,0 +1,5 @@
+<root version="00000">
+	<item Name="camprecordtime" Value="3"/>
+	<item Name="dailyrecordtime" Value="4"/>
+	<item Name="dailyrecordrefreshtime" Value="5"/>
+</root>

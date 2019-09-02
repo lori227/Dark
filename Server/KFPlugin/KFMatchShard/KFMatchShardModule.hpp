@@ -12,8 +12,8 @@
 #include "KFMatchQueue.h"
 #include "KFMatchShardInterface.h"
 #include "KFProtocol/KFProtocol.h"
+#include "KFZConfig/KFMatchConfig.hpp"
 #include "KFOption/KFOptionInterface.h"
-#include "KFConfig/KFConfigInterface.h"
 #include "KFMessage/KFMessageInterface.h"
 #include "KFRouteClient/KFRouteClientInterface.h"
 
@@ -25,12 +25,9 @@ namespace KFrame
         KFMatchShardModule() = default;
         ~KFMatchShardModule() = default;
 
-        // 初始化
-        virtual void InitModule();
-
         // 逻辑
         virtual void BeforeRun();
-        virtual void OnceRun();
+        virtual void PrepareRun();
         virtual void Run();
 
         // 关闭
@@ -58,7 +55,7 @@ namespace KFrame
 
     protected:
         // 查找匹配模式
-        KFMatchQueue* FindMatchQueue( uint32 matchid );
+        KFMatchQueue* FindMatchQueue( const KFMatchSetting* kfsetting );
 
         // 开始匹配
         uint32 StartMatch( const KFMsg::PBMatchPlayer* pbplayer, uint32 matchid, const std::string& version, uint64 battleserverid );

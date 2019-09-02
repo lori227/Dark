@@ -47,6 +47,7 @@ namespace KFrame
 
         // 发送确认消息
         void AffirmToPlayer();
+        void SendAffirmToPlayer();
 
         // 确认超时
         void AffirmTimeout();
@@ -76,6 +77,9 @@ namespace KFrame
 
         // 匹配队列
         KFMatchQueue* _match_queue;
+
+        // 下次通知时间
+        uint64 _next_affirm_time = _invalid_int;
     };
 }
 

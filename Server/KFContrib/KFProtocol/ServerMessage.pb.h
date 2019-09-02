@@ -4,6 +4,11 @@
 #ifndef PROTOBUF_INCLUDED_ServerMessage_2eproto
 #define PROTOBUF_INCLUDED_ServerMessage_2eproto
 
+#ifdef _MSC_VER
+	#pragma warning(push)
+	#pragma warning(disable : 4946)
+#endif
+
 #include <string>
 
 #include <google/protobuf/stubs/common.h>
@@ -29,9 +34,6 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
-#include <google/protobuf/map.h>  // IWYU pragma: export
-#include <google/protobuf/map_entry.h>
-#include <google/protobuf/map_field_inl.h>
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 #include "DefineMessage.pb.h"
@@ -44,7 +46,7 @@ namespace protobuf_ServerMessage_2eproto {
 struct LIBPROTOC_EXPORT TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[22];
+  static const ::google::protobuf::internal::ParseTable schema[30];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -52,15 +54,21 @@ struct LIBPROTOC_EXPORT TableStruct {
 void LIBPROTOC_EXPORT AddDescriptors();
 }  // namespace protobuf_ServerMessage_2eproto
 namespace KFMsg {
+class S2SAddDeadRecordReq;
+class S2SAddDeadRecordReqDefaultTypeInternal;
+LIBPROTOC_EXPORT extern S2SAddDeadRecordReqDefaultTypeInternal _S2SAddDeadRecordReq_default_instance_;
+class S2SAddLifeEventReq;
+class S2SAddLifeEventReqDefaultTypeInternal;
+LIBPROTOC_EXPORT extern S2SAddLifeEventReqDefaultTypeInternal _S2SAddLifeEventReq_default_instance_;
+class S2SAddRecordReq;
+class S2SAddRecordReqDefaultTypeInternal;
+LIBPROTOC_EXPORT extern S2SAddRecordReqDefaultTypeInternal _S2SAddRecordReq_default_instance_;
 class S2SAffirmMatchTimeoutToGame;
 class S2SAffirmMatchTimeoutToGameDefaultTypeInternal;
 LIBPROTOC_EXPORT extern S2SAffirmMatchTimeoutToGameDefaultTypeInternal _S2SAffirmMatchTimeoutToGame_default_instance_;
 class S2SAffirmMatchToShardReq;
 class S2SAffirmMatchToShardReqDefaultTypeInternal;
 LIBPROTOC_EXPORT extern S2SAffirmMatchToShardReqDefaultTypeInternal _S2SAffirmMatchToShardReq_default_instance_;
-class S2SAffirmMatchToShardReq_HeroEntry_DoNotUse;
-class S2SAffirmMatchToShardReq_HeroEntry_DoNotUseDefaultTypeInternal;
-LIBPROTOC_EXPORT extern S2SAffirmMatchToShardReq_HeroEntry_DoNotUseDefaultTypeInternal _S2SAffirmMatchToShardReq_HeroEntry_DoNotUse_default_instance_;
 class S2SCancelMatchToShardReq;
 class S2SCancelMatchToShardReqDefaultTypeInternal;
 LIBPROTOC_EXPORT extern S2SCancelMatchToShardReqDefaultTypeInternal _S2SCancelMatchToShardReq_default_instance_;
@@ -70,6 +78,9 @@ LIBPROTOC_EXPORT extern S2SCreateRoomToMatchAckDefaultTypeInternal _S2SCreateRoo
 class S2SCreateRoomToRoomReq;
 class S2SCreateRoomToRoomReqDefaultTypeInternal;
 LIBPROTOC_EXPORT extern S2SCreateRoomToRoomReqDefaultTypeInternal _S2SCreateRoomToRoomReq_default_instance_;
+class S2SDelLifeEventReq;
+class S2SDelLifeEventReqDefaultTypeInternal;
+LIBPROTOC_EXPORT extern S2SDelLifeEventReqDefaultTypeInternal _S2SDelLifeEventReq_default_instance_;
 class S2SFinishRoomToBattleAck;
 class S2SFinishRoomToBattleAckDefaultTypeInternal;
 LIBPROTOC_EXPORT extern S2SFinishRoomToBattleAckDefaultTypeInternal _S2SFinishRoomToBattleAck_default_instance_;
@@ -88,18 +99,33 @@ LIBPROTOC_EXPORT extern S2SInformBattleToGameReqDefaultTypeInternal _S2SInformBa
 class S2SInformBattleToRoomAck;
 class S2SInformBattleToRoomAckDefaultTypeInternal;
 LIBPROTOC_EXPORT extern S2SInformBattleToRoomAckDefaultTypeInternal _S2SInformBattleToRoomAck_default_instance_;
+class S2SOnlineRecordReq;
+class S2SOnlineRecordReqDefaultTypeInternal;
+LIBPROTOC_EXPORT extern S2SOnlineRecordReqDefaultTypeInternal _S2SOnlineRecordReq_default_instance_;
 class S2SOpenRoomToBattleReq;
 class S2SOpenRoomToBattleReqDefaultTypeInternal;
 LIBPROTOC_EXPORT extern S2SOpenRoomToBattleReqDefaultTypeInternal _S2SOpenRoomToBattleReq_default_instance_;
 class S2SOpenRoomToRoomAck;
 class S2SOpenRoomToRoomAckDefaultTypeInternal;
 LIBPROTOC_EXPORT extern S2SOpenRoomToRoomAckDefaultTypeInternal _S2SOpenRoomToRoomAck_default_instance_;
+class S2SQueryDeadRecordAck;
+class S2SQueryDeadRecordAckDefaultTypeInternal;
+LIBPROTOC_EXPORT extern S2SQueryDeadRecordAckDefaultTypeInternal _S2SQueryDeadRecordAck_default_instance_;
+class S2SQueryDeadRecordReq;
+class S2SQueryDeadRecordReqDefaultTypeInternal;
+LIBPROTOC_EXPORT extern S2SQueryDeadRecordReqDefaultTypeInternal _S2SQueryDeadRecordReq_default_instance_;
+class S2SQueryLifeEventReq;
+class S2SQueryLifeEventReqDefaultTypeInternal;
+LIBPROTOC_EXPORT extern S2SQueryLifeEventReqDefaultTypeInternal _S2SQueryLifeEventReq_default_instance_;
 class S2SQueryMatchToGameAck;
 class S2SQueryMatchToGameAckDefaultTypeInternal;
 LIBPROTOC_EXPORT extern S2SQueryMatchToGameAckDefaultTypeInternal _S2SQueryMatchToGameAck_default_instance_;
 class S2SQueryMatchToMatchReq;
 class S2SQueryMatchToMatchReqDefaultTypeInternal;
 LIBPROTOC_EXPORT extern S2SQueryMatchToMatchReqDefaultTypeInternal _S2SQueryMatchToMatchReq_default_instance_;
+class S2SQueryRecordReq;
+class S2SQueryRecordReqDefaultTypeInternal;
+LIBPROTOC_EXPORT extern S2SQueryRecordReqDefaultTypeInternal _S2SQueryRecordReq_default_instance_;
 class S2SQueryRoomToGameAck;
 class S2SQueryRoomToGameAckDefaultTypeInternal;
 LIBPROTOC_EXPORT extern S2SQueryRoomToGameAckDefaultTypeInternal _S2SQueryRoomToGameAck_default_instance_;
@@ -121,22 +147,30 @@ LIBPROTOC_EXPORT extern S2SStartMatchToShardReqDefaultTypeInternal _S2SStartMatc
 }  // namespace KFMsg
 namespace google {
 namespace protobuf {
+template<> LIBPROTOC_EXPORT ::KFMsg::S2SAddDeadRecordReq* Arena::CreateMaybeMessage<::KFMsg::S2SAddDeadRecordReq>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::S2SAddLifeEventReq* Arena::CreateMaybeMessage<::KFMsg::S2SAddLifeEventReq>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::S2SAddRecordReq* Arena::CreateMaybeMessage<::KFMsg::S2SAddRecordReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::S2SAffirmMatchTimeoutToGame* Arena::CreateMaybeMessage<::KFMsg::S2SAffirmMatchTimeoutToGame>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::S2SAffirmMatchToShardReq* Arena::CreateMaybeMessage<::KFMsg::S2SAffirmMatchToShardReq>(Arena*);
-template<> LIBPROTOC_EXPORT ::KFMsg::S2SAffirmMatchToShardReq_HeroEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::S2SAffirmMatchToShardReq_HeroEntry_DoNotUse>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::S2SCancelMatchToShardReq* Arena::CreateMaybeMessage<::KFMsg::S2SCancelMatchToShardReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::S2SCreateRoomToMatchAck* Arena::CreateMaybeMessage<::KFMsg::S2SCreateRoomToMatchAck>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::S2SCreateRoomToRoomReq* Arena::CreateMaybeMessage<::KFMsg::S2SCreateRoomToRoomReq>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::S2SDelLifeEventReq* Arena::CreateMaybeMessage<::KFMsg::S2SDelLifeEventReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::S2SFinishRoomToBattleAck* Arena::CreateMaybeMessage<::KFMsg::S2SFinishRoomToBattleAck>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::S2SFinishRoomToGameReq* Arena::CreateMaybeMessage<::KFMsg::S2SFinishRoomToGameReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::S2SFinishRoomToRoomReq* Arena::CreateMaybeMessage<::KFMsg::S2SFinishRoomToRoomReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::S2SHeartBeatToRoomReq* Arena::CreateMaybeMessage<::KFMsg::S2SHeartBeatToRoomReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::S2SInformBattleToGameReq* Arena::CreateMaybeMessage<::KFMsg::S2SInformBattleToGameReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::S2SInformBattleToRoomAck* Arena::CreateMaybeMessage<::KFMsg::S2SInformBattleToRoomAck>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::S2SOnlineRecordReq* Arena::CreateMaybeMessage<::KFMsg::S2SOnlineRecordReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::S2SOpenRoomToBattleReq* Arena::CreateMaybeMessage<::KFMsg::S2SOpenRoomToBattleReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::S2SOpenRoomToRoomAck* Arena::CreateMaybeMessage<::KFMsg::S2SOpenRoomToRoomAck>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::S2SQueryDeadRecordAck* Arena::CreateMaybeMessage<::KFMsg::S2SQueryDeadRecordAck>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::S2SQueryDeadRecordReq* Arena::CreateMaybeMessage<::KFMsg::S2SQueryDeadRecordReq>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::S2SQueryLifeEventReq* Arena::CreateMaybeMessage<::KFMsg::S2SQueryLifeEventReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::S2SQueryMatchToGameAck* Arena::CreateMaybeMessage<::KFMsg::S2SQueryMatchToGameAck>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::S2SQueryMatchToMatchReq* Arena::CreateMaybeMessage<::KFMsg::S2SQueryMatchToMatchReq>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::S2SQueryRecordReq* Arena::CreateMaybeMessage<::KFMsg::S2SQueryRecordReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::S2SQueryRoomToGameAck* Arena::CreateMaybeMessage<::KFMsg::S2SQueryRoomToGameAck>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::S2SQueryRoomToRoomReq* Arena::CreateMaybeMessage<::KFMsg::S2SQueryRoomToRoomReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::S2SRegisterBattleToBattleAck* Arena::CreateMaybeMessage<::KFMsg::S2SRegisterBattleToBattleAck>(Arena*);
@@ -170,12 +204,21 @@ enum ServerProtocol {
   S2S_FINISH_ROOM_TO_GAME_REQ = 31207,
   S2S_QUERY_MATCH_TO_MATCH_REQ = 31208,
   S2S_QUERY_MATCH_TO_GAME_ACK = 31209,
+  S2S_ADD_RECORD_REQ = 31301,
+  S2S_QUERY_RECORD_REQ = 31302,
+  S2S_ONLINE_RECORD_REQ = 31303,
+  S2S_ADD_DEAD_RECORD_REQ = 31401,
+  S2S_QUERY_DEAD_RECORD_REQ = 31402,
+  S2S_QUERY_DEAD_RECORD_ACK = 31403,
+  S2S_ADD_LIFE_EVENT_REQ = 31404,
+  S2S_DEL_LIFE_EVENT_REQ = 31405,
+  S2S_QUERY_LIFE_EVENT_REQ = 31406,
   ServerProtocol_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   ServerProtocol_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 LIBPROTOC_EXPORT bool ServerProtocol_IsValid(int value);
 const ServerProtocol ServerProtocol_MIN = S2S_SERVER_PROTOCOL_BEGIN;
-const ServerProtocol ServerProtocol_MAX = S2S_QUERY_MATCH_TO_GAME_ACK;
+const ServerProtocol ServerProtocol_MAX = S2S_QUERY_LIFE_EVENT_REQ;
 const int ServerProtocol_ARRAYSIZE = ServerProtocol_MAX + 1;
 
 LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* ServerProtocol_descriptor();
@@ -972,11 +1015,18 @@ class LIBPROTOC_EXPORT S2SHeartBeatToRoomReq : public ::google::protobuf::Messag
   ::google::protobuf::uint64 roomid() const;
   void set_roomid(::google::protobuf::uint64 value);
 
+  // uint64 serverid = 2;
+  void clear_serverid();
+  static const int kServeridFieldNumber = 2;
+  ::google::protobuf::uint64 serverid() const;
+  void set_serverid(::google::protobuf::uint64 value);
+
   // @@protoc_insertion_point(class_scope:KFMsg.S2SHeartBeatToRoomReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint64 roomid_;
+  ::google::protobuf::uint64 serverid_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_ServerMessage_2eproto::TableStruct;
 };
@@ -1705,27 +1755,6 @@ class LIBPROTOC_EXPORT S2SAffirmMatchTimeoutToGame : public ::google::protobuf::
 };
 // -------------------------------------------------------------------
 
-class S2SAffirmMatchToShardReq_HeroEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<S2SAffirmMatchToShardReq_HeroEntry_DoNotUse, 
-    ::google::protobuf::uint64, ::KFMsg::PBObject,
-    ::google::protobuf::internal::WireFormatLite::TYPE_UINT64,
-    ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
-    0 > {
-public:
-  typedef ::google::protobuf::internal::MapEntry<S2SAffirmMatchToShardReq_HeroEntry_DoNotUse, 
-    ::google::protobuf::uint64, ::KFMsg::PBObject,
-    ::google::protobuf::internal::WireFormatLite::TYPE_UINT64,
-    ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
-    0 > SuperType;
-  S2SAffirmMatchToShardReq_HeroEntry_DoNotUse();
-  S2SAffirmMatchToShardReq_HeroEntry_DoNotUse(::google::protobuf::Arena* arena);
-  void MergeFrom(const S2SAffirmMatchToShardReq_HeroEntry_DoNotUse& other);
-  static const S2SAffirmMatchToShardReq_HeroEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const S2SAffirmMatchToShardReq_HeroEntry_DoNotUse*>(&_S2SAffirmMatchToShardReq_HeroEntry_DoNotUse_default_instance_); }
-  void MergeFrom(const ::google::protobuf::Message& other) final;
-  ::google::protobuf::Metadata GetMetadata() const;
-};
-
-// -------------------------------------------------------------------
-
 class LIBPROTOC_EXPORT S2SAffirmMatchToShardReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.S2SAffirmMatchToShardReq) */ {
  public:
   S2SAffirmMatchToShardReq();
@@ -1761,7 +1790,7 @@ class LIBPROTOC_EXPORT S2SAffirmMatchToShardReq : public ::google::protobuf::Mes
                &_S2SAffirmMatchToShardReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    13;
 
   void Swap(S2SAffirmMatchToShardReq* other);
   friend void swap(S2SAffirmMatchToShardReq& a, S2SAffirmMatchToShardReq& b) {
@@ -1811,17 +1840,7 @@ class LIBPROTOC_EXPORT S2SAffirmMatchToShardReq : public ::google::protobuf::Mes
 
   // nested types ----------------------------------------------------
 
-
   // accessors -------------------------------------------------------
-
-  // map<uint64, .KFMsg.PBObject> hero = 2;
-  int hero_size() const;
-  void clear_hero();
-  static const int kHeroFieldNumber = 2;
-  const ::google::protobuf::Map< ::google::protobuf::uint64, ::KFMsg::PBObject >&
-      hero() const;
-  ::google::protobuf::Map< ::google::protobuf::uint64, ::KFMsg::PBObject >*
-      mutable_hero();
 
   // uint64 playerid = 1;
   void clear_playerid();
@@ -1829,17 +1848,18 @@ class LIBPROTOC_EXPORT S2SAffirmMatchToShardReq : public ::google::protobuf::Mes
   ::google::protobuf::uint64 playerid() const;
   void set_playerid(::google::protobuf::uint64 value);
 
+  // uint64 serverid = 2;
+  void clear_serverid();
+  static const int kServeridFieldNumber = 2;
+  ::google::protobuf::uint64 serverid() const;
+  void set_serverid(::google::protobuf::uint64 value);
+
   // @@protoc_insertion_point(class_scope:KFMsg.S2SAffirmMatchToShardReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::MapField<
-      S2SAffirmMatchToShardReq_HeroEntry_DoNotUse,
-      ::google::protobuf::uint64, ::KFMsg::PBObject,
-      ::google::protobuf::internal::WireFormatLite::TYPE_UINT64,
-      ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
-      0 > hero_;
   ::google::protobuf::uint64 playerid_;
+  ::google::protobuf::uint64 serverid_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_ServerMessage_2eproto::TableStruct;
 };
@@ -1880,7 +1900,7 @@ class LIBPROTOC_EXPORT S2SInformBattleToGameReq : public ::google::protobuf::Mes
                &_S2SInformBattleToGameReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    14;
 
   void Swap(S2SInformBattleToGameReq* other);
   friend void swap(S2SInformBattleToGameReq& a, S2SInformBattleToGameReq& b) {
@@ -2019,7 +2039,7 @@ class LIBPROTOC_EXPORT S2SInformBattleToRoomAck : public ::google::protobuf::Mes
                &_S2SInformBattleToRoomAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    15;
 
   void Swap(S2SInformBattleToRoomAck* other);
   friend void swap(S2SInformBattleToRoomAck& a, S2SInformBattleToRoomAck& b) {
@@ -2129,7 +2149,7 @@ class LIBPROTOC_EXPORT S2SQueryRoomToRoomReq : public ::google::protobuf::Messag
                &_S2SQueryRoomToRoomReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    16;
 
   void Swap(S2SQueryRoomToRoomReq* other);
   friend void swap(S2SQueryRoomToRoomReq& a, S2SQueryRoomToRoomReq& b) {
@@ -2239,7 +2259,7 @@ class LIBPROTOC_EXPORT S2SQueryRoomToGameAck : public ::google::protobuf::Messag
                &_S2SQueryRoomToGameAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    17;
 
   void Swap(S2SQueryRoomToGameAck* other);
   friend void swap(S2SQueryRoomToGameAck& a, S2SQueryRoomToGameAck& b) {
@@ -2342,7 +2362,7 @@ class LIBPROTOC_EXPORT S2SFinishRoomToGameReq : public ::google::protobuf::Messa
                &_S2SFinishRoomToGameReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    18;
 
   void Swap(S2SFinishRoomToGameReq* other);
   friend void swap(S2SFinishRoomToGameReq& a, S2SFinishRoomToGameReq& b) {
@@ -2452,7 +2472,7 @@ class LIBPROTOC_EXPORT S2SQueryMatchToMatchReq : public ::google::protobuf::Mess
                &_S2SQueryMatchToMatchReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    19;
 
   void Swap(S2SQueryMatchToMatchReq* other);
   friend void swap(S2SQueryMatchToMatchReq& a, S2SQueryMatchToMatchReq& b) {
@@ -2562,7 +2582,7 @@ class LIBPROTOC_EXPORT S2SQueryMatchToGameAck : public ::google::protobuf::Messa
                &_S2SQueryMatchToGameAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    20;
 
   void Swap(S2SQueryMatchToGameAck* other);
   friend void swap(S2SQueryMatchToGameAck& a, S2SQueryMatchToGameAck& b) {
@@ -2625,6 +2645,1042 @@ class LIBPROTOC_EXPORT S2SQueryMatchToGameAck : public ::google::protobuf::Messa
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint64 playerid_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_ServerMessage_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class LIBPROTOC_EXPORT S2SAddRecordReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.S2SAddRecordReq) */ {
+ public:
+  S2SAddRecordReq();
+  virtual ~S2SAddRecordReq();
+
+  S2SAddRecordReq(const S2SAddRecordReq& from);
+
+  inline S2SAddRecordReq& operator=(const S2SAddRecordReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  S2SAddRecordReq(S2SAddRecordReq&& from) noexcept
+    : S2SAddRecordReq() {
+    *this = ::std::move(from);
+  }
+
+  inline S2SAddRecordReq& operator=(S2SAddRecordReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const S2SAddRecordReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const S2SAddRecordReq* internal_default_instance() {
+    return reinterpret_cast<const S2SAddRecordReq*>(
+               &_S2SAddRecordReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    21;
+
+  void Swap(S2SAddRecordReq* other);
+  friend void swap(S2SAddRecordReq& a, S2SAddRecordReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline S2SAddRecordReq* New() const final {
+    return CreateMaybeMessage<S2SAddRecordReq>(NULL);
+  }
+
+  S2SAddRecordReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<S2SAddRecordReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const S2SAddRecordReq& from);
+  void MergeFrom(const S2SAddRecordReq& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S2SAddRecordReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .KFMsg.PBRecordData pbrecord = 4;
+  bool has_pbrecord() const;
+  void clear_pbrecord();
+  static const int kPbrecordFieldNumber = 4;
+  private:
+  const ::KFMsg::PBRecordData& _internal_pbrecord() const;
+  public:
+  const ::KFMsg::PBRecordData& pbrecord() const;
+  ::KFMsg::PBRecordData* release_pbrecord();
+  ::KFMsg::PBRecordData* mutable_pbrecord();
+  void set_allocated_pbrecord(::KFMsg::PBRecordData* pbrecord);
+
+  // uint64 playerid = 1;
+  void clear_playerid();
+  static const int kPlayeridFieldNumber = 1;
+  ::google::protobuf::uint64 playerid() const;
+  void set_playerid(::google::protobuf::uint64 value);
+
+  // uint64 time = 2;
+  void clear_time();
+  static const int kTimeFieldNumber = 2;
+  ::google::protobuf::uint64 time() const;
+  void set_time(::google::protobuf::uint64 value);
+
+  // uint32 type = 3;
+  void clear_type();
+  static const int kTypeFieldNumber = 3;
+  ::google::protobuf::uint32 type() const;
+  void set_type(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:KFMsg.S2SAddRecordReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::KFMsg::PBRecordData* pbrecord_;
+  ::google::protobuf::uint64 playerid_;
+  ::google::protobuf::uint64 time_;
+  ::google::protobuf::uint32 type_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_ServerMessage_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class LIBPROTOC_EXPORT S2SQueryRecordReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.S2SQueryRecordReq) */ {
+ public:
+  S2SQueryRecordReq();
+  virtual ~S2SQueryRecordReq();
+
+  S2SQueryRecordReq(const S2SQueryRecordReq& from);
+
+  inline S2SQueryRecordReq& operator=(const S2SQueryRecordReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  S2SQueryRecordReq(S2SQueryRecordReq&& from) noexcept
+    : S2SQueryRecordReq() {
+    *this = ::std::move(from);
+  }
+
+  inline S2SQueryRecordReq& operator=(S2SQueryRecordReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const S2SQueryRecordReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const S2SQueryRecordReq* internal_default_instance() {
+    return reinterpret_cast<const S2SQueryRecordReq*>(
+               &_S2SQueryRecordReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    22;
+
+  void Swap(S2SQueryRecordReq* other);
+  friend void swap(S2SQueryRecordReq& a, S2SQueryRecordReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline S2SQueryRecordReq* New() const final {
+    return CreateMaybeMessage<S2SQueryRecordReq>(NULL);
+  }
+
+  S2SQueryRecordReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<S2SQueryRecordReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const S2SQueryRecordReq& from);
+  void MergeFrom(const S2SQueryRecordReq& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S2SQueryRecordReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 playerid = 1;
+  void clear_playerid();
+  static const int kPlayeridFieldNumber = 1;
+  ::google::protobuf::uint64 playerid() const;
+  void set_playerid(::google::protobuf::uint64 value);
+
+  // uint32 type = 2;
+  void clear_type();
+  static const int kTypeFieldNumber = 2;
+  ::google::protobuf::uint32 type() const;
+  void set_type(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:KFMsg.S2SQueryRecordReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 playerid_;
+  ::google::protobuf::uint32 type_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_ServerMessage_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class LIBPROTOC_EXPORT S2SOnlineRecordReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.S2SOnlineRecordReq) */ {
+ public:
+  S2SOnlineRecordReq();
+  virtual ~S2SOnlineRecordReq();
+
+  S2SOnlineRecordReq(const S2SOnlineRecordReq& from);
+
+  inline S2SOnlineRecordReq& operator=(const S2SOnlineRecordReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  S2SOnlineRecordReq(S2SOnlineRecordReq&& from) noexcept
+    : S2SOnlineRecordReq() {
+    *this = ::std::move(from);
+  }
+
+  inline S2SOnlineRecordReq& operator=(S2SOnlineRecordReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const S2SOnlineRecordReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const S2SOnlineRecordReq* internal_default_instance() {
+    return reinterpret_cast<const S2SOnlineRecordReq*>(
+               &_S2SOnlineRecordReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    23;
+
+  void Swap(S2SOnlineRecordReq* other);
+  friend void swap(S2SOnlineRecordReq& a, S2SOnlineRecordReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline S2SOnlineRecordReq* New() const final {
+    return CreateMaybeMessage<S2SOnlineRecordReq>(NULL);
+  }
+
+  S2SOnlineRecordReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<S2SOnlineRecordReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const S2SOnlineRecordReq& from);
+  void MergeFrom(const S2SOnlineRecordReq& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S2SOnlineRecordReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 playerid = 1;
+  void clear_playerid();
+  static const int kPlayeridFieldNumber = 1;
+  ::google::protobuf::uint64 playerid() const;
+  void set_playerid(::google::protobuf::uint64 value);
+
+  // uint32 type = 2;
+  void clear_type();
+  static const int kTypeFieldNumber = 2;
+  ::google::protobuf::uint32 type() const;
+  void set_type(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:KFMsg.S2SOnlineRecordReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 playerid_;
+  ::google::protobuf::uint32 type_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_ServerMessage_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class LIBPROTOC_EXPORT S2SAddDeadRecordReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.S2SAddDeadRecordReq) */ {
+ public:
+  S2SAddDeadRecordReq();
+  virtual ~S2SAddDeadRecordReq();
+
+  S2SAddDeadRecordReq(const S2SAddDeadRecordReq& from);
+
+  inline S2SAddDeadRecordReq& operator=(const S2SAddDeadRecordReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  S2SAddDeadRecordReq(S2SAddDeadRecordReq&& from) noexcept
+    : S2SAddDeadRecordReq() {
+    *this = ::std::move(from);
+  }
+
+  inline S2SAddDeadRecordReq& operator=(S2SAddDeadRecordReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const S2SAddDeadRecordReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const S2SAddDeadRecordReq* internal_default_instance() {
+    return reinterpret_cast<const S2SAddDeadRecordReq*>(
+               &_S2SAddDeadRecordReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    24;
+
+  void Swap(S2SAddDeadRecordReq* other);
+  friend void swap(S2SAddDeadRecordReq& a, S2SAddDeadRecordReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline S2SAddDeadRecordReq* New() const final {
+    return CreateMaybeMessage<S2SAddDeadRecordReq>(NULL);
+  }
+
+  S2SAddDeadRecordReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<S2SAddDeadRecordReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const S2SAddDeadRecordReq& from);
+  void MergeFrom(const S2SAddDeadRecordReq& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S2SAddDeadRecordReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .KFMsg.PBRecordData pbdeadrecord = 2;
+  bool has_pbdeadrecord() const;
+  void clear_pbdeadrecord();
+  static const int kPbdeadrecordFieldNumber = 2;
+  private:
+  const ::KFMsg::PBRecordData& _internal_pbdeadrecord() const;
+  public:
+  const ::KFMsg::PBRecordData& pbdeadrecord() const;
+  ::KFMsg::PBRecordData* release_pbdeadrecord();
+  ::KFMsg::PBRecordData* mutable_pbdeadrecord();
+  void set_allocated_pbdeadrecord(::KFMsg::PBRecordData* pbdeadrecord);
+
+  // uint64 playerid = 1;
+  void clear_playerid();
+  static const int kPlayeridFieldNumber = 1;
+  ::google::protobuf::uint64 playerid() const;
+  void set_playerid(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:KFMsg.S2SAddDeadRecordReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::KFMsg::PBRecordData* pbdeadrecord_;
+  ::google::protobuf::uint64 playerid_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_ServerMessage_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class LIBPROTOC_EXPORT S2SQueryDeadRecordReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.S2SQueryDeadRecordReq) */ {
+ public:
+  S2SQueryDeadRecordReq();
+  virtual ~S2SQueryDeadRecordReq();
+
+  S2SQueryDeadRecordReq(const S2SQueryDeadRecordReq& from);
+
+  inline S2SQueryDeadRecordReq& operator=(const S2SQueryDeadRecordReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  S2SQueryDeadRecordReq(S2SQueryDeadRecordReq&& from) noexcept
+    : S2SQueryDeadRecordReq() {
+    *this = ::std::move(from);
+  }
+
+  inline S2SQueryDeadRecordReq& operator=(S2SQueryDeadRecordReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const S2SQueryDeadRecordReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const S2SQueryDeadRecordReq* internal_default_instance() {
+    return reinterpret_cast<const S2SQueryDeadRecordReq*>(
+               &_S2SQueryDeadRecordReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    25;
+
+  void Swap(S2SQueryDeadRecordReq* other);
+  friend void swap(S2SQueryDeadRecordReq& a, S2SQueryDeadRecordReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline S2SQueryDeadRecordReq* New() const final {
+    return CreateMaybeMessage<S2SQueryDeadRecordReq>(NULL);
+  }
+
+  S2SQueryDeadRecordReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<S2SQueryDeadRecordReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const S2SQueryDeadRecordReq& from);
+  void MergeFrom(const S2SQueryDeadRecordReq& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S2SQueryDeadRecordReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 playerid = 1;
+  void clear_playerid();
+  static const int kPlayeridFieldNumber = 1;
+  ::google::protobuf::uint64 playerid() const;
+  void set_playerid(::google::protobuf::uint64 value);
+
+  // uint64 maxid = 2;
+  void clear_maxid();
+  static const int kMaxidFieldNumber = 2;
+  ::google::protobuf::uint64 maxid() const;
+  void set_maxid(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:KFMsg.S2SQueryDeadRecordReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 playerid_;
+  ::google::protobuf::uint64 maxid_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_ServerMessage_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class LIBPROTOC_EXPORT S2SQueryDeadRecordAck : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.S2SQueryDeadRecordAck) */ {
+ public:
+  S2SQueryDeadRecordAck();
+  virtual ~S2SQueryDeadRecordAck();
+
+  S2SQueryDeadRecordAck(const S2SQueryDeadRecordAck& from);
+
+  inline S2SQueryDeadRecordAck& operator=(const S2SQueryDeadRecordAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  S2SQueryDeadRecordAck(S2SQueryDeadRecordAck&& from) noexcept
+    : S2SQueryDeadRecordAck() {
+    *this = ::std::move(from);
+  }
+
+  inline S2SQueryDeadRecordAck& operator=(S2SQueryDeadRecordAck&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const S2SQueryDeadRecordAck& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const S2SQueryDeadRecordAck* internal_default_instance() {
+    return reinterpret_cast<const S2SQueryDeadRecordAck*>(
+               &_S2SQueryDeadRecordAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    26;
+
+  void Swap(S2SQueryDeadRecordAck* other);
+  friend void swap(S2SQueryDeadRecordAck& a, S2SQueryDeadRecordAck& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline S2SQueryDeadRecordAck* New() const final {
+    return CreateMaybeMessage<S2SQueryDeadRecordAck>(NULL);
+  }
+
+  S2SQueryDeadRecordAck* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<S2SQueryDeadRecordAck>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const S2SQueryDeadRecordAck& from);
+  void MergeFrom(const S2SQueryDeadRecordAck& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S2SQueryDeadRecordAck* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .KFMsg.PBRecordData deadrecord = 2;
+  int deadrecord_size() const;
+  void clear_deadrecord();
+  static const int kDeadrecordFieldNumber = 2;
+  ::KFMsg::PBRecordData* mutable_deadrecord(int index);
+  ::google::protobuf::RepeatedPtrField< ::KFMsg::PBRecordData >*
+      mutable_deadrecord();
+  const ::KFMsg::PBRecordData& deadrecord(int index) const;
+  ::KFMsg::PBRecordData* add_deadrecord();
+  const ::google::protobuf::RepeatedPtrField< ::KFMsg::PBRecordData >&
+      deadrecord() const;
+
+  // uint64 playerid = 1;
+  void clear_playerid();
+  static const int kPlayeridFieldNumber = 1;
+  ::google::protobuf::uint64 playerid() const;
+  void set_playerid(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:KFMsg.S2SQueryDeadRecordAck)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::KFMsg::PBRecordData > deadrecord_;
+  ::google::protobuf::uint64 playerid_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_ServerMessage_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class LIBPROTOC_EXPORT S2SAddLifeEventReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.S2SAddLifeEventReq) */ {
+ public:
+  S2SAddLifeEventReq();
+  virtual ~S2SAddLifeEventReq();
+
+  S2SAddLifeEventReq(const S2SAddLifeEventReq& from);
+
+  inline S2SAddLifeEventReq& operator=(const S2SAddLifeEventReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  S2SAddLifeEventReq(S2SAddLifeEventReq&& from) noexcept
+    : S2SAddLifeEventReq() {
+    *this = ::std::move(from);
+  }
+
+  inline S2SAddLifeEventReq& operator=(S2SAddLifeEventReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const S2SAddLifeEventReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const S2SAddLifeEventReq* internal_default_instance() {
+    return reinterpret_cast<const S2SAddLifeEventReq*>(
+               &_S2SAddLifeEventReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    27;
+
+  void Swap(S2SAddLifeEventReq* other);
+  friend void swap(S2SAddLifeEventReq& a, S2SAddLifeEventReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline S2SAddLifeEventReq* New() const final {
+    return CreateMaybeMessage<S2SAddLifeEventReq>(NULL);
+  }
+
+  S2SAddLifeEventReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<S2SAddLifeEventReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const S2SAddLifeEventReq& from);
+  void MergeFrom(const S2SAddLifeEventReq& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S2SAddLifeEventReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 playerid = 1;
+  void clear_playerid();
+  static const int kPlayeridFieldNumber = 1;
+  ::google::protobuf::uint64 playerid() const;
+  void set_playerid(::google::protobuf::uint64 value);
+
+  // uint64 uuid = 2;
+  void clear_uuid();
+  static const int kUuidFieldNumber = 2;
+  ::google::protobuf::uint64 uuid() const;
+  void set_uuid(::google::protobuf::uint64 value);
+
+  // uint64 time = 3;
+  void clear_time();
+  static const int kTimeFieldNumber = 3;
+  ::google::protobuf::uint64 time() const;
+  void set_time(::google::protobuf::uint64 value);
+
+  // uint32 eventid = 4;
+  void clear_eventid();
+  static const int kEventidFieldNumber = 4;
+  ::google::protobuf::uint32 eventid() const;
+  void set_eventid(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:KFMsg.S2SAddLifeEventReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 playerid_;
+  ::google::protobuf::uint64 uuid_;
+  ::google::protobuf::uint64 time_;
+  ::google::protobuf::uint32 eventid_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_ServerMessage_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class LIBPROTOC_EXPORT S2SDelLifeEventReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.S2SDelLifeEventReq) */ {
+ public:
+  S2SDelLifeEventReq();
+  virtual ~S2SDelLifeEventReq();
+
+  S2SDelLifeEventReq(const S2SDelLifeEventReq& from);
+
+  inline S2SDelLifeEventReq& operator=(const S2SDelLifeEventReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  S2SDelLifeEventReq(S2SDelLifeEventReq&& from) noexcept
+    : S2SDelLifeEventReq() {
+    *this = ::std::move(from);
+  }
+
+  inline S2SDelLifeEventReq& operator=(S2SDelLifeEventReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const S2SDelLifeEventReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const S2SDelLifeEventReq* internal_default_instance() {
+    return reinterpret_cast<const S2SDelLifeEventReq*>(
+               &_S2SDelLifeEventReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    28;
+
+  void Swap(S2SDelLifeEventReq* other);
+  friend void swap(S2SDelLifeEventReq& a, S2SDelLifeEventReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline S2SDelLifeEventReq* New() const final {
+    return CreateMaybeMessage<S2SDelLifeEventReq>(NULL);
+  }
+
+  S2SDelLifeEventReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<S2SDelLifeEventReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const S2SDelLifeEventReq& from);
+  void MergeFrom(const S2SDelLifeEventReq& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S2SDelLifeEventReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 playerid = 1;
+  void clear_playerid();
+  static const int kPlayeridFieldNumber = 1;
+  ::google::protobuf::uint64 playerid() const;
+  void set_playerid(::google::protobuf::uint64 value);
+
+  // uint64 uuid = 2;
+  void clear_uuid();
+  static const int kUuidFieldNumber = 2;
+  ::google::protobuf::uint64 uuid() const;
+  void set_uuid(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:KFMsg.S2SDelLifeEventReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 playerid_;
+  ::google::protobuf::uint64 uuid_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_ServerMessage_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class LIBPROTOC_EXPORT S2SQueryLifeEventReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.S2SQueryLifeEventReq) */ {
+ public:
+  S2SQueryLifeEventReq();
+  virtual ~S2SQueryLifeEventReq();
+
+  S2SQueryLifeEventReq(const S2SQueryLifeEventReq& from);
+
+  inline S2SQueryLifeEventReq& operator=(const S2SQueryLifeEventReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  S2SQueryLifeEventReq(S2SQueryLifeEventReq&& from) noexcept
+    : S2SQueryLifeEventReq() {
+    *this = ::std::move(from);
+  }
+
+  inline S2SQueryLifeEventReq& operator=(S2SQueryLifeEventReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const S2SQueryLifeEventReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const S2SQueryLifeEventReq* internal_default_instance() {
+    return reinterpret_cast<const S2SQueryLifeEventReq*>(
+               &_S2SQueryLifeEventReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    29;
+
+  void Swap(S2SQueryLifeEventReq* other);
+  friend void swap(S2SQueryLifeEventReq& a, S2SQueryLifeEventReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline S2SQueryLifeEventReq* New() const final {
+    return CreateMaybeMessage<S2SQueryLifeEventReq>(NULL);
+  }
+
+  S2SQueryLifeEventReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<S2SQueryLifeEventReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const S2SQueryLifeEventReq& from);
+  void MergeFrom(const S2SQueryLifeEventReq& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S2SQueryLifeEventReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 playerid = 1;
+  void clear_playerid();
+  static const int kPlayeridFieldNumber = 1;
+  ::google::protobuf::uint64 playerid() const;
+  void set_playerid(::google::protobuf::uint64 value);
+
+  // uint64 uuid = 2;
+  void clear_uuid();
+  static const int kUuidFieldNumber = 2;
+  ::google::protobuf::uint64 uuid() const;
+  void set_uuid(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:KFMsg.S2SQueryLifeEventReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 playerid_;
+  ::google::protobuf::uint64 uuid_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_ServerMessage_2eproto::TableStruct;
 };
@@ -2948,6 +4004,20 @@ inline void S2SHeartBeatToRoomReq::set_roomid(::google::protobuf::uint64 value) 
   
   roomid_ = value;
   // @@protoc_insertion_point(field_set:KFMsg.S2SHeartBeatToRoomReq.roomid)
+}
+
+// uint64 serverid = 2;
+inline void S2SHeartBeatToRoomReq::clear_serverid() {
+  serverid_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 S2SHeartBeatToRoomReq::serverid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.S2SHeartBeatToRoomReq.serverid)
+  return serverid_;
+}
+inline void S2SHeartBeatToRoomReq::set_serverid(::google::protobuf::uint64 value) {
+  
+  serverid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.S2SHeartBeatToRoomReq.serverid)
 }
 
 // -------------------------------------------------------------------
@@ -3339,8 +4409,6 @@ inline void S2SAffirmMatchTimeoutToGame::set_playerid(::google::protobuf::uint64
 
 // -------------------------------------------------------------------
 
-// -------------------------------------------------------------------
-
 // S2SAffirmMatchToShardReq
 
 // uint64 playerid = 1;
@@ -3357,19 +4425,18 @@ inline void S2SAffirmMatchToShardReq::set_playerid(::google::protobuf::uint64 va
   // @@protoc_insertion_point(field_set:KFMsg.S2SAffirmMatchToShardReq.playerid)
 }
 
-// map<uint64, .KFMsg.PBObject> hero = 2;
-inline int S2SAffirmMatchToShardReq::hero_size() const {
-  return hero_.size();
+// uint64 serverid = 2;
+inline void S2SAffirmMatchToShardReq::clear_serverid() {
+  serverid_ = GOOGLE_ULONGLONG(0);
 }
-inline const ::google::protobuf::Map< ::google::protobuf::uint64, ::KFMsg::PBObject >&
-S2SAffirmMatchToShardReq::hero() const {
-  // @@protoc_insertion_point(field_map:KFMsg.S2SAffirmMatchToShardReq.hero)
-  return hero_.GetMap();
+inline ::google::protobuf::uint64 S2SAffirmMatchToShardReq::serverid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.S2SAffirmMatchToShardReq.serverid)
+  return serverid_;
 }
-inline ::google::protobuf::Map< ::google::protobuf::uint64, ::KFMsg::PBObject >*
-S2SAffirmMatchToShardReq::mutable_hero() {
-  // @@protoc_insertion_point(field_mutable_map:KFMsg.S2SAffirmMatchToShardReq.hero)
-  return hero_.MutableMap();
+inline void S2SAffirmMatchToShardReq::set_serverid(::google::protobuf::uint64 value) {
+  
+  serverid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.S2SAffirmMatchToShardReq.serverid)
 }
 
 // -------------------------------------------------------------------
@@ -3649,9 +4716,450 @@ inline void S2SQueryMatchToGameAck::set_playerid(::google::protobuf::uint64 valu
   // @@protoc_insertion_point(field_set:KFMsg.S2SQueryMatchToGameAck.playerid)
 }
 
+// -------------------------------------------------------------------
+
+// S2SAddRecordReq
+
+// uint64 playerid = 1;
+inline void S2SAddRecordReq::clear_playerid() {
+  playerid_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 S2SAddRecordReq::playerid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.S2SAddRecordReq.playerid)
+  return playerid_;
+}
+inline void S2SAddRecordReq::set_playerid(::google::protobuf::uint64 value) {
+  
+  playerid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.S2SAddRecordReq.playerid)
+}
+
+// uint64 time = 2;
+inline void S2SAddRecordReq::clear_time() {
+  time_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 S2SAddRecordReq::time() const {
+  // @@protoc_insertion_point(field_get:KFMsg.S2SAddRecordReq.time)
+  return time_;
+}
+inline void S2SAddRecordReq::set_time(::google::protobuf::uint64 value) {
+  
+  time_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.S2SAddRecordReq.time)
+}
+
+// uint32 type = 3;
+inline void S2SAddRecordReq::clear_type() {
+  type_ = 0u;
+}
+inline ::google::protobuf::uint32 S2SAddRecordReq::type() const {
+  // @@protoc_insertion_point(field_get:KFMsg.S2SAddRecordReq.type)
+  return type_;
+}
+inline void S2SAddRecordReq::set_type(::google::protobuf::uint32 value) {
+  
+  type_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.S2SAddRecordReq.type)
+}
+
+// .KFMsg.PBRecordData pbrecord = 4;
+inline bool S2SAddRecordReq::has_pbrecord() const {
+  return this != internal_default_instance() && pbrecord_ != NULL;
+}
+inline const ::KFMsg::PBRecordData& S2SAddRecordReq::_internal_pbrecord() const {
+  return *pbrecord_;
+}
+inline const ::KFMsg::PBRecordData& S2SAddRecordReq::pbrecord() const {
+  const ::KFMsg::PBRecordData* p = pbrecord_;
+  // @@protoc_insertion_point(field_get:KFMsg.S2SAddRecordReq.pbrecord)
+  return p != NULL ? *p : *reinterpret_cast<const ::KFMsg::PBRecordData*>(
+      &::KFMsg::_PBRecordData_default_instance_);
+}
+inline ::KFMsg::PBRecordData* S2SAddRecordReq::release_pbrecord() {
+  // @@protoc_insertion_point(field_release:KFMsg.S2SAddRecordReq.pbrecord)
+  
+  ::KFMsg::PBRecordData* temp = pbrecord_;
+  pbrecord_ = NULL;
+  return temp;
+}
+inline ::KFMsg::PBRecordData* S2SAddRecordReq::mutable_pbrecord() {
+  
+  if (pbrecord_ == NULL) {
+    auto* p = CreateMaybeMessage<::KFMsg::PBRecordData>(GetArenaNoVirtual());
+    pbrecord_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:KFMsg.S2SAddRecordReq.pbrecord)
+  return pbrecord_;
+}
+inline void S2SAddRecordReq::set_allocated_pbrecord(::KFMsg::PBRecordData* pbrecord) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete reinterpret_cast< ::google::protobuf::MessageLite*>(pbrecord_);
+  }
+  if (pbrecord) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      pbrecord = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, pbrecord, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  pbrecord_ = pbrecord;
+  // @@protoc_insertion_point(field_set_allocated:KFMsg.S2SAddRecordReq.pbrecord)
+}
+
+// -------------------------------------------------------------------
+
+// S2SQueryRecordReq
+
+// uint64 playerid = 1;
+inline void S2SQueryRecordReq::clear_playerid() {
+  playerid_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 S2SQueryRecordReq::playerid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.S2SQueryRecordReq.playerid)
+  return playerid_;
+}
+inline void S2SQueryRecordReq::set_playerid(::google::protobuf::uint64 value) {
+  
+  playerid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.S2SQueryRecordReq.playerid)
+}
+
+// uint32 type = 2;
+inline void S2SQueryRecordReq::clear_type() {
+  type_ = 0u;
+}
+inline ::google::protobuf::uint32 S2SQueryRecordReq::type() const {
+  // @@protoc_insertion_point(field_get:KFMsg.S2SQueryRecordReq.type)
+  return type_;
+}
+inline void S2SQueryRecordReq::set_type(::google::protobuf::uint32 value) {
+  
+  type_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.S2SQueryRecordReq.type)
+}
+
+// -------------------------------------------------------------------
+
+// S2SOnlineRecordReq
+
+// uint64 playerid = 1;
+inline void S2SOnlineRecordReq::clear_playerid() {
+  playerid_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 S2SOnlineRecordReq::playerid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.S2SOnlineRecordReq.playerid)
+  return playerid_;
+}
+inline void S2SOnlineRecordReq::set_playerid(::google::protobuf::uint64 value) {
+  
+  playerid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.S2SOnlineRecordReq.playerid)
+}
+
+// uint32 type = 2;
+inline void S2SOnlineRecordReq::clear_type() {
+  type_ = 0u;
+}
+inline ::google::protobuf::uint32 S2SOnlineRecordReq::type() const {
+  // @@protoc_insertion_point(field_get:KFMsg.S2SOnlineRecordReq.type)
+  return type_;
+}
+inline void S2SOnlineRecordReq::set_type(::google::protobuf::uint32 value) {
+  
+  type_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.S2SOnlineRecordReq.type)
+}
+
+// -------------------------------------------------------------------
+
+// S2SAddDeadRecordReq
+
+// uint64 playerid = 1;
+inline void S2SAddDeadRecordReq::clear_playerid() {
+  playerid_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 S2SAddDeadRecordReq::playerid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.S2SAddDeadRecordReq.playerid)
+  return playerid_;
+}
+inline void S2SAddDeadRecordReq::set_playerid(::google::protobuf::uint64 value) {
+  
+  playerid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.S2SAddDeadRecordReq.playerid)
+}
+
+// .KFMsg.PBRecordData pbdeadrecord = 2;
+inline bool S2SAddDeadRecordReq::has_pbdeadrecord() const {
+  return this != internal_default_instance() && pbdeadrecord_ != NULL;
+}
+inline const ::KFMsg::PBRecordData& S2SAddDeadRecordReq::_internal_pbdeadrecord() const {
+  return *pbdeadrecord_;
+}
+inline const ::KFMsg::PBRecordData& S2SAddDeadRecordReq::pbdeadrecord() const {
+  const ::KFMsg::PBRecordData* p = pbdeadrecord_;
+  // @@protoc_insertion_point(field_get:KFMsg.S2SAddDeadRecordReq.pbdeadrecord)
+  return p != NULL ? *p : *reinterpret_cast<const ::KFMsg::PBRecordData*>(
+      &::KFMsg::_PBRecordData_default_instance_);
+}
+inline ::KFMsg::PBRecordData* S2SAddDeadRecordReq::release_pbdeadrecord() {
+  // @@protoc_insertion_point(field_release:KFMsg.S2SAddDeadRecordReq.pbdeadrecord)
+  
+  ::KFMsg::PBRecordData* temp = pbdeadrecord_;
+  pbdeadrecord_ = NULL;
+  return temp;
+}
+inline ::KFMsg::PBRecordData* S2SAddDeadRecordReq::mutable_pbdeadrecord() {
+  
+  if (pbdeadrecord_ == NULL) {
+    auto* p = CreateMaybeMessage<::KFMsg::PBRecordData>(GetArenaNoVirtual());
+    pbdeadrecord_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:KFMsg.S2SAddDeadRecordReq.pbdeadrecord)
+  return pbdeadrecord_;
+}
+inline void S2SAddDeadRecordReq::set_allocated_pbdeadrecord(::KFMsg::PBRecordData* pbdeadrecord) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete reinterpret_cast< ::google::protobuf::MessageLite*>(pbdeadrecord_);
+  }
+  if (pbdeadrecord) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      pbdeadrecord = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, pbdeadrecord, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  pbdeadrecord_ = pbdeadrecord;
+  // @@protoc_insertion_point(field_set_allocated:KFMsg.S2SAddDeadRecordReq.pbdeadrecord)
+}
+
+// -------------------------------------------------------------------
+
+// S2SQueryDeadRecordReq
+
+// uint64 playerid = 1;
+inline void S2SQueryDeadRecordReq::clear_playerid() {
+  playerid_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 S2SQueryDeadRecordReq::playerid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.S2SQueryDeadRecordReq.playerid)
+  return playerid_;
+}
+inline void S2SQueryDeadRecordReq::set_playerid(::google::protobuf::uint64 value) {
+  
+  playerid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.S2SQueryDeadRecordReq.playerid)
+}
+
+// uint64 maxid = 2;
+inline void S2SQueryDeadRecordReq::clear_maxid() {
+  maxid_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 S2SQueryDeadRecordReq::maxid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.S2SQueryDeadRecordReq.maxid)
+  return maxid_;
+}
+inline void S2SQueryDeadRecordReq::set_maxid(::google::protobuf::uint64 value) {
+  
+  maxid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.S2SQueryDeadRecordReq.maxid)
+}
+
+// -------------------------------------------------------------------
+
+// S2SQueryDeadRecordAck
+
+// uint64 playerid = 1;
+inline void S2SQueryDeadRecordAck::clear_playerid() {
+  playerid_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 S2SQueryDeadRecordAck::playerid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.S2SQueryDeadRecordAck.playerid)
+  return playerid_;
+}
+inline void S2SQueryDeadRecordAck::set_playerid(::google::protobuf::uint64 value) {
+  
+  playerid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.S2SQueryDeadRecordAck.playerid)
+}
+
+// repeated .KFMsg.PBRecordData deadrecord = 2;
+inline int S2SQueryDeadRecordAck::deadrecord_size() const {
+  return deadrecord_.size();
+}
+inline ::KFMsg::PBRecordData* S2SQueryDeadRecordAck::mutable_deadrecord(int index) {
+  // @@protoc_insertion_point(field_mutable:KFMsg.S2SQueryDeadRecordAck.deadrecord)
+  return deadrecord_.Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::KFMsg::PBRecordData >*
+S2SQueryDeadRecordAck::mutable_deadrecord() {
+  // @@protoc_insertion_point(field_mutable_list:KFMsg.S2SQueryDeadRecordAck.deadrecord)
+  return &deadrecord_;
+}
+inline const ::KFMsg::PBRecordData& S2SQueryDeadRecordAck::deadrecord(int index) const {
+  // @@protoc_insertion_point(field_get:KFMsg.S2SQueryDeadRecordAck.deadrecord)
+  return deadrecord_.Get(index);
+}
+inline ::KFMsg::PBRecordData* S2SQueryDeadRecordAck::add_deadrecord() {
+  // @@protoc_insertion_point(field_add:KFMsg.S2SQueryDeadRecordAck.deadrecord)
+  return deadrecord_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::KFMsg::PBRecordData >&
+S2SQueryDeadRecordAck::deadrecord() const {
+  // @@protoc_insertion_point(field_list:KFMsg.S2SQueryDeadRecordAck.deadrecord)
+  return deadrecord_;
+}
+
+// -------------------------------------------------------------------
+
+// S2SAddLifeEventReq
+
+// uint64 playerid = 1;
+inline void S2SAddLifeEventReq::clear_playerid() {
+  playerid_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 S2SAddLifeEventReq::playerid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.S2SAddLifeEventReq.playerid)
+  return playerid_;
+}
+inline void S2SAddLifeEventReq::set_playerid(::google::protobuf::uint64 value) {
+  
+  playerid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.S2SAddLifeEventReq.playerid)
+}
+
+// uint64 uuid = 2;
+inline void S2SAddLifeEventReq::clear_uuid() {
+  uuid_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 S2SAddLifeEventReq::uuid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.S2SAddLifeEventReq.uuid)
+  return uuid_;
+}
+inline void S2SAddLifeEventReq::set_uuid(::google::protobuf::uint64 value) {
+  
+  uuid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.S2SAddLifeEventReq.uuid)
+}
+
+// uint64 time = 3;
+inline void S2SAddLifeEventReq::clear_time() {
+  time_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 S2SAddLifeEventReq::time() const {
+  // @@protoc_insertion_point(field_get:KFMsg.S2SAddLifeEventReq.time)
+  return time_;
+}
+inline void S2SAddLifeEventReq::set_time(::google::protobuf::uint64 value) {
+  
+  time_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.S2SAddLifeEventReq.time)
+}
+
+// uint32 eventid = 4;
+inline void S2SAddLifeEventReq::clear_eventid() {
+  eventid_ = 0u;
+}
+inline ::google::protobuf::uint32 S2SAddLifeEventReq::eventid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.S2SAddLifeEventReq.eventid)
+  return eventid_;
+}
+inline void S2SAddLifeEventReq::set_eventid(::google::protobuf::uint32 value) {
+  
+  eventid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.S2SAddLifeEventReq.eventid)
+}
+
+// -------------------------------------------------------------------
+
+// S2SDelLifeEventReq
+
+// uint64 playerid = 1;
+inline void S2SDelLifeEventReq::clear_playerid() {
+  playerid_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 S2SDelLifeEventReq::playerid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.S2SDelLifeEventReq.playerid)
+  return playerid_;
+}
+inline void S2SDelLifeEventReq::set_playerid(::google::protobuf::uint64 value) {
+  
+  playerid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.S2SDelLifeEventReq.playerid)
+}
+
+// uint64 uuid = 2;
+inline void S2SDelLifeEventReq::clear_uuid() {
+  uuid_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 S2SDelLifeEventReq::uuid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.S2SDelLifeEventReq.uuid)
+  return uuid_;
+}
+inline void S2SDelLifeEventReq::set_uuid(::google::protobuf::uint64 value) {
+  
+  uuid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.S2SDelLifeEventReq.uuid)
+}
+
+// -------------------------------------------------------------------
+
+// S2SQueryLifeEventReq
+
+// uint64 playerid = 1;
+inline void S2SQueryLifeEventReq::clear_playerid() {
+  playerid_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 S2SQueryLifeEventReq::playerid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.S2SQueryLifeEventReq.playerid)
+  return playerid_;
+}
+inline void S2SQueryLifeEventReq::set_playerid(::google::protobuf::uint64 value) {
+  
+  playerid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.S2SQueryLifeEventReq.playerid)
+}
+
+// uint64 uuid = 2;
+inline void S2SQueryLifeEventReq::clear_uuid() {
+  uuid_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 S2SQueryLifeEventReq::uuid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.S2SQueryLifeEventReq.uuid)
+  return uuid_;
+}
+inline void S2SQueryLifeEventReq::set_uuid(::google::protobuf::uint64 value) {
+  
+  uuid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.S2SQueryLifeEventReq.uuid)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -3713,4 +5221,8 @@ inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::ServerProtocol>() {
 
 // @@protoc_insertion_point(global_scope)
 
+
+#ifdef _MSC_VER
+	#pragma warning(  pop  )
+#endif
 #endif  // PROTOBUF_INCLUDED_ServerMessage_2eproto

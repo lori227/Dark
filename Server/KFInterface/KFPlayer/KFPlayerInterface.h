@@ -6,7 +6,6 @@
 
 namespace KFrame
 {
-    typedef std::function< void( uint32, KFEntity*, const std::string&, uint64 ) > KFAfterSetNameFunction;
     class KFPlayerInterface : public KFModule
     {
     public:
@@ -143,6 +142,7 @@ namespace KFrame
 
         // 删除玩家
         virtual void RemovePlayer( uint64 playerid ) = 0;
+        virtual void RemovePlayer( KFEntity* player ) = 0;
 
         // 发送消息
         virtual bool SendToClient( KFEntity* player, uint32 msgid, ::google::protobuf::Message* message ) = 0;
@@ -201,6 +201,42 @@ namespace KFrame
     {\
         return;\
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#define __KF_ENTER_PLAYER_FUNCTION__( function ) void function( KFEntity* player )
+#define __REGISTER_ENTER_PLAYER__( function ) _kf_player->RegisterEnterFunction( this, function )
+#define __UN_ENTER_PLAYER__() _kf_player->UnRegisterEnterFunction( this )
+
+#define __KF_LEAVE_PLAYER_FUNCTION__( function ) void function( KFEntity* player )
+#define __REGISTER_LEAVE_PLAYER__( function ) _kf_player->RegisterLeaveFunction( this, function )
+#define __UN_LEAVE_PLAYER__() _kf_player->UnRegisterLeaveFunction( this )
+
+#define __KF_RESET_PLAYER_FUNCTION__( function ) void function( KFEntity* player )
+#define __REGISTER_RESET_PLAYER__( function ) _kf_player->RegisterResetFunction( this, function )
+#define __UN_RESET_PLAYER__() _kf_player->UnRegisterResetFunction( this )
+
+#define __KF_NEW_PLAYER_FUNCTION__( function ) void function( KFEntity* player )
+#define __REGISTER_NEW_PLAYER__( function ) _kf_player->RegisterNewPlayerFunction( this, function )
+#define __UN_NEW_PLAYER__() _kf_player->UnRegisterNewPlayerFunction( this )
+
+#define __KF_RUN_PLAYER_FUNCTION__( function ) void function( KFEntity* player )
+#define __REGISTER_RUN_PLAYER__( function ) _kf_player->RegisterRunDataFunction( this, function )
+#define __UN_RUN_PLAYER__() _kf_player->UnRegisterRunDataFunction( this )
+
+#define __KF_AFTERRUN_PLAYER_FUNCTION__( function ) void function( KFEntity* player )
+#define __REGISTER_AFTERRUN_PLAYER__( function ) _kf_player->RegisterAfterRunDataFunction( this, function )
+#define __UN_AFTERRUN_PLAYER__() _kf_player->UnRegisterAfterRunDataFunction( this )
+
+#define __KF_INIT_PLAYER_FUNCTION__( function ) void function( KFEntity* player )
+#define __REGISTER_INIT_PLAYER__( function ) _kf_player->RegisterInitDataFunction( this, function )
+#define __UN_INIT_PLAYER__() _kf_player->UnRegisterInitDataFunction( this )
+
+#define __KF_UNINIT_PLAYER_FUNCTION__( function ) void function( KFEntity* player )
+#define __REGISTER_UNINIT_PLAYER__( function ) _kf_player->RegisterUnInitDataFunction( this, function )
+#define __UN_UNINIT_PLAYER__() _kf_player->UnRegisterUnInitDataFunction( this )
 }
 
 #endif

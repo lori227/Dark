@@ -1,0 +1,161 @@
+<root version="00000">
+	<item _id="Orc_booth_1601"/>
+	<item _id="Human_booth_1602"/>
+	<item _id="Elf_booth_1603"/>
+	<item _id="1602_1100_1" AssetPtr="1602_1100_1"/>
+	<item _id="1602_1101_1" AssetPtr="1602_1101_1"/>
+	<item _id="1602_1102_1" AssetPtr="1602_1102_1"/>
+	<item _id="1602_1103_1" AssetPtr="1602_1103_1"/>
+	<item _id="1602_1104_1" AssetPtr="1602_1104_1"/>
+	<item _id="1602_1105_1" AssetPtr="1602_1105_1"/>
+	<item _id="1602_1106_1" AssetPtr="1602_1106_1"/>
+	<item _id="1602_1107_1" AssetPtr="1602_1107_1"/>
+	<item _id="1602_1108_1" AssetPtr="1602_1108_1"/>
+	<item _id="1602_1109_1" AssetPtr="1602_1109_1"/>
+	<item _id="1602_1110_1" AssetPtr="1602_1110_1"/>
+	<item _id="1602_1111_1" AssetPtr="1602_1111_1"/>
+	<item _id="1602_1112_1" AssetPtr="1602_1112_1"/>
+	<item _id="1602_1113_1" AssetPtr="1602_1113_1"/>
+	<item _id="1602_1114_1" AssetPtr="1602_1114_1"/>
+	<item _id="1602_1115_1" AssetPtr="1602_1115_1"/>
+	<item _id="1602_1116_1" AssetPtr="1602_1116_1"/>
+	<item _id="1602_1117_1" AssetPtr="1602_1117_1"/>
+	<item _id="1602_1100_2" AssetPtr="1602_1100_2"/>
+	<item _id="1602_1101_2" AssetPtr="1602_1101_2"/>
+	<item _id="1602_1102_2" AssetPtr="1602_1102_2"/>
+	<item _id="1602_1103_2" AssetPtr="1602_1103_2"/>
+	<item _id="1602_1104_2" AssetPtr="1602_1104_2"/>
+	<item _id="1602_1105_2" AssetPtr="1602_1105_2"/>
+	<item _id="1602_1106_2" AssetPtr="1602_1106_2"/>
+	<item _id="1602_1107_2" AssetPtr="1602_1107_2"/>
+	<item _id="1602_1108_2" AssetPtr="1602_1108_2"/>
+	<item _id="1602_1109_2" AssetPtr="1602_1109_2"/>
+	<item _id="1602_1110_2" AssetPtr="1602_1110_2"/>
+	<item _id="1602_1111_2" AssetPtr="1602_1111_2"/>
+	<item _id="1602_1112_2" AssetPtr="1602_1112_2"/>
+	<item _id="1602_1113_2" AssetPtr="1602_1113_2"/>
+	<item _id="1602_1114_2" AssetPtr="1602_1114_2"/>
+	<item _id="1602_1115_2" AssetPtr="1602_1115_2"/>
+	<item _id="1602_1116_2" AssetPtr="1602_1116_2"/>
+	<item _id="1602_1117_2" AssetPtr="1602_1117_2"/>
+	<item _id="1603_1118_1" AssetPtr="1603_1118_1"/>
+	<item _id="1603_1119_1" AssetPtr="1603_1119_1"/>
+	<item _id="1603_1120_1" AssetPtr="1603_1120_1"/>
+	<item _id="1603_1121_1" AssetPtr="1603_1121_1"/>
+	<item _id="1603_1122_1" AssetPtr="1603_1122_1"/>
+	<item _id="1603_1123_1" AssetPtr="1603_1123_1"/>
+	<item _id="1603_1124_1" AssetPtr="1603_1124_1"/>
+	<item _id="1603_1125_1" AssetPtr="1603_1125_1"/>
+	<item _id="1603_1126_1" AssetPtr="1603_1126_1"/>
+	<item _id="1603_1127_1" AssetPtr="1603_1127_1"/>
+	<item _id="1603_1128_1" AssetPtr="1603_1128_1"/>
+	<item _id="1603_1118_2" AssetPtr="1603_1118_2"/>
+	<item _id="1603_1119_2" AssetPtr="1603_1119_2"/>
+	<item _id="1603_1120_2" AssetPtr="1603_1120_2"/>
+	<item _id="1603_1121_2" AssetPtr="1603_1121_2"/>
+	<item _id="1603_1122_2" AssetPtr="1603_1122_2"/>
+	<item _id="1603_1123_2" AssetPtr="1603_1123_2"/>
+	<item _id="1603_1124_2" AssetPtr="1603_1124_2"/>
+	<item _id="1603_1125_2" AssetPtr="1603_1125_2"/>
+	<item _id="1603_1126_2" AssetPtr="1603_1126_2"/>
+	<item _id="1603_1127_2" AssetPtr="1603_1127_2"/>
+	<item _id="1603_1128_2" AssetPtr="1603_1128_2"/>
+	<item _id="1601_1129_1" AssetPtr="1601_1129_1"/>
+	<item _id="1601_1130_1" AssetPtr="1601_1130_1"/>
+	<item _id="1601_1131_1" AssetPtr="1601_1131_1"/>
+	<item _id="1601_1132_1" AssetPtr="1601_1132_1"/>
+	<item _id="1601_1133_1" AssetPtr="1601_1133_1"/>
+	<item _id="1601_1134_1" AssetPtr="1601_1134_1"/>
+	<item _id="1601_1135_1" AssetPtr="1601_1135_1"/>
+	<item _id="1601_1136_1" AssetPtr="1601_1136_1"/>
+	<item _id="1601_1137_1" AssetPtr="1601_1137_1"/>
+	<item _id="1601_1138_1" AssetPtr="1601_1138_1"/>
+	<item _id="1601_1139_1" AssetPtr="1601_1139_1"/>
+	<item _id="1601_1140_1" AssetPtr="1601_1140_1"/>
+	<item _id="1601_1141_1" AssetPtr="1601_1141_1"/>
+	<item _id="maxhp"/>
+	<item _id="atk"/>
+	<item _id="def"/>
+	<item _id="res"/>
+	<item _id="tal"/>
+	<item _id="spd"/>
+	<item _id="luk"/>
+	<item _id="mov"/>
+	<item _id="1100"/>
+	<item _id="1101"/>
+	<item _id="1102"/>
+	<item _id="1103"/>
+	<item _id="1104"/>
+	<item _id="1105"/>
+	<item _id="1106"/>
+	<item _id="1107"/>
+	<item _id="1108"/>
+	<item _id="1109"/>
+	<item _id="1110"/>
+	<item _id="1111"/>
+	<item _id="1112"/>
+	<item _id="1113"/>
+	<item _id="1114"/>
+	<item _id="1118"/>
+	<item _id="1119"/>
+	<item _id="1120"/>
+	<item _id="1123"/>
+	<item _id="1124"/>
+	<item _id="1125"/>
+	<item _id="1126"/>
+	<item _id="1127"/>
+	<item _id="1128"/>
+	<item _id="1129"/>
+	<item _id="1130"/>
+	<item _id="1131"/>
+	<item _id="1132"/>
+	<item _id="1133"/>
+	<item _id="1134"/>
+	<item _id="1135"/>
+	<item _id="1136"/>
+	<item _id="1137"/>
+	<item _id="1138"/>
+	<item _id="1139"/>
+	<item _id="1140"/>
+	<item _id="1141"/>
+	<item _id="1801" AssetPtr="Weapon_Sword_1801"/>
+	<item _id="1802" AssetPtr="Weapon_Ax_1802"/>
+	<item _id="1803" AssetPtr="Weapon_Spear_1803"/>
+	<item _id="1804" AssetPtr="Weapon_Bow_1804"/>
+	<item _id="1805" AssetPtr="Weapon_Staff_1805"/>
+	<item _id="SKILLPIC_160012" AssetPtr="SKILLPIC_3102001"/>
+	<item _id="SKILLPIC_160013" AssetPtr="SKILLPIC_3102001"/>
+	<item _id="SKILLPIC_160014" AssetPtr="SKILLPIC_3102001"/>
+	<item _id="SKILLPIC_160015" AssetPtr="SKILLPIC_3102001"/>
+	<item _id="SKILLPIC_160016" AssetPtr="SKILLPIC_3102001"/>
+	<item _id="SKILLPIC_160017" AssetPtr="SKILLPIC_3102001"/>
+	<item _id="SKILLPIC_160018" AssetPtr="SKILLPIC_3102001"/>
+	<item _id="SKILLPIC_160019" AssetPtr="SKILLPIC_3102001"/>
+	<item _id="SKILLPIC_160020" AssetPtr="SKILLPIC_3102001"/>
+	<item _id="SKILLPIC_160021" AssetPtr="SKILLPIC_3102001"/>
+	<item _id="SKILLPIC_160022" AssetPtr="SKILLPIC_3102001"/>
+	<item _id="SKILLPIC_160023" AssetPtr="SKILLPIC_3102001"/>
+	<item _id="SKILLPIC_160024" AssetPtr="SKILLPIC_3102001"/>
+	<item _id="SKILLPIC_160025" AssetPtr="SKILLPIC_3102001"/>
+	<item _id="SKILLPIC_160026" AssetPtr="SKILLPIC_3102001"/>
+	<item _id="SKILLPIC_160027" AssetPtr="SKILLPIC_3102001"/>
+	<item _id="SKILLPIC_160028" AssetPtr="SKILLPIC_3102002"/>
+	<item _id="SKILLPIC_160029" AssetPtr="SKILLPIC_3102002"/>
+	<item _id="SKILLPIC_160030" AssetPtr="SKILLPIC_3102002"/>
+	<item _id="SKILLPIC_120000" AssetPtr="SKILLPIC_3102002"/>
+	<item _id="SKILLPIC_120001" AssetPtr="SKILLPIC_3102002"/>
+	<item _id="SKILLPIC_120002" AssetPtr="SKILLPIC_3102002"/>
+	<item _id="SKILLPIC_120003" AssetPtr="SKILLPIC_3102002"/>
+	<item _id="SKILLPIC_120004" AssetPtr="SKILLPIC_3102002"/>
+	<item _id="SKILLPIC_120005" AssetPtr="SKILLPIC_3102002"/>
+	<item _id="SKILLPIC_120007" AssetPtr="SKILLPIC_3102002"/>
+	<item _id="SKILLPIC_120008" AssetPtr="SKILLPIC_3102002"/>
+	<item _id="SKILLPIC_120009" AssetPtr="SKILLPIC_3102002"/>
+	<item _id="SKILLPIC_120010" AssetPtr="SKILLPIC_3102002"/>
+	<item _id="SKILLPIC_120011" AssetPtr="SKILLPIC_3102002"/>
+	<item _id="SKILLPIC_120012" AssetPtr="SKILLPIC_3102002"/>
+	<item _id="SKILLPIC_120013" AssetPtr="SKILLPIC_3102002"/>
+	<item _id="SKILLPIC_120014" AssetPtr="SKILLPIC_3102002"/>
+	<item _id="SKILLPIC_120015" AssetPtr="SKILLPIC_3102002"/>
+	<item _id="SKILLPIC_120016" AssetPtr="SKILLPIC_3102002"/>
+</root>

@@ -9,11 +9,8 @@ namespace KFrame
     class KFObject : public KFData
     {
     public:
-        KFObject();
-        virtual ~KFObject();
-
-        // 类型
-        virtual uint32 GetType() const;
+        KFObject() = default;
+        virtual ~KFObject() = default;
 
         // 重置
         virtual void Reset();
@@ -23,6 +20,9 @@ namespace KFrame
 
         // 数量
         virtual uint32 Size();
+
+        // 初始化数值
+        virtual void InitData();
 
         // 获得key
         virtual uint64 GetKeyID();
@@ -45,6 +45,7 @@ namespace KFrame
         virtual bool AddData( const std::string& dataname, uint64 key, KFData* data );
         virtual bool AddData( const std::string& parentname, const std::string& childname, KFData* data );
 
+        virtual KFData* MoveData( const std::string& dataname );
         virtual bool RemoveData( const std::string& dataname );
         virtual bool RemoveData( const std::string& dataname, uint64 key );
         virtual bool RemoveData( const std::string& parentname, const std::string& childname );
@@ -60,7 +61,7 @@ namespace KFrame
 
     protected:
         // key
-        uint64 _key;
+        uint64 _key = 0u;
 
         // 列表
         KFHashMap< std::string, const std::string&, KFData > _data;

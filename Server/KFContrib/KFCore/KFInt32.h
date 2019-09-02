@@ -8,13 +8,19 @@ namespace KFrame
     class KFInt32 : public KFData
     {
     public:
-        KFInt32();
-        virtual ~KFInt32();
+        KFInt32() = default;
+        virtual ~KFInt32() = default;
 
         virtual void Reset();
 
+        // 是否达到了最大值
+        virtual bool IsFull();
+
         // 是否有效
         virtual bool IsValid();
+
+        // 初始化数值
+        virtual void InitData();
         //////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////
         // 保存 赋值
@@ -26,17 +32,12 @@ namespace KFrame
         virtual void FromString( const std::string& value );
     protected:
         //////////////////////////////////////////////////////////////////////////////////////////////////////
-        virtual int32 GetInt32() {
-            return _data;
-        }
-        virtual void SetInt32( int32 value ) {
-            _data = value;
-        }
+        virtual int32 GetInt32();
+        virtual int32 SetInt32( int32 value );
         //////////////////////////////////////////////////////////////////////////////////////////////////////
     private:
-
         // 属性
-        int32 _data;
+        int32 _data = 0;
     };
 
 

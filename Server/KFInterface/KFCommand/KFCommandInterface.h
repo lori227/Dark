@@ -5,7 +5,6 @@
 
 namespace KFrame
 {
-    class KFEntity;
     typedef std::function< void( KFEntity*, const VectorString& ) > KFCommandFunction;
 
     class KFCommandInterface : public KFModule
@@ -37,7 +36,7 @@ namespace KFrame
 #define  __REGISTER_COMMAND_FUNCTION__( command, function ) \
     _kf_command->RegisterFunction( command, this, function )
 
-#define  __UNREGISTER_COMMAND_FUNCTION__( command ) \
+#define  __UN_COMMAND_FUNCTION__( command ) \
     _kf_command->UnRegisterFunction( command )
 }
 

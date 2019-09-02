@@ -8,6 +8,9 @@ namespace google
     namespace protobuf
     {
         class Message;
+
+        template <typename Key, typename T>
+        class Map;
     }
 }
 
@@ -16,15 +19,20 @@ namespace KFMsg
     class PBObject;
     class PBRecord;
     class PBLoginData;
+    class PBShowElement;
     class ListenData;
 }
 
 namespace KFrame
 {
+    class KFData;
+    class KFEntity;
     ////////////////////////////////////////////////////////////////
     static const uint64 _invalid_int = 0u;
     static const std::string _invalid_str = "";
     static const std::string _globbing_str = "*";
+    static const std::string _route_cluster_name = "route";
+    static const std::string _route_cluster_key = "route@kframe,./";
     /////////////////////////////////////////////////////////////////////////
     // Ip地址配置
     class KFNetData
@@ -57,13 +65,13 @@ namespace KFrame
 
     typedef KFNetData KFIpAddress;
     typedef std::vector< const KFIpAddress* > IpAddressList;
-
-
+    /////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////
     typedef std::list< std::string > ListString;
     typedef std::vector< std::string > VectorString;
-    typedef std::map< std::string, std::string > MapString;
+    typedef std::unordered_map< std::string, std::string > MapString;
+    typedef std::list< MapString > ListMapString;
     /////////////////////////////////////////////////////////////////////////
-
     /////////////////////////////////////////////////////////////////////////
     // 网络函数
     typedef std::function<void( const Route& route, const char* data, uint32 length )> KFMessageFunction;

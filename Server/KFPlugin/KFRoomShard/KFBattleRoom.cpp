@@ -8,7 +8,7 @@ namespace KFrame
     void KFBattleRoom::Init( uint64 roomid )
     {
         _id = roomid;
-        ChangeState( AllotState, 1000 );
+        ChangeState( AllotState, 1000, __FUNC_LINE__ );
     }
 
     bool KFBattleRoom::Run()
@@ -66,45 +66,54 @@ namespace KFrame
         _heartbeat_timeout = KFGlobal::Instance()->_game_time + 180000;
     }
 
-    void KFBattleRoom::ChangeState( uint32 state, uint32 time )
+    void KFBattleRoom::ChangeState( uint32 state, uint32 time, const char* function, uint32 line )
     {
         _state = state;
         _timer.StartLoop( time );
 
-        __LOG_DEBUG__( "room=[{}] state=[{}] time=[{}]", _id, _state, time );
+        __LOG_DEBUG_FUNCTION__( function, line, "room=[{}] state=[{}] time=[{}]", _id, _state, time );
     }
 
-    void KFBattleRoom::SendToRoom( uint32 msgid, google::protobuf::Message* message )
+    void KFBattleRoom::SendToRoom( uint32 msgid, google::protobuf::Message* message, bool resend )
     {
         for ( auto& iter : _player_list._objects )
         {
             auto kfplayer = iter.second;
-            kfplayer->SendToGame( msgid, message );
+            kfplayer->SendToGame( msgid, message, resend );
         }
     }
 
     void KFBattleRoom::RunAllotBattle()
     {
-        _allot_id = _invalid_int;
         _allot_ip.clear();
+        _allot_id = _invalid_int;
         _allot_port = _invalid_int;
+        bool isfailed = false;
 
-        std::tie( _allot_id, _allot_ip, _allot_port ) = _battle_allot->AllotBattle( _battle_server_id, _version );
+        std::tie( _allot_id, _allot_ip, _allot_port, isfailed ) = _battle_allot->AllotBattle( _battle_server_id, _version );
         if ( _allot_id == _invalid_int || _allot_ip.empty() || _allot_port == _invalid_int )
         {
-            ChangeState( AllotState, 10000 );
-
-            // 发送消息到房间
-            for ( auto& iter : _player_list._objects )
+            if ( _battle_server_id == _invalid_int )
             {
-                auto kfplayer = iter.second;
-                _kf_display->SendToPlayer( kfplayer->_pb_player.serverid(), kfplayer->_id, KFMsg::RoomAllotBattle );
+                ChangeState( AllotState, 5000, __FUNC_LINE__ );
+
+                // 发送消息到房间
+                for ( auto& iter : _player_list._objects )
+                {
+                    auto kfplayer = iter.second;
+                    _kf_display->SendToPlayer( kfplayer->_pb_player.serverid(), kfplayer->_id, KFMsg::RoomAllotBattle );
+                }
+            }
+            else
+            {
+                // 指定的直接销毁房间
+                ChangeState( DestoryState, 1000, __FUNC_LINE__ );
             }
         }
         else
         {
             _battle_open_count = _invalid_int;
-            ChangeState( OpenState, 10 );
+            ChangeState( OpenState, 10, __FUNC_LINE__ );
 
             __LOG_INFO__( "room=[{}] serverid=[{}] version=[{}] allot=[{}|{}:{}]",
                           _id, KFAppId::ToString( _battle_server_id ), _version, KFAppId::ToString( _allot_id ), _allot_ip, _allot_port );
@@ -116,12 +125,11 @@ namespace KFrame
         if ( _battle_open_count > 10u )
         {
             __LOG_ERROR__( "room=[{}] allot=[{}|{}:{}] open failed!", _id, KFAppId::ToString( _allot_id ), _allot_ip, _allot_port );
-
-            return ChangeState( AllotState, 10 );
+            return ChangeState( AllotState, 10, __FUNC_LINE__ );
         }
 
         ++_battle_open_count;
-        ChangeState( OpenState, 5000 );
+        ChangeState( OpenState, 5000, __FUNC_LINE__ );
 
         // 发送消息到战场服务器
         KFMsg::S2SOpenRoomToBattleReq req;
@@ -133,25 +141,33 @@ namespace KFrame
             auto kfplayer = iter.second;
             kfplayer->SaveTo( req.add_pbplayer() );
         }
-        _kf_route->SendToServer( _allot_id, KFMsg::S2S_OPEN_ROOM_TO_BATTLE_REQ, &req );
+        _kf_route->SendToServer( _allot_id, KFMsg::S2S_OPEN_ROOM_TO_BATTLE_REQ, &req, false );
     }
 
     void KFBattleRoom::AffirmOpenBattle( bool ok )
     {
         if ( !ok )
         {
-            ChangeState( AllotState, 10 );
+            if ( _battle_server_id == _invalid_int )
+            {
+                ChangeState( AllotState, 10, __FUNC_LINE__ );
+            }
+            else
+            {
+                // 指定的房间 直接销毁掉
+                ChangeState( DestoryState, 1000, __FUNC_LINE__ );
+            }
         }
         else
         {
             UpdateHeartBeatTime();
-            ChangeState( InformState, 10 );
+            ChangeState( InformState, 10, __FUNC_LINE__ );
         }
     }
 
     void KFBattleRoom::RunInformPlayer()
     {
-        ChangeState( PlayState, 1000 );
+        ChangeState( PlayState, 1000, __FUNC_LINE__ );
 
         // 把玩家添加到通知列表
         for ( auto& iter : _player_list._objects )
@@ -189,7 +205,7 @@ namespace KFrame
         req.set_battleid( _allot_id );
         req.set_ip( _allot_ip );
         req.set_port( _allot_port );
-        kfplayer->SendToGame( KFMsg::S2S_INFORM_BATTLE_TO_GAME_REQ, &req );
+        kfplayer->SendToGame( KFMsg::S2S_INFORM_BATTLE_TO_GAME_REQ, &req, false );
 
         __LOG_DEBUG__( "inform player=[{}] battle=[{}|{}:{}]", kfplayer->_id, KFAppId::ToString( _allot_id ), _allot_ip, _allot_port );
     }
@@ -220,8 +236,10 @@ namespace KFrame
 
     void KFBattleRoom::FinishRoom()
     {
+        __LOG_DEBUG__( "room=[{}] battle=[{}] finish!", _id, KFAppId::ToString( _allot_id ) );
+
         // 通知房间
-        ChangeState( DestoryState, 100 );
+        ChangeState( DestoryState, 100, __FUNC_LINE__ );
 
         // 发送结束消息给玩家
         SendFinishToPlayer();
@@ -236,7 +254,7 @@ namespace KFrame
             KFMsg::S2SFinishRoomToGameReq req;
             req.set_roomid( _id );
             req.set_playerid( kfplayer->_id );
-            kfplayer->SendToGame( KFMsg::S2S_FINISH_ROOM_TO_GAME_REQ, &req );
+            kfplayer->SendToGame( KFMsg::S2S_FINISH_ROOM_TO_GAME_REQ, &req, true );
         }
     }
 }

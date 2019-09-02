@@ -4,6 +4,11 @@
 #ifndef PROTOBUF_INCLUDED_DefineMessage_2eproto
 #define PROTOBUF_INCLUDED_DefineMessage_2eproto
 
+#ifdef _MSC_VER
+	#pragma warning(push)
+	#pragma warning(disable : 4946)
+#endif
+
 #include <string>
 
 #include <google/protobuf/stubs/common.h>
@@ -42,7 +47,7 @@ namespace protobuf_DefineMessage_2eproto {
 struct LIBPROTOC_EXPORT TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[2];
+  static const ::google::protobuf::internal::ParseTable schema[10];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -50,17 +55,49 @@ struct LIBPROTOC_EXPORT TableStruct {
 void LIBPROTOC_EXPORT AddDescriptors();
 }  // namespace protobuf_DefineMessage_2eproto
 namespace KFMsg {
+class PBBalanceData;
+class PBBalanceDataDefaultTypeInternal;
+LIBPROTOC_EXPORT extern PBBalanceDataDefaultTypeInternal _PBBalanceData_default_instance_;
+class PBBalanceHero;
+class PBBalanceHeroDefaultTypeInternal;
+LIBPROTOC_EXPORT extern PBBalanceHeroDefaultTypeInternal _PBBalanceHero_default_instance_;
+class PBBalanceHero_CharacterEntry_DoNotUse;
+class PBBalanceHero_CharacterEntry_DoNotUseDefaultTypeInternal;
+LIBPROTOC_EXPORT extern PBBalanceHero_CharacterEntry_DoNotUseDefaultTypeInternal _PBBalanceHero_CharacterEntry_DoNotUse_default_instance_;
+class PBCampRecord;
+class PBCampRecordDefaultTypeInternal;
+LIBPROTOC_EXPORT extern PBCampRecordDefaultTypeInternal _PBCampRecord_default_instance_;
+class PBCampRecord_DataEntry_DoNotUse;
+class PBCampRecord_DataEntry_DoNotUseDefaultTypeInternal;
+LIBPROTOC_EXPORT extern PBCampRecord_DataEntry_DoNotUseDefaultTypeInternal _PBCampRecord_DataEntry_DoNotUse_default_instance_;
+class PBFighterData;
+class PBFighterDataDefaultTypeInternal;
+LIBPROTOC_EXPORT extern PBFighterDataDefaultTypeInternal _PBFighterData_default_instance_;
 class PBMatchPlayer;
 class PBMatchPlayerDefaultTypeInternal;
 LIBPROTOC_EXPORT extern PBMatchPlayerDefaultTypeInternal _PBMatchPlayer_default_instance_;
 class PBMatchPlayer_HeroEntry_DoNotUse;
 class PBMatchPlayer_HeroEntry_DoNotUseDefaultTypeInternal;
 LIBPROTOC_EXPORT extern PBMatchPlayer_HeroEntry_DoNotUseDefaultTypeInternal _PBMatchPlayer_HeroEntry_DoNotUse_default_instance_;
+class PBRecordData;
+class PBRecordDataDefaultTypeInternal;
+LIBPROTOC_EXPORT extern PBRecordDataDefaultTypeInternal _PBRecordData_default_instance_;
+class PBRecordData_DataEntry_DoNotUse;
+class PBRecordData_DataEntry_DoNotUseDefaultTypeInternal;
+LIBPROTOC_EXPORT extern PBRecordData_DataEntry_DoNotUseDefaultTypeInternal _PBRecordData_DataEntry_DoNotUse_default_instance_;
 }  // namespace KFMsg
 namespace google {
 namespace protobuf {
+template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceData* Arena::CreateMaybeMessage<::KFMsg::PBBalanceData>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceHero* Arena::CreateMaybeMessage<::KFMsg::PBBalanceHero>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceHero_CharacterEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBBalanceHero_CharacterEntry_DoNotUse>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::PBCampRecord* Arena::CreateMaybeMessage<::KFMsg::PBCampRecord>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::PBCampRecord_DataEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBCampRecord_DataEntry_DoNotUse>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::PBFighterData* Arena::CreateMaybeMessage<::KFMsg::PBFighterData>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBMatchPlayer* Arena::CreateMaybeMessage<::KFMsg::PBMatchPlayer>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBMatchPlayer_HeroEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBMatchPlayer_HeroEntry_DoNotUse>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::PBRecordData* Arena::CreateMaybeMessage<::KFMsg::PBRecordData>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::PBRecordData_DataEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBRecordData_DataEntry_DoNotUse>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 namespace KFMsg {
@@ -234,6 +271,665 @@ class LIBPROTOC_EXPORT PBMatchPlayer : public ::google::protobuf::Message /* @@p
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_DefineMessage_2eproto::TableStruct;
 };
+// -------------------------------------------------------------------
+
+class PBCampRecord_DataEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<PBCampRecord_DataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_BYTES,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<PBCampRecord_DataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_BYTES,
+    0 > SuperType;
+  PBCampRecord_DataEntry_DoNotUse();
+  PBCampRecord_DataEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const PBCampRecord_DataEntry_DoNotUse& other);
+  static const PBCampRecord_DataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const PBCampRecord_DataEntry_DoNotUse*>(&_PBCampRecord_DataEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
+// -------------------------------------------------------------------
+
+class LIBPROTOC_EXPORT PBCampRecord : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.PBCampRecord) */ {
+ public:
+  PBCampRecord();
+  virtual ~PBCampRecord();
+
+  PBCampRecord(const PBCampRecord& from);
+
+  inline PBCampRecord& operator=(const PBCampRecord& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  PBCampRecord(PBCampRecord&& from) noexcept
+    : PBCampRecord() {
+    *this = ::std::move(from);
+  }
+
+  inline PBCampRecord& operator=(PBCampRecord&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PBCampRecord& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const PBCampRecord* internal_default_instance() {
+    return reinterpret_cast<const PBCampRecord*>(
+               &_PBCampRecord_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  void Swap(PBCampRecord* other);
+  friend void swap(PBCampRecord& a, PBCampRecord& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline PBCampRecord* New() const final {
+    return CreateMaybeMessage<PBCampRecord>(NULL);
+  }
+
+  PBCampRecord* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<PBCampRecord>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const PBCampRecord& from);
+  void MergeFrom(const PBCampRecord& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PBCampRecord* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  // map<string, bytes> data = 1;
+  int data_size() const;
+  void clear_data();
+  static const int kDataFieldNumber = 1;
+  const ::google::protobuf::Map< ::std::string, ::std::string >&
+      data() const;
+  ::google::protobuf::Map< ::std::string, ::std::string >*
+      mutable_data();
+
+  // @@protoc_insertion_point(class_scope:KFMsg.PBCampRecord)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::MapField<
+      PBCampRecord_DataEntry_DoNotUse,
+      ::std::string, ::std::string,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_BYTES,
+      0 > data_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_DefineMessage_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class PBRecordData_DataEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<PBRecordData_DataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_BYTES,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<PBRecordData_DataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_BYTES,
+    0 > SuperType;
+  PBRecordData_DataEntry_DoNotUse();
+  PBRecordData_DataEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const PBRecordData_DataEntry_DoNotUse& other);
+  static const PBRecordData_DataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const PBRecordData_DataEntry_DoNotUse*>(&_PBRecordData_DataEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
+// -------------------------------------------------------------------
+
+class LIBPROTOC_EXPORT PBRecordData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.PBRecordData) */ {
+ public:
+  PBRecordData();
+  virtual ~PBRecordData();
+
+  PBRecordData(const PBRecordData& from);
+
+  inline PBRecordData& operator=(const PBRecordData& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  PBRecordData(PBRecordData&& from) noexcept
+    : PBRecordData() {
+    *this = ::std::move(from);
+  }
+
+  inline PBRecordData& operator=(PBRecordData&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PBRecordData& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const PBRecordData* internal_default_instance() {
+    return reinterpret_cast<const PBRecordData*>(
+               &_PBRecordData_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  void Swap(PBRecordData* other);
+  friend void swap(PBRecordData& a, PBRecordData& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline PBRecordData* New() const final {
+    return CreateMaybeMessage<PBRecordData>(NULL);
+  }
+
+  PBRecordData* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<PBRecordData>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const PBRecordData& from);
+  void MergeFrom(const PBRecordData& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PBRecordData* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  // map<string, bytes> data = 1;
+  int data_size() const;
+  void clear_data();
+  static const int kDataFieldNumber = 1;
+  const ::google::protobuf::Map< ::std::string, ::std::string >&
+      data() const;
+  ::google::protobuf::Map< ::std::string, ::std::string >*
+      mutable_data();
+
+  // @@protoc_insertion_point(class_scope:KFMsg.PBRecordData)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::MapField<
+      PBRecordData_DataEntry_DoNotUse,
+      ::std::string, ::std::string,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_BYTES,
+      0 > data_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_DefineMessage_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class LIBPROTOC_EXPORT PBFighterData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.PBFighterData) */ {
+ public:
+  PBFighterData();
+  virtual ~PBFighterData();
+
+  PBFighterData(const PBFighterData& from);
+
+  inline PBFighterData& operator=(const PBFighterData& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  PBFighterData(PBFighterData&& from) noexcept
+    : PBFighterData() {
+    *this = ::std::move(from);
+  }
+
+  inline PBFighterData& operator=(PBFighterData&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PBFighterData& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const PBFighterData* internal_default_instance() {
+    return reinterpret_cast<const PBFighterData*>(
+               &_PBFighterData_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  void Swap(PBFighterData* other);
+  friend void swap(PBFighterData& a, PBFighterData& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline PBFighterData* New() const final {
+    return CreateMaybeMessage<PBFighterData>(NULL);
+  }
+
+  PBFighterData* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<PBFighterData>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const PBFighterData& from);
+  void MergeFrom(const PBFighterData& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PBFighterData* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 uuid = 1;
+  void clear_uuid();
+  static const int kUuidFieldNumber = 1;
+  ::google::protobuf::uint64 uuid() const;
+  void set_uuid(::google::protobuf::uint64 value);
+
+  // uint32 hp = 2;
+  void clear_hp();
+  static const int kHpFieldNumber = 2;
+  ::google::protobuf::uint32 hp() const;
+  void set_hp(::google::protobuf::uint32 value);
+
+  // uint32 exp = 3;
+  void clear_exp();
+  static const int kExpFieldNumber = 3;
+  ::google::protobuf::uint32 exp() const;
+  void set_exp(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:KFMsg.PBFighterData)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 uuid_;
+  ::google::protobuf::uint32 hp_;
+  ::google::protobuf::uint32 exp_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_DefineMessage_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class PBBalanceHero_CharacterEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<PBBalanceHero_CharacterEntry_DoNotUse, 
+    ::google::protobuf::uint32, ::google::protobuf::uint32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<PBBalanceHero_CharacterEntry_DoNotUse, 
+    ::google::protobuf::uint32, ::google::protobuf::uint32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    0 > SuperType;
+  PBBalanceHero_CharacterEntry_DoNotUse();
+  PBBalanceHero_CharacterEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const PBBalanceHero_CharacterEntry_DoNotUse& other);
+  static const PBBalanceHero_CharacterEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const PBBalanceHero_CharacterEntry_DoNotUse*>(&_PBBalanceHero_CharacterEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
+// -------------------------------------------------------------------
+
+class LIBPROTOC_EXPORT PBBalanceHero : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.PBBalanceHero) */ {
+ public:
+  PBBalanceHero();
+  virtual ~PBBalanceHero();
+
+  PBBalanceHero(const PBBalanceHero& from);
+
+  inline PBBalanceHero& operator=(const PBBalanceHero& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  PBBalanceHero(PBBalanceHero&& from) noexcept
+    : PBBalanceHero() {
+    *this = ::std::move(from);
+  }
+
+  inline PBBalanceHero& operator=(PBBalanceHero&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PBBalanceHero& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const PBBalanceHero* internal_default_instance() {
+    return reinterpret_cast<const PBBalanceHero*>(
+               &_PBBalanceHero_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  void Swap(PBBalanceHero* other);
+  friend void swap(PBBalanceHero& a, PBBalanceHero& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline PBBalanceHero* New() const final {
+    return CreateMaybeMessage<PBBalanceHero>(NULL);
+  }
+
+  PBBalanceHero* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<PBBalanceHero>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const PBBalanceHero& from);
+  void MergeFrom(const PBBalanceHero& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PBBalanceHero* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  // map<uint32, uint32> character = 4;
+  int character_size() const;
+  void clear_character();
+  static const int kCharacterFieldNumber = 4;
+  const ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >&
+      character() const;
+  ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >*
+      mutable_character();
+
+  // uint64 uuid = 1;
+  void clear_uuid();
+  static const int kUuidFieldNumber = 1;
+  ::google::protobuf::uint64 uuid() const;
+  void set_uuid(::google::protobuf::uint64 value);
+
+  // uint32 exp = 2;
+  void clear_exp();
+  static const int kExpFieldNumber = 2;
+  ::google::protobuf::uint32 exp() const;
+  void set_exp(::google::protobuf::uint32 value);
+
+  // uint32 levelup = 3;
+  void clear_levelup();
+  static const int kLevelupFieldNumber = 3;
+  ::google::protobuf::uint32 levelup() const;
+  void set_levelup(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:KFMsg.PBBalanceHero)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::MapField<
+      PBBalanceHero_CharacterEntry_DoNotUse,
+      ::google::protobuf::uint32, ::google::protobuf::uint32,
+      ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+      ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+      0 > character_;
+  ::google::protobuf::uint64 uuid_;
+  ::google::protobuf::uint32 exp_;
+  ::google::protobuf::uint32 levelup_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_DefineMessage_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class LIBPROTOC_EXPORT PBBalanceData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.PBBalanceData) */ {
+ public:
+  PBBalanceData();
+  virtual ~PBBalanceData();
+
+  PBBalanceData(const PBBalanceData& from);
+
+  inline PBBalanceData& operator=(const PBBalanceData& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  PBBalanceData(PBBalanceData&& from) noexcept
+    : PBBalanceData() {
+    *this = ::std::move(from);
+  }
+
+  inline PBBalanceData& operator=(PBBalanceData&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PBBalanceData& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const PBBalanceData* internal_default_instance() {
+    return reinterpret_cast<const PBBalanceData*>(
+               &_PBBalanceData_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  void Swap(PBBalanceData* other);
+  friend void swap(PBBalanceData& a, PBBalanceData& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline PBBalanceData* New() const final {
+    return CreateMaybeMessage<PBBalanceData>(NULL);
+  }
+
+  PBBalanceData* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<PBBalanceData>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const PBBalanceData& from);
+  void MergeFrom(const PBBalanceData& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PBBalanceData* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .KFMsg.PBShowData showdata = 1;
+  int showdata_size() const;
+  void clear_showdata();
+  static const int kShowdataFieldNumber = 1;
+  ::KFMsg::PBShowData* mutable_showdata(int index);
+  ::google::protobuf::RepeatedPtrField< ::KFMsg::PBShowData >*
+      mutable_showdata();
+  const ::KFMsg::PBShowData& showdata(int index) const;
+  ::KFMsg::PBShowData* add_showdata();
+  const ::google::protobuf::RepeatedPtrField< ::KFMsg::PBShowData >&
+      showdata() const;
+
+  // repeated .KFMsg.PBBalanceHero herodata = 2;
+  int herodata_size() const;
+  void clear_herodata();
+  static const int kHerodataFieldNumber = 2;
+  ::KFMsg::PBBalanceHero* mutable_herodata(int index);
+  ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceHero >*
+      mutable_herodata();
+  const ::KFMsg::PBBalanceHero& herodata(int index) const;
+  ::KFMsg::PBBalanceHero* add_herodata();
+  const ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceHero >&
+      herodata() const;
+
+  // @@protoc_insertion_point(class_scope:KFMsg.PBBalanceData)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::KFMsg::PBShowData > showdata_;
+  ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceHero > herodata_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_DefineMessage_2eproto::TableStruct;
+};
 // ===================================================================
 
 
@@ -357,9 +1053,246 @@ PBMatchPlayer::mutable_hero() {
   return hero_.MutableMap();
 }
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// PBCampRecord
+
+// map<string, bytes> data = 1;
+inline int PBCampRecord::data_size() const {
+  return data_.size();
+}
+inline void PBCampRecord::clear_data() {
+  data_.Clear();
+}
+inline const ::google::protobuf::Map< ::std::string, ::std::string >&
+PBCampRecord::data() const {
+  // @@protoc_insertion_point(field_map:KFMsg.PBCampRecord.data)
+  return data_.GetMap();
+}
+inline ::google::protobuf::Map< ::std::string, ::std::string >*
+PBCampRecord::mutable_data() {
+  // @@protoc_insertion_point(field_mutable_map:KFMsg.PBCampRecord.data)
+  return data_.MutableMap();
+}
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// PBRecordData
+
+// map<string, bytes> data = 1;
+inline int PBRecordData::data_size() const {
+  return data_.size();
+}
+inline void PBRecordData::clear_data() {
+  data_.Clear();
+}
+inline const ::google::protobuf::Map< ::std::string, ::std::string >&
+PBRecordData::data() const {
+  // @@protoc_insertion_point(field_map:KFMsg.PBRecordData.data)
+  return data_.GetMap();
+}
+inline ::google::protobuf::Map< ::std::string, ::std::string >*
+PBRecordData::mutable_data() {
+  // @@protoc_insertion_point(field_mutable_map:KFMsg.PBRecordData.data)
+  return data_.MutableMap();
+}
+
+// -------------------------------------------------------------------
+
+// PBFighterData
+
+// uint64 uuid = 1;
+inline void PBFighterData::clear_uuid() {
+  uuid_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 PBFighterData::uuid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBFighterData.uuid)
+  return uuid_;
+}
+inline void PBFighterData::set_uuid(::google::protobuf::uint64 value) {
+  
+  uuid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBFighterData.uuid)
+}
+
+// uint32 hp = 2;
+inline void PBFighterData::clear_hp() {
+  hp_ = 0u;
+}
+inline ::google::protobuf::uint32 PBFighterData::hp() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBFighterData.hp)
+  return hp_;
+}
+inline void PBFighterData::set_hp(::google::protobuf::uint32 value) {
+  
+  hp_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBFighterData.hp)
+}
+
+// uint32 exp = 3;
+inline void PBFighterData::clear_exp() {
+  exp_ = 0u;
+}
+inline ::google::protobuf::uint32 PBFighterData::exp() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBFighterData.exp)
+  return exp_;
+}
+inline void PBFighterData::set_exp(::google::protobuf::uint32 value) {
+  
+  exp_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBFighterData.exp)
+}
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// PBBalanceHero
+
+// uint64 uuid = 1;
+inline void PBBalanceHero::clear_uuid() {
+  uuid_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 PBBalanceHero::uuid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceHero.uuid)
+  return uuid_;
+}
+inline void PBBalanceHero::set_uuid(::google::protobuf::uint64 value) {
+  
+  uuid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceHero.uuid)
+}
+
+// uint32 exp = 2;
+inline void PBBalanceHero::clear_exp() {
+  exp_ = 0u;
+}
+inline ::google::protobuf::uint32 PBBalanceHero::exp() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceHero.exp)
+  return exp_;
+}
+inline void PBBalanceHero::set_exp(::google::protobuf::uint32 value) {
+  
+  exp_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceHero.exp)
+}
+
+// uint32 levelup = 3;
+inline void PBBalanceHero::clear_levelup() {
+  levelup_ = 0u;
+}
+inline ::google::protobuf::uint32 PBBalanceHero::levelup() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceHero.levelup)
+  return levelup_;
+}
+inline void PBBalanceHero::set_levelup(::google::protobuf::uint32 value) {
+  
+  levelup_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceHero.levelup)
+}
+
+// map<uint32, uint32> character = 4;
+inline int PBBalanceHero::character_size() const {
+  return character_.size();
+}
+inline void PBBalanceHero::clear_character() {
+  character_.Clear();
+}
+inline const ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >&
+PBBalanceHero::character() const {
+  // @@protoc_insertion_point(field_map:KFMsg.PBBalanceHero.character)
+  return character_.GetMap();
+}
+inline ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >*
+PBBalanceHero::mutable_character() {
+  // @@protoc_insertion_point(field_mutable_map:KFMsg.PBBalanceHero.character)
+  return character_.MutableMap();
+}
+
+// -------------------------------------------------------------------
+
+// PBBalanceData
+
+// repeated .KFMsg.PBShowData showdata = 1;
+inline int PBBalanceData::showdata_size() const {
+  return showdata_.size();
+}
+inline ::KFMsg::PBShowData* PBBalanceData::mutable_showdata(int index) {
+  // @@protoc_insertion_point(field_mutable:KFMsg.PBBalanceData.showdata)
+  return showdata_.Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::KFMsg::PBShowData >*
+PBBalanceData::mutable_showdata() {
+  // @@protoc_insertion_point(field_mutable_list:KFMsg.PBBalanceData.showdata)
+  return &showdata_;
+}
+inline const ::KFMsg::PBShowData& PBBalanceData::showdata(int index) const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceData.showdata)
+  return showdata_.Get(index);
+}
+inline ::KFMsg::PBShowData* PBBalanceData::add_showdata() {
+  // @@protoc_insertion_point(field_add:KFMsg.PBBalanceData.showdata)
+  return showdata_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::KFMsg::PBShowData >&
+PBBalanceData::showdata() const {
+  // @@protoc_insertion_point(field_list:KFMsg.PBBalanceData.showdata)
+  return showdata_;
+}
+
+// repeated .KFMsg.PBBalanceHero herodata = 2;
+inline int PBBalanceData::herodata_size() const {
+  return herodata_.size();
+}
+inline void PBBalanceData::clear_herodata() {
+  herodata_.Clear();
+}
+inline ::KFMsg::PBBalanceHero* PBBalanceData::mutable_herodata(int index) {
+  // @@protoc_insertion_point(field_mutable:KFMsg.PBBalanceData.herodata)
+  return herodata_.Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceHero >*
+PBBalanceData::mutable_herodata() {
+  // @@protoc_insertion_point(field_mutable_list:KFMsg.PBBalanceData.herodata)
+  return &herodata_;
+}
+inline const ::KFMsg::PBBalanceHero& PBBalanceData::herodata(int index) const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceData.herodata)
+  return herodata_.Get(index);
+}
+inline ::KFMsg::PBBalanceHero* PBBalanceData::add_herodata() {
+  // @@protoc_insertion_point(field_add:KFMsg.PBBalanceData.herodata)
+  return herodata_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceHero >&
+PBBalanceData::herodata() const {
+  // @@protoc_insertion_point(field_list:KFMsg.PBBalanceData.herodata)
+  return herodata_;
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 
@@ -369,4 +1302,8 @@ PBMatchPlayer::mutable_hero() {
 
 // @@protoc_insertion_point(global_scope)
 
+
+#ifdef _MSC_VER
+	#pragma warning(  pop  )
+#endif
 #endif  // PROTOBUF_INCLUDED_DefineMessage_2eproto

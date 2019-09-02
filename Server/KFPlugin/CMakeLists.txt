@@ -1,20 +1,10 @@
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -rdynamic -shared")
 
-message("${CMAKE_CXX_FLAGS}")
-macro(LINK_SDK_MACRO project_name)
-
-    if(CMAKE_BUILD_TYPE MATCHES "Debug") 
-        target_link_libraries(${project_name} KFGlobald KFLoggerd KFPlugind KFMemoryd KFProtod KFProtocold KFHttpd KFCored KFNetworkd KFUtilityd KFMath3Dd PocoNetd PocoNetSSLd PocoCryptod PocoJSONd PocoUtild PocoFoundationd PocoXMLd PocoDataMySQLd PocoDatad z dl ssl crypto pthread uv luaplus53d iconv protobuf hiredis mysqlclient)
-    else()
-        target_link_libraries(${project_name} KFGlobal KFLogger KFPlugin KFMemory KFProto KFProtocol KFHttp KFCore KFNetwork KFUtility KFMath3D PocoNet PocoNetSSL PocoCrypto PocoJSON PocoUtil PocoFoundation PocoXML PocoDataMySQL PocoData z dl ssl crypto pthread uv luaplus53 iconv protobuf hiredis mysqlclient)  
-    endif()
-
-endmacro(LINK_SDK_MACRO project_name)
-
-macro(BUILD_PLUGIN_MACRO project_name)
+macro(PLUGIN_PROPERTIES_MACRO project_name)
     aux_source_directory(. KF_SRC)
     add_library(${project_name} SHARED ${KF_SRC})
     add_dependencies(${project_name} KFProtocol)
+    add_dependencies(${project_name} KFZConfig)
 
     set_target_properties(${project_name} PROPERTIES PREFIX "")
     set_target_properties(${project_name} PROPERTIES OUTPUT_NAME_DEBUG "${project_name}d")
@@ -24,12 +14,82 @@ macro(BUILD_PLUGIN_MACRO project_name)
         RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR}
         LIBRARY_OUTPUT_DIRECTORY ${BIN_DIR})
 
-LINK_SDK_MACRO(${project_name})
-endmacro(BUILD_PLUGIN_MACRO project_name)
+endmacro(PLUGIN_PROPERTIES_MACRO project_name)
 
+
+set(FRAME_LIB_DEBUG KFGlobald KFLoggerd KFPlugind KFMemoryd KFZConfigd KFUtilityd)
+set(FRAME_LIB_RELEASE KFGlobal KFLogger KFPlugin KFMemory KFZConfig KFUtility)
+
+macro(LINK_PLUGIN_MACRO project_name)
+    if(CMAKE_BUILD_TYPE MATCHES "Debug") 
+        target_link_libraries(${project_name} ${FRAME_LIB_DEBUG} ${EXTEND_LIB_DEBUG})
+    else()
+        target_link_libraries(${project_name} ${FRAME_LIB_RELEASE} ${EXTEND_LIB_RELEASE})
+    endif()
+endmacro(LINK_PLUGIN_MACRO project_name)
+
+#############################################################################
+## frame plugin param
+macro(BUILD_PLUGIN_NO_PROTO project_name)
+    ## properties
+    PLUGIN_PROPERTIES_MACRO(${project_name})
+
+    ## link
+    LINK_PLUGIN_MACRO(${project_name})
+endmacro(BUILD_PLUGIN_NO_PROTO project_name)
+#############################################################################
+
+
+#############################################################################
+## logic plugin
+macro(BUILD_PLUGIN_WITH_PROTO project_name)
+    ## properties
+    PLUGIN_PROPERTIES_MACRO(${project_name})
+
+    ## extend
+    set(EXTEND_LIB_DEBUG KFProtod KFProtocold protobuf ${EXTEND_LIB_DEBUG} )
+    set(EXTEND_LIB_RELEASE KFProto KFProtocol protobuf ${EXTEND_LIB_DEBUG} )
+
+    ## link
+    LINK_PLUGIN_MACRO(${project_name})
+endmacro(BUILD_PLUGIN_WITH_PROTO project_name)
+#############################################################################
+## logic plugin
+macro(BUILD_PLUGIN_WITH_LOGIC project_name)
+    ## properties
+    PLUGIN_PROPERTIES_MACRO(${project_name})
+
+    ## extend
+    set(EXTEND_LIB_DEBUG KFProtod KFProtocold protobuf KFCored KFMath3Dd ${EXTEND_LIB_DEBUG} )
+    set(EXTEND_LIB_RELEASE KFProto KFProtocol protobuf KFCore KFMath3D ${EXTEND_LIB_DEBUG} )
+
+    ## link
+    LINK_PLUGIN_MACRO(${project_name})
+endmacro(BUILD_PLUGIN_WITH_LOGIC project_name)
+#############################################################################
+
+
+
+
+############################################################################################
+############################################################################################
+############################################################################################
+############################################################################################
 add_subdirectory(KFAttribute)
-add_subdirectory(KFHero)
 add_subdirectory(KFMatchClient)
 add_subdirectory(KFMatchShard)
 add_subdirectory(KFRoomClient)
 add_subdirectory(KFRoomShard)
+add_subdirectory(KFHero)
+add_subdirectory(KFItem)
+add_subdirectory(KFTrainCamp)
+add_subdirectory(KFRecruit)
+add_subdirectory(KFGenerate)
+add_subdirectory(KFClinic)
+add_subdirectory(KFExplore)
+add_subdirectory(KFChapter)
+add_subdirectory(KFRecordClient)
+add_subdirectory(KFRecordShard)
+add_subdirectory(KFMainCamp)
+add_subdirectory(KFChancelClient)
+add_subdirectory(KFChancelShard)

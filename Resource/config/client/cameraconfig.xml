@@ -1,0 +1,8 @@
+<root version="00000">
+	<item Id="SK_HM_walksword_skin" Offset="-40|70|270" Rotator="0|-10|-60"/>
+	<item Id="SK_EM_walkBow_skin" Offset="-50|122|291" Rotator="0|0|-70"/>
+	<item Id="SK_HM_rideSword_Skin" Offset="-47|95|356" Rotator="0|-10|-64"/>
+	<item Id="SK_EF_dragonSlayer_Skin" Offset="0|100|591" Rotator="0|-10|-90"/>
+	<item Id="SK_HM_walkaxe_Skin" Offset="-20|120|140" Rotator="0|-10|-90"/>
+	<item Id="SK_HM_pike_Skin" Offset="-40|140|240" Rotator="-0.9|-2.56|-70"/>
+</root>

@@ -1,0 +1,6 @@
+<root version="00000">
+	<item Id="1" Tab="drug" Pic="Item_Consumables"/>
+	<item Id="2" Tab="material" Pic="Item_Building"/>
+	<item Id="3" Tab="gift" Pic="Item_Gift"/>
+	<item Id="4" Tab="normal" Pic="Item_Common"/>
+</root>

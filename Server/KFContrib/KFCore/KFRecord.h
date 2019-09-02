@@ -9,8 +9,8 @@ namespace KFrame
     class KFRecord : public KFData
     {
     public:
-        KFRecord();
-        virtual ~KFRecord();
+        KFRecord() = default;
+        virtual ~KFRecord() = default;
 
         virtual void Reset();
 
@@ -20,7 +20,8 @@ namespace KFrame
         // common
         virtual uint32 Size();
 
-
+        // 是否达到了最大值
+        virtual bool IsFull();
         //////////////////////////////////////////////////////////////////////////////////////////////////////
         virtual KFData* FirstData();
         virtual KFData* NextData();
@@ -38,10 +39,11 @@ namespace KFrame
         virtual bool AddData( uint64 parentkey, uint64 childkey, KFData* data );
         virtual bool AddData( uint64 key, const std::string& dataname, KFData* data );
 
+        virtual KFData* MoveData( uint64 key );
         virtual bool RemoveData( uint64 key );
         virtual bool RemoveData( uint64 key, const std::string& dataname );
 
-        virtual void FindData( const std::string& dataname, uint64 value, std::list< KFData* >& findlist );
+        virtual void FindData( const std::string& dataname, uint64 value, std::list< KFData* >& findlist, bool findall );
         virtual bool CheckData( const std::string& dataname, uint64 value, const std::string& checkname, uint64 checkvalue );
 
         // 格式化成字串

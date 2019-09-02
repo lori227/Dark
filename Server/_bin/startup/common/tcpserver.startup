@@ -4,7 +4,7 @@
 		<Plugin Name="KFConfig" Config=""/>
 		<Plugin Name="KFHttpClient" Config=""/>
 		<Plugin Name="KFMessage" Config=""/>
-		<Plugin Name="KFIpAddress" Config="./setting/{}_{}_ip.setting"/>
-		<Plugin Name="KFTcpServer" Config="./setting/tcpserver.setting"/>
+		<Plugin Name="KFIpAddress" Config=""/>
+		<Plugin Name="KFTcpServer" Config=""/>
 	</Plugins>
 </Setting>

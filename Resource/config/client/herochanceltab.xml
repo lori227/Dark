@@ -1,0 +1,14 @@
+<root version="00000">
+	<item Id="1" Tab="1" Type="1601"/>
+	<item Id="2" Tab="1" Type="1602"/>
+	<item Id="3" Tab="1" Type="1603"/>
+	<item Id="4" Tab="2" Type="1701"/>
+	<item Id="5" Tab="2" Type="1702"/>
+	<item Id="6" Tab="2" Type="1703"/>
+	<item Id="7" Tab="2" Type="1704"/>
+	<item Id="8" Tab="3" Type="1801"/>
+	<item Id="9" Tab="3" Type="1802"/>
+	<item Id="10" Tab="3" Type="1803"/>
+	<item Id="11" Tab="3" Type="1804"/>
+	<item Id="12" Tab="3" Type="1805"/>
+</root>

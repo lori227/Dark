@@ -3,6 +3,7 @@
 
 #include "KFMacros.h"
 #include "KFMap.h"
+#include "KFList.h"
 #include "KFEnum.h"
 #include "KFBind.h"
 #include "KFJson.h"
@@ -13,8 +14,9 @@
 #include "KFWeight.h"
 #include "KFField.h"
 #include "KFResult.h"
-#include "KFInterfaces.h"
+#include "KFInstance.h"
 #include "KFSingleton.h"
+#include "KFInterfaces.h"
 #include "KFProto/KFProto.h"
 #include "KFUtility/KFXml.h"
 #include "KFUtility/KFClock.h"

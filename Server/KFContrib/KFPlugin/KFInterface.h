@@ -22,15 +22,17 @@ namespace KFrame
         // 初始化
         virtual void InitModule() = 0;
 
+        // 添加配置
+        virtual void AddConfig() = 0;
+
         // 加载配置
         virtual void LoadConfig() = 0;
-        virtual void AfterLoad() = 0;
 
         // 开始初始化
         virtual void BeforeRun() = 0;
 
         // 执行一次
-        virtual void OnceRun() = 0;
+        virtual void PrepareRun() = 0;
 
         // 关闭
         virtual void BeforeShut() = 0;

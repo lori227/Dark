@@ -10,6 +10,10 @@ namespace KFrame
     class KFWeight
     {
     public:
+        // 设置数值
+        void SetValue( const std::string& value ) {}
+
+    public:
         // 权重
         uint32 _weight = 0u;
 
@@ -51,18 +55,89 @@ namespace KFrame
         // 随机
         const T* Rand() const
         {
-            auto value = 0u;
-            auto rand = KFGlobal::Instance()->RandRatio( _total_weight );
-            for ( auto data : _weight_data )
+            if ( _total_weight != 0u )
             {
-                value += data->_weight;
-                if ( rand < value )
+                auto value = 0u;
+                auto rand = KFGlobal::Instance()->RandRatio( _total_weight );
+                for ( auto data : _weight_data )
                 {
-                    return data;
+                    value += data->_weight;
+                    if ( rand < value )
+                    {
+                        return data;
+                    }
                 }
             }
 
             return nullptr;
+        }
+
+        // 随机( 排除列表中的项目 )
+        const T* Rand( std::set< uint32 >& excludelist ) const
+        {
+            // 新的权重列表
+            uint32 totalweight = 0u;
+            std::list< T* > randlist;
+            for ( auto data : _weight_data )
+            {
+                // 判断不在列表中
+                if ( excludelist.find( data->_id ) == excludelist.end() )
+                {
+                    randlist.push_back( data );
+                    totalweight += data->_weight;
+                }
+            }
+
+            if ( totalweight != 0u )
+            {
+                auto value = 0u;
+                auto rand = KFGlobal::Instance()->RandRatio( totalweight );
+                for ( auto data : randlist )
+                {
+                    value += data->_weight;
+                    if ( rand < value )
+                    {
+                        return data;
+                    }
+                }
+            }
+
+            return nullptr;
+        }
+
+        // 随机( 添加列表中的项目 )
+        const T* Rand( std::map< uint32, uint32 >& includelist ) const
+        {
+            // 新的权重列表
+            uint32 totalweight = _total_weight;
+            for ( auto& iter : includelist )
+            {
+                totalweight += iter.second;
+            }
+
+            if ( totalweight != 0u )
+            {
+                auto value = 0u;
+                auto rand = KFGlobal::Instance()->RandRatio( totalweight );
+                for ( auto data : _weight_data )
+                {
+                    value += ( data->_weight + includelist[ data->_id ] );
+                    if ( rand < value )
+                    {
+                        return data;
+                    }
+                }
+            }
+
+            return nullptr;
+        }
+
+        // 随机( 添加列表中的项目 )
+        const T* Rand( uint32 id, uint32 weight ) const
+        {
+            std::map< uint32, uint32 > includelist;
+            includelist[ id ] = weight;
+            return Rand( includelist );
         }
 
         // 随机列表
@@ -103,7 +178,21 @@ namespace KFrame
             return _rand_list;
         }
 
-    protected:
+        // 是否含有某项目
+        bool Have( uint32 id ) const
+        {
+            for ( auto data : _weight_data )
+            {
+                if ( data->_id == id && data->_weight != 0u )
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+    public:
         // 总权重
         uint32 _total_weight = 0u;
 

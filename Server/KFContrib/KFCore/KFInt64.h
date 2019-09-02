@@ -8,13 +8,19 @@ namespace KFrame
     class KFInt64 : public KFData
     {
     public:
-        KFInt64();
-        virtual ~KFInt64();
+        KFInt64() = default;
+        virtual ~KFInt64() = default;
 
         virtual void Reset();
 
         // 是否有效
         virtual bool IsValid();
+
+        // 是否达到了最大值
+        virtual bool IsFull();
+
+        // 初始化数值
+        virtual void InitData();
 
         // 保存 赋值
         virtual void CopyFrom( KFData* kfother );
@@ -26,17 +32,13 @@ namespace KFrame
 
     protected:
         //////////////////////////////////////////////////////////////////////////////////////////////////////
-        virtual int64 GetInt64() {
-            return _data;
-        }
-        virtual void SetInt64( int64 value ) {
-            _data = value;
-        }
+        virtual int64 GetInt64();
+        virtual int64 SetInt64( int64 value );
         //////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private:
         // 属性
-        int64 _data;
+        int64 _data = 0;
     };
 }
 

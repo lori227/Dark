@@ -72,6 +72,12 @@ namespace KFrame
         }
 
         // 添加
+        void Add( T* object )
+        {
+            _objects.push_back( object );
+        }
+
+        // 添加
         void Insert( T* object )
         {
             uint32 index = FindEmpty();
@@ -80,14 +86,12 @@ namespace KFrame
 
         void Insert( uint32 index, T* object )
         {
-            if ( IsValid( index ) )
+            if ( !IsValid( index ) )
             {
-                _objects[ index ] = object;
+                _objects.resize( index + 1, nullptr );
             }
-            else
-            {
-                _objects.push_back( object );
-            }
+
+            _objects[ index ] = object;
         }
 
         // 查找

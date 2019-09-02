@@ -15,7 +15,7 @@ namespace KFrame
         ~KFNetClientEngine();
 
         // 初始化引擎
-        void InitEngine( uint32 queuesize, uint32 type );
+        void InitEngine( uint32 queuesize, uint32 type, uint32 compress );
 
         // 关闭引擎
         void ShutEngine();
@@ -105,7 +105,7 @@ namespace KFrame
 
     protected:
         // 等待启动的客户端
-        std::map< uint64, KFNetData > _wait_clients;
+        std::unordered_map< uint64, KFNetData > _wait_clients;
 
         // 客户端列表
         KFHashMap< uint64, uint64, KFNetClient > _kf_clients;

@@ -9,8 +9,8 @@ namespace KFrame
     class KFArray : public KFData
     {
     public:
-        KFArray();
-        virtual ~KFArray();
+        KFArray() = default;
+        virtual ~KFArray() = default;
 
         virtual void Reset();
 
@@ -19,6 +19,9 @@ namespace KFrame
 
         // 初始化
         virtual void Initialize( const KFClassSetting* classsetting, const KFDataSetting* datasetting );
+
+        // 初始化数值
+        virtual void InitData();
 
         // common
         virtual uint32 Size();

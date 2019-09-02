@@ -9,6 +9,7 @@ namespace KFrame
     namespace KFField
     {
         __STRING_DEFINE__( retcode );
+        __STRING_DEFINE__( sign );
         __STRING_DEFINE__( app );
         __STRING_DEFINE__( id );
         __STRING_DEFINE__( master );
@@ -61,6 +62,11 @@ namespace KFrame
         __STRING_DEFINE__( reloadconfig );
         __STRING_DEFINE__( loadconfig );
         __STRING_DEFINE__( loadscript );
+        __STRING_DEFINE__( reloadplugin );
+        __STRING_DEFINE__( loadplugin );
+        __STRING_DEFINE__( resource );
+        __STRING_DEFINE__( downplugin );
+        __STRING_DEFINE__( downresource );
         __STRING_DEFINE__( time );
         __STRING_DEFINE__( restart );
         __STRING_DEFINE__( reloadscript );
@@ -75,6 +81,7 @@ namespace KFrame
         __STRING_DEFINE__( basic );
         __STRING_DEFINE__( serverid );
         __STRING_DEFINE__( name );
+        __STRING_DEFINE__( online );
         __STRING_DEFINE__( onlinetime );
         __STRING_DEFINE__( offlinetime );
         __STRING_DEFINE__( totaltime );
@@ -91,6 +98,7 @@ namespace KFrame
         __STRING_DEFINE__( serverport );
         __STRING_DEFINE__( file );
         __STRING_DEFINE__( unschedule );
+        __STRING_DEFINE__( plugin );
 
 
         __STRING_DEFINE__( zoneregister );
@@ -126,10 +134,11 @@ namespace KFrame
         __STRING_DEFINE__( code );
         __STRING_DEFINE__( verifyactivationcode );
         __STRING_DEFINE__( public );
+        __STRING_DEFINE__( logic );
         __STRING_DEFINE__( openactivation );
         __STRING_DEFINE__( activationcode );
-        __STRING_DEFINE__( online );
         __STRING_DEFINE__( kickonline );
+        __STRING_DEFINE__( onlinelist );
         __STRING_DEFINE__( accountlist );
         __STRING_DEFINE__( accountmake );
         __STRING_DEFINE__( access_token );
@@ -150,8 +159,7 @@ namespace KFrame
         __STRING_DEFINE__( playerid );
         __STRING_DEFINE__( adddata );
         __STRING_DEFINE__( setdata );
-        __STRING_DEFINE__( decdata );
-        __STRING_DEFINE__( item );
+        __STRING_DEFINE__( deldata );
         __STRING_DEFINE__( playernamelength );
         __STRING_DEFINE__( sex );
         __STRING_DEFINE__( achieve );
@@ -196,7 +204,7 @@ namespace KFrame
         __STRING_DEFINE__( minrankscore );
         __STRING_DEFINE__( statustime );
         __STRING_DEFINE__( relation );
-        __STRING_DEFINE__( freindmaxcount );
+        __STRING_DEFINE__( relationmaxcount );
         __STRING_DEFINE__( friendinvite );
         __STRING_DEFINE__( friendliness );
         __STRING_DEFINE__( refusefriend );
@@ -206,11 +214,30 @@ namespace KFrame
         __STRING_DEFINE__( friendlinesslimit );
         __STRING_DEFINE__( invitelist );
         __STRING_DEFINE__( message );
+        __STRING_DEFINE__( variable );
         __STRING_DEFINE__( freindinvitecount );
         __STRING_DEFINE__( newadd );
         __STRING_DEFINE__( freindinvitekeeptime );
         __STRING_DEFINE__( freindlinessresettime );
         __STRING_DEFINE__( freindlinessdailymax );
+        __STRING_DEFINE__( playersavetime );
+        __STRING_DEFINE__( payorder );
+        __STRING_DEFINE__( pay );
+        __STRING_DEFINE__( payid );
+        __STRING_DEFINE__( paydata );
+        __STRING_DEFINE__( price );
+        __STRING_DEFINE__( applyorder );
+        __STRING_DEFINE__( removeorder );
+        __STRING_DEFINE__( querypay );
+        __STRING_DEFINE__( finishpay );
+        __STRING_DEFINE__( internalpay );
+        __STRING_DEFINE__( item );
+        __STRING_DEFINE__( storage );
+        __STRING_DEFINE__( usecount );
+        __STRING_DEFINE__( var );
+        __STRING_DEFINE__( index );
+        __STRING_DEFINE__( resettime );
+        __STRING_DEFINE__( expire );
 
     }
 }

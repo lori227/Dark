@@ -5,7 +5,7 @@ sh cp_frame.sh debug
 
 cd ../../../Resource/proto
 svn up
-sh 2.linux.sh
+#sh 2.linux.sh
 cd -
 
 mkdir -p .build

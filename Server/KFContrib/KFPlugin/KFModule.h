@@ -19,16 +19,18 @@ namespace KFrame
         // 卸载
         virtual void UnInstall() {}
 
+        // 添加配置
+        virtual void AddConfig() {};
+
         // 初始化
         virtual void InitModule() {}
 
         // 加载配置
         virtual void LoadConfig() {}
-        virtual void AfterLoad() {}
 
         // 执行
         virtual void BeforeRun() {}
-        virtual void OnceRun() {}
+        virtual void PrepareRun() {}
         virtual void Run() {}
         virtual void AfterRun() {}
 
@@ -36,6 +38,9 @@ namespace KFrame
         virtual void BeforeShut() {}
         virtual void ShutDown() {}
         virtual void AfterShut() {}
+
+        virtual void SaveData() {}
+        virtual void LoadData() {}
         //////////////////////////////////////////////////////////////
 
     public:

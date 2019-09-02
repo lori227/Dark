@@ -50,7 +50,7 @@ if not exist %localpath%\%binpath%\bin\win64\debug ( mkdir  %localpath%\%binpath
 if not exist %localpath%\%binpath%\bin\win64\release ( mkdir  %localpath%\%binpath%\bin\win64\release )
 copy /y %framepath%\%binpath%\bin\win64\debug\KFStartupd.exe %localpath%\%binpath%\bin\win64\debug
 copy /y %framepath%\%binpath%\bin\win64\debug\libmysql.dll %localpath%\%binpath%\bin\win64\debug
-copy /y %framepath%\%binpath%\bin\win64\debug\libtcmalloc_minimal.dll %localpath%\%binpath%\bin\win64\debug
+copy /y %framepath%\%binpath%\bin\win64\debug\libtcmalloc_minimald.dll %localpath%\%binpath%\bin\win64\debug
 
 copy /y %framepath%\%binpath%\bin\win64\release\KFStartup.exe %localpath%\%binpath%\bin\win64\release
 copy /y %framepath%\%binpath%\bin\win64\release\libmysql.dll %localpath%\%binpath%\bin\win64\release
@@ -88,9 +88,12 @@ rem ===========================================================================
 rem ===========================================================================
 echo "update _lib path begin"
 set libpath=_lib
+rd /s /q %localpath%\%libpath%
 if not exist %localpath%\%libpath% ( mkdir %localpath%\%libpath% )
 if not exist %localpath%\%libpath%\win64 ( mkdir %localpath%\%libpath%\win64 )
 xcopy /y /S %framepath%\%libpath%\win64\* %localpath%\%libpath%\win64 
+del /F /S /Q %localpath%\%libpath%\win64\debug\KFZConfigd.lib
+del /F /S /Q %localpath%\%libpath%\win64\release\KFZConfig.lib
 echo "update _lib path end"
 rem ===========================================================================
 rem ===========================================================================
@@ -178,6 +181,24 @@ if not exist %localpath%\%contribpath%\%subcontribpath% (
     xcopy /y %framepath%\%contribpath%\%subcontribpath%\* %localpath%\%contribpath%\%subcontribpath%\
 )
 
+set subcontribpath=KFZConfig
+if not exist %localpath%\%contribpath%\%subcontribpath% (
+    mkdir %localpath%\%contribpath%\%subcontribpath%
+    xcopy /y %framepath%\%contribpath%\%subcontribpath%\* %localpath%\%contribpath%\%subcontribpath%\
+)
+xcopy /y %framepath%\%contribpath%\%subcontribpath%\*.h %localpath%\%contribpath%\%subcontribpath%\
+xcopy /y %framepath%\%contribpath%\%subcontribpath%\KFElementConfig.hpp %localpath%\%contribpath%\%subcontribpath%\
+xcopy /y %framepath%\%contribpath%\%subcontribpath%\KFElementConfig.cpp %localpath%\%contribpath%\%subcontribpath%\
+
+rem ===========================================================================
+rem ===========================================================================
+rem ===========================================================================
+set currpath=%cd%
+cd %localpath%\%contribpath%\%subcontribpath%\
+"%VS150COMNTOOLS%..\IDE\Devenv" KFZConfig.vcxproj /rebuild "Debug|X64"  /project KFZConfig
+"%VS150COMNTOOLS%..\IDE\Devenv" KFZConfig.vcxproj /rebuild "Release|X64" /project KFZConfig
+cd %currpath%
+
 echo "update KFContrib path end"
 
 rem ===========================================================================
@@ -207,7 +228,6 @@ if not exist %localpath%\%librarypath%\%sublibrarypath%\tilde ( mkdir %localpath
 xcopy /y /S %framepath%\%librarypath%\%sublibrarypath%\*.h %localpath%\%librarypath%\%sublibrarypath%\
 xcopy /y /S %framepath%\%librarypath%\%sublibrarypath%\*.inl %localpath%\%librarypath%\%sublibrarypath%\
 
-
 echo "update KFLibrary path end"
 
 rem ===========================================================================
@@ -233,17 +253,17 @@ if not exist %localpath%\%resourcepath% ( mkdir %resourcepath% )
 
 rem config=================================
 if not exist %resourcepath%\config ( mkdir %resourcepath%\config )
-if not exist %resourcepath%\config\rank.config ( 
-    copy /y %framepath%\_resource\config\rank.config %resourcepath%\config\
+if not exist %resourcepath%\config\rank.xml ( 
+    copy /y %framepath%\_resource\config\rank.xml %resourcepath%\config\
 )
 
 rem tool=================================
-if not exist %resourcepath%\tool ( mkdir %resourcepath%\tool )
-xcopy /y %framepath%\_resource\tool\* %resourcepath%\tool 
+rem if not exist %resourcepath%\tool ( mkdir %resourcepath%\tool )
+rem xcopy /y %framepath%\_resource\tool\* %resourcepath%\tool 
 
 rem excel=================================
 if not exist %resourcepath%\excel ( mkdir %resourcepath%\excel )
-copy /y %framepath%\_resource\excel\_parse.exe %resourcepath%\excel\
+copy /y %framepath%\_resource\excel\_zparse.exe %resourcepath%\excel\
 if not exist %resourcepath%\excel\_build.bat ( 
     copy /y %framepath%\_resource\excel\_build.bat %resourcepath%\excel\
 )
@@ -283,6 +303,7 @@ rem frame
 call :CopyInterface KFConfig
 call :CopyInterface KFMySQL
 call :CopyInterface KFRedis
+call :CopyInterface KFMongo
 call :CopyInterface KFDeployAgent
 call :CopyInterface KFDeployClient
 call :CopyInterface KFDeployServer
@@ -292,8 +313,8 @@ call :CopyInterface KFClusterProxy
 call :CopyInterface KFClusterShard
 call :CopyInterface KFLogClient
 call :CopyInterface KFLogShard
-call :CopyInterface KFKernel class.xlsx
-call :CopyInterface KFFilter
+call :CopyInterface KFKernel 1001-玩家-属性定义.xlsx
+call :CopyInterface KFFilter 1000-框架-屏蔽字符.xlsx
 call :CopyInterface KFPlayer
 call :CopyInterface KFHttpClient
 call :CopyInterface KFHttpServer
@@ -303,7 +324,7 @@ call :CopyInterface KFTcpServer
 call :CopyInterface KFTcpClient
 call :CopyInterface KFTcpDiscover
 call :CopyInterface KFIpAddress
-call :CopyInterface KFOption option.xlsx
+call :CopyInterface KFOption 1002-常量-全局常量.xlsx
 call :CopyInterface KFRouteClient
 call :CopyInterface KFRouteProxy
 call :CopyInterface KFRouteShard
@@ -312,7 +333,7 @@ call :CopyInterface KFTimer
 
 rem auth
 call :CopyInterface KFAuth
-call :CopyInterface KFChannel
+call :CopyInterface KFChannel 1000-框架-渠道配置.xlsx
 
 rem data
 call :CopyInterface KFDataClient
@@ -322,7 +343,7 @@ rem display
 call :CopyInterface KFDisplay
 
 rem lua
-rem call :CopyInterface KFLua
+call :CopyInterface KFLua
 
 rem mail
 call :CopyInterface KFMailClient
@@ -332,11 +353,11 @@ rem rank
 rem call :CopyInterface KFRankClient
 rem call :CopyInterface KFRankMaster
 rem call :CopyInterface KFRankShard
-copy /y %framepath%\%binpath%\config\rank.config ..\Resource\config\
+copy /y %framepath%\%binpath%\config\rank.xml ..\Resource\config\
 
 rem public
-rem call :CopyInterface KFPublicClient
-rem call :CopyInterface KFPublicShard
+call :CopyInterface KFPublicClient
+call :CopyInterface KFPublicShard
 
 rem relation
 rem call :CopyInterface KFRelationClient
@@ -347,15 +368,17 @@ call :CopyInterface KFGame
 call :CopyInterface KFGate
 call :CopyInterface KFLogin
 call :CopyInterface KFWorld
-call :CopyInterface KFZone
 
 
 rem player
 call :CopyInterface KFCommand
-call :CopyInterface KFEnter enter.xlsx
-call :CopyInterface KFLeave leave.xlsx
-call :CopyInterface KFReset reset.xlsx
+call :CopyInterface KFDrop 1001-框架-掉落配置.xlsx
+call :CopyInterface KFReset 1001-玩家-进入游戏.xlsx
+call :CopyInterface KFReset 1001-玩家-属性重置.xlsx
+call :CopyInterface KFReset 1001-玩家-离开游戏.xlsx
 
+rem Robot
+call :CopyInterface KFRobot
 rem ===========================================================================
 rem ===========================================================================
 rem ===========================================================================
@@ -363,7 +386,6 @@ rem ===========================================================================
 rem ===========================================================================
 rem Attribute
 call :CopyPlugin KFAttribute
-call :CopyPlugin KFRobot
 
 rem ===========================================================================
 rem ===========================================================================

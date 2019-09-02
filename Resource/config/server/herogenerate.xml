@@ -1,0 +1,5 @@
+<root version="00000">
+	<item AttrId="4080001" Id="4100001" RacePool="4010001" SexPool="4020001" ProfessionPool="4030001" BackGroundPool="4040001" ActivePool="4050001" CharacterPool="4060001|4060002|4060003" InnatePool="4070001|4070002" GrowthId="4090001"/>
+	<item AttrId="4080001" Id="4100002" RacePool="4010001" SexPool="4020001" ProfessionPool="4030001" BackGroundPool="4040001" ActivePool="4050001" CharacterPool="4060001|4060002|4060003" InnatePool="4070001|4070002" GrowthId="4090001"/>
+	<item AttrId="4080001" Id="4100003" RacePool="4010001" SexPool="4020001" ProfessionPool="4030001" BackGroundPool="4040001" ActivePool="4050001" CharacterPool="4060001|4060002|4060003" InnatePool="4070001|4070002" GrowthId="4090001"/>
+</root>

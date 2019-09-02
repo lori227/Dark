@@ -12,7 +12,7 @@ namespace KFrame
 
     void KFRoomClientPlugin::UnInstall()
     {
-        __UNREGISTER_MODULE__( KFRoomClient );
+        __UN_MODULE__( KFRoomClient );
     }
 
     void KFRoomClientPlugin::LoadModule()

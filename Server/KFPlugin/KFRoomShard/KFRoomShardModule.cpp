@@ -3,11 +3,6 @@
 
 namespace KFrame
 {
-    void KFRoomShardModule::InitModule()
-    {
-
-    }
-
     void KFRoomShardModule::BeforeRun()
     {
         __REGISTER_MESSAGE__( KFMsg::S2S_REGISTER_BATTLE_TO_ROOM_REQ, &KFRoomShardModule::HandleRegisterBattleToRoomReq );
@@ -24,18 +19,18 @@ namespace KFrame
     void KFRoomShardModule::BeforeShut()
     {
         //////////////////////////////////////////////////////////////////////////////////////////////////
-        __UNREGISTER_MESSAGE__( KFMsg::S2S_REGISTER_BATTLE_TO_ROOM_REQ );
-        __UNREGISTER_MESSAGE__( KFMsg::S2S_CREATE_ROOM_TO_ROOM_REQ );
-        __UNREGISTER_MESSAGE__( KFMsg::S2S_OPEN_ROOM_TO_ROOM_ACK );
-        __UNREGISTER_MESSAGE__( KFMsg::S2S_INFORM_BATTLE_TO_ROOM_ACK );
-        __UNREGISTER_MESSAGE__( KFMsg::S2S_QUERY_ROOM_TO_ROOM_REQ );
-        __UNREGISTER_MESSAGE__( KFMsg::S2S_FINISH_ROOM_TO_ROOM_REQ );
-        __UNREGISTER_MESSAGE__( KFMsg::S2S_HEART_BEAT_TO_ROOM_REQ );
+        __UN_MESSAGE__( KFMsg::S2S_REGISTER_BATTLE_TO_ROOM_REQ );
+        __UN_MESSAGE__( KFMsg::S2S_CREATE_ROOM_TO_ROOM_REQ );
+        __UN_MESSAGE__( KFMsg::S2S_OPEN_ROOM_TO_ROOM_ACK );
+        __UN_MESSAGE__( KFMsg::S2S_INFORM_BATTLE_TO_ROOM_ACK );
+        __UN_MESSAGE__( KFMsg::S2S_QUERY_ROOM_TO_ROOM_REQ );
+        __UN_MESSAGE__( KFMsg::S2S_FINISH_ROOM_TO_ROOM_REQ );
+        __UN_MESSAGE__( KFMsg::S2S_HEART_BEAT_TO_ROOM_REQ );
     }
 
-    void KFRoomShardModule::OnceRun()
+    void KFRoomShardModule::PrepareRun()
     {
-        _room_redis = _kf_redis->Create( __KF_STRING__( room ) );
+        _room_redis = _kf_redis->Create( __KF_STRING__( logic ) );
         _battle_allot->Initialize( _room_redis );
     }
 
@@ -80,7 +75,6 @@ namespace KFrame
     __KF_MESSAGE_FUNCTION__( KFRoomShardModule::HandleRegisterBattleToRoomReq )
     {
         __PROTO_PARSE__( KFMsg::S2SRegisterBattleToRoomReq );
-
         __LOG_INFO__( "register battle[{}|{}|{}:{}]!", KFAppId::ToString( kfmsg.serverid() ), kfmsg.version(), kfmsg.ip(), kfmsg.port() );
 
         // 注册房间
@@ -95,7 +89,6 @@ namespace KFrame
     __KF_MESSAGE_FUNCTION__( KFRoomShardModule::HandleOpenRoomToRoomAck )
     {
         __PROTO_PARSE__( KFMsg::S2SOpenRoomToRoomAck );
-
         __LOG_DEBUG__( "open room[{}] result[{}] ack!", kfmsg.roomid(), kfmsg.result() );
 
         auto kfroom = _room_list.Find( kfmsg.roomid() );
@@ -112,7 +105,6 @@ namespace KFrame
     __KF_MESSAGE_FUNCTION__( KFRoomShardModule::HandleCreateRoomToRoomReq )
     {
         __PROTO_PARSE__( KFMsg::S2SCreateRoomToRoomReq );
-
         __LOG_DEBUG__( "create room[{}|{}|{}] req!", kfmsg.roomid(), kfmsg.version(), KFAppId::ToString( kfmsg.serverid() ) );
 
         auto kfroom = CreateBattleRoom( kfmsg.roomid() );
@@ -120,7 +112,7 @@ namespace KFrame
         kfroom->_version = kfmsg.version();
         kfroom->_match_id = kfmsg.matchid();
         kfroom->_battle_server_id = kfmsg.serverid();
-        kfroom->_valid_time = KFGlobal::Instance()->_game_time + 7200000;
+        kfroom->_valid_time = KFGlobal::Instance()->_game_time + 3600000;
         for ( auto i = 0; i < kfmsg.pbplayer_size(); ++i )
         {
             auto pbplayer = &kfmsg.pbplayer( i );
@@ -139,7 +131,6 @@ namespace KFrame
     __KF_MESSAGE_FUNCTION__( KFRoomShardModule::HandleInformBattleToRoomAck )
     {
         __PROTO_PARSE__( KFMsg::S2SInformBattleToRoomAck );
-
         __LOG_DEBUG__( "player=[{}] inform room=[{}] ack!", kfmsg.playerid(), kfmsg.roomid() );
 
         auto kfroom = _room_list.Find( kfmsg.roomid() );
@@ -154,7 +145,6 @@ namespace KFrame
     __KF_MESSAGE_FUNCTION__( KFRoomShardModule::HandleQueryRoomToRoomReq )
     {
         __PROTO_PARSE__( KFMsg::S2SQueryRoomToRoomReq );
-
         __LOG_DEBUG__( "player=[{}] query room=[{}] req!", kfmsg.playerid(), kfmsg.roomid() );
 
         auto ok = false;
@@ -176,7 +166,6 @@ namespace KFrame
     __KF_MESSAGE_FUNCTION__( KFRoomShardModule::HandleFinishRoomToRoomReq )
     {
         __PROTO_PARSE__( KFMsg::S2SFinishRoomToRoomReq );
-
         __LOG_DEBUG__( "room=[{}] finish req!", kfmsg.roomid() );
 
         auto kfroom = _room_list.Find( kfmsg.roomid() );
@@ -193,15 +182,16 @@ namespace KFrame
     __KF_MESSAGE_FUNCTION__( KFRoomShardModule::HandleHeartBeatToRoomReq )
     {
         __PROTO_PARSE__( KFMsg::S2SHeartBeatToRoomReq );
-
-        __LOG_DEBUG__( "room=[{}] heartbeat req!", kfmsg.roomid() );
+        //__LOG_DEBUG__( "server=[{}] room=[{}] heartbeat req!", KFAppId::ToString( kfmsg.serverid() ), kfmsg.roomid() );
 
         auto kfroom = _room_list.Find( kfmsg.roomid() );
-        if ( kfroom == nullptr )
+        if ( kfroom != nullptr )
         {
-            return __LOG_ERROR__( "can't find room[{}]!", kfmsg.roomid() );
+            kfroom->UpdateHeartBeatTime();
         }
-
-        kfroom->UpdateHeartBeatTime();
+        else
+        {
+            _battle_allot->UpdateBattle( kfmsg.serverid() );
+        }
     }
 }

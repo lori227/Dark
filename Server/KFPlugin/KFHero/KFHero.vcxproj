@@ -12,30 +12,24 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="KFAttrProbabilityConfig.cpp" />
     <ClCompile Include="KFHeroModule.cpp" />
     <ClCompile Include="KFHeroPlugin.cpp" />
-    <ClCompile Include="KFNameConfig.cpp" />
-    <ClCompile Include="KFProfessionConfig.cpp" />
-    <ClCompile Include="KFQualityConfig.cpp" />
-    <ClCompile Include="KFRaceConfig.cpp" />
+    <ClCompile Include="KFMarshalModule.cpp" />
+    <ClCompile Include="KFTransferModule.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="KFAttrProbabilityConfig.hpp" />
     <ClInclude Include="KFHeroInterface.h" />
     <ClInclude Include="KFHeroModule.hpp" />
     <ClInclude Include="KFHeroPlugin.hpp" />
-    <ClInclude Include="KFNameConfig.hpp" />
-    <ClInclude Include="KFProfessionConfig.hpp" />
-    <ClInclude Include="KFQualityConfig.hpp" />
-    <ClInclude Include="KFRaceConfig.hpp" />
+    <ClInclude Include="KFMarshalModule.hpp" />
+    <ClInclude Include="KFTransferModule.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{0F0E932C-DEEE-43FC-8A0E-CD7A58857D92}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>NFProxyPlugin</RootNamespace>
     <ProjectName>KFHero</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">

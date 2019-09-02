@@ -19,8 +19,8 @@ namespace KFrame
     void KFMatchQueue::StartMatch( const KFMsg::PBMatchPlayer* pbplayer, const std::string& version, uint64 battleserverid )
     {
         auto kfplayer = __KF_NEW__( KFMatchPlayer );
-        kfplayer->_match_id = _match_id;
         kfplayer->_version = version;
+        kfplayer->_match_id = _kf_setting->_id;
         kfplayer->_battle_server_id = battleserverid;
         kfplayer->CopyFrom( pbplayer );
         _player_list.Insert( kfplayer->_id, kfplayer );

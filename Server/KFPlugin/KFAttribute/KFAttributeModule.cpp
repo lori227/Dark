@@ -4,72 +4,24 @@ namespace KFrame
 {
     void KFAttributeModule::BeforeRun()
     {
-        _kf_data_client->BindQueryPlayerFunction( this, &KFAttributeModule::OnAfterQueryPlayerData );
-        _kf_data_client->BindSetNameFunction( this, &KFAttributeModule::OnAfterSetPlayerName );
-
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
-        __REGISTER_MESSAGE__( KFMsg::MSG_REMOVE_DATA_REQ, &KFAttributeModule::HandleRemoveDataReq );
-        __REGISTER_MESSAGE__( KFMsg::MSG_QUERY_PLAYER_REQ, &KFAttributeModule::HandleQueryPlayerReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_SET_NAME_REQ, &KFAttributeModule::HandleSetNameReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_SET_SEX_REQ, &KFAttributeModule::HandleSetSexReq );
+        __REGISTER_MESSAGE__( KFMsg::S2S_SET_PLAYERNAME_TO_GAME_ACK, &KFAttributeModule::HandleSetPlayerNameToGameAck );
     }
 
     void KFAttributeModule::BeforeShut()
     {
-        _kf_data_client->UnBindLoadPlayerFunction( this );
-        _kf_data_client->UnBindSetNameFunction( this );
-
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
-        __UNREGISTER_MESSAGE__( KFMsg::MSG_REMOVE_DATA_REQ );
-        __UNREGISTER_MESSAGE__( KFMsg::MSG_QUERY_PLAYER_REQ );
-        __UNREGISTER_MESSAGE__( KFMsg::MSG_SET_NAME_REQ );
-        __UNREGISTER_MESSAGE__( KFMsg::MSG_SET_SEX_REQ );
+        __UN_MESSAGE__( KFMsg::MSG_SET_NAME_REQ );
+        __UN_MESSAGE__( KFMsg::MSG_SET_SEX_REQ );
+        __UN_MESSAGE__( KFMsg::S2S_SET_PLAYERNAME_TO_GAME_ACK );
     }
-
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
-    __KF_MESSAGE_FUNCTION__( KFAttributeModule::HandleQueryPlayerReq )
+    uint32 KFAttributeModule::CheckNameValid( const std::string& name, uint32 maxlength )
     {
-        __CLIENT_PROTO_PARSE__( KFMsg::MsgQueryPlayerReq );
-
-        // 不能查询自己的数据，客户端本地可以获取到
-        if ( playerid == kfmsg.playerid() )
-        {
-            return;
-        }
-
-        //查询玩家数据
-        auto ok = _kf_data_client->QueryPlayerData( playerid, kfmsg.playerid() );
-        if ( !ok )
-        {
-            _kf_display->SendToClient( player, KFMsg::DataServerBusy );
-        }
-    }
-
-    void KFAttributeModule::OnAfterQueryPlayerData( uint32 result, uint64 playerid, KFMsg::PBObject* pbplayerdata )
-    {
-        auto player = _kf_player->FindPlayer( playerid );
-        if ( player == nullptr )
-        {
-            return;
-        }
-
-        if ( result != KFMsg::Ok )
-        {
-            return _kf_display->SendToClient( playerid, result );
-        }
-
-        KFMsg::MsgQueryPlayerAck ack;
-        ack.mutable_player()->CopyFrom( *pbplayerdata );
-        _kf_player->SendToClient( player, KFMsg::MSG_QUERY_PLAYER_ACK, &ack );
-    }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////
-    uint32 KFAttributeModule::CheckNameValid( const std::string& name )
-    {
-        static auto* _option = _kf_option->FindOption( __KF_STRING__( playernamelength ) );
-        if ( name.size() > _option->_uint32_value )
+        if ( name.size() > maxlength )
         {
             return KFMsg::NameLengthError;
         }
@@ -92,46 +44,58 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::NameEmpty );
         }
 
-        auto kfobject = player->GetData();
-        auto name = kfobject->GetValue<std::string>( __KF_STRING__( basic ), __KF_STRING__( name ) );
+        auto kfname = player->GetData()->FindData( __KF_STRING__( basic ), __KF_STRING__( name ) );
+        auto name = kfname->GetValue<std::string>();
         if ( !name.empty() )
         {
             return _kf_display->SendToClient( player, KFMsg::NameAlreadySet );
         }
 
         // 检查名字的有效性
-        auto result = CheckNameValid( kfmsg.name() );
+        auto result = CheckNameValid( kfmsg.name(), kfname->_data_setting->_int_max_value );
         if ( result != KFMsg::Ok )
         {
             return _kf_display->SendToClient( player, result );
         }
 
         // 修改名字
-        auto ok = _kf_data_client->SetPlayerName( playerid, name, kfmsg.name(), _invalid_int );
+        KFMsg::S2SSetPlayerNameToDataReq req;
+        req.set_playerid( playerid );
+        req.set_oldname( name );
+        req.set_newname( kfmsg.name() );
+        req.set_costdata( _invalid_str );
+        auto ok = _kf_route->SendToRand( playerid, __KF_STRING__( logic ), KFMsg::S2S_SET_PLAYERNAME_TO_DATA_REQ, &req, false );
         if ( !ok )
         {
-            _kf_display->SendToClient( player, KFMsg::DataServerBusy );
+            _kf_display->SendToClient( player, KFMsg::PublicServerBusy );
         }
     }
 
-    void KFAttributeModule::OnAfterSetPlayerName( uint32 result, uint64 playerid, const std::string& name, uint64 itemuuid )
+    __KF_MESSAGE_FUNCTION__( KFAttributeModule::HandleSetPlayerNameToGameAck )
     {
-        auto player = _kf_player->FindPlayer( playerid );
+        __PROTO_PARSE__( KFMsg::S2SSetPlayerNameToGameAck );
+
+        auto player = _kf_player->FindPlayer( kfmsg.playerid() );
         if ( player == nullptr )
         {
-            return __LOG_ERROR__( "player[{}] set name[{}] item[{}] failed!", playerid, name, itemuuid );
+            return __LOG_ERROR__( "player[{}] set name[{}] item[{}] failed!", kfmsg.playerid(), kfmsg.name(), kfmsg.costdata() );
         }
 
-        _kf_display->SendToClient( player, result, name );
-        if ( result != KFMsg::NameSetOk )
+        _kf_display->SendToClient( player, kfmsg.result(), kfmsg.name() );
+        if ( kfmsg.result() != KFMsg::NameSetOk )
         {
             return;
         }
 
-        if ( itemuuid != _invalid_int )
+        player->UpdateData( __KF_STRING__( basic ), __KF_STRING__( name ), kfmsg.name() );
+        if ( kfmsg.costdata() != _invalid_str )
         {
-            // 删除改名卡
-            player->RemoveData( __KF_STRING__( item ), itemuuid );
+            KFElements kfelements;
+            auto ok = kfelements.Parse( kfmsg.costdata(), __FUNC_LINE__ );
+            if ( ok )
+            {
+                player->RemoveElement( &kfelements, __FUNC_LINE__ );
+            }
         }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -144,13 +108,5 @@ namespace KFrame
         player->UpdateData( __KF_STRING__( basic ), __KF_STRING__( sex ), KFEnum::Set, kfmsg.sex() );
     }
 
-    __KF_MESSAGE_FUNCTION__( KFAttributeModule::HandleRemoveDataReq )
-    {
-        __CLIENT_PROTO_PARSE__( KFMsg::MsgRemoveDataReq );
-
-        player->UpdateData( kfmsg.dataname(), kfmsg.key(), __KF_STRING__( count ), KFEnum::Dec, kfmsg.count() );
-
-        __LOG_INFO__( "remove data[{}:{}:{}] ok!", kfmsg.dataname(), kfmsg.key(), kfmsg.count() );
-    }
 
 }

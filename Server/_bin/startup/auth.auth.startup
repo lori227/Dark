@@ -3,11 +3,12 @@
 	<Includes>
 		<Include File="./startup/common/httpserver.startup"/>
 		<Include File="./startup/common/remotelog.startup"/>
+		<Include File="./startup/common/deployclient.startup"/>
 	</Includes>
 
 	<Plugins>
-		<Plugin Name="KFRedis" Config="./setting/{}_{}_redis.setting"/>
-		<Plugin Name="KFChannel" Config="./setting/channel.setting"/>
+		<Plugin Name="KFRedis" Config=""/>
+		<Plugin Name="KFChannel" Config=""/>
 		<Plugin Name="KFAuth" Config=""/>	
 	</Plugins>
 </Setting>

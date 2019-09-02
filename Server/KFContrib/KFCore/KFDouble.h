@@ -8,13 +8,16 @@ namespace KFrame
     class KFDouble : public KFData
     {
     public:
-        KFDouble();
-        virtual ~KFDouble();
+        KFDouble() = default;
+        virtual ~KFDouble() = default;
 
         virtual void Reset();
 
         // 是否有效
         virtual bool IsValid();
+
+        // 初始化数值
+        virtual void InitData();
 
         // 保存 赋值
         virtual void CopyFrom( KFData* kfother );
@@ -26,16 +29,12 @@ namespace KFrame
 
     protected:
         //////////////////////////////////////////////////////////////////////////////////////////////////////
-        virtual double GetDouble() {
-            return _data;
-        }
-        virtual void SetDouble( double value ) {
-            _data = value;
-        }
+        virtual double GetDouble();
+        virtual double SetDouble( double value );
         //////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private:
-        double _data;
+        double _data = 0.0f;
     };
 }
 

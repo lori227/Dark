@@ -1,5 +1,6 @@
 #! /bin/sh 
 
+\cp -f ../../../../../frame/trunk/_resource/proto/4.protoc ./
 chmod 777 4.protoc
 export LD_LIBRARY_PATH=/usr/local/lib
 
@@ -17,7 +18,6 @@ function makeversion()
 {
 	oldmd5client=`cat 5.md5list | grep "$1" | cut -d ":" -f 2`
 	newmd5client=`md5sum ./$1 | awk '{print $1}'`
-			
 	declare -i version=`cat 5.md5list | grep "$1" | cut -d ":" -f 3`
 	if [ $oldmd5client != $newmd5client ];then
 		declare -i newversion=$version+1
@@ -43,8 +43,8 @@ clientversion=0
 echo "$defineversion.$clientversion.0.0" > 6.version.txt
 
 #svn 
-#svn ci -m "proto version" 5.md5list 6.version.txt
+svn ci -m "proto version" 5.md5list 6.version.txt
 
 #git
-git commit -m "proto version" 5.md5list 6.version.txt
-git push
+#git commit -m "proto version" 5.md5list 6.version.txt
+#git push

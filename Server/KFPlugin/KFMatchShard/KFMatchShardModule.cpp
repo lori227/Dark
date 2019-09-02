@@ -1,11 +1,8 @@
 ﻿#include "KFMatchShardModule.hpp"
+#include "KFZConfig/KFMatchConfig.hpp"
 
 namespace KFrame
 {
-    void KFMatchShardModule::InitModule()
-    {
-    }
-
     void KFMatchShardModule::BeforeRun()
     {
         //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -19,18 +16,23 @@ namespace KFrame
     void KFMatchShardModule::BeforeShut()
     {
         //////////////////////////////////////////////////////////////////////////////////////////////////
-        __UNREGISTER_MESSAGE__( KFMsg::S2S_START_MATCH_TO_SHARD_REQ );
-        __UNREGISTER_MESSAGE__( KFMsg::S2S_CANCEL_MATCH_TO_SHARD_REQ );
-        __UNREGISTER_MESSAGE__( KFMsg::S2S_AFFIRM_MATCH_TO_SHARD_REQ );
-        __UNREGISTER_MESSAGE__( KFMsg::S2S_CREATE_ROOM_TO_MATCH_ACK );
-        __UNREGISTER_MESSAGE__( KFMsg::S2S_QUERY_MATCH_TO_MATCH_REQ );
+        __UN_MESSAGE__( KFMsg::S2S_START_MATCH_TO_SHARD_REQ );
+        __UN_MESSAGE__( KFMsg::S2S_CANCEL_MATCH_TO_SHARD_REQ );
+        __UN_MESSAGE__( KFMsg::S2S_AFFIRM_MATCH_TO_SHARD_REQ );
+        __UN_MESSAGE__( KFMsg::S2S_CREATE_ROOM_TO_MATCH_ACK );
+        __UN_MESSAGE__( KFMsg::S2S_QUERY_MATCH_TO_MATCH_REQ );
     }
 
-    void KFMatchShardModule::OnceRun()
+    void KFMatchShardModule::PrepareRun()
     {
         // 添加匹配模式
         RouteObjectList matchlist;
-        matchlist.insert( 1 );
+        for ( auto& iter : KFMatchConfig::Instance()->_settings._objects )
+        {
+            auto kfsetting = iter.second;
+            matchlist.insert( kfsetting->_id );
+        }
+
         _kf_route->SyncObject( matchlist );
     }
 
@@ -73,14 +75,14 @@ namespace KFrame
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////
-    KFMatchQueue* KFMatchShardModule::FindMatchQueue( uint32 matchid )
+    KFMatchQueue* KFMatchShardModule::FindMatchQueue( const KFMatchSetting* kfsetting )
     {
-        auto kfqueue = _match_queue_list.Find( matchid );
+        auto kfqueue = _match_queue_list.Find( kfsetting->_id );
         if ( kfqueue == nullptr )
         {
-            kfqueue = _match_queue_list.Create( matchid );
-            kfqueue->_match_id = matchid;
+            kfqueue = _match_queue_list.Create( kfsetting->_id );
             kfqueue->_match_module = this;
+            kfqueue->_kf_setting = kfsetting;
         }
 
         return kfqueue;
@@ -99,14 +101,24 @@ namespace KFrame
             }
 
             // 删除旧玩家
-            auto kfqueue = FindMatchQueue( kfplayer->_match_id );
-            kfqueue->RemovePlayer( pbplayer->id() );
+            auto kfqueue = _match_queue_list.Find( kfplayer->_match_id );
+            if ( kfqueue != nullptr )
+            {
+                kfqueue->RemovePlayer( pbplayer->id() );
+            }
+        }
+
+        // 判断匹配是否存在
+        auto kfsetting = KFMatchConfig::Instance()->FindSetting( matchid );
+        if ( kfsetting == nullptr )
+        {
+            return KFMsg::MatchIdError;
         }
 
         // 判断版本
 
 
-        auto kfqueue = FindMatchQueue( matchid );
+        auto kfqueue = FindMatchQueue( kfsetting );
         kfqueue->StartMatch( pbplayer, version, battleserverid );
         return KFMsg::MatchRequestOk;
     }
@@ -116,7 +128,7 @@ namespace KFrame
         __PROTO_PARSE__( KFMsg::S2SStartMatchToShardReq );
 
         auto pbplayer = &kfmsg.pbplayer();
-        __LOG_DEBUG__( "player=[{}] match=[{}] req!", pbplayer->id(), kfmsg.matchid() );
+        __LOG_DEBUG__( "player=[{}] match=[{}] serverid=[{}] req!", pbplayer->id(), kfmsg.matchid(), KFAppId::ToString( kfmsg.serverid() ) );
 
         // 处理匹配
         auto result = StartMatch( pbplayer, kfmsg.matchid(), kfmsg.version(), kfmsg.serverid() );
@@ -158,8 +170,11 @@ namespace KFrame
         else
         {
             // 删除玩家
-            auto kfqueue = FindMatchQueue( kfplayer->_match_id );
-            kfqueue->CancelMatch( kfmsg.playerid() );
+            auto kfqueue = _match_queue_list.Find( kfplayer->_match_id );
+            if ( kfqueue != nullptr )
+            {
+                kfqueue->CancelMatch( kfmsg.playerid() );
+            }
         }
     }
 
@@ -167,7 +182,7 @@ namespace KFrame
     {
         __PROTO_PARSE__( KFMsg::S2SAffirmMatchToShardReq );
 
-        __LOG_DEBUG__( "player=[{}] affrim match req!", kfmsg.playerid() );
+        __LOG_DEBUG__( "player=[{}] affrim match!", kfmsg.playerid() );
 
         auto kfplayer = _match_player_manage->Find( kfmsg.playerid() );
         if ( kfplayer == nullptr )
@@ -181,6 +196,7 @@ namespace KFrame
             return __LOG_ERROR__( "can't find room=[{}]!", kfplayer->_room_id );
         }
 
+        kfplayer->_pb_player.set_serverid( kfmsg.serverid() );
         kfroom->PlayerAffirm( kfplayer->_id );
     }
 

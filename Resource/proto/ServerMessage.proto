@@ -36,6 +36,20 @@ enum ServerProtocol
 	S2S_FINISH_ROOM_TO_GAME_REQ			= 31207;	// 结束房间
 	S2S_QUERY_MATCH_TO_MATCH_REQ		= 31208;	// 查询匹配
 	S2S_QUERY_MATCH_TO_GAME_ACK			= 31209;	// 查询匹配
+
+	// 日报/营地纪录
+	S2S_ADD_RECORD_REQ					= 31301;	// 添加记录
+	S2S_QUERY_RECORD_REQ				= 31302;	// 查询记录
+	S2S_ONLINE_RECORD_REQ				= 31303;	// 纪录上线逻辑
+
+
+	// 英雄圣坛
+	S2S_ADD_DEAD_RECORD_REQ				= 31401;	// 添加死亡记录
+	S2S_QUERY_DEAD_RECORD_REQ			= 31402;	// 查询死亡记录
+	S2S_QUERY_DEAD_RECORD_ACK			= 31403;	// 死亡记录返回
+	S2S_ADD_LIFE_EVENT_REQ				= 31404;	// 添加生平事件
+	S2S_DEL_LIFE_EVENT_REQ				= 31405;	// 删除生平事件
+	S2S_QUERY_LIFE_EVENT_REQ			= 31406;	// 查询生平事件
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -103,12 +117,15 @@ message S2SFinishRoomToBattleAck
 }
 
 // 心跳消息( 30秒一次 )
-// 房间集群超过2分钟以后没收到此消息, 则认为该战斗服务器挂了
-// 在确认 S2SOpenRoomToRoomAck 后开始发送此消息
+// 房间集群超过10分钟以后没收到此消息, 则认为该战斗服务器挂了
+// 在注册战场收到 S2S_REGISTER_BATTLE_TO_BATTLE_ACK后开始发
+// 在 S2S_FINISH_ROOM_TO_BATTLE_ACK后停止发
+// 在房间中使用SendToServer 不在房间中使用SendToRand
 // S2S_HEART_BEAT_TO_ROOM_REQ
 message S2SHeartBeatToRoomReq
 {
-	uint64 roomid = 1;
+	uint64 roomid = 1;		// 房间id
+	uint64 serverid = 2;	// 战场服务器的id
 }
 
 
@@ -173,7 +190,7 @@ message S2SAffirmMatchTimeoutToGame
 message S2SAffirmMatchToShardReq
 {
 	uint64 playerid = 1;
-	map< uint64, PBObject > hero = 2;	
+	uint64 serverid = 2;
 }
 
 // 通知战场服务器信息
@@ -232,3 +249,86 @@ message S2SQueryMatchToGameAck
 {
 	uint64 playerid = 1;
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// 添加记录
+// S2S_ADD_RECORD_REQ
+message S2SAddRecordReq
+{
+	uint64 playerid = 1;		// 玩家ID
+	uint64 time = 2;			// 有效时间
+	uint32 type = 3;			// 记录类型
+	PBRecordData pbrecord = 4;	// 营地记录
+}
+
+// 查询记录
+// S2S_QUERY_RECORD_REQ
+message S2SQueryRecordReq
+{
+	uint64 playerid = 1;		// 玩家ID
+	uint32 type = 2;			// 记录类型
+}
+
+// 纪录上线逻辑
+// S2S_ONLINE_RECORD_REQ
+message S2SOnlineRecordReq
+{
+	uint64 playerid = 1;		// 玩家ID
+	uint32 type = 2;			// 记录类型
+}
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+
+// 增加死亡记录
+// S2S_ADD_DEAD_RECORD_REQ
+message S2SAddDeadRecordReq
+{
+	uint64 playerid = 1;			// 玩家ID
+	PBRecordData pbdeadrecord = 2;	// 死亡记录
+}
+
+// 查询死亡记录
+// S2S_QUERY_DEAD_RECORD_REQ
+message S2SQueryDeadRecordReq
+{
+	uint64 playerid = 1;			// 玩家ID
+	uint64 maxid = 2;				// 最大的记录id
+}
+
+// 死亡记录返回
+// S2S_QUERY_DEAD_RECORD_ACK
+message S2SQueryDeadRecordAck
+{
+	uint64 playerid = 1;			// 玩家ID
+	repeated PBRecordData deadrecord = 2;	// 死亡记录
+}
+
+// 添加生平事件
+// S2S_ADD_LIFE_EVENT_REQ
+message S2SAddLifeEventReq
+{
+	uint64 playerid = 1;			// 玩家ID
+	uint64 uuid = 2;				// 英雄ID
+	uint64 time = 3;				// 时间
+	uint32 eventid = 4;				// 事件ID
+}
+
+// 添加生平事件
+// S2S_DEL_LIFE_EVENT_REQ
+message S2SDelLifeEventReq
+{
+	uint64 playerid = 1;			// 玩家ID
+	uint64 uuid = 2;				// 英雄ID
+}
+
+// 查询生平事件
+// S2S_QUERY_LIFE_EVENT_REQ
+message S2SQueryLifeEventReq
+{
+	uint64 playerid = 1;			// 玩家ID
+	uint64 uuid = 2;				// 英雄ID
+}
+
