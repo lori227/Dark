@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="KFConfig.h" />
+    <ClInclude Include="KFSetting.h" />
+    <ClInclude Include="KFOptionSetting.h">
+      <Filter>Option</Filter>
+    </ClInclude>
+    <ClInclude Include="KFItemConfig.hpp">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="KFItemSetting.hpp">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="KFRaceConfig.hpp">
+      <Filter>Hero</Filter>
+    </ClInclude>
+    <ClInclude Include="KFCharacterConfig.hpp">
+      <Filter>Hero</Filter>
+    </ClInclude>
+    <ClInclude Include="KFBackGroundConfig.hpp">
+      <Filter>Hero</Filter>
+    </ClInclude>
+    <ClInclude Include="KFHeroAttrConfig.hpp">
+      <Filter>Hero</Filter>
+    </ClInclude>
+    <ClInclude Include="KFProfessionConfig.hpp">
+      <Filter>Hero</Filter>
+    </ClInclude>
+    <ClInclude Include="KFSkillConfig.hpp">
+      <Filter>Hero</Filter>
+    </ClInclude>
+    <ClInclude Include="KFWeightConfig.hpp">
+      <Filter>Weight</Filter>
+    </ClInclude>
+    <ClInclude Include="KFDivisorConfig.hpp">
+      <Filter>Hero</Filter>
+    </ClInclude>
+    <ClInclude Include="KFLevelConfig.hpp">
+      <Filter>Hero</Filter>
+    </ClInclude>
+    <ClInclude Include="KFItemTypeConfig.hpp">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="KFChancelConfig.hpp">
+      <Filter>Hero</Filter>
+    </ClInclude>
+    <ClInclude Include="KFTransferConfig.hpp">
+      <Filter>Hero</Filter>
+    </ClInclude>
+    <ClInclude Include="KFMatchConfig.hpp">
+      <Filter>Match</Filter>
+    </ClInclude>
+    <ClInclude Include="KFExploreConfig.hpp">
+      <Filter>Explore</Filter>
+    </ClInclude>
+    <ClInclude Include="KFChapterConfig.hpp">
+      <Filter>GamePlay</Filter>
+    </ClInclude>
+    <ClInclude Include="KFRecordConfig.hpp">
+      <Filter>Record</Filter>
+    </ClInclude>
+    <ClInclude Include="KFPVEConfig.hpp">
+      <Filter>Explore</Filter>
+    </ClInclude>
+    <ClInclude Include="KFFoodConsumeConfig.hpp">
+      <Filter>Explore</Filter>
+    </ClInclude>
+    <ClInclude Include="KFStatusConfig.hpp">
+      <Filter>GamePlay</Filter>
+    </ClInclude>
+    <ClInclude Include="KFDataSetting.h" />
+    <ClInclude Include="KFExecuteData.h" />
+    <ClInclude Include="KFReadSetting.h" />
+    <ClInclude Include="KFRewardConfig.h" />
+    <ClInclude Include="KFCurrencyConfig.hpp">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="KFWeaponAffixConfig.hpp">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="KFWeaponTypeConfig.hpp">
+      <Filter>Item</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Option">
+      <UniqueIdentifier>{af6d59bd-3be2-4bb2-b1a7-d2e2feceabb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item">
+      <UniqueIdentifier>{31a1e7ac-2b36-41a0-b16a-34062e5df8cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hero">
+      <UniqueIdentifier>{a26e2b89-4302-42d3-812d-7e06ca538bf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Weight">
+      <UniqueIdentifier>{1bfbbc11-f30e-4946-b108-02ce8f8382bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Match">
+      <UniqueIdentifier>{b5b19dd8-1b0e-4cfb-9b86-fa248f8737c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Explore">
+      <UniqueIdentifier>{ca3f8859-147d-473b-91c1-15dd1704962a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Record">
+      <UniqueIdentifier>{41187416-d938-46f4-b7ab-e9af3b16692b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlay">
+      <UniqueIdentifier>{1aa7b5d6-2624-4785-bb82-946844880b9e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="KFItemConfig.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="KFItemSetting.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="KFRaceConfig.cpp">
+      <Filter>Hero</Filter>
+    </ClCompile>
+    <ClCompile Include="KFCharacterConfig.cpp">
+      <Filter>Hero</Filter>
+    </ClCompile>
+    <ClCompile Include="KFBackGroundConfig.cpp">
+      <Filter>Hero</Filter>
+    </ClCompile>
+    <ClCompile Include="KFHeroAttrConfig.cpp">
+      <Filter>Hero</Filter>
+    </ClCompile>
+    <ClCompile Include="KFProfessionConfig.cpp">
+      <Filter>Hero</Filter>
+    </ClCompile>
+    <ClCompile Include="KFSkillConfig.cpp">
+      <Filter>Hero</Filter>
+    </ClCompile>
+    <ClCompile Include="KFWeightConfig.cpp">
+      <Filter>Weight</Filter>
+    </ClCompile>
+    <ClCompile Include="KFDivisorConfig.cpp">
+      <Filter>Hero</Filter>
+    </ClCompile>
+    <ClCompile Include="KFLevelConfig.cpp">
+      <Filter>Hero</Filter>
+    </ClCompile>
+    <ClCompile Include="KFItemTypeConfig.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="KFChancelConfig.cpp">
+      <Filter>Hero</Filter>
+    </ClCompile>
+    <ClCompile Include="KFTransferConfig.cpp">
+      <Filter>Hero</Filter>
+    </ClCompile>
+    <ClCompile Include="KFMatchConfig.cpp">
+      <Filter>Match</Filter>
+    </ClCompile>
+    <ClCompile Include="KFExploreConfig.cpp">
+      <Filter>Explore</Filter>
+    </ClCompile>
+    <ClCompile Include="KFChapterConfig.cpp">
+      <Filter>GamePlay</Filter>
+    </ClCompile>
+    <ClCompile Include="KFRecordConfig.cpp">
+      <Filter>Record</Filter>
+    </ClCompile>
+    <ClCompile Include="KFPVEConfig.cpp">
+      <Filter>Explore</Filter>
+    </ClCompile>
+    <ClCompile Include="KFFoodConsumeConfig.cpp">
+      <Filter>Explore</Filter>
+    </ClCompile>
+    <ClCompile Include="KFStatusConfig.cpp">
+      <Filter>GamePlay</Filter>
+    </ClCompile>
+    <ClCompile Include="KFCurrencyConfig.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="KFWeaponAffixConfig.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="KFWeaponTypeConfig.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

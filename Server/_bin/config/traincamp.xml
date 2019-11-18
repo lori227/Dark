@@ -1,6 +1,0 @@
-<root version="00000">
-	<item Id="1" Count="5" TotalTime="900" CdTime="10" AddExp="50"/>
-	<item Id="2" Count="6" TotalTime="900" CdTime="10" AddExp="60"/>
-	<item Id="3" Count="7" TotalTime="900" CdTime="10" AddExp="70"/>
-	<item Id="4" Count="8" TotalTime="900" CdTime="10" AddExp="80"/>
-</root>

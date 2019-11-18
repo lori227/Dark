@@ -1,5 +1,0 @@
-<root version="00000">
-	<item Id="1100" TransferId="1101|1102" Level="10" Advantage="10001|10002" Cost="[{&quot;money&quot;:&quot;100&quot;}]"/>
-	<item Id="1101" TransferId="1103" Level="20" Advantage="10001|10002" Cost="[{&quot;money&quot;:&quot;100&quot;}]"/>
-	<item Id="1102" TransferId="1104" Level="20" Advantage="10001|10002" Cost="[{&quot;money&quot;:&quot;100&quot;}]"/>
-</root>

@@ -1,5 +1,0 @@
-<root version="00000">
-	<item Id="1" Count="6"/>
-	<item Id="2" Count="6" Cost="[{&quot;recruitcount&quot;:&quot;1&quot;}]"/>
-	<item Id="3" Count="6" Cost="[{&quot;money&quot;:&quot;1000&quot;}]"/>
-</root>

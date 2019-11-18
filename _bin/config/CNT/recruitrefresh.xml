@@ -1,0 +1,5 @@
+<root version="973">
+	<item Id="1" Count="6" Clear="0" Display="0" Cost="" Generate="[{&quot;recruit&quot;:{&quot;hero-generateid&quot;:&quot;4100001&quot;}}]" />
+	<item Id="2" Count="6" Clear="1" Display="31103" Cost="[{&quot;recruitcount&quot;:&quot;1&quot;}]" Generate="[{&quot;recruit&quot;:{&quot;usecost&quot;:&quot;1&quot;,&quot;hero-generateid&quot;:&quot;4100001&quot;}}]" />
+	<item Id="3" Count="6" Clear="1" Display="31103" Cost="[{&quot;money&quot;:&quot;1000&quot;}]" Generate="[{&quot;recruit&quot;:{&quot;usecost&quot;:&quot;1&quot;,&quot;hero-generateid&quot;:&quot;4100001&quot;}}]" />
+</root>

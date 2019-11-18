@@ -1,4 +1,0 @@
-<root version="00000">
-	<item Id="1" Record="camprecord" NewRecord="newcamprecord" OnlineTime="onlinecamptime" Notice="100" LoginUpdate="1"/>
-	<item Id="2" Record="dailyrecord" NewRecord="newdailyrecord" OnlineTime="onlinedailytime" Notice="101" LoginUpdate="1"/>
-</root>

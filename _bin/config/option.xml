@@ -1,0 +1,14 @@
+<root version="564">
+	<item Name="disconnettime" Key="" Value="1000" Channel="0" Service="0" />
+	<item Name="playernamelength" Key="" Value="40" Channel="0" Service="0" />
+	<item Name="recruitrefreshtime" Key="" Value="0.4" Channel="0" Service="0" />
+	<item Name="recruittime" Key="" Value="0.4" Channel="0" Service="0" />
+	<item Name="transfertime" Key="" Value="0.4" Channel="0" Service="0" />
+	<item Name="trainingfasttime" Key="" Value="0.4" Channel="0" Service="0" />
+	<item Name="trainingempty" Key="" Value="0" Channel="0" Service="0" />
+	<item Name="battlesecondconfirmationtime" Key="" Value="0.4" Channel="0" Service="0" />
+	<item Name="carryfoodshortage" Key="" Value="10" Channel="0" Service="0" />
+	<item Name="foodshortageinexplore" Key="" Value="10" Channel="0" Service="0" />
+	<item Name="signinresettime" Key="" Value="1" Channel="0" Service="0" />
+	<item Name="dailyresettime" Key="" Value="1" Channel="0" Service="0" />
+</root>

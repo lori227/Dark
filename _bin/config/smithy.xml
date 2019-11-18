@@ -1,0 +1,22 @@
+<root version="790">
+	<item Id="1" ItemId="1900004" CdTime="10" AddNum="10" CollectMax="700" StoreMax="7200" MakeMax="10" />
+	<item Id="2" ItemId="1900004" CdTime="10" AddNum="11" CollectMax="800" StoreMax="7920" MakeMax="10" />
+	<item Id="3" ItemId="1900004" CdTime="10" AddNum="12" CollectMax="850" StoreMax="8640" MakeMax="10" />
+	<item Id="4" ItemId="1900004" CdTime="10" AddNum="13" CollectMax="950" StoreMax="9360" MakeMax="10" />
+	<item Id="5" ItemId="1900004" CdTime="10" AddNum="14" CollectMax="1000" StoreMax="10080" MakeMax="10" />
+	<item Id="6" ItemId="1900004" CdTime="10" AddNum="15" CollectMax="1100" StoreMax="10800" MakeMax="10" />
+	<item Id="7" ItemId="1900004" CdTime="10" AddNum="16" CollectMax="1150" StoreMax="11520" MakeMax="10" />
+	<item Id="8" ItemId="1900004" CdTime="10" AddNum="17" CollectMax="1200" StoreMax="12240" MakeMax="10" />
+	<item Id="9" ItemId="1900004" CdTime="10" AddNum="18" CollectMax="1300" StoreMax="12960" MakeMax="10" />
+	<item Id="10" ItemId="1900004" CdTime="10" AddNum="20" CollectMax="1450" StoreMax="14400" MakeMax="10" />
+	<item Id="11" ItemId="1900004" CdTime="10" AddNum="22" CollectMax="1600" StoreMax="15840" MakeMax="10" />
+	<item Id="12" ItemId="1900004" CdTime="10" AddNum="24" CollectMax="1750" StoreMax="17280" MakeMax="10" />
+	<item Id="13" ItemId="1900004" CdTime="10" AddNum="26" CollectMax="1850" StoreMax="18720" MakeMax="10" />
+	<item Id="14" ItemId="1900004" CdTime="10" AddNum="28" CollectMax="2000" StoreMax="20160" MakeMax="10" />
+	<item Id="15" ItemId="1900004" CdTime="10" AddNum="30" CollectMax="2150" StoreMax="21600" MakeMax="10" />
+	<item Id="16" ItemId="1900004" CdTime="10" AddNum="32" CollectMax="2300" StoreMax="23040" MakeMax="10" />
+	<item Id="17" ItemId="1900004" CdTime="10" AddNum="34" CollectMax="2450" StoreMax="24480" MakeMax="10" />
+	<item Id="18" ItemId="1900004" CdTime="10" AddNum="36" CollectMax="2600" StoreMax="25920" MakeMax="10" />
+	<item Id="19" ItemId="1900004" CdTime="10" AddNum="38" CollectMax="2750" StoreMax="27360" MakeMax="10" />
+	<item Id="20" ItemId="1900004" CdTime="10" AddNum="40" CollectMax="2900" StoreMax="28800" MakeMax="10" />
+</root>

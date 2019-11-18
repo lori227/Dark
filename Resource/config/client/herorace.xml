@@ -1,5 +1,0 @@
-<root version="00000">
-	<item Id_="1" Id="1601" PhyleName="CHARACTER_BASIC_PHYIE_ORC" PhyleInfo="CHARACTER_BASIC_PHYIE_ORC_INFO" BoothResource="Orc_booth_1601" BackgroundImage="Orc_Bg_1601"/>
-	<item Id_="2" Id="1602" PhyleName="CHARACTER_BASIC_PHYIE_HUMAN" PhyleInfo="CHARACTER_BASIC_PHYIE_HUMAN_INFO" BoothResource="Human_booth_1602" BackgroundImage="Human_Bg_1602"/>
-	<item Id_="3" Id="1603" PhyleName="CHARACTER_BASIC_PHYIE_ELF" PhyleInfo="CHARACTER_BASIC_PHYIE_ELF_INFO" BoothResource="Elf_booth_1603" BackgroundImage="Elf_Bg_1603"/>
-</root>

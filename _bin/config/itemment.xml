@@ -1,0 +1,7 @@
+<root version="789">
+	<item Name="maxitemcount" Key="" Value="10" Channel="0" Service="0" />
+	<item Name="maxstoragecount" Key="" Value="999" Channel="0" Service="0" />
+	<item Name="useitemindex" Key="" Value="1" Channel="0" Service="0" />
+	<item Name="fooditemid" Key="" Value="1000017" Channel="0" Service="0" />
+	<item Name="weaponalarm" Key="" Value="0.2" Channel="0" Service="0" />
+</root>

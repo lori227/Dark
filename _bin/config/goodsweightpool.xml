@@ -1,0 +1,8 @@
+<root version="335">
+	<item Id="5010001" Value="1001140" Weight="10" />
+	<item Id="5010001" Value="1001150" Weight="20" />
+	<item Id="5010002" Value="1001160" Weight="10" />
+	<item Id="5010003" Value="1001140" Weight="10" />
+	<item Id="5010003" Value="1001150" Weight="20" />
+	<item Id="5010003" Value="1001160" Weight="10" />
+</root>

@@ -1,0 +1,22 @@
+<root version="678">
+	<item Id="1" Item="1900003" MaxNum="99999" CdTime="600" AddNum="8" ConsumeNum="1" AddHp="1" Count="4" Money="[{&quot;money&quot;:&quot;1000&quot;}]" />
+	<item Id="2" Item="1900003" MaxNum="99999" CdTime="600" AddNum="9" ConsumeNum="1" AddHp="1" Count="4" Money="[{&quot;money&quot;:&quot;1000&quot;}]" />
+	<item Id="3" Item="1900003" MaxNum="99999" CdTime="600" AddNum="10" ConsumeNum="1" AddHp="1" Count="4" Money="[{&quot;money&quot;:&quot;1000&quot;}]" />
+	<item Id="4" Item="1900003" MaxNum="99999" CdTime="600" AddNum="11" ConsumeNum="1" AddHp="1" Count="4" Money="[{&quot;money&quot;:&quot;1000&quot;}]" />
+	<item Id="5" Item="1900003" MaxNum="99999" CdTime="600" AddNum="12" ConsumeNum="1" AddHp="1" Count="5" Money="[{&quot;money&quot;:&quot;1000&quot;}]" />
+	<item Id="6" Item="1900003" MaxNum="99999" CdTime="600" AddNum="13" ConsumeNum="1" AddHp="1" Count="5" Money="[{&quot;money&quot;:&quot;1000&quot;}]" />
+	<item Id="7" Item="1900003" MaxNum="99999" CdTime="600" AddNum="14" ConsumeNum="1" AddHp="1" Count="5" Money="[{&quot;money&quot;:&quot;1000&quot;}]" />
+	<item Id="8" Item="1900003" MaxNum="99999" CdTime="600" AddNum="15" ConsumeNum="1" AddHp="1" Count="5" Money="[{&quot;money&quot;:&quot;1000&quot;}]" />
+	<item Id="9" Item="1900003" MaxNum="99999" CdTime="600" AddNum="16" ConsumeNum="1" AddHp="1" Count="5" Money="[{&quot;money&quot;:&quot;1000&quot;}]" />
+	<item Id="10" Item="1900003" MaxNum="99999" CdTime="600" AddNum="17" ConsumeNum="1" AddHp="1" Count="6" Money="[{&quot;money&quot;:&quot;1000&quot;}]" />
+	<item Id="11" Item="1900003" MaxNum="99999" CdTime="600" AddNum="18" ConsumeNum="1" AddHp="1" Count="6" Money="[{&quot;money&quot;:&quot;1000&quot;}]" />
+	<item Id="12" Item="1900003" MaxNum="99999" CdTime="600" AddNum="19" ConsumeNum="1" AddHp="1" Count="6" Money="[{&quot;money&quot;:&quot;1000&quot;}]" />
+	<item Id="13" Item="1900003" MaxNum="99999" CdTime="600" AddNum="20" ConsumeNum="1" AddHp="1" Count="6" Money="[{&quot;money&quot;:&quot;1000&quot;}]" />
+	<item Id="14" Item="1900003" MaxNum="99999" CdTime="600" AddNum="21" ConsumeNum="1" AddHp="1" Count="6" Money="[{&quot;money&quot;:&quot;1000&quot;}]" />
+	<item Id="15" Item="1900003" MaxNum="99999" CdTime="600" AddNum="22" ConsumeNum="1" AddHp="1" Count="7" Money="[{&quot;money&quot;:&quot;1000&quot;}]" />
+	<item Id="16" Item="1900003" MaxNum="99999" CdTime="600" AddNum="23" ConsumeNum="1" AddHp="1" Count="7" Money="[{&quot;money&quot;:&quot;1000&quot;}]" />
+	<item Id="17" Item="1900003" MaxNum="99999" CdTime="600" AddNum="24" ConsumeNum="1" AddHp="1" Count="7" Money="[{&quot;money&quot;:&quot;1000&quot;}]" />
+	<item Id="18" Item="1900003" MaxNum="99999" CdTime="600" AddNum="25" ConsumeNum="1" AddHp="1" Count="7" Money="[{&quot;money&quot;:&quot;1000&quot;}]" />
+	<item Id="19" Item="1900003" MaxNum="99999" CdTime="600" AddNum="26" ConsumeNum="1" AddHp="1" Count="7" Money="[{&quot;money&quot;:&quot;1000&quot;}]" />
+	<item Id="20" Item="1900003" MaxNum="99999" CdTime="600" AddNum="27" ConsumeNum="1" AddHp="1" Count="8" Money="[{&quot;money&quot;:&quot;1000&quot;}]" />
+</root>

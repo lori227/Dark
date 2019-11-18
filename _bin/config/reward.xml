@@ -1,0 +1,6 @@
+<root version="620">
+	<item Id="1001" Type="1" Code="1" Template="{{&quot;money&quot;:&quot;{}&quot;}}" />
+	<item Id="1002" Type="1" Code="2" Template="{{&quot;diamond&quot;:&quot;{}&quot;}}" />
+	<item Id="1003" Type="1" Code="3" Template="{{&quot;supplies&quot;:&quot;{}&quot;}}" />
+	<item Id="2000" Type="2" Code="0" Template="{{&quot;item&quot;:{{&quot;id&quot;:&quot;{}&quot;,&quot;count&quot;:&quot;{}&quot;}}}}" />
+</root>

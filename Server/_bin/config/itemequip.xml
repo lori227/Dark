@@ -1,7 +1,0 @@
-<root version="00000">
-	<item Id="1000009" EquipType="1" Durability="10" FixedAttr="[{&quot;maxhp&quot;:&quot;10%&quot;},{&quot;atk&quot;:&quot;10&quot;}]" Skill="[&quot;160012&quot;,&quot;160013&quot;]" WeaponType="1801"/>
-	<item Id="1000010" EquipType="1" Durability="20" FixedAttr="[{&quot;maxhp&quot;:&quot;10%&quot;},{&quot;atk&quot;:&quot;10&quot;}]" Skill="[&quot;160014&quot;]" WeaponType="1802"/>
-	<item Id="1000011" EquipType="1" Durability="50" FixedAttr="[{&quot;maxhp&quot;:&quot;10%&quot;},{&quot;atk&quot;:&quot;10&quot;}]" Skill="[&quot;160015&quot;]" WeaponType="1803"/>
-	<item Id="1000012" EquipType="1" Durability="50" FixedAttr="[{&quot;maxhp&quot;:&quot;10%&quot;},{&quot;atk&quot;:&quot;10&quot;}]" Skill="[&quot;160015&quot;]" WeaponType="1804"/>
-	<item Id="1000013" EquipType="1" Durability="50" FixedAttr="[{&quot;maxhp&quot;:&quot;10%&quot;},{&quot;atk&quot;:&quot;10&quot;}]" Skill="[&quot;160017&quot;]" WeaponType="1805"/>
-</root>

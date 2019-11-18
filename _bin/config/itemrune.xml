@@ -1,0 +1,17 @@
+<root version="625">
+	<item Id="2000001" BluePrint="Rune_HalfHealthOnly" SkillId="120000" />
+	<item Id="2000002" BluePrint="Rune_FullHealthOnly" SkillId="120001" />
+	<item Id="2000003" BluePrint="Rune_HumanSoldierOnly" SkillId="120003" />
+	<item Id="2000004" BluePrint="Rune_OrcSoldierOnly" SkillId="120004" />
+	<item Id="2000005" BluePrint="Rune_ElfArcherOnly" SkillId="120005" />
+	<item Id="2000006" BluePrint="Rune_LuckiestOnly" SkillId="120006" />
+	<item Id="2000007" BluePrint="Rune_TalentMostOnly" SkillId="120014" />
+	<item Id="2000008" BluePrint="Rune_SpeedMostOnly" SkillId="120015" />
+	<item Id="2000009" BluePrint="Rune_HalfHealthOnly" SkillId="120016" />
+	<item Id="2000010" BluePrint="Rune_FullHealthOnly" SkillId="120019" />
+	<item Id="2000011" BluePrint="Rune_HumanSoldierOnly" SkillId="120020" />
+	<item Id="2000012" BluePrint="Rune_OrcSoldierOnly" SkillId="120023" />
+	<item Id="2000013" BluePrint="Rune_ElfArcherOnly" SkillId="120026" />
+	<item Id="2000014" BluePrint="Rune_LuckiestOnly" SkillId="120027" />
+	<item Id="2000015" BluePrint="Rune_TalentMostOnly" SkillId="120028" />
+</root>

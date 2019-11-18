@@ -1,0 +1,11 @@
+<root version="24">
+	<item Id="1" ActiveSkill="4170001" InnateSkill="4070001|4070002" />
+	<item Id="2" ActiveSkill="4170002" InnateSkill="4070001|4070002" />
+	<item Id="3" ActiveSkill="4170003" InnateSkill="4070001|4070002" />
+	<item Id="4" ActiveSkill="4170004" InnateSkill="4070001|4070002" />
+	<item Id="5" ActiveSkill="4170005" InnateSkill="4070001|4070002" />
+	<item Id="6" ActiveSkill="4170006" InnateSkill="4070001|4070002" />
+	<item Id="7" ActiveSkill="4170007" InnateSkill="4070001|4070002" />
+	<item Id="8" ActiveSkill="4170008" InnateSkill="4070001|4070002" />
+	<item Id="9" ActiveSkill="4170009" InnateSkill="4070001|4070002" />
+</root>

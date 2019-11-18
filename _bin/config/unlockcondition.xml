@@ -1,0 +1,11 @@
+<root version="795">
+	<item Id="40001001" Condition="pvevictory" DoneType=">=" DoneValue="1" Limits="id=400001" />
+	<item Id="40001002" Condition="pvevictory" DoneType=">=" DoneValue="1" Limits="id=400002" />
+	<item Id="40001003" Condition="pvevictory" DoneType=">=" DoneValue="1" Limits="id=400003" />
+	<item Id="40001004" Condition="pvevictory" DoneType=">=" DoneValue="1" Limits="id=400004" />
+	<item Id="40001005" Condition="pvevictory" DoneType=">=" DoneValue="1" Limits="id=400005" />
+	<item Id="40001006" Condition="pvevictory" DoneType=">=" DoneValue="1" Limits="id=400006" />
+	<item Id="40002001" Condition="explorevictory" DoneType=">=" DoneValue="1" Limits="id=10086" />
+	<item Id="40003001" Condition="buildlevel" DoneType=">=" DoneValue="99" Limits="id=202" />
+	<item Id="40000000" Condition="totalsignin" DoneType=">=" DoneValue="1" Limits="" />
+</root>
