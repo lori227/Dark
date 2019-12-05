@@ -14,6 +14,7 @@ namespace KFrame
         __REGISTER_REMOVE_ELEMENT__( __STRING__( hero ), &KFHeroModule::RemoveHeroElement );
         __REGISTER_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( exp ), &KFHeroModule::OnHeroExpUpdate );
 
+        __REGISTER_EXECUTE__( __STRING__( maxherocount ), &KFHeroModule::OnExecuteTechnologyMaxHeroCount );
         ////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_LOCK_HERO_REQ, &KFHeroModule::HandleLockHeroReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_REMOVE_HERO_REQ, &KFHeroModule::HandleRemoveHeroReq );
@@ -29,6 +30,7 @@ namespace KFrame
         __UN_REMOVE_ELEMENT__( __STRING__( hero ) );
         __UN_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( exp ) );
 
+        __UN_EXECUTE__( __STRING__( maxherocount ) );
         /////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_LOCK_HERO_REQ );
         __UN_MESSAGE__( KFMsg::MSG_REMOVE_HERO_REQ );
@@ -39,18 +41,14 @@ namespace KFrame
 
     __KF_ENTER_PLAYER_FUNCTION__( KFHeroModule::OnEnterHeroModule )
     {
+        auto& version = KFLevelConfig::Instance()->GetVersion();		// 配置版本号
         auto levelversion = player->Get<std::string>( __STRING__( levelversion ) );
-        auto version = KFLevelConfig::Instance()->GetVersion();		// 配置版本号
-
-        if ( levelversion != version )
+        if ( levelversion == version )
         {
-            CheckHeroLevel( player );
-            player->Set( __STRING__( levelversion ), version );
+            return;
         }
-    }
+        player->Set( __STRING__( levelversion ), version );
 
-    void KFHeroModule::CheckHeroLevel( KFEntity* player )
-    {
         auto kfherorecord = player->Find( __STRING__( hero ) );
         for ( auto kfhero = kfherorecord->First(); kfhero != nullptr; kfhero = kfherorecord->Next() )
         {
@@ -100,7 +98,7 @@ namespace KFrame
         // 创建新的英雄
         auto generateid = kfgenerate->CalcUseValue( nullptr, 1.0f );
         auto kfhero = _kf_kernel->CreateObject( kfparent->_data_setting );
-        if ( _kf_generate->GeneratePlayerHero( player, kfhero, generateid, false, function, line ) == nullptr )
+        if ( _kf_generate->GeneratePlayerHero( player, kfhero, generateid ) == nullptr )
         {
             _kf_kernel->ReleaseObject( kfhero );
             return std::make_tuple( KFDataDefine::Show_None, nullptr );
@@ -119,23 +117,28 @@ namespace KFrame
     {
         if ( !kfelement->IsObject() )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object!", kfelement->_data_name );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object!", kfelement->_data_name );
+            return;
         }
         auto kfelementobject = reinterpret_cast<KFElementObject*>( kfelement );
 
-        // 已经存在的英雄
         auto kfuuid = kfelementobject->_values.Find( __STRING__( uuid ) );
         if ( kfuuid == nullptr )
         {
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] uuid not exist!", kfelement->_data_name );
             return;
         }
 
         auto uuid = kfuuid->CalcUseValue( nullptr, 1.0f );
-        auto ok = player->RemoveData( kfparent, uuid );
-        if ( ok )
+        auto kfhero = kfparent->Find( uuid );
+        if ( kfhero == nullptr )
         {
-            __LOG_INFO__( "player=[{}] RemoveHeroElement=[{}]", player->GetKeyID(), uuid );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] uuid[{}] hero not exist!", kfelement->_data_name, uuid );
+            return;
         }
+
+        // 更新数据
+        player->UpdateElementToData( kfelementobject, kfhero, multiple );
     }
 
     __KF_UPDATE_DATA_FUNCTION__( KFHeroModule::OnHeroExpUpdate )
@@ -268,6 +271,26 @@ namespace KFrame
 
     //////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////
+    __KF_EXECUTE_FUNCTION__( KFHeroModule::OnExecuteTechnologyMaxHeroCount )
+    {
+        if ( executedata->_param_list._params.size() < 1u )
+        {
+            return false;
+        }
+
+        auto count = executedata->_param_list._params[ 0 ]->_int_value;
+        player->UpdateData( __STRING__( effect ), __STRING__( maxherocount ), KFEnum::Add, count );
+        return true;
+    }
+
+    bool KFHeroModule::IsFull( KFEntity* player, KFData* kfherorecord )
+    {
+        auto count = kfherorecord->Size();
+        auto maxcount = kfherorecord->MaxSize();
+        maxcount += player->Get<uint32>( __STRING__( effect ), __STRING__( maxherocount ) );
+        return count >= maxcount;
+    }
+
     uint32 KFHeroModule::AddHeroData( KFEntity* player, KFData* kfhero, const std::string& name, int32 value )
     {
         if ( name == __STRING__( hp ) )

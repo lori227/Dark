@@ -62,6 +62,9 @@ namespace KFrame
         kfsetting->_done_time = xmlnode.GetUInt32( "CompleteTime" );
         kfsetting->_str_cost = xmlnode.GetString( "PickupCost" );
 
+        auto strcondition = xmlnode.GetString( "Condition" );
+        kfsetting->_conditions.Parse( strcondition, kfsetting->_id, __FUNC_LINE__ );
+
         auto timeid = xmlnode.GetUInt32( "RefreshTime" );
         auto kfrefreshdata = _refresh_data_list.Create( timeid );
         kfrefreshdata->_refresh_list.push_back( kfsetting );
@@ -69,20 +72,14 @@ namespace KFrame
 
     void KFTaskChainRefreshConfig::LoadAllComplete()
     {
-        for ( auto& iter : _refresh_data_list._objects )
-        {
-            auto kfsetting = iter.second;
-            kfsetting->_time_setting = KFTimeConfig::Instance()->FindSetting( iter.first );
-            if ( kfsetting->_time_setting == nullptr )
-            {
-                __LOG_ERROR__( "timeid=[{}] can't find setting!", iter.first );
-            }
-        }
-
         for ( auto& iter : _settings._objects )
         {
             auto kfsetting = iter.second;
-            KFRewardConfig::Instance()->ParseRewards( kfsetting->_str_cost, kfsetting->_receive_cost );
+            auto ok = KFRewardConfig::Instance()->ParseRewards( kfsetting->_str_cost, kfsetting->_receive_cost );
+            if ( !ok )
+            {
+                __LOG_ERROR__( "cost=[{}] parse failed!", kfsetting->_str_cost );
+            }
         }
     }
 }

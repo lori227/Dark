@@ -10,13 +10,13 @@ namespace KFrame
         kfsetting->_complete_type = xmlnode.GetUInt32( "CompleteMode" );
 
         auto strprecondition = xmlnode.GetString( "PreCondition" );
-        kfsetting->_pre_condition.Parse( strprecondition, 0, __FUNC_LINE__ );
+        kfsetting->_pre_condition_type = KFReadSetting::ParseConditionList( strprecondition, kfsetting->_pre_condition );
 
         auto strplacecondition = xmlnode.GetString( "PlaceCondition" );
         kfsetting->_place_condition.Parse( strplacecondition, 0, __FUNC_LINE__ );
 
         auto strcompletecondition = xmlnode.GetString( "CompleteCondition" );
-        kfsetting->_condition_type = KFReadSetting::ParseConditionList( strcompletecondition, kfsetting->_complete_condition );
+        kfsetting->_complete_condition_type = KFReadSetting::ParseConditionList( strcompletecondition, kfsetting->_complete_condition );
 
         KFReadSetting::ReadExecuteData( xmlnode, &kfsetting->_execute_data );
     }

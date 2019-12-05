@@ -1,5 +1,6 @@
 ﻿#include "KFExploreData.hpp"
 #include "KFHero/KFHeroInterface.h"
+#include "KFItem/KFItemInterface.h"
 
 namespace KFrame
 {
@@ -15,20 +16,20 @@ namespace KFrame
         return this;
     }
 
-    KFMsg::PBBalanceItemServer* KFExploreRecord::FindItem( const std::string& name, uint32 key )
+    KFMsg::PBBalanceItemServer* KFExploreRecord::FindItem( uint32 id, uint64 uuid )
     {
         for ( auto i = 0; i < _data.itemdata_size(); ++i )
         {
             auto pbitem = _data.mutable_itemdata( i );
-            if ( pbitem->name() == name && pbitem->key() == key )
+            if ( pbitem->id() == id && pbitem->uuid() == uuid )
             {
                 return pbitem;
             }
         }
 
         auto pbitem = _data.add_itemdata();
-        pbitem->set_name( name );
-        pbitem->set_key( key );
+        pbitem->set_id( id );
+        pbitem->set_uuid( uuid );
         return pbitem;
     }
 
@@ -46,6 +47,38 @@ namespace KFrame
         return nullptr;
     }
 
+    KFMsg::PBBalanceCurrency* KFExploreRecord::FindCurrency( const std::string& name )
+    {
+        for ( auto i = 0; i < _data.currencydata_size(); ++i )
+        {
+            auto pbcurrency = _data.mutable_currencydata( i );
+            if ( pbcurrency->name() == name )
+            {
+                return pbcurrency;
+            }
+        }
+
+        auto pbcurrency = _data.add_currencydata();
+        pbcurrency->set_name( name );
+        return pbcurrency;
+    }
+
+
+    KFMsg::PBExploreNpcData* KFExploreRecord::FindNpcData( const std::string& key )
+    {
+        auto npcdatalist = _data.mutable_exploredata()->mutable_npcdata();
+        auto iter = npcdatalist->find( key );
+        if ( iter != npcdatalist->end() )
+        {
+            return &iter->second;
+        }
+
+        auto& npcdata = ( *npcdatalist )[ key ];
+        return &npcdata;
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     void KFExploreRecord::BalanceHeroBeginData( KFEntity* player )
     {
         auto kfherorecord = player->Find( __STRING__( hero ) );
@@ -81,6 +114,13 @@ namespace KFrame
             {
                 pbattributes[ kfchild->_data_setting->_name ] = kfchild->Get<uint32>();
             }
+
+            // 计算武器
+            auto kfweapon = kfhero->Find( __STRING__( weapon ) );
+            if ( kfweapon != nullptr && kfweapon->GetKeyID() != 0u )
+            {
+                BalanceItemData( kfweapon, StartType );
+            }
         }
     }
 
@@ -106,6 +146,13 @@ namespace KFrame
                         pbattributes[ kfchild->_data_setting->_name ] = kfchild->Get<uint32>();
                     }
                 }
+
+                // 计算武器
+                auto kfweapon = kfhero->Find( __STRING__( weapon ) );
+                if ( kfweapon != nullptr && kfweapon->GetKeyID() != 0u )
+                {
+                    BalanceItemData( kfweapon, EndType );
+                }
             }
             else
             {
@@ -113,54 +160,126 @@ namespace KFrame
             }
         }
     }
-
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     void KFExploreRecord::BalanceItemBeginData( KFEntity* player )
     {
-        // 所有货币
-        for ( auto iter : KFCurrencyConfig::Instance()->_settings._objects )
-        {
-            auto kfsetting = iter.second;
-            auto pbcurrency = FindItem( kfsetting->_name, 0u );
-            pbcurrency->set_beginvalue( player->Get<uint32>( kfsetting->_name ) );
-        }
-
         // 道具
-        auto kfitemrecord = player->Find( __STRING__( item ) );
-        for ( auto kfitem = kfitemrecord->First(); kfitem != nullptr; kfitem = kfitemrecord->Next() )
-        {
-            auto count = kfitem->Get<uint32>( __STRING__( count ) );
-            auto itemid = kfitem->Get<uint32>( kfitem->_data_setting->_config_key_name );
-            auto pbitem = FindItem( __STRING__( item ), itemid );
-            pbitem->set_beginvalue( pbitem->beginvalue() + count );
-        }
+        auto kfitemrecord = player->Find( __STRING__( explore ) );
+        BalanceItemRecordData( kfitemrecord, StartType );
+
+        // 武器
+        auto kfweaponrecord = player->Find( __STRING__( weapon ) );
+        BalanceItemRecordData( kfweaponrecord, StartType );
+
+        // other
+        auto kfotherrecord = player->Find( __STRING__( other ) );
+        BalanceItemRecordData( kfotherrecord, StartType );
     }
 
     void KFExploreRecord::BalanceItemEndData( KFEntity* player )
     {
-        // 所有货币
-        for ( auto iter : KFCurrencyConfig::Instance()->_settings._objects )
-        {
-            auto kfsetting = iter.second;
-            auto pbcurrency = FindItem( kfsetting->_name, 0u );
-            pbcurrency->set_endvalue( player->Get<uint32>( kfsetting->_name ) );
-        }
-
         // 道具
-        auto kfitemrecord = player->Find( __STRING__( item ) );
+        auto kfitemrecord = player->Find( __STRING__( explore ) );
+        BalanceItemRecordData( kfitemrecord, EndType );
+
+        // 武器
+        auto kfweaponrecord = player->Find( __STRING__( weapon ) );
+        BalanceItemRecordData( kfweaponrecord, EndType );
+
+        // other
+        auto kfotherrecord = player->Find( __STRING__( other ) );
+        BalanceItemRecordData( kfotherrecord, EndType );
+    }
+
+    void KFExploreRecord::BalanceItemRecordData( KFData* kfitemrecord, uint32 balancetype )
+    {
         for ( auto kfitem = kfitemrecord->First(); kfitem != nullptr; kfitem = kfitemrecord->Next() )
         {
-            auto count = kfitem->Get<uint32>( __STRING__( count ) );
-            auto itemid = kfitem->Get<uint32>( kfitem->_data_setting->_config_key_name );
-            auto pbitem = FindItem( __STRING__( item ), itemid );
-            pbitem->set_endvalue( pbitem->endvalue() + count );
+            // 探索内自动销毁的道具不做统计
+            auto auto_type = _kf_item->GetItemAutoType( kfitem );
+            if ( auto_type == KFMsg::AutoDestory )
+            {
+                continue;
+            }
+
+            BalanceItemData( kfitem, balancetype );
         }
     }
 
-    void KFExploreRecord::BalanceRecord( KFEntity* player, KFMsg::PBBalanceData* pbdata )
+    void KFExploreRecord::BalanceItemData( KFData* kfitem, uint32 balancetype )
+    {
+        auto count = kfitem->Get<uint32>( __STRING__( count ) );
+        auto itemid = kfitem->Get<uint32>( kfitem->_data_setting->_config_key_name );
+        auto kfsetting = KFItemConfig::Instance()->FindSetting( itemid );
+        if ( kfsetting == nullptr )
+        {
+            return;
+        }
+
+        KFMsg::PBBalanceItemServer* pbitem = nullptr;
+        if ( kfsetting->IsOverlay() )
+        {
+            pbitem = FindItem( itemid, 0u );
+        }
+        else
+        {
+            pbitem = FindItem( itemid, kfitem->GetKeyID() );
+        }
+
+        switch ( balancetype )
+        {
+        case StartType:
+            pbitem->set_begincount( pbitem->begincount() + count );
+            break;
+        case EndType:
+            pbitem->set_endcount( pbitem->endcount() + count );
+            break;
+        }
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    void KFExploreRecord::BalanceCurrencyBeginData( KFEntity* player )
+    {
+        // 所有货币
+        for ( auto& iter : KFCurrencyConfig::Instance()->_settings._objects )
+        {
+            auto kfsetting = iter.second;
+            auto pbcurrency = FindCurrency( kfsetting->_name );
+            pbcurrency->set_beginvalue( player->Get<uint32>( kfsetting->_name ) );
+        }
+    }
+
+    void KFExploreRecord::BalanceCurrencyEndData( KFEntity* player )
+    {
+        // 所有货币
+        for ( auto& iter : KFCurrencyConfig::Instance()->_settings._objects )
+        {
+            auto kfsetting = iter.second;
+            auto pbcurrency = FindCurrency( kfsetting->_name );
+            pbcurrency->set_endvalue( player->Get<uint32>( kfsetting->_name ) );
+        }
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    void KFExploreRecord::BalanceRecord( KFMsg::PBBalanceData* pbdata )
     {
         //__LOG_INFO__( "{}", _data.DebugString() );
 
-        // 结算英雄
+        // 英雄
+        BalanceHeroRecord( pbdata );
+
+        // 道具
+        BalanceItemRecord( pbdata );
+
+        // 货币
+        BalanceCurrencyRecord( pbdata );
+
+        //__LOG_INFO__( "{}", pbdata->DebugString() );
+    }
+
+    void KFExploreRecord::BalanceHeroRecord( KFMsg::PBBalanceData* pbdata )
+    {
         for ( auto i = 0; i < _data.herodata_size(); ++i )
         {
             auto pbheroserver = &_data.herodata( i );
@@ -200,35 +319,33 @@ namespace KFrame
                 }
             }
         }
+    }
 
-        // 结算道具
+    void KFExploreRecord::BalanceItemRecord( KFMsg::PBBalanceData* pbdata )
+    {
         for ( auto i = 0; i < _data.itemdata_size(); ++i )
         {
             auto pbitemserver = &_data.itemdata( i );
-            if ( pbitemserver->endvalue() <= pbitemserver->beginvalue() )
+            if ( pbitemserver->endcount() <= pbitemserver->begincount() )
             {
                 continue;
             }
 
             auto pbitemclient = pbdata->add_itemdata();
-            pbitemclient->set_name( pbitemserver->name() );
-            pbitemclient->set_key( pbitemserver->key() );
-            pbitemclient->set_value( pbitemserver->endvalue() - pbitemserver->beginvalue() );
+            pbitemclient->set_id( pbitemserver->id() );
+            pbitemclient->set_uuid( pbitemserver->uuid() );
+            pbitemclient->set_count( pbitemserver->endcount() - pbitemserver->begincount() );
         }
-
-        //__LOG_INFO__( "{}", pbdata->DebugString() );
     }
 
-    KFMsg::PBExploreNpcData* KFExploreRecord::FindNpcData( const std::string& key )
+    void KFExploreRecord::BalanceCurrencyRecord( KFMsg::PBBalanceData* pbdata )
     {
-        auto npcdatalist = _data.mutable_exploredata()->mutable_npcdata();
-        auto iter = npcdatalist->find( key );
-        if ( iter != npcdatalist->end() )
+        for ( auto i = 0; i < _data.currencydata_size(); ++i )
         {
-            return &iter->second;
-        }
+            auto pbcurrencyserver = &_data.currencydata( i );
 
-        auto& npcdata = ( *npcdatalist )[ key ];
-        return &npcdata;
+            auto pbcurrencyclient = pbdata->add_currencydata();
+            pbcurrencyclient->CopyFrom( *pbcurrencyserver );
+        }
     }
 }

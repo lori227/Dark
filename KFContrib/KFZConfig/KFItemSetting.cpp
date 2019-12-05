@@ -36,4 +36,15 @@ namespace KFrame
     {
         return _overlay_count > 1u;
     }
+
+    uint32 KFItemSetting::GetOverlayCount( const std::string& bagname ) const
+    {
+        auto iter = _overlay_count_list.find( bagname );
+        if ( iter == _overlay_count_list.end() )
+        {
+            return _overlay_count;
+        }
+
+        return iter->second;
+    }
 }

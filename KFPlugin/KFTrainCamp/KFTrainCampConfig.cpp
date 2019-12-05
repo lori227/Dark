@@ -1,5 +1,4 @@
 ﻿#include "KFTrainCampConfig.hpp"
-#include "KFZConfig/KFRewardConfig.h"
 
 namespace KFrame
 {

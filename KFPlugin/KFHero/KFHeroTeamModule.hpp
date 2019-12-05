@@ -10,6 +10,7 @@
 ************************************************************************/
 
 #include "KFHeroTeamInterface.h"
+#include "KFOption/KFOptionInterface.h"
 #include "KFKernel/KFKernelInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFDisplay/KFDisplayInterface.h"
@@ -40,6 +41,10 @@ namespace KFrame
 
         // 删除队伍死亡的英雄
         virtual void RemoveTeamDeadHero( KFEntity* player );
+
+        // 扣除队伍英雄的耐久度
+        virtual void DecTeamHeroDurability( KFEntity* player );
+
         ////////////////////////////////////////////////////////////////////////////////
         // 通过uuid查找英雄在队伍位置
         uint32 GetIndexById( KFEntity* player, uint64 uuid );

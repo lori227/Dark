@@ -19,6 +19,7 @@
 #include "KFRecordClient/KFRecordClientInterface.h"
 #include "KFSmithyConfig.hpp"
 #include "KFSmithyWeaponConfig.hpp"
+#include "KFZConfig/KFItemConfig.hpp"
 
 namespace KFrame
 {

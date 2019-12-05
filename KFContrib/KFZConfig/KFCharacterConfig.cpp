@@ -8,19 +8,19 @@ namespace KFrame
         auto strrace = xmlnode.GetString( "RaceLimit", true );
         if ( !strrace.empty() )
         {
-            kfsetting->_race_list = KFUtility::SplitSet< SetUInt32 >( strrace, __SPLIT_STRING__ );
+            KFUtility::SplitSet( kfsetting->_race_list, strrace, __SPLIT_STRING__ );
         }
 
         auto strbackground = xmlnode.GetString( "BackGroundLimit", true );
         if ( !strbackground.empty() )
         {
-            kfsetting->_background_list = KFUtility::SplitSet< SetUInt32 >( strbackground, __SPLIT_STRING__ );
+            KFUtility::SplitSet( kfsetting->_background_list, strbackground, __SPLIT_STRING__ );
         }
 
         auto strprofession = xmlnode.GetString( "ProfessionLimit", true );
         if ( !strprofession.empty() )
         {
-            kfsetting->_profession_list = KFUtility::SplitSet< SetUInt32 >( strprofession, __SPLIT_STRING__ );
+            KFUtility::SplitSet( kfsetting->_profession_list, strprofession, __SPLIT_STRING__ );
         }
     }
     /////////////////////////////////////////////////////////////////////////////////

@@ -14,5 +14,8 @@ namespace KFrame
 
         std::string strelement = xmlnode.GetString( "Money", true );
         kfsetting->_money.Parse( strelement, __FUNC_LINE__ );
+
+        kfsetting->_formual_id = xmlnode.GetUInt32( "FormulaId", true );
+
     }
 }

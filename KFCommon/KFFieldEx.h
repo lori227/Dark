@@ -128,13 +128,39 @@ namespace KFrame
         __STRING_DEFINE__( gift );
         __STRING_DEFINE__( useitem );
         __STRING_DEFINE__( smithymake );
-        __STRING_DEFINE__( itemextend );
         __STRING_DEFINE__( pveid );
         __STRING_DEFINE__( classlv );
         __STRING_DEFINE__( killrace );
         __STRING_DEFINE__( killprofession );
         __STRING_DEFINE__( killweapontype );
         __STRING_DEFINE__( killmovetype );
+        __STRING_DEFINE__( interaction );
+        __STRING_DEFINE__( field );
+        __STRING_DEFINE__( pvevictory );
+        __STRING_DEFINE__( consumemoney );
+        __STRING_DEFINE__( preconditions );
+        __STRING_DEFINE__( exploredrop );
+        __STRING_DEFINE__( technology );
+        __STRING_DEFINE__( unlocklevel );
+        __STRING_DEFINE__( effect );
+        __STRING_DEFINE__( recruitweight );
+        __STRING_DEFINE__( recruitdiscount );
+        __STRING_DEFINE__( recruitprofession );
+        __STRING_DEFINE__( recruitlevel );
+        __STRING_DEFINE__( recruitminlevel );
+        __STRING_DEFINE__( recruitmaxlevel );
+        __STRING_DEFINE__( recruitdivisor );
+        __STRING_DEFINE__( recruitgrowth );
+        __STRING_DEFINE__( mingrowth );
+        __STRING_DEFINE__( maxgrowth );
+        __STRING_DEFINE__( dialogue );
+        __STRING_DEFINE__( clinicaddnum );
+        __STRING_DEFINE__( clinicmaxnum );
+        __STRING_DEFINE__( clinicsubmoneypercent );
+        __STRING_DEFINE__( trainhero );
+        __STRING_DEFINE__( smithyweapon );
+        __STRING_DEFINE__( buildgather );
+        __STRING_DEFINE__( itemextend );
 
     }
 }

@@ -11,7 +11,7 @@ namespace KFrame
         __REGISTER_LEAVE_PLAYER__( &KFGranaryModule::OnLeaveGranaryModule );
         __REGISTER_RECORD_VALUE__( &KFGranaryModule::GetDayGranaryTotalNum );
 
-        __REGISTER_ADD_DATA_2__( __STRING__( build ), KFMsg::WarehouseBuild, &KFGranaryModule::OnAddGranaryBuild );
+        __REGISTER_ADD_DATA_2__( __STRING__( build ), KFMsg::GranaryBuild, &KFGranaryModule::OnAddGranaryBuild );
         __REGISTER_UPDATE_DATA_2__( __STRING__( granary ), __STRING__( num ), &KFGranaryModule::OnItemNumUpdate );
         ////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_GRANARY_GATHER_REQ, &KFGranaryModule::HandleGranaryGatherReq );
@@ -24,7 +24,7 @@ namespace KFrame
         __UN_LEAVE_PLAYER__();
         __UN_RECORD_VALUE__();
 
-        __UN_ADD_DATA_2__( __STRING__( build ), KFMsg::WarehouseBuild );
+        __UN_ADD_DATA_2__( __STRING__( build ), KFMsg::GranaryBuild );
         __UN_UPDATE_DATA_2__( __STRING__( granary ), __STRING__( num ) );
         ////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_GRANARY_GATHER_REQ );
@@ -44,8 +44,7 @@ namespace KFrame
 
     uint32 KFGranaryModule::GetGranaryLevel( KFEntity* player )
     {
-        // 粮仓等级暂时取仓库等级
-        auto kfbuild = player->Find( __STRING__( build ), KFMsg::WarehouseBuild );
+        auto kfbuild = player->Find( __STRING__( build ), KFMsg::GranaryBuild );
         if ( kfbuild == nullptr )
         {
             return 0u;
@@ -56,7 +55,7 @@ namespace KFrame
 
     bool KFGranaryModule::IsGranaryActive( KFEntity* player )
     {
-        auto kfbuild = player->Find( __STRING__( build ), KFMsg::WarehouseBuild );
+        auto kfbuild = player->Find( __STRING__( build ), KFMsg::GranaryBuild );
         return kfbuild != nullptr;
     }
 
@@ -250,6 +249,13 @@ namespace KFrame
 
         // 更新数量
         player->UpdateData( kfgranary, __STRING__( num ), KFEnum::Set, num - canaddcount );
+
+        // 条件更新
+        {
+            auto kfbuildgather = player->Find( __STRING__( buildgather ) );
+            kfbuildgather->Set( __STRING__( id ), itemid );
+            player->UpdateData( kfbuildgather, __STRING__( count ), KFEnum::Add, canaddcount );
+        }
     }
 
     __KF_TIMER_FUNCTION__( KFGranaryModule::OnTimerAddItem )

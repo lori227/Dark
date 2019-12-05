@@ -1,4 +1,4 @@
-<root version="981">
+<root version="1624">
 	<item Id="exploreclean" CallType="3" ParentName="player" DataName="mapid" InitCalc="" TriggerType="3" TriggerCheck="16" TriggerUse="2" TriggerValue="0" UseOperate="3" UseType="0" UseValue="0" />
 	<item Id="pveclean" CallType="3" ParentName="player" DataName="pveid" InitCalc="" TriggerType="3" TriggerCheck="16" TriggerUse="2" TriggerValue="0" UseOperate="3" UseType="0" UseValue="0" />
 	<item Id="explore" CallType="3" ParentName="balance" DataName="exploreresult" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
@@ -12,7 +12,7 @@
 	<item Id="fighterdeathhero" CallType="3" ParentName="balance" DataName="death" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="3" UseType="2" UseValue="0" />
 	<item Id="unlockbuildcount" CallType="1" ParentName="build" DataName="" InitCalc="1" TriggerType="0" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="2" UseValue="1" />
 	<item Id="unlockbuild" CallType="1" ParentName="build" DataName="" InitCalc="3" TriggerType="0" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="3" UseType="0" UseValue="1" />
-	<item Id="buildlevel" CallType="3" ParentName="build" DataName="level" InitCalc="2" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="3" UseType="2" UseValue="0" />
+	<item Id="buildlevel" CallType="3" ParentName="build" DataName="level" InitCalc="2" TriggerType="0" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="3" UseType="2" UseValue="0" />
 	<item Id="buildlevel" CallType="1" ParentName="build" DataName="level" InitCalc="2" TriggerType="0" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="3" UseType="2" UseValue="0" />
 	<item Id="ownmoney" CallType="3" ParentName="player" DataName="money" InitCalc="2" TriggerType="0" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="3" UseType="2" UseValue="0" />
 	<item Id="addmoney" CallType="3" ParentName="player" DataName="money" InitCalc="" TriggerType="1" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="1" UseValue="0" />
@@ -23,8 +23,8 @@
 	<item Id="owndiamond" CallType="3" ParentName="player" DataName="diamond" InitCalc="2" TriggerType="0" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="3" UseType="2" UseValue="0" />
 	<item Id="adddiamond" CallType="3" ParentName="player" DataName="diamond" InitCalc="" TriggerType="1" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="1" UseValue="0" />
 	<item Id="costdiamond" CallType="3" ParentName="player" DataName="diamond" InitCalc="" TriggerType="2" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="1" UseValue="0" />
-	<item Id="finishtask" CallType="2" ParentName="task" DataName="status" InitCalc="" TriggerType="0" TriggerCheck="13" TriggerUse="2" TriggerValue="4" UseOperate="3" UseType="0" UseValue="1" />
-	<item Id="finishtaskcount" CallType="2" ParentName="task" DataName="status" InitCalc="" TriggerType="0" TriggerCheck="13" TriggerUse="2" TriggerValue="4" UseOperate="1" UseType="0" UseValue="1" />
+	<item Id="finishtask" CallType="2" ParentName="task" DataName="status" InitCalc="" TriggerType="0" TriggerCheck="13" TriggerUse="1" TriggerValue="4" UseOperate="3" UseType="0" UseValue="1" />
+	<item Id="finishtaskcount" CallType="2" ParentName="task" DataName="status" InitCalc="" TriggerType="0" TriggerCheck="13" TriggerUse="1" TriggerValue="4" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="additem" CallType="1" ParentName="item" DataName="count" InitCalc="" TriggerType="0" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="2" UseValue="0" />
 	<item Id="additem" CallType="3" ParentName="item" DataName="count" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="1" UseValue="0" />
 	<item Id="useitem" CallType="3" ParentName="item" DataName="count" InitCalc="" TriggerType="2" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="1" UseValue="0" />
@@ -37,4 +37,13 @@
 	<item Id="deathhero" CallType="3" ParentName="hero" DataName="hp" InitCalc="" TriggerType="0" TriggerCheck="13" TriggerUse="2" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="killnpc" CallType="1" ParentName="npc" DataName="" InitCalc="" TriggerType="0" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="interaction" CallType="3" ParentName="interaction" DataName="id" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
+	<item Id="dialogue" CallType="3" ParentName="dialogue" DataName="id" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="3" UseType="0" UseValue="1" />
+	<item Id="technology" CallType="1" ParentName="technology" DataName="status" InitCalc="2" TriggerType="0" TriggerCheck="13" TriggerUse="0" TriggerValue="1" UseOperate="3" UseType="0" UseValue="1" />
+	<item Id="technology" CallType="3" ParentName="technology" DataName="status" InitCalc="2" TriggerType="0" TriggerCheck="13" TriggerUse="0" TriggerValue="1" UseOperate="3" UseType="0" UseValue="1" />
+	<item Id="buildtechnology" CallType="3" ParentName="build" DataName="technology" InitCalc="2" TriggerType="0" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="3" UseType="2" UseValue="0" />
+	<item Id="transferhero" CallType="3" ParentName="hero" DataName="classlv" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
+	<item Id="clinichero" CallType="3" ParentName="clinic" DataName="num" InitCalc="" TriggerType="2" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
+	<item Id="trainhero" CallType="3" ParentName="trainhero" DataName="uuid" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
+	<item Id="smithyweapon" CallType="3" ParentName="smithyweapon" DataName="count" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="1" UseValue="0" />
+	<item Id="buildgather" CallType="3" ParentName="buildgather" DataName="count" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="1" UseValue="0" />
 </root>

@@ -92,6 +92,20 @@ namespace KFrame
         {
             RemoveEnterFunction( typeid( T ).name() );
         }
+
+        // 登录函数
+        template< class T >
+        void RegisterAfterEnterFunction( T* object, void ( T::*handle )( KFEntity* player ) )
+        {
+            KFEntityFunction function = std::bind( handle, object, std::placeholders::_1 );
+            AddAfterEnterFunction( typeid( T ).name(), function );
+        }
+
+        template< class T >
+        void UnRegisterAfterEnterFunction( T* object )
+        {
+            RemoveAfterEnterFunction( typeid( T ).name() );
+        }
         ///////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////
         // 离开函数
@@ -132,15 +146,12 @@ namespace KFrame
         // 创建玩家
         virtual KFEntity* CreatePlayer( const KFMsg::PBLoginData* pblogin, const KFMsg::PBObject* pbplayerdata ) = 0;
 
-        // 遍历玩家
-        virtual KFEntity* FirstPlayer() = 0;
-        virtual KFEntity* NextPlayer() = 0;
-
         // 查找玩家
         virtual KFEntity* FindPlayer( uint64 playerid ) = 0;
         virtual KFEntity* FindPlayer( uint64 playerid, const char* function, uint32 line ) = 0;
 
         // 删除玩家
+        virtual void RemovePlayer() = 0;
         virtual void RemovePlayer( uint64 playerid ) = 0;
         virtual void RemovePlayer( KFEntity* player ) = 0;
 
@@ -165,6 +176,9 @@ namespace KFrame
 
         virtual void AddEnterFunction( const std::string& moudle, KFEntityFunction& function ) = 0;
         virtual void RemoveEnterFunction( const std::string& moudle ) = 0;
+
+        virtual void AddAfterEnterFunction( const std::string& moudle, KFEntityFunction& function ) = 0;
+        virtual void RemoveAfterEnterFunction( const std::string& moudle ) = 0;
 
         virtual void AddLeaveFunction( const std::string& moudle, KFEntityFunction& function ) = 0;
         virtual void RemoveLeaveFunction( const std::string& moudle ) = 0;
@@ -208,6 +222,10 @@ namespace KFrame
 #define __KF_ENTER_PLAYER_FUNCTION__( function ) void function( KFEntity* player )
 #define __REGISTER_ENTER_PLAYER__( function ) _kf_player->RegisterEnterFunction( this, function )
 #define __UN_ENTER_PLAYER__() _kf_player->UnRegisterEnterFunction( this )
+
+#define __KF_AFTER_ENTER_PLAYER_FUNCTION__( function ) void function( KFEntity* player )
+#define __REGISTER_AFTER_ENTER_PLAYER__( function ) _kf_player->RegisterAfterEnterFunction( this, function )
+#define __UN_AFTER_ENTER_PLAYER__() _kf_player->UnRegisterAfterEnterFunction( this )
 
 #define __KF_LEAVE_PLAYER_FUNCTION__( function ) void function( KFEntity* player )
 #define __REGISTER_LEAVE_PLAYER__( function ) _kf_player->RegisterLeaveFunction( this, function )

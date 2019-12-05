@@ -12,5 +12,3 @@ rd /s /q conf_output
 cd builder
 gcm_build.exe -m debug -b develop -c 1.1 -z 1
 cd ..
-
-rd /s /q conf_output\config\.svn

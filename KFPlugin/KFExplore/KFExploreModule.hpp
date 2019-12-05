@@ -23,6 +23,7 @@
 #include "KFDisplay/KFDisplayInterface.h"
 #include "KFGenerate/KFGenerateInterface.h"
 #include "KFOption/KFOptionInterface.h"
+#include "KFZConfig/KFItemConfig.hpp"
 #include "KFZConfig/KFElementConfig.h"
 #include "KFZConfig/KFExploreConfig.hpp"
 #include "KFZConfig/KFPVEConfig.hpp"
@@ -76,6 +77,9 @@ namespace KFrame
 
         // 更新信仰值
         __KF_MESSAGE_FUNCTION__( HandleUpdateFaithReq );
+
+        // 物件交互请求
+        __KF_MESSAGE_FUNCTION__( HandleInteractItemReq );
 
     protected:
         // 掉落英雄经验
@@ -138,6 +142,9 @@ namespace KFrame
 
         // 玩家的探索结算数据
         KFHashMap< uint64, uint64, KFExploreRecord > _explore_record;
+
+        // 玩家的出战英雄列表
+        std::map<uint64, SetUInt64> _fight_hero;
     };
 }
 

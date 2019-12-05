@@ -12,15 +12,21 @@
 #include "KFRecruitInterface.h"
 #include "KFProtocol/KFProtocol.h"
 #include "KFTimer/KFTimerInterface.h"
+#include "KFHero/KFHeroInterface.h"
 #include "KFKernel/KFKernelInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFDisplay/KFDisplayInterface.h"
 #include "KFMessage/KFMessageInterface.h"
 #include "KFFilter/KFFilterInterface.h"
 #include "KFGenerate/KFGenerateInterface.h"
+#include "KFExecute/KFExecuteInterface.h"
 #include "KFRecruitConfig.hpp"
+#include "KFZConfig/KFFormulaConfig.h"
 #include "KFZConfig/KFDivisorConfig.hpp"
 #include "KFZConfig/KFProfessionConfig.hpp"
+#include "KFZConfig/KFGenerateConfig.hpp"
+#include "KFZConfig/KFElementConfig.h"
+#include "KFZConfig/KFTechnologyConfig.hpp"
 
 namespace KFrame
 {
@@ -82,6 +88,9 @@ namespace KFrame
         // 招募所解锁
         __KF_ADD_DATA_FUNCTION__( OnAddRecruitBuild );
 
+        // 招募所是否激活
+        bool IsRecruitActive( KFEntity* player );
+
         // 删除英雄
         __KF_REMOVE_DATA_FUNCTION__( OnRemoveHero );
 
@@ -89,17 +98,56 @@ namespace KFrame
         void RefreshRecruitFreeHero( KFEntity* player, uint32 herocount );
 
         // 刷新招募列表
-        void RefreshRecruitHero( KFEntity* player, uint32 type );
+        uint32 RefreshRecruitLists( KFEntity* player, uint32 type );
+
+        // 计算招募英雄的数量
+        uint32 CalcRecruitHeroCount( KFData* kfeffect, const KFRecruitSetting* kfrecruitsetting );
+
+        // 默认的招募英雄池子和权重
+        uint32 CalcRecruitGenerateWeight( KFData* kfeffect, const KFRecruitSetting* kfrecruitsetting, MapUInt32& generateweight );
+
+        // 生成招募英雄
+        void GenerateRecruitHero( KFEntity* player, KFData* kfeffect, KFData* kfrecruitrecord, uint32 generateid,
+                                  const DivisorList& divisorlist, const SetUInt32& professionlist, uint32 mingrowth, uint32 maxgrowth );
 
         // 计算招募花费
-        void CalcRecruitCostData( KFEntity* player, KFData* kfrecruit );
+        void CalcRecruitCostData( KFData* kfeffect, KFData* kfrecruit, KFData* kfhero, uint32 generateid );
 
-        // 招募所是否激活
-        bool IsRecruitActive( KFEntity* player );
+        // 计算种族亲和
+        uint32 CalcRecruitHeroDiscount( KFData* kfeffect, KFData* kfhero, uint32 price );
+
+        // 计算招募英雄的等级
+        uint32 CalcRecruitHeroLevel( KFData* kfeffect );
+
+        // 解锁的职业列表
+        SetUInt32& CalcRecruitHeroProfession( KFData* kfeffect );
+
+        // 计算招募因子
+        DivisorList& CalcRecruitHeroDivisor( KFData* kfeffect );
 
         // 招募因子列表
-        std::vector< const KFDivisorSetting* >& DivisorListByType( KFEntity* player, uint32 type );
+        DivisorList& DivisorListByType( KFData* kfdivisorrecord, uint32 type );
 
+        // 解锁招募因子
+        __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyRecruitDivisor );
+
+        // 招募数量
+        __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyRecruitCount );
+
+        // 招募权重
+        __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyRecruitWeight );
+
+        // 招募亲和
+        __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyRecruitDiscount );
+
+        // 解锁职业
+        __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyRecruitProfession );
+
+        // 解锁等级
+        __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyRecruitLevel );
+
+        // 招募成长率
+        __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyRecruitGrowth );
     protected:
         // 玩家上下文组件
         KFComponent* _kf_component = nullptr;

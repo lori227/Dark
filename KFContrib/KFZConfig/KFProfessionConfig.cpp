@@ -6,7 +6,7 @@ namespace KFrame
     void KFProfessionConfig::ReadSetting( KFNode& xmlnode, KFProfessionSetting* kfsetting )
     {
         auto strracelimit = xmlnode.GetString( "RaceLimit", true );
-        kfsetting->_race_list = KFUtility::SplitSet< std::set<uint32> >( strracelimit, __SPLIT_STRING__ );
+        KFUtility::SplitSet( kfsetting->_race_list, strracelimit, __SPLIT_STRING__ );
 
         kfsetting->_sex_limit = xmlnode.GetUInt32( "SexLimit" );
 
@@ -14,12 +14,9 @@ namespace KFrame
         kfsetting->_max_level = xmlnode.GetUInt32( "MaxLevel" );
         kfsetting->_class_lv = xmlnode.GetUInt32( "ClassLv" );
 
-        auto strcost = xmlnode.GetString( "RecruitCost" );
-        kfsetting->_recruit_cost.Parse( strcost, __FUNC_LINE__ );
-
         // 武器类型
         auto strweapon = xmlnode.GetString( "WeaponType" );
-        kfsetting->_weapon_type_list = KFUtility::SplitSet< std::set< uint32 > >( strweapon, __SPLIT_STRING__ );
+        KFUtility::SplitSet( kfsetting->_weapon_type_list, strweapon, __SPLIT_STRING__ );
 
         // 属性偏好率
         std::list< std::string > keylist;
@@ -39,20 +36,26 @@ namespace KFrame
     bool KFProfessionSetting::IsValid( uint32 race, uint32 sex, uint32 movetype, uint32 weapontype ) const
     {
         // 种族限制
-        if ( !_race_list.empty() )
+        if ( race != 0u )
         {
-            if ( _race_list.find( race ) == _race_list.end() )
+            if ( !_race_list.empty() )
             {
-                return false;
+                if ( _race_list.find( race ) == _race_list.end() )
+                {
+                    return false;
+                }
             }
         }
 
         // 性别限制
-        if ( _sex_limit != 0u )
+        if ( sex != 0u )
         {
-            if ( _sex_limit != sex )
+            if ( _sex_limit != 0u )
             {
-                return false;
+                if ( _sex_limit != sex )
+                {
+                    return false;
+                }
             }
         }
 

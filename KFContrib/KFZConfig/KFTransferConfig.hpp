@@ -4,7 +4,7 @@
 #include "KFZConfig/KFConfig.h"
 #include "KFZConfig/KFSetting.h"
 #include "KFCore/KFElement.h"
-#include "KFZConfig/KFElementConfig.h"
+#include "KFZConfig/KFRewardConfig.h"
 
 namespace KFrame
 {
@@ -29,12 +29,9 @@ namespace KFrame
         // 天赋
         VectorUInt32 _innate_pool_list;
 
-        // 金钱消耗
+        // 消耗
+        std::string _cost_str;
         KFElements _cost;
-
-        // 道具消耗
-        std::string _consume_item_str;
-        KFElements _consume_item;
     };
 
     class KFTransferConfig : public KFConfigT< KFTransferSetting >, public KFInstance< KFTransferConfig >

@@ -26,7 +26,15 @@ namespace KFrame
 
     __KF_ENTER_PLAYER_FUNCTION__( KFHeroTeamModule::OnEnterHeroTeamModule )
     {
+        auto mapid = player->Get<uint32>( __STRING__( mapid ) );
+        if ( mapid != 0u )
+        {
+            // 探索地图内不做处理
+            return;
+        }
+
         RemoveTeamDeadHero( player );
+        DecTeamHeroDurability( player );
     }
 
     uint32 KFHeroTeamModule::GetIndexById( KFEntity* player, uint64 uuid )
@@ -123,6 +131,40 @@ namespace KFrame
             }
         }
     }
+
+    void KFHeroTeamModule::DecTeamHeroDurability( KFEntity* player )
+    {
+        // 等待客户端联调，先屏蔽
+        if ( false )
+        {
+            auto kfherorecord = player->Find( __STRING__( hero ) );
+            auto kfteamarray = player->Find( __STRING__( heroteam ) );
+            auto decdurabilitycount = _kf_option->FindOption( "roledurability_pveconsume" );
+
+            for ( uint32 i = KFDataDefine::Array_Index; i < kfteamarray->Size(); ++i )
+            {
+                auto uuid = kfteamarray->Get<uint64>( i );
+                auto kfhero = kfherorecord->Find( uuid );
+                if ( kfhero == nullptr )
+                {
+                    continue;
+                }
+
+                // 扣除指定耐久度
+                auto durability = kfhero->Get<uint32>( __STRING__( durability ) );
+                if ( durability <= decdurabilitycount->_uint32_value )
+                {
+                    player->RemoveData( __STRING__( hero ), uuid );
+                    __LOG_INFO__( "player=[{}] death remove hero=[{}]", player->GetKeyID(), uuid );
+                }
+                else
+                {
+                    player->UpdateData( kfhero, __STRING__( durability ), KFEnum::Dec, decdurabilitycount->_uint32_value );
+                }
+            }
+        }
+    }
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     __KF_REMOVE_DATA_FUNCTION__( KFHeroTeamModule::OnRemoveHero )

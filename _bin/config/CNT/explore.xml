@@ -1,9 +1,25 @@
-<root version="861">
-	<item Id="10086" DropVictory="1" DropFail="" />
-	<item Id="10101" DropVictory="5100001" DropFail="" />
-	<item Id="10102" DropVictory="5100002" DropFail="" />
-	<item Id="10103" DropVictory="5100003" DropFail="" />
-	<item Id="10104" DropVictory="5100004" DropFail="" />
-	<item Id="10105" DropVictory="5100005" DropFail="" />
-	<item Id="10106" DropVictory="5100005" DropFail="" />
+<root version="1644">
+	<item Id="10086" ExploreId="10086" DropVictory="1" DropFail="" Consume="[[1,3,500],[2,1000101,10]]" />
+	<item Id="10101" ExploreId="10101" DropVictory="5100001" DropFail="" Consume="[[1,3,500],[2,1000101,10]]" />
+	<item Id="10102" ExploreId="10102" DropVictory="5100002" DropFail="" Consume="[[1,3,500],[2,1000101,10]]" />
+	<item Id="10103" ExploreId="10103" DropVictory="5100002" DropFail="" Consume="[[1,3,500],[2,1000101,10]]" />
+	<item Id="10104" ExploreId="10104" DropVictory="5100004" DropFail="" Consume="[[1,3,500],[2,1000101,10]]" />
+	<item Id="10105" ExploreId="10105" DropVictory="5100003" DropFail="" Consume="[[1,3,500],[2,1000101,10]]" />
+	<item Id="10106" ExploreId="10106" DropVictory="5100004" DropFail="" Consume="[[1,3,500],[2,1000101,10]]" />
+	<item Id="10201" ExploreId="10201" DropVictory="5100004" DropFail="" Consume="[[1,3,500],[2,1000101,10]]" />
+	<item Id="10501" ExploreId="10101" DropVictory="5130001" DropFail="" Consume="[[1,3,500],[2,1000101,10]]" />
+	<item Id="10502" ExploreId="10102" DropVictory="5130002" DropFail="" Consume="[[1,3,500],[2,1000101,10]]" />
+	<item Id="10503" ExploreId="10102" DropVictory="5130003" DropFail="" Consume="[[1,3,500],[2,1000101,10]]" />
+	<item Id="10504" ExploreId="10102" DropVictory="5130004" DropFail="" Consume="[[1,3,500],[2,1000101,10]]" />
+	<item Id="10505" ExploreId="10105" DropVictory="5130005" DropFail="" Consume="[[1,3,500],[2,1000101,10]]" />
+	<item Id="10506" ExploreId="10105" DropVictory="5130006" DropFail="" Consume="[[1,3,500],[2,1000101,10]]" />
+	<item Id="10601" ExploreId="10103" DropVictory="5410001" DropFail="" Consume="[[1,3,500],[2,1000101,10]]" />
+	<item Id="10602" ExploreId="10103" DropVictory="5410002" DropFail="" Consume="[[1,3,500],[2,1000101,10]]" />
+	<item Id="10603" ExploreId="10104" DropVictory="5410003" DropFail="" Consume="[[1,3,500],[2,1000101,10]]" />
+	<item Id="10604" ExploreId="10104" DropVictory="5410004" DropFail="" Consume="[[1,3,500],[2,1000101,10]]" />
+	<item Id="10605" ExploreId="10105" DropVictory="5410005" DropFail="" Consume="[[1,3,500],[2,1000101,10]]" />
+	<item Id="10606" ExploreId="10105" DropVictory="5410006" DropFail="" Consume="[[1,3,500],[2,1000101,10]]" />
+	<item Id="19001" ExploreId="10101" DropVictory="5100001" DropFail="" Consume="" />
+	<item Id="19002" ExploreId="10102" DropVictory="5100002" DropFail="" Consume="" />
+	<item Id="19003" ExploreId="10102" DropVictory="5100002" DropFail="" Consume="" />
 </root>

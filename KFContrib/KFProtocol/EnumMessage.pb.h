@@ -181,12 +181,13 @@ enum BuildEnum {
   CemeteryBuild = 210,
   OuterBuild = 211,
   WarehouseBuild = 212,
+  GranaryBuild = 213,
   BuildEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   BuildEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 LIBPROTOC_EXPORT bool BuildEnum_IsValid(int value);
 const BuildEnum BuildEnum_MIN = InvalidBuild;
-const BuildEnum BuildEnum_MAX = WarehouseBuild;
+const BuildEnum BuildEnum_MAX = GranaryBuild;
 const int BuildEnum_ARRAYSIZE = BuildEnum_MAX + 1;
 
 LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* BuildEnum_descriptor();

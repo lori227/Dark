@@ -42,5 +42,7 @@
 		<Plugin Name="KFSmithy" Config=""/>
 		<Plugin Name="KFTask" Config=""/>
 		<Plugin Name="KFSignIn" Config=""/>
+		<Plugin Name="KFBuild" Config=""/>
+		<Plugin Name="KFDialogue" Config=""/>
 	</Plugins>
 </Setting>

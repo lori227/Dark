@@ -7,13 +7,13 @@ namespace KFrame
         auto strracelimit = xmlnode.GetString( "RaceLimit", true );
         if ( !strracelimit.empty() )
         {
-            kfsetting->_race_list = KFUtility::SplitSet< SetUInt32 >( strracelimit, __SPLIT_STRING__ );
+            KFUtility::SplitSet( kfsetting->_race_list, strracelimit, __SPLIT_STRING__ );
         }
 
         auto strsexlimit = xmlnode.GetString( "SexLimit", true );
         if ( !strsexlimit.empty() )
         {
-            kfsetting->_sex_list = KFUtility::SplitSet< SetUInt32 >( strsexlimit, __SPLIT_STRING__ );
+            KFUtility::SplitSet( kfsetting->_sex_list, strsexlimit, __SPLIT_STRING__ );
         }
 
     }

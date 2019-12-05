@@ -10,14 +10,18 @@
 ************************************************************************/
 
 #include "KFrameEx.h"
+#include "KFMacros.h"
 #include "KFClinicInterface.h"
 #include "KFTimer/KFTimerInterface.h"
 #include "KFKernel/KFKernelInterface.h"
+#include "KFExecute/KFExecuteInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFDisplay/KFDisplayInterface.h"
 #include "KFMessage/KFMessageInterface.h"
 #include "KFRecordClient/KFRecordClientInterface.h"
 #include "KFClinicConfig.hpp"
+#include "KFZConfig/KFFormulaConfig.h"
+#include "KFZConfig/KFElementConfig.h"
 
 namespace KFrame
 {
@@ -56,8 +60,17 @@ namespace KFrame
         // 治疗请求
         __KF_MESSAGE_FUNCTION__( HandleClinicCureReq );
 
+        // 治疗请求
+        __KF_MESSAGE_FUNCTION__( HandleClinicMedicalFeeReq );
+
         // 定时增加道具
         __KF_TIMER_FUNCTION__( OnTimerAddItem );
+
+        // 额外增加的单位时间产出材料量
+        __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyClinicAddNum );
+
+        // 额外增加治疗材料的存储上限
+        __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyClinicMaxNum );
 
     protected:
         // 获取医疗所等级
@@ -71,6 +84,18 @@ namespace KFrame
 
         // 检查定时器
         void CheckClinicTimer( KFEntity* player );
+
+        // 获取单位时间产出的材料量
+        uint32 GetClinicUnitTimeMaterialsAddNum( KFEntity* player, const KFClinicSetting* setting );
+
+        // 获取治疗材料的存储上限
+        uint32 GetClinicMaterialsMaxNum( KFEntity* player, const KFClinicSetting* setting );
+
+        // 获取治疗所花费金币量
+        std::string GetClinicCureMoneyCount( KFEntity* player, const KFClinicSetting* setting, uint32 addhp );
+
+        // 获取所选的英雄列表需要的治疗量
+        uint32 GetClinicHerosNeedCurehp( KFEntity* player, std::list<uint64>& herolist );
 
     protected:
         // 玩家组件上下文

@@ -12,6 +12,14 @@ namespace KFrame
 
         __REGISTER_ENTER_PLAYER__( &KFRecruitModule::OnEnterRecruitModule );
         __REGISTER_LEAVE_PLAYER__( &KFRecruitModule::OnLeaveRecruitModule );
+
+        __REGISTER_EXECUTE__( __STRING__( recruitdivisor ), &KFRecruitModule::OnExecuteTechnologyRecruitDivisor );
+        __REGISTER_EXECUTE__( __STRING__( recruitcount ), &KFRecruitModule::OnExecuteTechnologyRecruitCount );
+        __REGISTER_EXECUTE__( __STRING__( recruitweight ), &KFRecruitModule::OnExecuteTechnologyRecruitWeight );
+        __REGISTER_EXECUTE__( __STRING__( recruitdiscount ), &KFRecruitModule::OnExecuteTechnologyRecruitDiscount );
+        __REGISTER_EXECUTE__( __STRING__( recruitprofession ), &KFRecruitModule::OnExecuteTechnologyRecruitProfession );
+        __REGISTER_EXECUTE__( __STRING__( recruitlevel ), &KFRecruitModule::OnExecuteTechnologyRecruitLevel );
+        __REGISTER_EXECUTE__( __STRING__( recruitgrowth ), &KFRecruitModule::OnExecuteTechnologyRecruitGrowth );
         //////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_REFRESH_RECRUIT_REQ, &KFRecruitModule::HandleRefreshRecruitReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_CHOOSE_DIVISOR_REQ, &KFRecruitModule::HandleChooseDivisorReq );
@@ -31,6 +39,13 @@ namespace KFrame
         __UN_REMOVE_DATA_1__( __STRING__( hero ) );
         __UN_ADD_DATA_2__( __STRING__( build ), KFMsg::RecruitBuild );
 
+        __UN_EXECUTE__( __STRING__( recruitdivisor ) );
+        __UN_EXECUTE__( __STRING__( recruitcount ) );
+        __UN_EXECUTE__( __STRING__( recruitweight ) );
+        __UN_EXECUTE__( __STRING__( recruitdiscount ) );
+        __UN_EXECUTE__( __STRING__( recruitprofession ) );
+        __UN_EXECUTE__( __STRING__( recruitlevel ) );
+        __UN_EXECUTE__( __STRING__( recruitgrowth ) );
         //////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_REFRESH_RECRUIT_REQ );
         __UN_MESSAGE__( KFMsg::MSG_CHOOSE_DIVISOR_REQ );
@@ -57,45 +72,21 @@ namespace KFrame
         }
 
         auto generateid = kfgenerate->CalcUseValue( nullptr, 1.0f );
-
-        // 创建招募英雄
-        auto uuid = KFGlobal::Instance()->STMakeUUID( __STRING__( hero ) );
         auto kfrecruit = _kf_kernel->CreateObject( kfparent->_data_setting );
-
         auto kfhero = kfrecruit->Find( __STRING__( hero ) );
-        auto* rethero = _kf_generate->GeneratePlayerHero( player, kfhero, generateid, true, function, line );
+        auto rethero = _kf_generate->GeneratePlayerHero( player, kfhero, generateid );
         if ( rethero == nullptr )
         {
             _kf_kernel->ReleaseObject( kfrecruit );
-            return std::make_tuple( KFDataDefine::Show_None, nullptr );
         }
-
-        // 是否需要花费
-        auto kfusecost = kfelementobject->_values.Find( __STRING__( usecost ) );
-        auto usecost = ( kfusecost == nullptr ) ? false : ( kfusecost->GetUseValue() == 1u );
-        if ( usecost )
+        else
         {
-            CalcRecruitCostData( player, kfrecruit );
+            // 添加到招募列表
+            auto uuid = KFGlobal::Instance()->STMakeUUID( __STRING__( hero ) );
+            player->AddData( kfparent, uuid, kfrecruit );
         }
 
-        player->AddData( kfparent, uuid, kfrecruit );
-        return std::make_tuple( KFDataDefine::Show_Data, kfrecruit );
-    }
-
-    void KFRecruitModule::CalcRecruitCostData( KFEntity* player, KFData* kfrecruit )
-    {
-        auto kfhero = kfrecruit->Find( __STRING__( hero ) );
-        auto professionid = kfhero->Get< uint32 >( __STRING__( profession ) );
-        auto kfsetting = KFProfessionConfig::Instance()->FindSetting( professionid );
-        if ( kfsetting == nullptr )
-        {
-            return;
-        }
-
-        // 计算系数, 职阶系数 * 品质系数
-        auto multiple = 1.0f;
-        auto& strcost = kfsetting->_recruit_cost.CalcElement( multiple );
-        kfrecruit->Set( __STRING__( cost ), strcost );
+        return std::make_tuple( KFDataDefine::Show_None, nullptr );
     }
 
     __KF_ADD_DATA_FUNCTION__( KFRecruitModule::OnAddRecruitBuild )
@@ -229,8 +220,29 @@ namespace KFrame
         {
             return _kf_display->SendToClient( player, KFMsg::HeroRecruitRefreshFreeError );
         }
+        else if ( kfmsg.type() == KFMsg::RefreshByCount )
+        {
+            auto refreshcount = player->Get<uint32>( __STRING__( recruitcount ) );
+            if ( refreshcount == 0u )
+            {
+                return _kf_display->SendToClient( player, KFMsg::HeroRefreshCountNotEnough );
+            }
+        }
 
-        RefreshRecruitHero( player, kfmsg.type() );
+        auto result = RefreshRecruitLists( player, kfmsg.type() );
+        if ( result != KFMsg::Ok )
+        {
+            return _kf_display->SendToClient( player, KFMsg::HeroRecruitRefresh );
+        }
+
+        if ( kfmsg.type() != KFMsg::RefreshByFree )
+        {
+            _kf_display->SendToClient( player, KFMsg::HeroRecruitRefresh );
+            if ( kfmsg.type() == KFMsg::RefreshByCount )
+            {
+                player->UpdateData( __STRING__( recruitcount ), KFEnum::Dec, 1u );
+            }
+        }
     }
 
     void KFRecruitModule::RefreshRecruitFreeHero( KFEntity* player, uint32 herocount )
@@ -253,89 +265,192 @@ namespace KFrame
         }
 
         // 免费刷新一批英雄
-        RefreshRecruitHero( player, KFMsg::RefreshByFree );
+        RefreshRecruitLists( player, KFMsg::RefreshByFree );
     }
 
-    void KFRecruitModule::RefreshRecruitHero( KFEntity* player, uint32 type )
+    uint32 KFRecruitModule::RefreshRecruitLists( KFEntity* player, uint32 type )
     {
-        auto kfsetting = KFRefreshConfig::Instance()->FindSetting( type );
-        if ( kfsetting == nullptr )
+        auto kfrecruitsetting = KFRecruitConfig::Instance()->FindSetting( type );
+        if ( kfrecruitsetting == nullptr )
         {
-            return _kf_display->SendToClient( player, KFMsg::HeroRecruitRefreshTypeError );
+            return KFMsg::HeroRecruitRefreshTypeError;
         }
 
-        // 判断资源是否足够
-        auto dataname = player->CheckRemoveElement( &kfsetting->_cost_elements, __FUNC_LINE__ );
-        if ( !dataname.empty() )
+        // 计算招募的数量
+        auto kfeffect = player->Find( __STRING__( effect ) );
+        auto recruitcount = CalcRecruitHeroCount( kfeffect, kfrecruitsetting );
+        if ( recruitcount == 0u )
         {
-            return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
+            return KFMsg::HeroRecruitRefreshCount;
         }
 
-        // 扣除资源
-        player->RemoveElement( &kfsetting->_cost_elements, __FUNC_LINE__ );
+        // 计算招募英雄池和权重
+        MapUInt32 generateweight;
+        auto totalweight = CalcRecruitGenerateWeight( kfeffect, kfrecruitsetting, generateweight );
+        if ( totalweight == 0u )
+        {
+            return KFMsg::HeroRecruitRefreshWeight;
+        }
+        if ( generateweight.empty() )
+        {
+            return KFMsg::HeroRecruitRefreshGenerate;
+        }
+
+        if ( !kfrecruitsetting->_cost_elements.IsEmpty() )
+        {
+            // 判断资源是否足够
+            auto dataname = player->CheckRemoveElement( &kfrecruitsetting->_cost_elements, __FUNC_LINE__ );
+            if ( !dataname.empty() )
+            {
+                return KFMsg::DataNotEnough;
+            }
+            // 扣除资源
+            player->RemoveElement( &kfrecruitsetting->_cost_elements, __FUNC_LINE__ );
+        }
 
         // 清空原来的英雄
-        if ( kfsetting->_is_clear )
+        auto kfrecruitrecord = player->Find( __STRING__( recruit ) );
+        if ( kfrecruitsetting->_is_clear )
         {
-            player->CleanData( __STRING__( recruit ) );
+            player->CleanData( kfrecruitrecord );
         }
+
+        // 招募因子列表
+        auto& divisorlist = CalcRecruitHeroDivisor( kfeffect );
+
+        // 解锁的职业列表
+        auto& professionlist = CalcRecruitHeroProfession( kfeffect );
+
+        // 成长率
+        auto mingrowth = kfeffect->Get<uint32>( __STRING__( mingrowth ) );
+        auto maxgrowth = kfeffect->Get<uint32>( __STRING__( maxgrowth ) );
 
         // 刷新招募列表
-        for ( auto i = 0u; i < kfsetting->_count; ++i )
+        for ( auto i = 0u; i < recruitcount; ++i )
         {
-            player->AddElement( &kfsetting->_hero_generate, __FUNC_LINE__ );
+            auto generateid = KFUtility::RandMapValue( generateweight, totalweight, KFGlobal::Instance()->Rand() );
+            if ( generateid != 0u )
+            {
+                GenerateRecruitHero( player, kfeffect, kfrecruitrecord, generateid, divisorlist, professionlist, mingrowth, maxgrowth );
+            }
         }
 
-        // 显示提示
-        if ( kfsetting->_display_id != 0u )
-        {
-            _kf_display->SendToClient( player, kfsetting->_display_id );
-        }
+        return KFMsg::Ok;
     }
 
-    __KF_MESSAGE_FUNCTION__( KFRecruitModule::HandleChooseDivisorReq )
+    uint32 KFRecruitModule::CalcRecruitHeroCount( KFData* kfeffect, const KFRecruitSetting* kfrecruitsetting )
     {
-        __CLIENT_PROTO_PARSE__( KFMsg::MsgChooseDivisorReq );
-
-        for ( auto i = 0; i < kfmsg.id_size(); ++i )
-        {
-            auto kfsetting = KFDivisorConfig::Instance()->FindSetting( kfmsg.id( i ) );
-            if ( kfsetting == nullptr )
-            {
-                return _kf_display->SendToClient( player, KFMsg::HeroDivisorError );
-            }
-
-            auto kfrecruitrecord = player->Find( __STRING__( divisor ) );
-            auto kfrecruit = kfrecruitrecord->Find( kfsetting->_id );
-            if ( kfrecruit != nullptr )
-            {
-                return _kf_display->SendToClient( player, KFMsg::HeroDivisorExist );
-            }
-
-            // 同类型的不能都选择
-            auto& outlist = DivisorListByType( player, kfsetting->_type );
-            if ( ( uint32 )outlist.size() >= kfsetting->_max_count )
-            {
-                return _kf_display->SendToClient( player, KFMsg::HeroDivisorMaxCount );
-            }
-            else
-            {
-                kfrecruit = _kf_kernel->CreateObject( kfrecruitrecord->_data_setting );
-                player->AddData( kfrecruitrecord, kfsetting->_id, kfrecruit );
-            }
-        }
+        // 科技效果添加数量
+        auto effectcount = kfeffect->Get<uint32>( __STRING__( recruitcount ) );
+        return __MAX__( effectcount, 4u );
     }
 
-    std::vector< const KFDivisorSetting* >& KFRecruitModule::DivisorListByType( KFEntity* player, uint32 type )
+    uint32 KFRecruitModule::CalcRecruitGenerateWeight( KFData* kfeffect, const KFRecruitSetting* kfrecruitsetting, MapUInt32& generateweight )
     {
-        static std::vector< const KFDivisorSetting* > outlist;
+        // 配置表中的权重
+#ifdef __KF_DEBUG__
+        MapUInt32 _genterate_weight;
+#else
+        static MapUInt32 _genterate_weight;
+        if ( _genterate_weight.empty() )
+#endif
+        {
+            auto kftechnologysetting = KFTechnologyConfig::Instance()->FindSetting( kfrecruitsetting->_generate_technology_id );
+            if ( kftechnologysetting == nullptr )
+            {
+                return 0u;
+            }
+
+            for ( auto kfparam : kftechnologysetting->_execute_data._param_list._params )
+            {
+                if ( kfparam->_map_value.empty() )
+                {
+                    break;
+                }
+
+                for ( auto& iter : kfparam->_map_value )
+                {
+                    _genterate_weight[ iter.first ] = iter.second;
+                }
+            }
+        }
+
+        // 计算科技影响招募
+        auto totalweight = 0u;
+        generateweight.clear();
+
+        auto kfweightrecord = kfeffect->Find( __STRING__( recruitweight ) );
+        for ( auto& iter : _genterate_weight )
+        {
+            auto effectvalue = kfweightrecord->Get<uint32>( iter.first, kfweightrecord->_data_setting->_value_key_name );
+            auto weight = iter.second + effectvalue;
+
+            totalweight += weight;
+            generateweight[ iter.first ] = weight;
+        }
+
+        return totalweight;
+    }
+
+    uint32 KFRecruitModule::CalcRecruitHeroLevel( KFData* kfeffect )
+    {
+        auto minlevel = kfeffect->Get<uint32>( __STRING__( recruitminlevel ) );
+        auto maxlevel = kfeffect->Get<uint32>( __STRING__( recruitmaxlevel ) );
+        return KFGlobal::Instance()->RandRange( minlevel, maxlevel, 1u );
+    }
+
+    SetUInt32& KFRecruitModule::CalcRecruitHeroProfession( KFData* kfeffect )
+    {
+        static SetUInt32 _profession_list;
+        _profession_list.clear();
+
+        auto kfrecord = kfeffect->Find( __STRING__( recruitprofession ) );
+        for ( auto kfchild = kfrecord->First(); kfchild != nullptr; kfchild = kfrecord->Next() )
+        {
+            _profession_list.insert( kfchild->GetKeyID() );
+        }
+
+        return _profession_list;
+    }
+
+    DivisorList& KFRecruitModule::CalcRecruitHeroDivisor( KFData* kfeffect )
+    {
+        static DivisorList outlist;
         outlist.clear();
 
-        auto kfdivisorrecord = player->Find( __STRING__( divisor ) );
+        auto kfrecord = kfeffect->Find( __STRING__( recruitdivisor ) );
+        for ( auto kfdivisor = kfrecord->First(); kfdivisor != nullptr; kfdivisor = kfrecord->Next() )
+        {
+            auto value = kfdivisor->Get<uint32>( kfrecord->_data_setting->_value_key_name );
+            if ( value == 0u )
+            {
+                continue;
+            }
+
+            auto kfsetting = KFDivisorConfig::Instance()->FindSetting( kfdivisor->GetKeyID() );
+            if ( kfsetting != nullptr )
+            {
+                outlist.push_back( kfsetting );
+            }
+        }
+
+        return outlist;
+    }
+
+    DivisorList& KFRecruitModule::DivisorListByType( KFData* kfdivisorrecord, uint32 type )
+    {
+        static DivisorList outlist;
+        outlist.clear();
+
         for ( auto kfdivisor = kfdivisorrecord->First(); kfdivisor != nullptr; kfdivisor = kfdivisorrecord->Next() )
         {
-            auto id = kfdivisor->GetKeyID();
-            auto kfsetting = KFDivisorConfig::Instance()->FindSetting( id );
+            auto value = kfdivisor->Get<uint32>( kfdivisorrecord->_data_setting->_value_key_name );
+            if ( value == 0u )
+            {
+                continue;
+            }
+
+            auto kfsetting = KFDivisorConfig::Instance()->FindSetting( kfdivisor->GetKeyID() );
             if ( kfsetting != nullptr && kfsetting->_type == type )
             {
                 outlist.push_back( kfsetting );
@@ -345,14 +460,100 @@ namespace KFrame
         return outlist;
     }
 
-    __KF_MESSAGE_FUNCTION__( KFRecruitModule::HandleRemoveDivisorReq )
+    void KFRecruitModule::GenerateRecruitHero( KFEntity* player, KFData* kfeffect, KFData* kfrecruitrecord, uint32 generateid,
+            const DivisorList& divisorlist, const SetUInt32& professionlist, uint32 mingrowth, uint32 maxgrowth )
     {
-        __CLIENT_PROTO_PARSE__( KFMsg::MsgRemoveDivisorReq );
+        // 计算招募等级
+        uint32 level = CalcRecruitHeroLevel( kfeffect );
 
-        for ( auto i = 0; i < kfmsg.id_size(); ++i )
+        auto kfrecruit = _kf_kernel->CreateObject( kfrecruitrecord->_data_setting );
+        auto kfhero = kfrecruit->Find( __STRING__( hero ) );
+        auto rethero = _kf_generate->GeneratePlayerHero( player, kfhero, generateid, divisorlist, professionlist, level, mingrowth, maxgrowth );
+        if ( rethero == nullptr )
         {
-            player->RemoveData( __STRING__( divisor ), kfmsg.id( i ) );
+            return _kf_kernel->ReleaseObject( kfrecruit );
         }
+
+        // 招募价钱
+        CalcRecruitCostData( kfeffect, kfrecruit, kfhero, generateid );
+
+        // 添加到招募列表
+        auto uuid = KFGlobal::Instance()->STMakeUUID( __STRING__( hero ) );
+        player->AddData( kfrecruitrecord, uuid, kfrecruit );
+    }
+
+    void KFRecruitModule::CalcRecruitCostData( KFData* kfeffect, KFData* kfrecruit, KFData* kfhero, uint32 generateid )
+    {
+        auto kfgeneratesetting = KFGenerateConfig::Instance()->FindSetting( generateid );
+        if ( kfgeneratesetting == nullptr || kfgeneratesetting->_cost_formula_id == 0u )
+        {
+            return;
+        }
+
+        auto kfformulasetting = KFFormulaConfig::Instance()->FindSetting( kfgeneratesetting->_cost_formula_id );
+        if ( kfformulasetting == nullptr || kfformulasetting->_type.empty() || kfformulasetting->_params.size() < 5u )
+        {
+            return;
+        }
+
+        // 计算平均成长率
+        auto totalgrowth = 0u;
+        auto kfgrowth = kfhero->Find( __STRING__( growth ) );
+        for ( auto kfchild = kfgrowth->First(); kfchild != nullptr; kfchild = kfgrowth->Next() )
+        {
+            totalgrowth += kfchild->Get<uint32>();
+        }
+        auto averagegrowth = totalgrowth / kfgrowth->Size();
+
+        auto price = 0u;
+        auto param1 = kfformulasetting->_params[ 0 ]->_int_value;
+        auto param2 = kfformulasetting->_params[ 1 ]->_int_value;
+        auto param3 = kfformulasetting->_params[ 2 ]->_int_value;
+        auto param4 = kfformulasetting->_params[ 3 ]->_int_value;
+        auto param5 = kfformulasetting->_params[ 4 ]->_int_value;
+        if ( param5 != 0u )
+        {
+            if ( averagegrowth >= param2 )
+            {
+                price = param1 + ( averagegrowth - param2 ) * param3 / param5;
+            }
+            else
+            {
+                auto value = ( param2 - averagegrowth ) * param3 / param5;
+                if ( value >= param1 )
+                {
+                    price = value - param1;
+                }
+                else
+                {
+                    price = param1 - value;
+                }
+            }
+        }
+
+        price = __MAX__( price, param4 );
+
+        // 种族亲和, 费用减低
+        price = CalcRecruitHeroDiscount( kfeffect, kfhero, price );
+
+        // 格式化费用数据
+        auto kfeleemntsetting = KFElementConfig::Instance()->FindElementSetting( kfformulasetting->_type );
+        auto strcost = __FORMAT__( kfeleemntsetting->_element_template, kfformulasetting->_type, price, 0u );
+        kfrecruit->Set( __STRING__( cost ), strcost );
+    }
+
+    uint32 KFRecruitModule::CalcRecruitHeroDiscount( KFData* kfeffect, KFData* kfhero, uint32 price )
+    {
+        auto race = kfhero->Get<uint32>( __STRING__( race ) );
+        auto discount = kfeffect->Get<uint32>( __STRING__( recruitdiscount ), race, __STRING__( value ) );
+        if ( discount == 0u )
+        {
+            return price;
+        }
+
+        double ratio = 1.0f - static_cast< double >( discount ) / static_cast< double >( KFRandEnum::TenThousand );
+        auto finalprice = static_cast< double >( price ) * ratio;
+        return static_cast< uint32 >( finalprice );
     }
 
     __KF_MESSAGE_FUNCTION__( KFRecruitModule::HandleRecruitHeroReq )
@@ -373,17 +574,17 @@ namespace KFrame
 
         // 判断英雄是否满了
         auto kfherorecord = player->Find( __STRING__( hero ) );
-        if ( kfherorecord->IsFull() )
+        if ( _kf_hero->IsFull( player, kfherorecord ) )
         {
             return _kf_display->SendToClient( player, KFMsg::DataIsFull, __STRING__( hero ) );
         }
 
         // 判断花费
-        auto costdata = kfrecruit->Get< std::string >( __STRING__( cost ) );
-        if ( !costdata.empty() )
+        auto strcost = kfrecruit->Get< std::string >( __STRING__( cost ) );
+        if ( !strcost.empty() )
         {
             KFElements costelements;
-            if ( !costelements.Parse( costdata, __FUNC_LINE__ ) )
+            if ( !costelements.Parse( strcost, __FUNC_LINE__ ) )
             {
                 return _kf_display->SendToClient( player, KFMsg::HeroRecruitCostError );
             }
@@ -444,5 +645,191 @@ namespace KFrame
         }
 
         player->UpdateData( kfhero, __STRING__( name ), kfmsg.name() );
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    __KF_MESSAGE_FUNCTION__( KFRecruitModule::HandleChooseDivisorReq )
+    {
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgChooseDivisorReq );
+
+        auto kfrecord = player->Find( __STRING__( effect ), __STRING__( recruitdivisor ) );
+        for ( auto i = 0; i < kfmsg.id_size(); ++i )
+        {
+            auto kfsetting = KFDivisorConfig::Instance()->FindSetting( kfmsg.id( i ) );
+            if ( kfsetting == nullptr )
+            {
+                return _kf_display->SendToClient( player, KFMsg::HeroDivisorError );
+            }
+
+            auto kfdivisor = kfrecord->Find( kfsetting->_id );
+            if ( kfdivisor == nullptr )
+            {
+                return _kf_display->SendToClient( player, KFMsg::HeroDivisorNotUnlock );
+            }
+
+            auto value = kfdivisor->Get<uint32>( kfrecord->_data_setting->_value_key_name );
+            if ( value != 0u )
+            {
+                continue;
+            }
+
+            // 同类型的不能都选择
+            auto& outlist = DivisorListByType( kfrecord, kfsetting->_type );
+            if ( ( uint32 )outlist.size() >= kfsetting->_max_count )
+            {
+                return _kf_display->SendToClient( player, KFMsg::HeroDivisorMaxCount );
+            }
+
+            player->UpdateData( kfdivisor, kfrecord->_data_setting->_value_key_name, KFEnum::Set, 1u );
+        }
+    }
+
+    __KF_MESSAGE_FUNCTION__( KFRecruitModule::HandleRemoveDivisorReq )
+    {
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgRemoveDivisorReq );
+
+        auto kfrecord = player->Find( __STRING__( effect ), __STRING__( recruitdivisor ) );
+        for ( auto i = 0; i < kfmsg.id_size(); ++i )
+        {
+            auto divisorid = kfmsg.id( i );
+            auto kfdivisor = kfrecord->Find( divisorid );
+            if ( kfdivisor == nullptr )
+            {
+                continue;
+            }
+
+            player->UpdateData( kfdivisor, kfrecord->_data_setting->_value_key_name, KFEnum::Set, 0u );
+        }
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    __KF_EXECUTE_FUNCTION__( KFRecruitModule::OnExecuteTechnologyRecruitDivisor )
+    {
+        auto kfrecord = player->Find( __STRING__( effect ), __STRING__( recruitdivisor ) );
+        for ( auto kfparam : executedata->_param_list._params )
+        {
+            auto divisorid = kfparam->_int_value;
+            if ( divisorid == 0u )
+            {
+                break;
+            }
+
+            auto kfdivisor = kfrecord->Find( divisorid );
+            if ( kfdivisor != nullptr )
+            {
+                continue;
+            }
+
+            // 添加招募因子列表
+            player->UpdateData( kfrecord, divisorid, kfrecord->_data_setting->_value_key_name, KFEnum::Set, 0u );
+        }
+
+        return true;
+    }
+
+    __KF_EXECUTE_FUNCTION__( KFRecruitModule::OnExecuteTechnologyRecruitCount )
+    {
+        if ( executedata->_param_list._params.size() < 1u )
+        {
+            return false;
+        }
+
+        auto addcount = executedata->_param_list._params[ 0 ]->_int_value;
+        player->UpdateData( __STRING__( effect ), __STRING__( recruitcount ), KFEnum::Add, addcount );
+        return true;
+    }
+
+    __KF_EXECUTE_FUNCTION__( KFRecruitModule::OnExecuteTechnologyRecruitWeight )
+    {
+        auto kfrecord = player->Find( __STRING__( effect ), __STRING__( recruitweight ) );
+        for ( auto kfparam : executedata->_param_list._params )
+        {
+            if ( kfparam->_map_value.empty() )
+            {
+                break;
+            }
+
+            for ( auto& iter : kfparam->_map_value )
+            {
+                if ( iter.second != 0u )
+                {
+                    player->UpdateData( kfrecord, iter.first, kfrecord->_data_setting->_value_key_name, KFEnum::Add, iter.second );
+                }
+            }
+        }
+
+        return true;
+    }
+
+    __KF_EXECUTE_FUNCTION__( KFRecruitModule::OnExecuteTechnologyRecruitDiscount )
+    {
+        if ( executedata->_param_list._params.size() < 2u )
+        {
+            return false;
+        }
+
+        auto race = executedata->_param_list._params[ 0 ]->_int_value;
+        auto discount = executedata->_param_list._params[ 1 ]->_int_value;
+
+        auto kfrecord = player->Find( __STRING__( effect ), __STRING__( recruitdiscount ) );
+        player->UpdateData( kfrecord, race, kfrecord->_data_setting->_value_key_name, KFEnum::Add, discount );
+
+        return true;
+    }
+
+    __KF_EXECUTE_FUNCTION__( KFRecruitModule::OnExecuteTechnologyRecruitProfession )
+    {
+        auto kfrecord = player->Find( __STRING__( effect ), __STRING__( recruitprofession ) );
+        for ( auto kfparam : executedata->_param_list._params )
+        {
+            if ( kfparam->_int_value == 0u )
+            {
+                break;
+            }
+
+            player->UpdateData( kfrecord, kfparam->_int_value, kfrecord->_data_setting->_value_key_name, KFEnum::Set, 0u );
+        }
+
+        return true;
+    }
+
+    __KF_EXECUTE_FUNCTION__( KFRecruitModule::OnExecuteTechnologyRecruitLevel )
+    {
+        if ( executedata->_param_list._params.size() < 2u )
+        {
+            return false;
+        }
+
+        auto minlevel = executedata->_param_list._params[ 0 ]->_int_value;
+        auto maxlevel = executedata->_param_list._params[ 1 ]->_int_value;
+
+        auto kfeffect = player->Find( __STRING__( effect ) );
+        player->UpdateData( kfeffect, __STRING__( recruitminlevel ), KFEnum::Add, minlevel );
+        player->UpdateData( kfeffect, __STRING__( recruitmaxlevel ), KFEnum::Add, maxlevel );
+
+        return true;
+    }
+
+
+    __KF_EXECUTE_FUNCTION__( KFRecruitModule::OnExecuteTechnologyRecruitGrowth )
+    {
+        if ( executedata->_param_list._params.size() < 2u )
+        {
+            return false;
+        }
+
+        auto mingrowth = executedata->_param_list._params[ 0 ]->_int_value;
+        auto maxgrowth = executedata->_param_list._params[ 1 ]->_int_value;
+
+        auto kfeffect = player->Find( __STRING__( effect ) );
+        player->UpdateData( kfeffect, __STRING__( mingrowth ), KFEnum::Add, mingrowth );
+        player->UpdateData( kfeffect, __STRING__( maxgrowth ), KFEnum::Add, maxgrowth );
+
+        return true;
     }
 }

@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="KFBackGroundConfig.hpp" />
+    <ClInclude Include="KFBuildConfig.hpp" />
     <ClInclude Include="KFChancelConfig.hpp" />
     <ClInclude Include="KFChapterConfig.hpp" />
     <ClInclude Include="KFCharacterConfig.hpp" />
@@ -19,6 +20,11 @@
     <ClInclude Include="KFCurrencyConfig.hpp" />
     <ClInclude Include="KFDataSetting.h" />
     <ClInclude Include="KFDivisorConfig.hpp" />
+    <ClInclude Include="KFGenerateConfig.hpp" />
+    <ClInclude Include="KFNpcConfig.hpp" />
+    <ClInclude Include="KFNpcSkillConfig.hpp" />
+    <ClInclude Include="KFPinchFaceConfig.hpp" />
+    <ClInclude Include="KFTechnologyConfig.hpp" />
     <ClInclude Include="KFWeaponAffixConfig.hpp" />
     <ClInclude Include="KFExecuteData.h" />
     <ClInclude Include="KFReadSetting.h" />
@@ -45,11 +51,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="KFBackGroundConfig.cpp" />
+    <ClCompile Include="KFBuildConfig.cpp" />
     <ClCompile Include="KFChancelConfig.cpp" />
     <ClCompile Include="KFChapterConfig.cpp" />
     <ClCompile Include="KFCharacterConfig.cpp" />
     <ClCompile Include="KFCurrencyConfig.cpp" />
     <ClCompile Include="KFDivisorConfig.cpp" />
+    <ClCompile Include="KFGenerateConfig.cpp" />
+    <ClCompile Include="KFNpcConfig.cpp" />
+    <ClCompile Include="KFNpcSkillConfig.cpp" />
+    <ClCompile Include="KFPinchFaceConfig.cpp" />
+    <ClCompile Include="KFTechnologyConfig.cpp" />
     <ClCompile Include="KFWeaponAffixConfig.cpp" />
     <ClCompile Include="KFStatusConfig.cpp" />
     <ClCompile Include="KFExploreConfig.cpp" />

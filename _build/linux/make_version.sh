@@ -15,8 +15,6 @@ if  [ ! -n "$3" ] ;then
 	exit 0
 fi
 
-svn up ../../../Resource
-
 build="1"
 uptype=1
 if  [ "$4" = "0" ] ;then
@@ -48,15 +46,16 @@ projectversion=1.1.$days.$svnversion
 echo $projectversion
 
 # config
-mkdir -p _bin/config
-#cp -f ../Resource/config/*.xml _bin/config/
-#cp -f ../Resource/config/server/*.xml _bin/config/
+#mkdir -p _bin/config
+#cp -f  _bin/extendconfig/*.xml _bin/config/
 
 #script
 mkdir -p _bin/script
 cp -rf ../Resource/script/ _bin/
 
 cd _bin/_gcm/builder/
+rm -rf ../conf_output
+
 chmod 777 gcm_build
 ./gcm_build -p "chess" -s $svnversion -b $2 -c $1 -m $3 -v $projectversion -n 1.2 -t $uptype
 

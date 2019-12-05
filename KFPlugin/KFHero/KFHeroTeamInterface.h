@@ -19,6 +19,9 @@ namespace KFrame
 
         // 删除队伍死亡的英雄
         virtual void RemoveTeamDeadHero( KFEntity* player ) = 0;
+
+        // 扣除队伍英雄的耐久度
+        virtual void DecTeamHeroDurability( KFEntity* player ) = 0;
     };
 
     //////////////////////////////////////////////////////////////////////////////////

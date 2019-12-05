@@ -61,25 +61,8 @@ namespace KFrame
             {
                 return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
             }
-        }
 
-        if ( !kfsetting->_consume_item.IsEmpty() )
-        {
-            auto dataname = player->CheckRemoveElement( &kfsetting->_consume_item, __FUNC_LINE__ );
-            if ( !dataname.empty() )
-            {
-                return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
-            }
-        }
-
-        if ( !kfsetting->_cost.IsEmpty() )
-        {
             player->RemoveElement( &kfsetting->_cost, __FUNC_LINE__ );
-        }
-
-        if ( !kfsetting->_consume_item.IsEmpty() )
-        {
-            player->RemoveElement( &kfsetting->_consume_item, __FUNC_LINE__ );
         }
 
         // 开始转职

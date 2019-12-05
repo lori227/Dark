@@ -58,7 +58,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\021CodeMessage.proto\022\005KFMsg*\335\021\n\017ProjectCo"
+      "\n\021CodeMessage.proto\022\005KFMsg*\264\025\n\017ProjectCo"
       "deEnum\022\016\n\nLogicError\020\000\022\024\n\016MatchRequestOk"
       "\020\231\362\001\022\026\n\020MatchAlreadyWait\020\232\362\001\022\021\n\013MatchInR"
       "oom\020\233\362\001\022\025\n\017MatchNotInMatch\020\234\362\001\022\023\n\rMatchC"
@@ -84,41 +84,53 @@ void AddDescriptorsImpl() {
       "ProfessionIsError\020\227\363\001\022\023\n\rHeroNameEmpty\020\230"
       "\363\001\022\025\n\017HeroTransferSuc\020\231\363\001\022\031\n\023HeroSelectI"
       "nnateSuc\020\232\363\001\022\020\n\nHeroIsDead\020\233\363\001\022\025\n\017HeroRa"
-      "ceIsError\020\234\363\001\022\031\n\023TrainCampLevelError\020\340\363\001"
-      "\022\031\n\023TrainCampIndexError\020\341\363\001\022\033\n\025TrainCamp"
-      "HeroNotExist\020\342\363\001\022\032\n\024TrainCampHeroIsExist"
-      "\020\343\363\001\022\030\n\022BuildFuncNotActive\020\344\363\001\022\032\n\024MainCa"
-      "mpSkinNotExist\020\345\363\001\022\033\n\025MainCampSkinNotAct"
-      "ive\020\346\363\001\022\030\n\022ClinicSettingError\020\347\363\001\022\033\n\025Cli"
-      "nicItemIsNotEnough\020\350\363\001\022\030\n\022ClinicMoneyIsE"
-      "rror\020\351\363\001\022\033\n\025TrainCampSettingError\020\352\363\001\022\031\n"
-      "\023TrainCampIsFinished\020\353\363\001\022\031\n\023GranarySetti"
-      "ngError\020\354\363\001\022\030\n\022GranaryHaveNotItem\020\355\363\001\022\034\n"
-      "\026SmithyConsumeNotEnough\020\356\363\001\022\030\n\022SmithySet"
-      "tingError\020\357\363\001\022\027\n\021SmithyHaveNotItem\020\360\363\001\022\026"
-      "\n\020SmithyStoreIsMax\020\361\363\001\022\036\n\030SmithyWeaponSe"
-      "ttingError\020\362\363\001\022\030\n\022SmithyMakeNumError\020\363\363\001"
-      "\022\034\n\026SmithyMakeNumNotEnough\020\364\363\001\022\034\n\026Clinic"
-      "CountIsNotEnough\020\365\363\001\022\027\n\021ClinicNotNeedCur"
-      "e\020\366\363\001\022\031\n\023SmithyMakeWeaponSuc\020\367\363\001\022\025\n\017Expl"
-      "oreMapLimit\020\307\364\001\022\025\n\017ExploreMapError\020\310\364\001\022\031"
-      "\n\023ExploreNotInExplore\020\311\364\001\022\020\n\nPVEIdError\020"
-      "\312\364\001\022\020\n\nPVEAlready\020\313\364\001\022\024\n\016ExploreAlready\020"
-      "\314\364\001\022\030\n\022ExploreNotInStatus\020\315\364\001\022\024\n\016PVENotI"
-      "nStatus\020\316\364\001\022\024\n\016ChapterIdError\020\221\375\001\022\024\n\016Cha"
-      "pterNotOpen\020\222\375\001\022\027\n\021ChapterEventError\020\223\375\001"
-      "\022\031\n\023ChapterDefaultError\020\224\375\001\022\032\n\024ChapterSt"
-      "atusIdError\020\225\375\001\022\032\n\024ChapterExecuteFailed\020"
-      "\226\375\001\022\024\n\016ItemWeaponOnly\020\364\375\001\022\031\n\023ItemWeaponR"
-      "aceLimit\020\365\375\001\022\031\n\023ItemWeaponHeroLimit\020\366\375\001\022"
-      "\032\n\024ItemWeaponLevelLimit\020\367\375\001\022\026\n\020ItemWeapo"
-      "nFailed\020\370\375\001\022\022\n\014ItemWeaponOk\020\371\375\001\022\030\n\022ItemW"
-      "eaponNotExist\020\372\375\001\022\030\n\022ItemUnWeaponFailed\020"
-      "\373\375\001\022\024\n\016ItemUnWeaponOk\020\374\375\001\022\037\n\031ItemUpdateD"
-      "urabilityError\020\375\375\001b\006proto3"
+      "ceIsError\020\234\363\001\022\032\n\024HeroDivisorNotUnlock\020\235\363"
+      "\001\022\035\n\027HeroRecruitRefreshCount\020\236\363\001\022 \n\032Hero"
+      "RecruitRefreshGenerate\020\237\363\001\022\036\n\030HeroRecrui"
+      "tRefreshWeight\020\240\363\001\022\037\n\031HeroRefreshCountNo"
+      "tEnough\020\241\363\001\022\031\n\023TrainCampLevelError\020\340\363\001\022\031"
+      "\n\023TrainCampIndexError\020\341\363\001\022\033\n\025TrainCampHe"
+      "roNotExist\020\342\363\001\022\032\n\024TrainCampHeroIsExist\020\343"
+      "\363\001\022\030\n\022BuildFuncNotActive\020\344\363\001\022\032\n\024MainCamp"
+      "SkinNotExist\020\345\363\001\022\033\n\025MainCampSkinNotActiv"
+      "e\020\346\363\001\022\030\n\022ClinicSettingError\020\347\363\001\022\033\n\025Clini"
+      "cItemIsNotEnough\020\350\363\001\022\030\n\022ClinicMoneyIsErr"
+      "or\020\351\363\001\022\033\n\025TrainCampSettingError\020\352\363\001\022\031\n\023T"
+      "rainCampIsFinished\020\353\363\001\022\031\n\023GranarySetting"
+      "Error\020\354\363\001\022\030\n\022GranaryHaveNotItem\020\355\363\001\022\034\n\026S"
+      "mithyConsumeNotEnough\020\356\363\001\022\030\n\022SmithySetti"
+      "ngError\020\357\363\001\022\027\n\021SmithyHaveNotItem\020\360\363\001\022\026\n\020"
+      "SmithyStoreIsMax\020\361\363\001\022\036\n\030SmithyWeaponSett"
+      "ingError\020\362\363\001\022\030\n\022SmithyMakeNumError\020\363\363\001\022\034"
+      "\n\026SmithyMakeNumNotEnough\020\364\363\001\022\034\n\026ClinicCo"
+      "untIsNotEnough\020\365\363\001\022\027\n\021ClinicNotNeedCure\020"
+      "\366\363\001\022\031\n\023SmithyMakeWeaponSuc\020\367\363\001\022\025\n\017BuildL"
+      "evelIsMax\020\370\363\001\022\030\n\022BuildInUpgradeTime\020\371\363\001\022"
+      "\034\n\026BuildNoFreeUpgradeList\020\372\363\001\022\037\n\031BuildUp"
+      "gradeLackCondition\020\373\363\001\022\033\n\025BuildNotInUpgr"
+      "adeTime\020\374\363\001\022\034\n\026BuildLevelSettingError\020\375\363"
+      "\001\022\034\n\026TechnologySettingError\020\376\363\001\022 \n\032Techn"
+      "ologyLackPreCondition\020\377\363\001\022\030\n\022TechnologyI"
+      "sUnlock\020\200\364\001\022\026\n\020TechnologyIslock\020\201\364\001\022\025\n\017E"
+      "xploreMapLimit\020\307\364\001\022\025\n\017ExploreMapError\020\310\364"
+      "\001\022\031\n\023ExploreNotInExplore\020\311\364\001\022\020\n\nPVEIdErr"
+      "or\020\312\364\001\022\020\n\nPVEAlready\020\313\364\001\022\024\n\016ExploreAlrea"
+      "dy\020\314\364\001\022\030\n\022ExploreNotInStatus\020\315\364\001\022\024\n\016PVEN"
+      "otInStatus\020\316\364\001\022\032\n\024ExploreHeroTeamEmpty\020\317"
+      "\364\001\022\024\n\016ChapterIdError\020\221\375\001\022\024\n\016ChapterNotOp"
+      "en\020\222\375\001\022\027\n\021ChapterEventError\020\223\375\001\022\031\n\023Chapt"
+      "erDefaultError\020\224\375\001\022\032\n\024ChapterStatusIdErr"
+      "or\020\225\375\001\022\032\n\024ChapterExecuteFailed\020\226\375\001\022\024\n\016It"
+      "emWeaponOnly\020\364\375\001\022\031\n\023ItemWeaponRaceLimit\020"
+      "\365\375\001\022\031\n\023ItemWeaponHeroLimit\020\366\375\001\022\032\n\024ItemWe"
+      "aponLevelLimit\020\367\375\001\022\026\n\020ItemWeaponFailed\020\370"
+      "\375\001\022\022\n\014ItemWeaponOk\020\371\375\001\022\030\n\022ItemWeaponNotE"
+      "xist\020\372\375\001\022\030\n\022ItemUnWeaponFailed\020\373\375\001\022\024\n\016It"
+      "emUnWeaponOk\020\374\375\001\022\037\n\031ItemUpdateDurability"
+      "Error\020\375\375\001b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2306);
+      descriptor, 2777);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "CodeMessage.proto", &protobuf_RegisterTypes);
 }
@@ -182,6 +194,11 @@ bool ProjectCodeEnum_IsValid(int value) {
     case 31130:
     case 31131:
     case 31132:
+    case 31133:
+    case 31134:
+    case 31135:
+    case 31136:
+    case 31137:
     case 31200:
     case 31201:
     case 31202:
@@ -206,6 +223,16 @@ bool ProjectCodeEnum_IsValid(int value) {
     case 31221:
     case 31222:
     case 31223:
+    case 31224:
+    case 31225:
+    case 31226:
+    case 31227:
+    case 31228:
+    case 31229:
+    case 31230:
+    case 31231:
+    case 31232:
+    case 31233:
     case 31303:
     case 31304:
     case 31305:
@@ -214,6 +241,7 @@ bool ProjectCodeEnum_IsValid(int value) {
     case 31308:
     case 31309:
     case 31310:
+    case 31311:
     case 32401:
     case 32402:
     case 32403:

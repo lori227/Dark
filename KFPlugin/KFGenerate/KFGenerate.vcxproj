@@ -12,21 +12,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="KFGenerateConfig.cpp" />
     <ClCompile Include="KFGenerateModule.cpp" />
     <ClCompile Include="KFGeneratePlugin.cpp" />
-    <ClCompile Include="KFNpcConfig.cpp" />
-    <ClCompile Include="KFNpcSkillConfig.cpp" />
-    <ClCompile Include="KFPinchFaceConfig.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="KFGenerateConfig.hpp" />
     <ClInclude Include="KFGenerateInterface.h" />
     <ClInclude Include="KFGenerateModule.hpp" />
     <ClInclude Include="KFGeneratePlugin.hpp" />
-    <ClInclude Include="KFNpcConfig.hpp" />
-    <ClInclude Include="KFNpcSkillConfig.hpp" />
-    <ClInclude Include="KFPinchFaceConfig.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A730E86A-55F3-47FD-9378-7C795795DB85}</ProjectGuid>

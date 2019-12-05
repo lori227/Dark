@@ -15,6 +15,7 @@ namespace KFrame
         __REGISTER_ADD_DATA__( &KFTaskModule::OnAddDataTaskModule );
         __REGISTER_REMOVE_DATA__( &KFTaskModule::OnRemoveDataTaskModule );
         __REGISTER_UPDATE_DATA__( &KFTaskModule::OnUpdateDataTaskModule );
+        __REGISTER_REMOVE_DATA_1__( __STRING__( task ), &KFTaskModule::OnRemoveTask );
 
         __REGISTER_EXECUTE__( __STRING__( taskstatus ), &KFTaskModule::OnExecuteUpdateTaskStatus );
         __REGISTER_EXECUTE__( __STRING__( taskcondition ), &KFTaskModule::OnExecuteUpdateTaskCondition );
@@ -34,6 +35,7 @@ namespace KFrame
         __UN_ADD_DATA__();
         __UN_REMOVE_DATA__();
         __UN_UPDATE_DATA__();
+        __UN_REMOVE_DATA_1__( __STRING__( task ) );
 
         __UN_ADD_ELEMENT__( __STRING__( task ) );
         __UN_EXECUTE__( __STRING__( taskstatus ) );
@@ -42,6 +44,32 @@ namespace KFrame
         __UN_MESSAGE__( KFMsg::MSG_TASK_RECEIVE_REQ );
         __UN_MESSAGE__( KFMsg::MSG_TASK_REWARD_REQ );
         __UN_MESSAGE__( KFMsg::MSG_TASK_REMOVE_REQ );
+    }
+
+    void KFTaskModule::AfterRun()
+    {
+        if ( _finish_task.empty() )
+        {
+            return;
+        }
+
+        std::unordered_map<uint64, SetUInt32> finishtask;
+        finishtask.swap( _finish_task );
+
+        for ( auto& iter : finishtask )
+        {
+            auto player = _kf_player->FindPlayer( iter.first );
+            if ( player == nullptr )
+            {
+                continue;
+            }
+
+            auto& tasklist = iter.second;
+            for ( auto taskid : tasklist )
+            {
+                FinishTask( player, taskid );
+            }
+        }
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -73,12 +101,61 @@ namespace KFrame
         auto time = kfelementobject->CalcValue( kfparent->_class_setting, __STRING__( time ), 1.0f );
         if ( time != 0u )
         {
-            time = KFGlobal::Instance()->_real_time + time;
+            time += KFGlobal::Instance()->_real_time;
         }
 
         ListUInt32 logicids;
         OpenTask( player, kfelementobject->_config_id, status, time, 0u, taskchainid, order, logicids );
         return std::make_tuple( KFDataDefine::Show_None, nullptr );
+    }
+
+    __KF_REMOVE_DATA_FUNCTION__( KFTaskModule::OnRemoveTask )
+    {
+        auto status = kfdata->Get<uint32>( __STRING__( status ) );
+        if ( status == KFMsg::ReceiveStatus )
+        {
+            return;
+        }
+
+        _kf_task_chain->RemoveTaskChain( player, kfdata );
+        auto time = kfdata->Get<uint32>( __STRING__( time ) );
+        if ( time != 0u )
+        {
+            __UN_TIMER_2__( player->GetKeyID(), key );
+        }
+    }
+
+    __KF_ENTER_PLAYER_FUNCTION__( KFTaskModule::OnEnterTaskModule )
+    {
+        ListUInt64 removes;
+        auto kftaskrecord = player->Find( __STRING__( task ) );
+        for ( auto kftask = kftaskrecord->First(); kftask != nullptr; kftask = kftaskrecord->Next() )
+        {
+            auto taskid = kftask->Get<uint32>( __STRING__( id ) );
+            auto kfsetting = KFTaskConfig::Instance()->FindSetting( taskid );
+            if ( kfsetting == nullptr )
+            {
+                removes.push_back( taskid );
+                continue;
+            }
+
+            // 超时定时器
+            auto time = kftask->Get( __STRING__( time ) );
+            if ( time != 0u )
+            {
+                StartTaskTimeoutTimer( player, taskid, time );
+            }
+        }
+
+        for ( auto taskid : removes )
+        {
+            kftaskrecord->Remove( taskid );
+        }
+    }
+
+    __KF_LEAVE_PLAYER_FUNCTION__( KFTaskModule::OnLeaveTaskModule )
+    {
+        __UN_TIMER_1__( player->GetKeyID() );
     }
 
     KFData* KFTaskModule::OpenTask( KFEntity* player, uint32 taskid, uint32 status, uint64 time )
@@ -90,20 +167,30 @@ namespace KFrame
             return nullptr;
         }
 
-        return OpenTask( player, kfsetting, status, time );
+        return OpenTask( player, kfsetting, status, time, 0u );
     }
 
-    KFData* KFTaskModule::OpenTask( KFEntity* player, const KFTaskSetting* kfsetting, uint32 status, uint64 time )
+    KFData* KFTaskModule::OpenTask( KFEntity* player, const KFTaskSetting* kfsetting, uint32 status, uint64 time, uint32 refreshid )
     {
         auto kftaskrecord = player->Find( __STRING__( task ) );
         auto kftask = kftaskrecord->Find( kfsetting->_id );
         if ( kftask == nullptr )
         {
             kftask = _kf_kernel->CreateObject( kftaskrecord->_data_setting );
-            SetTaskTime( player, kftask, time, false );
             kftask->Set( __STRING__( status ), status );
-            _kf_condition->AddCondition( kftask, kfsetting->_complete_condition );
+            kftask->Set( __STRING__( refresh ), refreshid );
+            SetTaskTime( player, kftask, kfsetting, time, false );
+
+            // 前置条件
+            auto kfpreconditionobject = kftask->Find( __STRING__( preconditions ) );
+            _kf_condition->AddCondition( kfpreconditionobject, kfsetting->_pre_condition, kfsetting->_pre_condition_type );
+            _kf_condition->InitCondition( player, kfpreconditionobject, KFConditionEnum::LimitNull, false );
+
+            // 完成条件
+            auto kfconditionobject = kftask->Find( __STRING__( conditions ) );
+            _kf_condition->AddCondition( kfconditionobject, kfsetting->_complete_condition, kfsetting->_complete_condition_type );
             InitTaskCondition( player, kfsetting, kftask, status, false );
+
             player->AddData( kftaskrecord, kfsetting->_id, kftask );
         }
         else
@@ -115,24 +202,18 @@ namespace KFrame
         return kftask;
     }
 
-    void KFTaskModule::UpdataTaskStatus( KFEntity* player, const KFTaskSetting* kfsetting, KFData* kftask, uint32 status, uint64 time )
-    {
-        // 更新状态
-        player->UpdateData( kftask, __STRING__( status ), KFEnum::Set, status );
-
-        // 设置时间
-        SetTaskTime( player, kftask, time, true );
-
-        // 初始化条件
-        InitTaskCondition( player, kfsetting, kftask, status, true );
-    }
-
     KFData* KFTaskModule::OpenTask( KFEntity* player, uint32 taskid, uint32 status, uint64 time, uint32 refreshid, uint32 taskchainid, uint32 order, const ListUInt32& logicids )
     {
-        auto kftask = OpenTask( player, taskid, status, time );
+        auto kfsetting = KFTaskConfig::Instance()->FindSetting( taskid );
+        if ( kfsetting == nullptr )
+        {
+            __LOG_ERROR__( "task=[{}] can't find setting!", taskid );
+            return nullptr;
+        }
+
+        auto kftask = OpenTask( player, kfsetting, status, time, refreshid );
         if ( kftask != nullptr )
         {
-            kftask->Set( __STRING__( refresh ), refreshid );
             kftask->Set( __STRING__( chain ), taskchainid );
             kftask->Set( __STRING__( order ), order );
 
@@ -146,7 +227,19 @@ namespace KFrame
         return kftask;
     }
 
-    void KFTaskModule::SetTaskTime( KFEntity* player, KFData* kftask, uint64 time, bool update )
+    void KFTaskModule::UpdataTaskStatus( KFEntity* player, const KFTaskSetting* kfsetting, KFData* kftask, uint32 status, uint64 time )
+    {
+        // 更新状态
+        player->UpdateData( kftask, __STRING__( status ), KFEnum::Set, status );
+
+        // 设置时间
+        SetTaskTime( player, kftask, kfsetting, time, true );
+
+        // 初始化条件
+        InitTaskCondition( player, kfsetting, kftask, status, true );
+    }
+
+    void KFTaskModule::SetTaskTime( KFEntity* player, KFData* kftask, const KFTaskSetting* kfsetting, uint64 time, bool update )
     {
         if ( time == 0u )
         {
@@ -163,24 +256,12 @@ namespace KFrame
         }
 
         // 启动定时器
-        auto taskid = kftask->Get<uint32>( __STRING__( id ) );
-        StartTaskTimeoutTimer( player, taskid, time );
+        StartTaskTimeoutTimer( player, kfsetting->_id, time );
     }
 
-    void KFTaskModule::StartFinishTaskTimer( KFEntity* player, uint32 taskid, uint32 time )
+    void KFTaskModule::AddFinishTask( KFEntity* player, uint32 taskid )
     {
-        __LIMIT_TIMER_2__( player->GetKeyID(), taskid, time, 1, &KFTaskModule::OnTimerFinishTask );
-    }
-
-    __KF_TIMER_FUNCTION__( KFTaskModule::OnTimerFinishTask )
-    {
-        auto player = _kf_player->FindPlayer( objectid );
-        if ( player == nullptr )
-        {
-            return;
-        }
-
-        FinishTask( player, subid );
+        _finish_task[ player->GetKeyID() ].insert( taskid );
     }
 
     void KFTaskModule::FinishTask( KFEntity* player, uint32 taskid )
@@ -206,8 +287,11 @@ namespace KFrame
         kftask->Set<uint32>( __STRING__( type ), kfsetting->_type );
         kftask->Set<uint32>( __STRING__( status ), KFMsg::ReceiveStatus );
 
-        // 掉落
+        // 任务输出执行
         TaskExecute( player, kftask, kfsetting );
+
+        // 提示客户端
+        _kf_display->DelayToClient( player, KFMsg::TaskRewardOk, kfsetting->_id );
 
         // 完成任务链
         _kf_task_chain->FinishTaskChain( player, kftask, __FUNC_LINE__ );
@@ -227,57 +311,14 @@ namespace KFrame
                 auto conditionid = executedata->_param_list._params[ 1 ]->_int_value;
                 if ( conditionid != 0u )
                 {
-                    auto value = kftask->Get<uint32>( __STRING__( condition ), conditionid, __STRING__( value ) );
+                    auto kfconditionobject = kftask->Find( __STRING__( conditions ) );
+                    auto value = kfconditionobject->Get<uint32>( __STRING__( condition ), conditionid, __STRING__( value ) );
                     const_cast< KFExecuteData* >( executedata )->_calc_value = value;
                 }
             }
         }
 
         _kf_execute->Execute( player, executedata, __STRING__( task ), kfsetting->_id, __FUNC_LINE__ );
-    }
-
-    __KF_ENTER_PLAYER_FUNCTION__( KFTaskModule::OnEnterTaskModule )
-    {
-        ListUInt64 removes;
-        auto kftaskrecord = player->Find( __STRING__( task ) );
-        for ( auto kftask = kftaskrecord->First(); kftask != nullptr; kftask = kftaskrecord->Next() )
-        {
-            auto taskid = kftask->Get<uint32>( __STRING__( id ) );
-            auto kfsetting = KFTaskConfig::Instance()->FindSetting( taskid );
-            if ( kfsetting == nullptr )
-            {
-                removes.push_back( taskid );
-                continue;
-            }
-
-            // 自动交付定时器
-            auto status = kftask->Get<uint32>( __STRING__( status ) );
-            if ( status == KFMsg::DoneStatus )
-            {
-                if ( kfsetting->_complete_type == KFTaskEnum::ComplelteAuto )
-                {
-                    StartFinishTaskTimer( player, taskid, 10u );
-                    continue;
-                }
-            }
-
-            // 超时定时器
-            auto time = kftask->Get( __STRING__( time ) );
-            if ( time != 0u )
-            {
-                StartTaskTimeoutTimer( player, taskid, time );
-            }
-        }
-
-        for ( auto taskid : removes )
-        {
-            kftaskrecord->Remove( taskid );
-        }
-    }
-
-    __KF_LEAVE_PLAYER_FUNCTION__( KFTaskModule::OnLeaveTaskModule )
-    {
-        __UN_TIMER_1__( player->GetKeyID() );
     }
 
     void KFTaskModule::StartTaskTimeoutTimer( KFEntity* player, uint32 taskid, uint64 time )
@@ -307,8 +348,8 @@ namespace KFrame
         auto time = kftask->Get( __STRING__( time ) );
         if ( time != 0u )
         {
-            kftask->Set( __STRING__( time ), 0u );
             __UN_TIMER_2__( player->GetKeyID(), taskid );
+            player->UpdateData( kftask, __STRING__( time ), KFEnum::Set, 0u );
         }
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -328,11 +369,14 @@ namespace KFrame
         }
 
         // 初始化条件
-        auto complete = _kf_condition->InitCondition( player, kftask, kfsetting->_condition_type, limitmask, update );
+        auto kfconditionobject = kftask->Find( __STRING__( conditions ) );
+        auto complete = _kf_condition->InitCondition( player, kfconditionobject, limitmask, update );
         if ( complete )
         {
             DoneTask( player, kftask, kfsetting, update );
         }
+
+        _kf_display->DelayToClient( player, KFMsg::TaskReceiveOk, kfsetting->_id );
     }
 
     void KFTaskModule::DoneTask( KFEntity* player, KFData* kftask, const KFTaskSetting* kfsetting, bool update )
@@ -346,7 +390,7 @@ namespace KFrame
 
         // 任务完成, 停止倒计时
         StopTaskTimeoutTimer( player, kftask, kfsetting->_id );
-        if ( !update )
+        if ( !update || kfsetting->IsAutoTask() )
         {
             kfstatus->Set<uint32>( KFMsg::DoneStatus );
         }
@@ -356,9 +400,9 @@ namespace KFrame
         }
 
         // 刚创建的任务, 如果是完成状态, 又是自动交付, 延迟删除
-        if ( kfsetting->_complete_type == KFTaskEnum::ComplelteAuto )
+        if ( kfsetting->IsAutoTask() )
         {
-            StartFinishTaskTimer( player, kfsetting->_id, 10u );
+            AddFinishTask( player, kfsetting->_id );
         }
     }
 
@@ -406,11 +450,12 @@ namespace KFrame
     {
     public:
         KFData* _task;
-        const KFTaskSetting* _kfsetting;
-        uint32 _limit_mask;
+        const KFTaskSetting* _kfsetting = nullptr;
+        uint32 _limit_mask = KFConditionEnum::LimitNull;
     };
 
 #define __GET_UPDATA_TASK_LIST__()\
+    std::list< KFUpdateTaskData > _pre_task;\
     std::list< KFUpdateTaskData > _update_task;\
     auto kftaskrecord = player->Find( __STRING__( task ) );\
     for ( auto kftask = kftaskrecord->First(); kftask != nullptr; kftask = kftaskrecord->Next() )\
@@ -421,28 +466,49 @@ namespace KFrame
         {\
             continue;\
         }\
-        auto limitmask = CheckTaskCanUpdate( player, kftask, kfsetting );\
-        if ( limitmask == KFConditionEnum::LimitStop )\
+        auto status = kftask->Get<uint32>( __STRING__( status ) );\
+        if ( status == KFMsg::ActiveStatus )\
         {\
-            continue;\
+            KFUpdateTaskData updatedata;\
+            updatedata._task = kftask; \
+            updatedata._kfsetting = kfsetting; \
+            _pre_task.push_back( updatedata );\
         }\
-        KFUpdateTaskData updatedata;\
-        updatedata._task = kftask;\
-        updatedata._kfsetting = kfsetting;\
-        updatedata._limit_mask = limitmask;\
-        _update_task.push_back( updatedata );\
+        else\
+        {\
+            auto limitmask = CheckTaskCanUpdate( player, kftask, kfsetting ); \
+            if ( limitmask != KFConditionEnum::LimitStop )\
+            {\
+                KFUpdateTaskData updatedata; \
+                updatedata._task = kftask; \
+                updatedata._kfsetting = kfsetting; \
+                updatedata._limit_mask = limitmask; \
+                _update_task.push_back( updatedata ); \
+            }\
+        }\
     }\
 
     __KF_ADD_DATA_FUNCTION__( KFTaskModule::OnAddDataTaskModule )
     {
         __GET_UPDATA_TASK_LIST__();
+        for ( auto& data : _pre_task )
+        {
+            auto kftask = data._task;
+            auto kfsetting = data._kfsetting;
+            auto limitmask = data._limit_mask;
+
+            auto kfconditionobject = kftask->Find( __STRING__( preconditions ) );
+            _kf_condition->UpdateAddCondition( player, kfconditionobject, limitmask, kfdata );
+        }
+
         for ( auto& data : _update_task )
         {
             auto kftask = data._task;
             auto kfsetting = data._kfsetting;
             auto limitmask = data._limit_mask;
 
-            auto complete = _kf_condition->UpdateAddCondition( player, kftask, kfsetting->_condition_type, limitmask, kfdata );
+            auto kfconditionobject = kftask->Find( __STRING__( conditions ) );
+            auto complete = _kf_condition->UpdateAddCondition( player, kfconditionobject, limitmask, kfdata );
             if ( complete )
             {
                 DoneTask( player, kftask, kfsetting, true );
@@ -453,13 +519,24 @@ namespace KFrame
     __KF_ADD_DATA_FUNCTION__( KFTaskModule::OnRemoveDataTaskModule )
     {
         __GET_UPDATA_TASK_LIST__();
+        for ( auto& data : _pre_task )
+        {
+            auto kftask = data._task;
+            auto kfsetting = data._kfsetting;
+            auto limitmask = data._limit_mask;
+
+            auto kfconditionobject = kftask->Find( __STRING__( preconditions ) );
+            _kf_condition->UpdateRemoveCondition( player, kfconditionobject, limitmask, kfdata );
+        }
+
         for ( auto& data : _update_task )
         {
             auto kftask = data._task;
             auto kfsetting = data._kfsetting;
             auto limitmask = data._limit_mask;
 
-            auto complete = _kf_condition->UpdateRemoveCondition( player, kftask, kfsetting->_condition_type, limitmask, kfdata );
+            auto kfconditionobject = kftask->Find( __STRING__( conditions ) );
+            auto complete = _kf_condition->UpdateRemoveCondition( player, kfconditionobject, limitmask, kfdata );
             if ( complete )
             {
                 DoneTask( player, kftask, kfsetting, true );
@@ -470,20 +547,30 @@ namespace KFrame
     __KF_UPDATE_DATA_FUNCTION__( KFTaskModule::OnUpdateDataTaskModule )
     {
         __GET_UPDATA_TASK_LIST__();
+        for ( auto& data : _pre_task )
+        {
+            auto kftask = data._task;
+            auto kfsetting = data._kfsetting;
+            auto limitmask = data._limit_mask;
+
+            auto kfconditionobject = kftask->Find( __STRING__( preconditions ) );
+            _kf_condition->UpdateUpdateCondition( player, kfconditionobject, limitmask, kfdata, operate, value, newvalue );
+        }
+
         for ( auto& data : _update_task )
         {
             auto kftask = data._task;
             auto kfsetting = data._kfsetting;
             auto limitmask = data._limit_mask;
 
-            auto complete = _kf_condition->UpdateUpdateCondition( player, kftask, kfsetting->_condition_type, limitmask, kfdata, operate, value, newvalue );
+            auto kfconditionobject = kftask->Find( __STRING__( conditions ) );
+            auto complete = _kf_condition->UpdateUpdateCondition( player, kfconditionobject, limitmask, kfdata, operate, value, newvalue );
             if ( complete )
             {
                 DoneTask( player, kftask, kfsetting, true );
             }
         }
     }
-
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     __KF_MESSAGE_FUNCTION__( KFTaskModule::HandleTaskReceiveReq )
@@ -509,7 +596,8 @@ namespace KFrame
         }
 
         // 判断前置条件
-        auto ok = _kf_condition->CheckCondition( player, &kfsetting->_pre_condition );
+        auto kfconditionobject = kftask->Find( __STRING__( preconditions ) );
+        auto ok = _kf_condition->CheckCondition( player, kfconditionobject );
         if ( !ok )
         {
             return _kf_display->SendToClient( player, KFMsg::TaskNotPreCondition );
@@ -527,6 +615,7 @@ namespace KFrame
             {
                 return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
             }
+            player->RemoveElement( &kfrefreshsetting->_receive_cost, __FUNC_LINE__ );
 
             if ( kfrefreshsetting->_done_time != 0u )
             {
@@ -569,7 +658,6 @@ namespace KFrame
 
         // 交付完成任务
         FinishTask( player, kftask, kfsetting );
-        _kf_display->SendToClient( player, KFMsg::TaskRewardOk );
     }
 
     __KF_MESSAGE_FUNCTION__( KFTaskModule::HandleTaskRemoveReq )
@@ -630,7 +718,7 @@ namespace KFrame
             else
             {
                 // 开启任务
-                OpenTask( player, kfsetting, status, 0u );
+                OpenTask( player, kfsetting, status, 0u, 0u );
             }
         }
         break;
@@ -648,7 +736,7 @@ namespace KFrame
             }
 
             // 开启任务
-            OpenTask( player, kfsetting, status, timeout );
+            OpenTask( player, kfsetting, status, timeout, 0u );
         }
         break;
         case KFMsg::DoneStatus:
@@ -690,7 +778,8 @@ namespace KFrame
             auto status = kftask->Get<uint32>( __STRING__( status ) );
             if ( status == KFMsg::ExecuteStatus )
             {
-                auto ok = _kf_condition->UpdateCondition( player, kftask, kfsetting->_condition_type, conditionid, operate, conditionvalue );
+                auto kfconditionobject = kftask->Find( __STRING__( conditions ) );
+                auto ok = _kf_condition->UpdateCondition( player, kfconditionobject, conditionid, operate, conditionvalue );
                 if ( ok )
                 {
                     DoneTask( player, kftask, kfsetting, true );

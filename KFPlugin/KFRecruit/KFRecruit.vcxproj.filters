@@ -2,14 +2,14 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="KFRecruitConfig.cpp" />
     <ClCompile Include="KFRecruitModule.cpp" />
     <ClCompile Include="KFRecruitPlugin.cpp" />
+    <ClCompile Include="KFRecruitConfig.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="KFRecruitConfig.hpp" />
     <ClInclude Include="KFRecruitInterface.h" />
     <ClInclude Include="KFRecruitModule.hpp" />
     <ClInclude Include="KFRecruitPlugin.hpp" />
+    <ClInclude Include="KFRecruitConfig.hpp" />
   </ItemGroup>
 </Project>

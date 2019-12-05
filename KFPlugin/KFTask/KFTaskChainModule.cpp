@@ -153,6 +153,32 @@ namespace KFrame
         }
     }
 
+    void KFTaskChainModule::RemoveTaskChain( KFEntity* player, KFData* kftask )
+    {
+        auto taskchainid = kftask->Get<uint32>( __STRING__( chain ) );
+        auto order = kftask->Get<uint32>( __STRING__( order ) );
+        if ( taskchainid == 0u || order == 0u )
+        {
+            return;
+        }
+
+        auto kftaskchainsetting = KFTaskChainConfig::Instance()->FindSetting( taskchainid );
+        if ( kftaskchainsetting == nullptr )
+        {
+            return;
+        }
+
+        // 附加的掉落组id
+        auto taskid = kftask->Get<uint32>( __STRING__( id ) );
+        auto taskdata = kftaskchainsetting->FindTaskData( order, taskid );
+        if ( taskdata == nullptr )
+        {
+            return;
+        }
+
+        RemoveTaskLogicData( player, kftask, taskdata );
+    }
+
     void KFTaskChainModule::FinishTaskChain( KFEntity* player, KFData* kftask, const char* function, uint32 line )
     {
         auto taskchainid = kftask->Get<uint32>( __STRING__( chain ) );
@@ -184,7 +210,7 @@ namespace KFrame
                 }
             }
 
-            FinishTaskLogckData( player, kftask, taskdata );
+            FinishTaskLogicData( player, kftask, taskdata );
         }
 
         ++order;
@@ -222,7 +248,7 @@ namespace KFrame
         return true;
     }
 
-    void KFTaskChainModule::FinishTaskLogckData( KFEntity* player, KFData* kftask, const KFTaskData* taskdata )
+    void KFTaskChainModule::FinishTaskLogicData( KFEntity* player, KFData* kftask, const KFTaskData* taskdata )
     {
         if ( taskdata->_logic_name.empty() )
         {
@@ -233,7 +259,7 @@ namespace KFrame
         auto kflogic = kftask->Find( __STRING__( logicids ) );
         for ( auto kfchild = kflogic->First(); kfchild != nullptr; kfchild = kflogic->Next() )
         {
-            logicids.push_back( kfchild->Get() );
+            logicids.push_back( kfchild->Get<uint32>() );
         }
 
         // 结束逻辑属性点
@@ -258,27 +284,31 @@ namespace KFrame
             }
         }
     }
+
+    void KFTaskChainModule::RemoveTaskLogicData( KFEntity* player, KFData* kftask, const KFTaskData* taskdata )
+    {
+        FinishTaskLogicData( player, kftask, taskdata );
+    }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     __KF_RESET_FUNCTION__( KFTaskChainModule::OnResetRefreshTaskChain )
     {
-        KFDate nowdate( nowtime );
-        KFDate lastdate( lasttime );
         for ( auto& iter : KFTaskChainRefreshConfig::Instance()->_refresh_data_list._objects )
         {
             auto kfrefreshdata = iter.second;
-            if ( kfrefreshdata->_time_setting == nullptr )
-            {
-                continue;
-            }
-
-            if ( !KFDate::CheckTime( &kfrefreshdata->_time_setting->_time_data, lastdate, nowdate ) )
+            if ( !_kf_reset->CheckResetTime( player, iter.first ) )
             {
                 continue;
             }
 
             for ( auto kfsetting : kfrefreshdata->_refresh_list )
             {
+                // 判断条件
+                if ( !_kf_condition->CheckCondition( player, &kfsetting->_conditions ) )
+                {
+                    continue;
+                }
+
                 auto rand = KFGlobal::Instance()->RandRatio( KFRandEnum::TenThousand );
                 if ( rand < kfsetting->_refresh_rate )
                 {
@@ -312,4 +342,7 @@ namespace KFrame
         //开启新的任务链
         OpenTaskChain( player, kfsetting->_task_chain_id, 1u, kfsetting->_receive_time, kfsetting->_id, __FUNC_LINE__ );
     }
+
+
+
 }

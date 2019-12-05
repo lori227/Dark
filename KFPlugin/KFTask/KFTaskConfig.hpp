@@ -27,17 +27,24 @@ namespace KFrame
         uint32 _complete_type = 0u;
 
         // 前置条件
-        KFConditions _pre_condition;
+        uint32 _pre_condition_type = 0u;
+        VectorUInt32 _pre_condition;
 
         // 地点条件
         KFConditions _place_condition;
 
         // 完成条件
-        uint32 _condition_type = 0u;
+        uint32 _complete_condition_type = 0u;
         VectorUInt32 _complete_condition;
 
         // 输出
         KFExecuteData _execute_data;
+    public:
+        // 是否是自动提交类型
+        bool IsAutoTask() const
+        {
+            return _complete_type == KFTaskEnum::ComplelteAuto;
+        }
     };
 
     ////////////////////////////////////////////////////////////////////////////////

@@ -8,6 +8,7 @@ namespace KFrame
         kfsetting->_bag_name = xmlnode.GetString( "Explore", true );
         kfsetting->_extend_name = xmlnode.GetString( "Extend", true );
         kfsetting->_is_auto = xmlnode.GetUInt32( "Auto", true );
+        kfsetting->_sort_index = xmlnode.GetUInt32( "Sort", true );
 
         auto strmove = xmlnode.GetString( "Move", true );
         while ( !strmove.empty() )

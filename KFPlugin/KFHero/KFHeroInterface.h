@@ -8,6 +8,9 @@ namespace KFrame
     class KFHeroInterface : public KFModule
     {
     public:
+        // 英雄是否达到最大数量
+        virtual bool IsFull( KFEntity* player, KFData* kfherorecord ) = 0;
+
         // 增加经验
         virtual uint32 AddExp( KFEntity* player, KFData* kfhero, uint32 exp ) = 0;
 

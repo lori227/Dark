@@ -82,6 +82,24 @@
     <ClInclude Include="KFWeaponTypeConfig.hpp">
       <Filter>Item</Filter>
     </ClInclude>
+    <ClInclude Include="KFGenerateConfig.hpp">
+      <Filter>Hero</Filter>
+    </ClInclude>
+    <ClInclude Include="KFNpcConfig.hpp">
+      <Filter>Hero</Filter>
+    </ClInclude>
+    <ClInclude Include="KFNpcSkillConfig.hpp">
+      <Filter>Hero</Filter>
+    </ClInclude>
+    <ClInclude Include="KFPinchFaceConfig.hpp">
+      <Filter>Hero</Filter>
+    </ClInclude>
+    <ClInclude Include="KFBuildConfig.hpp">
+      <Filter>Build</Filter>
+    </ClInclude>
+    <ClInclude Include="KFTechnologyConfig.hpp">
+      <Filter>Build</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Option">
@@ -107,6 +125,9 @@
     </Filter>
     <Filter Include="GamePlay">
       <UniqueIdentifier>{1aa7b5d6-2624-4785-bb82-946844880b9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Build">
+      <UniqueIdentifier>{da9bc7cf-1438-4d43-94d9-5237a86097e6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +202,24 @@
     </ClCompile>
     <ClCompile Include="KFWeaponTypeConfig.cpp">
       <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="KFGenerateConfig.cpp">
+      <Filter>Hero</Filter>
+    </ClCompile>
+    <ClCompile Include="KFNpcConfig.cpp">
+      <Filter>Hero</Filter>
+    </ClCompile>
+    <ClCompile Include="KFNpcSkillConfig.cpp">
+      <Filter>Hero</Filter>
+    </ClCompile>
+    <ClCompile Include="KFPinchFaceConfig.cpp">
+      <Filter>Hero</Filter>
+    </ClCompile>
+    <ClCompile Include="KFBuildConfig.cpp">
+      <Filter>Build</Filter>
+    </ClCompile>
+    <ClCompile Include="KFTechnologyConfig.cpp">
+      <Filter>Build</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -16,34 +16,139 @@ namespace KFrame
         __UN_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( level ) );
         __UN_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( profession ) );
         ///////////////////////////////////////////////////////////////////////////////////////////////////////
-
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    uint32 KFGenerateModule::RandDivisorByType( KFEntity* player, uint32 type, const KFWeightList< KFWeight >* weightpool )
+    uint32 KFGenerateModule::CalcRace( uint32 racepoolid, const DivisorList& divisorlist, const std::map< uint32, const KFProfessionSetting* >& professionlist )
     {
-        auto kfdivisorrecord = player->Find( __STRING__( divisor ) );
-
-        std::vector< const KFDivisorSetting* > outlist;
-        for ( auto kfdivisor = kfdivisorrecord->First(); kfdivisor != nullptr; kfdivisor = kfdivisorrecord->Next() )
+        auto racepool = KFWeightConfig::Instance()->FindWeightPool( racepoolid );
+        if ( racepool == nullptr )
         {
-            auto id = kfdivisor->GetKeyID();
-            auto kfsetting = KFDivisorConfig::Instance()->FindSetting( id );
-            if ( kfsetting != nullptr && kfsetting->_type == type )
+            __LOG_ERROR__( "race pool=[{}] can't find!", racepoolid );
+            return 0u;
+        }
+
+        // 计算出解锁职业的种族列表
+        SetUInt32 racelist;
+        for ( auto& iter : professionlist )
+        {
+            auto kfprofessionsetting = iter.second;
+            racelist.insert( kfprofessionsetting->_race_list.begin(), kfprofessionsetting->_race_list.end() );
+        }
+
+        std::vector< const KFDivisorSetting* > randlist;
+        for ( auto kfsetting : divisorlist )
+        {
+            // 不是种族偏好因子
+            if ( kfsetting->_type != KFMsg::DivisorOfRace )
             {
-                // 判断是否在权重列表中
-                if ( weightpool == nullptr || weightpool->Have( kfsetting->_value ) )
+                continue;
+            }
+
+            // 不在解锁职业的种族列表中
+            if ( !racelist.empty() )
+            {
+                if ( racelist.find( kfsetting->_value ) == racelist.end() )
                 {
-                    outlist.push_back( kfsetting );
+                    continue;
                 }
+            }
+
+            // 随机池没有该种族
+            if ( !racepool->Have( kfsetting->_value ) )
+            {
+                continue;
+            }
+
+            randlist.push_back( kfsetting );
+        }
+
+        // 使用种族偏好因子
+        auto divisorcount = ( uint32 )randlist.size();
+        if ( divisorcount > 0u )
+        {
+            auto index = KFGlobal::Instance()->RandRatio( divisorcount );
+            auto kfsetting = randlist.at( index );
+            auto rand = KFGlobal::Instance()->RandRatio( KFRandEnum::Hundred );
+            if ( rand < kfsetting->_probability )
+            {
+                return kfsetting->_value;
             }
         }
 
-        if ( !outlist.empty() )
+        // 权重池里随机
+        const KFWeight* kfweight = nullptr;
+        if ( racelist.empty() )
         {
-            auto index = KFGlobal::Instance()->RandRatio( ( uint32 )outlist.size() );
-            auto kfsetting = outlist.at( index );
+            kfweight = racepool->Rand();
+        }
+        else
+        {
+            kfweight = racepool->Rand( racelist, false );
+        }
+        if ( kfweight == nullptr )
+        {
+            __LOG_ERROR__( "pool=[{}] can't rand race!", racepoolid );
+            return 0u;
+        }
 
-            // 判断是否生效
+        return kfweight->_id;
+    }
+
+    uint32 KFGenerateModule::CalcSex( uint32 sexpoolid )
+    {
+        auto sexpool = KFWeightConfig::Instance()->FindWeightPool( sexpoolid );
+        if ( sexpool == nullptr )
+        {
+            return KFGlobal::Instance()->RandRange( KFMsg::Male, KFMsg::Female, 1u );
+        }
+
+        // 按权重随机
+        auto kfweight = sexpool->Rand();
+        if ( kfweight == nullptr )
+        {
+            return KFGlobal::Instance()->RandRange( KFMsg::Male, KFMsg::Female, 1u );
+        }
+
+        return kfweight->_id;
+    }
+
+    uint32 KFGenerateModule::CalcMove( const DivisorList& divisorlist, const std::map<uint32, const KFProfessionSetting*>& professionlist )
+    {
+        // 计算出解锁职业的移动方式列表
+        SetUInt32 movelist;
+        for ( auto& iter : professionlist )
+        {
+            auto kfprofessionsetting = iter.second;
+            movelist.insert( kfprofessionsetting->_move_type );
+        }
+
+        std::vector< const KFDivisorSetting* > randlist;
+        for ( auto kfsetting : divisorlist )
+        {
+            // 不是移动偏好因子
+            if ( kfsetting->_type != KFMsg::DivisorOfMove )
+            {
+                continue;
+            }
+
+            // 不在解锁职业的移动列表中
+            if ( !movelist.empty() )
+            {
+                if ( movelist.find( kfsetting->_value ) == movelist.end() )
+                {
+                    continue;
+                }
+            }
+
+            randlist.push_back( kfsetting );
+        }
+
+        // 使用移动方式偏好因子
+        auto divisorcount = ( uint32 )randlist.size();
+        if ( divisorcount > 0u )
+        {
+            auto index = KFGlobal::Instance()->RandRatio( divisorcount );
+            auto kfsetting = randlist.at( index );
             auto rand = KFGlobal::Instance()->RandRatio( KFRandEnum::Hundred );
             if ( rand < kfsetting->_probability )
             {
@@ -54,51 +159,93 @@ namespace KFrame
         return 0u;
     }
 
-    uint32 KFGenerateModule::GenerateRace( KFEntity* player, uint32 racepoolid, bool usedivisor, const char* function, uint32 line )
+    uint32 KFGenerateModule::CalcWeapon( const DivisorList& divisorlist, const std::map<uint32, const KFProfessionSetting*>& professionlist )
     {
-        auto race = 0u;
-        auto racepool = KFWeightConfig::Instance()->FindWeightPool( racepoolid );
-        if ( usedivisor )
+        // 计算出解锁职业的武器类型列表
+        SetUInt32 weaponlist;
+        for ( auto& iter : professionlist )
         {
-            // 使用种族偏好因子
-            race = RandDivisorByType( player, KFMsg::DivisorOfRace, racepool );
-            if ( race != 0u )
+            auto kfprofessionsetting = iter.second;
+            weaponlist.insert( kfprofessionsetting->_weapon_type_list.begin(), kfprofessionsetting->_weapon_type_list.end() );
+        }
+
+        std::vector< const KFDivisorSetting* > randlist;
+        for ( auto kfsetting : divisorlist )
+        {
+            // 不是武器类型偏好因子
+            if ( kfsetting->_type != KFMsg::DivisorOfWeapon )
             {
-                return race;
+                continue;
+            }
+
+            // 不在解锁职业的武器类型中
+            if ( !weaponlist.empty() )
+            {
+                if ( weaponlist.find( kfsetting->_value ) == weaponlist.end() )
+                {
+                    continue;
+                }
+            }
+
+            randlist.push_back( kfsetting );
+        }
+
+        // 使用武器类型偏好因子
+        auto divisorcount = ( uint32 )randlist.size();
+        if ( divisorcount > 0u )
+        {
+            auto index = KFGlobal::Instance()->RandRatio( divisorcount );
+            auto kfsetting = randlist.at( index );
+            auto rand = KFGlobal::Instance()->RandRatio( KFRandEnum::Hundred );
+            if ( rand < kfsetting->_probability )
+            {
+                return kfsetting->_value;
             }
         }
 
-        // 如果随机因子失败, 继续随机
-        if ( racepool != nullptr )
-        {
-            race = racepool->Rand()->_id;
-        }
-        else
-        {
-            __LOG_ERROR_FUNCTION__( function, line, "race pool=[{}] can't find!", racepoolid );
-        }
-
-        return race;
+        return 0u;
     }
 
-    std::tuple< uint32, uint32 > KFGenerateModule::CalcDivisor( KFEntity* player, uint32 race, uint32 sex, uint32 professionpoolid )
+    std::tuple< uint32, uint32 > KFGenerateModule::CalcMoveAndWeapon( KFEntity* player, uint32 professionpoolid, uint32 race, uint32 sex,
+            const DivisorList& divisorlist, const std::map<uint32, const KFProfessionSetting*>& professionlist )
     {
+        // 木有招募因子
+        if ( divisorlist.empty() )
+        {
+            return std::make_tuple( 0u, 0u );
+        }
+
+        auto movetype = CalcMove( divisorlist, professionlist );
+        auto weapontype = CalcWeapon( divisorlist, professionlist );
+        if ( movetype == 0u && weapontype == 0u )
+        {
+            return std::make_tuple( 0u, 0u );
+        }
+
         auto weightpool = KFWeightConfig::Instance()->FindWeightPool( professionpoolid );
         if ( weightpool == nullptr )
         {
             return std::make_tuple( 0u, 0u );
         }
 
-        auto movetype = RandDivisorByType( player, KFMsg::DivisorOfMove, nullptr );
-        auto weapontype = RandDivisorByType( player, KFMsg::DivisorOfWeapon, nullptr );
-        while ( movetype != 0u || weapontype != 0u )
+        do
         {
-            // 遍历权重表, 找出满足 race, movetype, weapontype 的职业
+            // 遍历权重表, 找出满足 movetype, weapontype 的职业
             for ( auto weightdata : weightpool->_weight_data )
             {
                 if ( weightdata->_id == 0u || weightdata->_weight == 0u )
                 {
                     continue;
+                }
+
+                // 判断是否解锁的职业
+                if ( !professionlist.empty() )
+                {
+                    auto iter = professionlist.find( weightdata->_id );
+                    if ( iter == professionlist.end() )
+                    {
+                        continue;
+                    }
                 }
 
                 auto kfsetting = KFProfessionConfig::Instance()->FindSetting( weightdata->_id );
@@ -110,10 +257,18 @@ namespace KFrame
             }
 
             // 没有找到, 随机清除掉一个因子
-            if ( movetype != 0u && weapontype != 0u )
+            if ( movetype == 0u )
             {
-                auto rand = KFGlobal::Instance()->RandRatio( 2 );
-                if ( rand == 0 )
+                weapontype = 0u;
+            }
+            else if ( weapontype == 0u )
+            {
+                movetype = 0u;
+            }
+            else
+            {
+                auto rand = KFGlobal::Instance()->RandRatio( 2u );
+                if ( rand == 0u )
                 {
                     movetype = 0u;
                 }
@@ -122,26 +277,23 @@ namespace KFrame
                     weapontype = 0u;
                 }
             }
-            else if ( movetype != 0u )
-            {
-                movetype = 0u;
-            }
-            else if ( weapontype != 0u )
-            {
-                weapontype = 0u;
-            }
-        }
+        } while ( movetype != 0u || weapontype != 0u );
 
         return std::make_tuple( movetype, weapontype );
     }
 
-#define __RAND_WEIGHT_DATA__( poolid, config, isvalid, excludelist, randid )\
+#define __RAND_WEIGHT_DATA__( poolid, config, isvalid, randid, includelist )\
     {\
         auto weightpool = KFWeightConfig::Instance()->FindWeightPool( poolid );\
         if ( weightpool != nullptr )\
         {\
             for ( auto weightdata : weightpool->_weight_data )\
             {   \
+                if ( !includelist.empty() && includelist.find( weightdata->_id ) == includelist.end() )\
+                {\
+                    excludelist.insert( weightdata->_id ); \
+                    continue;\
+                }\
                 auto kfconfigsetting = config->FindSetting( weightdata->_id ); \
                 if ( kfconfigsetting == nullptr || !kfconfigsetting->isvalid )\
                 {   \
@@ -155,7 +307,7 @@ namespace KFrame
             }\
             else\
             {   \
-                weightdata = weightpool->Rand( excludelist ); \
+                weightdata = weightpool->Rand( excludelist, true ); \
             }\
             if ( weightdata != nullptr )\
             {   \
@@ -163,81 +315,103 @@ namespace KFrame
             }\
             else\
             {   \
-                __LOG_ERROR_FUNCTION__( function, line, "{} pool=[{}] race=[{}] sex=[{}] profession=[{}] move=[{}] weapon=[{}] can't rand weight!", \
-                                        #config, poolid, race, sex, professionid, movetype, weapontype );\
+                __LOG_ERROR__( "{} pool=[{}] race=[{}] sex=[{}] profession=[{}] move=[{}] weapon=[{}] background=[{}] can't rand weight!", \
+                               #config, poolid, race, sex, professionid, movetype, weapontype, backgroundid );\
             }\
         }\
         else\
         {\
-            __LOG_ERROR_FUNCTION__( function, line, "pool=[{}] can't find!", poolid );\
+            __LOG_ERROR__( "pool=[{}] can't find!", poolid );\
         }\
     }\
 
-#define __RAND_WEIGHT_DATA_CLEAR__( poolid, config, isvalid, excludelist, randid )\
+#define __RAND_WEIGHT_DATA_CLEAR__( poolid, config, isvalid, randid, includelist )\
     {\
         excludelist.clear();\
-        __RAND_WEIGHT_DATA__( poolid, config, isvalid, excludelist, randid );\
+        __RAND_WEIGHT_DATA__( poolid, config, isvalid, randid, includelist );\
     }
 
-    KFData* KFGenerateModule::GeneratePlayerHero( KFEntity* player, KFData* kfhero, uint32 generateid, bool usedivisor, const char* function, uint32 line )
+    KFData* KFGenerateModule::GeneratePlayerHero( KFEntity* player, KFData* kfhero, uint32 generateid )
+    {
+        static SetUInt32 _profession_list;
+        static DivisorList _divisor_list;
+        return GenerateHero( player, kfhero, generateid, _divisor_list, _profession_list, 0u, 0u, 0u );
+    }
+
+    KFData* KFGenerateModule::GeneratePlayerHero( KFEntity* player, KFData* kfhero, uint32 generateid,
+            const DivisorList& divisorlist, const SetUInt32& professionlist, uint32 generatelevel, uint32 mingrowth, uint32 maxgrowth )
+    {
+        return GenerateHero( player, kfhero, generateid, divisorlist, professionlist, generatelevel, mingrowth, maxgrowth );
+    }
+
+    KFData* KFGenerateModule::GenerateHero( KFEntity* player, KFData* kfhero, uint32 generateid,
+                                            const DivisorList& divisorlist, const SetUInt32& professionlist, uint32 generatelevel, uint32 mingrowth, uint32 maxgrowth )
     {
         auto kfgeneratesetting = KFGenerateConfig::Instance()->FindSetting( generateid );
         if ( kfgeneratesetting == nullptr )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "hero generate=[{}] can't find!", generateid );
+            __LOG_ERROR__( "hero generate=[{}] can't find!", generateid );
             return nullptr;
+        }
+
+        std::map< uint32, const KFProfessionSetting* > professionsettinglist;
+        for ( auto professionid : professionlist )
+        {
+            auto kfprofessionsetting = KFProfessionConfig::Instance()->FindSetting( professionid );
+            if ( kfprofessionsetting != nullptr )
+            {
+                professionsettinglist[ professionid ] = kfprofessionsetting;
+            }
         }
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 随机种族
-        auto race = GenerateRace( player, kfgeneratesetting->_race_pool_id, usedivisor, function, line );
+        auto race = CalcRace( kfgeneratesetting->_race_pool_id, divisorlist, professionsettinglist );
         auto kfracesetting = KFRaceConfig::Instance()->FindSetting( race );
         if ( kfracesetting == nullptr )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "race setting=[{}] can't find!", race );
+            __LOG_ERROR__( "race setting=[{}] can't find!", race );
             return nullptr;
         }
         kfhero->Set( __STRING__( race ), race );
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         auto sex = kfracesetting->_sex;
-        if ( sex == KFMsg::UnknowSex )
-        {
-            auto sexdata = KFWeightConfig::Instance()->RandWeight( kfgeneratesetting->_sex_pool_id );
-            if ( sexdata != nullptr )
-            {
-                sex = sexdata->_id;
-            }
-            else
-            {
-                __LOG_ERROR_FUNCTION__( function, line, "sex pool=[{}] can't find!", kfgeneratesetting->_sex_pool_id );
-            }
-        }
-        kfhero->Set( __STRING__( sex ), sex );
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 如果需要使用权重因子, 计算出 移动方式, 武器类型
         auto movetype = 0u;
         auto weapontype = 0u;
-        if ( usedivisor )
-        {
-            std::tie( movetype, weapontype ) = CalcDivisor( player, race, sex, kfgeneratesetting->_profession_pool_id );
-        }
+        auto backgroundid = 0u;
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        std::tie( movetype, weapontype ) = CalcMoveAndWeapon( player, kfgeneratesetting->_profession_pool_id, race, sex, divisorlist, professionsettinglist );
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 随机职业
         auto kfprofession = kfhero->Find( __STRING__( profession ) );
         auto professionid = kfprofession->_data_setting->_int_init_value;
 
-        std::set< uint32 > excludelist;
-        __RAND_WEIGHT_DATA_CLEAR__( kfgeneratesetting->_profession_pool_id, KFProfessionConfig::Instance(), IsValid( race, sex, movetype, weapontype ), excludelist, professionid );
+        static SetUInt32 excludelist;
+        static SetUInt32 includelist;
+        __RAND_WEIGHT_DATA_CLEAR__( kfgeneratesetting->_profession_pool_id, KFProfessionConfig::Instance(), IsValid( race, sex, movetype, weapontype ), professionid, professionlist );
         auto kfprofessionsetting = KFProfessionConfig::Instance()->FindSetting( professionid );
         if ( kfprofessionsetting == nullptr )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "profession setting=[{}] can't find!", professionid );
+            __LOG_ERROR__( "profession setting=[{}] can't find!", professionid );
             return nullptr;
         }
         kfprofession->Set( professionid );
-
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        if ( sex == KFMsg::UnknowSex )
+        {
+            sex = kfprofessionsetting->_sex_limit;
+            if ( sex == KFMsg::UnknowSex )
+            {
+                sex = CalcSex( kfgeneratesetting->_sex_pool_id );
+            }
+        }
+        kfhero->Set( __STRING__( sex ), sex );
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 移动类型
         kfhero->Set( __STRING__( movetype ), kfprofessionsetting->_move_type );
 
@@ -257,10 +431,21 @@ namespace KFrame
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 随机背景
         auto kfbackground = kfhero->Find( __STRING__( background ) );
-        auto backgroundid = kfbackground->_data_setting->_int_init_value;
-
-        __RAND_WEIGHT_DATA_CLEAR__( kfgeneratesetting->_background_pool_id, KFBackGroundConfig::Instance(), IsValid( race, sex ), excludelist, backgroundid );
+        __RAND_WEIGHT_DATA_CLEAR__( kfgeneratesetting->_background_pool_id, KFBackGroundConfig::Instance(), IsValid( race, sex ), backgroundid, includelist );
         kfbackground->Set( backgroundid );
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // 生成等级
+        if ( generatelevel > 0u )
+        {
+            generatelevel += kfhero->Get<uint32>( __STRING__( level ) );
+            auto kflevelsetting = KFLevelConfig::Instance()->FindSetting( generatelevel );
+            if ( kflevelsetting != nullptr )
+            {
+                kfhero->Set( __STRING__( level ), generatelevel );
+                kfhero->Set( __STRING__( exp ), kflevelsetting->_exp );
+            }
+        }
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 随机性格
@@ -270,7 +455,7 @@ namespace KFrame
         {
             auto characterid = kfcharacterdata->_data_setting->_int_init_value;
 
-            __RAND_WEIGHT_DATA_CLEAR__( poolid, KFCharacterConfig::Instance(), IsValid( race, backgroundid, professionid ), excludelist, characterid );
+            __RAND_WEIGHT_DATA_CLEAR__( poolid, KFCharacterConfig::Instance(), IsValid( race, backgroundid, professionid ), characterid, includelist );
             if ( characterid != 0u )
             {
                 auto kfcharacter = kfcharacterdata->Find( characterindex );
@@ -281,7 +466,7 @@ namespace KFrame
                 }
                 else
                 {
-                    __LOG_ERROR_FUNCTION__( function, line, "character count=[{}] error!", characterindex );
+                    __LOG_ERROR__( "character count=[{}] error!", characterindex );
                 }
             }
         }
@@ -294,7 +479,7 @@ namespace KFrame
         {
             auto innateid = kfinnatedata->_data_setting->_int_init_value;
 
-            __RAND_WEIGHT_DATA_CLEAR__( poolid, KFSkillConfig::Instance(), IsValid( race, professionid, backgroundid, weapontype ), excludelist, innateid );
+            __RAND_WEIGHT_DATA_CLEAR__( poolid, KFSkillConfig::Instance(), IsValid( race, professionid, backgroundid, weapontype ), innateid, includelist );
             if ( innateid != 0u )
             {
                 auto kfinnate = kfinnatedata->Find( innateindex );
@@ -305,7 +490,7 @@ namespace KFrame
                 }
                 else
                 {
-                    __LOG_ERROR_FUNCTION__( function, line, "innate count=[{}] error!", innateindex );
+                    __LOG_ERROR__( "innate count=[{}] error!", innateindex );
                 }
             }
         }
@@ -318,7 +503,7 @@ namespace KFrame
         {
             auto activeid = kfactivedata->_data_setting->_int_init_value;
 
-            __RAND_WEIGHT_DATA_CLEAR__( poolid, KFSkillConfig::Instance(), IsValid( race, professionid, backgroundid, weapontype ), excludelist, activeid );
+            __RAND_WEIGHT_DATA_CLEAR__( poolid, KFSkillConfig::Instance(), IsValid( race, professionid, backgroundid, weapontype ), activeid, includelist );
             if ( activeid != 0u )
             {
                 auto kfactive = kfactivedata->Find( activeindex );
@@ -329,7 +514,7 @@ namespace KFrame
                 }
                 else
                 {
-                    __LOG_ERROR_FUNCTION__( function, line, "active count={} error!", activeindex );
+                    __LOG_ERROR__( "active count={} error!", activeindex );
                 }
             }
         }
@@ -343,13 +528,15 @@ namespace KFrame
             for ( auto iter : kfgrowthsetting->_datas._objects )
             {
                 auto& name = iter.first;
-                auto value = iter.second->GetValue();
+                auto minvalue = iter.second->_min_value + mingrowth;
+                auto maxvalue = iter.second->_max_value + maxgrowth;
+                auto value = KFGlobal::Instance()->RandRange( minvalue, maxvalue, 1u );
                 kfgrowth->Set( name, value );
             }
         }
         else
         {
-            __LOG_ERROR_FUNCTION__( function, line, "attribute id={} can't find!", kfgeneratesetting->_growth_id );
+            __LOG_ERROR__( "attribute id={} can't find!", kfgeneratesetting->_growth_id );
         }
 
         // 初始属性
@@ -366,7 +553,7 @@ namespace KFrame
                 auto racevalue = kfracesetting->GetAttributeValue( name );
                 auto professionvalue = kfprofessionsetting->GetAttributeValue( name );
 
-                auto value = CalcHeroInitAttribute( kffighter, initvalue, racevalue, professionvalue, growthvalue );
+                auto value = CalcHeroInitAttribute( kffighter, initvalue, racevalue, professionvalue, growthvalue, generatelevel );
                 kffighter->Set( name, value );
             }
 
@@ -375,11 +562,17 @@ namespace KFrame
         }
         else
         {
-            __LOG_ERROR_FUNCTION__( function, line, "attribute id={} can't find!", kfgeneratesetting->_attr_id );
+            __LOG_ERROR__( "attribute id={} can't find!", kfgeneratesetting->_attr_id );
         }
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 捏脸数据
         GeneratePinchFace( kfhero );
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // 耐久度
+        GenerateDurability( kfhero );
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         return kfhero;
     }
@@ -402,31 +595,38 @@ namespace KFrame
         }
     }
 
-    KFData* KFGenerateModule::GenerateNpcHero( KFEntity* player, uint32 generateid, uint32 level, const char* function, uint32 line )
+    void KFGenerateModule::GenerateDurability( KFData* kfhero )
+    {
+        // 初始化耐久度
+        static auto _option = _kf_option->FindOption( "roledurability_pve" );
+        kfhero->Set( __STRING__( durability ), _option->_uint32_value );
+    }
+
+    KFData* KFGenerateModule::GenerateNpcHero( KFEntity* player, uint32 generateid, uint32 level )
     {
         auto kfnpcsetting = KFNpcConfig::Instance()->FindSetting( generateid );
         if ( kfnpcsetting == nullptr )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "npc generateid=[{}] can't find!", generateid );
+            __LOG_ERROR__( "npc generateid=[{}] can't find!", generateid );
             return nullptr;
         }
 
         auto kfracesetting = KFRaceConfig::Instance()->FindSetting( kfnpcsetting->_race_id );
         if ( kfracesetting == nullptr )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "race setting=[{}] can't find!", kfnpcsetting->_race_id );
+            __LOG_ERROR__( "race setting=[{}] can't find!", kfnpcsetting->_race_id );
             return nullptr;
         }
 
         auto kfprofessionsetting = KFProfessionConfig::Instance()->FindSetting( kfnpcsetting->_profession_id );
         if ( kfprofessionsetting == nullptr )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "profession setting=[{}] can't find!", kfnpcsetting->_profession_id );
+            __LOG_ERROR__( "profession setting=[{}] can't find!", kfnpcsetting->_profession_id );
             return nullptr;
         }
 
         auto movetype = 0u;
-        auto background = 0u;
+        auto backgroundid = 0u;
         auto race = kfnpcsetting->_race_id;
         auto professionid = kfnpcsetting->_profession_id;
 
@@ -475,7 +675,7 @@ namespace KFrame
         }
         else
         {
-            __LOG_ERROR_FUNCTION__( function, line, "npc generateid=[{}] san empty!", generateid );
+            __LOG_ERROR__( "npc generateid=[{}] san empty!", generateid );
         }
 
         // 随机性格
@@ -486,14 +686,14 @@ namespace KFrame
             auto weightdata = KFWeightConfig::Instance()->RandWeight( poolid );
             if ( weightdata == nullptr )
             {
-                __LOG_ERROR_FUNCTION__( function, line, "npc generateid=[{}] character=[{}] rand empty!", generateid, poolid );
+                __LOG_ERROR__( "npc generateid=[{}] character=[{}] rand empty!", generateid, poolid );
                 continue;
             }
 
             auto kfcharacter = kfcharacterdata->Find( characterindex );
             if ( kfcharacter == nullptr )
             {
-                __LOG_ERROR_FUNCTION__( function, line, "character count=[{}] error!", characterindex );
+                __LOG_ERROR__( "character count=[{}] error!", characterindex );
                 continue;
             }
 
@@ -524,6 +724,8 @@ namespace KFrame
                 }
 
                 // 随机主动技能
+                static SetUInt32 excludelist;
+                static SetUInt32 includelist;
                 auto kfactivedata = kfnpc->Find( __STRING__( active ) );
                 uint32 activeindex = KFDataDefine::Array_Index;
                 for ( auto poolid : kfskillsetting->_active_pool_list )
@@ -531,13 +733,12 @@ namespace KFrame
                     auto kfactive = kfactivedata->Find( activeindex );
                     if ( kfactive == nullptr )
                     {
-                        __LOG_ERROR_FUNCTION__( function, line, "active count={} error!", activeindex );
+                        __LOG_ERROR__( "active count={} error!", activeindex );
                         continue;
                     }
 
                     auto activeid = 0u;
-                    std::set<uint32> excludelist;
-                    __RAND_WEIGHT_DATA_CLEAR__( poolid, KFSkillConfig::Instance(), IsValid( race, professionid, background, weapontype ), excludelist, activeid );
+                    __RAND_WEIGHT_DATA_CLEAR__( poolid, KFSkillConfig::Instance(), IsValid( race, professionid, backgroundid, weapontype ), activeid, includelist );
 
                     ++activeindex;
                     kfactive->Set( activeid );
@@ -551,13 +752,12 @@ namespace KFrame
                     auto kfinnate = kfinnatedata->Find( innateindex );
                     if ( kfinnate == nullptr )
                     {
-                        __LOG_ERROR_FUNCTION__( function, line, "innate count=[{}] error!", innateindex );
+                        __LOG_ERROR__( "innate count=[{}] error!", innateindex );
                         continue;
                     }
 
                     auto innateid = 0u;
-                    std::set<uint32> excludelist;
-                    __RAND_WEIGHT_DATA_CLEAR__( poolid, KFSkillConfig::Instance(), IsValid( race, professionid, background, weapontype ), excludelist, innateid );
+                    __RAND_WEIGHT_DATA_CLEAR__( poolid, KFSkillConfig::Instance(), IsValid( race, professionid, backgroundid, weapontype ), innateid, includelist );
 
                     ++innateindex;
                     kfinnate->Set( innateid );
@@ -565,7 +765,7 @@ namespace KFrame
             }
             else
             {
-                __LOG_ERROR_FUNCTION__( function, line, "npc generateid=[{}] skillgroup=[{}] no setting!", generateid, skillgroupweight->_id );
+                __LOG_ERROR__( "npc generateid=[{}] skillgroup=[{}] no setting!", generateid, skillgroupweight->_id );
             }
         }
 
@@ -593,19 +793,15 @@ namespace KFrame
                     auto professionvalue = kfprofessionsetting->GetAttributeValue( name );
 
                     // 初始属性
-                    auto value = CalcHeroInitAttribute( kffighter, initvalue, racevalue, professionvalue, 100u );
-
-                    // 等级属性
-                    uint64 finalpreference = CalcFinalPreference( racevalue, professionvalue, 100u );
-                    auto levelvalue = ( uint32 )( finalpreference * ( level - 1 ) / KFRandEnum::TenThousand );
+                    auto value = CalcHeroInitAttribute( kffighter, initvalue, racevalue, professionvalue, 100u, level );
 
                     // 保存属性
-                    kffighter->Set( name, value + levelvalue );
+                    kffighter->Set( name, value );
                 }
             }
             else
             {
-                __LOG_ERROR_FUNCTION__( function, line, "attribute id={} can't find!", kfnpcsetting->_attr_id );
+                __LOG_ERROR__( "attribute id={} can't find!", kfnpcsetting->_attr_id );
             }
         }
 
@@ -624,17 +820,20 @@ namespace KFrame
         return value;
     }
 
-    uint32 KFGenerateModule::CalcHeroInitAttribute( KFData* kffighter, uint32 initvalue, uint32 racevalue, uint32 professionvalue, uint32 growthvalue )
+    uint32 KFGenerateModule::CalcHeroInitAttribute( KFData* kffighter, uint32 initvalue, uint32 racevalue, uint32 professionvalue, uint32 growthvalue, uint32 level )
     {
         // 直接计算 成长率 x count(9)
-        auto value = CalcFinalPreference( racevalue, professionvalue, growthvalue );
-        auto totalvalue = ( uint32 )( ( value * kffighter->_data_setting->_int_max_value ) / KFRandEnum::TenThousand );
+        auto finalpreference = CalcFinalPreference( racevalue, professionvalue, growthvalue );
+        auto totalvalue = ( uint32 )( ( finalpreference * kffighter->_data_setting->_int_max_value ) / KFRandEnum::TenThousand );
 
         // 随机计算 x count(2) 如: 210%  100%+2属性, 另外10%+1额外属性
-        value = value / KFRandEnum::Hundred;
+        auto value = finalpreference / KFRandEnum::Hundred;
         auto addvalue = value / KFRandEnum::Hundred;
         auto randvalue = value % KFRandEnum::Hundred;
-        for ( auto i = 0u; i < kffighter->_data_setting->_int_logic_value; ++i )
+
+        // 循环次数加上等级
+        auto logiccount = kffighter->_data_setting->_int_logic_value + level - 1u;
+        for ( auto i = 0u; i < logiccount; ++i )
         {
             totalvalue += addvalue;
             auto rand = KFGlobal::Instance()->RandRatio( KFRandEnum::Hundred );
@@ -837,16 +1036,16 @@ namespace KFrame
         player->UpdateData( kfhero, __STRING__( classlv ), KFEnum::Set, newprosetting->_class_lv );
 
         // 随机主动技能
-        RandWeightData( player, kfhero, __STRING__( active ), kfsetting->_active_pool_list, __FUNC_LINE__ );
+        RandWeightData( player, kfhero, __STRING__( active ), kfsetting->_active_pool_list );
 
         // 随机性格
-        RandWeightData( player, kfhero, __STRING__( character ), kfsetting->_character_pool_list, __FUNC_LINE__ );
+        RandWeightData( player, kfhero, __STRING__( character ), kfsetting->_character_pool_list );
 
         // 随机天赋
-        RandWeightData( player, kfhero, __STRING__( innate ), kfsetting->_innate_pool_list, __FUNC_LINE__ );
+        RandWeightData( player, kfhero, __STRING__( innate ), kfsetting->_innate_pool_list );
     }
 
-    void KFGenerateModule::RandWeightData( KFEntity* player, KFData* kfhero, const std::string& str, const VectorUInt32& slist, const char* function, uint32 line )
+    void KFGenerateModule::RandWeightData( KFEntity* player, KFData* kfhero, const std::string& str, const VectorUInt32& slist )
     {
         if ( slist.size() == 0u )
         {
@@ -859,7 +1058,8 @@ namespace KFrame
             return;
         }
 
-        std::set<uint32> excludelist;
+        SetUInt32 excludelist;
+        static SetUInt32 includelist;
         auto arraylen = kfdataarray->Size() - KFDataDefine::Array_Index;
         for ( uint32 index = KFDataDefine::Array_Index; index <= arraylen; ++index )
         {
@@ -879,7 +1079,7 @@ namespace KFrame
         auto race = kfhero->Get( __STRING__( race ) );
         auto sex = kfhero->Get( __STRING__( sex ) );
         auto professionid = kfhero->Get( __STRING__( profession ) );
-        auto background = kfhero->Get( __STRING__( background ) );
+        auto backgroundid = kfhero->Get( __STRING__( background ) );
         auto weapontype = kfhero->Get( __STRING__( weapontype ) );
         auto movetype = 0u;
 
@@ -888,11 +1088,11 @@ namespace KFrame
             auto randid = 0u;
             if ( str == __STRING__( active ) || str == __STRING__( innate ) )
             {
-                __RAND_WEIGHT_DATA__( poolid, KFSkillConfig::Instance(), IsValid( race, professionid, background, weapontype ), excludelist, randid );
+                __RAND_WEIGHT_DATA__( poolid, KFSkillConfig::Instance(), IsValid( race, professionid, backgroundid, weapontype ), randid, includelist );
             }
             else if ( str == __STRING__( character ) )
             {
-                __RAND_WEIGHT_DATA__( poolid, KFCharacterConfig::Instance(), IsValid( race, background, professionid ), excludelist, randid );
+                __RAND_WEIGHT_DATA__( poolid, KFCharacterConfig::Instance(), IsValid( race, backgroundid, professionid ), randid, includelist );
             }
 
             if ( randid == 0u )

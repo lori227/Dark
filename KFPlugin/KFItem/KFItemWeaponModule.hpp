@@ -19,6 +19,7 @@
 #include "KFZConfig/KFWeightConfig.hpp"
 #include "KFZConfig/KFWeaponAffixConfig.hpp"
 #include "KFZConfig/KFWeaponTypeConfig.hpp"
+#include "KFZConfig/KFItemTypeConfig.hpp"
 
 namespace KFrame
 {
@@ -39,11 +40,14 @@ namespace KFrame
         // 初始化装备数据
         __KF_INIT_ITEM_FUNCTION__( InitWeaponData );
 
-        // 英雄hp更新
-        __KF_UPDATE_DATA_FUNCTION__( OnHeroHpUpdate );
-
         // 武器耐久更新
         __KF_UPDATE_DATA_FUNCTION__( OnWeaponDurabilityUpdate );
+
+        // 武器类型更新
+        __KF_UPDATE_DATA_FUNCTION__( OnWeaponTypeUpdate );
+
+        // 删除英雄
+        __KF_REMOVE_DATA_FUNCTION__( OnRemoveHero );
 
     protected:
         // 给英雄装备武器
@@ -57,6 +61,13 @@ namespace KFrame
 
         // 更新武器耐久
         __KF_MESSAGE_FUNCTION__( HandleUpdateDurabilityReq );
+
+    protected:
+        // 获得武器探索
+        KFData* FindWeaponRecord( KFEntity* player );
+
+        // 移除英雄武器到仓库
+        bool MoveHeroWeapon( KFEntity* player, KFData* kfhero, KFData* kfitemrecord, bool removehero = false );
 
     private:
         // 玩家上下文组件

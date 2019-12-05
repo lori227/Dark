@@ -33,6 +33,7 @@ namespace KFrame
 
         // 逻辑
         virtual void BeforeRun();
+        virtual void AfterRun();
 
         // 关闭
         virtual void BeforeShut();
@@ -61,25 +62,23 @@ namespace KFrame
         // 离开游戏删除定时器
         __KF_LEAVE_PLAYER_FUNCTION__( OnLeaveTaskModule );
 
-        // 延迟完成任务
-        __KF_TIMER_FUNCTION__( OnTimerFinishTask );
-        // 开启延迟完成任务定时器
-        void StartFinishTaskTimer( KFEntity* player, uint32 taskid, uint32 time );
-
         // 任务超时定时器
         __KF_TIMER_FUNCTION__( OnTimerTaskTimeout );
         // 设置任务时间
-        void SetTaskTime( KFEntity* player, KFData* kftask, uint64 time, bool update );
+        void SetTaskTime( KFEntity* player, KFData* kftask, const KFTaskSetting* kfsetting, uint64 time, bool update );
         // 启动任务超时定时器
         void StartTaskTimeoutTimer( KFEntity* player, uint32 taskid, uint64 time );
         void StopTaskTimeoutTimer( KFEntity* player, KFData* kftask, uint32 taskid );
 
         // 开启任务
-        KFData* OpenTask( KFEntity* player, const KFTaskSetting* kfsetting, uint32 status, uint64 time );
+        KFData* OpenTask( KFEntity* player, const KFTaskSetting* kfsetting, uint32 status, uint64 time, uint32 refreshid );
         void UpdataTaskStatus( KFEntity* player, const KFTaskSetting* kfsetting, KFData* kftask, uint32 status, uint64 time );
 
         // 任务条件完成
         void DoneTask( KFEntity* player, KFData* kftask, const KFTaskSetting* kfsetting, bool update );
+
+        // 添加到完成任务列表
+        void AddFinishTask( KFEntity* player, uint32 taskid );
 
         // 任务交付完成
         void FinishTask( KFEntity* player, uint32 taskid );
@@ -92,6 +91,9 @@ namespace KFrame
         __KF_ADD_DATA_FUNCTION__( OnAddDataTaskModule );
         __KF_REMOVE_DATA_FUNCTION__( OnRemoveDataTaskModule );
         __KF_UPDATE_DATA_FUNCTION__( OnUpdateDataTaskModule );
+
+        // 删除任务回调
+        __KF_REMOVE_DATA_FUNCTION__( OnRemoveTask );
 
         // 判断任务是否能更新
         uint32 CheckTaskUpdateStatus( KFData* kftask, const KFTaskSetting* kfsetting );
@@ -107,6 +109,9 @@ namespace KFrame
     protected:
         // 玩家组件上下文
         KFComponent* _kf_component = nullptr;
+
+        // 添加到完成任务的列表中
+        std::unordered_map<uint64, SetUInt32> _finish_task;
     };
 }
 

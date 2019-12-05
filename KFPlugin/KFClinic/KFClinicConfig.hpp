@@ -32,6 +32,9 @@ namespace KFrame
 
         // 金钱消耗
         KFElements _money;
+
+        // 公式id
+        uint32 _formual_id = 0u;
     };
 
     class KFClinicConfig : public KFConfigT< KFClinicSetting >, public KFInstance< KFClinicConfig >

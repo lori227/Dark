@@ -1,4 +1,4 @@
-<root version="919">
+<root version="1123">
 	<item Id="redis" Name="redis" FileName="./setting/{}_{}_redis.xml" Reload="0" ClearData="0" ClearFile="0" />
 	<item Id="mongo" Name="mongo" FileName="./setting/{}_{}_mongo.xml" Reload="0" ClearData="0" ClearFile="0" />
 	<item Id="mysql" Name="mysql" FileName="./setting/{}_{}_mysql.xml" Reload="0" ClearData="0" ClearFile="0" />
@@ -25,7 +25,6 @@
 	<item Id="reset" Name="reset" FileName="./config/reset.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="signin" Name="signin" FileName="./config/signin.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="store" Name="store" FileName="./config/store.xml" Reload="1" ClearData="1" ClearFile="0" />
-	<item Id="task" Name="task" FileName="./config/task.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="achieve" Name="achieve" FileName="./config/achieve.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="option" Name="option" FileName="./config/option.xml" Reload="1" ClearData="0" ClearFile="0" />
 	<item Id="dropdata" Name="dropdata" FileName="./config/dropdata.xml" Reload="1" ClearData="1" ClearFile="0" />
@@ -33,6 +32,7 @@
 	<item Id="conditiondefine" Name="conditiondefine" FileName="./config/conditiondefine.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="unlock" Name="unlock" FileName="./config/unlock.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="condition" Name="unlockcondition" FileName="./config/unlockcondition.xml" Reload="1" ClearData="1" ClearFile="1" />
+	<item Id="formula" Name="formula" FileName="./config/formula.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="match" Name="match" FileName="./config/match.xml" Reload="1" ClearData="0" ClearFile="0" />
 	<item Id="option" Name="heroment" FileName="./config/heroment.xml" Reload="1" ClearData="0" ClearFile="0" />
 	<item Id="option" Name="itemment" FileName="./config/itemment.xml" Reload="1" ClearData="0" ClearFile="0" />
@@ -82,4 +82,7 @@
 	<item Id="condition" Name="taskcondition" FileName="./config/taskcondition.xml" Reload="1" ClearData="1" ClearFile="1" />
 	<item Id="reward" Name="reward" FileName="./config/reward.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="currency" Name="currency" FileName="./config/currency.xml" Reload="1" ClearData="1" ClearFile="0" />
+	<item Id="buildlevel" Name="buildlevel" FileName="./config/buildlevel.xml" Reload="1" ClearData="1" ClearFile="0" />
+	<item Id="technology" Name="technology" FileName="./config/technology.xml" Reload="1" ClearData="1" ClearFile="0" />
+	<item Id="condition" Name="buildcondition" FileName="./config/buildcondition.xml" Reload="1" ClearData="1" ClearFile="1" />
 </root>

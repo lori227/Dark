@@ -8,7 +8,7 @@
 //    @Mail			    :    lori227@qq.com
 //    @Date             :    2018-12-27
 ************************************************************************/
-
+#include "KFrameEx.h"
 #include "KFRoleInterface.h"
 #include "KFProtocol/KFProtocol.h"
 #include "KFKernel/KFKernelInterface.h"
@@ -42,11 +42,18 @@ namespace KFrame
 
         // 处理设置名字回馈
         __KF_MESSAGE_FUNCTION__( HandleSetPlayerNameToGameAck );
-    protected:
 
+    protected:
+        // 金币更新
+        __KF_UPDATE_DATA_FUNCTION__( OnUpdateMoneyCallBack );
+
+    protected:
         // 检查名字的有效性
         uint32 CheckNameValid( const std::string& name, uint32 maxlength );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private:
+        // 玩家组件上下文
+        KFComponent* _kf_component = nullptr;
     };
 }
 

@@ -60,6 +60,9 @@ namespace KFrame
 
         // 是否可以叠加
         bool IsOverlay() const;
+
+        // 获得堆叠数量
+        uint32 GetOverlayCount( const std::string& bagname ) const;
     public:
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -73,8 +76,9 @@ namespace KFrame
         // 可叠加类型
         uint32 _overlay_type = 0u;
 
-        // 可叠加数量
+        // 默认叠加数量
         uint32 _overlay_count = 0u;
+        std::unordered_map<std::string, uint32> _overlay_count_list;
 
         // 可使用次数( 0 = 不能使用 )
         uint32 _use_count = 0u;
@@ -104,6 +108,9 @@ namespace KFrame
         /////////////// 装备等道具
         // 武器类型
         uint32 _weapon_type = 0u;
+
+        // 武器等级
+        uint32 _weapon_level = 0u;
 
         // 使用等级限制
         uint32 _level_limit = 0u;

@@ -1,4 +1,5 @@
 ﻿#include "KFItemConfig.hpp"
+#include "KFFieldEx.h"
 
 namespace KFrame
 {
@@ -47,6 +48,20 @@ namespace KFrame
         {
             kfsetting->_overlay_count = __MAX_UINT32__;
         }
+
+        kfsetting->_overlay_count_list.clear();
+        auto exploreoverlaycount = xmlnode.GetUInt32( "ExploreOverlayCount" );
+        if ( exploreoverlaycount != 0u )
+        {
+            kfsetting->_overlay_count_list[ __STRING__( explore ) ] = exploreoverlaycount;
+        }
+        auto extendoverlaycount = xmlnode.GetUInt32( "ExtendOverlayCount" );
+        if ( extendoverlaycount != 0u )
+        {
+            kfsetting->_overlay_count_list[ __STRING__( extend ) ] = extendoverlaycount;
+        }
+        /////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////
 
         auto strsell = xmlnode.GetString( "Sell", true );
         kfsetting->_sell_elements.Parse( strsell, __FUNC_LINE__ );
@@ -105,15 +120,16 @@ namespace KFrame
     void KFItemConfig::ReadWeaponSetting( KFNode& xmlnode, KFItemSetting* kfsetting )
     {
         kfsetting->_weapon_type = xmlnode.GetUInt32( "WeaponType" );
+        kfsetting->_weapon_level = xmlnode.GetUInt32( "WeaponLeve" );
         kfsetting->_level_limit = xmlnode.GetUInt32( "LevelLimit", true );
         kfsetting->_durability = xmlnode.GetUInt32( "Durability", true );
         kfsetting->_durability_cost = xmlnode.GetUInt32( "Cost", true );
 
         auto straffix = xmlnode.GetString( "AffixPool" );
-        kfsetting->_affix_pool_list = KFUtility::SplitList< VectorUInt32 >( straffix, __SPLIT_STRING__ );
+        KFUtility::SplitList( kfsetting->_affix_pool_list, straffix, __SPLIT_STRING__ );
 
         auto strracelimit = xmlnode.GetString( "RaceLimit" );
-        kfsetting->_race_limit_list = KFUtility::SplitSet< SetUInt32 >( strracelimit, __SPLIT_STRING__ );
+        KFUtility::SplitSet( kfsetting->_race_limit_list, strracelimit, __SPLIT_STRING__ );
     }
 
     void KFItemConfig::ReadMaterialSetting( KFNode& xmlnode, KFItemSetting* kfsetting )

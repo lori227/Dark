@@ -15,10 +15,10 @@
 #include "KFMessage/KFMessageInterface.h"
 #include "KFDisplay/KFDisplayInterface.h"
 #include "KFFilter/KFFilterInterface.h"
+#include "KFExecute/KFExecuteInterface.h"
 #include "KFGenerate/KFGenerateInterface.h"
 #include "KFZConfig/KFLevelConfig.hpp"
 #include "KFZConfig/KFProfessionConfig.hpp"
-
 
 namespace KFrame
 {
@@ -33,6 +33,10 @@ namespace KFrame
 
         // 关闭
         virtual void BeforeShut();
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        // 英雄是否达到最大数量
+        virtual bool IsFull( KFEntity* player, KFData* kfherorecord );
 
         // 增加经验
         virtual uint32 AddExp( KFEntity* player, KFData* kfhero, uint32 exp );
@@ -49,10 +53,22 @@ namespace KFrame
         // 查找存活的英雄
         virtual KFData* FindAliveHero( KFData* kfherorecord, uint64 uuid );
 
-        // 检查所有英雄的等级
-        void CheckHeroLevel( KFEntity* player );
         ////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
+    protected:
+        // 锁定英雄
+        __KF_MESSAGE_FUNCTION__( HandleLockHeroReq );
+
+        // 删除英雄
+        __KF_MESSAGE_FUNCTION__( HandleRemoveHeroReq );
+
+        // 设置英雄名字
+        __KF_MESSAGE_FUNCTION__( HandleSetHeroNameReq );
+
+        // 选择英雄主动技能
+        __KF_MESSAGE_FUNCTION__( HandleSetHeroActiveSkillReq );
+        ///////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////
     protected:
         // 进入游戏
         __KF_ENTER_PLAYER_FUNCTION__( OnEnterHeroModule );
@@ -69,20 +85,9 @@ namespace KFrame
         // 英雄经验更新
         __KF_UPDATE_DATA_FUNCTION__( OnHeroExpUpdate );
 
-    protected:
-        // 锁定英雄
-        __KF_MESSAGE_FUNCTION__( HandleLockHeroReq );
+        // 最大英雄数量
+        __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyMaxHeroCount );
 
-        // 删除英雄
-        __KF_MESSAGE_FUNCTION__( HandleRemoveHeroReq );
-
-        // 设置英雄名字
-        __KF_MESSAGE_FUNCTION__( HandleSetHeroNameReq );
-
-        // 选择英雄主动技能
-        __KF_MESSAGE_FUNCTION__( HandleSetHeroActiveSkillReq );
-        ///////////////////////////////////////////////////////////////////////
-        ///////////////////////////////////////////////////////////////////////
     protected:
         // 玩家上下文组件
         KFComponent* _kf_component = nullptr;

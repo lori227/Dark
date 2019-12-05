@@ -32,5 +32,6 @@ namespace KFrame
         __KF_ADD_CONFIG__( KFSmithyWeaponConfig );
         __KF_ADD_CONFIG__( KFElementConfig );
         __KF_ADD_CONFIG__( KFRewardConfig );
+        __KF_ADD_CONFIG__( KFItemConfig );
     }
 }

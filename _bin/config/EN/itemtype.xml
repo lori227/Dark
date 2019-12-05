@@ -1,10 +1,10 @@
-<root version="923">
-	<item Id="1" Store="normal" Explore="item" Move="normal" Extend="itemextend" Auto="0" UseLimit="" />
-	<item Id="2" Store="gift" Explore="other" Move="gift" Extend="itemextend" Auto="1" UseLimit="" />
-	<item Id="3" Store="drug" Explore="item" Move="item|drug" Extend="itemextend" Auto="1" UseLimit="" />
-	<item Id="4" Store="weapon" Explore="item" Move="weapon|item" Extend="itemextend" Auto="1" UseLimit="" />
-	<item Id="5" Store="material" Explore="item" Move="material" Extend="itemextend" Auto="1" UseLimit="" />
-	<item Id="6" Store="" Explore="item" Move="" Extend="itemextend" Auto="2" UseLimit="" />
-	<item Id="7" Store="" Explore="other" Move="" Extend="itemextend" Auto="0" UseLimit="" />
-	<item Id="8" Store="drug" Explore="item" Move="item|drug" Extend="itemextend" Auto="0" UseLimit="" />
+<root version="1231">
+	<item Id="1" Store="normal" Explore="item" Move="normal" Extend="itemextend" Auto="0" UseLimit="" Sort="1" />
+	<item Id="2" Store="gift" Explore="other" Move="gift" Extend="itemextend" Auto="1" UseLimit="" Sort="2" />
+	<item Id="3" Store="drug" Explore="item" Move="item|drug" Extend="itemextend" Auto="1" UseLimit="" Sort="3" />
+	<item Id="4" Store="weapon" Explore="item" Move="weapon|item" Extend="itemextend" Auto="1" UseLimit="" Sort="8" />
+	<item Id="5" Store="material" Explore="item" Move="material" Extend="itemextend" Auto="1" UseLimit="" Sort="5" />
+	<item Id="6" Store="" Explore="item" Move="" Extend="itemextend" Auto="2" UseLimit="" Sort="6" />
+	<item Id="7" Store="" Explore="other" Move="" Extend="itemextend" Auto="0" UseLimit="" Sort="7" />
+	<item Id="8" Store="drug" Explore="item" Move="item|drug" Extend="itemextend" Auto="0" UseLimit="" Sort="4" />
 </root>

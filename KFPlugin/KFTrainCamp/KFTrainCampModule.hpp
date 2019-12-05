@@ -19,10 +19,8 @@
 #include "KFMessage/KFMessageInterface.h"
 #include "KFHero/KFHeroInterface.h"
 #include "KFRecordClient/KFRecordClientInterface.h"
-#include "KFOption/KFOptionInterface.h"
 #include "KFTrainCampConfig.hpp"
 #include "KFZConfig/KFLevelConfig.hpp"
-#include "KFZConfig/KFRewardConfig.h"
 
 namespace KFrame
 {
@@ -48,9 +46,6 @@ namespace KFrame
 
         // 训练改变请求(增加删除)
         __KF_MESSAGE_FUNCTION__( HandleTrainChangeReq );
-
-        // 训练角色互换请求
-        __KF_MESSAGE_FUNCTION__( HandleTrainExchangeReq );
 
         // 一键清空训练栏
         __KF_MESSAGE_FUNCTION__( HandleTrainCleanReq );

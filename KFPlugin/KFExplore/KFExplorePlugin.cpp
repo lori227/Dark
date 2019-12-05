@@ -38,5 +38,6 @@ namespace KFrame
         __KF_ADD_CONFIG__( KFFoodConsumeConfig );
         __KF_ADD_CONFIG__( KFElementConfig );
         __KF_ADD_CONFIG__( KFCurrencyConfig );
+        __KF_ADD_CONFIG__( KFItemConfig );
     }
 }

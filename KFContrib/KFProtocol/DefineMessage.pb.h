@@ -47,7 +47,7 @@ namespace protobuf_DefineMessage_2eproto {
 struct LIBPROTOC_EXPORT TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[22];
+  static const ::google::protobuf::internal::ParseTable schema[23];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -55,6 +55,9 @@ struct LIBPROTOC_EXPORT TableStruct {
 void LIBPROTOC_EXPORT AddDescriptors();
 }  // namespace protobuf_DefineMessage_2eproto
 namespace KFMsg {
+class PBBalanceCurrency;
+class PBBalanceCurrencyDefaultTypeInternal;
+LIBPROTOC_EXPORT extern PBBalanceCurrencyDefaultTypeInternal _PBBalanceCurrency_default_instance_;
 class PBBalanceData;
 class PBBalanceDataDefaultTypeInternal;
 LIBPROTOC_EXPORT extern PBBalanceDataDefaultTypeInternal _PBBalanceData_default_instance_;
@@ -124,6 +127,7 @@ LIBPROTOC_EXPORT extern PBMatchPlayer_HeroEntry_DoNotUseDefaultTypeInternal _PBM
 }  // namespace KFMsg
 namespace google {
 namespace protobuf {
+template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceCurrency* Arena::CreateMaybeMessage<::KFMsg::PBBalanceCurrency>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceData* Arena::CreateMaybeMessage<::KFMsg::PBBalanceData>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceDataServer* Arena::CreateMaybeMessage<::KFMsg::PBBalanceDataServer>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceHero* Arena::CreateMaybeMessage<::KFMsg::PBBalanceHero>(Arena*);
@@ -408,39 +412,31 @@ class LIBPROTOC_EXPORT PBBalanceItem : public ::google::protobuf::Message /* @@p
 
   // accessors -------------------------------------------------------
 
-  // bytes name = 1;
-  void clear_name();
-  static const int kNameFieldNumber = 1;
-  const ::std::string& name() const;
-  void set_name(const ::std::string& value);
-  #if LANG_CXX11
-  void set_name(::std::string&& value);
-  #endif
-  void set_name(const char* value);
-  void set_name(const void* value, size_t size);
-  ::std::string* mutable_name();
-  ::std::string* release_name();
-  void set_allocated_name(::std::string* name);
+  // uint64 uuid = 2;
+  void clear_uuid();
+  static const int kUuidFieldNumber = 2;
+  ::google::protobuf::uint64 uuid() const;
+  void set_uuid(::google::protobuf::uint64 value);
 
-  // uint32 key = 2;
-  void clear_key();
-  static const int kKeyFieldNumber = 2;
-  ::google::protobuf::uint32 key() const;
-  void set_key(::google::protobuf::uint32 value);
+  // uint32 id = 1;
+  void clear_id();
+  static const int kIdFieldNumber = 1;
+  ::google::protobuf::uint32 id() const;
+  void set_id(::google::protobuf::uint32 value);
 
-  // uint32 value = 3;
-  void clear_value();
-  static const int kValueFieldNumber = 3;
-  ::google::protobuf::uint32 value() const;
-  void set_value(::google::protobuf::uint32 value);
+  // uint32 count = 3;
+  void clear_count();
+  static const int kCountFieldNumber = 3;
+  ::google::protobuf::uint32 count() const;
+  void set_count(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:KFMsg.PBBalanceItem)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr name_;
-  ::google::protobuf::uint32 key_;
-  ::google::protobuf::uint32 value_;
+  ::google::protobuf::uint64 uuid_;
+  ::google::protobuf::uint32 id_;
+  ::google::protobuf::uint32 count_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_DefineMessage_2eproto::TableStruct;
 };
@@ -679,6 +675,131 @@ class LIBPROTOC_EXPORT PBBalanceHero : public ::google::protobuf::Message /* @@p
 };
 // -------------------------------------------------------------------
 
+class LIBPROTOC_EXPORT PBBalanceCurrency : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.PBBalanceCurrency) */ {
+ public:
+  PBBalanceCurrency();
+  virtual ~PBBalanceCurrency();
+
+  PBBalanceCurrency(const PBBalanceCurrency& from);
+
+  inline PBBalanceCurrency& operator=(const PBBalanceCurrency& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  PBBalanceCurrency(PBBalanceCurrency&& from) noexcept
+    : PBBalanceCurrency() {
+    *this = ::std::move(from);
+  }
+
+  inline PBBalanceCurrency& operator=(PBBalanceCurrency&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PBBalanceCurrency& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const PBBalanceCurrency* internal_default_instance() {
+    return reinterpret_cast<const PBBalanceCurrency*>(
+               &_PBBalanceCurrency_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  void Swap(PBBalanceCurrency* other);
+  friend void swap(PBBalanceCurrency& a, PBBalanceCurrency& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline PBBalanceCurrency* New() const final {
+    return CreateMaybeMessage<PBBalanceCurrency>(NULL);
+  }
+
+  PBBalanceCurrency* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<PBBalanceCurrency>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const PBBalanceCurrency& from);
+  void MergeFrom(const PBBalanceCurrency& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PBBalanceCurrency* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // bytes name = 1;
+  void clear_name();
+  static const int kNameFieldNumber = 1;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_name(::std::string&& value);
+  #endif
+  void set_name(const char* value);
+  void set_name(const void* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // uint32 beginvalue = 2;
+  void clear_beginvalue();
+  static const int kBeginvalueFieldNumber = 2;
+  ::google::protobuf::uint32 beginvalue() const;
+  void set_beginvalue(::google::protobuf::uint32 value);
+
+  // uint32 endvalue = 3;
+  void clear_endvalue();
+  static const int kEndvalueFieldNumber = 3;
+  ::google::protobuf::uint32 endvalue() const;
+  void set_endvalue(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:KFMsg.PBBalanceCurrency)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::uint32 beginvalue_;
+  ::google::protobuf::uint32 endvalue_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_DefineMessage_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
 class LIBPROTOC_EXPORT PBBalanceData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.PBBalanceData) */ {
  public:
   PBBalanceData();
@@ -714,7 +835,7 @@ class LIBPROTOC_EXPORT PBBalanceData : public ::google::protobuf::Message /* @@p
                &_PBBalanceData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    7;
 
   void Swap(PBBalanceData* other);
   friend void swap(PBBalanceData& a, PBBalanceData& b) {
@@ -790,12 +911,25 @@ class LIBPROTOC_EXPORT PBBalanceData : public ::google::protobuf::Message /* @@p
   const ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceItem >&
       itemdata() const;
 
+  // repeated .KFMsg.PBBalanceCurrency currencydata = 3;
+  int currencydata_size() const;
+  void clear_currencydata();
+  static const int kCurrencydataFieldNumber = 3;
+  ::KFMsg::PBBalanceCurrency* mutable_currencydata(int index);
+  ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceCurrency >*
+      mutable_currencydata();
+  const ::KFMsg::PBBalanceCurrency& currencydata(int index) const;
+  ::KFMsg::PBBalanceCurrency* add_currencydata();
+  const ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceCurrency >&
+      currencydata() const;
+
   // @@protoc_insertion_point(class_scope:KFMsg.PBBalanceData)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceHero > herodata_;
   ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceItem > itemdata_;
+  ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceCurrency > currencydata_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_DefineMessage_2eproto::TableStruct;
 };
@@ -836,7 +970,7 @@ class LIBPROTOC_EXPORT PBBalanceItemServer : public ::google::protobuf::Message 
                &_PBBalanceItemServer_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    8;
 
   void Swap(PBBalanceItemServer* other);
   friend void swap(PBBalanceItemServer& a, PBBalanceItemServer& b) {
@@ -888,46 +1022,38 @@ class LIBPROTOC_EXPORT PBBalanceItemServer : public ::google::protobuf::Message 
 
   // accessors -------------------------------------------------------
 
-  // bytes name = 1;
-  void clear_name();
-  static const int kNameFieldNumber = 1;
-  const ::std::string& name() const;
-  void set_name(const ::std::string& value);
-  #if LANG_CXX11
-  void set_name(::std::string&& value);
-  #endif
-  void set_name(const char* value);
-  void set_name(const void* value, size_t size);
-  ::std::string* mutable_name();
-  ::std::string* release_name();
-  void set_allocated_name(::std::string* name);
+  // uint64 uuid = 2;
+  void clear_uuid();
+  static const int kUuidFieldNumber = 2;
+  ::google::protobuf::uint64 uuid() const;
+  void set_uuid(::google::protobuf::uint64 value);
 
-  // uint32 key = 2;
-  void clear_key();
-  static const int kKeyFieldNumber = 2;
-  ::google::protobuf::uint32 key() const;
-  void set_key(::google::protobuf::uint32 value);
+  // uint32 id = 1;
+  void clear_id();
+  static const int kIdFieldNumber = 1;
+  ::google::protobuf::uint32 id() const;
+  void set_id(::google::protobuf::uint32 value);
 
-  // uint32 beginvalue = 3;
-  void clear_beginvalue();
-  static const int kBeginvalueFieldNumber = 3;
-  ::google::protobuf::uint32 beginvalue() const;
-  void set_beginvalue(::google::protobuf::uint32 value);
+  // uint32 begincount = 3;
+  void clear_begincount();
+  static const int kBegincountFieldNumber = 3;
+  ::google::protobuf::uint32 begincount() const;
+  void set_begincount(::google::protobuf::uint32 value);
 
-  // uint32 endvalue = 4;
-  void clear_endvalue();
-  static const int kEndvalueFieldNumber = 4;
-  ::google::protobuf::uint32 endvalue() const;
-  void set_endvalue(::google::protobuf::uint32 value);
+  // uint32 endcount = 4;
+  void clear_endcount();
+  static const int kEndcountFieldNumber = 4;
+  ::google::protobuf::uint32 endcount() const;
+  void set_endcount(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:KFMsg.PBBalanceItemServer)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr name_;
-  ::google::protobuf::uint32 key_;
-  ::google::protobuf::uint32 beginvalue_;
-  ::google::protobuf::uint32 endvalue_;
+  ::google::protobuf::uint64 uuid_;
+  ::google::protobuf::uint32 id_;
+  ::google::protobuf::uint32 begincount_;
+  ::google::protobuf::uint32 endcount_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_DefineMessage_2eproto::TableStruct;
 };
@@ -1031,7 +1157,7 @@ class LIBPROTOC_EXPORT PBBalanceHeroServer : public ::google::protobuf::Message 
                &_PBBalanceHeroServer_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    12;
 
   void Swap(PBBalanceHeroServer* other);
   friend void swap(PBBalanceHeroServer& a, PBBalanceHeroServer& b) {
@@ -1265,7 +1391,7 @@ class LIBPROTOC_EXPORT PBFighterHeroData : public ::google::protobuf::Message /*
                &_PBFighterHeroData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    13;
 
   void Swap(PBFighterHeroData* other);
   friend void swap(PBFighterHeroData& a, PBFighterHeroData& b) {
@@ -1389,7 +1515,7 @@ class LIBPROTOC_EXPORT PBExplorePlayerData : public ::google::protobuf::Message 
                &_PBExplorePlayerData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    14;
 
   void Swap(PBExplorePlayerData* other);
   friend void swap(PBExplorePlayerData& a, PBExplorePlayerData& b) {
@@ -1520,7 +1646,7 @@ class LIBPROTOC_EXPORT PBExploreNpcData : public ::google::protobuf::Message /* 
                &_PBExploreNpcData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    15;
 
   void Swap(PBExploreNpcData* other);
   friend void swap(PBExploreNpcData& a, PBExploreNpcData& b) {
@@ -1666,7 +1792,7 @@ class LIBPROTOC_EXPORT PBBuffData : public ::google::protobuf::Message /* @@prot
                &_PBBuffData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    16;
 
   void Swap(PBBuffData* other);
   friend void swap(PBBuffData& a, PBBuffData& b) {
@@ -1769,7 +1895,7 @@ class LIBPROTOC_EXPORT PBBuffListData : public ::google::protobuf::Message /* @@
                &_PBBuffListData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    17;
 
   void Swap(PBBuffListData* other);
   friend void swap(PBBuffListData& a, PBBuffListData& b) {
@@ -1899,7 +2025,7 @@ class LIBPROTOC_EXPORT PBExploreBuffData : public ::google::protobuf::Message /*
                &_PBExploreBuffData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    19;
 
   void Swap(PBExploreBuffData* other);
   friend void swap(PBExploreBuffData& a, PBExploreBuffData& b) {
@@ -2032,7 +2158,7 @@ class LIBPROTOC_EXPORT PBExploreData : public ::google::protobuf::Message /* @@p
                &_PBExploreData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    21;
 
   void Swap(PBExploreData* other);
   friend void swap(PBExploreData& a, PBExploreData& b) {
@@ -2191,7 +2317,7 @@ class LIBPROTOC_EXPORT PBBalanceDataServer : public ::google::protobuf::Message 
                &_PBBalanceDataServer_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    22;
 
   void Swap(PBBalanceDataServer* other);
   friend void swap(PBBalanceDataServer& a, PBBalanceDataServer& b) {
@@ -2243,10 +2369,10 @@ class LIBPROTOC_EXPORT PBBalanceDataServer : public ::google::protobuf::Message 
 
   // accessors -------------------------------------------------------
 
-  // repeated .KFMsg.PBBalanceHeroServer herodata = 5;
+  // repeated .KFMsg.PBBalanceHeroServer herodata = 7;
   int herodata_size() const;
   void clear_herodata();
-  static const int kHerodataFieldNumber = 5;
+  static const int kHerodataFieldNumber = 7;
   ::KFMsg::PBBalanceHeroServer* mutable_herodata(int index);
   ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceHeroServer >*
       mutable_herodata();
@@ -2255,10 +2381,10 @@ class LIBPROTOC_EXPORT PBBalanceDataServer : public ::google::protobuf::Message 
   const ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceHeroServer >&
       herodata() const;
 
-  // repeated .KFMsg.PBBalanceItemServer itemdata = 6;
+  // repeated .KFMsg.PBBalanceItemServer itemdata = 8;
   int itemdata_size() const;
   void clear_itemdata();
-  static const int kItemdataFieldNumber = 6;
+  static const int kItemdataFieldNumber = 8;
   ::KFMsg::PBBalanceItemServer* mutable_itemdata(int index);
   ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceItemServer >*
       mutable_itemdata();
@@ -2267,10 +2393,22 @@ class LIBPROTOC_EXPORT PBBalanceDataServer : public ::google::protobuf::Message 
   const ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceItemServer >&
       itemdata() const;
 
-  // repeated uint64 killnpc = 9;
+  // repeated .KFMsg.PBBalanceCurrency currencydata = 9;
+  int currencydata_size() const;
+  void clear_currencydata();
+  static const int kCurrencydataFieldNumber = 9;
+  ::KFMsg::PBBalanceCurrency* mutable_currencydata(int index);
+  ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceCurrency >*
+      mutable_currencydata();
+  const ::KFMsg::PBBalanceCurrency& currencydata(int index) const;
+  ::KFMsg::PBBalanceCurrency* add_currencydata();
+  const ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceCurrency >&
+      currencydata() const;
+
+  // repeated uint64 killnpc = 10;
   int killnpc_size() const;
   void clear_killnpc();
-  static const int kKillnpcFieldNumber = 9;
+  static const int kKillnpcFieldNumber = 10;
   ::google::protobuf::uint64 killnpc(int index) const;
   void set_killnpc(int index, ::google::protobuf::uint64 value);
   void add_killnpc(::google::protobuf::uint64 value);
@@ -2323,15 +2461,15 @@ class LIBPROTOC_EXPORT PBBalanceDataServer : public ::google::protobuf::Message 
   ::google::protobuf::uint64 moduleid() const;
   void set_moduleid(::google::protobuf::uint64 value);
 
-  // uint64 starttime = 7;
+  // uint64 starttime = 5;
   void clear_starttime();
-  static const int kStarttimeFieldNumber = 7;
+  static const int kStarttimeFieldNumber = 5;
   ::google::protobuf::uint64 starttime() const;
   void set_starttime(::google::protobuf::uint64 value);
 
-  // uint32 usetime = 8;
+  // uint32 usetime = 6;
   void clear_usetime();
-  static const int kUsetimeFieldNumber = 8;
+  static const int kUsetimeFieldNumber = 6;
   ::google::protobuf::uint32 usetime() const;
   void set_usetime(::google::protobuf::uint32 value);
 
@@ -2341,6 +2479,7 @@ class LIBPROTOC_EXPORT PBBalanceDataServer : public ::google::protobuf::Message 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceHeroServer > herodata_;
   ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceItemServer > itemdata_;
+  ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceCurrency > currencydata_;
   ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > killnpc_;
   mutable int _killnpc_cached_byte_size_;
   ::google::protobuf::internal::ArenaStringPtr modulename_;
@@ -2480,85 +2619,46 @@ PBMatchPlayer::mutable_hero() {
 
 // PBBalanceItem
 
-// bytes name = 1;
-inline void PBBalanceItem::clear_name() {
-  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// uint32 id = 1;
+inline void PBBalanceItem::clear_id() {
+  id_ = 0u;
 }
-inline const ::std::string& PBBalanceItem::name() const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceItem.name)
-  return name_.GetNoArena();
+inline ::google::protobuf::uint32 PBBalanceItem::id() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceItem.id)
+  return id_;
 }
-inline void PBBalanceItem::set_name(const ::std::string& value) {
+inline void PBBalanceItem::set_id(::google::protobuf::uint32 value) {
   
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceItem.name)
-}
-#if LANG_CXX11
-inline void PBBalanceItem::set_name(::std::string&& value) {
-  
-  name_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:KFMsg.PBBalanceItem.name)
-}
-#endif
-inline void PBBalanceItem::set_name(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:KFMsg.PBBalanceItem.name)
-}
-inline void PBBalanceItem::set_name(const void* value, size_t size) {
-  
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:KFMsg.PBBalanceItem.name)
-}
-inline ::std::string* PBBalanceItem::mutable_name() {
-  
-  // @@protoc_insertion_point(field_mutable:KFMsg.PBBalanceItem.name)
-  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* PBBalanceItem::release_name() {
-  // @@protoc_insertion_point(field_release:KFMsg.PBBalanceItem.name)
-  
-  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void PBBalanceItem::set_allocated_name(::std::string* name) {
-  if (name != NULL) {
-    
-  } else {
-    
-  }
-  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:KFMsg.PBBalanceItem.name)
+  id_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceItem.id)
 }
 
-// uint32 key = 2;
-inline void PBBalanceItem::clear_key() {
-  key_ = 0u;
+// uint64 uuid = 2;
+inline void PBBalanceItem::clear_uuid() {
+  uuid_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 PBBalanceItem::key() const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceItem.key)
-  return key_;
+inline ::google::protobuf::uint64 PBBalanceItem::uuid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceItem.uuid)
+  return uuid_;
 }
-inline void PBBalanceItem::set_key(::google::protobuf::uint32 value) {
+inline void PBBalanceItem::set_uuid(::google::protobuf::uint64 value) {
   
-  key_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceItem.key)
+  uuid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceItem.uuid)
 }
 
-// uint32 value = 3;
-inline void PBBalanceItem::clear_value() {
-  value_ = 0u;
+// uint32 count = 3;
+inline void PBBalanceItem::clear_count() {
+  count_ = 0u;
 }
-inline ::google::protobuf::uint32 PBBalanceItem::value() const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceItem.value)
-  return value_;
+inline ::google::protobuf::uint32 PBBalanceItem::count() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceItem.count)
+  return count_;
 }
-inline void PBBalanceItem::set_value(::google::protobuf::uint32 value) {
+inline void PBBalanceItem::set_count(::google::protobuf::uint32 value) {
   
-  value_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceItem.value)
+  count_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceItem.count)
 }
 
 // -------------------------------------------------------------------
@@ -2758,6 +2858,91 @@ PBBalanceHero::mutable_character() {
 
 // -------------------------------------------------------------------
 
+// PBBalanceCurrency
+
+// bytes name = 1;
+inline void PBBalanceCurrency::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& PBBalanceCurrency::name() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceCurrency.name)
+  return name_.GetNoArena();
+}
+inline void PBBalanceCurrency::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceCurrency.name)
+}
+#if LANG_CXX11
+inline void PBBalanceCurrency::set_name(::std::string&& value) {
+  
+  name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:KFMsg.PBBalanceCurrency.name)
+}
+#endif
+inline void PBBalanceCurrency::set_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:KFMsg.PBBalanceCurrency.name)
+}
+inline void PBBalanceCurrency::set_name(const void* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:KFMsg.PBBalanceCurrency.name)
+}
+inline ::std::string* PBBalanceCurrency::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:KFMsg.PBBalanceCurrency.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PBBalanceCurrency::release_name() {
+  // @@protoc_insertion_point(field_release:KFMsg.PBBalanceCurrency.name)
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PBBalanceCurrency::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:KFMsg.PBBalanceCurrency.name)
+}
+
+// uint32 beginvalue = 2;
+inline void PBBalanceCurrency::clear_beginvalue() {
+  beginvalue_ = 0u;
+}
+inline ::google::protobuf::uint32 PBBalanceCurrency::beginvalue() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceCurrency.beginvalue)
+  return beginvalue_;
+}
+inline void PBBalanceCurrency::set_beginvalue(::google::protobuf::uint32 value) {
+  
+  beginvalue_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceCurrency.beginvalue)
+}
+
+// uint32 endvalue = 3;
+inline void PBBalanceCurrency::clear_endvalue() {
+  endvalue_ = 0u;
+}
+inline ::google::protobuf::uint32 PBBalanceCurrency::endvalue() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceCurrency.endvalue)
+  return endvalue_;
+}
+inline void PBBalanceCurrency::set_endvalue(::google::protobuf::uint32 value) {
+  
+  endvalue_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceCurrency.endvalue)
+}
+
+// -------------------------------------------------------------------
+
 // PBBalanceData
 
 // repeated .KFMsg.PBBalanceHero herodata = 1;
@@ -2820,103 +3005,94 @@ PBBalanceData::itemdata() const {
   return itemdata_;
 }
 
+// repeated .KFMsg.PBBalanceCurrency currencydata = 3;
+inline int PBBalanceData::currencydata_size() const {
+  return currencydata_.size();
+}
+inline void PBBalanceData::clear_currencydata() {
+  currencydata_.Clear();
+}
+inline ::KFMsg::PBBalanceCurrency* PBBalanceData::mutable_currencydata(int index) {
+  // @@protoc_insertion_point(field_mutable:KFMsg.PBBalanceData.currencydata)
+  return currencydata_.Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceCurrency >*
+PBBalanceData::mutable_currencydata() {
+  // @@protoc_insertion_point(field_mutable_list:KFMsg.PBBalanceData.currencydata)
+  return &currencydata_;
+}
+inline const ::KFMsg::PBBalanceCurrency& PBBalanceData::currencydata(int index) const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceData.currencydata)
+  return currencydata_.Get(index);
+}
+inline ::KFMsg::PBBalanceCurrency* PBBalanceData::add_currencydata() {
+  // @@protoc_insertion_point(field_add:KFMsg.PBBalanceData.currencydata)
+  return currencydata_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceCurrency >&
+PBBalanceData::currencydata() const {
+  // @@protoc_insertion_point(field_list:KFMsg.PBBalanceData.currencydata)
+  return currencydata_;
+}
+
 // -------------------------------------------------------------------
 
 // PBBalanceItemServer
 
-// bytes name = 1;
-inline void PBBalanceItemServer::clear_name() {
-  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// uint32 id = 1;
+inline void PBBalanceItemServer::clear_id() {
+  id_ = 0u;
 }
-inline const ::std::string& PBBalanceItemServer::name() const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceItemServer.name)
-  return name_.GetNoArena();
+inline ::google::protobuf::uint32 PBBalanceItemServer::id() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceItemServer.id)
+  return id_;
 }
-inline void PBBalanceItemServer::set_name(const ::std::string& value) {
+inline void PBBalanceItemServer::set_id(::google::protobuf::uint32 value) {
   
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceItemServer.name)
-}
-#if LANG_CXX11
-inline void PBBalanceItemServer::set_name(::std::string&& value) {
-  
-  name_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:KFMsg.PBBalanceItemServer.name)
-}
-#endif
-inline void PBBalanceItemServer::set_name(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:KFMsg.PBBalanceItemServer.name)
-}
-inline void PBBalanceItemServer::set_name(const void* value, size_t size) {
-  
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:KFMsg.PBBalanceItemServer.name)
-}
-inline ::std::string* PBBalanceItemServer::mutable_name() {
-  
-  // @@protoc_insertion_point(field_mutable:KFMsg.PBBalanceItemServer.name)
-  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* PBBalanceItemServer::release_name() {
-  // @@protoc_insertion_point(field_release:KFMsg.PBBalanceItemServer.name)
-  
-  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void PBBalanceItemServer::set_allocated_name(::std::string* name) {
-  if (name != NULL) {
-    
-  } else {
-    
-  }
-  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:KFMsg.PBBalanceItemServer.name)
+  id_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceItemServer.id)
 }
 
-// uint32 key = 2;
-inline void PBBalanceItemServer::clear_key() {
-  key_ = 0u;
+// uint64 uuid = 2;
+inline void PBBalanceItemServer::clear_uuid() {
+  uuid_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 PBBalanceItemServer::key() const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceItemServer.key)
-  return key_;
+inline ::google::protobuf::uint64 PBBalanceItemServer::uuid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceItemServer.uuid)
+  return uuid_;
 }
-inline void PBBalanceItemServer::set_key(::google::protobuf::uint32 value) {
+inline void PBBalanceItemServer::set_uuid(::google::protobuf::uint64 value) {
   
-  key_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceItemServer.key)
+  uuid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceItemServer.uuid)
 }
 
-// uint32 beginvalue = 3;
-inline void PBBalanceItemServer::clear_beginvalue() {
-  beginvalue_ = 0u;
+// uint32 begincount = 3;
+inline void PBBalanceItemServer::clear_begincount() {
+  begincount_ = 0u;
 }
-inline ::google::protobuf::uint32 PBBalanceItemServer::beginvalue() const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceItemServer.beginvalue)
-  return beginvalue_;
+inline ::google::protobuf::uint32 PBBalanceItemServer::begincount() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceItemServer.begincount)
+  return begincount_;
 }
-inline void PBBalanceItemServer::set_beginvalue(::google::protobuf::uint32 value) {
+inline void PBBalanceItemServer::set_begincount(::google::protobuf::uint32 value) {
   
-  beginvalue_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceItemServer.beginvalue)
+  begincount_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceItemServer.begincount)
 }
 
-// uint32 endvalue = 4;
-inline void PBBalanceItemServer::clear_endvalue() {
-  endvalue_ = 0u;
+// uint32 endcount = 4;
+inline void PBBalanceItemServer::clear_endcount() {
+  endcount_ = 0u;
 }
-inline ::google::protobuf::uint32 PBBalanceItemServer::endvalue() const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceItemServer.endvalue)
-  return endvalue_;
+inline ::google::protobuf::uint32 PBBalanceItemServer::endcount() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceItemServer.endcount)
+  return endcount_;
 }
-inline void PBBalanceItemServer::set_endvalue(::google::protobuf::uint32 value) {
+inline void PBBalanceItemServer::set_endcount(::google::protobuf::uint32 value) {
   
-  endvalue_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceItemServer.endvalue)
+  endcount_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceItemServer.endcount)
 }
 
 // -------------------------------------------------------------------
@@ -3802,7 +3978,35 @@ inline void PBBalanceDataServer::set_status(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.status)
 }
 
-// repeated .KFMsg.PBBalanceHeroServer herodata = 5;
+// uint64 starttime = 5;
+inline void PBBalanceDataServer::clear_starttime() {
+  starttime_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 PBBalanceDataServer::starttime() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.starttime)
+  return starttime_;
+}
+inline void PBBalanceDataServer::set_starttime(::google::protobuf::uint64 value) {
+  
+  starttime_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.starttime)
+}
+
+// uint32 usetime = 6;
+inline void PBBalanceDataServer::clear_usetime() {
+  usetime_ = 0u;
+}
+inline ::google::protobuf::uint32 PBBalanceDataServer::usetime() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.usetime)
+  return usetime_;
+}
+inline void PBBalanceDataServer::set_usetime(::google::protobuf::uint32 value) {
+  
+  usetime_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.usetime)
+}
+
+// repeated .KFMsg.PBBalanceHeroServer herodata = 7;
 inline int PBBalanceDataServer::herodata_size() const {
   return herodata_.size();
 }
@@ -3832,7 +4036,7 @@ PBBalanceDataServer::herodata() const {
   return herodata_;
 }
 
-// repeated .KFMsg.PBBalanceItemServer itemdata = 6;
+// repeated .KFMsg.PBBalanceItemServer itemdata = 8;
 inline int PBBalanceDataServer::itemdata_size() const {
   return itemdata_.size();
 }
@@ -3862,35 +4066,37 @@ PBBalanceDataServer::itemdata() const {
   return itemdata_;
 }
 
-// uint64 starttime = 7;
-inline void PBBalanceDataServer::clear_starttime() {
-  starttime_ = GOOGLE_ULONGLONG(0);
+// repeated .KFMsg.PBBalanceCurrency currencydata = 9;
+inline int PBBalanceDataServer::currencydata_size() const {
+  return currencydata_.size();
 }
-inline ::google::protobuf::uint64 PBBalanceDataServer::starttime() const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.starttime)
-  return starttime_;
+inline void PBBalanceDataServer::clear_currencydata() {
+  currencydata_.Clear();
 }
-inline void PBBalanceDataServer::set_starttime(::google::protobuf::uint64 value) {
-  
-  starttime_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.starttime)
+inline ::KFMsg::PBBalanceCurrency* PBBalanceDataServer::mutable_currencydata(int index) {
+  // @@protoc_insertion_point(field_mutable:KFMsg.PBBalanceDataServer.currencydata)
+  return currencydata_.Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceCurrency >*
+PBBalanceDataServer::mutable_currencydata() {
+  // @@protoc_insertion_point(field_mutable_list:KFMsg.PBBalanceDataServer.currencydata)
+  return &currencydata_;
+}
+inline const ::KFMsg::PBBalanceCurrency& PBBalanceDataServer::currencydata(int index) const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.currencydata)
+  return currencydata_.Get(index);
+}
+inline ::KFMsg::PBBalanceCurrency* PBBalanceDataServer::add_currencydata() {
+  // @@protoc_insertion_point(field_add:KFMsg.PBBalanceDataServer.currencydata)
+  return currencydata_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceCurrency >&
+PBBalanceDataServer::currencydata() const {
+  // @@protoc_insertion_point(field_list:KFMsg.PBBalanceDataServer.currencydata)
+  return currencydata_;
 }
 
-// uint32 usetime = 8;
-inline void PBBalanceDataServer::clear_usetime() {
-  usetime_ = 0u;
-}
-inline ::google::protobuf::uint32 PBBalanceDataServer::usetime() const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.usetime)
-  return usetime_;
-}
-inline void PBBalanceDataServer::set_usetime(::google::protobuf::uint32 value) {
-  
-  usetime_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.usetime)
-}
-
-// repeated uint64 killnpc = 9;
+// repeated uint64 killnpc = 10;
 inline int PBBalanceDataServer::killnpc_size() const {
   return killnpc_.size();
 }
@@ -3977,6 +4183,8 @@ inline void PBBalanceDataServer::set_allocated_exploredata(::KFMsg::PBExploreDat
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

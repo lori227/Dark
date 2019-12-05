@@ -68,24 +68,19 @@ namespace KFrame
             return;
         }
 
-        for ( auto logicid : logicids )
+        if ( statusid == 0u )
         {
-            auto kfdata = kfrecord->Find( logicid );
-            if ( kfdata == nullptr )
+            for ( auto logicid : logicids )
             {
-                continue;
+                player->RemoveData( kfrecord, logicid, false );
             }
-
-            if ( statusid == 0u )
+        }
+        else
+        {
+            for ( auto logicid : logicids )
             {
-                auto kfsetting = KFChapterConfig::Instance()->FindSetting( logicid );
-                if ( kfsetting != nullptr )
-                {
-                    statusid = kfsetting->_finish_status_id;
-                }
+                player->UpdateData( kfrecord, logicid, kfrecord->_data_setting->_value_key_name, KFEnum::Set, statusid );
             }
-
-            player->UpdateData( kfdata, kfrecord->_data_setting->_value_key_name, KFEnum::Set, statusid );
         }
     }
 }

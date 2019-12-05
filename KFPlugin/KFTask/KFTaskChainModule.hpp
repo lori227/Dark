@@ -16,6 +16,7 @@
 #include "KFKernel/KFKernelInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFCommand/KFCommandInterface.h"
+#include "KFCondition/KFConditionInterface.h"
 #include "KFTaskChainConfig.hpp"
 
 namespace KFrame
@@ -34,6 +35,9 @@ namespace KFrame
         ////////////////////////////////////////////////////////////////////////////////
         // 完成任务链任务
         virtual void FinishTaskChain( KFEntity* player, KFData* kftask, const char* function, uint32 line );
+
+        // 删除任务链任务
+        virtual void RemoveTaskChain( KFEntity* player, KFData* kftask );
     protected:
         // 添加任务链
         __KF_ADD_ELEMENT_FUNCTION__( AddTaskChainElement );
@@ -54,7 +58,10 @@ namespace KFrame
         bool OpenTaskLogicData( KFEntity* player, uint32 taskchainid, uint32 order, const KFTaskData* taskdata, uint32 logicid, const char* function, uint32 line );
 
         // 完成任务链逻辑数据
-        void FinishTaskLogckData( KFEntity* player, KFData* kftask, const KFTaskData* taskdata );
+        void FinishTaskLogicData( KFEntity* player, KFData* kftask, const KFTaskData* taskdata );
+
+        // 删除任务链逻辑数据
+        void RemoveTaskLogicData( KFEntity* player, KFData* kftask, const KFTaskData* taskdata );
 
         // 清除任务链
         void CleanTaskChain( KFEntity* player, uint32 taskchainid );

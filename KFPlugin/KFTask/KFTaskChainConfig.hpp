@@ -3,8 +3,8 @@
 
 #include "KFrameEx.h"
 #include "KFCore/KFElement.h"
+#include "KFCore/KFCondition.h"
 #include "KFZConfig/KFConfig.h"
-#include "KFZConfig/KFTimeConfig.h"
 #include "KFZConfig/KFRewardConfig.h"
 
 namespace KFrame
@@ -77,6 +77,9 @@ namespace KFrame
         // 接取消耗
         std::string _str_cost;
         KFElements _receive_cost;
+
+        // 前置条件
+        KFConditions _conditions;
     };
 
     class KFTaskChainRefreshTimeData
@@ -87,7 +90,6 @@ namespace KFrame
             _refresh_list.clear();
         }
 
-        const KFTimeSetting* _time_setting = nullptr;
         std::vector< KFTaskChainRefreshSetting* > _refresh_list;
     };
 

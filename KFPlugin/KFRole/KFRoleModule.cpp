@@ -4,6 +4,8 @@ namespace KFrame
 {
     void KFRoleModule::BeforeRun()
     {
+        _kf_component = _kf_kernel->FindComponent( __STRING__( player ) );
+        __REGISTER_UPDATE_DATA_1__( __STRING__( money ), &KFRoleModule::OnUpdateMoneyCallBack );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_SET_SEX_REQ, &KFRoleModule::HandleSetSexReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_SET_NAME_REQ, &KFRoleModule::HandleSetNameReq );
@@ -12,6 +14,7 @@ namespace KFrame
 
     void KFRoleModule::BeforeShut()
     {
+        __UN_UPDATE_DATA_1__( __STRING__( money ) );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_SET_NAME_REQ );
         __UN_MESSAGE__( KFMsg::MSG_SET_SEX_REQ );
@@ -98,8 +101,7 @@ namespace KFrame
             }
         }
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     __KF_MESSAGE_FUNCTION__( KFRoleModule::HandleSetSexReq )
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgSetSexReq );
@@ -108,5 +110,12 @@ namespace KFrame
         player->UpdateData( __STRING__( basic ), __STRING__( sex ), KFEnum::Set, kfmsg.sex() );
     }
 
+    __KF_UPDATE_DATA_FUNCTION__( KFRoleModule::OnUpdateMoneyCallBack )
+    {
+        if ( operate == KFEnum::Dec )
+        {
+            player->UpdateData( __STRING__( consumemoney ), KFEnum::Add, value );
+        }
+    }
 
 }

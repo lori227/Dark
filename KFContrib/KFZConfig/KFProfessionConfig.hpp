@@ -24,9 +24,6 @@ namespace KFrame
         // 英雄属性偏好率
         std::unordered_map< std::string, uint32 > _attribute;
 
-        // 招募花费
-        KFElements _recruit_cost;
-
         // 最大等级
         uint32 _max_level = 0u;
 

@@ -24,14 +24,15 @@ namespace KFrame
     void KFHeroPlugin::LoadModule()
     {
         __FIND_MODULE__( _kf_hero, KFHeroInterface );
+        __FIND_MODULE__( _kf_option, KFOptionInterface );
         __FIND_MODULE__( _kf_config, KFConfigInterface );
         __FIND_MODULE__( _kf_kernel, KFKernelInterface );
         __FIND_MODULE__( _kf_player, KFPlayerInterface );
         __FIND_MODULE__( _kf_filter, KFFilterInterface );
         __FIND_MODULE__( _kf_message, KFMessageInterface );
         __FIND_MODULE__( _kf_display, KFDisplayInterface );
+        __FIND_MODULE__( _kf_execute, KFExecuteInterface );
         __FIND_MODULE__( _kf_generate, KFGenerateInterface );
-        __FIND_MODULE__( _kf_option, KFOptionInterface );
     }
 
     void KFHeroPlugin::AddConfig()
@@ -43,6 +44,6 @@ namespace KFrame
         __KF_ADD_CONFIG__( KFSkillConfig );
         __KF_ADD_CONFIG__( KFCharacterConfig );
         __KF_ADD_CONFIG__( KFRaceConfig );
-        __KF_ADD_CONFIG__( KFElementConfig );
+        __KF_ADD_CONFIG__( KFRewardConfig );
     }
 }

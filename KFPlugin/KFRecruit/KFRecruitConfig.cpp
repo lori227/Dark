@@ -3,16 +3,23 @@
 namespace KFrame
 {
     /////////////////////////////////////////////////////////////////////////////////
-    void KFRefreshConfig::ReadSetting( KFNode& xmlnode, KFRefreshSetting* kfsetting )
+    void KFRecruitConfig::ReadSetting( KFNode& xmlnode, KFRecruitSetting* kfsetting )
     {
-        kfsetting->_count = xmlnode.GetUInt32( "Count" );
         kfsetting->_is_clear = xmlnode.GetBoolen( "Clear", true );
-        kfsetting->_display_id = xmlnode.GetBoolen( "Display", true );
+        kfsetting->_generate_technology_id = xmlnode.GetUInt32( "GenerateId" );
+        kfsetting->_str_cost = xmlnode.GetString( "Cost", true );
+    }
 
-        auto strcost = xmlnode.GetString( "Cost", true );
-        kfsetting->_cost_elements.Parse( strcost, __FUNC_LINE__ );
-
-        auto strgenerate = xmlnode.GetString( "Generate" );
-        kfsetting->_hero_generate.Parse( strgenerate, __FUNC_LINE__ );
+    void KFRecruitConfig::LoadAllComplete()
+    {
+        for ( auto& iter : _settings._objects )
+        {
+            auto kfsetting = iter.second;
+            auto ok = KFRewardConfig::Instance()->ParseRewards( kfsetting->_str_cost, kfsetting->_cost_elements );
+            if ( !ok )
+            {
+                __LOG_ERROR__( "recruit reward=[{}] parse failed!", kfsetting->_str_cost );
+            }
+        }
     }
 }

@@ -1,4 +1,4 @@
-<root version="972">
+<root version="1601">
 	<item Name="defaultprofession" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="defaultbackground" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="generatedirectattribute" Key="" Value="9" Channel="0" Service="0" />
@@ -10,17 +10,17 @@
 	<item Name="maxinnatecount" Key="" Value="4" Channel="0" Service="0" />
 	<item Name="useinnatecount" Key="" Value="2" Channel="0" Service="0" />
 	<item Name="maxcharactercount" Key="" Value="6" Channel="0" Service="0" />
-	<item Name="maxheroteamcount" Key="" Value="7" Channel="0" Service="0" />
-	<item Name="recruitinitcount" Key="" Value="5" Channel="0" Service="0" />
+	<item Name="maxheroteamcount" Key="" Value="8" Channel="0" Service="0" />
+	<item Name="recruitinitcount" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="recruitmaxcount" Key="" Value="10" Channel="0" Service="0" />
-	<item Name="recruitrefresh" Key="" Value="60" Channel="0" Service="0" />
-	<item Name="maxhp_bar" Key="" Value="300" Channel="0" Service="0" />
-	<item Name="maxatk_bar" Key="" Value="225" Channel="0" Service="0" />
-	<item Name="maxdef_bar" Key="" Value="150" Channel="0" Service="0" />
-	<item Name="maxres_bar" Key="" Value="150" Channel="0" Service="0" />
-	<item Name="maxtal_bar" Key="" Value="90" Channel="0" Service="0" />
-	<item Name="maxspd_bar" Key="" Value="90" Channel="0" Service="0" />
-	<item Name="maxluk_bar" Key="" Value="90" Channel="0" Service="0" />
+	<item Name="recruitrefresh" Key="" Value="21600" Channel="0" Service="0" />
+	<item Name="maxhp_bar" Key="" Value="200" Channel="0" Service="0" />
+	<item Name="maxatk_bar" Key="" Value="150" Channel="0" Service="0" />
+	<item Name="maxdef_bar" Key="" Value="100" Channel="0" Service="0" />
+	<item Name="maxres_bar" Key="" Value="100" Channel="0" Service="0" />
+	<item Name="maxtal_bar" Key="" Value="60" Channel="0" Service="0" />
+	<item Name="maxspd_bar" Key="" Value="50" Channel="0" Service="0" />
+	<item Name="maxluk_bar" Key="" Value="60" Channel="0" Service="0" />
 	<item Name="maxmov_bar" Key="" Value="6" Channel="0" Service="0" />
 	<item Name="buildskininitid" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="maxDamage_bar" Key="" Value="106" Channel="0" Service="0" />
@@ -30,6 +30,8 @@
 	<item Name="transferleveloffest" Key="" Value="10" Channel="0" Service="0" />
 	<item Name="Powercoefficient_B" Key="" Value="0" Channel="0" Service="0" />
 	<item Name="initclinicnum" Key="" Value="200" Channel="0" Service="0" />
-	<item Name="initgranarynum" Key="" Value="1000" Channel="0" Service="0" />
-	<item Name="initsmithynum" Key="" Value="1000" Channel="0" Service="0" />
+	<item Name="initgranarynum" Key="" Value="100" Channel="0" Service="0" />
+	<item Name="initsmithynum" Key="" Value="100" Channel="0" Service="0" />
+	<item Name="roledurability_pve" Key="" Value="10" Channel="0" Service="0" />
+	<item Name="roledurability_pveconsume" Key="" Value="1" Channel="0" Service="0" />
 </root>

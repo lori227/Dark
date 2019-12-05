@@ -3,3 +3,5 @@ _out
 _lib
 conf_output
 _bin/bin
+_bin/config/.svn/
+_bin/_output/

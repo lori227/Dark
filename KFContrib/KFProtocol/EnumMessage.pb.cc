@@ -67,31 +67,32 @@ void AddDescriptorsImpl() {
       "ove\020\002\022\023\n\017DivisorOfWeapon\020\003*;\n\014HeroLockEn"
       "um\022\n\n\006NoLock\020\000\022\020\n\014HeroListLock\020\001\022\r\n\tCoun"
       "tLock\020\002*C\n\013BalanceEnum\022\021\n\rUnknowBalance\020"
-      "\000\022\013\n\007Victory\020\001\022\n\n\006Failed\020\002\022\010\n\004Flee\020\003*\201\002\n"
+      "\000\022\013\n\007Victory\020\001\022\n\n\006Failed\020\002\022\010\n\004Flee\020\003*\224\002\n"
       "\tBuildEnum\022\020\n\014InvalidBuild\020\000\022\r\n\010HeroList"
       "\020\310\001\022\r\n\010HeroTeam\020\311\001\022\016\n\tMainBuild\020\312\001\022\021\n\014Re"
       "cruitBuild\020\313\001\022\020\n\013ClinicBuild\020\314\001\022\017\n\nTrain"
       "Build\020\315\001\022\017\n\nOperaBuild\020\316\001\022\020\n\013SmithyBuild"
       "\020\317\001\022\016\n\tShopBuild\020\320\001\022\021\n\014InheritBuild\020\321\001\022\022"
       "\n\rCemeteryBuild\020\322\001\022\017\n\nOuterBuild\020\323\001\022\023\n\016W"
-      "arehouseBuild\020\324\001*`\n\nRecordEnum\022\021\n\rInvali"
-      "dRecord\020\000\022\016\n\nCampRecord\020\001\022\017\n\013DailyRecord"
-      "\020\002\022\016\n\nDeadRecord\020\003\022\016\n\nLifeRecord\020\004*+\n\rLi"
-      "feEventEnum\022\014\n\010HeroBorn\020\000\022\014\n\010HeroDead\020\001*"
-      "|\n\022PlayerStatusEnumEx\022\020\n\014UnknowStatus\020\000\022"
-      "\020\n\014OnlineStatus\020\001\022\021\n\rOfflineStatus\020\002\022\021\n\r"
-      "ExploreStatus\020\003\022\r\n\tPVEStatus\020\004\022\r\n\tPVPSta"
-      "tus\020\005*c\n\014NoticeEnumEx\022\020\n\014UnknowNotice\020\000\022"
-      "\024\n\020NoticeCampRecord\020d\022\025\n\021NoticeDailyReco"
-      "rd\020e\022\024\n\020NoticeDeadRecord\020f*>\n\nExpireEnum"
-      "\022\021\n\rInvalidExpire\020\000\022\016\n\nTimeExpire\020\001\022\r\n\tN"
-      "umExpire\020\002*;\n\017BalanceShowEnum\022\016\n\nUnknowS"
-      "how\020\000\022\013\n\007Explore\020\001\022\013\n\007Balance\020\002*\?\n\014ItemA"
-      "utoEnum\022\017\n\013AutoInvalid\020\000\022\r\n\tAutoStore\020\001\022"
-      "\017\n\013AutoDestory\020\002b\006proto3"
+      "arehouseBuild\020\324\001\022\021\n\014GranaryBuild\020\325\001*`\n\nR"
+      "ecordEnum\022\021\n\rInvalidRecord\020\000\022\016\n\nCampReco"
+      "rd\020\001\022\017\n\013DailyRecord\020\002\022\016\n\nDeadRecord\020\003\022\016\n"
+      "\nLifeRecord\020\004*+\n\rLifeEventEnum\022\014\n\010HeroBo"
+      "rn\020\000\022\014\n\010HeroDead\020\001*|\n\022PlayerStatusEnumEx"
+      "\022\020\n\014UnknowStatus\020\000\022\020\n\014OnlineStatus\020\001\022\021\n\r"
+      "OfflineStatus\020\002\022\021\n\rExploreStatus\020\003\022\r\n\tPV"
+      "EStatus\020\004\022\r\n\tPVPStatus\020\005*c\n\014NoticeEnumEx"
+      "\022\020\n\014UnknowNotice\020\000\022\024\n\020NoticeCampRecord\020d"
+      "\022\025\n\021NoticeDailyRecord\020e\022\024\n\020NoticeDeadRec"
+      "ord\020f*>\n\nExpireEnum\022\021\n\rInvalidExpire\020\000\022\016"
+      "\n\nTimeExpire\020\001\022\r\n\tNumExpire\020\002*;\n\017Balance"
+      "ShowEnum\022\016\n\nUnknowShow\020\000\022\013\n\007Explore\020\001\022\013\n"
+      "\007Balance\020\002*\?\n\014ItemAutoEnum\022\017\n\013AutoInvali"
+      "d\020\000\022\r\n\tAutoStore\020\001\022\017\n\013AutoDestory\020\002b\006pro"
+      "to3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1224);
+      descriptor, 1243);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "EnumMessage.proto", &protobuf_RegisterTypes);
 }
@@ -206,6 +207,7 @@ bool BuildEnum_IsValid(int value) {
     case 210:
     case 211:
     case 212:
+    case 213:
       return true;
     default:
       return false;

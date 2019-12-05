@@ -11,7 +11,6 @@ namespace KFrame
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_TRAIN_CHANGE_REQ, &KFTrainCampModule::HandleTrainChangeReq );
-        __REGISTER_MESSAGE__( KFMsg::MSG_TRAIN_EXCHANGE_REQ, &KFTrainCampModule::HandleTrainExchangeReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_TRAIN_CLEAN_REQ, &KFTrainCampModule::HandleTrainCleanReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_TRAIN_ONEKEY_REQ, &KFTrainCampModule::HandleTrainOnekeyReq );
     }
@@ -24,7 +23,6 @@ namespace KFrame
         __UN_REMOVE_DATA_1__( __STRING__( traincamp ) );
         //////////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_TRAIN_CHANGE_REQ );
-        __UN_MESSAGE__( KFMsg::MSG_TRAIN_EXCHANGE_REQ );
         __UN_MESSAGE__( KFMsg::MSG_TRAIN_CLEAN_REQ );
         __UN_MESSAGE__( KFMsg::MSG_TRAIN_ONEKEY_REQ );
     }
@@ -62,11 +60,6 @@ namespace KFrame
             // 增加英雄进栏位
             AddTrainCampHero( player, kftraincamprecord, kfmsg.uuid(), kfmsg.index() );
         }
-    }
-
-    __KF_MESSAGE_FUNCTION__( KFTrainCampModule::HandleTrainExchangeReq )
-    {
-        __CLIENT_PROTO_PARSE__( KFMsg::MsgTrainExchangeReq );
     }
 
     __KF_MESSAGE_FUNCTION__( KFTrainCampModule::HandleTrainCleanReq )
@@ -182,6 +175,19 @@ namespace KFrame
 
     void KFTrainCampModule::RemoveTrainCampHero( KFEntity* player, KFData* kftarinrecord, KFData* kftarin )
     {
+        // 训练-条件回调
+        auto uuid = kftarin->Get<uint64>( __STRING__( uuid ) );
+        auto kfhero = player->Find( __STRING__( hero ), uuid );
+        if ( kfhero != nullptr )
+        {
+            auto kftarinhero = player->Find( __STRING__( trainhero ) );
+            kftarinhero->CopyFrom( kfhero );
+
+            kftarinhero->Set( __STRING__( uuid ), 0u );
+            player->UpdateData( kftarinhero, __STRING__( uuid ), KFEnum::Set, uuid );
+        }
+
+        // 删除训练英雄
         player->RemoveData( kftarinrecord, kftarin->GetKeyID() );
     }
 

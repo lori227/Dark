@@ -20,6 +20,19 @@ namespace KFrame
         // 获取能添加物品数量
         virtual uint32 GetCanAddItemCount( KFEntity* player, uint32 itemid, uint32 num ) = 0;
 
+        // 获取物品自动操作类型
+        virtual uint32 GetItemAutoType( KFData* kfitem ) = 0;
+
+        // 查找空的格子存放道具
+        virtual uint32 FindItemEmptyIndex( KFEntity* player, KFData* kfitemrecord ) = 0;
+
+        // 清空格子信息
+        virtual void AddItemEmptyIndex( KFEntity* player, KFData* kfitem ) = 0;
+
+        // 查找道具
+        virtual std::tuple<KFData*, KFData*> FindItem( KFEntity* player, uint64 itemuuid ) = 0;
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 初始化数据
         template< class T >
         void RegisteInitItemFunction( uint32 itemtype, T* object, void ( T::*handle )( KFEntity*, KFData*, const KFItemSetting* ) )
