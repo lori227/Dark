@@ -1,4 +1,4 @@
-<root version="1647">
+<root version="1822">
 	<item Id="1000001" Status="0" Condition="" UnlockId="" BuildingId="203" Consume="[[1,1,100],[2,1000101,10]]" ExecuteName="" ExecuteParam1="0" ExecuteParam2="0" ExecuteParam3="0" ExecuteParam4="0" ExecuteParam5="0" ExecuteParam6="0" />
 	<item Id="1000002" Status="0" Condition="1000001" UnlockId="" BuildingId="203" Consume="[[1,1,100],[2,1000101,10]]" ExecuteName="" ExecuteParam1="0" ExecuteParam2="0" ExecuteParam3="0" ExecuteParam4="0" ExecuteParam5="0" ExecuteParam6="0" />
 	<item Id="1000003" Status="0" Condition="1000002" UnlockId="" BuildingId="203" Consume="[[1,1,200],[2,1000101,10]]" ExecuteName="" ExecuteParam1="0" ExecuteParam2="0" ExecuteParam3="0" ExecuteParam4="0" ExecuteParam5="0" ExecuteParam6="0" />

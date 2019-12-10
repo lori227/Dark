@@ -56,6 +56,9 @@ namespace KFrame
         // 定时增加经验
         __KF_TIMER_FUNCTION__( OnTimerAddExp );
 
+        // 更新计算经验时间
+        __KF_UPDATE_DATA_FUNCTION__( OnUpdateCalcTime );
+
         // 删除训练所英雄
         __KF_REMOVE_DATA_FUNCTION__( OnRemoveTrainHero );
     protected:
@@ -72,7 +75,7 @@ namespace KFrame
         const KFTrainCampSetting* GetTrainCampSetting( KFEntity* player );
 
         // 添加英雄到栏位
-        void AddTrainCampHero( KFEntity* player, KFData* kftarinrecord, uint64 uuid, uint32 index );
+        void AddTrainCampHero( KFEntity* player, KFData* kftrainrecord, uint64 uuid, uint32 index );
 
         // 检查定时器
         void EnterStartTrainCampTimer( KFEntity* player );
@@ -87,7 +90,10 @@ namespace KFrame
         void AddTrainHeroLevelRecord( KFEntity* player, const KFTrainCampSetting* kfsetting, KFData* kftrain, KFData* kfhero, uint32 newlevel, uint32 addexp );
 
         // 删除训练所英雄
-        void RemoveTrainCampHero( KFEntity* player, KFData* kftarinrecord, KFData* kftarin );
+        void RemoveTrainCampHero( KFEntity* player, KFData* kftrainrecord, KFData* kftrain );
+
+        // 添加训练所条件
+        void AddTrainCampCondition( KFEntity* player, KFData* kftrain );
     protected:
         // 玩家组件上下文
         KFComponent* _kf_component = nullptr;

@@ -1,4 +1,5 @@
-<root version="1635">
+<root version="1776">
+	<item Id="11000001" Race="1601" Profession="1129" Weapon="3180200" Sex="0" Level="1:1" RandSkill="42:0" RandCharacter="" RandDip="0-10:10|11-90:90|91-100:100" RandAttr="0" Attr_maxhp="999999" Attr_atk="4" Attr_def="5" Attr_res="2" Attr_tal="2" Attr_spd="1" Attr_luk="2" />
 	<item Id="11129000" Race="1601" Profession="1129" Weapon="3180200" Sex="0" Level="1:1" RandSkill="42:0" RandCharacter="" RandDip="0-10:10|11-90:90|91-100:100" RandAttr="0" Attr_maxhp="9" Attr_atk="4" Attr_def="5" Attr_res="2" Attr_tal="2" Attr_spd="1" Attr_luk="2" />
 	<item Id="11100001" Race="1602" Profession="1100" Weapon="3180100" Sex="0" Level="1:1" RandSkill="1:0" RandCharacter="" RandDip="0-10:10|11-90:90|91-100:100" RandAttr="0" Attr_maxhp="15" Attr_atk="8" Attr_def="6" Attr_res="7" Attr_tal="3" Attr_spd="3" Attr_luk="3" />
 	<item Id="11100002" Race="1602" Profession="1100" Weapon="3180100" Sex="0" Level="1:2" RandSkill="1:0" RandCharacter="" RandDip="0-10:10|11-90:90|91-100:100" RandAttr="0" Attr_maxhp="17" Attr_atk="9" Attr_def="7" Attr_res="7" Attr_tal="3" Attr_spd="3" Attr_luk="3" />

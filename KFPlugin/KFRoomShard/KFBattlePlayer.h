@@ -16,7 +16,7 @@ namespace KFrame
         void SaveTo( KFMsg::PBMatchPlayer* pbplayer );
 
         // 发送消息
-        bool SendToGame( uint32 msgid, google::protobuf::Message* message, bool resend );
+        void SendToGame( uint32 msgid, google::protobuf::Message* message, bool resend );
 
     public:
         // 玩家id

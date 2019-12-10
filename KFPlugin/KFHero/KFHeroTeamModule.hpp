@@ -15,6 +15,7 @@
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFDisplay/KFDisplayInterface.h"
 #include "KFMessage/KFMessageInterface.h"
+#include "KFGenerate/KFGenerateInterface.h"
 
 namespace KFrame
 {
@@ -40,14 +41,17 @@ namespace KFrame
         virtual uint32 GetDeadHeroCount( KFEntity* player );
 
         // 删除队伍死亡的英雄
-        virtual void RemoveTeamDeadHero( KFEntity* player );
+        virtual void UpdateTeamDeadHero( KFEntity* player );
 
-        // 扣除队伍英雄的耐久度
+        // 扣除队伍每个英雄的耐久度
         virtual void DecTeamHeroDurability( KFEntity* player );
 
-        ////////////////////////////////////////////////////////////////////////////////
+        // 移除队伍中耐久度不足的英雄
+        virtual void RemoveTeamHeroDurability( KFEntity* player );
+
         // 通过uuid查找英雄在队伍位置
-        uint32 GetIndexById( KFEntity* player, uint64 uuid );
+        virtual uint32 GetTeamIndexById( KFEntity* player, uint64 uuid );
+        ////////////////////////////////////////////////////////////////////////////////
     protected:
         // 进入游戏
         __KF_ENTER_PLAYER_FUNCTION__( OnEnterHeroTeamModule );

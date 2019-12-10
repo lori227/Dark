@@ -13,6 +13,9 @@ namespace KFrame
         __REGISTER_ENTER_PLAYER__( &KFRecruitModule::OnEnterRecruitModule );
         __REGISTER_LEAVE_PLAYER__( &KFRecruitModule::OnLeaveRecruitModule );
 
+        __REGISTER_AFTER_ENTER_PLAYER__( &KFRecruitModule::OnAfterEnterRecruitModule );
+
+
         __REGISTER_EXECUTE__( __STRING__( recruitdivisor ), &KFRecruitModule::OnExecuteTechnologyRecruitDivisor );
         __REGISTER_EXECUTE__( __STRING__( recruitcount ), &KFRecruitModule::OnExecuteTechnologyRecruitCount );
         __REGISTER_EXECUTE__( __STRING__( recruitweight ), &KFRecruitModule::OnExecuteTechnologyRecruitWeight );
@@ -33,6 +36,7 @@ namespace KFrame
         __UN_TIMER_0__();
         __UN_ENTER_PLAYER__();
         __UN_LEAVE_PLAYER__();
+        __UN_AFTER_ENTER_PLAYER__();
 
         __UN_ADD_ELEMENT__( __STRING__( recruit ) );
         __UN_UPDATE_DATA_1__( __STRING__( recruitcount ) );
@@ -64,7 +68,7 @@ namespace KFrame
 
         auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
         auto objvalue = kfelementobject->CreateObjectValue( __STRING__( hero ) );
-        auto kfgenerate = objvalue->_element->_values.Find( __STRING__( generateid ) );
+        auto kfgenerate = objvalue->_element->_values.Find( __STRING__( id ) );
         if ( kfgenerate == nullptr )
         {
             __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not generateid!", kfelement->_data_name );
@@ -120,6 +124,16 @@ namespace KFrame
         RefreshRecruitFreeHero( player, 0u );
     }
 
+    __KF_AFTER_ENTER_PLAYER_FUNCTION__( KFRecruitModule::OnAfterEnterRecruitModule )
+    {
+        auto kfeffect = player->Find( __STRING__( effect ) );
+        auto newversion = kfeffect->Get<uint32>( __STRING__( newversion ) );
+        if ( newversion == 1u )
+        {
+            RefreshRecruitHeroDiscount( player, kfeffect, 0u );
+        }
+    }
+
     void KFRecruitModule::CheckRefreshRecruitTimer( KFEntity* player )
     {
         // 刷新招募次数
@@ -150,7 +164,7 @@ namespace KFrame
         if ( kfrecruitcount->IsFull() )
         {
             // 重置时间
-            kfrefreshtime->Operate( KFEnum::Set, 0u );
+            kfrefreshtime->Set( 0u );
         }
         else
         {
@@ -232,7 +246,7 @@ namespace KFrame
         auto result = RefreshRecruitLists( player, kfmsg.type() );
         if ( result != KFMsg::Ok )
         {
-            return _kf_display->SendToClient( player, KFMsg::HeroRecruitRefresh );
+            return _kf_display->SendToClient( player, result );
         }
 
         if ( kfmsg.type() != KFMsg::RefreshByFree )
@@ -475,14 +489,14 @@ namespace KFrame
         }
 
         // 招募价钱
-        CalcRecruitCostData( kfeffect, kfrecruit, kfhero, generateid );
+        CalcRecruitCostData( player, kfeffect, kfrecruit, kfhero, generateid, false );
 
         // 添加到招募列表
         auto uuid = KFGlobal::Instance()->STMakeUUID( __STRING__( hero ) );
         player->AddData( kfrecruitrecord, uuid, kfrecruit );
     }
 
-    void KFRecruitModule::CalcRecruitCostData( KFData* kfeffect, KFData* kfrecruit, KFData* kfhero, uint32 generateid )
+    void KFRecruitModule::CalcRecruitCostData( KFEntity* player, KFData* kfeffect, KFData* kfrecruit, KFData* kfhero, uint32 generateid, bool update )
     {
         auto kfgeneratesetting = KFGenerateConfig::Instance()->FindSetting( generateid );
         if ( kfgeneratesetting == nullptr || kfgeneratesetting->_cost_formula_id == 0u )
@@ -503,14 +517,14 @@ namespace KFrame
         {
             totalgrowth += kfchild->Get<uint32>();
         }
-        auto averagegrowth = totalgrowth / kfgrowth->Size();
+        auto averagegrowth = static_cast<double>( totalgrowth ) / kfgrowth->Size();
 
-        auto price = 0u;
-        auto param1 = kfformulasetting->_params[ 0 ]->_int_value;
-        auto param2 = kfformulasetting->_params[ 1 ]->_int_value;
-        auto param3 = kfformulasetting->_params[ 2 ]->_int_value;
-        auto param4 = kfformulasetting->_params[ 3 ]->_int_value;
-        auto param5 = kfformulasetting->_params[ 4 ]->_int_value;
+        auto price = 0.0;
+        auto param1 = kfformulasetting->_params[ 0 ]->_double_value;
+        auto param2 = kfformulasetting->_params[ 1 ]->_double_value;
+        auto param3 = kfformulasetting->_params[ 2 ]->_double_value;
+        auto param4 = kfformulasetting->_params[ 3 ]->_double_value;
+        auto param5 = kfformulasetting->_params[ 4 ]->_double_value;
         if ( param5 != 0u )
         {
             if ( averagegrowth >= param2 )
@@ -534,12 +548,20 @@ namespace KFrame
         price = __MAX__( price, param4 );
 
         // 种族亲和, 费用减低
-        price = CalcRecruitHeroDiscount( kfeffect, kfhero, price );
+        auto finalprice = CalcRecruitHeroDiscount( kfeffect, kfhero, price );
 
         // 格式化费用数据
         auto kfeleemntsetting = KFElementConfig::Instance()->FindElementSetting( kfformulasetting->_type );
-        auto strcost = __FORMAT__( kfeleemntsetting->_element_template, kfformulasetting->_type, price, 0u );
-        kfrecruit->Set( __STRING__( cost ), strcost );
+        auto strcost = __FORMAT__( kfeleemntsetting->_element_template, kfformulasetting->_type, finalprice, 0u );
+
+        if ( !update )
+        {
+            kfrecruit->Set( __STRING__( cost ), strcost );
+        }
+        else
+        {
+            player->UpdateData( kfrecruit, __STRING__( cost ), strcost );
+        }
     }
 
     uint32 KFRecruitModule::CalcRecruitHeroDiscount( KFData* kfeffect, KFData* kfhero, uint32 price )
@@ -554,6 +576,21 @@ namespace KFrame
         double ratio = 1.0f - static_cast< double >( discount ) / static_cast< double >( KFRandEnum::TenThousand );
         auto finalprice = static_cast< double >( price ) * ratio;
         return static_cast< uint32 >( finalprice );
+    }
+
+    void KFRecruitModule::RefreshRecruitHeroDiscount( KFEntity* player, KFData* kfeffect, uint32 race )
+    {
+        auto kfrecruitrecord = player->Find( __STRING__( recruit ) );
+        for ( auto kfrecruit = kfrecruitrecord->First(); kfrecruit != nullptr; kfrecruit = kfrecruitrecord->Next() )
+        {
+            auto kfhero = kfrecruit->Find( __STRING__( hero ) );
+            auto herorace = kfhero->Get<uint32>( __STRING__( race ) );
+            if ( race == 0u || herorace == race )
+            {
+                auto generateid = kfhero->Get<uint32>( __STRING__( id ) );
+                CalcRecruitCostData( player, kfeffect, kfrecruit, kfhero, generateid, player->IsInited() );
+            }
+        }
     }
 
     __KF_MESSAGE_FUNCTION__( KFRecruitModule::HandleRecruitHeroReq )
@@ -611,9 +648,6 @@ namespace KFrame
         // 添加英雄
         player->AddData( kfherorecord, kfmsg.uuid(), kfhero );
         player->AddDataToShow( __STRING__( recruit ), kfhero, false );
-
-        // 发送通知
-        //_kf_display->SendToClient( player, KFMsg::HeroRecruitOk, kfmsg.uuid() );
     }
 
     __KF_MESSAGE_FUNCTION__( KFRecruitModule::HandleSetRecruitHeroNameReq )
@@ -776,9 +810,15 @@ namespace KFrame
         auto race = executedata->_param_list._params[ 0 ]->_int_value;
         auto discount = executedata->_param_list._params[ 1 ]->_int_value;
 
-        auto kfrecord = player->Find( __STRING__( effect ), __STRING__( recruitdiscount ) );
+        auto kfeffect = player->Find( __STRING__( effect ) );
+        auto kfrecord = kfeffect->Find( __STRING__( recruitdiscount ) );
         player->UpdateData( kfrecord, race, kfrecord->_data_setting->_value_key_name, KFEnum::Add, discount );
 
+        if ( player->IsInited() )
+        {
+            // 刷新招募价格
+            RefreshRecruitHeroDiscount( player, kfeffect, race );
+        }
         return true;
     }
 
@@ -814,7 +854,6 @@ namespace KFrame
 
         return true;
     }
-
 
     __KF_EXECUTE_FUNCTION__( KFRecruitModule::OnExecuteTechnologyRecruitGrowth )
     {

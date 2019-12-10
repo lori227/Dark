@@ -1,4 +1,4 @@
-<root version="1624">
+<root version="1717">
 	<item Id="exploreclean" CallType="3" ParentName="player" DataName="mapid" InitCalc="" TriggerType="3" TriggerCheck="16" TriggerUse="2" TriggerValue="0" UseOperate="3" UseType="0" UseValue="0" />
 	<item Id="pveclean" CallType="3" ParentName="player" DataName="pveid" InitCalc="" TriggerType="3" TriggerCheck="16" TriggerUse="2" TriggerValue="0" UseOperate="3" UseType="0" UseValue="0" />
 	<item Id="explore" CallType="3" ParentName="balance" DataName="exploreresult" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
@@ -45,5 +45,6 @@
 	<item Id="clinichero" CallType="3" ParentName="clinic" DataName="num" InitCalc="" TriggerType="2" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="trainhero" CallType="3" ParentName="trainhero" DataName="uuid" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="smithyweapon" CallType="3" ParentName="smithyweapon" DataName="count" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="1" UseValue="0" />
-	<item Id="buildgather" CallType="3" ParentName="buildgather" DataName="count" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="1" UseValue="0" />
+	<item Id="gathercount" CallType="3" ParentName="buildgather" DataName="count" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="1" UseValue="0" />
+	<item Id="gathertimes" CallType="3" ParentName="buildgather" DataName="count" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
 </root>

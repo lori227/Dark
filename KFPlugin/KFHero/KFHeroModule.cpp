@@ -88,17 +88,15 @@ namespace KFrame
             return std::make_tuple( KFDataDefine::Show_None, nullptr );
         }
 
-        auto kfgenerate = kfelementobject->_values.Find( __STRING__( generateid ) );
-        if ( kfgenerate == nullptr )
+        if ( kfelementobject->_config_id == 0u )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no generateid!", kfelement->_data_name );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] id!", kfelement->_data_name );
             return std::make_tuple( KFDataDefine::Show_None, nullptr );
         }
 
         // 创建新的英雄
-        auto generateid = kfgenerate->CalcUseValue( nullptr, 1.0f );
         auto kfhero = _kf_kernel->CreateObject( kfparent->_data_setting );
-        if ( _kf_generate->GeneratePlayerHero( player, kfhero, generateid ) == nullptr )
+        if ( _kf_generate->GeneratePlayerHero( player, kfhero, kfelementobject->_config_id ) == nullptr )
         {
             _kf_kernel->ReleaseObject( kfhero );
             return std::make_tuple( KFDataDefine::Show_None, nullptr );
@@ -407,5 +405,25 @@ namespace KFrame
         }
 
         return kfhero;
+    }
+    uint32 KFHeroModule::GetHeroDeathReason( KFData* kfhero )
+    {
+        if ( kfhero == nullptr )
+        {
+            return KFMsg::NoExist;
+        }
+
+        // 判断不存活条件
+        if ( kfhero->Get<uint32>( __STRING__( fighter ), __STRING__( hp ) ) == 0u )
+        {
+            return KFMsg::NoEnoughHp;
+        }
+
+        if ( kfhero->Get<uint32>( __STRING__( durability ) ) == 0u )
+        {
+            return KFMsg::NoEnoughDurability;
+        }
+
+        return KFMsg::NoDeathReason;
     }
 }

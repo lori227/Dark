@@ -254,7 +254,7 @@ namespace KFrame
         {
             auto kfbuildgather = player->Find( __STRING__( buildgather ) );
             kfbuildgather->Set( __STRING__( id ), itemid );
-            player->UpdateData( kfbuildgather, __STRING__( count ), KFEnum::Add, canaddcount );
+            player->UpdateData( kfbuildgather, __STRING__( count ), KFEnum::Set, canaddcount );
         }
     }
 

@@ -1,3 +1,0 @@
-function NewPlayerFunction( playerid )
-
-end

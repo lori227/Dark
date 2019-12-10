@@ -1,4 +1,5 @@
 ﻿#include "KFDialogueModule.hpp"
+#include "KFProtocol/KFProtocol.h"
 
 namespace KFrame
 {
@@ -6,9 +7,9 @@ namespace KFrame
     {
         _kf_component = _kf_kernel->FindComponent( __STRING__( player ) );
 
-        __REGISTER_ADD_ELEMENT__( __STRING__( dialogue ), &KFDialogueModule::AddDialogueElement );
-        __REGISTER_DROP_LOGIC__( __STRING__( dialogue ), &KFDialogueModule::OnDropDialogue );
         __REGISTER_EXECUTE__( __STRING__( dialogue ), &KFDialogueModule::OnExecuteDialogue );
+        __REGISTER_DROP_LOGIC__( __STRING__( dialogue ), &KFDialogueModule::OnDropDialogue );
+        __REGISTER_ADD_ELEMENT__( __STRING__( dialogue ), &KFDialogueModule::AddDialogueElement );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_DIALOGUE_FINISH_REQ, &KFDialogueModule::HandleReceiveDialogueFinishReq );
     }
@@ -41,38 +42,31 @@ namespace KFrame
         return std::make_tuple( KFDataDefine::Show_None, nullptr );
     }
 
-    bool KFDialogueModule::SendToClientDialogueStart( KFEntity* player, uint32 dialogid, const char* function, uint32 line )
+    bool KFDialogueModule::SendToClientDialogueStart( KFEntity* player, uint32 dialogid, uint32 delaytime, const char* function, uint32 line )
     {
-        // 允许同时触发两个对话，服务端只需要承认最后一个
+        player->Set( __STRING__( dialogue ), __STRING__( id ), dialogid );
 
         KFMsg::MsgDialogueStartAck ack;
         ack.set_dialogid( dialogid );
-        if ( !_kf_player->SendToClient( player, KFMsg::MSG_DIALOGUE_START_ACK, &ack ) )
-        {
-            __LOG_ERROR_FUNCTION__( function, line, "dialogue send to client failed." );
-            return false;
-        }
-
-        // 设置当前对话id
-        player->Set( __STRING__( dialogue ), __STRING__( id ), dialogid );
-        return true;
+        return _kf_player->SendToClient( player, KFMsg::MSG_DIALOGUE_START_ACK, &ack, __MAX__( delaytime, 1u ) );
     }
 
     __KF_EXECUTE_FUNCTION__( KFDialogueModule::OnExecuteDialogue )
     {
-        if ( executedata->_param_list._params.size() < 1u )
+        if ( executedata->_param_list._params.size() < 2u )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "dialogue execute param size<1" );
+            __LOG_ERROR_FUNCTION__( function, line, "dialogue execute param size<2" );
             return false;
         }
 
-        auto dialogid = executedata->_param_list._params[0]->_int_value;
-        return SendToClientDialogueStart( player, dialogid, function, line );
+        auto dialogid = executedata->_param_list._params[ 0 ]->_int_value;
+        auto delaytime = executedata->_param_list._params[ 1 ]->_int_value;
+        return SendToClientDialogueStart( player, dialogid, delaytime, function, line );
     }
 
     __KF_DROP_LOGIC_FUNCTION__( KFDialogueModule::OnDropDialogue )
     {
-        SendToClientDialogueStart( player, dropdata->_data_key, function, line );
+        SendToClientDialogueStart( player, dropdata->_data_key, dropdata->_min_value, function, line );
     }
 
     __KF_MESSAGE_FUNCTION__( KFDialogueModule::HandleReceiveDialogueFinishReq )
@@ -83,11 +77,9 @@ namespace KFrame
         auto dialogueid = kfdialogue->Get<uint32>( __STRING__( id ) );
         if ( dialogueid == 0u || kfmsg.dialogueid() != dialogueid )
         {
-            // 非合法对话id
             return;
         }
 
-        kfdialogue->Set( __STRING__( id ), 0u );
         player->UpdateData( kfdialogue, __STRING__( id ), KFEnum::Set, kfmsg.dialogueid() );
     }
 

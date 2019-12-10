@@ -108,6 +108,9 @@ namespace KFrame
         // 探索结算
         void ExploreBalance( KFEntity* player, uint32 result );
 
+        // 随机探索失败获得道具
+        void RandExploreFailedItems( KFEntity* player );
+
         // 探索掉落属性
         void ExploreDropElement( KFEntity* player, const VectorUInt32& droplist, KFExploreRecord* kfrecord );
 

@@ -1,34 +1,34 @@
-<root version="1660">
+<root version="1791">
 	<item Id="202001" BuildId="202" Level="1" Condition="" Technology="" Consume="" UpgradeTime="0" OnekeyConsume="" UnitTime="0" />
 	<item Id="202002" BuildId="202" Level="2" Condition="" Technology="" Consume="[[2,1900201,840]]" UpgradeTime="60" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202003" BuildId="202" Level="3" Condition="59000102" Technology="" Consume="[[2,1900201,1600]]" UpgradeTime="120" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202004" BuildId="202" Level="4" Condition="59000103" Technology="" Consume="[[1,1,3400],[1,3,3400],[2,1900201,3400]]" UpgradeTime="240" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202005" BuildId="202" Level="5" Condition="59000104" Technology="" Consume="[[1,1,5000],[1,3,5000],[2,1900201,5000]]" UpgradeTime="480" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202006" BuildId="202" Level="6" Condition="59000105" Technology="" Consume="[[1,1,7400],[1,3,7400],[2,1900201,7400]]" UpgradeTime="960" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202007" BuildId="202" Level="7" Condition="59000106" Technology="" Consume="[[1,1,11200],[1,3,11200],[2,1900201,12000]]" UpgradeTime="1920" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202008" BuildId="202" Level="8" Condition="59000107" Technology="" Consume="[[1,1,16800],[1,3,16800],[2,1900201,16000]]" UpgradeTime="3840" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202009" BuildId="202" Level="9" Condition="59000108" Technology="" Consume="[[1,1,25200],[1,3,25200],[2,1900201,26000]]" UpgradeTime="7680" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202010" BuildId="202" Level="10" Condition="59000109" Technology="" Consume="[[1,1,38000],[1,3,38000],[2,1900201,38000]]" UpgradeTime="15360" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202011" BuildId="202" Level="11" Condition="59000110" Technology="" Consume="[[1,1,42000],[1,3,42000],[2,1900201,42000]]" UpgradeTime="30720" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202012" BuildId="202" Level="12" Condition="59000111" Technology="" Consume="[[1,1,46000],[1,3,46000],[2,1900201,46000]]" UpgradeTime="36840" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202013" BuildId="202" Level="13" Condition="59000112" Technology="" Consume="[[1,1,50000],[1,3,50000],[2,1900201,50000]]" UpgradeTime="44220" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202014" BuildId="202" Level="14" Condition="59000113" Technology="" Consume="[[1,1,56000],[1,3,56000],[2,1900201,56000]]" UpgradeTime="53040" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202015" BuildId="202" Level="15" Condition="59000114" Technology="" Consume="[[1,1,62000],[1,3,62000],[2,1900201,62000]]" UpgradeTime="63660" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202016" BuildId="202" Level="16" Condition="59000115" Technology="" Consume="[[1,1,68000],[1,3,68000],[2,1900201,68000]]" UpgradeTime="76380" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202017" BuildId="202" Level="17" Condition="59000116" Technology="" Consume="[[1,1,74000],[1,3,74000],[2,1900201,74000]]" UpgradeTime="84000" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202018" BuildId="202" Level="18" Condition="59000117" Technology="" Consume="[[1,1,82000],[1,3,82000],[2,1900201,82000]]" UpgradeTime="92400" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202019" BuildId="202" Level="19" Condition="59000118" Technology="" Consume="[[1,1,90000],[1,3,90000],[2,1900201,90000]]" UpgradeTime="101640" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202020" BuildId="202" Level="20" Condition="59000119" Technology="" Consume="[[1,1,98000],[1,3,98000],[2,1900201,98000]]" UpgradeTime="111780" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202021" BuildId="202" Level="21" Condition="59000120" Technology="" Consume="[[1,1,108000],[1,3,108000],[2,1900201,108000]]" UpgradeTime="122940" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202022" BuildId="202" Level="22" Condition="59000121" Technology="" Consume="[[1,1,120000],[1,3,120000],[2,1900201,120000]]" UpgradeTime="135240" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202023" BuildId="202" Level="23" Condition="59000122" Technology="" Consume="[[1,1,130000],[1,3,130000],[2,1900201,130000]]" UpgradeTime="148740" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202024" BuildId="202" Level="24" Condition="59000123" Technology="" Consume="[[1,1,144000],[1,3,144000],[2,1900201,144000]]" UpgradeTime="163620" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202025" BuildId="202" Level="25" Condition="59000124" Technology="" Consume="[[1,1,158000],[1,3,158000],[2,1900201,158000]]" UpgradeTime="180000" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202026" BuildId="202" Level="26" Condition="59000125" Technology="" Consume="[[1,1,174000],[1,3,174000],[2,1900201,174000]]" UpgradeTime="198000" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202027" BuildId="202" Level="27" Condition="59000126" Technology="" Consume="[[1,1,192000],[1,3,192000],[2,1900201,192000]]" UpgradeTime="217800" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202028" BuildId="202" Level="28" Condition="59000127" Technology="" Consume="[[1,1,210000],[1,3,210000],[2,1900201,210000]]" UpgradeTime="239580" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202029" BuildId="202" Level="29" Condition="59000128" Technology="" Consume="[[1,1,232000],[1,3,232000],[2,1900201,232000]]" UpgradeTime="263520" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="202030" BuildId="202" Level="30" Condition="59000129" Technology="" Consume="[[1,1,256000],[1,3,256000],[2,1900201,256000]]" UpgradeTime="289860" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202003" BuildId="202" Level="3" Condition="59000202" Technology="" Consume="[[2,1900201,1600]]" UpgradeTime="120" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202004" BuildId="202" Level="4" Condition="59000203" Technology="" Consume="[[1,1,3400],[1,3,3400],[2,1900201,3400]]" UpgradeTime="240" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202005" BuildId="202" Level="5" Condition="59000204" Technology="" Consume="[[1,1,5000],[1,3,5000],[2,1900201,5000]]" UpgradeTime="480" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202006" BuildId="202" Level="6" Condition="59000205" Technology="" Consume="[[1,1,7400],[1,3,7400],[2,1900201,7400]]" UpgradeTime="960" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202007" BuildId="202" Level="7" Condition="59000206" Technology="" Consume="[[1,1,11200],[1,3,11200],[2,1900201,12000]]" UpgradeTime="1920" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202008" BuildId="202" Level="8" Condition="59000207" Technology="" Consume="[[1,1,16800],[1,3,16800],[2,1900201,16000]]" UpgradeTime="3840" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202009" BuildId="202" Level="9" Condition="59000208" Technology="" Consume="[[1,1,25200],[1,3,25200],[2,1900201,26000]]" UpgradeTime="7680" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202010" BuildId="202" Level="10" Condition="59000209" Technology="" Consume="[[1,1,38000],[1,3,38000],[2,1900201,38000]]" UpgradeTime="15360" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202011" BuildId="202" Level="11" Condition="59000210" Technology="" Consume="[[1,1,42000],[1,3,42000],[2,1900201,42000]]" UpgradeTime="30720" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202012" BuildId="202" Level="12" Condition="59000211" Technology="" Consume="[[1,1,46000],[1,3,46000],[2,1900201,46000]]" UpgradeTime="36840" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202013" BuildId="202" Level="13" Condition="59000212" Technology="" Consume="[[1,1,50000],[1,3,50000],[2,1900201,50000]]" UpgradeTime="44220" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202014" BuildId="202" Level="14" Condition="59000213" Technology="" Consume="[[1,1,56000],[1,3,56000],[2,1900201,56000]]" UpgradeTime="53040" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202015" BuildId="202" Level="15" Condition="59000214" Technology="" Consume="[[1,1,62000],[1,3,62000],[2,1900201,62000]]" UpgradeTime="63660" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202016" BuildId="202" Level="16" Condition="59000215" Technology="" Consume="[[1,1,68000],[1,3,68000],[2,1900201,68000]]" UpgradeTime="76380" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202017" BuildId="202" Level="17" Condition="59000216" Technology="" Consume="[[1,1,74000],[1,3,74000],[2,1900201,74000]]" UpgradeTime="84000" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202018" BuildId="202" Level="18" Condition="59000217" Technology="" Consume="[[1,1,82000],[1,3,82000],[2,1900201,82000]]" UpgradeTime="92400" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202019" BuildId="202" Level="19" Condition="59000218" Technology="" Consume="[[1,1,90000],[1,3,90000],[2,1900201,90000]]" UpgradeTime="101640" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202020" BuildId="202" Level="20" Condition="59000219" Technology="" Consume="[[1,1,98000],[1,3,98000],[2,1900201,98000]]" UpgradeTime="111780" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202021" BuildId="202" Level="21" Condition="59000220" Technology="" Consume="[[1,1,108000],[1,3,108000],[2,1900201,108000]]" UpgradeTime="122940" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202022" BuildId="202" Level="22" Condition="59000221" Technology="" Consume="[[1,1,120000],[1,3,120000],[2,1900201,120000]]" UpgradeTime="135240" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202023" BuildId="202" Level="23" Condition="59000222" Technology="" Consume="[[1,1,130000],[1,3,130000],[2,1900201,130000]]" UpgradeTime="148740" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202024" BuildId="202" Level="24" Condition="59000223" Technology="" Consume="[[1,1,144000],[1,3,144000],[2,1900201,144000]]" UpgradeTime="163620" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202025" BuildId="202" Level="25" Condition="59000224" Technology="" Consume="[[1,1,158000],[1,3,158000],[2,1900201,158000]]" UpgradeTime="180000" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202026" BuildId="202" Level="26" Condition="59000225" Technology="" Consume="[[1,1,174000],[1,3,174000],[2,1900201,174000]]" UpgradeTime="198000" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202027" BuildId="202" Level="27" Condition="59000226" Technology="" Consume="[[1,1,192000],[1,3,192000],[2,1900201,192000]]" UpgradeTime="217800" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202028" BuildId="202" Level="28" Condition="59000227" Technology="" Consume="[[1,1,210000],[1,3,210000],[2,1900201,210000]]" UpgradeTime="239580" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202029" BuildId="202" Level="29" Condition="59000228" Technology="" Consume="[[1,1,232000],[1,3,232000],[2,1900201,232000]]" UpgradeTime="263520" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="202030" BuildId="202" Level="30" Condition="59000229" Technology="" Consume="[[1,1,256000],[1,3,256000],[2,1900201,256000]]" UpgradeTime="289860" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
 	<item Id="203001" BuildId="203" Level="1" Condition="" Technology="7100101&amp;7100201&amp;7100202&amp;7100203&amp;7100204&amp;7290003&amp;7290002" Consume="" UpgradeTime="0" OnekeyConsume="" UnitTime="0" />
 	<item Id="203002" BuildId="203" Level="2" Condition="59000002" Technology="7100102&amp;7100205&amp;7100501" Consume="[[2,1900201,500]]" UpgradeTime="60" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
 	<item Id="203003" BuildId="203" Level="3" Condition="59000003" Technology="7100103&amp;7100206" Consume="[[2,1900201,1000]]" UpgradeTime="120" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
@@ -59,7 +59,4 @@
 	<item Id="203028" BuildId="203" Level="28" Condition="59000028" Technology="7100128" Consume="[[1,1,168000],[1,3,84000],[2,1900201,126000]]" UpgradeTime="239580" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
 	<item Id="203029" BuildId="203" Level="29" Condition="59000029" Technology="7100129" Consume="[[1,1,186000],[1,3,92000],[2,1900201,140000]]" UpgradeTime="263520" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
 	<item Id="203030" BuildId="203" Level="30" Condition="59000030" Technology="7100130&amp;7100603&amp;7100703&amp;7100803&amp;" Consume="[[1,1,204000],[1,3,102000],[2,1900201,154000]]" UpgradeTime="289860" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="207001" BuildId="207" Level="1" Condition="" Technology="1000001&amp;1000002" Consume="" UpgradeTime="0" OnekeyConsume="" UnitTime="0" />
-	<item Id="207002" BuildId="207" Level="2" Condition="59000002" Technology="1000003" Consume="[[1,1,2000],[1,3,2000]]" UpgradeTime="120" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="207003" BuildId="207" Level="3" Condition="59000003" Technology="1000007" Consume="[[1,1,2000],[1,3,2000]]" UpgradeTime="180" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
 </root>

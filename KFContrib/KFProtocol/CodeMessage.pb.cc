@@ -58,7 +58,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\021CodeMessage.proto\022\005KFMsg*\264\025\n\017ProjectCo"
+      "\n\021CodeMessage.proto\022\005KFMsg*\300\026\n\017ProjectCo"
       "deEnum\022\016\n\nLogicError\020\000\022\024\n\016MatchRequestOk"
       "\020\231\362\001\022\026\n\020MatchAlreadyWait\020\232\362\001\022\021\n\013MatchInR"
       "oom\020\233\362\001\022\025\n\017MatchNotInMatch\020\234\362\001\022\023\n\rMatchC"
@@ -127,10 +127,13 @@ void AddDescriptorsImpl() {
       "\375\001\022\022\n\014ItemWeaponOk\020\371\375\001\022\030\n\022ItemWeaponNotE"
       "xist\020\372\375\001\022\030\n\022ItemUnWeaponFailed\020\373\375\001\022\024\n\016It"
       "emUnWeaponOk\020\374\375\001\022\037\n\031ItemUpdateDurability"
-      "Error\020\375\375\001b\006proto3"
+      "Error\020\375\375\001\022\031\n\023PlayerHeadIconSetOK\020\331\376\001\022\030\n\022"
+      "PlayerFactionSetOK\020\332\376\001\022\034\n\026PlayerHeadIcon"
+      "NotExist\020\333\376\001\022\033\n\025PlayerFactionNotExist\020\334\376"
+      "\001\022\032\n\024PlayerHeadIconNotHad\020\335\376\001b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2777);
+      descriptor, 2917);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "CodeMessage.proto", &protobuf_RegisterTypes);
 }
@@ -258,6 +261,11 @@ bool ProjectCodeEnum_IsValid(int value) {
     case 32507:
     case 32508:
     case 32509:
+    case 32601:
+    case 32602:
+    case 32603:
+    case 32604:
+    case 32605:
       return true;
     default:
       return false;

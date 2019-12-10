@@ -278,8 +278,7 @@ namespace KFrame
         }
 
         auto kfweapon = kfhero->Find( __STRING__( weapon ) );
-        auto weaponid = kfweapon->Get( __STRING__( uuid ) );
-        if ( weaponid == 0u )
+        if ( kfweapon == nullptr || kfweapon->GetKeyID() == 0u )
         {
             return _kf_display->SendToClient( player, KFMsg::ItemWeaponNotExist );
         }

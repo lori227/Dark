@@ -55,11 +55,6 @@ namespace KFrame
         {
             kfsetting->_overlay_count_list[ __STRING__( explore ) ] = exploreoverlaycount;
         }
-        auto extendoverlaycount = xmlnode.GetUInt32( "ExtendOverlayCount" );
-        if ( extendoverlaycount != 0u )
-        {
-            kfsetting->_overlay_count_list[ __STRING__( extend ) ] = extendoverlaycount;
-        }
         /////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////
 

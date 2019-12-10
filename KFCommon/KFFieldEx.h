@@ -161,6 +161,12 @@ namespace KFrame
         __STRING_DEFINE__( smithyweapon );
         __STRING_DEFINE__( buildgather );
         __STRING_DEFINE__( itemextend );
+        __STRING_DEFINE__( explorebreakoffprob );
+        __STRING_DEFINE__( buildupgrademaxnum );
+        __STRING_DEFINE__( iconid );
+        __STRING_DEFINE__( iconrecord );
+        __STRING_DEFINE__( factionid );
+        __STRING_DEFINE__( newversion );
 
     }
 }

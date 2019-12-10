@@ -1,6 +1,17 @@
-<root version="1627">
-	<item Id="10001" Sequence="1" NPC="10000" Position="LEFT" Dialogue="DIALOGUE_10001_1" />
-	<item Id="10001" Sequence="2" NPC="10086" Position="RIGHT" Dialogue="DIALOGUE_10001_2" />
-	<item Id="10001" Sequence="3" NPC="10010" Position="LEFT" Dialogue="DIALOGUE_10001_3" />
-	<item Id="10001" Sequence="4" NPC="10000" Position="RIGHT" Dialogue="DIALOGUE_10001_4" />
+<root version="1790">
+	<item Id="10001" Sequence="1" NPC="10000" Position="LEFT" Dialogue="DIALOGUE_10001_1" DelayMs="100" />
+	<item Id="10001" Sequence="2" NPC="10000" Position="LEFT" Dialogue="DIALOGUE_10001_2" DelayMs="100" />
+	<item Id="10001" Sequence="3" NPC="10000" Position="LEFT" Dialogue="DIALOGUE_10001_3" DelayMs="100" />
+	<item Id="10001" Sequence="4" NPC="10086" Position="RIGHT" Dialogue="DIALOGUE_10001_4" DelayMs="100" />
+	<item Id="10002" Sequence="1" NPC="10000" Position="LEFT" Dialogue="DIALOGUE_10002_1" DelayMs="100" />
+	<item Id="10002" Sequence="2" NPC="10086" Position="RIGHT" Dialogue="DIALOGUE_10002_2" DelayMs="100" />
+	<item Id="50000101" Sequence="1" NPC="10000" Position="LEFT" Dialogue="DIALOGUE_101_1" DelayMs="100" />
+	<item Id="50000101" Sequence="2" NPC="10086" Position="RIGHT" Dialogue="DIALOGUE_101_2" DelayMs="100" />
+	<item Id="50000101" Sequence="3" NPC="10086" Position="RIGHT" Dialogue="DIALOGUE_101_3" DelayMs="100" />
+	<item Id="50000102" Sequence="1" NPC="10086" Position="RIGHT" Dialogue="DIALOGUE_102_1" DelayMs="100" />
+	<item Id="50000102" Sequence="2" NPC="10000" Position="LEFT" Dialogue="DIALOGUE_102_2" DelayMs="100" />
+	<item Id="50000103" Sequence="1" NPC="10086" Position="RIGHT" Dialogue="DIALOGUE_103_1" DelayMs="100" />
+	<item Id="50000103" Sequence="2" NPC="10086" Position="RIGHT" Dialogue="DIALOGUE_103_2" DelayMs="100" />
+	<item Id="50000104" Sequence="1" NPC="10000" Position="LEFT" Dialogue="DIALOGUE_104_1" DelayMs="100" />
+	<item Id="50000104" Sequence="2" NPC="10086" Position="RIGHT" Dialogue="DIALOGUE_104_2" DelayMs="100" />
 </root>

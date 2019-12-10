@@ -18,6 +18,9 @@ namespace KFrame
 
         // 生成npc英雄
         virtual KFData* GenerateNpcHero( KFEntity* player, uint32 generateid, uint32 level ) = 0;
+
+        // 随机权重数据
+        virtual void RandWeightData( KFEntity* player, KFData* kfhero, const std::string& str, const VectorUInt32& slist ) = 0;
     };
 
     ///////////////////////////////////////////////////////////////////////////////////////////

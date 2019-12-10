@@ -15,16 +15,8 @@
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFDisplay/KFDisplayInterface.h"
 #include "KFMessage/KFMessageInterface.h"
-#include "KFProtocol/KFProtocol.h"
 #include "KFDrop/KFDropInterface.h"
 #include "KFExecute/KFExecuteInterface.h"
-
-/*
-#include "KFTimer/KFTimerInterface.h"
-#include "KFHero/KFHeroInterface.h"
-#include "KFRecordClient/KFRecordClientInterface.h"
-#include "KFZConfig/KFLevelConfig.hpp"
-*/
 
 namespace KFrame
 {
@@ -56,7 +48,7 @@ namespace KFrame
 
     protected:
         // 通知客户端对话消息
-        bool SendToClientDialogueStart( KFEntity* player, uint32 dialogid, const char* function, uint32 line );
+        bool SendToClientDialogueStart( KFEntity* player, uint32 dialogid, uint32 delaytime, const char* function, uint32 line );
 
     protected:
         // 玩家组件上下文

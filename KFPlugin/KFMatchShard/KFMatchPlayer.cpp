@@ -50,7 +50,7 @@ namespace KFrame
 
     bool KFMatchPlayer::SendToGame( uint32 msgid, google::protobuf::Message* message )
     {
-        return _kf_route->SendToPlayer( _pb_player.serverid(), _id, msgid, message, true );
+        return _kf_route->SendToPlayer( _pb_player.serverid(), _id, msgid, message );
     }
 
     void KFMatchPlayer::TellMatchResult( uint32 time )

@@ -159,12 +159,17 @@ enum ProjectCodeEnum {
   ItemUnWeaponFailed = 32507,
   ItemUnWeaponOk = 32508,
   ItemUpdateDurabilityError = 32509,
+  PlayerHeadIconSetOK = 32601,
+  PlayerFactionSetOK = 32602,
+  PlayerHeadIconNotExist = 32603,
+  PlayerFactionNotExist = 32604,
+  PlayerHeadIconNotHad = 32605,
   ProjectCodeEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   ProjectCodeEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 LIBPROTOC_EXPORT bool ProjectCodeEnum_IsValid(int value);
 const ProjectCodeEnum ProjectCodeEnum_MIN = LogicError;
-const ProjectCodeEnum ProjectCodeEnum_MAX = ItemUpdateDurabilityError;
+const ProjectCodeEnum ProjectCodeEnum_MAX = PlayerHeadIconNotHad;
 const int ProjectCodeEnum_ARRAYSIZE = ProjectCodeEnum_MAX + 1;
 
 LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* ProjectCodeEnum_descriptor();

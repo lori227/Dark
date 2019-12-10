@@ -33,7 +33,6 @@ namespace KFrame
 
         // 逻辑
         virtual void BeforeRun();
-        virtual void AfterRun();
 
         // 关闭
         virtual void BeforeShut();
@@ -79,6 +78,7 @@ namespace KFrame
 
         // 添加到完成任务列表
         void AddFinishTask( KFEntity* player, uint32 taskid );
+        __KF_TIMER_FUNCTION__( OnTimerTaskFinish );
 
         // 任务交付完成
         void FinishTask( KFEntity* player, uint32 taskid );
@@ -109,9 +109,6 @@ namespace KFrame
     protected:
         // 玩家组件上下文
         KFComponent* _kf_component = nullptr;
-
-        // 添加到完成任务的列表中
-        std::unordered_map<uint64, SetUInt32> _finish_task;
     };
 }
 

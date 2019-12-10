@@ -1,4 +1,4 @@
-<root version="1601">
+<root version="1826">
 	<item Name="defaultprofession" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="defaultbackground" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="generatedirectattribute" Key="" Value="9" Channel="0" Service="0" />
@@ -11,7 +11,7 @@
 	<item Name="useinnatecount" Key="" Value="2" Channel="0" Service="0" />
 	<item Name="maxcharactercount" Key="" Value="6" Channel="0" Service="0" />
 	<item Name="maxheroteamcount" Key="" Value="8" Channel="0" Service="0" />
-	<item Name="recruitinitcount" Key="" Value="1" Channel="0" Service="0" />
+	<item Name="recruitinitcount" Key="" Value="2" Channel="0" Service="0" />
 	<item Name="recruitmaxcount" Key="" Value="10" Channel="0" Service="0" />
 	<item Name="recruitrefresh" Key="" Value="21600" Channel="0" Service="0" />
 	<item Name="maxhp_bar" Key="" Value="200" Channel="0" Service="0" />
@@ -32,6 +32,8 @@
 	<item Name="initclinicnum" Key="" Value="200" Channel="0" Service="0" />
 	<item Name="initgranarynum" Key="" Value="100" Channel="0" Service="0" />
 	<item Name="initsmithynum" Key="" Value="100" Channel="0" Service="0" />
-	<item Name="roledurability_pve" Key="" Value="10" Channel="0" Service="0" />
+	<item Name="roledurability_pve" Key="" Value="50" Channel="0" Service="0" />
 	<item Name="roledurability_pveconsume" Key="" Value="1" Channel="0" Service="0" />
+	<item Name="buildupgrademaxnum" Key="" Value="2" Channel="0" Service="0" />
+	<item Name="roledeath_characterpool" Key="" Value="4069001" Channel="0" Service="0" />
 </root>

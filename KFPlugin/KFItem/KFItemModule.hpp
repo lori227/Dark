@@ -35,6 +35,19 @@ namespace KFrame
             {
                 _indexs.insert( i );
             }
+
+            _max_count = maxvalue;
+        }
+
+        // 添加索引
+        void AddMaxIndex( uint32 count )
+        {
+            for ( auto i = __BEGIN_ITEM_INDEX__; i <= count; ++i )
+            {
+                _indexs.insert( i + _max_count );
+            }
+
+            _max_count += count;
         }
 
         uint32 FindEmpty()
@@ -60,7 +73,16 @@ namespace KFrame
             _indexs.erase( index );
         }
 
+        // 最大索引
+        uint32 MaxIndex() const
+        {
+            return _max_count;
+        }
+
     public:
+        // 最大数量
+        uint32 _max_count = 0u;
+
         // 空索引列表
         std::set< uint32 > _indexs;
     };
@@ -153,7 +175,7 @@ namespace KFrame
         __KF_TIMER_FUNCTION__( OnTimerRemoveTimeItem );
 
         // 进入游戏
-        __KF_ENTER_PLAYER_FUNCTION__( OnEnterItemModule );
+        __KF_AFTER_ENTER_PLAYER_FUNCTION__( OnEnterItemModule );
 
         // 离开游戏
         __KF_LEAVE_PLAYER_FUNCTION__( OnLeaveItemModule );
@@ -194,9 +216,11 @@ namespace KFrame
         // 设置道具格子信息
         void RemoveItemEmptyIndex( KFEntity* player, KFData* kfitem );
 
-
         // 查找索引的道具
         KFData* FindIndexItem( KFData* kfitemrecord, uint32 index );
+
+        // 最大索引
+        uint32 ItemMaxIndex( KFEntity* player, KFData* kfitemrecord );
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 判断是否能移动道具
         bool CheckItemCanMove( const KFItemSetting* kfsetting, const std::string& sourcename, const std::string& targetname );
@@ -204,11 +228,28 @@ namespace KFrame
         // 计算道具添加数量
         uint32 CalcItemAddCount( uint32 sourcecount, uint32 targetcount, uint32 maxcount );
 
+        // 判断是否能交换
+        bool CheckItemCanExchange( const KFItemSetting* kfsourcesetting, KFData* kfsourceitem, const KFItemSetting* kftargetsetting, KFData* kftargetitem );
+
+        // 拆分道具
+        uint32 SplitItem( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, uint32 splitcount, KFData* kftargetrecord, uint32 splitindex );
+
         // 移动道具
-        uint32 MoveItemData( KFEntity* player, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord, const KFItemSetting* kfsetting );
-        uint32 MoveItem( KFEntity* player, KFData* kfsourcerecord, KFData* kfsourceitem, uint64 sourceuuid, KFData* kftargetrecord, uint32 targetindex );
+        uint32 MoveItem( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord, uint32 targetindex );
+        void MoveItemDataToRecord( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord );
         void MoveItemCount( KFEntity* player, KFData* kfitem, uint32 operate, uint32 count );
 
+        // 交换道具
+        uint32 ExchangeItem( KFEntity* player, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord, KFData* kftargetitem );
+
+        // 合并道具
+        uint32 MergeItem( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, uint32 mergecount, KFData* kftargetrecord, KFData* kftargetitem );
+
+        // 排序道具
+        void SortItem( KFEntity* player, const std::string& name );
+        void SortItem( KFEntity* player, KFData* kfitemrecord, KFItemIndex* kfindex, const KFItemSetting* kfsetting, std::set<KFData*>& itemlist );
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 添加物品显示
         bool IsExtendItem( const std::string& name );
         void AddItemDataToShow( KFEntity* player, KFData* kfitem, const std::string& extendname );
@@ -217,9 +258,11 @@ namespace KFrame
         void AddItemDataToShow( KFEntity* player, uint64 id, uint64 count, const std::string& extendname );
         void AddItemDataToShow( KFEntity* player, const std::string& modulename, uint64 id, uint64 count, const std::string& extendname );
 
-        // 整理道具
-        void SortItem( KFEntity* player, const std::string& name );
-        void SortItem( KFEntity* player, KFData* kfitemrecord, KFItemIndex* kfindex, const KFItemSetting* kfsetting, std::set<KFData*>& itemlist );
+        // 移动物品显示
+        void MoveItemDataToShow( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kftargetrecord, uint64 count );
+        void MoveItemDataToShow( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kftargetrecord, KFData* kfsourceitem );
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected:
         // 玩家组件上下文
         KFComponent* _kf_component = nullptr;

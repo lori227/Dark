@@ -37,7 +37,7 @@ namespace KFrame
 
     bool KFRecordClientModule::SendMessageToRecord( uint64 playerid, uint32 msgid, ::google::protobuf::Message* message )
     {
-        return _kf_route->SendToRand( playerid, __STRING__( logic ), msgid, message, true );
+        return _kf_route->RepeatToRand( playerid, __STRING__( logic ), msgid, message );
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     __KF_ENTER_PLAYER_FUNCTION__( KFRecordClientModule::OnEnterRecordModule )

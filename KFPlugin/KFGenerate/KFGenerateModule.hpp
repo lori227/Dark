@@ -50,6 +50,9 @@ namespace KFrame
 
         // 生成npc英雄
         virtual KFData* GenerateNpcHero( KFEntity* player, uint32 generateid, uint32 level );
+
+        // 随机权重数据
+        virtual void RandWeightData( KFEntity* player, KFData* kfhero, const std::string& str, const VectorUInt32& slist );
     protected:
         // 英雄等级更新
         __KF_UPDATE_DATA_FUNCTION__( OnHeroLevelUpdate );
@@ -92,8 +95,6 @@ namespace KFrame
         // 计算初始属性
         uint32 CalcHeroInitAttribute( KFData* kffighter, uint32 initvalue, uint32 racevalue, uint32 professionvalue, uint32 growthvalue, uint32 level );
 
-        // 随机权重数据
-        void RandWeightData( KFEntity* player, KFData* kfhero, const std::string& str, const VectorUInt32& slist );
     private:
         // 玩家组件上下文
         KFComponent* _kf_component = nullptr;

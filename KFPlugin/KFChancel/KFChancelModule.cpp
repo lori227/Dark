@@ -79,9 +79,7 @@ namespace KFrame
             kfchancel = _kf_kernel->CreateObject( kfchancelrecord->_data_setting );
 
             kfchancel->Set( __STRING__( type ), type );
-            kfchancel->Set( __STRING__( level ), 0u );
             kfchancel->Set( __STRING__( num ), 1u );
-
             player->AddData( kfchancelrecord, type, kfchancel );
         }
         else

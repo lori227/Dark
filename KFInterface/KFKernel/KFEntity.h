@@ -133,6 +133,9 @@ namespace KFrame
         // 同步删除数据
         virtual void SyncRemoveData( KFData* kfdata, uint64 key ) = 0;
 
+        // 同步添加record数据
+        virtual void SynAddRecordData( KFData* kfdata ) = 0;
+
         // 同步数据的顺序
         virtual void SyncDataSequence( uint32 first, uint32 second, uint32 third ) = 0;
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////

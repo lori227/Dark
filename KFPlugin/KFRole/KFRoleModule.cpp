@@ -10,6 +10,9 @@ namespace KFrame
         __REGISTER_MESSAGE__( KFMsg::MSG_SET_SEX_REQ, &KFRoleModule::HandleSetSexReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_SET_NAME_REQ, &KFRoleModule::HandleSetNameReq );
         __REGISTER_MESSAGE__( KFMsg::S2S_SET_PLAYERNAME_TO_GAME_ACK, &KFRoleModule::HandleSetPlayerNameToGameAck );
+        __REGISTER_MESSAGE__( KFMsg::MSG_SET_PLAYER_HEADICON_REQ, &KFRoleModule::HandleSetPlayerHeadIconReq );
+        __REGISTER_MESSAGE__( KFMsg::MSG_SET_PLAYER_FACTION_REQ, &KFRoleModule::HandleSetPlayerFactionReq );
+
     }
 
     void KFRoleModule::BeforeShut()
@@ -19,7 +22,10 @@ namespace KFrame
         __UN_MESSAGE__( KFMsg::MSG_SET_NAME_REQ );
         __UN_MESSAGE__( KFMsg::MSG_SET_SEX_REQ );
         __UN_MESSAGE__( KFMsg::S2S_SET_PLAYERNAME_TO_GAME_ACK );
+        __UN_MESSAGE__( KFMsg::MSG_SET_PLAYER_HEADICON_REQ );
+        __UN_MESSAGE__( KFMsg::MSG_SET_PLAYER_FACTION_REQ );
     }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     uint32 KFRoleModule::CheckNameValid( const std::string& name, uint32 maxlength )
@@ -67,7 +73,7 @@ namespace KFrame
         req.set_oldname( name );
         req.set_newname( kfmsg.name() );
         req.set_costdata( _invalid_string );
-        auto ok = _kf_route->SendToRand( playerid, __STRING__( logic ), KFMsg::S2S_SET_PLAYERNAME_TO_DATA_REQ, &req, false );
+        auto ok = _kf_route->SendToRand( playerid, __STRING__( logic ), KFMsg::S2S_SET_PLAYERNAME_TO_DATA_REQ, &req );
         if ( !ok )
         {
             _kf_display->SendToClient( player, KFMsg::PublicServerBusy );
@@ -116,6 +122,45 @@ namespace KFrame
         {
             player->UpdateData( __STRING__( consumemoney ), KFEnum::Add, value );
         }
+    }
+
+    __KF_MESSAGE_FUNCTION__( KFRoleModule::HandleSetPlayerHeadIconReq )
+    {
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgSetPlayerHeadIconReq );
+
+        auto kfsetting = KFIconConfig::Instance()->FindSetting( kfmsg.iconid() );
+        if ( kfsetting == nullptr )
+        {
+            return _kf_display->SendToClient( player, KFMsg::PlayerHeadIconNotExist );
+        }
+
+        // 非默认需要判断拥有
+        if ( !kfsetting->_default )
+        {
+            auto kficon = player->Find( __STRING__( icon ), __STRING__( id ) );
+            if ( kficon == nullptr )
+            {
+                return _kf_display->SendToClient( player, KFMsg::PlayerHeadIconNotHad );
+            }
+        }
+
+        _kf_display->SendToClient( player, KFMsg::PlayerHeadIconSetOK );
+        player->UpdateData( __STRING__( basic ), __STRING__( iconid ), KFEnum::Set, kfmsg.iconid() );
+    }
+
+    __KF_MESSAGE_FUNCTION__( KFRoleModule::HandleSetPlayerFactionReq )
+    {
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgSetPlayerFactionReq );
+
+        // 是否符合配置
+        auto kfsetting = KFFactionConfig::Instance()->FindSetting( kfmsg.factionid() );
+        if ( kfsetting == nullptr )
+        {
+            return _kf_display->SendToClient( player, KFMsg::PlayerFactionNotExist );
+        }
+
+        _kf_display->SendToClient( player, KFMsg::PlayerFactionSetOK );
+        player->UpdateData( __STRING__( basic ), __STRING__( factionid ), KFEnum::Set, kfmsg.factionid() );
     }
 
 }

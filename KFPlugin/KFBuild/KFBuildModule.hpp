@@ -17,6 +17,7 @@
 #include "KFDisplay/KFDisplayInterface.h"
 #include "KFMessage/KFMessageInterface.h"
 #include "KFCondition/KFConditionInterface.h"
+#include "KFOption/KFOptionInterface.h"
 #include "KFZConfig/KFBuildConfig.hpp"
 #include "KFZConfig/KFTechnologyConfig.hpp"
 

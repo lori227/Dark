@@ -55,7 +55,7 @@ namespace KFrame
         KFMsg::S2SInformBattleToRoomAck ack;
         ack.set_playerid( playerid );
         ack.set_roomid( roomid );
-        _kf_route->SendToServer( roomserverid, KFMsg::S2S_INFORM_BATTLE_TO_ROOM_ACK, &ack, false );
+        _kf_route->SendToServer( roomserverid, KFMsg::S2S_INFORM_BATTLE_TO_ROOM_ACK, &ack );
     }
 
     __KF_ENTER_PLAYER_FUNCTION__( KFRoomClientModule::OnEnterQueryRoom )
@@ -77,7 +77,7 @@ namespace KFrame
             KFMsg::S2SQueryRoomToRoomReq req;
             req.set_roomid( roomid );
             req.set_playerid( player->GetKeyID() );
-            _kf_route->SendToServer( roomserverid, KFMsg::S2S_QUERY_ROOM_TO_ROOM_REQ, &req, true );
+            _kf_route->RepeatToServer( roomserverid, KFMsg::S2S_QUERY_ROOM_TO_ROOM_REQ, &req );
         }
     }
 

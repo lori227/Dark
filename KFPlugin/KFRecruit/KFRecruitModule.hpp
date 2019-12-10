@@ -69,6 +69,7 @@ namespace KFrame
         ///////////////////////////////////////////////////////////////////////
         // 进入游戏
         __KF_ENTER_PLAYER_FUNCTION__( OnEnterRecruitModule );
+        __KF_AFTER_ENTER_PLAYER_FUNCTION__( OnAfterEnterRecruitModule );
 
         // 离开游戏
         __KF_LEAVE_PLAYER_FUNCTION__( OnLeaveRecruitModule );
@@ -111,10 +112,13 @@ namespace KFrame
                                   const DivisorList& divisorlist, const SetUInt32& professionlist, uint32 mingrowth, uint32 maxgrowth );
 
         // 计算招募花费
-        void CalcRecruitCostData( KFData* kfeffect, KFData* kfrecruit, KFData* kfhero, uint32 generateid );
+        void CalcRecruitCostData( KFEntity* player, KFData* kfeffect, KFData* kfrecruit, KFData* kfhero, uint32 generateid, bool update );
 
         // 计算种族亲和
         uint32 CalcRecruitHeroDiscount( KFData* kfeffect, KFData* kfhero, uint32 price );
+
+        // 刷新种族亲和
+        void RefreshRecruitHeroDiscount( KFEntity* player, KFData* kfeffect, uint32 race );
 
         // 计算招募英雄的等级
         uint32 CalcRecruitHeroLevel( KFData* kfeffect );

@@ -49,7 +49,7 @@ namespace protobuf_ClientMessage_2eproto {
 struct LIBPROTOC_EXPORT TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[63];
+  static const ::google::protobuf::internal::ParseTable schema[65];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -192,6 +192,12 @@ LIBPROTOC_EXPORT extern MsgSetHeroActiveSkillReqDefaultTypeInternal _MsgSetHeroA
 class MsgSetHeroNameReq;
 class MsgSetHeroNameReqDefaultTypeInternal;
 LIBPROTOC_EXPORT extern MsgSetHeroNameReqDefaultTypeInternal _MsgSetHeroNameReq_default_instance_;
+class MsgSetPlayerFactionReq;
+class MsgSetPlayerFactionReqDefaultTypeInternal;
+LIBPROTOC_EXPORT extern MsgSetPlayerFactionReqDefaultTypeInternal _MsgSetPlayerFactionReq_default_instance_;
+class MsgSetPlayerHeadIconReq;
+class MsgSetPlayerHeadIconReqDefaultTypeInternal;
+LIBPROTOC_EXPORT extern MsgSetPlayerHeadIconReqDefaultTypeInternal _MsgSetPlayerHeadIconReq_default_instance_;
 class MsgSetRecruitHeroNameReq;
 class MsgSetRecruitHeroNameReqDefaultTypeInternal;
 LIBPROTOC_EXPORT extern MsgSetRecruitHeroNameReqDefaultTypeInternal _MsgSetRecruitHeroNameReq_default_instance_;
@@ -294,6 +300,8 @@ template<> LIBPROTOC_EXPORT ::KFMsg::MsgSelectInnateReq* Arena::CreateMaybeMessa
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgSetBuildSkinReq* Arena::CreateMaybeMessage<::KFMsg::MsgSetBuildSkinReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgSetHeroActiveSkillReq* Arena::CreateMaybeMessage<::KFMsg::MsgSetHeroActiveSkillReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgSetHeroNameReq* Arena::CreateMaybeMessage<::KFMsg::MsgSetHeroNameReq>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::MsgSetPlayerFactionReq* Arena::CreateMaybeMessage<::KFMsg::MsgSetPlayerFactionReq>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::MsgSetPlayerHeadIconReq* Arena::CreateMaybeMessage<::KFMsg::MsgSetPlayerHeadIconReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgSetRecruitHeroNameReq* Arena::CreateMaybeMessage<::KFMsg::MsgSetRecruitHeroNameReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgSmithyGatherReq* Arena::CreateMaybeMessage<::KFMsg::MsgSmithyGatherReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgSmithyMakeReq* Arena::CreateMaybeMessage<::KFMsg::MsgSmithyMakeReq>(Arena*);
@@ -378,12 +386,14 @@ enum ClientProtocol {
   MSG_HERO_WEAPON_ANOTHER_REQ = 3403,
   MSG_DIALOGUE_START_ACK = 3431,
   MSG_DIALOGUE_FINISH_REQ = 3432,
+  MSG_SET_PLAYER_HEADICON_REQ = 3451,
+  MSG_SET_PLAYER_FACTION_REQ = 3452,
   ClientProtocol_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   ClientProtocol_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 LIBPROTOC_EXPORT bool ClientProtocol_IsValid(int value);
 const ClientProtocol ClientProtocol_MIN = MSG_CLIENT_BEGIN;
-const ClientProtocol ClientProtocol_MAX = MSG_DIALOGUE_FINISH_REQ;
+const ClientProtocol ClientProtocol_MAX = MSG_SET_PLAYER_FACTION_REQ;
 const int ClientProtocol_ARRAYSIZE = ClientProtocol_MAX + 1;
 
 LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* ClientProtocol_descriptor();
@@ -7120,6 +7130,212 @@ class LIBPROTOC_EXPORT MsgDialogueFinishReq : public ::google::protobuf::Message
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_ClientMessage_2eproto::TableStruct;
 };
+// -------------------------------------------------------------------
+
+class LIBPROTOC_EXPORT MsgSetPlayerHeadIconReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.MsgSetPlayerHeadIconReq) */ {
+ public:
+  MsgSetPlayerHeadIconReq();
+  virtual ~MsgSetPlayerHeadIconReq();
+
+  MsgSetPlayerHeadIconReq(const MsgSetPlayerHeadIconReq& from);
+
+  inline MsgSetPlayerHeadIconReq& operator=(const MsgSetPlayerHeadIconReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  MsgSetPlayerHeadIconReq(MsgSetPlayerHeadIconReq&& from) noexcept
+    : MsgSetPlayerHeadIconReq() {
+    *this = ::std::move(from);
+  }
+
+  inline MsgSetPlayerHeadIconReq& operator=(MsgSetPlayerHeadIconReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgSetPlayerHeadIconReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const MsgSetPlayerHeadIconReq* internal_default_instance() {
+    return reinterpret_cast<const MsgSetPlayerHeadIconReq*>(
+               &_MsgSetPlayerHeadIconReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    63;
+
+  void Swap(MsgSetPlayerHeadIconReq* other);
+  friend void swap(MsgSetPlayerHeadIconReq& a, MsgSetPlayerHeadIconReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline MsgSetPlayerHeadIconReq* New() const final {
+    return CreateMaybeMessage<MsgSetPlayerHeadIconReq>(NULL);
+  }
+
+  MsgSetPlayerHeadIconReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<MsgSetPlayerHeadIconReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const MsgSetPlayerHeadIconReq& from);
+  void MergeFrom(const MsgSetPlayerHeadIconReq& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(MsgSetPlayerHeadIconReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint32 iconid = 1;
+  void clear_iconid();
+  static const int kIconidFieldNumber = 1;
+  ::google::protobuf::uint32 iconid() const;
+  void set_iconid(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:KFMsg.MsgSetPlayerHeadIconReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 iconid_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_ClientMessage_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class LIBPROTOC_EXPORT MsgSetPlayerFactionReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.MsgSetPlayerFactionReq) */ {
+ public:
+  MsgSetPlayerFactionReq();
+  virtual ~MsgSetPlayerFactionReq();
+
+  MsgSetPlayerFactionReq(const MsgSetPlayerFactionReq& from);
+
+  inline MsgSetPlayerFactionReq& operator=(const MsgSetPlayerFactionReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  MsgSetPlayerFactionReq(MsgSetPlayerFactionReq&& from) noexcept
+    : MsgSetPlayerFactionReq() {
+    *this = ::std::move(from);
+  }
+
+  inline MsgSetPlayerFactionReq& operator=(MsgSetPlayerFactionReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgSetPlayerFactionReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const MsgSetPlayerFactionReq* internal_default_instance() {
+    return reinterpret_cast<const MsgSetPlayerFactionReq*>(
+               &_MsgSetPlayerFactionReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    64;
+
+  void Swap(MsgSetPlayerFactionReq* other);
+  friend void swap(MsgSetPlayerFactionReq& a, MsgSetPlayerFactionReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline MsgSetPlayerFactionReq* New() const final {
+    return CreateMaybeMessage<MsgSetPlayerFactionReq>(NULL);
+  }
+
+  MsgSetPlayerFactionReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<MsgSetPlayerFactionReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const MsgSetPlayerFactionReq& from);
+  void MergeFrom(const MsgSetPlayerFactionReq& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(MsgSetPlayerFactionReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint32 factionid = 1;
+  void clear_factionid();
+  static const int kFactionidFieldNumber = 1;
+  ::google::protobuf::uint32 factionid() const;
+  void set_factionid(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:KFMsg.MsgSetPlayerFactionReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 factionid_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_ClientMessage_2eproto::TableStruct;
+};
 // ===================================================================
 
 
@@ -9285,9 +9501,49 @@ inline void MsgDialogueFinishReq::set_dialogueid(::google::protobuf::uint32 valu
   // @@protoc_insertion_point(field_set:KFMsg.MsgDialogueFinishReq.dialogueid)
 }
 
+// -------------------------------------------------------------------
+
+// MsgSetPlayerHeadIconReq
+
+// uint32 iconid = 1;
+inline void MsgSetPlayerHeadIconReq::clear_iconid() {
+  iconid_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgSetPlayerHeadIconReq::iconid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.MsgSetPlayerHeadIconReq.iconid)
+  return iconid_;
+}
+inline void MsgSetPlayerHeadIconReq::set_iconid(::google::protobuf::uint32 value) {
+  
+  iconid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.MsgSetPlayerHeadIconReq.iconid)
+}
+
+// -------------------------------------------------------------------
+
+// MsgSetPlayerFactionReq
+
+// uint32 factionid = 1;
+inline void MsgSetPlayerFactionReq::clear_factionid() {
+  factionid_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgSetPlayerFactionReq::factionid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.MsgSetPlayerFactionReq.factionid)
+  return factionid_;
+}
+inline void MsgSetPlayerFactionReq::set_factionid(::google::protobuf::uint32 value) {
+  
+  factionid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.MsgSetPlayerFactionReq.factionid)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

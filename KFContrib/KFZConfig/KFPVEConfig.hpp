@@ -2,6 +2,8 @@
 #define __KF_PVE_CONFIG_H__
 
 #include "KFZConfig/KFConfig.h"
+#include "KFCore/KFElement.h"
+#include "KFZConfig/KFRewardConfig.h"
 
 namespace KFrame
 {
@@ -18,6 +20,10 @@ namespace KFrame
 
         // 失败道具掉落
         VectorUInt32 _fail_drop_list;
+
+        // 进入消耗
+        std::string _consume_str;
+        KFElements _consume;
     };
 
     ////////////////////////////////////////////////////////////////////////////////
@@ -29,6 +35,8 @@ namespace KFrame
         {
             _file_name = "pve";
         }
+
+        virtual void LoadAllComplete();
 
     protected:
         // 读取配置

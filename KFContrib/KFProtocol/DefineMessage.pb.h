@@ -646,6 +646,12 @@ class LIBPROTOC_EXPORT PBBalanceHero : public ::google::protobuf::Message /* @@p
   bool death() const;
   void set_death(bool value);
 
+  // uint32 deathreason = 21;
+  void clear_deathreason();
+  static const int kDeathreasonFieldNumber = 21;
+  ::google::protobuf::uint32 deathreason() const;
+  void set_deathreason(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:KFMsg.PBBalanceHero)
  private:
 
@@ -670,6 +676,7 @@ class LIBPROTOC_EXPORT PBBalanceHero : public ::google::protobuf::Message /* @@p
   ::google::protobuf::uint32 exp_;
   ::google::protobuf::uint32 level_;
   bool death_;
+  ::google::protobuf::uint32 deathreason_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_DefineMessage_2eproto::TableStruct;
 };
@@ -1317,6 +1324,12 @@ class LIBPROTOC_EXPORT PBBalanceHeroServer : public ::google::protobuf::Message 
   bool death() const;
   void set_death(bool value);
 
+  // uint32 deathreason = 21;
+  void clear_deathreason();
+  static const int kDeathreasonFieldNumber = 21;
+  ::google::protobuf::uint32 deathreason() const;
+  void set_deathreason(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:KFMsg.PBBalanceHeroServer)
  private:
 
@@ -1351,6 +1364,7 @@ class LIBPROTOC_EXPORT PBBalanceHeroServer : public ::google::protobuf::Message 
   ::google::protobuf::uint32 beginlevel_;
   ::google::protobuf::uint32 endlevel_;
   bool death_;
+  ::google::protobuf::uint32 deathreason_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_DefineMessage_2eproto::TableStruct;
 };
@@ -2856,6 +2870,20 @@ PBBalanceHero::mutable_character() {
   return character_.MutableMap();
 }
 
+// uint32 deathreason = 21;
+inline void PBBalanceHero::clear_deathreason() {
+  deathreason_ = 0u;
+}
+inline ::google::protobuf::uint32 PBBalanceHero::deathreason() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceHero.deathreason)
+  return deathreason_;
+}
+inline void PBBalanceHero::set_deathreason(::google::protobuf::uint32 value) {
+  
+  deathreason_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceHero.deathreason)
+}
+
 // -------------------------------------------------------------------
 
 // PBBalanceCurrency
@@ -3366,6 +3394,20 @@ inline ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::
 PBBalanceHeroServer::mutable_character() {
   // @@protoc_insertion_point(field_mutable_map:KFMsg.PBBalanceHeroServer.character)
   return character_.MutableMap();
+}
+
+// uint32 deathreason = 21;
+inline void PBBalanceHeroServer::clear_deathreason() {
+  deathreason_ = 0u;
+}
+inline ::google::protobuf::uint32 PBBalanceHeroServer::deathreason() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceHeroServer.deathreason)
+  return deathreason_;
+}
+inline void PBBalanceHeroServer::set_deathreason(::google::protobuf::uint32 value) {
+  
+  deathreason_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceHeroServer.deathreason)
 }
 
 // -------------------------------------------------------------------

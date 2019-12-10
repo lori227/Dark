@@ -17,6 +17,8 @@
 #include "KFDisplay/KFDisplayInterface.h"
 #include "KFFilter/KFFilterInterface.h"
 #include "KFRouteClient/KFRouteClientInterface.h"
+#include "KFIconConfig.hpp"
+#include "KFFactionConfig.hpp"
 
 namespace KFrame
 {
@@ -42,6 +44,12 @@ namespace KFrame
 
         // 处理设置名字回馈
         __KF_MESSAGE_FUNCTION__( HandleSetPlayerNameToGameAck );
+
+        // 处理设置玩家头像请求
+        __KF_MESSAGE_FUNCTION__( HandleSetPlayerHeadIconReq );
+
+        // 处理设置玩家势力请求
+        __KF_MESSAGE_FUNCTION__( HandleSetPlayerFactionReq );
 
     protected:
         // 金币更新

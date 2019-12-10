@@ -141,7 +141,7 @@ namespace KFrame
             auto kfplayer = iter.second;
             kfplayer->SaveTo( req.add_pbplayer() );
         }
-        _kf_route->SendToServer( _allot_id, KFMsg::S2S_OPEN_ROOM_TO_BATTLE_REQ, &req, false );
+        _kf_route->SendToServer( _allot_id, KFMsg::S2S_OPEN_ROOM_TO_BATTLE_REQ, &req );
     }
 
     void KFBattleRoom::AffirmOpenBattle( bool ok )

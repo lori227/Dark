@@ -112,7 +112,9 @@ namespace KFrame
         }
 
         auto upgradebuildnum = GetUpgradeBuildNum( player );
-        if ( upgradebuildnum >= 1u )
+
+        static auto _option = _kf_option->FindOption( __STRING__( buildupgrademaxnum ) );
+        if ( upgradebuildnum >= _option->_uint32_value )
         {
             // 没有空闲的升级队列
             return _kf_display->SendToClient( player, KFMsg::BuildNoFreeUpgradeList );
@@ -268,11 +270,17 @@ namespace KFrame
             return;
         }
 
+        // 更换同步顺序, 先删除条件，再添加条件，再更新
+        player->SyncDataSequence( KFEnum::Dec, KFEnum::Add, KFEnum::Set );
+
         // 添加下一级的升级条件
         _kf_condition->AddCondition( kfconditionobject, kfsetting->_condition, kfsetting->_condition_type );
 
         // 初始化条件
-        _kf_condition->InitCondition( player, kfconditionobject, KFConditionEnum::LimitNull, true );
+        _kf_condition->InitCondition( player, kfconditionobject, KFConditionEnum::LimitNull, false );
+
+        // 数据同步到客户端
+        player->SynAddRecordData( kfconditionrecord );
     }
 
 }

@@ -1,4 +1,4 @@
-<root version="1655">
+<root version="1671">
 	<item Id="4100001" RacePool="4010001" SexPool="4020001" ProfessionPool="4030001" BackGroundPool="4040001" ActivePool="4050001" CharacterPool="4060001|4060001" InnatePool="4070001|4070002" AttrId="4080001" GrowthId="4090100" FormulaId="0" />
 	<item Id="4100002" RacePool="4010001" SexPool="4020001" ProfessionPool="4030001" BackGroundPool="4040001" ActivePool="4050001" CharacterPool="4060001|4060001" InnatePool="4070001|4070002" AttrId="4080001" GrowthId="4090101" FormulaId="0" />
 	<item Id="4100003" RacePool="4010001" SexPool="4020001" ProfessionPool="4030001" BackGroundPool="4040001" ActivePool="4050001" CharacterPool="4060001|4060001" InnatePool="4070001|4070002" AttrId="4080001" GrowthId="4090099" FormulaId="0" />
@@ -12,8 +12,8 @@
 	<item Id="4100106" RacePool="4010005" SexPool="4020004" ProfessionPool="4030010" BackGroundPool="4040001" ActivePool="4050001" CharacterPool="4060001|4060001" InnatePool="4070001|4070002" AttrId="4080001" GrowthId="4090301" FormulaId="0" />
 	<item Id="4100201" RacePool="4010001" SexPool="4020005" ProfessionPool="4030001" BackGroundPool="4040001" ActivePool="4050001" CharacterPool="4060001|4060001" InnatePool="4070001|4070002" AttrId="4080001" GrowthId="4090201" FormulaId="1" />
 	<item Id="4100202" RacePool="4010001" SexPool="4020005" ProfessionPool="4030001" BackGroundPool="4040001" ActivePool="4050001" CharacterPool="4060001|4060001" InnatePool="4070001|4070002" AttrId="4080001" GrowthId="4090202" FormulaId="1" />
-	<item Id="4100204" RacePool="4010001" SexPool="4020005" ProfessionPool="4030001" BackGroundPool="4040001" ActivePool="4050001" CharacterPool="4060001|4060001" InnatePool="4070001|4070002" AttrId="4080001" GrowthId="4090203" FormulaId="0" />
-	<item Id="4100203" RacePool="4010001" SexPool="4020005" ProfessionPool="4030001" BackGroundPool="4040001" ActivePool="4050001" CharacterPool="4060002|4060002" InnatePool="4070001|4070002" AttrId="4080001" GrowthId="4090204" FormulaId="2" />
+	<item Id="4100203" RacePool="4010001" SexPool="4020005" ProfessionPool="4030001" BackGroundPool="4040001" ActivePool="4050001" CharacterPool="4060001|4060001" InnatePool="4070001|4070002" AttrId="4080001" GrowthId="4090203" FormulaId="0" />
+	<item Id="4100204" RacePool="4010001" SexPool="4020005" ProfessionPool="4030001" BackGroundPool="4040001" ActivePool="4050001" CharacterPool="4060002|4060002" InnatePool="4070001|4070002" AttrId="4080001" GrowthId="4090204" FormulaId="2" />
 	<item Id="4800001" RacePool="4010003" SexPool="4020005" ProfessionPool="4800001" BackGroundPool="4040001" ActivePool="4050001" CharacterPool="4060001|4060001" InnatePool="4070001|4070002" AttrId="4080001" GrowthId="4090100" FormulaId="0" />
 	<item Id="4800002" RacePool="4010003" SexPool="4020005" ProfessionPool="4800002" BackGroundPool="4040001" ActivePool="4050001" CharacterPool="4060001|4060001" InnatePool="4070001|4070002" AttrId="4080001" GrowthId="4090100" FormulaId="0" />
 	<item Id="4800003" RacePool="4010003" SexPool="4020005" ProfessionPool="4800003" BackGroundPool="4040001" ActivePool="4050001" CharacterPool="4060001|4060001" InnatePool="4070001|4070002" AttrId="4080001" GrowthId="4090100" FormulaId="0" />

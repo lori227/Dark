@@ -119,6 +119,7 @@ namespace KFrame
         }
 
         kfeffect->Reset();
+        kfeffect->Set( __STRING__( newversion ), 1u );
         kfeffect->Set( __STRING__( version ), newversion );
 
         // 清空所有的建筑的科技数量

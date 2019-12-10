@@ -130,8 +130,11 @@ namespace KFrame
         for ( auto i = 0; i < _data.herodata_size(); ++i )
         {
             auto pbhero = _data.mutable_herodata( i );
-            auto kfhero = _kf_hero->FindAliveHero( kfherorecord, pbhero->uuid() );
-            if ( kfhero != nullptr )
+            auto kfhero = kfherorecord->Find( pbhero->uuid() );
+            auto deathreason = _kf_hero->GetHeroDeathReason( kfhero );
+
+            // 对有效单位计算
+            if ( deathreason == KFMsg::NoDeathReason )
             {
                 pbhero->set_death( false );
                 pbhero->set_endexp( kfhero->Get<uint32>( __STRING__( exp ) ) );
@@ -143,7 +146,7 @@ namespace KFrame
                     auto& pbattributes = *pbhero->mutable_endattributes();
                     for ( auto kfchild = kffighter->First(); kfchild != nullptr; kfchild = kffighter->Next() )
                     {
-                        pbattributes[ kfchild->_data_setting->_name ] = kfchild->Get<uint32>();
+                        pbattributes[kfchild->_data_setting->_name] = kfchild->Get<uint32>();
                     }
                 }
 
@@ -157,9 +160,11 @@ namespace KFrame
             else
             {
                 pbhero->set_death( true );
+                pbhero->set_deathreason( deathreason );
             }
         }
     }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     void KFExploreRecord::BalanceItemBeginData( KFEntity* player )
@@ -293,6 +298,7 @@ namespace KFrame
                 pbheroclient->set_race( pbheroserver->race() );
                 pbheroclient->set_profession( pbheroserver->profession() );
                 pbheroclient->set_sex( pbheroserver->sex() );
+                pbheroclient->set_deathreason( pbheroserver->deathreason() );
             }
             else
             {

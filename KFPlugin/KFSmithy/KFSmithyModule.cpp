@@ -138,11 +138,7 @@ namespace KFrame
             return;
         }
 
-        if ( player->IsInited() )
-        {
-            // 零点逻辑
-        }
-        else
+        if ( !player->IsInited() )
         {
             // 上线逻辑
             auto daytime = kfsmithy->Get<uint64>( __STRING__( daytime ) );
@@ -152,9 +148,11 @@ namespace KFrame
             }
         }
 
-        player->UpdateData( kfsmithy, __STRING__( daynum ), KFEnum::Set, 0u );
-
+        // 添加入日志列表
         dbvalue.AddValue( __STRING__( smithynum ), daynum );
+
+        // 更新数量
+        player->UpdateData( kfsmithy, __STRING__( daynum ), KFEnum::Set, 0u );
     }
 
     __KF_ADD_ELEMENT_FUNCTION__( KFSmithyModule::AddSmithyElement )
@@ -212,7 +210,6 @@ namespace KFrame
             {
                 // 物品满取消定时器
                 __UN_TIMER_1__( player->GetKeyID() );
-
                 player->UpdateData( kfparent, __STRING__( calctime ), KFEnum::Set, 0u );
             }
         }
@@ -220,10 +217,9 @@ namespace KFrame
         {
             if ( calctime == 0u )
             {
-                player->UpdateData( kfparent, __STRING__( calctime ), KFEnum::Set, KFGlobal::Instance()->_real_time );
-
                 // 物品不满开启定时器
                 __LOOP_TIMER_1__( player->GetKeyID(), setting->_cd_time * 1000, 0u, &KFSmithyModule::OnTimerAddItem );
+                player->UpdateData( kfparent, __STRING__( calctime ), KFEnum::Set, KFGlobal::Instance()->_real_time );
             }
         }
     }
@@ -277,14 +273,14 @@ namespace KFrame
             KeyValue values;
             values[ __STRING__( id ) ] = setting->_item_id;
             values[ __STRING__( count ) ] = addnum;
-            player->AddDataToShow( __STRING__( smithy ), __STRING__( item ), setting->_item_id,  values, false );
+            player->AddDataToShow( __STRING__( smithy ), __STRING__( item ), setting->_item_id, values, false );
         }
 
         // 条件更新
         {
             auto kfbuildgather = player->Find( __STRING__( buildgather ) );
             kfbuildgather->Set( __STRING__( id ), setting->_item_id );
-            player->UpdateData( kfbuildgather, __STRING__( count ), KFEnum::Add, addnum );
+            player->UpdateData( kfbuildgather, __STRING__( count ), KFEnum::Set, addnum );
         }
     }
 
@@ -321,11 +317,10 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::ItemBagIsFull );
         }
 
-        auto kfsmithy = player->Find( __STRING__( smithy ) );
-
         // 所需材料总数
-        auto neednum = kfweaponsetting->_need_num * kfmsg.num();
+        auto kfsmithy = player->Find( __STRING__( smithy ) );
         auto totalnum = kfsmithy->Get<uint32>( __STRING__( totalnum ) );
+        auto neednum = kfweaponsetting->_need_num * kfmsg.num();
         if ( neednum > totalnum )
         {
             return _kf_display->SendToClient( player, KFMsg::SmithyMakeNumNotEnough );
@@ -349,14 +344,13 @@ namespace KFrame
         _kf_display->DelayToClient( player, KFMsg::SmithyMakeWeaponSuc );
 
         // 条件回调
-        auto kfitemsetting = KFItemConfig::Instance()->FindSetting( kfsmithysetting->_id );
+        auto kfitemsetting = KFItemConfig::Instance()->FindSetting( kfweaponsetting->_id );
         if ( kfitemsetting != nullptr )
         {
             auto kfsmithyweapon = player->Find( __STRING__( smithyweapon ) );
             kfsmithyweapon->Set( __STRING__( id ), kfitemsetting->_id );
             kfsmithyweapon->Set( __STRING__( type ), kfitemsetting->_weapon_type );
             kfsmithyweapon->Set( __STRING__( level ), kfitemsetting->_weapon_level );
-            kfsmithyweapon->Set( __STRING__( count ), 0u );
             player->UpdateData( kfsmithyweapon, __STRING__( count ), KFEnum::Set, kfmsg.num() );
         }
     }

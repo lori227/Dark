@@ -33,7 +33,7 @@ namespace protobuf_EnumMessage_2eproto {
 void InitDefaults() {
 }
 
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[13];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[14];
 const ::google::protobuf::uint32 TableStruct::offsets[1] = {};
 static const ::google::protobuf::internal::MigrationSchema* schemas = NULL;
 static const ::google::protobuf::Message* const* file_default_instances = NULL;
@@ -88,11 +88,13 @@ void AddDescriptorsImpl() {
       "\n\nTimeExpire\020\001\022\r\n\tNumExpire\020\002*;\n\017Balance"
       "ShowEnum\022\016\n\nUnknowShow\020\000\022\013\n\007Explore\020\001\022\013\n"
       "\007Balance\020\002*\?\n\014ItemAutoEnum\022\017\n\013AutoInvali"
-      "d\020\000\022\r\n\tAutoStore\020\001\022\017\n\013AutoDestory\020\002b\006pro"
-      "to3"
+      "d\020\000\022\r\n\tAutoStore\020\001\022\017\n\013AutoDestory\020\002*Y\n\017H"
+      "eroDeathReason\022\021\n\rNoDeathReason\020\000\022\013\n\007NoE"
+      "xist\020\001\022\016\n\nNoEnoughHp\020\002\022\026\n\022NoEnoughDurabi"
+      "lity\020\003b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1243);
+      descriptor, 1334);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "EnumMessage.proto", &protobuf_RegisterTypes);
 }
@@ -318,6 +320,22 @@ bool ItemAutoEnum_IsValid(int value) {
     case 0:
     case 1:
     case 2:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::google::protobuf::EnumDescriptor* HeroDeathReason_descriptor() {
+  protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[13];
+}
+bool HeroDeathReason_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
       return true;
     default:
       return false;

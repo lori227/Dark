@@ -46,32 +46,6 @@ namespace KFrame
         __UN_MESSAGE__( KFMsg::MSG_TASK_REMOVE_REQ );
     }
 
-    void KFTaskModule::AfterRun()
-    {
-        if ( _finish_task.empty() )
-        {
-            return;
-        }
-
-        std::unordered_map<uint64, SetUInt32> finishtask;
-        finishtask.swap( _finish_task );
-
-        for ( auto& iter : finishtask )
-        {
-            auto player = _kf_player->FindPlayer( iter.first );
-            if ( player == nullptr )
-            {
-                continue;
-            }
-
-            auto& tasklist = iter.second;
-            for ( auto taskid : tasklist )
-            {
-                FinishTask( player, taskid );
-            }
-        }
-    }
-
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     __KF_ADD_ELEMENT_FUNCTION__( KFTaskModule::AddTaskElement )
     {
@@ -261,7 +235,8 @@ namespace KFrame
 
     void KFTaskModule::AddFinishTask( KFEntity* player, uint32 taskid )
     {
-        _finish_task[ player->GetKeyID() ].insert( taskid );
+        // 启动一个定时器
+        __LIMIT_TIMER_2__( player->GetKeyID(), taskid, 100u, 1, &KFTaskModule::OnTimerTaskFinish );
     }
 
     void KFTaskModule::FinishTask( KFEntity* player, uint32 taskid )
@@ -402,8 +377,20 @@ namespace KFrame
         // 刚创建的任务, 如果是完成状态, 又是自动交付, 延迟删除
         if ( kfsetting->IsAutoTask() )
         {
-            AddFinishTask( player, kfsetting->_id );
+            // 启动一个定时器
+            __LIMIT_TIMER_2__( player->GetKeyID(), kfsetting->_id, 100u, 1, &KFTaskModule::OnTimerTaskFinish );
         }
+    }
+
+    __KF_TIMER_FUNCTION__( KFTaskModule::OnTimerTaskFinish )
+    {
+        auto player = _kf_player->FindPlayer( objectid );
+        if ( player == nullptr )
+        {
+            return;
+        }
+
+        FinishTask( player, subid );
     }
 
     uint32 KFTaskModule::CheckTaskUpdateStatus( KFData* kftask, const KFTaskSetting* kfsetting )

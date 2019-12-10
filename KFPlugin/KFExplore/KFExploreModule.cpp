@@ -129,6 +129,18 @@ namespace KFrame
         }
         else
         {
+            // 进入新的探索地图
+            if ( !kfsetting->_consume.IsEmpty() )
+            {
+                auto dataname = player->CheckRemoveElement( &kfsetting->_consume, __FUNC_LINE__ );
+                if ( !dataname.empty() )
+                {
+                    return KFMsg::DataNotEnough;
+                }
+
+                player->RemoveElement( &kfsetting->_consume, __FUNC_LINE__ );
+            }
+
             player->UpdateData( __STRING__( mapid ), KFEnum::Set, mapid );
         }
 
@@ -198,6 +210,17 @@ namespace KFrame
         if ( kfsetting == nullptr )
         {
             return KFMsg::PVEIdError;
+        }
+
+        if ( !kfsetting->_consume.IsEmpty() )
+        {
+            auto dataname = player->CheckRemoveElement( &kfsetting->_consume, __FUNC_LINE__ );
+            if ( !dataname.empty() )
+            {
+                return KFMsg::DataNotEnough;
+            }
+
+            player->RemoveElement( &kfsetting->_consume, __FUNC_LINE__ );
         }
 
         // 初始化纪录
@@ -270,6 +293,10 @@ namespace KFrame
 
         player->SetStatus( KFMsg::PVEStatus );
         player->UpdateData( __STRING__( pveid ), KFEnum::Set, pveid );
+
+        // 先扣除英雄耐久度
+        _kf_hero_team->DecTeamHeroDurability( player );
+
         return KFMsg::Ok;
     }
 
@@ -299,10 +326,12 @@ namespace KFrame
         auto kfexplorerecord = _explore_record.Find( playerid );
         if ( kfexplorerecord == nullptr )
         {
-            // 如果不在探索里面, 删除死亡英雄
-            _kf_hero_team->RemoveTeamDeadHero( player );
-            _kf_hero_team->DecTeamHeroDurability( player );
+            // 如果不在探索里面, 更新死亡英雄
+            _kf_hero_team->UpdateTeamDeadHero( player );
         }
+
+        // 先结算货币
+        kfrecord->BalanceCurrencyEndData( player );
 
         auto kfsetting = KFPVEConfig::Instance()->FindSetting( kfrecord->_data.id() );
         if ( kfsetting != nullptr )
@@ -321,8 +350,14 @@ namespace KFrame
         _fight_hero.erase( player->GetKeyID() );
 
         // 结算最终数据
-        kfrecord->BalanceCurrencyEndData( player );
         kfrecord->BalanceHeroEndData( player );
+
+        // 在结算完英雄数据后再对英雄进行操作
+        if ( kfexplorerecord == nullptr )
+        {
+            // 如果不在探索里面, 删除死亡英雄
+            _kf_hero_team->RemoveTeamHeroDurability( player );
+        }
 
         // 发送给客户端
         KFMsg::MsgPVEBalanceAck ack;
@@ -337,7 +372,6 @@ namespace KFrame
         {
             auto kfbalance = player->Find( __STRING__( balance ) );
             kfbalance->Set( __STRING__( id ), kfrecord->_data.id() );
-            kfbalance->Set( __STRING__( pveresult ), 0u );
 
             player->UpdateData( kfbalance, __STRING__( team ), KFEnum::Set, teamheronum );
             player->UpdateData( kfbalance, __STRING__( death ), KFEnum::Set, teamdeathnum );
@@ -387,9 +421,13 @@ namespace KFrame
 
         player->SetStatus( kfrecord->_data.status() );
 
-        _kf_hero_team->RemoveTeamDeadHero( player );
-        _kf_hero_team->DecTeamHeroDurability( player );
         __LOG_DEBUG__( "player=[{}] explore=[{}] balance result=[{}]!", player->GetKeyID(), kfrecord->_data.id(), result );
+
+        // 更新死亡英雄
+        _kf_hero_team->UpdateTeamDeadHero( player );
+
+        // 先结算货币
+        kfrecord->BalanceCurrencyEndData( player );
 
         auto kfsetting = KFExploreConfig::Instance()->FindSetting( kfrecord->_data.id() );
         if ( kfsetting != nullptr )
@@ -405,10 +443,18 @@ namespace KFrame
             }
         }
 
+        if ( result != KFMsg::Victory )
+        {
+            // 随机探索失败获得道具
+            RandExploreFailedItems( player );
+        }
+
         // 结算最终数据
         kfrecord->BalanceHeroEndData( player );
         kfrecord->BalanceItemEndData( player );
-        kfrecord->BalanceCurrencyEndData( player );
+
+        // 在结算完英雄数据后再对英雄进行操作
+        _kf_hero_team->RemoveTeamHeroDurability( player );
 
         // 发送消息
         KFMsg::MsgExploreBalanceAck ack;
@@ -429,13 +475,11 @@ namespace KFrame
         {
             auto kfbalance = player->Find( __STRING__( balance ) );
             kfbalance->Set( __STRING__( id ), kfrecord->_data.id() );
-            kfbalance->Set( __STRING__( exploreresult ), 0u );
 
             player->UpdateData( kfbalance, __STRING__( team ), KFEnum::Set, teamheronum );
             player->UpdateData( kfbalance, __STRING__( death ), KFEnum::Set, teamdeathnum );
 
-            auto usetime = KFGlobal::Instance()->_real_time - kfrecord->_data.starttime();
-            usetime += kfrecord->_data.usetime();
+            auto usetime = KFGlobal::Instance()->_real_time - kfrecord->_data.starttime() + kfrecord->_data.usetime();
             player->UpdateData( kfbalance, __STRING__( time ), KFEnum::Set, usetime );
 
             player->UpdateData( kfbalance, __STRING__( exploreresult ), KFEnum::Set, result );
@@ -444,6 +488,31 @@ namespace KFrame
         // 清除纪录
         _explore_record.Remove( player->GetKeyID() );
     }
+
+    void KFExploreModule::RandExploreFailedItems( KFEntity* player )
+    {
+        SetUInt64 destory_item_set;
+
+        static auto _option = _kf_option->FindOption( __STRING__( explorebreakoffprob ) );
+
+        auto kfitemrecord = player->Find( __STRING__( other ) );
+        for ( auto kfitem = kfitemrecord->First(); kfitem != nullptr; kfitem = kfitemrecord->Next() )
+        {
+            auto itemuuid = kfitem->Get<uint64>( __STRING__( uuid ) );
+
+            auto rand = KFGlobal::Instance()->RandRatio( KFRandEnum::TenThousand );
+            if ( rand >= _option->_uint32_value )
+            {
+                destory_item_set.insert( itemuuid );
+            }
+        }
+
+        for ( auto iter : destory_item_set )
+        {
+            player->RemoveData( kfitemrecord, iter );
+        }
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     KFExploreRecord* KFExploreModule::InitExploreRecord( KFEntity* player, uint32 mapid, const std::string& modulename, uint64 moduleid )
@@ -532,33 +601,47 @@ namespace KFrame
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
 
         auto heroiter = _fight_hero.find( player->GetKeyID() );
-
-        for ( uint32 i = KFDataDefine::Array_Index; i < kfteamarray->Size(); ++i )
+        if ( heroiter != _fight_hero.end() )
         {
-            auto kfteam = kfteamarray->Find( i );
-            if ( kfteam == nullptr )
+            for ( auto iter : heroiter->second )
             {
-                continue;
-            }
-
-            auto uuid = kfteam->Get<uint64>();
-            if ( heroiter != _fight_hero.end() )
-            {
-                if ( heroiter->second.find( uuid ) == heroiter->second.end() )
+                auto kfhero = _kf_hero->FindAliveHero( kfherorecord, iter );
+                if ( kfhero == nullptr )
                 {
-                    // 不在出战英雄列表
                     continue;
                 }
-            }
 
-            auto kfhero = _kf_hero->FindAliveHero( kfherorecord, uuid );
-            if ( kfhero == nullptr )
-            {
-                continue;
-            }
+                auto teamindex = _kf_hero_team->GetTeamIndexById( player, iter );
+                if ( teamindex == 0u )
+                {
+                    continue;
+                }
 
-            _kf_hero->AddExp( player, kfhero, dropdata->GetValue() );
+                _kf_hero->AddExp( player, kfhero, dropdata->GetValue() );
+            }
         }
+        else
+        {
+            for ( uint32 i = KFDataDefine::Array_Index; i < kfteamarray->Size(); ++i )
+            {
+                auto kfteam = kfteamarray->Find( i );
+                if ( kfteam == nullptr )
+                {
+                    continue;
+                }
+
+                auto uuid = kfteam->Get<uint64>();
+                auto kfhero = _kf_hero->FindAliveHero( kfherorecord, uuid );
+                if ( kfhero == nullptr )
+                {
+                    continue;
+                }
+
+                _kf_hero->AddExp( player, kfhero, dropdata->GetValue() );
+            }
+        }
+
+
     }
 
     __KF_DROP_LOGIC_FUNCTION__( KFExploreModule::OnDropHeroAddHp )
@@ -885,19 +968,23 @@ namespace KFrame
             // 更新hp
             auto kffighter = kfhero->Find( __STRING__( fighter ) );
             auto maxhp = kffighter->Get<uint32>( __STRING__( maxhp ) );
-            auto curhp = pbdata->hp();
-            if ( curhp > maxhp )
+            auto curhp = __MIN__( pbdata->hp(), maxhp );
+            auto kfhp = kffighter->Find( __STRING__( hp ) );
+            if ( curhp != kfhp->Get<uint32>() )
             {
-                // 修改hp不能超过角色的maxhp
-                curhp = maxhp;
-            }
-            auto hp = player->UpdateData( pbdata->uuid(), kffighter, __STRING__( hp ), KFEnum::Set, curhp );
-            if ( hp == 0u )
-            {
-                continue;
+                auto hp = player->UpdateData( pbdata->uuid(), kfhp, KFEnum::Set, curhp );
+                if ( hp == 0u )
+                {
+                    continue;
+                }
             }
 
-            player->UpdateData( pbdata->uuid(), kffighter, __STRING__( ep ), KFEnum::Set, pbdata->ep() );
+            // 更新ep
+            auto kfep = kffighter->Find( __STRING__( ep ) );
+            if ( pbdata->ep() != kfep->Get<uint32>() )
+            {
+                player->UpdateData( pbdata->uuid(), kfep, KFEnum::Set, pbdata->ep() );
+            }
 
             //  更新exp
             if ( pbdata->exp() > 0u )

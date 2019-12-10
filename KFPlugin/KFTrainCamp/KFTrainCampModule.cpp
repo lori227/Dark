@@ -5,10 +5,12 @@ namespace KFrame
     void KFTrainCampModule::BeforeRun()
     {
         _kf_component = _kf_kernel->FindComponent( __STRING__( player ) );
-        __REGISTER_REMOVE_DATA_1__( __STRING__( traincamp ), &KFTrainCampModule::OnRemoveTrainHero );
+
         __REGISTER_ENTER_PLAYER__( &KFTrainCampModule::OnEnterTrainCampModule );
         __REGISTER_LEAVE_PLAYER__( &KFTrainCampModule::OnLeaveTrainCampModule );
 
+        __REGISTER_REMOVE_DATA_1__( __STRING__( traincamp ), &KFTrainCampModule::OnRemoveTrainHero );
+        __REGISTER_UPDATE_DATA_2__( __STRING__( traincamp ), __STRING__( calctime ), &KFTrainCampModule::OnUpdateCalcTime );
         //////////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_TRAIN_CHANGE_REQ, &KFTrainCampModule::HandleTrainChangeReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_TRAIN_CLEAN_REQ, &KFTrainCampModule::HandleTrainCleanReq );
@@ -20,11 +22,24 @@ namespace KFrame
         __UN_TIMER_0__();
         __UN_ENTER_PLAYER__();
         __UN_LEAVE_PLAYER__();
+
         __UN_REMOVE_DATA_1__( __STRING__( traincamp ) );
+        __UN_UPDATE_DATA_2__( __STRING__( traincamp ), __STRING__( calctime ) );
         //////////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_TRAIN_CHANGE_REQ );
         __UN_MESSAGE__( KFMsg::MSG_TRAIN_CLEAN_REQ );
         __UN_MESSAGE__( KFMsg::MSG_TRAIN_ONEKEY_REQ );
+    }
+
+    __KF_UPDATE_DATA_FUNCTION__( KFTrainCampModule::OnUpdateCalcTime )
+    {
+        auto kftrain = kfdata->GetParent();
+        auto endtime = kftrain->Get<uint64>( __STRING__( endtime ) );
+        if ( newvalue == endtime )
+        {
+            // 训练完成增加条件次数
+            AddTrainCampCondition( player, kftrain );
+        }
     }
 
     __KF_REMOVE_DATA_FUNCTION__( KFTrainCampModule::OnRemoveTrainHero )
@@ -173,35 +188,38 @@ namespace KFrame
         return KFTrainCampConfig::Instance()->FindSetting( level );
     }
 
-    void KFTrainCampModule::RemoveTrainCampHero( KFEntity* player, KFData* kftarinrecord, KFData* kftarin )
+    void KFTrainCampModule::RemoveTrainCampHero( KFEntity* player, KFData* kftrainrecord, KFData* kftrain )
     {
         // 训练-条件回调
-        auto uuid = kftarin->Get<uint64>( __STRING__( uuid ) );
-        auto kfhero = player->Find( __STRING__( hero ), uuid );
-        if ( kfhero != nullptr )
+        auto calctime = kftrain->Get<uint64>( __STRING__( calctime ) );
+        auto endtime = kftrain->Get<uint64>( __STRING__( endtime ) );
+        if ( calctime != endtime )
         {
-            auto kftarinhero = player->Find( __STRING__( trainhero ) );
-            kftarinhero->CopyFrom( kfhero );
-
-            kftarinhero->Set( __STRING__( uuid ), 0u );
-            player->UpdateData( kftarinhero, __STRING__( uuid ), KFEnum::Set, uuid );
+            // 已完成训练移出的不算条件次数
+            AddTrainCampCondition( player, kftrain );
         }
 
         // 删除训练英雄
-        player->RemoveData( kftarinrecord, kftarin->GetKeyID() );
+        player->RemoveData( kftrainrecord, kftrain->GetKeyID() );
     }
 
-    void KFTrainCampModule::AddTrainCampHero( KFEntity* player, KFData* kftarinrecord, uint64 uuid, uint32 index )
+    void KFTrainCampModule::AddTrainCampCondition( KFEntity* player, KFData* kftrain )
+    {
+        auto uuid = kftrain->Get<uint64>( __STRING__( uuid ) );
+        auto kfhero = player->Find( __STRING__( hero ), uuid );
+        if ( kfhero != nullptr )
+        {
+            auto kftrainhero = player->Find( __STRING__( trainhero ) );
+            kftrainhero->CopyFrom( kfhero );
+            player->UpdateData( kftrainhero, __STRING__( uuid ), KFEnum::Set, uuid );
+        }
+    }
+
+    void KFTrainCampModule::AddTrainCampHero( KFEntity* player, KFData* kftrainrecord, uint64 uuid, uint32 index )
     {
         if ( !IsTrainCampActive( player ) )
         {
             return _kf_display->SendToClient( player, KFMsg::BuildFuncNotActive );
-        }
-
-        auto kftraincamp = kftarinrecord->Find( index );
-        if ( kftraincamp != nullptr )
-        {
-            RemoveTrainCampHero( player, kftarinrecord, kftraincamp );
         }
 
         auto setting = GetTrainCampSetting( player );
@@ -245,12 +263,18 @@ namespace KFrame
         }
         player->RemoveElement( &setting->_consume, __FUNC_LINE__ );
 
+        auto kftraincamp = kftrainrecord->Find( index );
+        if ( kftraincamp != nullptr )
+        {
+            RemoveTrainCampHero( player, kftrainrecord, kftraincamp );
+        }
+
         // 将英雄加入栏位
-        kftraincamp = _kf_kernel->CreateObject( kftarinrecord->_data_setting );
+        kftraincamp = _kf_kernel->CreateObject( kftrainrecord->_data_setting );
         kftraincamp->Set( __STRING__( uuid ), uuid );
         kftraincamp->Set( __STRING__( calctime ), KFGlobal::Instance()->_real_time );
         kftraincamp->Set( __STRING__( endtime ), KFGlobal::Instance()->_real_time + setting->_total_time );
-        player->AddData( kftarinrecord, index, kftraincamp );
+        player->AddData( kftrainrecord, index, kftraincamp );
 
         // 启动定时器
         StartTrainCampTimer( player, setting, index, 0u );

@@ -593,6 +593,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHero, death_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHero, attributes_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHero, character_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHero, deathreason_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceCurrency, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -664,6 +665,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHeroServer, beginattributes_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHeroServer, endattributes_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHeroServer, character_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHeroServer, deathreason_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBFighterHeroData, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -765,23 +767,23 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 27, 34, sizeof(::KFMsg::PBBalanceHero_AttributesEntry_DoNotUse)},
   { 36, 43, sizeof(::KFMsg::PBBalanceHero_CharacterEntry_DoNotUse)},
   { 45, -1, sizeof(::KFMsg::PBBalanceHero)},
-  { 60, -1, sizeof(::KFMsg::PBBalanceCurrency)},
-  { 68, -1, sizeof(::KFMsg::PBBalanceData)},
-  { 76, -1, sizeof(::KFMsg::PBBalanceItemServer)},
-  { 85, 92, sizeof(::KFMsg::PBBalanceHeroServer_BeginattributesEntry_DoNotUse)},
-  { 94, 101, sizeof(::KFMsg::PBBalanceHeroServer_EndattributesEntry_DoNotUse)},
-  { 103, 110, sizeof(::KFMsg::PBBalanceHeroServer_CharacterEntry_DoNotUse)},
-  { 112, -1, sizeof(::KFMsg::PBBalanceHeroServer)},
-  { 131, -1, sizeof(::KFMsg::PBFighterHeroData)},
-  { 140, -1, sizeof(::KFMsg::PBExplorePlayerData)},
-  { 150, -1, sizeof(::KFMsg::PBExploreNpcData)},
-  { 161, -1, sizeof(::KFMsg::PBBuffData)},
-  { 167, -1, sizeof(::KFMsg::PBBuffListData)},
-  { 173, 180, sizeof(::KFMsg::PBExploreBuffData_BuffEntry_DoNotUse)},
-  { 182, -1, sizeof(::KFMsg::PBExploreBuffData)},
-  { 188, 195, sizeof(::KFMsg::PBExploreData_NpcdataEntry_DoNotUse)},
-  { 197, -1, sizeof(::KFMsg::PBExploreData)},
-  { 208, -1, sizeof(::KFMsg::PBBalanceDataServer)},
+  { 61, -1, sizeof(::KFMsg::PBBalanceCurrency)},
+  { 69, -1, sizeof(::KFMsg::PBBalanceData)},
+  { 77, -1, sizeof(::KFMsg::PBBalanceItemServer)},
+  { 86, 93, sizeof(::KFMsg::PBBalanceHeroServer_BeginattributesEntry_DoNotUse)},
+  { 95, 102, sizeof(::KFMsg::PBBalanceHeroServer_EndattributesEntry_DoNotUse)},
+  { 104, 111, sizeof(::KFMsg::PBBalanceHeroServer_CharacterEntry_DoNotUse)},
+  { 113, -1, sizeof(::KFMsg::PBBalanceHeroServer)},
+  { 133, -1, sizeof(::KFMsg::PBFighterHeroData)},
+  { 142, -1, sizeof(::KFMsg::PBExplorePlayerData)},
+  { 152, -1, sizeof(::KFMsg::PBExploreNpcData)},
+  { 163, -1, sizeof(::KFMsg::PBBuffData)},
+  { 169, -1, sizeof(::KFMsg::PBBuffListData)},
+  { 175, 182, sizeof(::KFMsg::PBExploreBuffData_BuffEntry_DoNotUse)},
+  { 184, -1, sizeof(::KFMsg::PBExploreBuffData)},
+  { 190, 197, sizeof(::KFMsg::PBExploreData_NpcdataEntry_DoNotUse)},
+  { 199, -1, sizeof(::KFMsg::PBExploreData)},
+  { 210, -1, sizeof(::KFMsg::PBBalanceDataServer)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -838,68 +840,69 @@ void AddDescriptorsImpl() {
       "chPlayer.HeroEntry\032<\n\tHeroEntry\022\013\n\003key\030\001"
       " \001(\004\022\036\n\005value\030\002 \001(\0132\017.KFMsg.PBObject:\0028\001"
       "\"8\n\rPBBalanceItem\022\n\n\002id\030\001 \001(\r\022\014\n\004uuid\030\002 "
-      "\001(\004\022\r\n\005count\030\003 \001(\r\"\334\002\n\rPBBalanceHero\022\014\n\004"
+      "\001(\004\022\r\n\005count\030\003 \001(\r\"\361\002\n\rPBBalanceHero\022\014\n\004"
       "uuid\030\001 \001(\004\022\014\n\004race\030\002 \001(\r\022\022\n\nprofession\030\003"
       " \001(\r\022\013\n\003sex\030\004 \001(\r\022\014\n\004name\030\005 \001(\014\022\013\n\003exp\030\006"
       " \001(\r\022\r\n\005level\030\007 \001(\r\022\r\n\005death\030\010 \001(\010\0228\n\nat"
       "tributes\030\t \003(\0132$.KFMsg.PBBalanceHero.Att"
       "ributesEntry\0226\n\tcharacter\030\024 \003(\0132#.KFMsg."
-      "PBBalanceHero.CharacterEntry\0321\n\017Attribut"
-      "esEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\r:\0028\001\032"
-      "0\n\016CharacterEntry\022\013\n\003key\030\001 \001(\r\022\r\n\005value\030"
-      "\002 \001(\r:\0028\001\"G\n\021PBBalanceCurrency\022\014\n\004name\030\001"
-      " \001(\014\022\022\n\nbeginvalue\030\002 \001(\r\022\020\n\010endvalue\030\003 \001"
-      "(\r\"\217\001\n\rPBBalanceData\022&\n\010herodata\030\001 \003(\0132\024"
-      ".KFMsg.PBBalanceHero\022&\n\010itemdata\030\002 \003(\0132\024"
-      ".KFMsg.PBBalanceItem\022.\n\014currencydata\030\003 \003"
-      "(\0132\030.KFMsg.PBBalanceCurrency\"U\n\023PBBalanc"
-      "eItemServer\022\n\n\002id\030\001 \001(\r\022\014\n\004uuid\030\002 \001(\004\022\022\n"
-      "\nbegincount\030\003 \001(\r\022\020\n\010endcount\030\004 \001(\r\"\266\004\n\023"
-      "PBBalanceHeroServer\022\014\n\004uuid\030\001 \001(\004\022\014\n\004rac"
-      "e\030\002 \001(\r\022\022\n\nprofession\030\003 \001(\r\022\013\n\003sex\030\004 \001(\r"
-      "\022\014\n\004name\030\005 \001(\014\022\020\n\010beginexp\030\006 \001(\r\022\016\n\006ende"
-      "xp\030\007 \001(\r\022\022\n\nbeginlevel\030\010 \001(\r\022\020\n\010endlevel"
-      "\030\t \001(\r\022\r\n\005death\030\n \001(\010\022\017\n\007killnpc\030\013 \003(\004\022H"
-      "\n\017beginattributes\030\014 \003(\0132/.KFMsg.PBBalanc"
-      "eHeroServer.BeginattributesEntry\022D\n\renda"
-      "ttributes\030\r \003(\0132-.KFMsg.PBBalanceHeroSer"
-      "ver.EndattributesEntry\022<\n\tcharacter\030\024 \003("
-      "\0132).KFMsg.PBBalanceHeroServer.CharacterE"
-      "ntry\0326\n\024BeginattributesEntry\022\013\n\003key\030\001 \001("
-      "\t\022\r\n\005value\030\002 \001(\r:\0028\001\0324\n\022EndattributesEnt"
-      "ry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\r:\0028\001\0320\n\016Ch"
-      "aracterEntry\022\013\n\003key\030\001 \001(\r\022\r\n\005value\030\002 \001(\r"
-      ":\0028\001\"F\n\021PBFighterHeroData\022\014\n\004uuid\030\001 \001(\004\022"
-      "\n\n\002hp\030\002 \001(\r\022\013\n\003exp\030\003 \001(\r\022\n\n\002ep\030\004 \001(\r\"Q\n\023"
-      "PBExplorePlayerData\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001("
-      "\005\022\t\n\001z\030\003 \001(\005\022\013\n\003yaw\030\004 \001(\005\022\014\n\004step\030\005 \001(\r\""
-      "^\n\020PBExploreNpcData\022\013\n\003key\030\001 \001(\014\022\t\n\001x\030\002 "
-      "\001(\005\022\t\n\001y\030\003 \001(\005\022\t\n\001z\030\004 \001(\005\022\013\n\003yaw\030\005 \001(\005\022\017"
-      "\n\007bkilled\030\006 \001(\010\"\030\n\nPBBuffData\022\n\n\002id\030\001 \001("
-      "\r\"5\n\016PBBuffListData\022#\n\010bufflist\030\001 \003(\0132\021."
-      "KFMsg.PBBuffData\"\211\001\n\021PBExploreBuffData\0220"
-      "\n\004buff\030\001 \003(\0132\".KFMsg.PBExploreBuffData.B"
-      "uffEntry\032B\n\tBuffEntry\022\013\n\003key\030\001 \001(\004\022$\n\005va"
-      "lue\030\002 \001(\0132\025.KFMsg.PBBuffListData:\0028\001\"\225\002\n"
-      "\rPBExploreData\022\014\n\004save\030\001 \001(\010\022\016\n\006random\030\002"
-      " \001(\r\022\r\n\005faith\030\003 \001(\r\022.\n\nplayerdata\030\004 \001(\0132"
-      "\032.KFMsg.PBExplorePlayerData\0222\n\007npcdata\030\005"
-      " \003(\0132!.KFMsg.PBExploreData.NpcdataEntry\022"
-      "*\n\010buffdata\030\006 \001(\0132\030.KFMsg.PBExploreBuffD"
-      "ata\032G\n\014NpcdataEntry\022\013\n\003key\030\001 \001(\t\022&\n\005valu"
-      "e\030\002 \001(\0132\027.KFMsg.PBExploreNpcData:\0028\001\"\303\002\n"
-      "\023PBBalanceDataServer\022\n\n\002id\030\001 \001(\r\022\022\n\nmodu"
-      "lename\030\002 \001(\014\022\020\n\010moduleid\030\003 \001(\004\022\016\n\006status"
-      "\030\004 \001(\r\022\021\n\tstarttime\030\005 \001(\004\022\017\n\007usetime\030\006 \001"
-      "(\r\022,\n\010herodata\030\007 \003(\0132\032.KFMsg.PBBalanceHe"
-      "roServer\022,\n\010itemdata\030\010 \003(\0132\032.KFMsg.PBBal"
-      "anceItemServer\022.\n\014currencydata\030\t \003(\0132\030.K"
-      "FMsg.PBBalanceCurrency\022\017\n\007killnpc\030\n \003(\004\022"
-      ")\n\013exploredata\030c \001(\0132\024.KFMsg.PBExploreDa"
-      "tab\006proto3"
+      "PBBalanceHero.CharacterEntry\022\023\n\013deathrea"
+      "son\030\025 \001(\r\0321\n\017AttributesEntry\022\013\n\003key\030\001 \001("
+      "\t\022\r\n\005value\030\002 \001(\r:\0028\001\0320\n\016CharacterEntry\022\013"
+      "\n\003key\030\001 \001(\r\022\r\n\005value\030\002 \001(\r:\0028\001\"G\n\021PBBala"
+      "nceCurrency\022\014\n\004name\030\001 \001(\014\022\022\n\nbeginvalue\030"
+      "\002 \001(\r\022\020\n\010endvalue\030\003 \001(\r\"\217\001\n\rPBBalanceDat"
+      "a\022&\n\010herodata\030\001 \003(\0132\024.KFMsg.PBBalanceHer"
+      "o\022&\n\010itemdata\030\002 \003(\0132\024.KFMsg.PBBalanceIte"
+      "m\022.\n\014currencydata\030\003 \003(\0132\030.KFMsg.PBBalanc"
+      "eCurrency\"U\n\023PBBalanceItemServer\022\n\n\002id\030\001"
+      " \001(\r\022\014\n\004uuid\030\002 \001(\004\022\022\n\nbegincount\030\003 \001(\r\022\020"
+      "\n\010endcount\030\004 \001(\r\"\313\004\n\023PBBalanceHeroServer"
+      "\022\014\n\004uuid\030\001 \001(\004\022\014\n\004race\030\002 \001(\r\022\022\n\nprofessi"
+      "on\030\003 \001(\r\022\013\n\003sex\030\004 \001(\r\022\014\n\004name\030\005 \001(\014\022\020\n\010b"
+      "eginexp\030\006 \001(\r\022\016\n\006endexp\030\007 \001(\r\022\022\n\nbeginle"
+      "vel\030\010 \001(\r\022\020\n\010endlevel\030\t \001(\r\022\r\n\005death\030\n \001"
+      "(\010\022\017\n\007killnpc\030\013 \003(\004\022H\n\017beginattributes\030\014"
+      " \003(\0132/.KFMsg.PBBalanceHeroServer.Beginat"
+      "tributesEntry\022D\n\rendattributes\030\r \003(\0132-.K"
+      "FMsg.PBBalanceHeroServer.EndattributesEn"
+      "try\022<\n\tcharacter\030\024 \003(\0132).KFMsg.PBBalance"
+      "HeroServer.CharacterEntry\022\023\n\013deathreason"
+      "\030\025 \001(\r\0326\n\024BeginattributesEntry\022\013\n\003key\030\001 "
+      "\001(\t\022\r\n\005value\030\002 \001(\r:\0028\001\0324\n\022EndattributesE"
+      "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\r:\0028\001\0320\n\016"
+      "CharacterEntry\022\013\n\003key\030\001 \001(\r\022\r\n\005value\030\002 \001"
+      "(\r:\0028\001\"F\n\021PBFighterHeroData\022\014\n\004uuid\030\001 \001("
+      "\004\022\n\n\002hp\030\002 \001(\r\022\013\n\003exp\030\003 \001(\r\022\n\n\002ep\030\004 \001(\r\"Q"
+      "\n\023PBExplorePlayerData\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 "
+      "\001(\005\022\t\n\001z\030\003 \001(\005\022\013\n\003yaw\030\004 \001(\005\022\014\n\004step\030\005 \001("
+      "\r\"^\n\020PBExploreNpcData\022\013\n\003key\030\001 \001(\014\022\t\n\001x\030"
+      "\002 \001(\005\022\t\n\001y\030\003 \001(\005\022\t\n\001z\030\004 \001(\005\022\013\n\003yaw\030\005 \001(\005"
+      "\022\017\n\007bkilled\030\006 \001(\010\"\030\n\nPBBuffData\022\n\n\002id\030\001 "
+      "\001(\r\"5\n\016PBBuffListData\022#\n\010bufflist\030\001 \003(\0132"
+      "\021.KFMsg.PBBuffData\"\211\001\n\021PBExploreBuffData"
+      "\0220\n\004buff\030\001 \003(\0132\".KFMsg.PBExploreBuffData"
+      ".BuffEntry\032B\n\tBuffEntry\022\013\n\003key\030\001 \001(\004\022$\n\005"
+      "value\030\002 \001(\0132\025.KFMsg.PBBuffListData:\0028\001\"\225"
+      "\002\n\rPBExploreData\022\014\n\004save\030\001 \001(\010\022\016\n\006random"
+      "\030\002 \001(\r\022\r\n\005faith\030\003 \001(\r\022.\n\nplayerdata\030\004 \001("
+      "\0132\032.KFMsg.PBExplorePlayerData\0222\n\007npcdata"
+      "\030\005 \003(\0132!.KFMsg.PBExploreData.NpcdataEntr"
+      "y\022*\n\010buffdata\030\006 \001(\0132\030.KFMsg.PBExploreBuf"
+      "fData\032G\n\014NpcdataEntry\022\013\n\003key\030\001 \001(\t\022&\n\005va"
+      "lue\030\002 \001(\0132\027.KFMsg.PBExploreNpcData:\0028\001\"\303"
+      "\002\n\023PBBalanceDataServer\022\n\n\002id\030\001 \001(\r\022\022\n\nmo"
+      "dulename\030\002 \001(\014\022\020\n\010moduleid\030\003 \001(\004\022\016\n\006stat"
+      "us\030\004 \001(\r\022\021\n\tstarttime\030\005 \001(\004\022\017\n\007usetime\030\006"
+      " \001(\r\022,\n\010herodata\030\007 \003(\0132\032.KFMsg.PBBalance"
+      "HeroServer\022,\n\010itemdata\030\010 \003(\0132\032.KFMsg.PBB"
+      "alanceItemServer\022.\n\014currencydata\030\t \003(\0132\030"
+      ".KFMsg.PBBalanceCurrency\022\017\n\007killnpc\030\n \003("
+      "\004\022)\n\013exploredata\030c \001(\0132\024.KFMsg.PBExplore"
+      "Datab\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2610);
+      descriptor, 2652);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "DefineMessage.proto", &protobuf_RegisterTypes);
   ::protobuf_FrameDefineMessage_2eproto::AddDescriptors();
@@ -1755,6 +1758,7 @@ const int PBBalanceHero::kLevelFieldNumber;
 const int PBBalanceHero::kDeathFieldNumber;
 const int PBBalanceHero::kAttributesFieldNumber;
 const int PBBalanceHero::kCharacterFieldNumber;
+const int PBBalanceHero::kDeathreasonFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 PBBalanceHero::PBBalanceHero()
@@ -1775,16 +1779,16 @@ PBBalanceHero::PBBalanceHero(const PBBalanceHero& from)
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
   ::memcpy(&uuid_, &from.uuid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&death_) -
-    reinterpret_cast<char*>(&uuid_)) + sizeof(death_));
+    static_cast<size_t>(reinterpret_cast<char*>(&deathreason_) -
+    reinterpret_cast<char*>(&uuid_)) + sizeof(deathreason_));
   // @@protoc_insertion_point(copy_constructor:KFMsg.PBBalanceHero)
 }
 
 void PBBalanceHero::SharedCtor() {
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&uuid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&death_) -
-      reinterpret_cast<char*>(&uuid_)) + sizeof(death_));
+      reinterpret_cast<char*>(&deathreason_) -
+      reinterpret_cast<char*>(&uuid_)) + sizeof(deathreason_));
 }
 
 PBBalanceHero::~PBBalanceHero() {
@@ -1820,8 +1824,8 @@ void PBBalanceHero::Clear() {
   character_.Clear();
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&uuid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&death_) -
-      reinterpret_cast<char*>(&uuid_)) + sizeof(death_));
+      reinterpret_cast<char*>(&deathreason_) -
+      reinterpret_cast<char*>(&uuid_)) + sizeof(deathreason_));
   _internal_metadata_.Clear();
 }
 
@@ -1987,6 +1991,20 @@ bool PBBalanceHero::MergePartialFromCodedStream(
         break;
       }
 
+      // uint32 deathreason = 21;
+      case 21: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(168u /* 168 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &deathreason_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -2142,6 +2160,11 @@ void PBBalanceHero::SerializeWithCachedSizes(
     }
   }
 
+  // uint32 deathreason = 21;
+  if (this->deathreason() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(21, this->deathreason(), output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -2294,6 +2317,11 @@ void PBBalanceHero::SerializeWithCachedSizes(
     }
   }
 
+  // uint32 deathreason = 21;
+  if (this->deathreason() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(21, this->deathreason(), target);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
@@ -2393,6 +2421,13 @@ size_t PBBalanceHero::ByteSizeLong() const {
     total_size += 1 + 1;
   }
 
+  // uint32 deathreason = 21;
+  if (this->deathreason() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->deathreason());
+  }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -2447,6 +2482,9 @@ void PBBalanceHero::MergeFrom(const PBBalanceHero& from) {
   if (from.death() != 0) {
     set_death(from.death());
   }
+  if (from.deathreason() != 0) {
+    set_deathreason(from.deathreason());
+  }
 }
 
 void PBBalanceHero::CopyFrom(const ::google::protobuf::Message& from) {
@@ -2484,6 +2522,7 @@ void PBBalanceHero::InternalSwap(PBBalanceHero* other) {
   swap(exp_, other->exp_);
   swap(level_, other->level_);
   swap(death_, other->death_);
+  swap(deathreason_, other->deathreason_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
@@ -3530,6 +3569,7 @@ const int PBBalanceHeroServer::kKillnpcFieldNumber;
 const int PBBalanceHeroServer::kBeginattributesFieldNumber;
 const int PBBalanceHeroServer::kEndattributesFieldNumber;
 const int PBBalanceHeroServer::kCharacterFieldNumber;
+const int PBBalanceHeroServer::kDeathreasonFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 PBBalanceHeroServer::PBBalanceHeroServer()
@@ -3552,16 +3592,16 @@ PBBalanceHeroServer::PBBalanceHeroServer(const PBBalanceHeroServer& from)
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
   ::memcpy(&uuid_, &from.uuid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&death_) -
-    reinterpret_cast<char*>(&uuid_)) + sizeof(death_));
+    static_cast<size_t>(reinterpret_cast<char*>(&deathreason_) -
+    reinterpret_cast<char*>(&uuid_)) + sizeof(deathreason_));
   // @@protoc_insertion_point(copy_constructor:KFMsg.PBBalanceHeroServer)
 }
 
 void PBBalanceHeroServer::SharedCtor() {
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&uuid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&death_) -
-      reinterpret_cast<char*>(&uuid_)) + sizeof(death_));
+      reinterpret_cast<char*>(&deathreason_) -
+      reinterpret_cast<char*>(&uuid_)) + sizeof(deathreason_));
 }
 
 PBBalanceHeroServer::~PBBalanceHeroServer() {
@@ -3599,8 +3639,8 @@ void PBBalanceHeroServer::Clear() {
   character_.Clear();
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&uuid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&death_) -
-      reinterpret_cast<char*>(&uuid_)) + sizeof(death_));
+      reinterpret_cast<char*>(&deathreason_) -
+      reinterpret_cast<char*>(&uuid_)) + sizeof(deathreason_));
   _internal_metadata_.Clear();
 }
 
@@ -3836,6 +3876,20 @@ bool PBBalanceHeroServer::MergePartialFromCodedStream(
         break;
       }
 
+      // uint32 deathreason = 21;
+      case 21: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(168u /* 168 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &deathreason_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -4059,6 +4113,11 @@ void PBBalanceHeroServer::SerializeWithCachedSizes(
             20, *entry, output);
       }
     }
+  }
+
+  // uint32 deathreason = 21;
+  if (this->deathreason() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(21, this->deathreason(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -4289,6 +4348,11 @@ void PBBalanceHeroServer::SerializeWithCachedSizes(
     }
   }
 
+  // uint32 deathreason = 21;
+  if (this->deathreason() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(21, this->deathreason(), target);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
@@ -4432,6 +4496,13 @@ size_t PBBalanceHeroServer::ByteSizeLong() const {
     total_size += 1 + 1;
   }
 
+  // uint32 deathreason = 21;
+  if (this->deathreason() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->deathreason());
+  }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -4494,6 +4565,9 @@ void PBBalanceHeroServer::MergeFrom(const PBBalanceHeroServer& from) {
   if (from.death() != 0) {
     set_death(from.death());
   }
+  if (from.deathreason() != 0) {
+    set_deathreason(from.deathreason());
+  }
 }
 
 void PBBalanceHeroServer::CopyFrom(const ::google::protobuf::Message& from) {
@@ -4535,6 +4609,7 @@ void PBBalanceHeroServer::InternalSwap(PBBalanceHeroServer* other) {
   swap(beginlevel_, other->beginlevel_);
   swap(endlevel_, other->endlevel_);
   swap(death_, other->death_);
+  swap(deathreason_, other->deathreason_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 

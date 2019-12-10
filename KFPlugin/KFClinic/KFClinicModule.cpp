@@ -183,8 +183,8 @@ namespace KFrame
             return _invalid_string;
         }
 
-        auto param1 = kfformulasetting->_params[0]->_int_value;
-        auto param2 = kfformulasetting->_params[1]->_int_value;
+        auto param1 = kfformulasetting->_params[0]->_double_value;
+        auto param2 = kfformulasetting->_params[1]->_double_value;
 
         auto moneycount = static_cast<uint32>(
                               std::round(

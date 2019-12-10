@@ -4,11 +4,11 @@
 		<Plugin Name="KFBus" Config=""/>
 		<Plugin Name="KFIpAddress" Config=""/>
 		<Plugin Name="KFConfig" Config=""/>
-		<Plugin Name="KFTimer" Config=""/>
 		<Plugin Name="KFHttpClient" Config=""/>
 		<Plugin Name="KFTcpClient" Config=""/>
 		<Plugin Name="KFMessage" Config=""/>
 		<Plugin Name="KFClusterClient" Config=""/>
 		<Plugin Name="KFRouteClient" Config=""/>
+		<Plugin Name="KFTimer" Config=""/>
 	</Plugins>
 </Setting>
