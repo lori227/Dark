@@ -117,7 +117,7 @@ namespace KFrame
 
         // 计算物品数量
         auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
-        auto itemcount = kfelementobject->CalcValue( kfparent->_class_setting, __STRING__( count ), multiple );
+        auto itemcount = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( count ), multiple );
         if ( itemcount == _invalid_int || kfelementobject->_config_id == _invalid_int )
         {
             return false;
@@ -328,7 +328,7 @@ namespace KFrame
         }
 
         // 计算物品数量
-        auto itemcount = kfelementobject->CalcValue( kfparent->_class_setting, __STRING__( count ), multiple );
+        auto itemcount = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( count ), multiple );
         if ( itemcount == _invalid_int )
         {
             return __LOG_ERROR_FUNCTION__( function, line, "item id=[{}] count = 0!", kfelementobject->_config_id );
@@ -340,10 +340,11 @@ namespace KFrame
         // 自动打开的礼包
         if ( kfsetting->_type == KFItemEnum::Gift && kfparent->_data_setting->_name == __STRING__( gift ) && kfsetting->_auto_use != 0u )
         {
+            kfresult->AddResult( kfsetting->_id, kfparent->_data_setting->_name, __STRING__( count ), itemcount );
+
             // 礼包道具 进入仓库自动使用
             if ( !kfsetting->_reward.IsEmpty() )
             {
-                kfresult->AddResult( kfsetting->_id, kfparent->_data_setting->_name, __STRING__( count ), itemcount );
                 player->AddElement( &kfsetting->_reward, __FUNC_LINE__, itemcount );
             }
             else
@@ -356,7 +357,7 @@ namespace KFrame
             if ( kfsetting->_overlay_type == KFItemEnum::OverlayByTime )
             {
                 // 计算时间
-                auto itemtime = kfelementobject->CalcValue( kfparent->_class_setting, __STRING__( time ), multiple );
+                auto itemtime = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( time ), multiple );
                 if ( itemtime == 0u )
                 {
                     return __LOG_ERROR_FUNCTION__( function, line, "time item id=[{}] count = 0!", kfelementobject->_config_id );
@@ -384,17 +385,18 @@ namespace KFrame
         std::list< KFData* > finditem;
         kfparent->Find( kfparent->_data_setting->_config_key_name, kfsetting->_id, finditem, false );
 
+        KFData* kfitem = nullptr;
         if ( !finditem.empty() )
         {
-            auto kfitem = finditem.front();
+            kfitem = finditem.front();
             player->UpdateData( kfitem, __STRING__( time ), KFEnum::Add, count * time );
-
-            kfresult->AddResult( kfsetting->_id, kfitem->_data_setting->_name, __STRING__( count ), count );
         }
         else
         {
-            AddNewItemData( player, kfparent, kfsetting, count, time );
+            kfitem = AddNewItemData( player, kfparent, kfsetting, count, time );
         }
+
+        kfresult->AddResult( kfitem );
     }
 
     void KFItemModule::AddOverlayCountItem( KFEntity* player, KFData* kfparent, KFElementResult* kfresult, const KFItemSetting* kfsetting, uint32 count )
@@ -631,7 +633,7 @@ namespace KFrame
         }
 
         // 判断数量
-        auto itemcount = kfelementobject->CalcValue( kfparent->_class_setting, __STRING__( count ), multiple );
+        auto itemcount = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( count ), multiple );
         if ( itemcount == _invalid_int )
         {
             __LOG_ERROR_FUNCTION__( function, line, "item id=[{}] count = 0!", kfelementobject->_config_id );
@@ -707,7 +709,7 @@ namespace KFrame
             return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no id!", kfelement->_data_name );
         }
 
-        auto itemcount = kfelementobject->CalcValue( kfparent->_class_setting, __STRING__( count ), multiple );
+        auto itemcount = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( count ), multiple );
         if ( itemcount == _invalid_int )
         {
             return __LOG_ERROR_FUNCTION__( function, line, "item id=[{}] count = 0!", kfelementobject->_config_id );

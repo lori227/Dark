@@ -1,4 +1,4 @@
-<root version="2324">
+<root version="2360">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -47,7 +47,6 @@
 	<item name="npcskill" version="1536" />
 	<item name="explorerecord" version="1536" />
 	<item name="battletipstype" version="1536" />
-	<item name="gmcommand" version="1543" />
 	<item name="clinic" version="1559" />
 	<item name="appearance" version="1587" />
 	<item name="goodsweightpool" version="1599" />
@@ -63,7 +62,6 @@
 	<item name="element" version="1754" />
 	<item name="player" version="1754" />
 	<item name="headportrait" version="1803" />
-	<item name="formula" version="1836" />
 	<item name="icon" version="1854" />
 	<item name="itemment" version="1859" />
 	<item name="dialoguetext" version="1872" />
@@ -81,44 +79,46 @@
 	<item name="camptext" version="2020" />
 	<item name="explore" version="2028" />
 	<item name="faction" version="2045" />
-	<item name="meshconfig" version="2052" />
 	<item name="filter" version="2053" />
 	<item name="option" version="2054" />
-	<item name="heroment" version="2059" />
 	<item name="train" version="2067" />
 	<item name="config" version="2067" />
 	<item name="reward" version="2069" />
 	<item name="foodconsume" version="2071" />
 	<item name="worldmaptext" version="2097" />
-	<item name="taskcondition" version="2107" />
 	<item name="itemtext" version="2110" />
 	<item name="dropdata" version="2115" />
-	<item name="prompttext" version="2120" />
 	<item name="pve" version="2121" />
 	<item name="npc" version="2139" />
 	<item name="herogenerate" version="2147" />
 	<item name="dropgroup" version="2152" />
 	<item name="chapter" version="2176" />
-	<item name="minimap" version="2180" />
 	<item name="dialogue" version="2196" />
-	<item name="taskchainrefresh" version="2205" />
 	<item name="herolevel" version="2207" />
 	<item name="buildbasics" version="2215" />
-	<item name="uitext" version="2232" />
-	<item name="tipstext" version="2236" />
 	<item name="itemtype" version="2238" />
-	<item name="tasktext" version="2272" />
-	<item name="taskchain" version="2275" />
-	<item name="task" version="2288" />
-	<item name="buildlevel" version="2294" />
 	<item name="herorace" version="2294" />
-	<item name="technology" version="2303" />
 	<item name="itemweapon" version="2306" />
-	<item name="rolebasetext" version="2309" />
 	<item name="initialprocess" version="2310" />
 	<item name="conditiondefine" version="2317" />
-	<item name="class" version="2317" />
 	<item name="heroweightpool" version="2318" />
 	<item name="heroprofession" version="2322" />
 	<item name="npcgenerate" version="2324" />
+	<item name="buildlevel" version="2326" />
+	<item name="technology" version="2326" />
+	<item name="taskchainrefresh" version="2332" />
+	<item name="taskcondition" version="2339" />
+	<item name="tasktext" version="2339" />
+	<item name="task" version="2341" />
+	<item name="taskchain" version="2342" />
+	<item name="gmcommand" version="2344" />
+	<item name="uitext" version="2347" />
+	<item name="meshconfig" version="2349" />
+	<item name="tipstext" version="2350" />
+	<item name="prompttext" version="2351" />
+	<item name="heroment" version="2353" />
+	<item name="formula" version="2357" />
+	<item name="rolebasetext" version="2358" />
+	<item name="class" version="2359" />
+	<item name="minimap" version="2360" />
 </root>

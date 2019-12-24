@@ -1,4 +1,4 @@
-<root version="2205">
+<root version="2332">
 	<item Id="2001" ResetTime="0" TimerTime="60" Rate="10000" Condition="" ChainId="201" PickupTime="3600" CompleteTime="3600" PickupCost="" />
 	<item Id="2002" ResetTime="0" TimerTime="60" Rate="10000" Condition="" ChainId="202" PickupTime="3600" CompleteTime="3600" PickupCost="" />
 	<item Id="2003" ResetTime="0" TimerTime="60" Rate="10000" Condition="" ChainId="203" PickupTime="3600" CompleteTime="3600" PickupCost="" />
@@ -7,21 +7,4 @@
 	<item Id="2006" ResetTime="0" TimerTime="60" Rate="10000" Condition="" ChainId="206" PickupTime="3600" CompleteTime="3600" PickupCost="[[1,1,900]]" />
 	<item Id="2007" ResetTime="0" TimerTime="60" Rate="10000" Condition="" ChainId="207" PickupTime="3600" CompleteTime="3600" PickupCost="[[1,1,900]]" />
 	<item Id="2008" ResetTime="0" TimerTime="60" Rate="10000" Condition="" ChainId="208" PickupTime="3600" CompleteTime="3600" PickupCost="[[1,1,900]]" />
-	<item Id="1000" ResetTime="107" TimerTime="0" Rate="10000" Condition="" ChainId="100" PickupTime="600" CompleteTime="0" PickupCost="[[1,1,500]]" />
-	<item Id="1001" ResetTime="107" TimerTime="0" Rate="10000" Condition="" ChainId="101" PickupTime="600" CompleteTime="600" PickupCost="[[1,1,700]]" />
-	<item Id="1002" ResetTime="107" TimerTime="0" Rate="10000" Condition="" ChainId="102" PickupTime="600" CompleteTime="600" PickupCost="[[1,1,900]]" />
-	<item Id="1003" ResetTime="107" TimerTime="0" Rate="10000" Condition="" ChainId="103" PickupTime="600" CompleteTime="600" PickupCost="[[1,1,500]]" />
-	<item Id="1004" ResetTime="107" TimerTime="0" Rate="10000" Condition="" ChainId="104" PickupTime="600" CompleteTime="600" PickupCost="[[1,1,700]]" />
-	<item Id="1005" ResetTime="107" TimerTime="0" Rate="10000" Condition="" ChainId="105" PickupTime="600" CompleteTime="600" PickupCost="[[1,1,900]]" />
-	<item Id="1006" ResetTime="107" TimerTime="0" Rate="10000" Condition="" ChainId="106" PickupTime="600" CompleteTime="600" PickupCost="[[1,1,500]]" />
-	<item Id="1007" ResetTime="107" TimerTime="0" Rate="10000" Condition="" ChainId="107" PickupTime="600" CompleteTime="600" PickupCost="[[1,1,700]]" />
-	<item Id="1008" ResetTime="107" TimerTime="0" Rate="10000" Condition="" ChainId="108" PickupTime="600" CompleteTime="600" PickupCost="[[1,1,900]]" />
-	<item Id="1009" ResetTime="107" TimerTime="0" Rate="10000" Condition="" ChainId="109" PickupTime="600" CompleteTime="600" PickupCost="[[1,1,500]]" />
-	<item Id="1010" ResetTime="107" TimerTime="0" Rate="10000" Condition="" ChainId="110" PickupTime="600" CompleteTime="600" PickupCost="[[1,1,700]]" />
-	<item Id="1011" ResetTime="107" TimerTime="0" Rate="10000" Condition="" ChainId="111" PickupTime="600" CompleteTime="600" PickupCost="[[1,1,900]]" />
-	<item Id="1012" ResetTime="107" TimerTime="0" Rate="10000" Condition="" ChainId="112" PickupTime="600" CompleteTime="600" PickupCost="[[1,1,500]]" />
-	<item Id="1013" ResetTime="107" TimerTime="0" Rate="10000" Condition="" ChainId="113" PickupTime="600" CompleteTime="600" PickupCost="[[1,1,700]]" />
-	<item Id="1014" ResetTime="107" TimerTime="0" Rate="10000" Condition="" ChainId="114" PickupTime="600" CompleteTime="600" PickupCost="[[1,1,900]]" />
-	<item Id="1015" ResetTime="107" TimerTime="0" Rate="10000" Condition="" ChainId="115" PickupTime="600" CompleteTime="600" PickupCost="[[1,1,500]]" />
-	<item Id="301" ResetTime="0" TimerTime="60" Rate="10000" Condition="" ChainId="115" PickupTime="600" CompleteTime="600" PickupCost="[[1,1,500]]" />
 </root>

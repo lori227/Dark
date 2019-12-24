@@ -47,6 +47,9 @@ namespace KFrame
         // 获取转职ID
         uint32 GetTransferId( uint32 childid, uint32 parentid );
 
+        // 通过子职业获取父职业
+        uint32 GetParentPro( uint32 childpro );
+
     protected:
         // 读取配置
         virtual void ReadSetting( KFNode& xmlnode, KFTransferSetting* kfsetting );

@@ -208,9 +208,15 @@ namespace KFrame
 
         // 判断包裹是否满子
         auto kfitemrecord = FindWeaponRecord( player );
-        if ( kfitemrecord->Size() >= kfitemrecord->MaxSize() )
+
+        auto kftargetweapon = kftargethero->Find( __STRING__( weapon ) );
+        if ( kftargetweapon != nullptr && kftargetweapon->GetKeyID() != 0u )
         {
-            return _kf_display->SendToClient( player, KFMsg::ItemBagFull );
+            // 目标英雄有装备武器需要判断背包是否已满
+            if ( kfitemrecord->Size() >= kfitemrecord->MaxSize() )
+            {
+                return _kf_display->SendToClient( player, KFMsg::ItemBagFull );
+            }
         }
 
         // 更换同步顺序, 武器是先移除, 然后会update到英雄身上

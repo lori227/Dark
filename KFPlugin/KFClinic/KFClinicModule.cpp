@@ -387,7 +387,7 @@ namespace KFrame
         auto curnum = kfclinic->Get<uint32>( __STRING__( num ) );
 
         auto kfelementobject = reinterpret_cast<KFElementObject*>( kfelement );
-        auto totalnum = kfelementobject->CalcValue( kfparent->_class_setting, __STRING__( num ), multiple );
+        auto totalnum = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( num ), multiple );
         auto maxnum = GetClinicMaterialsMaxNum( player, kfsetting );
         totalnum = __MIN__( totalnum, maxnum - curnum );
 

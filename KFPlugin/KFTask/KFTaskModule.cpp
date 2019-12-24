@@ -62,15 +62,15 @@ namespace KFrame
         }
 
         // 任务状态
-        auto status = kfelementobject->CalcValue( kfparent->_class_setting, __STRING__( status ), 1.0f );
+        auto status = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( status ), 1.0f );
         if ( status == KFMsg::InitStatus )
         {
             return __LOG_ERROR_FUNCTION__( function, line, "task id=[{}] status = 0!", kfelementobject->_config_id );
         }
 
-        auto taskchainid = kfelementobject->CalcValue( kfparent->_class_setting, __STRING__( chain ), 1.0f );
-        auto order = kfelementobject->CalcValue( kfparent->_class_setting, __STRING__( order ), 1.0f );
-        auto time = kfelementobject->CalcValue( kfparent->_class_setting, __STRING__( time ), 1.0f );
+        auto taskchainid = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( chain ), 1.0f );
+        auto order = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( order ), 1.0f );
+        auto time = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( time ), 1.0f );
         if ( time != 0u )
         {
             time += KFGlobal::Instance()->_real_time;

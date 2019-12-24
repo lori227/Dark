@@ -92,6 +92,8 @@ namespace KFrame
         // 计算初始属性
         uint32 CalcHeroInitAttribute( KFData* kffighter, uint32 initvalue, uint32 racevalue, uint32 professionvalue, uint32 growthvalue, uint32 level );
 
+        // 添加默认转职数据
+        void AddTransferData( KFEntity* player, KFData* kfhero, uint32 profession, uint32 classlv );
     private:
         // 玩家组件上下文
         KFComponent* _kf_component = nullptr;

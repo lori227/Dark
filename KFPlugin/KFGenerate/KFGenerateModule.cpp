@@ -404,6 +404,14 @@ namespace KFrame
             return nullptr;
         }
         kfprofession->Set( professionid );
+
+        // 职业等级
+        kfhero->Set( __STRING__( classlv ), kfprofessionsetting->_class_lv );
+        if ( kfprofessionsetting->_class_lv > 1u )
+        {
+            // 高阶职业添加转职信息
+            AddTransferData( player, kfhero, professionid, kfprofessionsetting->_class_lv );
+        }
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         if ( sex == KFMsg::UnknowSex )
@@ -569,6 +577,43 @@ namespace KFrame
                 auto value = KFGlobal::Instance()->RandDouble( kfsetting->_min_value, kfsetting->_max_value );
                 kfdata->Set< int64 >( value * KFRandEnum::TenThousand );
             }
+        }
+    }
+
+    void KFGenerateModule::AddTransferData( KFEntity* player, KFData* kfhero, uint32 profession, uint32 classlv )
+    {
+        UInt32Vector prolist;
+
+        for ( uint32 i = 1u; i < classlv; i++ )
+        {
+            profession = KFTransferConfig::Instance()->GetParentPro( profession );
+            if ( profession == _invalid_int )
+            {
+                break;
+            }
+
+            prolist.emplace( prolist.begin(), profession );
+        }
+
+        auto kftransferrecord = kfhero->Find( __STRING__( transfer ) );
+
+        for ( auto iter : prolist )
+        {
+            auto weapontypelist = KFProfessionConfig::Instance()->FindSetting( iter )->_weapon_type_list;
+            if ( weapontypelist.size() == 0 )
+            {
+                continue;
+            }
+
+            uint32 weapontype = *( weapontypelist.begin() );
+
+            auto kftransfer = player->CreateData( kftransferrecord );
+            auto index = kftransferrecord->Size() + 1;
+            kftransfer->Set( __STRING__( index ), index );
+            kftransfer->Set( __STRING__( profession ), iter );
+            kftransfer->Set( __STRING__( weapontype ), weapontype );
+
+            player->AddData( kftransferrecord, index, kftransfer );
         }
     }
 
@@ -1011,6 +1056,11 @@ namespace KFrame
 
         auto kfdataarray = kfhero->Find( dataname );
         if ( kfdataarray == nullptr )
+        {
+            return randindex;
+        }
+
+        if ( kfdataarray->IsFull() )
         {
             return randindex;
         }

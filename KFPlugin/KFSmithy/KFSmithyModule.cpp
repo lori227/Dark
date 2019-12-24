@@ -175,7 +175,7 @@ namespace KFrame
         auto curnum = kfsmithy->Get<uint32>( __STRING__( totalnum ) );
 
         auto kfelementobject = reinterpret_cast<KFElementObject*>( kfelement );
-        auto totalnum = kfelementobject->CalcValue( kfparent->_class_setting, __STRING__( totalnum ), multiple );
+        auto totalnum = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( totalnum ), multiple );
 
         totalnum = __MIN__( totalnum, kfsetting->_store_max - curnum );
         player->UpdateData( kfsmithy, __STRING__( totalnum ), KFEnum::Add, totalnum );

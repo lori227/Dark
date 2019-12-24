@@ -101,7 +101,7 @@ namespace KFrame
             return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no id!", kfelement->_data_name );
         }
 
-        auto order = kfelementobject->CalcValue( kfparent->_class_setting, __STRING__( order ), 1.0f );
+        auto order = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( order ), 1.0f );
         OpenTaskChain( player, kfelementobject->_config_id, order, 0u, 0u, __FUNC_LINE__ );
     }
 

@@ -1,10 +1,10 @@
-<root version="2059">
+<root version="2353">
 	<item Name="defaultprofession" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="defaultbackground" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="generatedirectattribute" Key="" Value="9" Channel="0" Service="0" />
 	<item Name="generaterandattribute" Key="" Value="2" Channel="0" Service="0" />
 	<item Name="maxdip" Key="" Value="1000" Channel="0" Service="0" />
-	<item Name="maxherocount" Key="" Value="6" Channel="0" Service="0" />
+	<item Name="maxherocount" Key="" Value="12" Channel="0" Service="0" />
 	<item Name="maxherolevel" Key="" Value="30" Channel="0" Service="0" />
 	<item Name="maxactivecount" Key="" Value="20" Channel="0" Service="0" />
 	<item Name="maxinnatecount" Key="" Value="4" Channel="0" Service="0" />

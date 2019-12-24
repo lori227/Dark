@@ -46,4 +46,18 @@ namespace KFrame
     {
         return childid * 10000u + parentid;
     }
+
+    uint32 KFTransferConfig::GetParentPro( uint32 childpro )
+    {
+        for ( auto& iter : _settings._objects )
+        {
+            auto kfsetting = iter.second;
+            if ( kfsetting->_child_id == childpro )
+            {
+                return kfsetting->_parent_id;
+            }
+        }
+
+        return _invalid_int;
+    }
 }

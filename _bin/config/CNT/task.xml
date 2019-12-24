@@ -1,4 +1,4 @@
-<root version="2288">
+<root version="2341">
 	<item Id="21101001" Type="1" Active="1" CompleteMode="1" PreCondition="" PlaceCondition="" CompleteCondition="31011001" ExecuteName="drop" ExecuteParam1="5110001" ExecuteParam2="" ExecuteParam3="" ExecuteParam4="" />
 	<item Id="21101002" Type="1" Active="1" CompleteMode="1" PreCondition="" PlaceCondition="" CompleteCondition="32000001" ExecuteName="" ExecuteParam1="" ExecuteParam2="" ExecuteParam3="" ExecuteParam4="" />
 	<item Id="21101003" Type="1" Active="1" CompleteMode="1" PreCondition="" PlaceCondition="" CompleteCondition="31011002" ExecuteName="" ExecuteParam1="" ExecuteParam2="" ExecuteParam3="" ExecuteParam4="" />
@@ -101,4 +101,6 @@
 	<item Id="8000130" Type="0" Active="1" CompleteMode="1" PreCondition="" PlaceCondition="" CompleteCondition="" ExecuteName="dialogue" ExecuteParam1="8000130" ExecuteParam2="" ExecuteParam3="" ExecuteParam4="" />
 	<item Id="8000131" Type="0" Active="1" CompleteMode="1" PreCondition="" PlaceCondition="" CompleteCondition="" ExecuteName="dialogue" ExecuteParam1="8000131" ExecuteParam2="" ExecuteParam3="" ExecuteParam4="" />
 	<item Id="994" Type="4" Active="1" CompleteMode="1" PreCondition="" PlaceCondition="" CompleteCondition="994" ExecuteName="drop" ExecuteParam1="5900002" ExecuteParam2="" ExecuteParam3="" ExecuteParam4="" />
+	<item Id="22000003" Type="0" Active="1" CompleteMode="1" PreCondition="" PlaceCondition="" CompleteCondition="32000027" ExecuteName="" ExecuteParam1="" ExecuteParam2="" ExecuteParam3="" ExecuteParam4="" />
+	<item Id="22000004" Type="2" Active="1" CompleteMode="0" PreCondition="" PlaceCondition="" CompleteCondition="" ExecuteName="drop" ExecuteParam1="5900002" ExecuteParam2="" ExecuteParam3="" ExecuteParam4="" />
 </root>
