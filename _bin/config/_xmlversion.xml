@@ -1,4 +1,4 @@
-<root version="2360">
+<root version="2364">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -90,7 +90,6 @@
 	<item name="dropdata" version="2115" />
 	<item name="pve" version="2121" />
 	<item name="npc" version="2139" />
-	<item name="herogenerate" version="2147" />
 	<item name="dropgroup" version="2152" />
 	<item name="chapter" version="2176" />
 	<item name="dialogue" version="2196" />
@@ -106,11 +105,9 @@
 	<item name="npcgenerate" version="2324" />
 	<item name="buildlevel" version="2326" />
 	<item name="technology" version="2326" />
-	<item name="taskchainrefresh" version="2332" />
 	<item name="taskcondition" version="2339" />
 	<item name="tasktext" version="2339" />
 	<item name="task" version="2341" />
-	<item name="taskchain" version="2342" />
 	<item name="gmcommand" version="2344" />
 	<item name="uitext" version="2347" />
 	<item name="meshconfig" version="2349" />
@@ -121,4 +118,7 @@
 	<item name="rolebasetext" version="2358" />
 	<item name="class" version="2359" />
 	<item name="minimap" version="2360" />
+	<item name="taskchainrefresh" version="2362" />
+	<item name="taskchain" version="2363" />
+	<item name="herogenerate" version="2364" />
 </root>

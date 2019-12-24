@@ -1,10 +1,10 @@
-<root version="2332">
-	<item Id="2001" ResetTime="0" TimerTime="60" Rate="10000" Condition="" ChainId="201" PickupTime="3600" CompleteTime="3600" PickupCost="" />
-	<item Id="2002" ResetTime="0" TimerTime="60" Rate="10000" Condition="" ChainId="202" PickupTime="3600" CompleteTime="3600" PickupCost="" />
-	<item Id="2003" ResetTime="0" TimerTime="60" Rate="10000" Condition="" ChainId="203" PickupTime="3600" CompleteTime="3600" PickupCost="" />
-	<item Id="2004" ResetTime="0" TimerTime="60" Rate="10000" Condition="" ChainId="204" PickupTime="3600" CompleteTime="3600" PickupCost="[[1,1,700]]" />
-	<item Id="2005" ResetTime="0" TimerTime="60" Rate="10000" Condition="" ChainId="205" PickupTime="3600" CompleteTime="3600" PickupCost="[[1,1,700]]" />
-	<item Id="2006" ResetTime="0" TimerTime="60" Rate="10000" Condition="" ChainId="206" PickupTime="3600" CompleteTime="3600" PickupCost="[[1,1,900]]" />
-	<item Id="2007" ResetTime="0" TimerTime="60" Rate="10000" Condition="" ChainId="207" PickupTime="3600" CompleteTime="3600" PickupCost="[[1,1,900]]" />
-	<item Id="2008" ResetTime="0" TimerTime="60" Rate="10000" Condition="" ChainId="208" PickupTime="3600" CompleteTime="3600" PickupCost="[[1,1,900]]" />
+<root version="2362">
+	<item Id="2001" ResetTime="0" TimerTime="28800" Rate="10000" Condition="" ChainId="201" PickupTime="28800" CompleteTime="28800" PickupCost="" />
+	<item Id="2002" ResetTime="0" TimerTime="28800" Rate="10000" Condition="" ChainId="202" PickupTime="28800" CompleteTime="28800" PickupCost="" />
+	<item Id="2003" ResetTime="0" TimerTime="28800" Rate="10000" Condition="" ChainId="203" PickupTime="28800" CompleteTime="28800" PickupCost="" />
+	<item Id="2004" ResetTime="0" TimerTime="28800" Rate="10000" Condition="" ChainId="204" PickupTime="28800" CompleteTime="28800" PickupCost="[[1,1,700]]" />
+	<item Id="2005" ResetTime="0" TimerTime="28800" Rate="10000" Condition="" ChainId="205" PickupTime="28800" CompleteTime="28800" PickupCost="[[1,1,700]]" />
+	<item Id="2006" ResetTime="0" TimerTime="28800" Rate="10000" Condition="" ChainId="206" PickupTime="28800" CompleteTime="28800" PickupCost="[[1,1,900]]" />
+	<item Id="2007" ResetTime="0" TimerTime="28800" Rate="10000" Condition="" ChainId="207" PickupTime="28800" CompleteTime="28800" PickupCost="[[1,1,900]]" />
+	<item Id="2008" ResetTime="0" TimerTime="28800" Rate="10000" Condition="" ChainId="208" PickupTime="28800" CompleteTime="28800" PickupCost="[[1,1,900]]" />
 </root>

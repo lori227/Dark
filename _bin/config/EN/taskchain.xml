@@ -1,7 +1,7 @@
-<root version="2342">
-	<item Id="1" Order="1" Weight="0" Task="21101001" TaskStatus="2" LogicName="chapter" LogicId="11001" LogicStatus="1" FinishStatus="2" ExtendChain="116:10000|117:10000|118:10000|119:10000|1002:10000" StartRefresh="2001:10000|2002:10000|2003:10000|2004:10000|2005:10000|2006:10000|2007:10000|2008:10000" StopRefresh="" />
+<root version="2363">
+	<item Id="1" Order="1" Weight="0" Task="21101001" TaskStatus="2" LogicName="chapter" LogicId="11001" LogicStatus="1" FinishStatus="2" ExtendChain="1002:10000" StartRefresh="" StopRefresh="" />
 	<item Id="1" Order="2" Weight="0" Task="8000101" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
-	<item Id="1" Order="3" Weight="0" Task="21101002" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="2001:10000|2002:10000|2003:10000" />
+	<item Id="1" Order="3" Weight="0" Task="21101002" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
 	<item Id="1" Order="4" Weight="0" Task="8000102" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
 	<item Id="1" Order="5" Weight="0" Task="21101003" TaskStatus="2" LogicName="chapter" LogicId="11002" LogicStatus="3" FinishStatus="4" ExtendChain="" StartRefresh="" StopRefresh="" />
 	<item Id="1" Order="6" Weight="0" Task="8000103" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
@@ -51,16 +51,16 @@
 	<item Id="1" Order="50" Weight="0" Task="21101027" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
 	<item Id="1" Order="51" Weight="0" Task="8000125" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
 	<item Id="1" Order="52" Weight="0" Task="21101028" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
-	<item Id="1" Order="53" Weight="0" Task="21101029" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="16:10000" StartRefresh="" StopRefresh="" />
+	<item Id="1" Order="53" Weight="0" Task="21101029" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="16:10000" StartRefresh="2001:10000|2002:10000|2003:10000" StopRefresh="" />
 	<item Id="1" Order="54" Weight="0" Task="21101030" TaskStatus="2" LogicName="chapter" LogicId="11015" LogicStatus="29" FinishStatus="30" ExtendChain="" StartRefresh="" StopRefresh="" />
 	<item Id="1" Order="55" Weight="0" Task="8000127" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
 	<item Id="1" Order="56" Weight="0" Task="21101031" TaskStatus="2" LogicName="chapter" LogicId="11016" LogicStatus="31" FinishStatus="32" ExtendChain="" StartRefresh="" StopRefresh="" />
 	<item Id="1" Order="57" Weight="0" Task="8000128" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
 	<item Id="1" Order="58" Weight="0" Task="21101032" TaskStatus="2" LogicName="chapter" LogicId="11017" LogicStatus="33" FinishStatus="34" ExtendChain="" StartRefresh="" StopRefresh="" />
 	<item Id="1" Order="59" Weight="0" Task="8000129" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
-	<item Id="1" Order="60" Weight="0" Task="21101033" TaskStatus="2" LogicName="chapter" LogicId="11018" LogicStatus="509" FinishStatus="510" ExtendChain="17:10000|18:10000" StartRefresh="" StopRefresh="" />
+	<item Id="1" Order="60" Weight="0" Task="21101033" TaskStatus="2" LogicName="chapter" LogicId="11018" LogicStatus="509" FinishStatus="510" ExtendChain="17:10000|18:10000" StartRefresh="2004:10000|2005:10000" StopRefresh="" />
 	<item Id="1" Order="61" Weight="0" Task="8000130" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
-	<item Id="1" Order="62" Weight="0" Task="21101034" TaskStatus="2" LogicName="chapter" LogicId="11019" LogicStatus="37" FinishStatus="38" ExtendChain="19:10000|20:10000" StartRefresh="" StopRefresh="" />
+	<item Id="1" Order="62" Weight="0" Task="21101034" TaskStatus="2" LogicName="chapter" LogicId="11019" LogicStatus="37" FinishStatus="38" ExtendChain="19:10000|20:10000" StartRefresh="2006:10000|2007:10000|2008:10000" StopRefresh="" />
 	<item Id="1" Order="63" Weight="0" Task="8000131" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
 	<item Id="11" Order="1" Weight="0" Task="21201" TaskStatus="1" LogicName="chapter" LogicId="12012" LogicStatus="601" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
 	<item Id="12" Order="1" Weight="0" Task="21202" TaskStatus="1" LogicName="chapter" LogicId="12015" LogicStatus="301" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
