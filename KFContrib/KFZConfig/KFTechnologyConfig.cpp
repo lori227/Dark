@@ -7,6 +7,7 @@ namespace KFrame
     {
         kfsetting->_status = xmlnode.GetUInt32( "Status" );
         kfsetting->_build_id = xmlnode.GetUInt32( "BuildingId" );
+        kfsetting->_type = xmlnode.GetUInt32( "Type" );
 
         auto conditionstr = xmlnode.GetString( "Condition" );
         KFReadSetting::ParseConditionList( conditionstr, kfsetting->_pre_technology );

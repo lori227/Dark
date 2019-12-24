@@ -21,7 +21,7 @@ namespace KFrame
         virtual uint32 GetCanAddItemCount( KFEntity* player, uint32 itemid, uint32 num ) = 0;
 
         // 获取物品自动操作类型
-        virtual uint32 GetItemAutoType( KFData* kfitem ) = 0;
+        virtual uint32 GetItemAutoType( uint32 itemid ) = 0;
 
         // 查找空的格子存放道具
         virtual uint32 FindItemEmptyIndex( KFEntity* player, KFData* kfitemrecord ) = 0;

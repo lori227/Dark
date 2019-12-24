@@ -6,9 +6,9 @@ namespace KFrame
     {
         _kf_component = _kf_kernel->FindComponent( __STRING__( player ) );
         __REGISTER_ADD_ELEMENT__( __STRING__( recruit ), &KFRecruitModule::AddRecruitHeroElement );
+        __REGISTER_REMOVE_DATA_1__( __STRING__( hero ), &KFRecruitModule::OnRemoveHero );
         __REGISTER_UPDATE_DATA_1__( __STRING__( recruitcount ), &KFRecruitModule::OnRecruitCountUpdateCallBack );
         __REGISTER_ADD_DATA_2__( __STRING__( build ), KFMsg::RecruitBuild, &KFRecruitModule::OnAddRecruitBuild );
-        __REGISTER_REMOVE_DATA_1__( __STRING__( hero ), &KFRecruitModule::OnRemoveHero );
 
         __REGISTER_ENTER_PLAYER__( &KFRecruitModule::OnEnterRecruitModule );
         __REGISTER_LEAVE_PLAYER__( &KFRecruitModule::OnLeaveRecruitModule );
@@ -39,8 +39,8 @@ namespace KFrame
         __UN_AFTER_ENTER_PLAYER__();
 
         __UN_ADD_ELEMENT__( __STRING__( recruit ) );
-        __UN_UPDATE_DATA_1__( __STRING__( recruitcount ) );
         __UN_REMOVE_DATA_1__( __STRING__( hero ) );
+        __UN_UPDATE_DATA_1__( __STRING__( recruitcount ) );
         __UN_ADD_DATA_2__( __STRING__( build ), KFMsg::RecruitBuild );
 
         __UN_EXECUTE__( __STRING__( recruitdivisor ) );
@@ -60,10 +60,10 @@ namespace KFrame
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     __KF_ADD_ELEMENT_FUNCTION__( KFRecruitModule::AddRecruitHeroElement )
     {
+        auto kfelement = kfresult->_element;
         if ( !kfelement->IsObject() )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object!", kfelement->_data_name );
-            return std::make_tuple( KFDataDefine::Show_None, nullptr );
+            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object!", kfelement->_data_name );
         }
 
         auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
@@ -71,26 +71,21 @@ namespace KFrame
         auto kfgenerate = objvalue->_element->_values.Find( __STRING__( id ) );
         if ( kfgenerate == nullptr )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not generateid!", kfelement->_data_name );
-            return std::make_tuple( KFDataDefine::Show_None, nullptr );
+            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not generateid!", kfelement->_data_name );
         }
 
-        auto generateid = kfgenerate->CalcUseValue( nullptr, 1.0f );
-        auto kfrecruit = _kf_kernel->CreateObject( kfparent->_data_setting );
+        auto kfrecruit = player->CreateData( kfparent );
         auto kfhero = kfrecruit->Find( __STRING__( hero ) );
+        auto generateid = kfgenerate->CalcUseValue( nullptr, 1.0f );
         auto rethero = _kf_generate->GeneratePlayerHero( player, kfhero, generateid );
         if ( rethero == nullptr )
         {
-            _kf_kernel->ReleaseObject( kfrecruit );
-        }
-        else
-        {
-            // 添加到招募列表
-            auto uuid = KFGlobal::Instance()->STMakeUUID( __STRING__( hero ) );
-            player->AddData( kfparent, uuid, kfrecruit );
+            return;
         }
 
-        return std::make_tuple( KFDataDefine::Show_None, nullptr );
+        // 添加到招募列表
+        auto uuid = KFGlobal::Instance()->STMakeUUID( __STRING__( hero ) );
+        player->AddData( kfparent, uuid, kfrecruit );
     }
 
     __KF_ADD_DATA_FUNCTION__( KFRecruitModule::OnAddRecruitBuild )
@@ -257,6 +252,8 @@ namespace KFrame
                 player->UpdateData( __STRING__( recruitcount ), KFEnum::Dec, 1u );
             }
         }
+
+        _kf_display->SendToClient( player, KFMsg::HeroRecruitRefreshSuc );
     }
 
     void KFRecruitModule::RefreshRecruitFreeHero( KFEntity* player, uint32 herocount )
@@ -299,8 +296,8 @@ namespace KFrame
         }
 
         // 计算招募英雄池和权重
-        MapUInt32 generateweight;
-        auto totalweight = CalcRecruitGenerateWeight( kfeffect, kfrecruitsetting, generateweight );
+        UInt32Map generateweight;
+        auto totalweight = CalcRecruitGenerateWeight( kfeffect, kfrecruitsetting, generateweight, type );
         if ( totalweight == 0u )
         {
             return KFMsg::HeroRecruitRefreshWeight;
@@ -319,7 +316,7 @@ namespace KFrame
                 return KFMsg::DataNotEnough;
             }
             // 扣除资源
-            player->RemoveElement( &kfrecruitsetting->_cost_elements, __FUNC_LINE__ );
+            player->RemoveElement( &kfrecruitsetting->_cost_elements, __STRING__( recruitrefresh ), __FUNC_LINE__ );
         }
 
         // 清空原来的英雄
@@ -355,19 +352,13 @@ namespace KFrame
     uint32 KFRecruitModule::CalcRecruitHeroCount( KFData* kfeffect, const KFRecruitSetting* kfrecruitsetting )
     {
         // 科技效果添加数量
-        auto effectcount = kfeffect->Get<uint32>( __STRING__( recruitcount ) );
-        return __MAX__( effectcount, 4u );
+        return kfeffect->Get<uint32>( __STRING__( recruitcount ) );
     }
 
-    uint32 KFRecruitModule::CalcRecruitGenerateWeight( KFData* kfeffect, const KFRecruitSetting* kfrecruitsetting, MapUInt32& generateweight )
+    uint32 KFRecruitModule::CalcRecruitGenerateWeight( KFData* kfeffect, const KFRecruitSetting* kfrecruitsetting, UInt32Map& generateweight, uint32 type )
     {
         // 配置表中的权重
-#ifdef __KF_DEBUG__
-        MapUInt32 _genterate_weight;
-#else
-        static MapUInt32 _genterate_weight;
-        if ( _genterate_weight.empty() )
-#endif
+        UInt32Map _genterate_weight;
         {
             auto kftechnologysetting = KFTechnologyConfig::Instance()->FindSetting( kfrecruitsetting->_generate_technology_id );
             if ( kftechnologysetting == nullptr )
@@ -396,8 +387,13 @@ namespace KFrame
         auto kfweightrecord = kfeffect->Find( __STRING__( recruitweight ) );
         for ( auto& iter : _genterate_weight )
         {
-            auto effectvalue = kfweightrecord->Get<uint32>( iter.first, kfweightrecord->_data_setting->_value_key_name );
-            auto weight = iter.second + effectvalue;
+            auto weight = iter.second;
+            if ( type != KFMsg::RefreshByFree )
+            {
+                // 科技不影响免费刷新
+                auto effectvalue = kfweightrecord->Get<uint32>( iter.first, kfweightrecord->_data_setting->_value_key_name );
+                weight += effectvalue;
+            }
 
             totalweight += weight;
             generateweight[ iter.first ] = weight;
@@ -413,9 +409,9 @@ namespace KFrame
         return KFGlobal::Instance()->RandRange( minlevel, maxlevel, 1u );
     }
 
-    SetUInt32& KFRecruitModule::CalcRecruitHeroProfession( KFData* kfeffect )
+    UInt32Set& KFRecruitModule::CalcRecruitHeroProfession( KFData* kfeffect )
     {
-        static SetUInt32 _profession_list;
+        static UInt32Set _profession_list;
         _profession_list.clear();
 
         auto kfrecord = kfeffect->Find( __STRING__( recruitprofession ) );
@@ -475,17 +471,17 @@ namespace KFrame
     }
 
     void KFRecruitModule::GenerateRecruitHero( KFEntity* player, KFData* kfeffect, KFData* kfrecruitrecord, uint32 generateid,
-            const DivisorList& divisorlist, const SetUInt32& professionlist, uint32 mingrowth, uint32 maxgrowth )
+            const DivisorList& divisorlist, const UInt32Set& professionlist, uint32 mingrowth, uint32 maxgrowth )
     {
         // 计算招募等级
         uint32 level = CalcRecruitHeroLevel( kfeffect );
 
-        auto kfrecruit = _kf_kernel->CreateObject( kfrecruitrecord->_data_setting );
+        auto kfrecruit = player->CreateData( kfrecruitrecord );
         auto kfhero = kfrecruit->Find( __STRING__( hero ) );
         auto rethero = _kf_generate->GeneratePlayerHero( player, kfhero, generateid, divisorlist, professionlist, level, mingrowth, maxgrowth );
         if ( rethero == nullptr )
         {
-            return _kf_kernel->ReleaseObject( kfrecruit );
+            return;
         }
 
         // 招募价钱
@@ -632,7 +628,7 @@ namespace KFrame
                 return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
             }
 
-            player->RemoveElement( &costelements, __FUNC_LINE__ );
+            player->RemoveElement( &costelements, __STRING__( recruithero ), __FUNC_LINE__ );
         }
 
         // 招募英雄
@@ -647,7 +643,9 @@ namespace KFrame
 
         // 添加英雄
         player->AddData( kfherorecord, kfmsg.uuid(), kfhero );
-        player->AddDataToShow( __STRING__( recruit ), kfhero, false );
+        player->AddDataToShow( __STRING__( recruit ), kfhero );
+
+        _kf_display->SendToClient( player, KFMsg::HeroRecruitHeroSuc );
     }
 
     __KF_MESSAGE_FUNCTION__( KFRecruitModule::HandleSetRecruitHeroNameReq )

@@ -1,4 +1,4 @@
-<root version="1817">
+<root version="2067">
 	<item Id="redis" Name="redis" FileName="./setting/{}_{}_redis.xml" Reload="0" ClearData="0" ClearFile="0" />
 	<item Id="mongo" Name="mongo" FileName="./setting/{}_{}_mongo.xml" Reload="0" ClearData="0" ClearFile="0" />
 	<item Id="mysql" Name="mysql" FileName="./setting/{}_{}_mysql.xml" Reload="0" ClearData="0" ClearFile="0" />
@@ -59,7 +59,7 @@
 	<item Id="herolevel" Name="herolevel" FileName="./config/herolevel.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="recruit" Name="recruitrefresh" FileName="./config/recruitrefresh.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="divisor" Name="recruitdivisor" FileName="./config/recruitdivisor.xml" Reload="1" ClearData="1" ClearFile="0" />
-	<item Id="traincamp" Name="traincamp" FileName="./config/traincamp.xml" Reload="1" ClearData="1" ClearFile="0" />
+	<item Id="train" Name="train" FileName="./config/train.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="clinic" Name="clinic" FileName="./config/clinic.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="npc" Name="npcgenerate" FileName="./config/npcgenerate.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="npcskill" Name="npcskill" FileName="./config/npcskill.xml" Reload="1" ClearData="1" ClearFile="0" />

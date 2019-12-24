@@ -30,7 +30,6 @@ namespace KFrame
         __FIND_MODULE__( _kf_message, KFMessageInterface );
         __FIND_MODULE__( _kf_display, KFDisplayInterface );
         __FIND_MODULE__( _kf_execute, KFExecuteInterface );
-        __FIND_MODULE__( _kf_command, KFCommandInterface );
         __FIND_MODULE__( _kf_condition, KFConditionInterface );
         __FIND_MODULE__( _kf_task_chain, KFTaskChainInterface );
     }

@@ -26,6 +26,11 @@ namespace KFrame
 
     __KF_ENTER_PLAYER_FUNCTION__( KFHeroTeamModule::OnEnterHeroTeamModule )
     {
+        // 检查队伍里的数据, 如果英雄没在队伍里, 需要清除标记
+        CheckHeroInTeam( player );
+
+        UpdateTeamDeadHero( player );
+
         auto mapid = player->Get<uint32>( __STRING__( mapid ) );
         if ( mapid != 0u )
         {
@@ -33,30 +38,39 @@ namespace KFrame
             return;
         }
 
-        UpdateTeamDeadHero( player );
-
         // 检查并移除耐久度不足的英雄
         RemoveTeamHeroDurability( player );
+
+        // 清空队伍英雄ep
+        ClearTeamHeroEp( player );
     }
 
-    uint32 KFHeroTeamModule::GetTeamIndexById( KFEntity* player, uint64 uuid )
+    void KFHeroTeamModule::CheckHeroInTeam( KFEntity* player )
     {
+        auto kfherorecord = player->Find( __STRING__( hero ) );
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
-        for ( uint32 i = KFDataDefine::Array_Index; i < kfteamarray->Size(); i++ )
+
+        auto heroteamcount = 0u;
+        for ( auto kfhero = kfherorecord->First(); kfhero != nullptr; kfhero = kfherorecord->Next() )
         {
-            auto kfteam = kfteamarray->Find( i );
-            if ( kfteam == nullptr )
+            auto posflag = kfhero->Get<uint32>( __STRING__( posflag ) );
+            if ( posflag != KFMsg::HeroTeam )
             {
                 continue;
             }
 
-            if ( kfteam->Get<uint64>() == uuid )
+            auto index = kfteamarray->GetIndex( kfhero->GetKeyID() );
+            if ( index != 0u )
             {
-                return i;
+                ++heroteamcount;
+            }
+            else
+            {
+                kfhero->Set<uint32>( __STRING__( posflag ), KFMsg::HeroList );
             }
         }
 
-        return 0u;
+        player->Set<uint32>( __STRING__( heroteamcount ), heroteamcount );
     }
 
     uint32 KFHeroTeamModule::GetHeroCount( KFEntity* player )
@@ -70,10 +84,9 @@ namespace KFrame
 
         auto kfherorecord = player->Find( __STRING__( hero ) );
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
-        for ( uint32 i = KFDataDefine::Array_Index; i < kfteamarray->Size(); ++i )
+        for ( auto kfteam = kfteamarray->First(); kfteam != nullptr; kfteam = kfteamarray->Next() )
         {
-            auto uuid = kfteamarray->Get<uint64>( i );
-            auto kfhero = kfherorecord->Find( uuid );
+            auto kfhero = kfherorecord->Find( kfteam->Get<uint64>() );
             if ( kfhero == nullptr || kfhero->Get( __STRING__( fighter ), __STRING__( hp ) ) == 0u )
             {
                 continue;
@@ -91,10 +104,9 @@ namespace KFrame
 
         auto kfherorecord = player->Find( __STRING__( hero ) );
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
-        for ( uint32 i = KFDataDefine::Array_Index; i < kfteamarray->Size(); ++i )
+        for ( auto kfteam = kfteamarray->First(); kfteam != nullptr; kfteam = kfteamarray->Next() )
         {
-            auto uuid = kfteamarray->Get<uint64>( i );
-            auto kfhero = kfherorecord->Find( uuid );
+            auto kfhero = kfherorecord->Find( kfteam->Get<uint64>() );
             if ( kfhero == nullptr || kfhero->Get( __STRING__( fighter ), __STRING__( hp ) ) != 0u )
             {
                 continue;
@@ -108,12 +120,15 @@ namespace KFrame
 
     void KFHeroTeamModule::UpdateTeamDeadHero( KFEntity* player )
     {
+        // 随机死亡性格池
+        static auto _option = _kf_option->FindOption( "roledeath_characterpool" );
+
         auto kfherorecord = player->Find( __STRING__( hero ) );
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
-        for ( uint32 i = KFDataDefine::Array_Index; i < kfteamarray->Size(); ++i )
+
+        for ( auto kfteam = kfteamarray->First(); kfteam != nullptr; kfteam = kfteamarray->Next() )
         {
-            auto uuid = kfteamarray->Get<uint64>( i );
-            auto kfhero = kfherorecord->Find( uuid );
+            auto kfhero = kfherorecord->Find( kfteam->Get<uint64>() );
             if ( kfhero == nullptr )
             {
                 continue;
@@ -125,33 +140,21 @@ namespace KFrame
             {
                 player->UpdateData( kffighter, __STRING__( hp ), KFEnum::Set, 1u );
 
-                // 随机死亡性格池
-                static auto _option = _kf_option->FindOption( "roledeath_characterpool" );
-
-                VectorUInt32 character_pool_list;
+                UInt32Vector character_pool_list;
                 character_pool_list.push_back( _option->_uint32_value );
                 _kf_generate->RandWeightData( player, kfhero, __STRING__( character ), character_pool_list );
-            }
-
-            // 重置ep为0
-            auto ep = kffighter->Get<uint32>( __STRING__( ep ) );
-            if ( ep != 0u )
-            {
-                player->UpdateData( kffighter, __STRING__( ep ), KFEnum::Set, 0u );
             }
         }
     }
 
-    void KFHeroTeamModule::DecTeamHeroDurability( KFEntity* player )
+    void KFHeroTeamModule::DecTeamHeroDurability( KFEntity* player, const UInt64Set& fightheros )
     {
-        auto kfherorecord = player->Find( __STRING__( hero ) );
-        auto kfteamarray = player->Find( __STRING__( heroteam ) );
-        auto decdurabilitycount = _kf_option->FindOption( "roledurability_pveconsume" );
+        static auto decdurabilitycount = _kf_option->FindOption( "roledurability_pveconsume" );
 
-        for ( uint32 i = KFDataDefine::Array_Index; i < kfteamarray->Size(); ++i )
+        auto kfherorecord = player->Find( __STRING__( hero ) );
+        for ( auto& iter : fightheros )
         {
-            auto uuid = kfteamarray->Get<uint64>( i );
-            auto kfhero = kfherorecord->Find( uuid );
+            auto kfhero = kfherorecord->Find( iter );
             if ( kfhero == nullptr )
             {
                 continue;
@@ -167,9 +170,9 @@ namespace KFrame
         auto kfherorecord = player->Find( __STRING__( hero ) );
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
 
-        for ( uint32 i = KFDataDefine::Array_Index; i < kfteamarray->Size(); ++i )
+        for ( auto kfteam = kfteamarray->First(); kfteam != nullptr; kfteam = kfteamarray->Next() )
         {
-            auto uuid = kfteamarray->Get<uint64>( i );
+            auto uuid = kfteam->Get<uint64>();
             auto kfhero = kfherorecord->Find( uuid );
             if ( kfhero == nullptr )
             {
@@ -178,10 +181,36 @@ namespace KFrame
 
             // 获取指定耐久度
             auto durability = kfhero->Get<uint32>( __STRING__( durability ) );
-            if ( durability == 0u )
+            if ( durability != 0u )
             {
-                player->RemoveData( __STRING__( hero ), uuid );
-                __LOG_INFO__( "player=[{}] durability remove hero=[{}]", player->GetKeyID(), uuid );
+                continue;
+            }
+
+            player->RemoveData( kfherorecord, uuid );
+            __LOG_INFO__( "player=[{}] durability remove hero=[{}]", player->GetKeyID(), uuid );
+        }
+    }
+
+    void KFHeroTeamModule::ClearTeamHeroEp( KFEntity* player )
+    {
+        auto kfherorecord = player->Find( __STRING__( hero ) );
+        auto kfteamarray = player->Find( __STRING__( heroteam ) );
+
+        for ( auto kfteam = kfteamarray->First(); kfteam != nullptr; kfteam = kfteamarray->Next() )
+        {
+            auto uuid = kfteam->Get<uint64>();
+            auto kfhero = kfherorecord->Find( uuid );
+            if ( kfhero == nullptr )
+            {
+                continue;
+            }
+
+            // 重置ep为0
+            auto kffighter = kfhero->Find( __STRING__( fighter ) );
+            auto ep = kffighter->Get<uint32>( __STRING__( ep ) );
+            if ( ep != 0u )
+            {
+                player->UpdateData( kffighter, __STRING__( ep ), KFEnum::Set, 0u );
             }
         }
     }
@@ -190,13 +219,14 @@ namespace KFrame
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     __KF_REMOVE_DATA_FUNCTION__( KFHeroTeamModule::OnRemoveHero )
     {
-        auto index = GetTeamIndexById( player, key );
+        auto kfteamarray = player->Find( __STRING__( heroteam ) );
+        auto index = kfteamarray->GetIndex( key );
         if ( index == 0u )
         {
             return;
         }
 
-        player->UpdateData( __STRING__( heroteam ), index, KFEnum::Set, 0u );
+        player->UpdateData( kfteamarray, index, KFEnum::Set, 0u );
         player->UpdateData( __STRING__( heroteamcount ), KFEnum::Dec, 1u );
     }
 
@@ -260,8 +290,10 @@ namespace KFrame
 
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
         if ( kfmsg.oldindex() == kfmsg.newindex() ||
-                kfmsg.oldindex() >= kfteamarray->Size() ||
-                kfmsg.newindex() >= kfteamarray->Size() )
+                kfmsg.oldindex() == 0u ||
+                kfmsg.newindex() == 0u ||
+                kfmsg.oldindex() >= kfteamarray->MaxSize() ||
+                kfmsg.newindex() >= kfteamarray->MaxSize() )
         {
             return _kf_display->SendToClient( player, KFMsg::HeroTeamIndexError );
         }

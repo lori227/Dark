@@ -1,6 +1,6 @@
-<root version="1536">
+<root version="2054">
 	<item Name="disconnettime" Key="" Value="1000" Channel="0" Service="0" />
-	<item Name="playernamelength" Key="" Value="40" Channel="0" Service="0" />
+	<item Name="playernamelength" Key="" Value="15" Channel="0" Service="0" />
 	<item Name="recruitrefreshtime" Key="" Value="0.4" Channel="0" Service="0" />
 	<item Name="recruittime" Key="" Value="0.4" Channel="0" Service="0" />
 	<item Name="transfertime" Key="" Value="0.4" Channel="0" Service="0" />
@@ -14,4 +14,5 @@
 	<item Name="taskpickuptime" Key="" Value="0.4" Channel="0" Service="0" />
 	<item Name="builduplevel" Key="" Value="0.4" Channel="0" Service="0" />
 	<item Name="recruitmentfixedtime" Key="" Value="0" Channel="0" Service="0" />
+	<item Name="playerfirstfight" Key="" Value="11001" Channel="0" Service="0" />
 </root>

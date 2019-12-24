@@ -25,13 +25,20 @@ namespace KFrame
 
         // 逻辑id
         uint32 _logic_type = 0u;
-        VectorUInt32 _logic_id_list;
+        UInt32Vector _logic_id_list;
 
         // 结束状态
         uint32 _finish_status = 0u;
 
         // 附加的任务链
-        MapUInt32 _extend_task_chain_list;
+        UInt32Map _extend_task_chain_list;
+
+        // 附加开启的刷新链
+        UInt32Map _start_refresh_id_list;
+
+        // 附加关闭的刷新链
+        UInt32Map _stop_refresh_id_list;
+
     };
 
     class KFTaskChainSetting : public KFIntSetting
@@ -64,6 +71,12 @@ namespace KFrame
     public:
         // 任务链id
         uint32 _task_chain_id = 0u;
+
+        // 静态刷新时间id
+        uint32 _reset_refresh_time = _invalid_int;
+
+        // 动态刷新间隔时间
+        uint32 _timer_refresh_time = _invalid_int;
 
         // 刷新概率
         uint32 _refresh_rate = 0u;
@@ -112,8 +125,8 @@ namespace KFrame
         virtual void ReadSetting( KFNode& xmlnode, KFTaskChainRefreshSetting* kfsetting );
 
     public:
-        // 刷新时间列表
-        KFHashMap< uint32, uint32, KFTaskChainRefreshTimeData > _refresh_data_list;
+        // 重置刷新时间表
+        KFHashMap< uint32, uint32, KFTaskChainRefreshTimeData > _reset_data_list;
     };
 
 }

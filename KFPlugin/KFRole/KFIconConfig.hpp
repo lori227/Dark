@@ -22,12 +22,25 @@ namespace KFrame
             _file_name = "icon";
         }
 
+        KFIconSetting* GetDedaultIconSetting()
+        {
+            return _dedaulticon;
+        }
+
     protected:
         // 读取配置
         virtual void ReadSetting( KFNode& xmlnode, KFIconSetting* kfsetting )
         {
             kfsetting->_default = xmlnode.GetBoolen( "Default", true );
+            if ( kfsetting->_default && _dedaulticon == nullptr )
+            {
+                _dedaulticon = kfsetting;
+            }
         }
+
+    protected:
+        // 默认头像id
+        KFIconSetting* _dedaulticon;
     };
 }
 

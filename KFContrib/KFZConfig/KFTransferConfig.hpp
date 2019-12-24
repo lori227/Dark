@@ -21,13 +21,13 @@ namespace KFrame
         uint32 _level = 0u;
 
         // 主动技能
-        VectorUInt32 _active_pool_list;
+        UInt32Vector _active_pool_list;
 
         // 性格
-        VectorUInt32 _character_pool_list;
+        UInt32Vector _character_pool_list;
 
         // 天赋
-        VectorUInt32 _innate_pool_list;
+        UInt32Vector _innate_pool_list;
 
         // 消耗
         std::string _cost_str;

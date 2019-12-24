@@ -111,7 +111,7 @@ namespace KFrame
         virtual uint32 GetCanAddItemCount( KFEntity* player, uint32 itemid, uint32 num );
 
         // 获取物品自动操作类型
-        virtual uint32 GetItemAutoType( KFData* kfitem );
+        virtual uint32 GetItemAutoType( uint32 itemid );
 
         // 查找空的格子存放道具
         virtual uint32 FindItemEmptyIndex( KFEntity* player, KFData* kfitemrecord );
@@ -190,16 +190,16 @@ namespace KFrame
         KFData* FindItemRecord( KFEntity* player, const KFItemSetting* kfsetting, uint32 itemcount );
 
         // 添加时间叠加数量
-        void AddOverlayTimeItem( KFEntity* player, KFData* kfparent, KFElementObject* kfelementobject, const KFItemSetting* kfsetting, uint32 count, uint32 time );
+        void AddOverlayTimeItem( KFEntity* player, KFData* kfparent, KFElementResult* kfresult, const KFItemSetting* kfsetting, uint32 count, uint32 time );
 
         // 添加数量叠加道具
-        void AddOverlayCountItem( KFEntity* player, KFData* kfparent, KFElementObject* kfelementobject, const KFItemSetting* kfsetting, uint32 count );
+        void AddOverlayCountItem( KFEntity* player, KFData* kfparent, KFElementResult* kfresult, const KFItemSetting* kfsetting, uint32 count );
 
         // 不能叠加的道具
-        void AddNotOverlayItem( KFEntity* player, KFData* kfparent, KFElementObject* kfelementobject, const KFItemSetting* kfsetting, uint32 count );
+        void AddNotOverlayItem( KFEntity* player, KFData* kfparent, KFElementResult* kfresult, const KFItemSetting* kfsetting, uint32 count );
 
         // 添加新物品
-        KFData* AddNewItemData( KFEntity* player, KFData* kfparent, KFElementObject* kfelementobject, const KFItemSetting* kfsetting, uint32& count, uint32 time );
+        KFData* AddNewItemData( KFEntity* player, KFData* kfparent, const KFItemSetting* kfsetting, uint32& count, uint32 time );
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 调用函数lua函数
         bool CallItemLuaFunction( KFEntity* player, uint32 functiontype, const KFItemSetting* kfsetting, uint32 itemcount );
@@ -252,11 +252,6 @@ namespace KFrame
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 添加物品显示
         bool IsExtendItem( const std::string& name );
-        void AddItemDataToShow( KFEntity* player, KFData* kfitem, const std::string& extendname );
-        void AddItemDataToShow( KFEntity* player, const std::string& modulename, KFData* kfitem, const std::string& extendname );
-
-        void AddItemDataToShow( KFEntity* player, uint64 id, uint64 count, const std::string& extendname );
-        void AddItemDataToShow( KFEntity* player, const std::string& modulename, uint64 id, uint64 count, const std::string& extendname );
 
         // 移动物品显示
         void MoveItemDataToShow( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kftargetrecord, uint64 count );

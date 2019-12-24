@@ -20,11 +20,24 @@ namespace KFrame
             _file_name = "faction";
         }
 
+        KFFactionSetting* GetDedaultFactionSetting()
+        {
+            return _dedaultfaction;
+        }
+
     protected:
         // 读取配置
         virtual void ReadSetting( KFNode& xmlnode, KFFactionSetting* kfsetting )
         {
+            if ( _dedaultfaction == nullptr )
+            {
+                _dedaultfaction = kfsetting;
+            }
         }
+
+    protected:
+        // 默认势力id
+        KFFactionSetting* _dedaultfaction;
     };
 }
 

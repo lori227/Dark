@@ -105,11 +105,11 @@ namespace KFrame
         uint32 CalcRecruitHeroCount( KFData* kfeffect, const KFRecruitSetting* kfrecruitsetting );
 
         // 默认的招募英雄池子和权重
-        uint32 CalcRecruitGenerateWeight( KFData* kfeffect, const KFRecruitSetting* kfrecruitsetting, MapUInt32& generateweight );
+        uint32 CalcRecruitGenerateWeight( KFData* kfeffect, const KFRecruitSetting* kfrecruitsetting, UInt32Map& generateweight, uint32 type );
 
         // 生成招募英雄
         void GenerateRecruitHero( KFEntity* player, KFData* kfeffect, KFData* kfrecruitrecord, uint32 generateid,
-                                  const DivisorList& divisorlist, const SetUInt32& professionlist, uint32 mingrowth, uint32 maxgrowth );
+                                  const DivisorList& divisorlist, const UInt32Set& professionlist, uint32 mingrowth, uint32 maxgrowth );
 
         // 计算招募花费
         void CalcRecruitCostData( KFEntity* player, KFData* kfeffect, KFData* kfrecruit, KFData* kfhero, uint32 generateid, bool update );
@@ -124,7 +124,7 @@ namespace KFrame
         uint32 CalcRecruitHeroLevel( KFData* kfeffect );
 
         // 解锁的职业列表
-        SetUInt32& CalcRecruitHeroProfession( KFData* kfeffect );
+        UInt32Set& CalcRecruitHeroProfession( KFData* kfeffect );
 
         // 计算招募因子
         DivisorList& CalcRecruitHeroDivisor( KFData* kfeffect );

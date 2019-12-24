@@ -150,6 +150,11 @@ class MsgTrainOnekeyReqDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<MsgTrainOnekeyReq>
       _instance;
 } _MsgTrainOnekeyReq_default_instance_;
+class MsgTrainAgainReqDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<MsgTrainAgainReq>
+      _instance;
+} _MsgTrainAgainReq_default_instance_;
 class MsgClinicCureReqDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<MsgClinicCureReq>
@@ -275,6 +280,11 @@ class MsgInteractItemReqDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<MsgInteractItemReq>
       _instance;
 } _MsgInteractItemReq_default_instance_;
+class MsgFightHeroListReqDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<MsgFightHeroListReq>
+      _instance;
+} _MsgFightHeroListReq_default_instance_;
 class MsgUpdateFighterHeroReqDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<MsgUpdateFighterHeroReq>
@@ -330,6 +340,11 @@ class MsgChapterExecuteStatusReqDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<MsgChapterExecuteStatusReq>
       _instance;
 } _MsgChapterExecuteStatusReq_default_instance_;
+class MsgUpdateMainStageReqDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<MsgUpdateMainStageReq>
+      _instance;
+} _MsgUpdateMainStageReq_default_instance_;
 class MsgHeroWeaponReqDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<MsgHeroWeaponReq>
@@ -665,6 +680,20 @@ static void InitDefaultsMsgTrainOnekeyReq() {
 
 LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_MsgTrainOnekeyReq =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsMsgTrainOnekeyReq}, {}};
+
+static void InitDefaultsMsgTrainAgainReq() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::KFMsg::_MsgTrainAgainReq_default_instance_;
+    new (ptr) ::KFMsg::MsgTrainAgainReq();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::KFMsg::MsgTrainAgainReq::InitAsDefaultInstance();
+}
+
+LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_MsgTrainAgainReq =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsMsgTrainAgainReq}, {}};
 
 static void InitDefaultsMsgClinicCureReq() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -1025,6 +1054,20 @@ static void InitDefaultsMsgInteractItemReq() {
 LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_MsgInteractItemReq =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsMsgInteractItemReq}, {}};
 
+static void InitDefaultsMsgFightHeroListReq() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::KFMsg::_MsgFightHeroListReq_default_instance_;
+    new (ptr) ::KFMsg::MsgFightHeroListReq();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::KFMsg::MsgFightHeroListReq::InitAsDefaultInstance();
+}
+
+LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_MsgFightHeroListReq =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsMsgFightHeroListReq}, {}};
+
 static void InitDefaultsMsgUpdateFighterHeroReq() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -1181,6 +1224,20 @@ static void InitDefaultsMsgChapterExecuteStatusReq() {
 LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_MsgChapterExecuteStatusReq =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsMsgChapterExecuteStatusReq}, {}};
 
+static void InitDefaultsMsgUpdateMainStageReq() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::KFMsg::_MsgUpdateMainStageReq_default_instance_;
+    new (ptr) ::KFMsg::MsgUpdateMainStageReq();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::KFMsg::MsgUpdateMainStageReq::InitAsDefaultInstance();
+}
+
+LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_MsgUpdateMainStageReq =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsMsgUpdateMainStageReq}, {}};
+
 static void InitDefaultsMsgHeroWeaponReq() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -1315,6 +1372,7 @@ void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_MsgTrainChangeReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_MsgTrainCleanReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_MsgTrainOnekeyReq.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_MsgTrainAgainReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_MsgClinicCureReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_MsgClinicMedicalFeeReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_MsgClinicMedicalFeeAck.base);
@@ -1340,6 +1398,7 @@ void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_MsgKillNpcReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_MsgUpdateFaithReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_MsgInteractItemReq.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_MsgFightHeroListReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_MsgUpdateFighterHeroReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_MsgSetBuildSkinReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_MsgStartUpgradeBuildReq.base);
@@ -1351,6 +1410,7 @@ void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_MsgQueryRecordReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_MsgQueryRecordAck.base);
   ::google::protobuf::internal::InitSCC(&scc_info_MsgChapterExecuteStatusReq.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_MsgUpdateMainStageReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_MsgHeroWeaponReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_MsgHeroUnWeaponReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_MsgHeroWeaponAnotherReq.base);
@@ -1361,7 +1421,7 @@ void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_MsgSetPlayerFactionReq.base);
 }
 
-::google::protobuf::Metadata file_level_metadata[65];
+::google::protobuf::Metadata file_level_metadata[68];
 const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[1];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
@@ -1501,6 +1561,12 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgTrainOnekeyReq, index_),
   ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgTrainAgainReq, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgTrainAgainReq, index_),
+  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgClinicCureReq, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -1560,6 +1626,8 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgPVEReq, pveid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgPVEReq, battleid_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgPVEReq, modulename_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgPVEReq, mapid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgPVEAck_HeroEntry_DoNotUse, _has_bits_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgPVEAck_HeroEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1596,7 +1664,6 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgPVEBalanceReq, result_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgPVEBalanceReq, truns_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgPVEBalanceReq, herolist_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgPVEBalanceAck, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1672,6 +1739,12 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgInteractItemReq, itemid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgInteractItemReq, field_),
   ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgFightHeroListReq, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgFightHeroListReq, herolist_),
+  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgUpdateFighterHeroReq, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -1742,6 +1815,12 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgChapterExecuteStatusReq, chapterid_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgUpdateMainStageReq, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgUpdateMainStageReq, stageid_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::MsgHeroWeaponReq, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1817,50 +1896,53 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 117, -1, sizeof(::KFMsg::MsgTrainChangeReq)},
   { 124, -1, sizeof(::KFMsg::MsgTrainCleanReq)},
   { 129, -1, sizeof(::KFMsg::MsgTrainOnekeyReq)},
-  { 135, -1, sizeof(::KFMsg::MsgClinicCureReq)},
-  { 141, -1, sizeof(::KFMsg::MsgClinicMedicalFeeReq)},
-  { 147, -1, sizeof(::KFMsg::MsgClinicMedicalFeeAck)},
-  { 153, -1, sizeof(::KFMsg::MsgGranaryGatherReq)},
-  { 158, -1, sizeof(::KFMsg::MsgSmithyGatherReq)},
-  { 163, -1, sizeof(::KFMsg::MsgSmithyMakeReq)},
-  { 170, -1, sizeof(::KFMsg::MsgExploreReq)},
-  { 176, -1, sizeof(::KFMsg::MsgExploreAck)},
-  { 183, -1, sizeof(::KFMsg::MsgExitExploreReq)},
-  { 188, -1, sizeof(::KFMsg::MsgPVEReq)},
-  { 195, 202, sizeof(::KFMsg::MsgPVEAck_HeroEntry_DoNotUse)},
-  { 204, 211, sizeof(::KFMsg::MsgPVEAck_NpcEntry_DoNotUse)},
-  { 213, -1, sizeof(::KFMsg::MsgPVEAck)},
-  { 224, -1, sizeof(::KFMsg::MsgPVEBalanceReq)},
-  { 232, -1, sizeof(::KFMsg::MsgPVEBalanceAck)},
-  { 241, -1, sizeof(::KFMsg::MsgExploreBalanceReq)},
-  { 247, -1, sizeof(::KFMsg::MsgExploreBalanceAck)},
-  { 254, -1, sizeof(::KFMsg::MsgUpdateExplorePlayerReq)},
-  { 260, -1, sizeof(::KFMsg::MsgUpdateExploreNpcReq)},
-  { 266, -1, sizeof(::KFMsg::PBBuffChangeData)},
-  { 274, -1, sizeof(::KFMsg::MsgUpdateExploreBuffAck)},
-  { 280, -1, sizeof(::KFMsg::MsgExploreDropReq)},
-  { 286, -1, sizeof(::KFMsg::MsgKillNpcReq)},
-  { 293, -1, sizeof(::KFMsg::MsgUpdateFaithReq)},
-  { 299, -1, sizeof(::KFMsg::MsgInteractItemReq)},
-  { 306, -1, sizeof(::KFMsg::MsgUpdateFighterHeroReq)},
-  { 312, -1, sizeof(::KFMsg::MsgSetBuildSkinReq)},
-  { 318, -1, sizeof(::KFMsg::MsgStartUpgradeBuildReq)},
-  { 324, -1, sizeof(::KFMsg::MsgOnekeyUpgradeBuildReq)},
-  { 330, -1, sizeof(::KFMsg::MsgUpgradeBuildReq)},
-  { 336, -1, sizeof(::KFMsg::MsgUpgradeTechnologyReq)},
-  { 342, -1, sizeof(::KFMsg::MsgTransferProReq)},
-  { 349, -1, sizeof(::KFMsg::MsgSelectInnateReq)},
-  { 356, -1, sizeof(::KFMsg::MsgQueryRecordReq)},
-  { 363, -1, sizeof(::KFMsg::MsgQueryRecordAck)},
-  { 371, -1, sizeof(::KFMsg::MsgChapterExecuteStatusReq)},
-  { 377, -1, sizeof(::KFMsg::MsgHeroWeaponReq)},
-  { 384, -1, sizeof(::KFMsg::MsgHeroUnWeaponReq)},
-  { 390, -1, sizeof(::KFMsg::MsgHeroWeaponAnotherReq)},
-  { 397, -1, sizeof(::KFMsg::MsgUpdateDurabilityReq)},
-  { 405, -1, sizeof(::KFMsg::MsgDialogueStartAck)},
-  { 411, -1, sizeof(::KFMsg::MsgDialogueFinishReq)},
-  { 417, -1, sizeof(::KFMsg::MsgSetPlayerHeadIconReq)},
-  { 423, -1, sizeof(::KFMsg::MsgSetPlayerFactionReq)},
+  { 135, -1, sizeof(::KFMsg::MsgTrainAgainReq)},
+  { 141, -1, sizeof(::KFMsg::MsgClinicCureReq)},
+  { 147, -1, sizeof(::KFMsg::MsgClinicMedicalFeeReq)},
+  { 153, -1, sizeof(::KFMsg::MsgClinicMedicalFeeAck)},
+  { 159, -1, sizeof(::KFMsg::MsgGranaryGatherReq)},
+  { 164, -1, sizeof(::KFMsg::MsgSmithyGatherReq)},
+  { 169, -1, sizeof(::KFMsg::MsgSmithyMakeReq)},
+  { 176, -1, sizeof(::KFMsg::MsgExploreReq)},
+  { 182, -1, sizeof(::KFMsg::MsgExploreAck)},
+  { 189, -1, sizeof(::KFMsg::MsgExitExploreReq)},
+  { 194, -1, sizeof(::KFMsg::MsgPVEReq)},
+  { 203, 210, sizeof(::KFMsg::MsgPVEAck_HeroEntry_DoNotUse)},
+  { 212, 219, sizeof(::KFMsg::MsgPVEAck_NpcEntry_DoNotUse)},
+  { 221, -1, sizeof(::KFMsg::MsgPVEAck)},
+  { 232, -1, sizeof(::KFMsg::MsgPVEBalanceReq)},
+  { 239, -1, sizeof(::KFMsg::MsgPVEBalanceAck)},
+  { 248, -1, sizeof(::KFMsg::MsgExploreBalanceReq)},
+  { 254, -1, sizeof(::KFMsg::MsgExploreBalanceAck)},
+  { 261, -1, sizeof(::KFMsg::MsgUpdateExplorePlayerReq)},
+  { 267, -1, sizeof(::KFMsg::MsgUpdateExploreNpcReq)},
+  { 273, -1, sizeof(::KFMsg::PBBuffChangeData)},
+  { 281, -1, sizeof(::KFMsg::MsgUpdateExploreBuffAck)},
+  { 287, -1, sizeof(::KFMsg::MsgExploreDropReq)},
+  { 293, -1, sizeof(::KFMsg::MsgKillNpcReq)},
+  { 300, -1, sizeof(::KFMsg::MsgUpdateFaithReq)},
+  { 306, -1, sizeof(::KFMsg::MsgInteractItemReq)},
+  { 313, -1, sizeof(::KFMsg::MsgFightHeroListReq)},
+  { 319, -1, sizeof(::KFMsg::MsgUpdateFighterHeroReq)},
+  { 325, -1, sizeof(::KFMsg::MsgSetBuildSkinReq)},
+  { 331, -1, sizeof(::KFMsg::MsgStartUpgradeBuildReq)},
+  { 337, -1, sizeof(::KFMsg::MsgOnekeyUpgradeBuildReq)},
+  { 343, -1, sizeof(::KFMsg::MsgUpgradeBuildReq)},
+  { 349, -1, sizeof(::KFMsg::MsgUpgradeTechnologyReq)},
+  { 355, -1, sizeof(::KFMsg::MsgTransferProReq)},
+  { 362, -1, sizeof(::KFMsg::MsgSelectInnateReq)},
+  { 369, -1, sizeof(::KFMsg::MsgQueryRecordReq)},
+  { 376, -1, sizeof(::KFMsg::MsgQueryRecordAck)},
+  { 384, -1, sizeof(::KFMsg::MsgChapterExecuteStatusReq)},
+  { 390, -1, sizeof(::KFMsg::MsgUpdateMainStageReq)},
+  { 396, -1, sizeof(::KFMsg::MsgHeroWeaponReq)},
+  { 403, -1, sizeof(::KFMsg::MsgHeroUnWeaponReq)},
+  { 409, -1, sizeof(::KFMsg::MsgHeroWeaponAnotherReq)},
+  { 416, -1, sizeof(::KFMsg::MsgUpdateDurabilityReq)},
+  { 424, -1, sizeof(::KFMsg::MsgDialogueStartAck)},
+  { 430, -1, sizeof(::KFMsg::MsgDialogueFinishReq)},
+  { 436, -1, sizeof(::KFMsg::MsgSetPlayerHeadIconReq)},
+  { 442, -1, sizeof(::KFMsg::MsgSetPlayerFactionReq)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -1885,6 +1967,7 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_MsgTrainChangeReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_MsgTrainCleanReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_MsgTrainOnekeyReq_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_MsgTrainAgainReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_MsgClinicCureReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_MsgClinicMedicalFeeReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_MsgClinicMedicalFeeAck_default_instance_),
@@ -1910,6 +1993,7 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_MsgKillNpcReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_MsgUpdateFaithReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_MsgInteractItemReq_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_MsgFightHeroListReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_MsgUpdateFighterHeroReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_MsgSetBuildSkinReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_MsgStartUpgradeBuildReq_default_instance_),
@@ -1921,6 +2005,7 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_MsgQueryRecordReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_MsgQueryRecordAck_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_MsgChapterExecuteStatusReq_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_MsgUpdateMainStageReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_MsgHeroWeaponReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_MsgHeroUnWeaponReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_MsgHeroWeaponAnotherReq_default_instance_),
@@ -1946,7 +2031,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 65);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 68);
 }
 
 void AddDescriptorsImpl() {
@@ -1976,117 +2061,122 @@ void AddDescriptorsImpl() {
       "oActiveSkillReq\022\014\n\004uuid\030\001 \001(\004\022\r\n\005index\030\002"
       " \001(\r\"0\n\021MsgTrainChangeReq\022\r\n\005index\030\001 \001(\r"
       "\022\014\n\004uuid\030\002 \001(\004\"\022\n\020MsgTrainCleanReq\"\"\n\021Ms"
-      "gTrainOnekeyReq\022\r\n\005index\030\001 \001(\r\" \n\020MsgCli"
-      "nicCureReq\022\014\n\004uuid\030\001 \003(\004\"&\n\026MsgClinicMed"
-      "icalFeeReq\022\014\n\004uuid\030\001 \003(\004\")\n\026MsgClinicMed"
-      "icalFeeAck\022\017\n\007element\030\001 \001(\014\"\025\n\023MsgGranar"
-      "yGatherReq\"\024\n\022MsgSmithyGatherReq\"+\n\020MsgS"
-      "mithyMakeReq\022\n\n\002id\030\001 \001(\r\022\013\n\003num\030\002 \001(\r\"\036\n"
-      "\rMsgExploreReq\022\r\n\005mapid\030\001 \001(\r\"I\n\rMsgExpl"
-      "oreAck\022\r\n\005mapid\030\001 \001(\r\022)\n\013exploredata\030\002 \001"
-      "(\0132\024.KFMsg.PBExploreData\"\023\n\021MsgExitExplo"
-      "reReq\",\n\tMsgPVEReq\022\r\n\005pveid\030\001 \001(\r\022\020\n\010bat"
-      "tleid\030\002 \001(\r\"\264\002\n\tMsgPVEAck\022\r\n\005pveid\030\001 \001(\r"
-      "\022\020\n\010battleid\030\002 \001(\r\022\r\n\005faith\030\003 \001(\r\022(\n\004her"
-      "o\030\004 \003(\0132\032.KFMsg.MsgPVEAck.HeroEntry\022&\n\003n"
-      "pc\030\005 \003(\0132\031.KFMsg.MsgPVEAck.NpcEntry\022*\n\010b"
-      "uffdata\030\006 \001(\0132\030.KFMsg.PBExploreBuffData\032"
-      "<\n\tHeroEntry\022\013\n\003key\030\001 \001(\004\022\036\n\005value\030\002 \001(\013"
-      "2\017.KFMsg.PBObject:\0028\001\032;\n\010NpcEntry\022\013\n\003key"
-      "\030\001 \001(\004\022\036\n\005value\030\002 \001(\0132\017.KFMsg.PBObject:\002"
-      "8\001\"C\n\020MsgPVEBalanceReq\022\016\n\006result\030\001 \001(\r\022\r"
-      "\n\005truns\030\002 \001(\r\022\020\n\010herolist\030\003 \003(\004\"o\n\020MsgPV"
-      "EBalanceAck\022\016\n\006result\030\001 \001(\r\022%\n\007balance\030\002"
-      " \001(\0132\024.KFMsg.PBBalanceData\022\022\n\nmodulename"
-      "\030\003 \001(\014\022\020\n\010moduleid\030\004 \001(\004\"&\n\024MsgExploreBa"
-      "lanceReq\022\016\n\006result\030\001 \001(\r\"M\n\024MsgExploreBa"
-      "lanceAck\022\016\n\006result\030\001 \001(\r\022%\n\007balance\030\002 \001("
-      "\0132\024.KFMsg.PBBalanceData\"K\n\031MsgUpdateExpl"
-      "orePlayerReq\022.\n\nplayerdata\030\001 \001(\0132\032.KFMsg"
-      ".PBExplorePlayerData\"B\n\026MsgUpdateExplore"
-      "NpcReq\022(\n\007npcdata\030\001 \001(\0132\027.KFMsg.PBExplor"
-      "eNpcData\"A\n\020PBBuffChangeData\022\014\n\004uuid\030\001 \001"
-      "(\004\022\016\n\006buffid\030\002 \001(\r\022\017\n\007operate\030\003 \001(\r\"D\n\027M"
-      "sgUpdateExploreBuffAck\022)\n\010bufflist\030\001 \003(\013"
-      "2\027.KFMsg.PBBuffChangeData\"%\n\021MsgExploreD"
-      "ropReq\022\020\n\010droplist\030\001 \003(\r\"2\n\rMsgKillNpcRe"
-      "q\022\020\n\010herouuid\030\001 \001(\004\022\017\n\007npcuuid\030\002 \001(\004\"\"\n\021"
-      "MsgUpdateFaithReq\022\r\n\005faith\030\001 \001(\r\"3\n\022MsgI"
-      "nteractItemReq\022\016\n\006itemid\030\001 \001(\r\022\r\n\005field\030"
-      "\002 \001(\r\"A\n\027MsgUpdateFighterHeroReq\022&\n\004data"
-      "\030\001 \003(\0132\030.KFMsg.PBFighterHeroData\" \n\022MsgS"
-      "etBuildSkinReq\022\n\n\002id\030\001 \001(\r\"%\n\027MsgStartUp"
-      "gradeBuildReq\022\n\n\002id\030\001 \001(\r\"&\n\030MsgOnekeyUp"
-      "gradeBuildReq\022\n\n\002id\030\001 \001(\r\" \n\022MsgUpgradeB"
-      "uildReq\022\n\n\002id\030\001 \001(\r\"%\n\027MsgUpgradeTechnol"
-      "ogyReq\022\n\n\002id\030\001 \001(\r\"5\n\021MsgTransferProReq\022"
-      "\014\n\004uuid\030\001 \001(\004\022\022\n\nprofession\030\002 \001(\r\"2\n\022Msg"
-      "SelectInnateReq\022\014\n\004uuid\030\001 \001(\004\022\016\n\006innate\030"
-      "\002 \003(\r\"-\n\021MsgQueryRecordReq\022\014\n\004type\030\001 \001(\r"
-      "\022\n\n\002id\030\002 \001(\004\"P\n\021MsgQueryRecordAck\022\014\n\004typ"
-      "e\030\001 \001(\r\022\n\n\002id\030\002 \001(\004\022!\n\010pbrecord\030\003 \003(\0132\017."
-      "KFMsg.PBValues\"/\n\032MsgChapterExecuteStatu"
-      "sReq\022\021\n\tchapterid\030\001 \001(\r\"6\n\020MsgHeroWeapon"
-      "Req\022\020\n\010herouuid\030\001 \001(\004\022\020\n\010itemuuid\030\002 \001(\004\""
-      "&\n\022MsgHeroUnWeaponReq\022\020\n\010herouuid\030\001 \001(\004\""
-      "I\n\027MsgHeroWeaponAnotherReq\022\026\n\016sourcehero"
-      "uuid\030\001 \001(\004\022\026\n\016targetherouuid\030\002 \001(\004\"O\n\026Ms"
-      "gUpdateDurabilityReq\022\020\n\010herouuid\030\001 \001(\004\022\017"
-      "\n\007operate\030\002 \001(\r\022\022\n\ndurability\030\003 \001(\r\"\'\n\023M"
-      "sgDialogueStartAck\022\020\n\010dialogid\030\001 \001(\r\"*\n\024"
-      "MsgDialogueFinishReq\022\022\n\ndialogueid\030\001 \001(\r"
-      "\")\n\027MsgSetPlayerHeadIconReq\022\016\n\006iconid\030\001 "
-      "\001(\r\"+\n\026MsgSetPlayerFactionReq\022\021\n\tfaction"
-      "id\030\001 \001(\r*\242\016\n\016ClientProtocol\022\024\n\020MSG_CLIEN"
-      "T_BEGIN\020\000\022\030\n\023MSG_START_MATCH_REQ\020\271\027\022\031\n\024M"
-      "SG_CANCEL_MATCH_REQ\020\272\027\022\034\n\027MSG_INFORM_MAT"
-      "CH_RESULT\020\273\027\022\031\n\024MSG_AFFIRM_MATCH_REQ\020\274\027\022"
-      "\032\n\025MSG_INFORM_BATTLE_REQ\020\275\027\022\032\n\025MSG_INFOR"
-      "M_BATTLE_ACK\020\276\027\022\030\n\023MSG_FINISH_ROOM_REQ\020\277"
-      "\027\022\034\n\027MSG_REFRESH_RECRUIT_REQ\020\236\030\022\033\n\026MSG_C"
-      "HOOSE_DIVISOR_REQ\020\237\030\022\033\n\026MSG_REMOVE_DIVIS"
-      "OR_REQ\020\240\030\022\031\n\024MSG_RECRUIT_HERO_REQ\020\241\030\022\035\n\030"
-      "MSG_HERO_TEAM_CHANGE_REQ\020\242\030\022\037\n\032MSG_HERO_"
-      "TEAM_EXCHANGE_REQ\020\243\030\022\026\n\021MSG_LOCK_HERO_RE"
-      "Q\020\244\030\022\030\n\023MSG_REMOVE_HERO_REQ\020\245\030\022\032\n\025MSG_SE"
-      "T_HERO_NAME_REQ\020\246\030\022\"\n\035MSG_SET_RECRUIT_HE"
-      "RO_NAME_REQ\020\247\030\022\"\n\035MSG_SET_HERO_ACTIVE_SK"
-      "ILL_REQ\020\250\030\022\031\n\024MSG_TRAIN_CHANGE_REQ\020\200\031\022\030\n"
-      "\023MSG_TRAIN_CLEAN_REQ\020\201\031\022\031\n\024MSG_TRAIN_ONE"
-      "KEY_REQ\020\202\031\022\030\n\023MSG_CLINIC_CURE_REQ\020\212\031\022\037\n\032"
-      "MSG_CLINIC_MEDICAL_FEE_REQ\020\213\031\022\037\n\032MSG_CLI"
-      "NIC_MEDICAL_FEE_ACK\020\214\031\022\033\n\026MSG_GRANARY_GA"
-      "THER_REQ\020\217\031\022\032\n\025MSG_SMITHY_GATHER_REQ\020\222\031\022"
-      "\030\n\023MSG_SMITHY_MAKE_REQ\020\223\031\022\033\n\026MSG_SET_BUI"
-      "LD_SKIN_REQ\020\227\031\022 \n\033MSG_START_UPGRADE_BUIL"
-      "D_REQ\020\236\031\022!\n\034MSG_ONEKEY_UPGRADE_BUILD_REQ"
-      "\020\237\031\022\032\n\025MSG_UPGRADE_BUILD_REQ\020\240\031\022\037\n\032MSG_U"
-      "PGRADE_TECHNOLOGY_REQ\020\241\031\022\031\n\024MSG_TRANSFER"
-      "_PRO_REQ\020\262\031\022\032\n\025MSG_SELECT_INNATE_REQ\020\263\031\022"
-      "\024\n\017MSG_EXPLORE_REQ\020\345\031\022\024\n\017MSG_EXPLORE_ACK"
-      "\020\346\031\022\020\n\013MSG_PVE_REQ\020\347\031\022\020\n\013MSG_PVE_ACK\020\350\031\022"
-      "\030\n\023MSG_PVE_BALANCE_REQ\020\351\031\022\031\n\024MSG_EXIT_EX"
-      "PLORE_REQ\020\352\031\022 \n\033MSG_UPDATE_FIGHTER_HERO_"
-      "REQ\020\354\031\022\030\n\023MSG_PVE_BALANCE_ACK\020\356\031\022\034\n\027MSG_"
-      "EXPLORE_BALANCE_REQ\020\357\031\022\034\n\027MSG_EXPLORE_BA"
-      "LANCE_ACK\020\360\031\022\"\n\035MSG_UPDATE_EXPLORE_PLAYE"
-      "R_REQ\020\361\031\022\037\n\032MSG_UPDATE_EXPLORE_NPC_REQ\020\362"
-      "\031\022 \n\033MSG_UPDATE_EXPLORE_BUFF_ACK\020\363\031\022\031\n\024M"
-      "SG_EXPLORE_DROP_REQ\020\364\031\022\025\n\020MSG_KILL_NPC_R"
-      "EQ\020\365\031\022\031\n\024MSG_UPDATE_FAITH_REQ\020\366\031\022\032\n\025MSG_"
-      "INTERACT_ITEM_REQ\020\367\031\022\031\n\024MSG_QUERY_RECORD"
-      "_REQ\020\227\032\022\031\n\024MSG_QUERY_RECORD_ACK\020\230\032\022#\n\036MS"
-      "G_CHAPTER_EXECUTE_STATUS_REQ\020\253\032\022\030\n\023MSG_H"
-      "ERO_WEAPON_REQ\020\310\032\022\032\n\025MSG_HERO_UNWEAPON_R"
-      "EQ\020\311\032\022\036\n\031MSG_UPDATE_DURABILITY_REQ\020\312\032\022 \n"
-      "\033MSG_HERO_WEAPON_ANOTHER_REQ\020\313\032\022\033\n\026MSG_D"
-      "IALOGUE_START_ACK\020\347\032\022\034\n\027MSG_DIALOGUE_FIN"
-      "ISH_REQ\020\350\032\022 \n\033MSG_SET_PLAYER_HEADICON_RE"
-      "Q\020\373\032\022\037\n\032MSG_SET_PLAYER_FACTION_REQ\020\374\032b\006p"
-      "roto3"
+      "gTrainOnekeyReq\022\r\n\005index\030\001 \001(\r\"!\n\020MsgTra"
+      "inAgainReq\022\r\n\005index\030\001 \001(\r\" \n\020MsgClinicCu"
+      "reReq\022\014\n\004uuid\030\001 \003(\004\"&\n\026MsgClinicMedicalF"
+      "eeReq\022\014\n\004uuid\030\001 \003(\004\")\n\026MsgClinicMedicalF"
+      "eeAck\022\017\n\007element\030\001 \001(\014\"\025\n\023MsgGranaryGath"
+      "erReq\"\024\n\022MsgSmithyGatherReq\"+\n\020MsgSmithy"
+      "MakeReq\022\n\n\002id\030\001 \001(\r\022\013\n\003num\030\002 \001(\r\"\036\n\rMsgE"
+      "xploreReq\022\r\n\005mapid\030\001 \001(\r\"I\n\rMsgExploreAc"
+      "k\022\r\n\005mapid\030\001 \001(\r\022)\n\013exploredata\030\002 \001(\0132\024."
+      "KFMsg.PBExploreData\"\023\n\021MsgExitExploreReq"
+      "\"O\n\tMsgPVEReq\022\r\n\005pveid\030\001 \001(\r\022\020\n\010battleid"
+      "\030\002 \001(\r\022\022\n\nmodulename\030\003 \001(\014\022\r\n\005mapid\030\004 \001("
+      "\r\"\264\002\n\tMsgPVEAck\022\r\n\005pveid\030\001 \001(\r\022\020\n\010battle"
+      "id\030\002 \001(\r\022\r\n\005faith\030\003 \001(\r\022(\n\004hero\030\004 \003(\0132\032."
+      "KFMsg.MsgPVEAck.HeroEntry\022&\n\003npc\030\005 \003(\0132\031"
+      ".KFMsg.MsgPVEAck.NpcEntry\022*\n\010buffdata\030\006 "
+      "\001(\0132\030.KFMsg.PBExploreBuffData\032<\n\tHeroEnt"
+      "ry\022\013\n\003key\030\001 \001(\004\022\036\n\005value\030\002 \001(\0132\017.KFMsg.P"
+      "BObject:\0028\001\032;\n\010NpcEntry\022\013\n\003key\030\001 \001(\004\022\036\n\005"
+      "value\030\002 \001(\0132\017.KFMsg.PBObject:\0028\001\"1\n\020MsgP"
+      "VEBalanceReq\022\016\n\006result\030\001 \001(\r\022\r\n\005truns\030\002 "
+      "\001(\r\"o\n\020MsgPVEBalanceAck\022\016\n\006result\030\001 \001(\r\022"
+      "%\n\007balance\030\002 \001(\0132\024.KFMsg.PBBalanceData\022\022"
+      "\n\nmodulename\030\003 \001(\014\022\020\n\010moduleid\030\004 \001(\004\"&\n\024"
+      "MsgExploreBalanceReq\022\016\n\006result\030\001 \001(\r\"M\n\024"
+      "MsgExploreBalanceAck\022\016\n\006result\030\001 \001(\r\022%\n\007"
+      "balance\030\002 \001(\0132\024.KFMsg.PBBalanceData\"K\n\031M"
+      "sgUpdateExplorePlayerReq\022.\n\nplayerdata\030\001"
+      " \001(\0132\032.KFMsg.PBExplorePlayerData\"B\n\026MsgU"
+      "pdateExploreNpcReq\022(\n\007npcdata\030\001 \001(\0132\027.KF"
+      "Msg.PBExploreNpcData\"A\n\020PBBuffChangeData"
+      "\022\014\n\004uuid\030\001 \001(\004\022\016\n\006buffid\030\002 \001(\r\022\017\n\007operat"
+      "e\030\003 \001(\r\"D\n\027MsgUpdateExploreBuffAck\022)\n\010bu"
+      "fflist\030\001 \003(\0132\027.KFMsg.PBBuffChangeData\"%\n"
+      "\021MsgExploreDropReq\022\020\n\010droplist\030\001 \003(\r\"2\n\r"
+      "MsgKillNpcReq\022\020\n\010herouuid\030\001 \001(\004\022\017\n\007npcuu"
+      "id\030\002 \001(\004\"\"\n\021MsgUpdateFaithReq\022\r\n\005faith\030\001"
+      " \001(\r\"3\n\022MsgInteractItemReq\022\016\n\006itemid\030\001 \001"
+      "(\r\022\r\n\005field\030\002 \001(\r\"\'\n\023MsgFightHeroListReq"
+      "\022\020\n\010herolist\030\003 \003(\004\"A\n\027MsgUpdateFighterHe"
+      "roReq\022&\n\004data\030\001 \003(\0132\030.KFMsg.PBFighterHer"
+      "oData\" \n\022MsgSetBuildSkinReq\022\n\n\002id\030\001 \001(\r\""
+      "%\n\027MsgStartUpgradeBuildReq\022\n\n\002id\030\001 \001(\r\"&"
+      "\n\030MsgOnekeyUpgradeBuildReq\022\n\n\002id\030\001 \001(\r\" "
+      "\n\022MsgUpgradeBuildReq\022\n\n\002id\030\001 \001(\r\"%\n\027MsgU"
+      "pgradeTechnologyReq\022\n\n\002id\030\001 \001(\r\"5\n\021MsgTr"
+      "ansferProReq\022\014\n\004uuid\030\001 \001(\004\022\022\n\nprofession"
+      "\030\002 \001(\r\"2\n\022MsgSelectInnateReq\022\014\n\004uuid\030\001 \001"
+      "(\004\022\016\n\006innate\030\002 \003(\r\"-\n\021MsgQueryRecordReq\022"
+      "\014\n\004type\030\001 \001(\r\022\n\n\002id\030\002 \001(\004\"P\n\021MsgQueryRec"
+      "ordAck\022\014\n\004type\030\001 \001(\r\022\n\n\002id\030\002 \001(\004\022!\n\010pbre"
+      "cord\030\003 \003(\0132\017.KFMsg.PBValues\"/\n\032MsgChapte"
+      "rExecuteStatusReq\022\021\n\tchapterid\030\001 \001(\r\"(\n\025"
+      "MsgUpdateMainStageReq\022\017\n\007stageid\030\001 \001(\r\"6"
+      "\n\020MsgHeroWeaponReq\022\020\n\010herouuid\030\001 \001(\004\022\020\n\010"
+      "itemuuid\030\002 \001(\004\"&\n\022MsgHeroUnWeaponReq\022\020\n\010"
+      "herouuid\030\001 \001(\004\"I\n\027MsgHeroWeaponAnotherRe"
+      "q\022\026\n\016sourceherouuid\030\001 \001(\004\022\026\n\016targetherou"
+      "uid\030\002 \001(\004\"O\n\026MsgUpdateDurabilityReq\022\020\n\010h"
+      "erouuid\030\001 \001(\004\022\017\n\007operate\030\002 \001(\r\022\022\n\ndurabi"
+      "lity\030\003 \001(\r\"\'\n\023MsgDialogueStartAck\022\020\n\010dia"
+      "logid\030\001 \001(\r\"*\n\024MsgDialogueFinishReq\022\022\n\nd"
+      "ialogueid\030\001 \001(\r\")\n\027MsgSetPlayerHeadIconR"
+      "eq\022\016\n\006iconid\030\001 \001(\r\"+\n\026MsgSetPlayerFactio"
+      "nReq\022\021\n\tfactionid\030\001 \001(\r*\372\016\n\016ClientProtoc"
+      "ol\022\024\n\020MSG_CLIENT_BEGIN\020\000\022\030\n\023MSG_START_MA"
+      "TCH_REQ\020\271\027\022\031\n\024MSG_CANCEL_MATCH_REQ\020\272\027\022\034\n"
+      "\027MSG_INFORM_MATCH_RESULT\020\273\027\022\031\n\024MSG_AFFIR"
+      "M_MATCH_REQ\020\274\027\022\032\n\025MSG_INFORM_BATTLE_REQ\020"
+      "\275\027\022\032\n\025MSG_INFORM_BATTLE_ACK\020\276\027\022\030\n\023MSG_FI"
+      "NISH_ROOM_REQ\020\277\027\022\034\n\027MSG_REFRESH_RECRUIT_"
+      "REQ\020\236\030\022\033\n\026MSG_CHOOSE_DIVISOR_REQ\020\237\030\022\033\n\026M"
+      "SG_REMOVE_DIVISOR_REQ\020\240\030\022\031\n\024MSG_RECRUIT_"
+      "HERO_REQ\020\241\030\022\035\n\030MSG_HERO_TEAM_CHANGE_REQ\020"
+      "\242\030\022\037\n\032MSG_HERO_TEAM_EXCHANGE_REQ\020\243\030\022\026\n\021M"
+      "SG_LOCK_HERO_REQ\020\244\030\022\030\n\023MSG_REMOVE_HERO_R"
+      "EQ\020\245\030\022\032\n\025MSG_SET_HERO_NAME_REQ\020\246\030\022\"\n\035MSG"
+      "_SET_RECRUIT_HERO_NAME_REQ\020\247\030\022\"\n\035MSG_SET"
+      "_HERO_ACTIVE_SKILL_REQ\020\250\030\022\031\n\024MSG_TRAIN_C"
+      "HANGE_REQ\020\200\031\022\030\n\023MSG_TRAIN_CLEAN_REQ\020\201\031\022\031"
+      "\n\024MSG_TRAIN_ONEKEY_REQ\020\202\031\022\030\n\023MSG_TRAIN_A"
+      "GAIN_REQ\020\203\031\022\030\n\023MSG_CLINIC_CURE_REQ\020\212\031\022\037\n"
+      "\032MSG_CLINIC_MEDICAL_FEE_REQ\020\213\031\022\037\n\032MSG_CL"
+      "INIC_MEDICAL_FEE_ACK\020\214\031\022\033\n\026MSG_GRANARY_G"
+      "ATHER_REQ\020\217\031\022\032\n\025MSG_SMITHY_GATHER_REQ\020\222\031"
+      "\022\030\n\023MSG_SMITHY_MAKE_REQ\020\223\031\022\033\n\026MSG_SET_BU"
+      "ILD_SKIN_REQ\020\227\031\022 \n\033MSG_START_UPGRADE_BUI"
+      "LD_REQ\020\236\031\022!\n\034MSG_ONEKEY_UPGRADE_BUILD_RE"
+      "Q\020\237\031\022\032\n\025MSG_UPGRADE_BUILD_REQ\020\240\031\022\037\n\032MSG_"
+      "UPGRADE_TECHNOLOGY_REQ\020\241\031\022\031\n\024MSG_TRANSFE"
+      "R_PRO_REQ\020\262\031\022\032\n\025MSG_SELECT_INNATE_REQ\020\263\031"
+      "\022\024\n\017MSG_EXPLORE_REQ\020\345\031\022\024\n\017MSG_EXPLORE_AC"
+      "K\020\346\031\022\020\n\013MSG_PVE_REQ\020\347\031\022\020\n\013MSG_PVE_ACK\020\350\031"
+      "\022\030\n\023MSG_PVE_BALANCE_REQ\020\351\031\022\031\n\024MSG_EXIT_E"
+      "XPLORE_REQ\020\352\031\022 \n\033MSG_UPDATE_FIGHTER_HERO"
+      "_REQ\020\354\031\022\030\n\023MSG_PVE_BALANCE_ACK\020\356\031\022\034\n\027MSG"
+      "_EXPLORE_BALANCE_REQ\020\357\031\022\034\n\027MSG_EXPLORE_B"
+      "ALANCE_ACK\020\360\031\022\"\n\035MSG_UPDATE_EXPLORE_PLAY"
+      "ER_REQ\020\361\031\022\037\n\032MSG_UPDATE_EXPLORE_NPC_REQ\020"
+      "\362\031\022 \n\033MSG_UPDATE_EXPLORE_BUFF_ACK\020\363\031\022\031\n\024"
+      "MSG_EXPLORE_DROP_REQ\020\364\031\022\025\n\020MSG_KILL_NPC_"
+      "REQ\020\365\031\022\031\n\024MSG_UPDATE_FAITH_REQ\020\366\031\022\032\n\025MSG"
+      "_INTERACT_ITEM_REQ\020\367\031\022\034\n\027MSG_FIGHT_HERO_"
+      "LIST_REQ\020\370\031\022\031\n\024MSG_QUERY_RECORD_REQ\020\227\032\022\031"
+      "\n\024MSG_QUERY_RECORD_ACK\020\230\032\022#\n\036MSG_CHAPTER"
+      "_EXECUTE_STATUS_REQ\020\253\032\022\036\n\031MSG_UPDATE_MAI"
+      "N_STAGE_REQ\020\265\032\022\030\n\023MSG_HERO_WEAPON_REQ\020\310\032"
+      "\022\032\n\025MSG_HERO_UNWEAPON_REQ\020\311\032\022\036\n\031MSG_UPDA"
+      "TE_DURABILITY_REQ\020\312\032\022 \n\033MSG_HERO_WEAPON_"
+      "ANOTHER_REQ\020\313\032\022\033\n\026MSG_DIALOGUE_START_ACK"
+      "\020\347\032\022\034\n\027MSG_DIALOGUE_FINISH_REQ\020\350\032\022 \n\033MSG"
+      "_SET_PLAYER_HEADICON_REQ\020\373\032\022\037\n\032MSG_SET_P"
+      "LAYER_FACTION_REQ\020\374\032b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 5245);
+      descriptor, 5468);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ClientMessage.proto", &protobuf_RegisterTypes);
   ::protobuf_DefineMessage_2eproto::AddDescriptors();
@@ -2133,6 +2223,7 @@ bool ClientProtocol_IsValid(int value) {
     case 3200:
     case 3201:
     case 3202:
+    case 3203:
     case 3210:
     case 3211:
     case 3212:
@@ -2163,9 +2254,11 @@ bool ClientProtocol_IsValid(int value) {
     case 3317:
     case 3318:
     case 3319:
+    case 3320:
     case 3351:
     case 3352:
     case 3371:
+    case 3381:
     case 3400:
     case 3401:
     case 3402:
@@ -7298,6 +7391,229 @@ void MsgTrainOnekeyReq::InternalSwap(MsgTrainOnekeyReq* other) {
 
 // ===================================================================
 
+void MsgTrainAgainReq::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgTrainAgainReq::kIndexFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgTrainAgainReq::MsgTrainAgainReq()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_ClientMessage_2eproto::scc_info_MsgTrainAgainReq.base);
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:KFMsg.MsgTrainAgainReq)
+}
+MsgTrainAgainReq::MsgTrainAgainReq(const MsgTrainAgainReq& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  index_ = from.index_;
+  // @@protoc_insertion_point(copy_constructor:KFMsg.MsgTrainAgainReq)
+}
+
+void MsgTrainAgainReq::SharedCtor() {
+  index_ = 0u;
+}
+
+MsgTrainAgainReq::~MsgTrainAgainReq() {
+  // @@protoc_insertion_point(destructor:KFMsg.MsgTrainAgainReq)
+  SharedDtor();
+}
+
+void MsgTrainAgainReq::SharedDtor() {
+}
+
+void MsgTrainAgainReq::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ::google::protobuf::Descriptor* MsgTrainAgainReq::descriptor() {
+  ::protobuf_ClientMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_ClientMessage_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const MsgTrainAgainReq& MsgTrainAgainReq::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_ClientMessage_2eproto::scc_info_MsgTrainAgainReq.base);
+  return *internal_default_instance();
+}
+
+
+void MsgTrainAgainReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:KFMsg.MsgTrainAgainReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  index_ = 0u;
+  _internal_metadata_.Clear();
+}
+
+bool MsgTrainAgainReq::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:KFMsg.MsgTrainAgainReq)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // uint32 index = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &index_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:KFMsg.MsgTrainAgainReq)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:KFMsg.MsgTrainAgainReq)
+  return false;
+#undef DO_
+}
+
+void MsgTrainAgainReq::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:KFMsg.MsgTrainAgainReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 index = 1;
+  if (this->index() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->index(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:KFMsg.MsgTrainAgainReq)
+}
+
+::google::protobuf::uint8* MsgTrainAgainReq::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:KFMsg.MsgTrainAgainReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 index = 1;
+  if (this->index() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->index(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:KFMsg.MsgTrainAgainReq)
+  return target;
+}
+
+size_t MsgTrainAgainReq::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:KFMsg.MsgTrainAgainReq)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // uint32 index = 1;
+  if (this->index() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->index());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void MsgTrainAgainReq::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:KFMsg.MsgTrainAgainReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  const MsgTrainAgainReq* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const MsgTrainAgainReq>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:KFMsg.MsgTrainAgainReq)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:KFMsg.MsgTrainAgainReq)
+    MergeFrom(*source);
+  }
+}
+
+void MsgTrainAgainReq::MergeFrom(const MsgTrainAgainReq& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:KFMsg.MsgTrainAgainReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.index() != 0) {
+    set_index(from.index());
+  }
+}
+
+void MsgTrainAgainReq::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:KFMsg.MsgTrainAgainReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void MsgTrainAgainReq::CopyFrom(const MsgTrainAgainReq& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:KFMsg.MsgTrainAgainReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgTrainAgainReq::IsInitialized() const {
+  return true;
+}
+
+void MsgTrainAgainReq::Swap(MsgTrainAgainReq* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgTrainAgainReq::InternalSwap(MsgTrainAgainReq* other) {
+  using std::swap;
+  swap(index_, other->index_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+}
+
+::google::protobuf::Metadata MsgTrainAgainReq::GetMetadata() const {
+  protobuf_ClientMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_ClientMessage_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
 void MsgClinicCureReq::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -9334,6 +9650,8 @@ void MsgPVEReq::InitAsDefaultInstance() {
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int MsgPVEReq::kPveidFieldNumber;
 const int MsgPVEReq::kBattleidFieldNumber;
+const int MsgPVEReq::kModulenameFieldNumber;
+const int MsgPVEReq::kMapidFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 MsgPVEReq::MsgPVEReq()
@@ -9347,16 +9665,21 @@ MsgPVEReq::MsgPVEReq(const MsgPVEReq& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  modulename_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.modulename().size() > 0) {
+    modulename_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.modulename_);
+  }
   ::memcpy(&pveid_, &from.pveid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&battleid_) -
-    reinterpret_cast<char*>(&pveid_)) + sizeof(battleid_));
+    static_cast<size_t>(reinterpret_cast<char*>(&mapid_) -
+    reinterpret_cast<char*>(&pveid_)) + sizeof(mapid_));
   // @@protoc_insertion_point(copy_constructor:KFMsg.MsgPVEReq)
 }
 
 void MsgPVEReq::SharedCtor() {
+  modulename_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&pveid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&battleid_) -
-      reinterpret_cast<char*>(&pveid_)) + sizeof(battleid_));
+      reinterpret_cast<char*>(&mapid_) -
+      reinterpret_cast<char*>(&pveid_)) + sizeof(mapid_));
 }
 
 MsgPVEReq::~MsgPVEReq() {
@@ -9365,6 +9688,7 @@ MsgPVEReq::~MsgPVEReq() {
 }
 
 void MsgPVEReq::SharedDtor() {
+  modulename_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void MsgPVEReq::SetCachedSize(int size) const {
@@ -9387,9 +9711,10 @@ void MsgPVEReq::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  modulename_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&pveid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&battleid_) -
-      reinterpret_cast<char*>(&pveid_)) + sizeof(battleid_));
+      reinterpret_cast<char*>(&mapid_) -
+      reinterpret_cast<char*>(&pveid_)) + sizeof(mapid_));
   _internal_metadata_.Clear();
 }
 
@@ -9425,6 +9750,32 @@ bool MsgPVEReq::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &battleid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // bytes modulename = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_modulename()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 mapid = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mapid_)));
         } else {
           goto handle_unusual;
         }
@@ -9467,6 +9818,17 @@ void MsgPVEReq::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->battleid(), output);
   }
 
+  // bytes modulename = 3;
+  if (this->modulename().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+      3, this->modulename(), output);
+  }
+
+  // uint32 mapid = 4;
+  if (this->mapid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->mapid(), output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -9491,6 +9853,18 @@ void MsgPVEReq::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->battleid(), target);
   }
 
+  // bytes modulename = 3;
+  if (this->modulename().size() > 0) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        3, this->modulename(), target);
+  }
+
+  // uint32 mapid = 4;
+  if (this->mapid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->mapid(), target);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
@@ -9508,6 +9882,13 @@ size_t MsgPVEReq::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
+  // bytes modulename = 3;
+  if (this->modulename().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->modulename());
+  }
+
   // uint32 pveid = 1;
   if (this->pveid() != 0) {
     total_size += 1 +
@@ -9520,6 +9901,13 @@ size_t MsgPVEReq::ByteSizeLong() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->battleid());
+  }
+
+  // uint32 mapid = 4;
+  if (this->mapid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->mapid());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -9549,11 +9937,18 @@ void MsgPVEReq::MergeFrom(const MsgPVEReq& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.modulename().size() > 0) {
+
+    modulename_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.modulename_);
+  }
   if (from.pveid() != 0) {
     set_pveid(from.pveid());
   }
   if (from.battleid() != 0) {
     set_battleid(from.battleid());
+  }
+  if (from.mapid() != 0) {
+    set_mapid(from.mapid());
   }
 }
 
@@ -9581,8 +9976,11 @@ void MsgPVEReq::Swap(MsgPVEReq* other) {
 }
 void MsgPVEReq::InternalSwap(MsgPVEReq* other) {
   using std::swap;
+  modulename_.Swap(&other->modulename_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   swap(pveid_, other->pveid_);
   swap(battleid_, other->battleid_);
+  swap(mapid_, other->mapid_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
@@ -9601,7 +9999,7 @@ void MsgPVEAck_HeroEntry_DoNotUse::MergeFrom(const MsgPVEAck_HeroEntry_DoNotUse&
 }
 ::google::protobuf::Metadata MsgPVEAck_HeroEntry_DoNotUse::GetMetadata() const {
   ::protobuf_ClientMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ClientMessage_2eproto::file_level_metadata[31];
+  return ::protobuf_ClientMessage_2eproto::file_level_metadata[32];
 }
 void MsgPVEAck_HeroEntry_DoNotUse::MergeFrom(
     const ::google::protobuf::Message& other) {
@@ -9618,7 +10016,7 @@ void MsgPVEAck_NpcEntry_DoNotUse::MergeFrom(const MsgPVEAck_NpcEntry_DoNotUse& o
 }
 ::google::protobuf::Metadata MsgPVEAck_NpcEntry_DoNotUse::GetMetadata() const {
   ::protobuf_ClientMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ClientMessage_2eproto::file_level_metadata[32];
+  return ::protobuf_ClientMessage_2eproto::file_level_metadata[33];
 }
 void MsgPVEAck_NpcEntry_DoNotUse::MergeFrom(
     const ::google::protobuf::Message& other) {
@@ -10235,7 +10633,6 @@ void MsgPVEBalanceReq::InitAsDefaultInstance() {
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int MsgPVEBalanceReq::kResultFieldNumber;
 const int MsgPVEBalanceReq::kTrunsFieldNumber;
-const int MsgPVEBalanceReq::kHerolistFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 MsgPVEBalanceReq::MsgPVEBalanceReq()
@@ -10247,8 +10644,7 @@ MsgPVEBalanceReq::MsgPVEBalanceReq()
 }
 MsgPVEBalanceReq::MsgPVEBalanceReq(const MsgPVEBalanceReq& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      herolist_(from.herolist_) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&result_, &from.result_,
     static_cast<size_t>(reinterpret_cast<char*>(&truns_) -
@@ -10290,7 +10686,6 @@ void MsgPVEBalanceReq::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  herolist_.Clear();
   ::memset(&result_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&truns_) -
       reinterpret_cast<char*>(&result_)) + sizeof(truns_));
@@ -10335,25 +10730,6 @@ bool MsgPVEBalanceReq::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated uint64 herolist = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, this->mutable_herolist())));
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 1, 26u, input, this->mutable_herolist())));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -10390,17 +10766,6 @@ void MsgPVEBalanceReq::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->truns(), output);
   }
 
-  // repeated uint64 herolist = 3;
-  if (this->herolist_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(3, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
-        _herolist_cached_byte_size_));
-  }
-  for (int i = 0, n = this->herolist_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64NoTag(
-      this->herolist(i), output);
-  }
-
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -10425,19 +10790,6 @@ void MsgPVEBalanceReq::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->truns(), target);
   }
 
-  // repeated uint64 herolist = 3;
-  if (this->herolist_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      3,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        static_cast< ::google::protobuf::int32>(
-            _herolist_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteUInt64NoTagToArray(this->herolist_, target);
-  }
-
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
@@ -10455,22 +10807,6 @@ size_t MsgPVEBalanceReq::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // repeated uint64 herolist = 3;
-  {
-    size_t data_size = ::google::protobuf::internal::WireFormatLite::
-      UInt64Size(this->herolist_);
-    if (data_size > 0) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
-    }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _herolist_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
-    total_size += data_size;
-  }
-
   // uint32 result = 1;
   if (this->result() != 0) {
     total_size += 1 +
@@ -10512,7 +10848,6 @@ void MsgPVEBalanceReq::MergeFrom(const MsgPVEBalanceReq& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  herolist_.MergeFrom(from.herolist_);
   if (from.result() != 0) {
     set_result(from.result());
   }
@@ -10545,7 +10880,6 @@ void MsgPVEBalanceReq::Swap(MsgPVEBalanceReq* other) {
 }
 void MsgPVEBalanceReq::InternalSwap(MsgPVEBalanceReq* other) {
   using std::swap;
-  herolist_.InternalSwap(&other->herolist_);
   swap(result_, other->result_);
   swap(truns_, other->truns_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -13439,6 +13773,254 @@ void MsgInteractItemReq::InternalSwap(MsgInteractItemReq* other) {
 
 // ===================================================================
 
+void MsgFightHeroListReq::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgFightHeroListReq::kHerolistFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgFightHeroListReq::MsgFightHeroListReq()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_ClientMessage_2eproto::scc_info_MsgFightHeroListReq.base);
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:KFMsg.MsgFightHeroListReq)
+}
+MsgFightHeroListReq::MsgFightHeroListReq(const MsgFightHeroListReq& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      herolist_(from.herolist_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:KFMsg.MsgFightHeroListReq)
+}
+
+void MsgFightHeroListReq::SharedCtor() {
+}
+
+MsgFightHeroListReq::~MsgFightHeroListReq() {
+  // @@protoc_insertion_point(destructor:KFMsg.MsgFightHeroListReq)
+  SharedDtor();
+}
+
+void MsgFightHeroListReq::SharedDtor() {
+}
+
+void MsgFightHeroListReq::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ::google::protobuf::Descriptor* MsgFightHeroListReq::descriptor() {
+  ::protobuf_ClientMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_ClientMessage_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const MsgFightHeroListReq& MsgFightHeroListReq::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_ClientMessage_2eproto::scc_info_MsgFightHeroListReq.base);
+  return *internal_default_instance();
+}
+
+
+void MsgFightHeroListReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:KFMsg.MsgFightHeroListReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  herolist_.Clear();
+  _internal_metadata_.Clear();
+}
+
+bool MsgFightHeroListReq::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:KFMsg.MsgFightHeroListReq)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated uint64 herolist = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, this->mutable_herolist())));
+        } else if (
+            static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 1, 26u, input, this->mutable_herolist())));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:KFMsg.MsgFightHeroListReq)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:KFMsg.MsgFightHeroListReq)
+  return false;
+#undef DO_
+}
+
+void MsgFightHeroListReq::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:KFMsg.MsgFightHeroListReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated uint64 herolist = 3;
+  if (this->herolist_size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteTag(3, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
+    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
+        _herolist_cached_byte_size_));
+  }
+  for (int i = 0, n = this->herolist_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64NoTag(
+      this->herolist(i), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:KFMsg.MsgFightHeroListReq)
+}
+
+::google::protobuf::uint8* MsgFightHeroListReq::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:KFMsg.MsgFightHeroListReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated uint64 herolist = 3;
+  if (this->herolist_size() > 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
+      3,
+      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
+      target);
+    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
+        static_cast< ::google::protobuf::int32>(
+            _herolist_cached_byte_size_), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteUInt64NoTagToArray(this->herolist_, target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:KFMsg.MsgFightHeroListReq)
+  return target;
+}
+
+size_t MsgFightHeroListReq::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:KFMsg.MsgFightHeroListReq)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // repeated uint64 herolist = 3;
+  {
+    size_t data_size = ::google::protobuf::internal::WireFormatLite::
+      UInt64Size(this->herolist_);
+    if (data_size > 0) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+            static_cast< ::google::protobuf::int32>(data_size));
+    }
+    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
+    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+    _herolist_cached_byte_size_ = cached_size;
+    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    total_size += data_size;
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void MsgFightHeroListReq::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:KFMsg.MsgFightHeroListReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  const MsgFightHeroListReq* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const MsgFightHeroListReq>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:KFMsg.MsgFightHeroListReq)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:KFMsg.MsgFightHeroListReq)
+    MergeFrom(*source);
+  }
+}
+
+void MsgFightHeroListReq::MergeFrom(const MsgFightHeroListReq& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:KFMsg.MsgFightHeroListReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  herolist_.MergeFrom(from.herolist_);
+}
+
+void MsgFightHeroListReq::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:KFMsg.MsgFightHeroListReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void MsgFightHeroListReq::CopyFrom(const MsgFightHeroListReq& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:KFMsg.MsgFightHeroListReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgFightHeroListReq::IsInitialized() const {
+  return true;
+}
+
+void MsgFightHeroListReq::Swap(MsgFightHeroListReq* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgFightHeroListReq::InternalSwap(MsgFightHeroListReq* other) {
+  using std::swap;
+  herolist_.InternalSwap(&other->herolist_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+}
+
+::google::protobuf::Metadata MsgFightHeroListReq::GetMetadata() const {
+  protobuf_ClientMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_ClientMessage_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
 void MsgUpdateFighterHeroReq::InitAsDefaultInstance() {
 }
 void MsgUpdateFighterHeroReq::clear_data() {
@@ -16139,6 +16721,229 @@ void MsgChapterExecuteStatusReq::InternalSwap(MsgChapterExecuteStatusReq* other)
 
 // ===================================================================
 
+void MsgUpdateMainStageReq::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgUpdateMainStageReq::kStageidFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgUpdateMainStageReq::MsgUpdateMainStageReq()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_ClientMessage_2eproto::scc_info_MsgUpdateMainStageReq.base);
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:KFMsg.MsgUpdateMainStageReq)
+}
+MsgUpdateMainStageReq::MsgUpdateMainStageReq(const MsgUpdateMainStageReq& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  stageid_ = from.stageid_;
+  // @@protoc_insertion_point(copy_constructor:KFMsg.MsgUpdateMainStageReq)
+}
+
+void MsgUpdateMainStageReq::SharedCtor() {
+  stageid_ = 0u;
+}
+
+MsgUpdateMainStageReq::~MsgUpdateMainStageReq() {
+  // @@protoc_insertion_point(destructor:KFMsg.MsgUpdateMainStageReq)
+  SharedDtor();
+}
+
+void MsgUpdateMainStageReq::SharedDtor() {
+}
+
+void MsgUpdateMainStageReq::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ::google::protobuf::Descriptor* MsgUpdateMainStageReq::descriptor() {
+  ::protobuf_ClientMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_ClientMessage_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const MsgUpdateMainStageReq& MsgUpdateMainStageReq::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_ClientMessage_2eproto::scc_info_MsgUpdateMainStageReq.base);
+  return *internal_default_instance();
+}
+
+
+void MsgUpdateMainStageReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:KFMsg.MsgUpdateMainStageReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  stageid_ = 0u;
+  _internal_metadata_.Clear();
+}
+
+bool MsgUpdateMainStageReq::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:KFMsg.MsgUpdateMainStageReq)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // uint32 stageid = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &stageid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:KFMsg.MsgUpdateMainStageReq)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:KFMsg.MsgUpdateMainStageReq)
+  return false;
+#undef DO_
+}
+
+void MsgUpdateMainStageReq::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:KFMsg.MsgUpdateMainStageReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 stageid = 1;
+  if (this->stageid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->stageid(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:KFMsg.MsgUpdateMainStageReq)
+}
+
+::google::protobuf::uint8* MsgUpdateMainStageReq::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:KFMsg.MsgUpdateMainStageReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 stageid = 1;
+  if (this->stageid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->stageid(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:KFMsg.MsgUpdateMainStageReq)
+  return target;
+}
+
+size_t MsgUpdateMainStageReq::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:KFMsg.MsgUpdateMainStageReq)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // uint32 stageid = 1;
+  if (this->stageid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->stageid());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void MsgUpdateMainStageReq::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:KFMsg.MsgUpdateMainStageReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  const MsgUpdateMainStageReq* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const MsgUpdateMainStageReq>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:KFMsg.MsgUpdateMainStageReq)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:KFMsg.MsgUpdateMainStageReq)
+    MergeFrom(*source);
+  }
+}
+
+void MsgUpdateMainStageReq::MergeFrom(const MsgUpdateMainStageReq& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:KFMsg.MsgUpdateMainStageReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.stageid() != 0) {
+    set_stageid(from.stageid());
+  }
+}
+
+void MsgUpdateMainStageReq::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:KFMsg.MsgUpdateMainStageReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void MsgUpdateMainStageReq::CopyFrom(const MsgUpdateMainStageReq& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:KFMsg.MsgUpdateMainStageReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgUpdateMainStageReq::IsInitialized() const {
+  return true;
+}
+
+void MsgUpdateMainStageReq::Swap(MsgUpdateMainStageReq* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgUpdateMainStageReq::InternalSwap(MsgUpdateMainStageReq* other) {
+  using std::swap;
+  swap(stageid_, other->stageid_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+}
+
+::google::protobuf::Metadata MsgUpdateMainStageReq::GetMetadata() const {
+  protobuf_ClientMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_ClientMessage_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
 void MsgHeroWeaponReq::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -18150,6 +18955,9 @@ template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::MsgTrainCleanReq* Arena::
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::MsgTrainOnekeyReq* Arena::CreateMaybeMessage< ::KFMsg::MsgTrainOnekeyReq >(Arena* arena) {
   return Arena::CreateInternal< ::KFMsg::MsgTrainOnekeyReq >(arena);
 }
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::MsgTrainAgainReq* Arena::CreateMaybeMessage< ::KFMsg::MsgTrainAgainReq >(Arena* arena) {
+  return Arena::CreateInternal< ::KFMsg::MsgTrainAgainReq >(arena);
+}
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::MsgClinicCureReq* Arena::CreateMaybeMessage< ::KFMsg::MsgClinicCureReq >(Arena* arena) {
   return Arena::CreateInternal< ::KFMsg::MsgClinicCureReq >(arena);
 }
@@ -18225,6 +19033,9 @@ template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::MsgUpdateFaithReq* Arena:
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::MsgInteractItemReq* Arena::CreateMaybeMessage< ::KFMsg::MsgInteractItemReq >(Arena* arena) {
   return Arena::CreateInternal< ::KFMsg::MsgInteractItemReq >(arena);
 }
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::MsgFightHeroListReq* Arena::CreateMaybeMessage< ::KFMsg::MsgFightHeroListReq >(Arena* arena) {
+  return Arena::CreateInternal< ::KFMsg::MsgFightHeroListReq >(arena);
+}
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::MsgUpdateFighterHeroReq* Arena::CreateMaybeMessage< ::KFMsg::MsgUpdateFighterHeroReq >(Arena* arena) {
   return Arena::CreateInternal< ::KFMsg::MsgUpdateFighterHeroReq >(arena);
 }
@@ -18257,6 +19068,9 @@ template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::MsgQueryRecordAck* Arena:
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::MsgChapterExecuteStatusReq* Arena::CreateMaybeMessage< ::KFMsg::MsgChapterExecuteStatusReq >(Arena* arena) {
   return Arena::CreateInternal< ::KFMsg::MsgChapterExecuteStatusReq >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::MsgUpdateMainStageReq* Arena::CreateMaybeMessage< ::KFMsg::MsgUpdateMainStageReq >(Arena* arena) {
+  return Arena::CreateInternal< ::KFMsg::MsgUpdateMainStageReq >(arena);
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::MsgHeroWeaponReq* Arena::CreateMaybeMessage< ::KFMsg::MsgHeroWeaponReq >(Arena* arena) {
   return Arena::CreateInternal< ::KFMsg::MsgHeroWeaponReq >(arena);

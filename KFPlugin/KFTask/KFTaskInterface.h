@@ -12,7 +12,7 @@ namespace KFrame
         virtual KFData* OpenTask( KFEntity* player, uint32 taskid, uint32 status, uint64 time ) = 0;
 
         // 开启任务链中的任务
-        virtual KFData* OpenTask( KFEntity* player, uint32 taskid, uint32 status, uint64 time, uint32 refreshid, uint32 taskchainid, uint32 order, const ListUInt32& logicids ) = 0;
+        virtual KFData* OpenTask( KFEntity* player, uint32 taskid, uint32 status, uint64 time, uint32 refreshid, uint32 taskchainid, uint32 order, const UInt32List& logicids ) = 0;
     };
 
     //////////////////////////////////////////////////////////////////////////

@@ -45,14 +45,14 @@ namespace KFrame
         // 生成玩家英雄
         virtual KFData* GeneratePlayerHero( KFEntity* player, KFData* kfhero, uint32 generateid );
         virtual KFData* GeneratePlayerHero( KFEntity* player, KFData* kfhero, uint32 generateid,
-                                            const DivisorList& divisorlist, const SetUInt32& professionlist,
+                                            const DivisorList& divisorlist, const UInt32Set& professionlist,
                                             uint32 generatelevel, uint32 mingrowth, uint32 maxgrowth );
 
         // 生成npc英雄
-        virtual KFData* GenerateNpcHero( KFEntity* player, uint32 generateid, uint32 level );
+        virtual KFData* GenerateNpcHero( KFEntity* player, KFData* kfnpcrecord, uint32 generateid, uint32 level );
 
         // 随机权重数据
-        virtual void RandWeightData( KFEntity* player, KFData* kfhero, const std::string& str, const VectorUInt32& slist );
+        virtual uint32 RandWeightData( KFEntity* player, KFData* kfhero, const std::string& str, const UInt32Vector& slist );
     protected:
         // 英雄等级更新
         __KF_UPDATE_DATA_FUNCTION__( OnHeroLevelUpdate );
@@ -62,7 +62,7 @@ namespace KFrame
         ///////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////
         KFData* GenerateHero( KFEntity* player, KFData* kfhero, uint32 generateid,
-                              const DivisorList& divisorlist, const SetUInt32& professionlist,
+                              const DivisorList& divisorlist, const UInt32Set& professionlist,
                               uint32 level, uint32 mingrowth, uint32 maxgrowth );
 
         // 计算种族
@@ -82,10 +82,7 @@ namespace KFrame
                 const DivisorList& divisorlist, const std::map< uint32, const KFProfessionSetting* >& professionlist );
 
         // 捏脸数据
-        void GeneratePinchFace( KFData* kfhero );
-
-        // 耐久度
-        void GenerateDurability( KFData* kfhero );
+        void GeneratePinchFace( KFEntity* player, KFData* kfhero );
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////

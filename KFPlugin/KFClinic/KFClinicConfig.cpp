@@ -13,6 +13,7 @@ namespace KFrame
         kfsetting->_count = xmlnode.GetUInt32( "Count", true );
 
         std::string strelement = xmlnode.GetString( "Money", true );
+        kfsetting->_strmoney = strelement;
         kfsetting->_money.Parse( strelement, __FUNC_LINE__ );
 
         kfsetting->_formual_id = xmlnode.GetUInt32( "FormulaId", true );

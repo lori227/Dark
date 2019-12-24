@@ -122,10 +122,10 @@ namespace KFrame
         uint32 _durability_cost = 0u;
 
         // 武器词缀池列表
-        VectorUInt32 _affix_pool_list;
+        UInt32Vector _affix_pool_list;
 
         // 种族限定
-        SetUInt32 _race_limit_list;
+        UInt32Set _race_limit_list;
         //////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////// 药品等道具
         // 药品类型

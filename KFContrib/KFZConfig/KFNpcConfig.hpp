@@ -36,7 +36,7 @@ namespace KFrame
         KFWeightList< KFWeight > _rand_skill_list;
 
         // 性格权重池列表
-        VectorUInt32 _character_pool_list;
+        UInt32Vector _character_pool_list;
 
         // 侵染值随机
         KFWeightList< KFSanWeight > _rand_dip_list;

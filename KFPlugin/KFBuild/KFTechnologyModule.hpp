@@ -55,6 +55,9 @@ namespace KFrame
         // 升级科技
         void OnUpgradeTechnology( KFEntity* player, KFData* kftechnologyrecord, uint32 technologyid );
 
+        // 更新科技数据
+        void UpdateTechnologyData( KFEntity* player, KFData* kftechnologyrecord, uint32 technologyid );
+
     protected:
         // 玩家组件上下文
         KFComponent* _kf_component = nullptr;

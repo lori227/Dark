@@ -15,12 +15,15 @@
     <ClCompile Include="KFExploreData.cpp" />
     <ClCompile Include="KFExploreModule.cpp" />
     <ClCompile Include="KFExplorePlugin.cpp" />
+    <ClCompile Include="KFFighterModule.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="KFExploreData.hpp" />
     <ClInclude Include="KFExploreInterface.h" />
     <ClInclude Include="KFExploreModule.hpp" />
     <ClInclude Include="KFExplorePlugin.hpp" />
+    <ClInclude Include="KFFighterInterface.h" />
+    <ClInclude Include="KFFighterModule.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DF015D52-0B86-4AEF-852C-DF57B281B364}</ProjectGuid>

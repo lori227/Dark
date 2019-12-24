@@ -15,9 +15,9 @@
 #include "KFReset/KFResetInterface.h"
 #include "KFKernel/KFKernelInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"
-#include "KFCommand/KFCommandInterface.h"
 #include "KFCondition/KFConditionInterface.h"
 #include "KFTaskChainConfig.hpp"
+#include "KFTimer/KFTimerInterface.h"
 
 namespace KFrame
 {
@@ -45,9 +45,6 @@ namespace KFrame
         // 刷新时间组
         __KF_RESET_FUNCTION__( OnResetRefreshTaskChain );
 
-        // 命令刷新任务链( 传入刷新id )
-        __KF_COMMAND_FUNCTION__( OnCommandRefreshTaskChain );
-
         // 开启任务链
         bool OpenTaskChain( KFEntity* player, uint32 taskchainid, uint32 order, uint32 time, uint32 refreshid, const char* function, uint32 line );
 
@@ -65,6 +62,27 @@ namespace KFrame
 
         // 清除任务链
         void CleanTaskChain( KFEntity* player, uint32 taskchainid );
+
+        // 间隔刷新任务链
+        void StartRefreshTaskChain( KFEntity* player, const KFTaskChainRefreshSetting* kfrefreshsetting );
+
+        // 任务超时定时器
+        __KF_TIMER_FUNCTION__( OnTimerTaskChainRefreshTimeout );
+
+        // 进入游戏检查任务
+        __KF_ENTER_PLAYER_FUNCTION__( OnEnterTaskChainModule );
+
+        // 离开游戏删除定时器
+        __KF_LEAVE_PLAYER_FUNCTION__( OnLeaveTaskChainModule );
+
+        // 开启附加任务链
+        void OpenExtendChain( KFEntity* player, const UInt32Map& chainlist, const char* function, uint32 line );
+
+        // 开启刷新循环链
+        void OpenRefreshIdToLoop( KFEntity* player, const UInt32Map& idlist, const char* function, uint32 line );
+
+        // 关闭刷新循环链
+        void StopRefreshIdToLoop( KFEntity* player, const UInt32Map& idlist, const char* function, uint32 line );
 
     private:
         virtual void BindOpenTaskChainFunction( const std::string& name, KFOpenTaskChainFunction& function );

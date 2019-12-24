@@ -31,6 +31,7 @@ namespace KFrame
         uint32 _count = 0u;
 
         // 金钱消耗
+        std::string _strmoney;
         KFElements _money;
 
         // 公式id

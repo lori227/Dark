@@ -23,13 +23,13 @@ namespace KFrame
         uint32 _background_pool_id = 0u;
 
         // 性格
-        VectorUInt32 _character_pool_list;
+        UInt32Vector _character_pool_list;
 
         // 天赋
-        VectorUInt32 _innate_pool_list;
+        UInt32Vector _innate_pool_list;
 
         // 主动技能
-        VectorUInt32 _active_pool_list;
+        UInt32Vector _active_pool_list;
 
         // 初始属性偏转率id
         uint32 _attr_id = 0u;

@@ -5,3 +5,5 @@ conf_output
 _bin/bin
 _bin/config/.svn/
 _bin/_output/
+.svn
+.vs

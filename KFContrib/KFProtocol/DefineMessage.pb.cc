@@ -685,6 +685,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExplorePlayerData, z_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExplorePlayerData, yaw_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExplorePlayerData, step_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExplorePlayerData, fovarr_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreNpcData, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -776,14 +777,14 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 113, -1, sizeof(::KFMsg::PBBalanceHeroServer)},
   { 133, -1, sizeof(::KFMsg::PBFighterHeroData)},
   { 142, -1, sizeof(::KFMsg::PBExplorePlayerData)},
-  { 152, -1, sizeof(::KFMsg::PBExploreNpcData)},
-  { 163, -1, sizeof(::KFMsg::PBBuffData)},
-  { 169, -1, sizeof(::KFMsg::PBBuffListData)},
-  { 175, 182, sizeof(::KFMsg::PBExploreBuffData_BuffEntry_DoNotUse)},
-  { 184, -1, sizeof(::KFMsg::PBExploreBuffData)},
-  { 190, 197, sizeof(::KFMsg::PBExploreData_NpcdataEntry_DoNotUse)},
-  { 199, -1, sizeof(::KFMsg::PBExploreData)},
-  { 210, -1, sizeof(::KFMsg::PBBalanceDataServer)},
+  { 153, -1, sizeof(::KFMsg::PBExploreNpcData)},
+  { 164, -1, sizeof(::KFMsg::PBBuffData)},
+  { 170, -1, sizeof(::KFMsg::PBBuffListData)},
+  { 176, 183, sizeof(::KFMsg::PBExploreBuffData_BuffEntry_DoNotUse)},
+  { 185, -1, sizeof(::KFMsg::PBExploreBuffData)},
+  { 191, 198, sizeof(::KFMsg::PBExploreData_NpcdataEntry_DoNotUse)},
+  { 200, -1, sizeof(::KFMsg::PBExploreData)},
+  { 211, -1, sizeof(::KFMsg::PBBalanceDataServer)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -873,36 +874,36 @@ void AddDescriptorsImpl() {
       "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\r:\0028\001\0320\n\016"
       "CharacterEntry\022\013\n\003key\030\001 \001(\r\022\r\n\005value\030\002 \001"
       "(\r:\0028\001\"F\n\021PBFighterHeroData\022\014\n\004uuid\030\001 \001("
-      "\004\022\n\n\002hp\030\002 \001(\r\022\013\n\003exp\030\003 \001(\r\022\n\n\002ep\030\004 \001(\r\"Q"
+      "\004\022\n\n\002hp\030\002 \001(\r\022\013\n\003exp\030\003 \001(\r\022\n\n\002ep\030\004 \001(\r\"a"
       "\n\023PBExplorePlayerData\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 "
       "\001(\005\022\t\n\001z\030\003 \001(\005\022\013\n\003yaw\030\004 \001(\005\022\014\n\004step\030\005 \001("
-      "\r\"^\n\020PBExploreNpcData\022\013\n\003key\030\001 \001(\014\022\t\n\001x\030"
-      "\002 \001(\005\022\t\n\001y\030\003 \001(\005\022\t\n\001z\030\004 \001(\005\022\013\n\003yaw\030\005 \001(\005"
-      "\022\017\n\007bkilled\030\006 \001(\010\"\030\n\nPBBuffData\022\n\n\002id\030\001 "
-      "\001(\r\"5\n\016PBBuffListData\022#\n\010bufflist\030\001 \003(\0132"
-      "\021.KFMsg.PBBuffData\"\211\001\n\021PBExploreBuffData"
-      "\0220\n\004buff\030\001 \003(\0132\".KFMsg.PBExploreBuffData"
-      ".BuffEntry\032B\n\tBuffEntry\022\013\n\003key\030\001 \001(\004\022$\n\005"
-      "value\030\002 \001(\0132\025.KFMsg.PBBuffListData:\0028\001\"\225"
-      "\002\n\rPBExploreData\022\014\n\004save\030\001 \001(\010\022\016\n\006random"
-      "\030\002 \001(\r\022\r\n\005faith\030\003 \001(\r\022.\n\nplayerdata\030\004 \001("
-      "\0132\032.KFMsg.PBExplorePlayerData\0222\n\007npcdata"
-      "\030\005 \003(\0132!.KFMsg.PBExploreData.NpcdataEntr"
-      "y\022*\n\010buffdata\030\006 \001(\0132\030.KFMsg.PBExploreBuf"
-      "fData\032G\n\014NpcdataEntry\022\013\n\003key\030\001 \001(\t\022&\n\005va"
-      "lue\030\002 \001(\0132\027.KFMsg.PBExploreNpcData:\0028\001\"\303"
-      "\002\n\023PBBalanceDataServer\022\n\n\002id\030\001 \001(\r\022\022\n\nmo"
-      "dulename\030\002 \001(\014\022\020\n\010moduleid\030\003 \001(\004\022\016\n\006stat"
-      "us\030\004 \001(\r\022\021\n\tstarttime\030\005 \001(\004\022\017\n\007usetime\030\006"
-      " \001(\r\022,\n\010herodata\030\007 \003(\0132\032.KFMsg.PBBalance"
-      "HeroServer\022,\n\010itemdata\030\010 \003(\0132\032.KFMsg.PBB"
-      "alanceItemServer\022.\n\014currencydata\030\t \003(\0132\030"
-      ".KFMsg.PBBalanceCurrency\022\017\n\007killnpc\030\n \003("
-      "\004\022)\n\013exploredata\030c \001(\0132\024.KFMsg.PBExplore"
-      "Datab\006proto3"
+      "\r\022\016\n\006fovarr\030\006 \003(\005\"^\n\020PBExploreNpcData\022\013\n"
+      "\003key\030\001 \001(\014\022\t\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\022\t\n\001z\030\004 "
+      "\001(\005\022\013\n\003yaw\030\005 \001(\005\022\017\n\007bkilled\030\006 \001(\010\"\030\n\nPBB"
+      "uffData\022\n\n\002id\030\001 \001(\r\"5\n\016PBBuffListData\022#\n"
+      "\010bufflist\030\001 \003(\0132\021.KFMsg.PBBuffData\"\211\001\n\021P"
+      "BExploreBuffData\0220\n\004buff\030\001 \003(\0132\".KFMsg.P"
+      "BExploreBuffData.BuffEntry\032B\n\tBuffEntry\022"
+      "\013\n\003key\030\001 \001(\004\022$\n\005value\030\002 \001(\0132\025.KFMsg.PBBu"
+      "ffListData:\0028\001\"\225\002\n\rPBExploreData\022\014\n\004save"
+      "\030\001 \001(\010\022\016\n\006random\030\002 \001(\r\022\r\n\005faith\030\003 \001(\r\022.\n"
+      "\nplayerdata\030\004 \001(\0132\032.KFMsg.PBExplorePlaye"
+      "rData\0222\n\007npcdata\030\005 \003(\0132!.KFMsg.PBExplore"
+      "Data.NpcdataEntry\022*\n\010buffdata\030\006 \001(\0132\030.KF"
+      "Msg.PBExploreBuffData\032G\n\014NpcdataEntry\022\013\n"
+      "\003key\030\001 \001(\t\022&\n\005value\030\002 \001(\0132\027.KFMsg.PBExpl"
+      "oreNpcData:\0028\001\"\303\002\n\023PBBalanceDataServer\022\n"
+      "\n\002id\030\001 \001(\r\022\022\n\nmodulename\030\002 \001(\014\022\020\n\010module"
+      "id\030\003 \001(\004\022\016\n\006status\030\004 \001(\r\022\021\n\tstarttime\030\005 "
+      "\001(\004\022\017\n\007usetime\030\006 \001(\r\022,\n\010herodata\030\007 \003(\0132\032"
+      ".KFMsg.PBBalanceHeroServer\022,\n\010itemdata\030\010"
+      " \003(\0132\032.KFMsg.PBBalanceItemServer\022.\n\014curr"
+      "encydata\030\t \003(\0132\030.KFMsg.PBBalanceCurrency"
+      "\022\017\n\007killnpc\030\n \003(\004\022)\n\013exploredata\030c \001(\0132\024"
+      ".KFMsg.PBExploreDatab\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2652);
+      descriptor, 2668);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "DefineMessage.proto", &protobuf_RegisterTypes);
   ::protobuf_FrameDefineMessage_2eproto::AddDescriptors();
@@ -4966,6 +4967,7 @@ const int PBExplorePlayerData::kYFieldNumber;
 const int PBExplorePlayerData::kZFieldNumber;
 const int PBExplorePlayerData::kYawFieldNumber;
 const int PBExplorePlayerData::kStepFieldNumber;
+const int PBExplorePlayerData::kFovarrFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 PBExplorePlayerData::PBExplorePlayerData()
@@ -4977,7 +4979,8 @@ PBExplorePlayerData::PBExplorePlayerData()
 }
 PBExplorePlayerData::PBExplorePlayerData(const PBExplorePlayerData& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      fovarr_(from.fovarr_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&x_, &from.x_,
     static_cast<size_t>(reinterpret_cast<char*>(&step_) -
@@ -5019,6 +5022,7 @@ void PBExplorePlayerData::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  fovarr_.Clear();
   ::memset(&x_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&step_) -
       reinterpret_cast<char*>(&x_)) + sizeof(step_));
@@ -5105,6 +5109,25 @@ bool PBExplorePlayerData::MergePartialFromCodedStream(
         break;
       }
 
+      // repeated int32 fovarr = 6;
+      case 6: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, this->mutable_fovarr())));
+        } else if (
+            static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(48u /* 48 & 0xFF */)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 1, 50u, input, this->mutable_fovarr())));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -5156,6 +5179,17 @@ void PBExplorePlayerData::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->step(), output);
   }
 
+  // repeated int32 fovarr = 6;
+  if (this->fovarr_size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteTag(6, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
+    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
+        _fovarr_cached_byte_size_));
+  }
+  for (int i = 0, n = this->fovarr_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32NoTag(
+      this->fovarr(i), output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -5195,6 +5229,19 @@ void PBExplorePlayerData::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->step(), target);
   }
 
+  // repeated int32 fovarr = 6;
+  if (this->fovarr_size() > 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
+      6,
+      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
+      target);
+    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
+        static_cast< ::google::protobuf::int32>(
+            _fovarr_cached_byte_size_), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteInt32NoTagToArray(this->fovarr_, target);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
@@ -5212,6 +5259,22 @@ size_t PBExplorePlayerData::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
+  // repeated int32 fovarr = 6;
+  {
+    size_t data_size = ::google::protobuf::internal::WireFormatLite::
+      Int32Size(this->fovarr_);
+    if (data_size > 0) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+            static_cast< ::google::protobuf::int32>(data_size));
+    }
+    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
+    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+    _fovarr_cached_byte_size_ = cached_size;
+    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    total_size += data_size;
+  }
+
   // int32 x = 1;
   if (this->x() != 0) {
     total_size += 1 +
@@ -5274,6 +5337,7 @@ void PBExplorePlayerData::MergeFrom(const PBExplorePlayerData& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  fovarr_.MergeFrom(from.fovarr_);
   if (from.x() != 0) {
     set_x(from.x());
   }
@@ -5315,6 +5379,7 @@ void PBExplorePlayerData::Swap(PBExplorePlayerData* other) {
 }
 void PBExplorePlayerData::InternalSwap(PBExplorePlayerData* other) {
   using std::swap;
+  fovarr_.InternalSwap(&other->fovarr_);
   swap(x_, other->x_);
   swap(y_, other->y_);
   swap(z_, other->z_);

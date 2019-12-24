@@ -41,7 +41,7 @@ namespace KFrame
         }
 
     protected:
-        // 赌球配置
+        // 读取配置
         virtual void ReadSetting( KFNode& xmlnode, KFSignInSetting* kfsetting );
     };
 }

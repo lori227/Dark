@@ -55,7 +55,10 @@ namespace KFrame
         void BalanceCurrencyEndData( KFEntity* player );
 
         // 结算
-        void BalanceRecord( KFMsg::PBBalanceData* pbdata );
+        void BalanceRecord( KFMsg::PBBalanceData* pbdata, uint32 status );
+
+        // 结算掉落
+        void BalanceDrop( KFEntity* player );
         ////////////////////////////////////////////////////////////////////////////////////////////////
         // 查找npc数据
         KFMsg::PBExploreNpcData* FindNpcData( const std::string& key );
@@ -65,15 +68,15 @@ namespace KFrame
         void BalanceItemData( KFData* kfitem, uint32 balancetype );
 
         // 结算各项数据
-        void BalanceHeroRecord( KFMsg::PBBalanceData* pbdata );
-        void BalanceItemRecord( KFMsg::PBBalanceData* pbdata );
+        void BalanceHeroRecord( KFMsg::PBBalanceData* pbdata, uint32 status );
+        void BalanceItemRecord( KFMsg::PBBalanceData* pbdata, uint32 status );
         void BalanceCurrencyRecord( KFMsg::PBBalanceData* pbdata );
     public:
         // 结算数据
         KFMsg::PBBalanceDataServer _data;
 
-        // npc 列表
-        KFHashMap< uint64, uint64, KFData > _npcs;
+        // 玩家的出战英雄列表
+        UInt64Set _fight_hero;
     };
 }
 

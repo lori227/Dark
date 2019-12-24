@@ -13,13 +13,13 @@ namespace KFrame
     {
     public:
         // npc生成列表
-        VectorUInt32 _npc_generate_list;
+        UInt32Vector _npc_generate_list;
 
         // 成功道具掉落
-        VectorUInt32 _victory_drop_list;
+        UInt32Vector _victory_drop_list;
 
         // 失败道具掉落
-        VectorUInt32 _fail_drop_list;
+        UInt32Vector _fail_drop_list;
 
         // 进入消耗
         std::string _consume_str;

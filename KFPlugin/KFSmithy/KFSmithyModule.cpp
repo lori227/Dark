@@ -157,22 +157,18 @@ namespace KFrame
 
     __KF_ADD_ELEMENT_FUNCTION__( KFSmithyModule::AddSmithyElement )
     {
+        auto kfelement = kfresult->_element;
         if ( !kfelement->IsObject() )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object!", kfelement->_data_name );
-            return std::make_tuple( KFDataDefine::Show_None, nullptr );
+            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object!", kfelement->_data_name );
         }
 
+        // 未解锁时获得材料取1级的数据
         auto level = GetSmithyLevel( player );
-        if ( level == 0u )
-        {
-            // 未解锁时获得材料取1级的数据
-            level = 1u;
-        }
-        auto kfsetting = KFSmithyConfig::Instance()->FindSetting( level );
+        auto kfsetting = KFSmithyConfig::Instance()->FindSetting( __MAX__( 1u, level ) );
         if ( kfsetting == nullptr )
         {
-            return std::make_tuple( KFDataDefine::Show_None, nullptr );
+            return;
         }
 
         auto kfsmithy = player->Find( __STRING__( smithy ) );
@@ -183,8 +179,6 @@ namespace KFrame
 
         totalnum = __MIN__( totalnum, kfsetting->_store_max - curnum );
         player->UpdateData( kfsmithy, __STRING__( totalnum ), KFEnum::Add, totalnum );
-
-        return std::make_tuple( KFDataDefine::Show_Element, nullptr );
     }
 
     __KF_ADD_DATA_FUNCTION__( KFSmithyModule::OnAddSmithyBuild )
@@ -332,7 +326,7 @@ namespace KFrame
         {
             return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
         }
-        player->RemoveElement( &kfweaponsetting->_consume, __FUNC_LINE__, kfmsg.num() );
+        player->RemoveElement( &kfweaponsetting->_consume, __STRING__( smithymake ), __FUNC_LINE__, kfmsg.num() );
 
         // 扣除材料
         player->UpdateData( kfsmithy, __STRING__( totalnum ), KFEnum::Dec, neednum );
@@ -341,7 +335,7 @@ namespace KFrame
         player->AddElement( &kfweaponsetting->_item, __STRING__( smithymake ), __FUNC_LINE__, kfmsg.num() );
 
         // 发送通知
-        _kf_display->DelayToClient( player, KFMsg::SmithyMakeWeaponSuc );
+        _kf_display->SendToClient( player, KFMsg::SmithyMakeWeaponSuc );
 
         // 条件回调
         auto kfitemsetting = KFItemConfig::Instance()->FindSetting( kfweaponsetting->_id );

@@ -44,13 +44,19 @@ namespace KFrame
         auto strextend = xmlnode.GetString( "ExtendChain" );
         KFReadSetting::ParseMapUInt32( strextend, taskdata->_extend_task_chain_list );
 
+        auto strstartrefresh = xmlnode.GetString( "StartRefresh" );
+        KFReadSetting::ParseMapUInt32( strstartrefresh, taskdata->_start_refresh_id_list );
+
+        auto strstoprefresh = xmlnode.GetString( "StopRefresh" );
+        KFReadSetting::ParseMapUInt32( strstoprefresh, taskdata->_stop_refresh_id_list );
+
         auto strlogicid = xmlnode.GetString( "LogicId" );
         taskdata->_logic_type = KFReadSetting::ParseConditionList( strlogicid, taskdata->_logic_id_list );
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////
     void KFTaskChainRefreshConfig::ClearSetting()
     {
-        _refresh_data_list.Clear();
+        _reset_data_list.Clear();
         KFConfigT< KFTaskChainRefreshSetting >::ClearSetting();
     }
 
@@ -65,9 +71,19 @@ namespace KFrame
         auto strcondition = xmlnode.GetString( "Condition" );
         kfsetting->_conditions.Parse( strcondition, kfsetting->_id, __FUNC_LINE__ );
 
-        auto timeid = xmlnode.GetUInt32( "RefreshTime" );
-        auto kfrefreshdata = _refresh_data_list.Create( timeid );
-        kfrefreshdata->_refresh_list.push_back( kfsetting );
+        auto resettimeid = xmlnode.GetUInt32( "ResetTime" );
+        if ( resettimeid != 0 )
+        {
+            kfsetting->_reset_refresh_time = resettimeid;
+            auto kfrefreshdata = _reset_data_list.Create( resettimeid );
+            kfrefreshdata->_refresh_list.push_back( kfsetting );
+        }
+
+        auto timertime = xmlnode.GetUInt32( "TimerTime" );
+        if ( timertime )
+        {
+            kfsetting->_timer_refresh_time = timertime;
+        }
     }
 
     void KFTaskChainRefreshConfig::LoadAllComplete()

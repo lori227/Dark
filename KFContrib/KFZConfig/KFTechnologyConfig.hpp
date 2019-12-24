@@ -20,11 +20,14 @@ namespace KFrame
         // 建筑id
         uint32 _build_id = 0u;
 
+        // 科技类型
+        uint32 _type = 0u;
+
         // 前置科技条件
-        VectorUInt32 _pre_technology;
+        UInt32Vector _pre_technology;
 
         // 后置开放的科技
-        VectorUInt32 _unlock_technology;
+        UInt32Vector _unlock_technology;
 
         // 升级消耗
         std::string _str_consume;

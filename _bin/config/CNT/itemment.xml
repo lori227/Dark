@@ -1,5 +1,5 @@
-<root version="1764">
-	<item Name="maxitemcount" Key="" Value="8" Channel="0" Service="0" />
+<root version="1859">
+	<item Name="maxitemcount" Key="" Value="12" Channel="0" Service="0" />
 	<item Name="maxstoragecount" Key="" Value="999" Channel="0" Service="0" />
 	<item Name="useitemindex" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="fooditemid" Key="" Value="1000017" Channel="0" Service="0" />

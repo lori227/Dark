@@ -5,6 +5,8 @@ namespace KFrame
     void KFRoleModule::BeforeRun()
     {
         _kf_component = _kf_kernel->FindComponent( __STRING__( player ) );
+
+        __REGISTER_ENTER_PLAYER__( &KFRoleModule::OnEnterRoleModule );
         __REGISTER_UPDATE_DATA_1__( __STRING__( money ), &KFRoleModule::OnUpdateMoneyCallBack );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_SET_SEX_REQ, &KFRoleModule::HandleSetSexReq );
@@ -12,11 +14,12 @@ namespace KFrame
         __REGISTER_MESSAGE__( KFMsg::S2S_SET_PLAYERNAME_TO_GAME_ACK, &KFRoleModule::HandleSetPlayerNameToGameAck );
         __REGISTER_MESSAGE__( KFMsg::MSG_SET_PLAYER_HEADICON_REQ, &KFRoleModule::HandleSetPlayerHeadIconReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_SET_PLAYER_FACTION_REQ, &KFRoleModule::HandleSetPlayerFactionReq );
-
+        __REGISTER_MESSAGE__( KFMsg::MSG_UPDATE_MAIN_STAGE_REQ, &KFRoleModule::HandleUpdateMainStageReq );
     }
 
     void KFRoleModule::BeforeShut()
     {
+        __UN_ENTER_PLAYER__();
         __UN_UPDATE_DATA_1__( __STRING__( money ) );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_SET_NAME_REQ );
@@ -24,8 +27,33 @@ namespace KFrame
         __UN_MESSAGE__( KFMsg::S2S_SET_PLAYERNAME_TO_GAME_ACK );
         __UN_MESSAGE__( KFMsg::MSG_SET_PLAYER_HEADICON_REQ );
         __UN_MESSAGE__( KFMsg::MSG_SET_PLAYER_FACTION_REQ );
+        __UN_MESSAGE__( KFMsg::MSG_UPDATE_MAIN_STAGE_REQ );
     }
 
+    __KF_ENTER_PLAYER_FUNCTION__( KFRoleModule::OnEnterRoleModule )
+    {
+        auto kfbasic = player->Find( __STRING__( basic ) );
+
+        // 默认头像
+        if ( kfbasic->Get<uint32>( __STRING__( iconid ) ) == _invalid_int )
+        {
+            auto setting = KFIconConfig::Instance()->GetDedaultIconSetting();
+            if ( setting != nullptr )
+            {
+                kfbasic->Set( __STRING__( iconid ), setting->_id );
+            }
+        }
+
+        // 默认势力
+        if ( kfbasic->Get<uint32>( __STRING__( factionid ) ) == _invalid_int )
+        {
+            auto setting = KFFactionConfig::Instance()->GetDedaultFactionSetting();
+            if ( setting != nullptr )
+            {
+                kfbasic->Set( __STRING__( factionid ), setting->_id );
+            }
+        }
+    }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     uint32 KFRoleModule::CheckNameValid( const std::string& name, uint32 maxlength )
@@ -103,7 +131,7 @@ namespace KFrame
             auto ok = kfelements.Parse( kfmsg.costdata(), __FUNC_LINE__ );
             if ( ok )
             {
-                player->RemoveElement( &kfelements, __FUNC_LINE__ );
+                player->RemoveElement( &kfelements, __STRING__( name ), __FUNC_LINE__ );
             }
         }
     }
@@ -163,4 +191,17 @@ namespace KFrame
         player->UpdateData( __STRING__( basic ), __STRING__( factionid ), KFEnum::Set, kfmsg.factionid() );
     }
 
+    __KF_MESSAGE_FUNCTION__( KFRoleModule::HandleUpdateMainStageReq )
+    {
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgUpdateMainStageReq );
+
+        auto mainstage = player->Get( __STRING__( mainstage ) );
+        if ( mainstage == 0u )
+        {
+            // 主线流程已结束
+            return;
+        }
+
+        player->UpdateData( __STRING__( mainstage ), KFEnum::Set, kfmsg.stageid() );
+    }
 }

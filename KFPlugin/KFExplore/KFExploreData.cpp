@@ -12,7 +12,6 @@ namespace KFrame
     KFExploreRecord* KFExploreRecord::Reset()
     {
         _data.Clear();
-        _npcs.Clear();
         return this;
     }
 
@@ -83,14 +82,8 @@ namespace KFrame
     {
         auto kfherorecord = player->Find( __STRING__( hero ) );
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
-        for ( uint32 i = KFDataDefine::Array_Index; i < kfteamarray->Size(); ++i )
+        for ( auto kfteam = kfteamarray->First(); kfteam != nullptr; kfteam = kfteamarray->Next() )
         {
-            auto kfteam = kfteamarray->Find( i );
-            if ( kfteam == nullptr )
-            {
-                continue;
-            }
-
             auto uuid = kfteam->Get<uint64>();
             auto kfhero = _kf_hero->FindAliveHero( kfherorecord, uuid );
             if ( kfhero == nullptr )
@@ -173,10 +166,6 @@ namespace KFrame
         auto kfitemrecord = player->Find( __STRING__( explore ) );
         BalanceItemRecordData( kfitemrecord, StartType );
 
-        // 武器
-        auto kfweaponrecord = player->Find( __STRING__( weapon ) );
-        BalanceItemRecordData( kfweaponrecord, StartType );
-
         // other
         auto kfotherrecord = player->Find( __STRING__( other ) );
         BalanceItemRecordData( kfotherrecord, StartType );
@@ -188,10 +177,6 @@ namespace KFrame
         auto kfitemrecord = player->Find( __STRING__( explore ) );
         BalanceItemRecordData( kfitemrecord, EndType );
 
-        // 武器
-        auto kfweaponrecord = player->Find( __STRING__( weapon ) );
-        BalanceItemRecordData( kfweaponrecord, EndType );
-
         // other
         auto kfotherrecord = player->Find( __STRING__( other ) );
         BalanceItemRecordData( kfotherrecord, EndType );
@@ -201,13 +186,6 @@ namespace KFrame
     {
         for ( auto kfitem = kfitemrecord->First(); kfitem != nullptr; kfitem = kfitemrecord->Next() )
         {
-            // 探索内自动销毁的道具不做统计
-            auto auto_type = _kf_item->GetItemAutoType( kfitem );
-            if ( auto_type == KFMsg::AutoDestory )
-            {
-                continue;
-            }
-
             BalanceItemData( kfitem, balancetype );
         }
     }
@@ -267,15 +245,15 @@ namespace KFrame
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    void KFExploreRecord::BalanceRecord( KFMsg::PBBalanceData* pbdata )
+    void KFExploreRecord::BalanceRecord( KFMsg::PBBalanceData* pbdata, uint32 status )
     {
         //__LOG_INFO__( "{}", _data.DebugString() );
 
         // 英雄
-        BalanceHeroRecord( pbdata );
+        BalanceHeroRecord( pbdata, status );
 
         // 道具
-        BalanceItemRecord( pbdata );
+        BalanceItemRecord( pbdata, status );
 
         // 货币
         BalanceCurrencyRecord( pbdata );
@@ -283,11 +261,57 @@ namespace KFrame
         //__LOG_INFO__( "{}", pbdata->DebugString() );
     }
 
-    void KFExploreRecord::BalanceHeroRecord( KFMsg::PBBalanceData* pbdata )
+    void KFExploreRecord::BalanceDrop( KFEntity* player )
+    {
+        KFMsg::PBShowElement pbelement;
+        if ( !player->GetShowElement( &pbelement ) )
+        {
+            return;
+        }
+
+        for ( auto i = 0; i < pbelement.pbdata_size(); i++ )
+        {
+            auto& showdata = pbelement.pbdata( i );
+            if ( showdata.name() == __STRING__( item ) )
+            {
+                uint32 itemid = 0u;
+                uint32 itemcount = 0u;
+                uint64 itemuuid = 0u;
+
+                for ( auto& iter : showdata.pbuint64() )
+                {
+                    if ( iter.first == __STRING__( id ) )
+                    {
+                        itemid = iter.second;
+                    }
+                    else if ( iter.first == __STRING__( count ) )
+                    {
+                        itemcount = iter.second;
+                    }
+                    else if ( iter.first == __STRING__( uuid ) )
+                    {
+                        itemuuid = iter.second;
+                    }
+                }
+
+                auto pbitem = FindItem( itemid, itemuuid );
+                pbitem->set_endcount( pbitem->endcount() + itemcount );
+            }
+        }
+    }
+
+    void KFExploreRecord::BalanceHeroRecord( KFMsg::PBBalanceData* pbdata, uint32 status )
     {
         for ( auto i = 0; i < _data.herodata_size(); ++i )
         {
             auto pbheroserver = &_data.herodata( i );
+
+            // PVE只结算出战英雄列表
+            if ( !_fight_hero.empty() && _fight_hero.find( pbheroserver->uuid() ) == _fight_hero.end() )
+            {
+                continue;
+            }
+
             auto pbheroclient = pbdata->add_herodata();
 
             pbheroclient->set_uuid( pbheroserver->uuid() );
@@ -327,7 +351,7 @@ namespace KFrame
         }
     }
 
-    void KFExploreRecord::BalanceItemRecord( KFMsg::PBBalanceData* pbdata )
+    void KFExploreRecord::BalanceItemRecord( KFMsg::PBBalanceData* pbdata, uint32 status )
     {
         for ( auto i = 0; i < _data.itemdata_size(); ++i )
         {
@@ -335,6 +359,16 @@ namespace KFrame
             if ( pbitemserver->endcount() <= pbitemserver->begincount() )
             {
                 continue;
+            }
+
+            // 探索自动销毁的道具不做统计
+            if ( status == KFMsg::ExploreStatus )
+            {
+                auto auto_type = _kf_item->GetItemAutoType( pbitemserver->id() );
+                if ( auto_type == KFMsg::AutoDestory )
+                {
+                    continue;
+                }
             }
 
             auto pbitemclient = pbdata->add_itemdata();

@@ -27,37 +27,31 @@ namespace KFrame
 
     __KF_ADD_ELEMENT_FUNCTION__( KFTechnologyModule::AddTechnologyElement )
     {
+        auto kfelement = kfresult->_element;
         if ( !kfelement->IsObject() )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object!", kfelement->_data_name );
-            return std::make_tuple( KFDataDefine::Show_None, nullptr );
+            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object!", kfelement->_data_name );
         }
 
         auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
         if ( kfelementobject->_config_id == _invalid_int )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no id!", kfelement->_data_name );
-            return std::make_tuple( KFDataDefine::Show_None, nullptr );
+            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no id!", kfelement->_data_name );
         }
 
         auto kfsetting = KFTechnologyConfig::Instance()->FindSetting( kfelementobject->_config_id );
         if ( kfsetting == nullptr )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "id=[{}] technologysetting = null!", kfelementobject->_config_id );
-            return std::make_tuple( KFDataDefine::Show_None, nullptr );
+            return __LOG_ERROR_FUNCTION__( function, line, "id=[{}] technologysetting = null!", kfelementobject->_config_id );
         }
 
         auto kftechnology = kfparent->Find( kfsetting->_id );
-        if ( kftechnology != nullptr )
+        if ( kftechnology == nullptr )
         {
-            return std::make_tuple( KFDataDefine::Show_None, nullptr );
+            return;
         }
 
-        // 更新科技状态
-        auto status = kfelementobject->CalcValue( kfparent->_class_setting, kfparent->_data_setting->_value_key_name, 1.0f );
-        player->UpdateData( kfparent, kfsetting->_id, kfparent->_data_setting->_value_key_name, KFEnum::Set, status );
-
-        return std::make_tuple( KFDataDefine::Show_None, nullptr );
+        UpdateTechnologyData( player, kfparent, kfsetting->_id );
     }
 
     __KF_ADD_DATA_FUNCTION__( KFTechnologyModule::OnAddUnlockTechnology )
@@ -98,18 +92,51 @@ namespace KFrame
         // 解锁后置科技
         for ( auto unlockid : kfsetting->_unlock_technology )
         {
-            auto kftechnologysetting = KFTechnologyConfig::Instance()->FindSetting( unlockid );
-            if ( kftechnologysetting == nullptr )
-            {
-                continue;
-            }
+            UpdateTechnologyData( player, kftechnologyrecord, unlockid );
+        }
+    }
 
-            player->UpdateData( kftechnologyrecord, kftechnologysetting->_id, kftechnologyrecord->_data_setting->_value_key_name, KFEnum::Set, kftechnologysetting->_status );
+    void KFTechnologyModule::UpdateTechnologyData( KFEntity* player, KFData* kftechnologyrecord, uint32 technologyid )
+    {
+        auto kfsetting = KFTechnologyConfig::Instance()->FindSetting( technologyid );
+        if ( kfsetting == nullptr )
+        {
+            return;
+        }
+
+        auto kftechnology = kftechnologyrecord->Find( technologyid );
+        if ( kftechnology == nullptr )
+        {
+            kftechnology = player->CreateData( kftechnologyrecord );
+            kftechnology->Set( __STRING__( status ), kfsetting->_status );
+            kftechnology->Set( __STRING__( type ), kfsetting->_type );
+            player->AddData( kftechnologyrecord, technologyid, kftechnology );
+        }
+        else
+        {
+            auto status = kftechnology->Get( __STRING__( status ) );
+            if ( status == 0u && kfsetting->_status != 0u )
+            {
+                player->UpdateData( kftechnology, __STRING__( status ), KFEnum::Set, kfsetting->_status );
+            }
         }
     }
 
     __KF_ENTER_PLAYER_FUNCTION__( KFTechnologyModule::OnEnterTechnologyModule )
     {
+        // 设置科技类型
+        auto kftechnologyrecord = player->Find( __STRING__( technology ) );
+        for ( auto kftechnology = kftechnologyrecord->First(); kftechnology != nullptr; kftechnology = kftechnologyrecord->Next() )
+        {
+            auto kfsetting = KFTechnologyConfig::Instance()->FindSetting( kftechnology->GetKeyID() );
+            if ( kfsetting == nullptr )
+            {
+                continue;
+            }
+
+            kftechnology->Set( __STRING__( type ), kfsetting->_type );
+        }
+
         auto kfeffect = player->Find( __STRING__( effect ) );
         auto lastversion = kfeffect->Get<std::string>( __STRING__( version ) );
         auto& newversion = KFTechnologyConfig::Instance()->GetVersion();
@@ -131,7 +158,6 @@ namespace KFrame
             }
         }
 
-        auto kftechnologyrecord = player->Find( __STRING__( technology ) );
         for ( auto kftechnology = kftechnologyrecord->First(); kftechnology != nullptr; kftechnology = kftechnologyrecord->Next() )
         {
             auto status = kftechnology->Get<uint32>( kftechnologyrecord->_data_setting->_value_key_name );
@@ -203,7 +229,7 @@ namespace KFrame
                 return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
             }
 
-            player->RemoveElement( &kftechsetting->_consume, __FUNC_LINE__ );
+            player->RemoveElement( &kftechsetting->_consume, __STRING__( technology ), __FUNC_LINE__ );
         }
 
         // 更新科技状态

@@ -35,5 +35,10 @@ namespace KFrame
         kfsetting->_floor_attribute = xmlnode.GetUInt32( "Floor", true );
         kfsetting->_upper_attribute = xmlnode.GetUInt32( "Upper", true );
 
+        auto stractivepool = xmlnode.GetString( "ActivePool", true );
+        KFUtility::SplitList( kfsetting->_active_pool_list, stractivepool, __SPLIT_STRING__ );
+
+        auto strinnatepool = xmlnode.GetString( "InnatePool", true );
+        KFUtility::SplitList( kfsetting->_innate_pool_list, strinnatepool, __SPLIT_STRING__ );
     }
 }

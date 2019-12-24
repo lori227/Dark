@@ -24,14 +24,27 @@ namespace KFrame
         virtual void SetNew( bool isnew ) = 0;
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 创建属性
+        virtual KFData* CreateData( KFData* kfdata ) = 0;
         virtual KFData* CreateData( const std::string& dataname ) = 0;
-        virtual KFData* CreateData( const std::string& dataname, uint64 key ) = 0;
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // 初始化数组( kfarray )
+        virtual void InitArray( KFData* kfarray, uint32 size ) = 0;
+
+        // 添加数组元素( kfarray )
+        virtual KFData* AddArray( KFData* kfarray, int64 value ) = 0;
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // 添加属性
+        // record 添加属性
         virtual bool AddData( KFData* kfparent, KFData* kfdata, bool callback = true ) = 0;
         virtual bool AddData( KFData* kfparent, uint64 key, KFData* kfdata, bool callback = true ) = 0;
         virtual bool AddData( const std::string& parentname, uint64 key, KFData* kfdata, bool callback = true ) = 0;
+
+        // array 添加数组
+        virtual void AddData( KFData* kfdata, const UInt32List& inlist ) = 0;
+        virtual void AddData( KFData* kfdata, const std::string& dataname, const UInt32List& inlist ) = 0;
+        virtual void AddData( KFData* kfdata, const UInt32Vector& inlist ) = 0;
+        virtual void AddData( KFData* kfdata, const std::string& dataname, const UInt32Vector& inlist ) = 0;
+        virtual void AddData( KFData* kfdata, const UInt32Set& inlist ) = 0;
+        virtual void AddData( KFData* kfdata, const std::string& dataname, const UInt32Set& inlist ) = 0;
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 删除所有属性
@@ -102,21 +115,26 @@ namespace KFrame
         virtual const std::string& CheckRemoveElement( const KFElements* kfelements, const char* function, uint32 line, float multiple = 1.0f ) = 0;
 
         // 删除元数据
-        virtual void RemoveElement( const KFElements* kfelements, const char* function, uint32 line, float multiple = 1.0f ) = 0;
+        virtual void RemoveElement( const KFElements* kfelements, const std::string& modulename, const char* function, uint32 line, float multiple = 1.0f ) = 0;
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // 显示奖励接口相关
         virtual void AddDataToShow( const std::string& modulename ) = 0;
 
-        virtual void AddDataToShow( const std::string& name, uint64 value, bool find, const std::string& extendname = _invalid_string ) = 0;
-        virtual void AddDataToShow( const std::string& modulename, const std::string& name, uint64 value, bool find, const std::string& extendname = _invalid_string ) = 0;
+        virtual void AddDataToShow( const std::string& name, uint64 value, bool find ) = 0;
+        virtual void AddDataToShow( const std::string& modulename, const std::string& name, uint64 value, bool find ) = 0;
 
-        virtual void AddDataToShow( KFData* kfdata, bool find, const std::string& extendname = _invalid_string ) = 0;
-        virtual void AddDataToShow( const std::string& modulename, KFData* kfdata, bool find, const std::string& extendname = _invalid_string ) = 0;
+        virtual void AddDataToShow( KFData* kfdata ) = 0;
+        virtual void AddDataToShow( const std::string& modulename, KFData* kfdata ) = 0;
 
         virtual void AddDataToShow( const std::string& name, uint64 value, KeyValue& values, bool find, const std::string& extendname = _invalid_string ) = 0;
         virtual void AddDataToShow( const std::string& modulename, const std::string& name, uint64 value, KeyValue& values, bool find, const std::string& extendname = _invalid_string ) = 0;
 
-        virtual void AddElementToShow( const KFElement* kfelement, bool find ) = 0;
+        // 主动同步显示数据
+        virtual void ShowElementToClient() = 0;
+
+        // 获取显示奖励
+        virtual bool GetShowElement( KFMsg::PBShowElement* pbelement ) = 0;
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 设置element到kfdata对象

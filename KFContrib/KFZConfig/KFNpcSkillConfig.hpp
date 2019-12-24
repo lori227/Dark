@@ -11,10 +11,10 @@ namespace KFrame
     {
     public:
         // 主动技能权重池列表
-        VectorUInt32 _active_pool_list;
+        UInt32Vector _active_pool_list;
 
         // 天赋技能权重池列表
-        VectorUInt32 _innate_pool_list;
+        UInt32Vector _innate_pool_list;
     };
 
     ////////////////////////////////////////////////////////////////////////////////

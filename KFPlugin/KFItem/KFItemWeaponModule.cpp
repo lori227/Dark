@@ -106,7 +106,7 @@ namespace KFrame
                     continue;
                 }
 
-                _kf_kernel->AddArray( kfarray, weightdata->_id );
+                player->AddArray( kfarray, weightdata->_id );
             }
         }
     }
@@ -185,7 +185,7 @@ namespace KFrame
         }
 
         // 通知装备成功
-        _kf_display->DelayToClient( player, KFMsg::ItemWeaponOk );
+        _kf_display->SendToClient( player, KFMsg::ItemWeaponOk );
     }
 
     __KF_MESSAGE_FUNCTION__( KFItemWeaponModule::HandleHeroWeaponAnotherReq )
@@ -227,7 +227,7 @@ namespace KFrame
         }
 
         // 通知装备成
-        _kf_display->DelayToClient( player, KFMsg::ItemWeaponOk );
+        _kf_display->SendToClient( player, KFMsg::ItemWeaponOk );
     }
 
     __KF_MESSAGE_FUNCTION__( KFItemWeaponModule::HandleHeroUnWeaponReq )
@@ -259,7 +259,7 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::ItemUnWeaponFailed );
         }
 
-        _kf_display->DelayToClient( player, KFMsg::ItemUnWeaponOk );
+        _kf_display->SendToClient( player, KFMsg::ItemUnWeaponOk );
     }
 
     __KF_MESSAGE_FUNCTION__( KFItemWeaponModule::HandleUpdateDurabilityReq )

@@ -2,13 +2,14 @@
 #define __KF_EXPLORE_INTERFACE_H__
 
 #include "KFrame.h"
+#include "KFExploreData.hpp"
 
 namespace KFrame
 {
     class KFExploreInterface : public KFModule
     {
     public:
-
+        virtual KFExploreRecord* GetExploreRecord( uint64 keyid ) = 0;
     };
 
     //////////////////////////////////////////////////////////////////////////

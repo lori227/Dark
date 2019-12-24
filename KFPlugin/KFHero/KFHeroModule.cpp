@@ -13,6 +13,7 @@ namespace KFrame
         __REGISTER_ADD_ELEMENT__( __STRING__( hero ), &KFHeroModule::AddHeroElement );
         __REGISTER_REMOVE_ELEMENT__( __STRING__( hero ), &KFHeroModule::RemoveHeroElement );
         __REGISTER_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( exp ), &KFHeroModule::OnHeroExpUpdate );
+        __REGISTER_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( active ), &KFHeroModule::OnHeroActiveUpdate );
 
         __REGISTER_EXECUTE__( __STRING__( maxherocount ), &KFHeroModule::OnExecuteTechnologyMaxHeroCount );
         ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -29,6 +30,7 @@ namespace KFrame
         __UN_ADD_ELEMENT__( __STRING__( hero ) );
         __UN_REMOVE_ELEMENT__( __STRING__( hero ) );
         __UN_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( exp ) );
+        __UN_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( active ) );
 
         __UN_EXECUTE__( __STRING__( maxherocount ) );
         /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -64,10 +66,10 @@ namespace KFrame
 
     __KF_ADD_ELEMENT_FUNCTION__( KFHeroModule::AddHeroElement )
     {
+        auto kfelement = kfresult->_element;
         if ( !kfelement->IsObject() )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object!", kfelement->_data_name );
-            return std::make_tuple( KFDataDefine::Show_None, nullptr );
+            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object!", kfelement->_data_name );
         }
         auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
 
@@ -79,27 +81,24 @@ namespace KFrame
             auto kfhero = kfparent->Find( uuid );
             if ( kfhero == nullptr )
             {
-                __LOG_ERROR_FUNCTION__( function, line, "element=[{}] uuid[{}] hero not exist!", kfelement->_data_name, uuid );
-                return std::make_tuple( KFDataDefine::Show_None, nullptr );
+                return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] uuid[{}] hero not exist!", kfelement->_data_name, uuid );
             }
 
             // 更新数据
-            player->UpdateElementToData( kfelementobject, kfhero, multiple );
-            return std::make_tuple( KFDataDefine::Show_None, nullptr );
+            return player->UpdateElementToData( kfelementobject, kfhero, multiple );
         }
 
         if ( kfelementobject->_config_id == 0u )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] id!", kfelement->_data_name );
-            return std::make_tuple( KFDataDefine::Show_None, nullptr );
+            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] id!", kfelement->_data_name );
         }
 
         // 创建新的英雄
-        auto kfhero = _kf_kernel->CreateObject( kfparent->_data_setting );
-        if ( _kf_generate->GeneratePlayerHero( player, kfhero, kfelementobject->_config_id ) == nullptr )
+        auto kfhero = player->CreateData( kfparent );
+        auto rethero = _kf_generate->GeneratePlayerHero( player, kfhero, kfelementobject->_config_id );
+        if ( rethero == nullptr )
         {
-            _kf_kernel->ReleaseObject( kfhero );
-            return std::make_tuple( KFDataDefine::Show_None, nullptr );
+            return;
         }
 
         // 有设定属性
@@ -108,7 +107,9 @@ namespace KFrame
         // 创建guid
         auto uuid = KFGlobal::Instance()->STMakeUUID( __STRING__( hero ) );
         player->AddData( kfparent, uuid, kfhero );
-        return std::make_tuple( KFDataDefine::Show_Data, kfhero );
+
+        // 添加结果
+        kfresult->AddResult( kfhero );
     }
 
     __KF_REMOVE_ELEMENT_FUNCTION__( KFHeroModule::RemoveHeroElement )
@@ -153,6 +154,21 @@ namespace KFrame
         if ( curlevel != level )
         {
             player->UpdateData( kfhero, __STRING__( level ), KFEnum::Set, curlevel );
+        }
+    }
+
+    __KF_UPDATE_DATA_FUNCTION__( KFHeroModule::OnHeroActiveUpdate )
+    {
+        auto kfhero = kfdata->GetParent()->GetParent();
+        if ( kfhero == nullptr )
+        {
+            return;
+        }
+
+        // 当英雄没装备技能时，获得的技能自动装备
+        if ( kfhero->Get( __STRING__( activeindex ) ) == 0u )
+        {
+            player->UpdateData( kfhero, __STRING__( activeindex ), KFEnum::Set, key );
         }
     }
 
@@ -411,12 +427,6 @@ namespace KFrame
         if ( kfhero == nullptr )
         {
             return KFMsg::NoExist;
-        }
-
-        // 判断不存活条件
-        if ( kfhero->Get<uint32>( __STRING__( fighter ), __STRING__( hp ) ) == 0u )
-        {
-            return KFMsg::NoEnoughHp;
         }
 
         if ( kfhero->Get<uint32>( __STRING__( durability ) ) == 0u )

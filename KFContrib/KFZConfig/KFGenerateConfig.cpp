@@ -12,13 +12,13 @@ namespace KFrame
         kfsetting->_growth_id = xmlnode.GetUInt32( "GrowthId" );
         kfsetting->_cost_formula_id = xmlnode.GetUInt32( "FormulaId" );
 
-        auto strcharacter = xmlnode.GetString( "CharacterPool" );
+        auto strcharacter = xmlnode.GetString( "CharacterPool", true );
         KFUtility::SplitList( kfsetting->_character_pool_list, strcharacter, __SPLIT_STRING__ );
 
-        auto strinnate = xmlnode.GetString( "InnatePool" );
+        auto strinnate = xmlnode.GetString( "InnatePool", true );
         KFUtility::SplitList( kfsetting->_innate_pool_list, strinnate, __SPLIT_STRING__ );
 
-        auto stractive = xmlnode.GetString( "ActivePool" );
+        auto stractive = xmlnode.GetString( "ActivePool", true );
         KFUtility::SplitList( kfsetting->_active_pool_list, stractive, __SPLIT_STRING__ );
     }
 }

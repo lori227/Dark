@@ -6,7 +6,7 @@
 namespace KFrame
 {
     typedef std::function< bool( KFEntity*, uint32, uint32, uint32, uint32, uint32, const char*, uint32 ) > KFOpenTaskChainFunction;
-    typedef std::function< void( KFEntity*, const ListUInt32&, uint32 ) > KFFinishTaskChainFunction;
+    typedef std::function< void( KFEntity*, const UInt32List&, uint32 ) > KFFinishTaskChainFunction;
     class KFTaskChainInterface : public KFModule
     {
     public:
@@ -26,7 +26,7 @@ namespace KFrame
 
         // 注册完成任务链功能函数
         template< class T >
-        void RegisterFinishTaskChainFunction( const std::string& name, T* object, void( T::*handle )( KFEntity*, const ListUInt32&, uint32 ) )
+        void RegisterFinishTaskChainFunction( const std::string& name, T* object, void( T::*handle )( KFEntity*, const UInt32List&, uint32 ) )
         {
             KFFinishTaskChainFunction function = std::bind( handle, object, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3 );
             BindFinishTaskChainFunction( name, function );
@@ -61,7 +61,7 @@ namespace KFrame
     _kf_task_chain->UnRegisterOpenTaskChainFunction( name )
 
 #define __KF_FINISH_TASK_CHAIN_FUNCTION__( _function ) \
-    void _function( KFEntity* player, const ListUInt32& logicids, uint32 statusid )
+    void _function( KFEntity* player, const UInt32List& logicids, uint32 statusid )
 #define  __REGISTER_FINISH_TASK_CHAIN__( name, function ) \
     _kf_task_chain->RegisterFinishTaskChainFunction( name, this, function )
 #define  __UN_FINISH_TASK_CHAIN__( name ) \

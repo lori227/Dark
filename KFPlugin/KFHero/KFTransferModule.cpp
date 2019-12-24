@@ -62,17 +62,14 @@ namespace KFrame
                 return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
             }
 
-            player->RemoveElement( &kfsetting->_cost, __FUNC_LINE__ );
+            player->RemoveElement( &kfsetting->_cost, __STRING__( transfer ), __FUNC_LINE__ );
         }
-
-        // 开始转职
-        player->UpdateData( kfhero, __STRING__( profession ), KFEnum::Set, kfmsg.profession() );
 
         auto weapontype = kfhero->Get( __STRING__( weapontype ) );
 
         // 保存之前的职业信息
         auto kftransferrecord = kfhero->Find( __STRING__( transfer ) );
-        auto kftransfer = _kf_kernel->CreateObject( kftransferrecord->_data_setting );
+        auto kftransfer = player->CreateData( kftransferrecord );
         auto index = kftransferrecord->Size() + 1;
         kftransfer->Set( __STRING__( index ), index );
         kftransfer->Set( __STRING__( profession ), profession );
@@ -80,7 +77,10 @@ namespace KFrame
 
         player->AddData( kftransferrecord, index, kftransfer );
 
-        return _kf_display->DelayToClient( player, KFMsg::HeroTransferSuc );
+        // 开始转职
+        player->UpdateData( kfhero, __STRING__( profession ), KFEnum::Set, kfmsg.profession() );
+
+        return _kf_display->SendToClient( player, KFMsg::HeroTransferSuc );
     }
 
     __KF_MESSAGE_FUNCTION__( KFTransferModule::HandleSelectInnateReq )
@@ -95,11 +95,12 @@ namespace KFrame
             ret |= RemoveInnateId( player, kfmsg.uuid(), innateid );
         }
 
-        return _kf_display->DelayToClient( player, KFMsg::HeroSelectInnateSuc, ret );
+        return _kf_display->SendToClient( player, KFMsg::HeroSelectInnateSuc, ret );
     }
 
     bool KFTransferModule::RemoveInnateId( KFEntity* player, uint64 uuid, uint32 id )
     {
+        static auto _option = _kf_option->FindOption( "useinnatecount" );
         if ( id == _invalid_int )
         {
             return false;
@@ -111,46 +112,33 @@ namespace KFrame
             return false;
         }
 
-        auto innatenum = 0u;
         auto kfinnatearray = kfhero->Find( __STRING__( innate ) );
-        for ( uint32 index = KFDataDefine::Array_Index; index < kfinnatearray->Size(); ++index )
-        {
-            auto innate = kfinnatearray->Get( index );
-            if ( innate != _invalid_int )
-            {
-                innatenum++;
-            }
-        }
-
-        static auto _option = _kf_option->FindOption( "useinnatecount" );
+        auto innatenum = kfinnatearray->Size();
         if ( innatenum <= _option->_uint32_value )
         {
             // 天赋数量小于可用数量
             return false;
         }
 
-        for ( uint32 index = KFDataDefine::Array_Index; index < kfinnatearray->Size(); ++index )
+        auto index = kfinnatearray->GetIndex( id );
+        if ( index == 0 )
         {
-            auto innateid = kfinnatearray->Get( index );
-            if ( innateid == id )
-            {
-                if ( index < innatenum )
-                {
-                    // 如果删除的天赋不是最后一个，则将最后一个替换到前面并置0
-                    auto lastinnate = kfinnatearray->Get( innatenum );
-                    player->UpdateData( kfinnatearray, index, KFEnum::Set, lastinnate );
-                    player->UpdateData( kfinnatearray, innatenum, KFEnum::Set, 0u );
-                }
-                else
-                {
-                    player->UpdateData( kfinnatearray, index, KFEnum::Set, 0u );
-                }
-
-                return true;
-            }
+            return false;
         }
 
-        return false;
+        if ( index < innatenum )
+        {
+            // 如果删除的天赋不是最后一个，则将最后一个替换到前面并置0
+            auto lastinnate = kfinnatearray->Get( innatenum );
+            player->UpdateData( kfinnatearray, index, KFEnum::Set, lastinnate );
+            player->UpdateData( kfinnatearray, innatenum, KFEnum::Set, 0u );
+        }
+        else
+        {
+            player->UpdateData( kfinnatearray, index, KFEnum::Set, 0u );
+        }
+
+        return true;
     }
 
 }

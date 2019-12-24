@@ -2,18 +2,18 @@
 #define __KF_COMPONENT_H__
 
 #include "KFEntity.h"
-#include "KFCore/KFData.h"
+#include "KFElementResult.h"
 
 namespace KFrame
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////
     typedef std::function< void( KFEntity* ) > KFEntityFunction;
     typedef std::function< void( KFEntity*, uint32 ) > KFSaveEntityFunction;
     typedef std::function< void( KFEntity*, KFMsg::PBObject& ) > KFSyncFunction;
     typedef std::function< void( KFEntity*, KFMsg::PBShowElement& ) > KFShowElementFunction;
     ////////////////////////////////////////////////////////////////////////////////////////////
-
     typedef std::function< bool( KFEntity*, KFData*, KFElement*, const char*, uint32, float ) > KFCheckAddElementFunction;
-    typedef std::function< std::tuple<uint32, KFData*>( KFEntity*, KFData*, KFElement*, const char*, uint32, float ) > KFAddElementFunction;
+    typedef std::function< void( KFEntity*, KFData*, KFElementResult*, const char*, uint32, float ) > KFAddElementFunction;
     typedef std::function< bool( KFEntity*, KFData*, KFElement*, const char*, uint32, float ) > KFCheckRemoveElementFunction;
     typedef std::function< void( KFEntity*, KFData*, KFElement*, const char*, uint32, float ) > KFRemoveElementFunction;
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -24,6 +24,7 @@ namespace KFrame
     ////////////////////////////////////////////////////////////////////////////////////////////
     typedef std::function<uint64( KFEntity*, uint64, uint64 )> KFGetConfigValueFunction;
     ////////////////////////////////////////////////////////////////////////////////////////////
+    typedef std::function< void( KFEntity*, const std::string&, uint32, KFElement* ) > KFLogElementFunction;
 
     // 游戏中的组件, 负责属性回调时间
     class KFComponent
@@ -59,7 +60,7 @@ namespace KFrame
         virtual KFEntity* NextEntity() = 0;
 
         // 获得属性列表
-        virtual VectorString& GetDataList( const std::string& dataname ) = 0;
+        virtual StringVector& GetDataList( const std::string& dataname ) = 0;
 
         // 获得类配置
         virtual const KFClassSetting* FindClassSetting() = 0;
@@ -92,7 +93,7 @@ namespace KFrame
 
         // 注册添加属性函数
         template< class T >
-        void RegisterAddElementFunction( const std::string& dataname, T* object, std::tuple<uint32, KFData*> ( T::*handle )( KFEntity*, KFData*, KFElement*, const char*, uint32, float ) )
+        void RegisterAddElementFunction( const std::string& dataname, T* object, void ( T::*handle )( KFEntity*, KFData*, KFElementResult*, const char*, uint32, float ) )
         {
             KFAddElementFunction function = std::bind( handle, object,
                                             std::placeholders::_1, std::placeholders::_2, std::placeholders::_3,
@@ -360,6 +361,18 @@ namespace KFrame
             UnBindGetConfigValueFunction( name );
         }
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        template< class T >
+        void RegisterLogElementFunction( const std::string& name, T* object, void( T::*handle )( KFEntity*, const std::string&, uint32, KFElement* ) )
+        {
+            KFLogElementFunction function = std::bind( handle, object, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4 );
+            BindLogElementFunction( name, function );
+        }
+
+        void UnRegisterLogElementFunction( const std::string& name )
+        {
+            UnBindLogElementFunction( name );
+        }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected:
         virtual void BindCheckAddElementFunction( const std::string& dataname, KFCheckAddElementFunction& function ) = 0;
         virtual void BindAddElementFunction( const std::string& dataname, KFAddElementFunction& function ) = 0;
@@ -399,6 +412,9 @@ namespace KFrame
 
         virtual void BindGetConfigValueFunction( const std::string& name, KFGetConfigValueFunction& function ) = 0;
         virtual void UnBindGetConfigValueFunction( const std::string& name ) = 0;
+
+        virtual void BindLogElementFunction( const std::string& name, KFLogElementFunction& function ) = 0;
+        virtual void UnBindLogElementFunction( const std::string& name ) = 0;
     };
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -412,7 +428,7 @@ namespace KFrame
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 #define __KF_ADD_ELEMENT_FUNCTION__( addfunction ) \
-    std::tuple<uint32, KFData*> addfunction( KFEntity* player, KFData* kfparent, KFElement* kfelement, const char* function, uint32 line, float multiple )
+    void addfunction( KFEntity* player, KFData* kfparent, KFElementResult* kfresult, const char* function, uint32 line, float multiple )
 
 #define  __REGISTER_ADD_ELEMENT__( dataname, function ) \
     _kf_component->RegisterAddElementFunction( dataname, this, function )
@@ -517,6 +533,15 @@ namespace KFrame
     _kf_component->RegisterGetConfigValueFunction( dataname, this, function )
 #define __UN_GET_CONFIG_VALUE__( dataname ) \
     _kf_component->UnRegisterGetConfigValueFunction( dataname )
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+#define  __KF_LOG_ELEMENT_FUNCTION__( function ) \
+    void function( KFEntity* player, const std::string& modulename, uint32 operate, KFElement* kfelement )
+
+#define __REGISTER_LOG_ELEMENT__( dataname, function ) \
+    _kf_component->RegisterLogElementFunction( dataname, this, function )
+#define __UN_LOG_ELEMENT__( dataname ) \
+    _kf_component->UnRegisterLogElementFunction( dataname )
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 }

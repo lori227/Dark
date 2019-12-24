@@ -51,13 +51,20 @@ namespace KFrame
         // 处理设置玩家势力请求
         __KF_MESSAGE_FUNCTION__( HandleSetPlayerFactionReq );
 
+        // 更新主线流程
+        __KF_MESSAGE_FUNCTION__( HandleUpdateMainStageReq );
+
     protected:
         // 金币更新
         __KF_UPDATE_DATA_FUNCTION__( OnUpdateMoneyCallBack );
 
+        // 进入游戏检查
+        __KF_ENTER_PLAYER_FUNCTION__( OnEnterRoleModule );
+
     protected:
         // 检查名字的有效性
         uint32 CheckNameValid( const std::string& name, uint32 maxlength );
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private:
         // 玩家组件上下文

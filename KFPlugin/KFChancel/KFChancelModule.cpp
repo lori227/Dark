@@ -76,8 +76,7 @@ namespace KFrame
         auto kfchancel = kfchancelrecord->Find( type );
         if ( kfchancel == nullptr )
         {
-            kfchancel = _kf_kernel->CreateObject( kfchancelrecord->_data_setting );
-
+            kfchancel = player->CreateData( kfchancelrecord );
             kfchancel->Set( __STRING__( type ), type );
             kfchancel->Set( __STRING__( num ), 1u );
             player->AddData( kfchancelrecord, type, kfchancel );

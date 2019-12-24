@@ -20,10 +20,10 @@ namespace KFrame
 
         // 建筑条件
         uint32 _condition_type = 0u;
-        VectorUInt32 _condition;
+        UInt32Vector _condition;
 
         // 解锁科技
-        VectorUInt32 _technology;
+        UInt32Vector _technology;
 
         // 升级时间(s)
         uint64 _upgrade_time = 0u;

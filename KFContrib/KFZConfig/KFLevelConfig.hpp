@@ -16,6 +16,12 @@ namespace KFrame
 
         // 属性上限偏移
         uint32 _upper_attribute = 0u;
+
+        // 主动技能
+        UInt32Vector _active_pool_list;
+
+        // 天赋
+        UInt32Vector _innate_pool_list;
     };
 
     class KFLevelConfig : public KFConfigT< KFLevelSetting >, public KFInstance< KFLevelConfig >

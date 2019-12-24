@@ -1581,6 +1581,18 @@ class LIBPROTOC_EXPORT PBExplorePlayerData : public ::google::protobuf::Message 
 
   // accessors -------------------------------------------------------
 
+  // repeated int32 fovarr = 6;
+  int fovarr_size() const;
+  void clear_fovarr();
+  static const int kFovarrFieldNumber = 6;
+  ::google::protobuf::int32 fovarr(int index) const;
+  void set_fovarr(int index, ::google::protobuf::int32 value);
+  void add_fovarr(::google::protobuf::int32 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      fovarr() const;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_fovarr();
+
   // int32 x = 1;
   void clear_x();
   static const int kXFieldNumber = 1;
@@ -1615,6 +1627,8 @@ class LIBPROTOC_EXPORT PBExplorePlayerData : public ::google::protobuf::Message 
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > fovarr_;
+  mutable int _fovarr_cached_byte_size_;
   ::google::protobuf::int32 x_;
   ::google::protobuf::int32 y_;
   ::google::protobuf::int32 z_;
@@ -3542,6 +3556,36 @@ inline void PBExplorePlayerData::set_step(::google::protobuf::uint32 value) {
   
   step_ = value;
   // @@protoc_insertion_point(field_set:KFMsg.PBExplorePlayerData.step)
+}
+
+// repeated int32 fovarr = 6;
+inline int PBExplorePlayerData::fovarr_size() const {
+  return fovarr_.size();
+}
+inline void PBExplorePlayerData::clear_fovarr() {
+  fovarr_.Clear();
+}
+inline ::google::protobuf::int32 PBExplorePlayerData::fovarr(int index) const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBExplorePlayerData.fovarr)
+  return fovarr_.Get(index);
+}
+inline void PBExplorePlayerData::set_fovarr(int index, ::google::protobuf::int32 value) {
+  fovarr_.Set(index, value);
+  // @@protoc_insertion_point(field_set:KFMsg.PBExplorePlayerData.fovarr)
+}
+inline void PBExplorePlayerData::add_fovarr(::google::protobuf::int32 value) {
+  fovarr_.Add(value);
+  // @@protoc_insertion_point(field_add:KFMsg.PBExplorePlayerData.fovarr)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+PBExplorePlayerData::fovarr() const {
+  // @@protoc_insertion_point(field_list:KFMsg.PBExplorePlayerData.fovarr)
+  return fovarr_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+PBExplorePlayerData::mutable_fovarr() {
+  // @@protoc_insertion_point(field_mutable_list:KFMsg.PBExplorePlayerData.fovarr)
+  return &fovarr_;
 }
 
 // -------------------------------------------------------------------

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="KFBuildSkinConfig.cpp" />
+    <ClCompile Include="KFCampModule.cpp" />
+    <ClCompile Include="KFCampPlugin.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="KFBuildSkinConfig.hpp" />
+    <ClInclude Include="KFCampInterface.h" />
+    <ClInclude Include="KFCampModule.hpp" />
+    <ClInclude Include="KFCampPlugin.hpp" />
+  </ItemGroup>
+</Project>

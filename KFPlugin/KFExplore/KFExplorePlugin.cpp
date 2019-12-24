@@ -1,5 +1,6 @@
 ﻿#include "KFExplorePlugin.hpp"
 #include "KFExploreModule.hpp"
+#include "KFFighterModule.hpp"
 #include "KFConfig/KFConfigInterface.h"
 //////////////////////////////////////////////////////////////////////////
 
@@ -8,11 +9,13 @@ namespace KFrame
     void KFExplorePlugin::Install()
     {
         __REGISTER_MODULE__( KFExplore );
+        __REGISTER_MODULE__( KFFighter );
     }
 
     void KFExplorePlugin::UnInstall()
     {
         __UN_MODULE__( KFExplore );
+        __UN_MODULE__( KFFighter );
     }
 
     void KFExplorePlugin::LoadModule()
@@ -29,6 +32,9 @@ namespace KFrame
         __FIND_MODULE__( _kf_execute, KFExecuteInterface );
         __FIND_MODULE__( _kf_generate, KFGenerateInterface );
         __FIND_MODULE__( _kf_hero_team, KFHeroTeamInterface );
+        __FIND_MODULE__( _kf_explore, KFExploreInterface );
+        __FIND_MODULE__( _kf_fighter, KFFighterInterface );
+
     }
 
     void KFExplorePlugin::AddConfig()

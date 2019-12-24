@@ -88,6 +88,9 @@ namespace KFrame
         // 英雄经验更新
         __KF_UPDATE_DATA_FUNCTION__( OnHeroExpUpdate );
 
+        // 英雄主动技能更新
+        __KF_UPDATE_DATA_FUNCTION__( OnHeroActiveUpdate );
+
         // 最大英雄数量
         __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyMaxHeroCount );
 

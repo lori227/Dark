@@ -11,7 +11,7 @@ namespace KFrame
     bool KFBattleAllot::AddBattle( uint64 serverid, const std::string& ip, uint32 port, const std::string& version )
     {
         // 为了避免单点问题, 保存到redis缓存中
-        MapString values;
+        StringMap values;
         values[ __STRING__( ip ) ] = ip;
         values[ __STRING__( version ) ] = version;
         values[ __STRING__( port ) ] = __TO_STRING__( port );

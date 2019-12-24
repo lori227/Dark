@@ -9,16 +9,16 @@ namespace KFrame
     {
     public:
         // 种族限制
-        SetUInt32 _race_list;
+        UInt32Set _race_list;
 
         // 职业限定
-        SetUInt32 _profession_list;
+        UInt32Set _profession_list;
 
         // 武器限定
-        SetUInt32 _weapon_type_list;
+        UInt32Set _weapon_type_list;
 
         // 背景限制
-        SetUInt32 _background_list;
+        UInt32Set _background_list;
 
         // 是否有效( 被限制 )
         bool IsValid( uint32 race, uint32 profession, uint32 background, uint32 weapontype ) const;

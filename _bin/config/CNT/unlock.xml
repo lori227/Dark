@@ -1,4 +1,4 @@
-<root version="1536">
+<root version="2007">
 	<item Id="1" DataName="build" DataKey="202" DataValue="1" UnLockCondition="39001001" />
 	<item Id="2" DataName="build" DataKey="203" DataValue="1" UnLockCondition="39001003" />
 	<item Id="3" DataName="build" DataKey="204" DataValue="1" UnLockCondition="39001006" />

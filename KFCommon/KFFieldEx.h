@@ -44,7 +44,7 @@ namespace KFrame
         __STRING_DEFINE__( heroteamcount );
         __STRING_DEFINE__( posflag )
         __STRING_DEFINE__( traincamplevel );
-        __STRING_DEFINE__( traincamp );
+        __STRING_DEFINE__( train );
         __STRING_DEFINE__( uuid );
         __STRING_DEFINE__( endtime );
         __STRING_DEFINE__( calctime );
@@ -157,7 +157,6 @@ namespace KFrame
         __STRING_DEFINE__( clinicaddnum );
         __STRING_DEFINE__( clinicmaxnum );
         __STRING_DEFINE__( clinicsubmoneypercent );
-        __STRING_DEFINE__( trainhero );
         __STRING_DEFINE__( smithyweapon );
         __STRING_DEFINE__( buildgather );
         __STRING_DEFINE__( itemextend );
@@ -167,7 +166,17 @@ namespace KFrame
         __STRING_DEFINE__( iconrecord );
         __STRING_DEFINE__( factionid );
         __STRING_DEFINE__( newversion );
-
+        __STRING_DEFINE__( recruitrefresh );
+        __STRING_DEFINE__( recruithero );
+        __STRING_DEFINE__( taskreceive );
+        __STRING_DEFINE__( buildupgrade );
+        __STRING_DEFINE__( buildonekey );
+        __STRING_DEFINE__( trainhero );
+        __STRING_DEFINE__( trainonekey );
+        __STRING_DEFINE__( supplies );
+        __STRING_DEFINE__( retaskchain );
+        __STRING_DEFINE__( tlog );
+        __STRING_DEFINE__( mainstage );
     }
 }
 

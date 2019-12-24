@@ -13,14 +13,14 @@ namespace KFrame
         // 生成玩家英雄
         virtual KFData* GeneratePlayerHero( KFEntity* player, KFData* kfhero, uint32 generateid ) = 0;
         virtual KFData* GeneratePlayerHero( KFEntity* player, KFData* kfhero, uint32 generateid,
-                                            const DivisorList& divisorlist, const SetUInt32& professionlist,
+                                            const DivisorList& divisorlist, const UInt32Set& professionlist,
                                             uint32 generatelevel, uint32 mingrowth, uint32 maxgrowth ) = 0;
 
         // 生成npc英雄
-        virtual KFData* GenerateNpcHero( KFEntity* player, uint32 generateid, uint32 level ) = 0;
+        virtual KFData* GenerateNpcHero( KFEntity* player, KFData* kfnpcrecord, uint32 generateid, uint32 level ) = 0;
 
         // 随机权重数据
-        virtual void RandWeightData( KFEntity* player, KFData* kfhero, const std::string& str, const VectorUInt32& slist ) = 0;
+        virtual uint32 RandWeightData( KFEntity* player, KFData* kfhero, const std::string& str, const UInt32Vector& slist ) = 0;
     };
 
     ///////////////////////////////////////////////////////////////////////////////////////////

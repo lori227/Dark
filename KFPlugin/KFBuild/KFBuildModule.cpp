@@ -136,7 +136,7 @@ namespace KFrame
                 return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
             }
 
-            player->RemoveElement( &kfsetting->_consume, __FUNC_LINE__ );
+            player->RemoveElement( &kfsetting->_consume, __STRING__( buildupgrade ), __FUNC_LINE__ );
         }
 
         // 开始升级
@@ -178,7 +178,7 @@ namespace KFrame
         {
             return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
         }
-        player->RemoveElement( &kfsetting->_onekey_consume, __FUNC_LINE__, count );
+        player->RemoveElement( &kfsetting->_onekey_consume, __STRING__( buildonekey ), __FUNC_LINE__, count );
 
         player->UpdateData( kfbuild, __STRING__( time ), KFEnum::Set, nowtime );
     }
@@ -213,6 +213,8 @@ namespace KFrame
         // 开始升级
         player->UpdateData( kfbuild, __STRING__( time ), KFEnum::Set, 0u );
         player->UpdateData( kfbuild, __STRING__( level ), KFEnum::Add, 1u );
+
+        _kf_display->SendToClient( player, KFMsg::BuildUpgradeSuc );
     }
 
     uint32 KFBuildModule::GetUpgradeBuildNum( KFEntity* player )
@@ -240,7 +242,7 @@ namespace KFrame
             return;
         }
 
-        auto kftechnohogyrecord = player->Find( __STRING__( technology ) );
+        auto kftechnologyrecord = player->Find( __STRING__( technology ) );
         for ( auto id : kfbuildsetting->_technology )
         {
             // 是否默认解锁激活
@@ -250,7 +252,22 @@ namespace KFrame
                 continue;
             }
 
-            player->UpdateData( kftechnohogyrecord, id, __STRING__( status ), KFEnum::Set, kftechsetting->_status );
+            auto kftechnology = kftechnologyrecord->Find( id );
+            if ( kftechnology == nullptr )
+            {
+                kftechnology = player->CreateData( kftechnologyrecord );
+                kftechnology->Set( __STRING__( status ), kftechsetting->_status );
+                kftechnology->Set( __STRING__( type ), kftechsetting->_type );
+                player->AddData( kftechnologyrecord, id, kftechnology );
+            }
+            else
+            {
+                auto status = kftechnology->Get( __STRING__( status ) );
+                if ( status == 0u && kftechsetting->_status != 0u )
+                {
+                    player->UpdateData( kftechnology, __STRING__( status ), KFEnum::Set, kftechsetting->_status );
+                }
+            }
         }
     }
 
@@ -260,7 +277,7 @@ namespace KFrame
         auto kfconditionobject = kfdata->Find( __STRING__( conditions ) );
 
         auto kfconditionrecord = kfconditionobject->Find( __STRING__( condition ) );
-        player->CleanData( kfconditionrecord );
+        player->CleanData( kfconditionrecord, false );
 
         auto id = kfdata->Get( __STRING__( id ) );
         auto level = kfdata->Get( __STRING__( level ) );
@@ -274,7 +291,7 @@ namespace KFrame
         player->SyncDataSequence( KFEnum::Dec, KFEnum::Add, KFEnum::Set );
 
         // 添加下一级的升级条件
-        _kf_condition->AddCondition( kfconditionobject, kfsetting->_condition, kfsetting->_condition_type );
+        _kf_condition->AddCondition( player, kfconditionobject, kfsetting->_condition, kfsetting->_condition_type );
 
         // 初始化条件
         _kf_condition->InitCondition( player, kfconditionobject, KFConditionEnum::LimitNull, false );

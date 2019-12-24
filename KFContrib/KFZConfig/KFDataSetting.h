@@ -122,6 +122,11 @@ namespace KFrame
         // 属性标记
         inline bool HaveMask( uint32 mask ) const
         {
+            if ( mask == 0u )
+            {
+                return true;
+            }
+
             return KFUtility::HaveBitMask( _data_mask, mask );
         }
 
@@ -241,7 +246,7 @@ namespace KFrame
         KFHashMap< std::string, const std::string&, KFDataSetting > _static_data;
 
         // 逻辑名字对应的属性名
-        MapString _logic_name_list;
+        StringMap _logic_name_list;
     };
     ////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////

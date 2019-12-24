@@ -1,4 +1,4 @@
-<root version="1812">
+<root version="1982">
 	<item Id="1" ExecuteName="pve" ExecuteParam1="400001" ExecuteParam2="500001" />
 	<item Id="2" ExecuteName="pve" ExecuteParam1="400001" ExecuteParam2="500001" />
 	<item Id="3" ExecuteName="pve" ExecuteParam1="400002" ExecuteParam2="500002" />
@@ -70,13 +70,13 @@
 	<item Id="611" ExecuteName="explore" ExecuteParam1="10506" ExecuteParam2="" />
 	<item Id="612" ExecuteName="explore" ExecuteParam1="10506" ExecuteParam2="" />
 	<item Id="901" ExecuteName="pve" ExecuteParam1="1" ExecuteParam2="500001" />
-	<item Id="902" ExecuteName="pve" ExecuteParam1="2" ExecuteParam2="500991" />
-	<item Id="903" ExecuteName="pve" ExecuteParam1="3" ExecuteParam2="500001" />
-	<item Id="904" ExecuteName="pve" ExecuteParam1="4" ExecuteParam2="500001" />
-	<item Id="905" ExecuteName="pve" ExecuteParam1="5" ExecuteParam2="500001" />
-	<item Id="906" ExecuteName="pve" ExecuteParam1="6" ExecuteParam2="500001" />
-	<item Id="907" ExecuteName="pve" ExecuteParam1="7" ExecuteParam2="500001" />
-	<item Id="908" ExecuteName="explore" ExecuteParam1="10201" ExecuteParam2="" />
+	<item Id="902" ExecuteName="pve" ExecuteParam1="2" ExecuteParam2="500004" />
+	<item Id="903" ExecuteName="pve" ExecuteParam1="3" ExecuteParam2="500991" />
+	<item Id="904" ExecuteName="pve" ExecuteParam1="4" ExecuteParam2="500991" />
+	<item Id="905" ExecuteName="pve" ExecuteParam1="5" ExecuteParam2="500991" />
+	<item Id="906" ExecuteName="pve" ExecuteParam1="6" ExecuteParam2="500991" />
+	<item Id="907" ExecuteName="pve" ExecuteParam1="7" ExecuteParam2="500991" />
+	<item Id="908" ExecuteName="explore" ExecuteParam1="10105" ExecuteParam2="" />
 	<item Id="1001" ExecuteName="pve" ExecuteParam1="490001" ExecuteParam2="500001" />
 	<item Id="1002" ExecuteName="pve" ExecuteParam1="490001" ExecuteParam2="500001" />
 	<item Id="1003" ExecuteName="pve" ExecuteParam1="490002" ExecuteParam2="500001" />
@@ -118,7 +118,7 @@
 	<item Id="5003" ExecuteName="pve" ExecuteParam1="460002" ExecuteParam2="506002" />
 	<item Id="5004" ExecuteName="pve" ExecuteParam1="460002" ExecuteParam2="506002" />
 	<item Id="5201" ExecuteName="dialogue" ExecuteParam1="10001" ExecuteParam2="" />
-	<item Id="5202" ExecuteName="dialogue" ExecuteParam1="10001" ExecuteParam2="" />
+	<item Id="5202" ExecuteName="dialogue" ExecuteParam1="8000103" ExecuteParam2="" />
 	<item Id="5203" ExecuteName="pve" ExecuteParam1="460003" ExecuteParam2="506003" />
 	<item Id="5204" ExecuteName="pve" ExecuteParam1="460003" ExecuteParam2="506003" />
 </root>

@@ -40,17 +40,18 @@ namespace KFrame
         // 获取队伍死亡的英雄数量
         virtual uint32 GetDeadHeroCount( KFEntity* player );
 
-        // 删除队伍死亡的英雄
+        // 更新队伍死亡的英雄
         virtual void UpdateTeamDeadHero( KFEntity* player );
 
         // 扣除队伍每个英雄的耐久度
-        virtual void DecTeamHeroDurability( KFEntity* player );
+        virtual void DecTeamHeroDurability( KFEntity* player, const UInt64Set& fightheros );
 
         // 移除队伍中耐久度不足的英雄
         virtual void RemoveTeamHeroDurability( KFEntity* player );
 
-        // 通过uuid查找英雄在队伍位置
-        virtual uint32 GetTeamIndexById( KFEntity* player, uint64 uuid );
+        // 清空队伍英雄ep
+        virtual void ClearTeamHeroEp( KFEntity* player );
+
         ////////////////////////////////////////////////////////////////////////////////
     protected:
         // 进入游戏
@@ -59,12 +60,15 @@ namespace KFrame
         // 删除英雄
         __KF_REMOVE_DATA_FUNCTION__( OnRemoveHero );
 
-        // 队伍改变请求(增加删除)
+        // 队伍改变请求(英雄不在队伍中)
         __KF_MESSAGE_FUNCTION__( HandleHeroTeamChangeReq );
 
-        // 队伍角色互换请求
+        // 队伍角色互换请求(英雄在队伍中)
         __KF_MESSAGE_FUNCTION__( HandleHeroTeamExchangeReq );
 
+    protected:
+        // 检查队伍英雄
+        void CheckHeroInTeam( KFEntity* player );
     protected:
         // 玩家上下文组件
         KFComponent* _kf_component = nullptr;

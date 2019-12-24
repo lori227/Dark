@@ -9,10 +9,10 @@ namespace KFrame
     {
     public:
         // 种族限制
-        SetUInt32 _race_list;
+        UInt32Set _race_list;
 
         // 性别限定
-        SetUInt32 _sex_list;
+        UInt32Set _sex_list;
 
         // 是否有效( 被限制 )
         bool IsValid( uint32 race, uint32 sex ) const;

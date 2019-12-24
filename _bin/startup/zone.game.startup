@@ -27,7 +27,7 @@
 		<Plugin Name="KFUnlock" Config=""/>
 		<Plugin Name="KFExecute" Config=""/>
 		<Plugin Name="KFHero" Config=""/>			
-		<Plugin Name="KFTrainCamp" Config=""/>			
+		<Plugin Name="KFTrain" Config=""/>			
 		<Plugin Name="KFRecruit" Config=""/>			
 		<Plugin Name="KFGenerate" Config=""/>
 		<Plugin Name="KFItem" Config=""/>
@@ -35,7 +35,7 @@
 		<Plugin Name="KFClinic" Config=""/>
 		<Plugin Name="KFExplore" Config=""/>
 		<Plugin Name="KFChapter" Config=""/>
-		<Plugin Name="KFMainCamp" Config=""/>
+		<Plugin Name="KFCamp" Config=""/>
 		<Plugin Name="KFRecordClient" Config=""/>
 		<Plugin Name="KFChancel" Config=""/>
 		<Plugin Name="KFGranary" Config=""/>
@@ -44,5 +44,6 @@
 		<Plugin Name="KFSignIn" Config=""/>
 		<Plugin Name="KFBuild" Config=""/>
 		<Plugin Name="KFDialogue" Config=""/>
+		<Plugin Name="KFTLog" Config=""/>
 	</Plugins>
 </Setting>

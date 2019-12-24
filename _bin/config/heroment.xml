@@ -1,15 +1,15 @@
-<root version="1826">
+<root version="2059">
 	<item Name="defaultprofession" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="defaultbackground" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="generatedirectattribute" Key="" Value="9" Channel="0" Service="0" />
 	<item Name="generaterandattribute" Key="" Value="2" Channel="0" Service="0" />
 	<item Name="maxdip" Key="" Value="1000" Channel="0" Service="0" />
-	<item Name="maxherocount" Key="" Value="200" Channel="0" Service="0" />
+	<item Name="maxherocount" Key="" Value="6" Channel="0" Service="0" />
 	<item Name="maxherolevel" Key="" Value="30" Channel="0" Service="0" />
-	<item Name="maxactivecount" Key="" Value="6" Channel="0" Service="0" />
+	<item Name="maxactivecount" Key="" Value="20" Channel="0" Service="0" />
 	<item Name="maxinnatecount" Key="" Value="4" Channel="0" Service="0" />
 	<item Name="useinnatecount" Key="" Value="2" Channel="0" Service="0" />
-	<item Name="maxcharactercount" Key="" Value="6" Channel="0" Service="0" />
+	<item Name="maxcharactercount" Key="" Value="20" Channel="0" Service="0" />
 	<item Name="maxheroteamcount" Key="" Value="8" Channel="0" Service="0" />
 	<item Name="recruitinitcount" Key="" Value="2" Channel="0" Service="0" />
 	<item Name="recruitmaxcount" Key="" Value="10" Channel="0" Service="0" />
@@ -27,7 +27,7 @@
 	<item Name="maxAR_bar" Key="" Value="100" Channel="0" Service="0" />
 	<item Name="maxCRT_bar" Key="" Value="100" Channel="0" Service="0" />
 	<item Name="herolistbuildid" Key="" Value="200" Channel="0" Service="0" />
-	<item Name="transferleveloffest" Key="" Value="10" Channel="0" Service="0" />
+	<item Name="transferleveloffest" Key="" Value="5" Channel="0" Service="0" />
 	<item Name="Powercoefficient_B" Key="" Value="0" Channel="0" Service="0" />
 	<item Name="initclinicnum" Key="" Value="200" Channel="0" Service="0" />
 	<item Name="initgranarynum" Key="" Value="100" Channel="0" Service="0" />
@@ -36,4 +36,5 @@
 	<item Name="roledurability_pveconsume" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="buildupgrademaxnum" Key="" Value="2" Channel="0" Service="0" />
 	<item Name="roledeath_characterpool" Key="" Value="4069001" Channel="0" Service="0" />
+	<item Name="heronamelength" Key="" Value="40" Channel="0" Service="0" />
 </root>

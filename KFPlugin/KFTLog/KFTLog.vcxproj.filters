@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="KFTLogConfig.cpp" />
+    <ClCompile Include="KFTLogModule.cpp" />
+    <ClCompile Include="KFTLogPlugin.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="KFTLogConfig.hpp" />
+    <ClInclude Include="KFTLogModule.hpp" />
+    <ClInclude Include="KFTLogPlugin.hpp" />
+    <ClInclude Include="KFTLogInterface.h" />
+  </ItemGroup>
+</Project>

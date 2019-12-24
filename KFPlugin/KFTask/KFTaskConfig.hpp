@@ -28,14 +28,14 @@ namespace KFrame
 
         // 前置条件
         uint32 _pre_condition_type = 0u;
-        VectorUInt32 _pre_condition;
+        UInt32Vector _pre_condition;
 
         // 地点条件
         KFConditions _place_condition;
 
         // 完成条件
         uint32 _complete_condition_type = 0u;
-        VectorUInt32 _complete_condition;
+        UInt32Vector _complete_condition;
 
         // 输出
         KFExecuteData _execute_data;
