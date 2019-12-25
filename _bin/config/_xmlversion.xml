@@ -1,4 +1,4 @@
-<root version="2372">
+<root version="2378">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -120,5 +120,5 @@
 	<item name="dropdata" version="2369" />
 	<item name="dropgroup" version="2369" />
 	<item name="herogenerate" version="2372" />
-	<item name="heroweightpool" version="2372" />
+	<item name="heroweightpool" version="2378" />
 </root>

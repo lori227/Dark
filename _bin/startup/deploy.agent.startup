@@ -10,6 +10,5 @@
 		<Plugin Name="KFMySQL" Config=""/>
 		<Plugin Name="KFDeployAgent" Config=""/>
 		<Plugin Name="KFSchedule" Config=""/>
-		<Plugin Name="KFTimer" Config=""/>
 	</Plugins>
 </Setting>

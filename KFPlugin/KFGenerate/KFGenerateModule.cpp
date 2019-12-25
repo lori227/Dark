@@ -613,7 +613,7 @@ namespace KFrame
             kftransfer->Set( __STRING__( profession ), iter );
             kftransfer->Set( __STRING__( weapontype ), weapontype );
 
-            player->AddData( kftransferrecord, index, kftransfer );
+            kftransferrecord->Add( index, kftransfer );
         }
     }
 
