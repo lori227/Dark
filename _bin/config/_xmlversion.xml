@@ -1,4 +1,4 @@
-<root version="2364">
+<root version="2372">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -82,15 +82,12 @@
 	<item name="filter" version="2053" />
 	<item name="option" version="2054" />
 	<item name="train" version="2067" />
-	<item name="config" version="2067" />
 	<item name="reward" version="2069" />
 	<item name="foodconsume" version="2071" />
 	<item name="worldmaptext" version="2097" />
 	<item name="itemtext" version="2110" />
-	<item name="dropdata" version="2115" />
 	<item name="pve" version="2121" />
 	<item name="npc" version="2139" />
-	<item name="dropgroup" version="2152" />
 	<item name="chapter" version="2176" />
 	<item name="dialogue" version="2196" />
 	<item name="herolevel" version="2207" />
@@ -98,9 +95,7 @@
 	<item name="itemtype" version="2238" />
 	<item name="herorace" version="2294" />
 	<item name="itemweapon" version="2306" />
-	<item name="initialprocess" version="2310" />
 	<item name="conditiondefine" version="2317" />
-	<item name="heroweightpool" version="2318" />
 	<item name="heroprofession" version="2322" />
 	<item name="npcgenerate" version="2324" />
 	<item name="buildlevel" version="2326" />
@@ -109,7 +104,6 @@
 	<item name="tasktext" version="2339" />
 	<item name="task" version="2341" />
 	<item name="gmcommand" version="2344" />
-	<item name="uitext" version="2347" />
 	<item name="meshconfig" version="2349" />
 	<item name="tipstext" version="2350" />
 	<item name="prompttext" version="2351" />
@@ -120,5 +114,11 @@
 	<item name="minimap" version="2360" />
 	<item name="taskchainrefresh" version="2362" />
 	<item name="taskchain" version="2363" />
-	<item name="herogenerate" version="2364" />
+	<item name="uitext" version="2366" />
+	<item name="config" version="2367" />
+	<item name="initialprocess" version="2368" />
+	<item name="dropdata" version="2369" />
+	<item name="dropgroup" version="2369" />
+	<item name="herogenerate" version="2372" />
+	<item name="heroweightpool" version="2372" />
 </root>

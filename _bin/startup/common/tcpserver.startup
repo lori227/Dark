@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Setting>
 	<Plugins>
-		<Plugin Name="KFConfig" Config=""/>
 		<Plugin Name="KFHttpClient" Config=""/>
 		<Plugin Name="KFMessage" Config=""/>
 		<Plugin Name="KFIpAddress" Config=""/>

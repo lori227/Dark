@@ -1,4 +1,4 @@
-<root version="2067">
+<root version="2367">
 	<item Id="redis" Name="redis" FileName="./setting/{}_{}_redis.xml" Reload="0" ClearData="0" ClearFile="0" />
 	<item Id="mongo" Name="mongo" FileName="./setting/{}_{}_mongo.xml" Reload="0" ClearData="0" ClearFile="0" />
 	<item Id="mysql" Name="mysql" FileName="./setting/{}_{}_mysql.xml" Reload="0" ClearData="0" ClearFile="0" />
@@ -9,6 +9,7 @@
 	<item Id="tcp" Name="tcpserver" FileName="./setting/tcpserver.xml" Reload="0" ClearData="0" ClearFile="0" />
 	<item Id="datashard" Name="datashard" FileName="./setting/datashard.xml" Reload="0" ClearData="0" ClearFile="0" />
 	<item Id="robot" Name="robot" FileName="./setting/robot.xml" Reload="0" ClearData="0" ClearFile="0" />
+	<item Id="project" Name="project" FileName="./setting/project.xml" Reload="0" ClearData="0" ClearFile="0" />
 	<item Id="route" Name="route" FileName="./config/route.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="channel" Name="channel" FileName="./config/channel.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="filter" Name="filter" FileName="./config/filter.xml" Reload="1" ClearData="1" ClearFile="0" />

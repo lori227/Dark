@@ -114,11 +114,7 @@ namespace KFrame
             return false;
         }
 
-        if ( order == 0u )
-        {
-            order = 1u;
-        }
-
+        order = __MAX__( order, 1u );
         auto kftaskdatalist = kftaskchainsetting->_task_data_list.Find( order );
         if ( kftaskdatalist == nullptr )
         {

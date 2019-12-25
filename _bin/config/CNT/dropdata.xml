@@ -1,4 +1,4 @@
-<root version="2115">
+<root version="2369">
 	<item Id="6000001" DropName="exp" DropValue="50" DropKey="0" Weight="100" />
 	<item Id="6001001" DropName="item" DropValue="500" DropKey="1900000" Weight="100" />
 	<item Id="6002001" DropName="item" DropValue="" DropKey="1900002" Weight="100" />
@@ -1023,6 +1023,7 @@
 	<item Id="6900143" DropName="hero" DropValue="4800043" DropKey="0" Weight="100" />
 	<item Id="6900144" DropName="hero" DropValue="4800044" DropKey="0" Weight="100" />
 	<item Id="6900145" DropName="hero" DropValue="4800045" DropKey="0" Weight="100" />
+	<item Id="6900201" DropName="exp" DropValue="9999" DropKey="0" Weight="100" />
 	<item Id="8000001" DropName="dialogue" DropValue="1" DropKey="10001" Weight="100" />
 	<item Id="8000002" DropName="dialogue" DropValue="1" DropKey="10002" Weight="100" />
 </root>

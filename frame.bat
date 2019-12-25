@@ -315,6 +315,7 @@ call :CopyInterface KFRouteProxy
 call :CopyInterface KFRouteShard
 call :CopyInterface KFSchedule
 call :CopyInterface KFTimer
+call :CopyInterface KFProject
 
 rem auth
 call :CopyInterface KFAuth
