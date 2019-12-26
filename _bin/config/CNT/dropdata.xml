@@ -1,4 +1,4 @@
-<root version="2369">
+<root version="2380">
 	<item Id="6000001" DropName="exp" DropValue="50" DropKey="0" Weight="100" />
 	<item Id="6001001" DropName="item" DropValue="500" DropKey="1900000" Weight="100" />
 	<item Id="6002001" DropName="item" DropValue="" DropKey="1900002" Weight="100" />
@@ -96,6 +96,24 @@
 	<item Id="6104005" DropName="item" DropValue="500" DropKey="1900201" Weight="100" />
 	<item Id="6105005" DropName="item" DropValue="500" DropKey="1900301" Weight="100" />
 	<item Id="6106005" DropName="item" DropValue="10" DropKey="1000101" Weight="100" />
+	<item Id="6110601" DropName="item" DropValue="100" DropKey="1900000" Weight="100" />
+	<item Id="6110602" DropName="item" DropValue="100" DropKey="1900002" Weight="100" />
+	<item Id="6110603" DropName="item" DropValue="0" DropKey="1000101" Weight="100" />
+	<item Id="6110604" DropName="item" DropValue="500" DropKey="1900000" Weight="100" />
+	<item Id="6110605" DropName="item" DropValue="500" DropKey="1900002" Weight="100" />
+	<item Id="6110606" DropName="item" DropValue="0" DropKey="1000101" Weight="100" />
+	<item Id="6110607" DropName="item" DropValue="1000" DropKey="1900000" Weight="100" />
+	<item Id="6110608" DropName="item" DropValue="1000" DropKey="1900002" Weight="100" />
+	<item Id="6110609" DropName="item" DropValue="2" DropKey="1000101" Weight="100" />
+	<item Id="6110610" DropName="item" DropValue="1500" DropKey="1900000" Weight="100" />
+	<item Id="6110611" DropName="item" DropValue="1500" DropKey="1900002" Weight="100" />
+	<item Id="6110612" DropName="item" DropValue="4" DropKey="1000101" Weight="100" />
+	<item Id="6110613" DropName="item" DropValue="2000" DropKey="1900000" Weight="100" />
+	<item Id="6110614" DropName="item" DropValue="2000" DropKey="1900002" Weight="100" />
+	<item Id="6110615" DropName="item" DropValue="6" DropKey="1000101" Weight="100" />
+	<item Id="6110616" DropName="item" DropValue="3000" DropKey="1900000" Weight="100" />
+	<item Id="6110617" DropName="item" DropValue="3000" DropKey="1900002" Weight="100" />
+	<item Id="6110618" DropName="item" DropValue="10" DropKey="1000101" Weight="100" />
 	<item Id="6120001" DropName="exp" DropValue="0" DropKey="0" Weight="100" />
 	<item Id="6121001" DropName="item" DropValue="1000" DropKey="1900000" Weight="100" />
 	<item Id="6122001" DropName="item" DropValue="1000" DropKey="1900002" Weight="100" />

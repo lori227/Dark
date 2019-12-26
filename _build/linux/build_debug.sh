@@ -1,7 +1,7 @@
 mkdir -p ../../_bin/lib/
 mkdir -p ../../_bin/bin/linux/debug
 
-sh cp_frame.sh debug
+sh cp_frame.sh debug $1
 
 cd ../../../Resource/proto
 svn up

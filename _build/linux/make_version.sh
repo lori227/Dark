@@ -15,17 +15,10 @@ if  [ ! -n "$3" ] ;then
 	exit 0
 fi
 
-build="1"
+#build
 uptype=1
-if  [ "$4" = "0" ] ;then
-	build="0"
-	uptype=3
-fi
-
-if  [ "$build" = "1" ] ;then
-	sh build_clean.sh $3
-	sh build_$3.sh
-fi
+sh build_clean.sh $3
+sh build_$3.sh $4
 
 # make version
 if  [ ! -n "$5" ] ;then
