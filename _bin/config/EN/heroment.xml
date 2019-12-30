@@ -1,4 +1,4 @@
-<root version="2353">
+<root version="2463">
 	<item Name="defaultprofession" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="defaultbackground" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="generatedirectattribute" Key="" Value="9" Channel="0" Service="0" />
@@ -27,7 +27,7 @@
 	<item Name="maxAR_bar" Key="" Value="100" Channel="0" Service="0" />
 	<item Name="maxCRT_bar" Key="" Value="100" Channel="0" Service="0" />
 	<item Name="herolistbuildid" Key="" Value="200" Channel="0" Service="0" />
-	<item Name="transferleveloffest" Key="" Value="5" Channel="0" Service="0" />
+	<item Name="transferleveloffest" Key="" Value="4" Channel="0" Service="0" />
 	<item Name="Powercoefficient_B" Key="" Value="0" Channel="0" Service="0" />
 	<item Name="initclinicnum" Key="" Value="200" Channel="0" Service="0" />
 	<item Name="initgranarynum" Key="" Value="100" Channel="0" Service="0" />

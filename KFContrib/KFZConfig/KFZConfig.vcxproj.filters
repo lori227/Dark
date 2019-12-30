@@ -100,6 +100,9 @@
     <ClInclude Include="KFTechnologyConfig.hpp">
       <Filter>Build</Filter>
     </ClInclude>
+    <ClInclude Include="KFInitialProcessConfig.hpp">
+      <Filter>GamePlay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Option">
@@ -220,6 +223,9 @@
     </ClCompile>
     <ClCompile Include="KFTechnologyConfig.cpp">
       <Filter>Build</Filter>
+    </ClCompile>
+    <ClCompile Include="KFInitialProcessConfig.cpp">
+      <Filter>GamePlay</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

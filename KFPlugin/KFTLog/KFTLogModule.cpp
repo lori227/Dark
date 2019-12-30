@@ -4,8 +4,13 @@ namespace KFrame
 {
     void KFTLogModule::BeforeRun()
     {
-        auto kfglobal = KFGlobal::Instance();
-        _spdlog = KFLogger::Instance()->NewLogger( kfglobal->_app_id->GetId(), __STRING__( tlog ), kfglobal->_app_name, kfglobal->_app_type, kfglobal->_app_id->ToString() );
+        InitTLogData();
+        /////////////////////////////////////////////////////////////////////////////
+        // 5分钟打印一次服务器状态
+        __LOOP_TIMER_1__( 1, 5 * KFTimeEnum::OneMinuteMicSecond, 0, &KFTLogModule::OnTimerLogServerStatus );
+
+        // 3分钟打印一次在线玩家
+        __LOOP_TIMER_1__( 2, 3 * KFTimeEnum::OneMinuteMicSecond, 0, &KFTLogModule::OnTimerLogOnlineCount );
         /////////////////////////////////////////////////////////////////////////////
         __REGISTER_NEW_PLAYER__( &KFTLogModule::OnNewTLogModule );
         __REGISTER_ENTER_PLAYER__( &KFTLogModule::OnEnterTLogModule );
@@ -20,7 +25,7 @@ namespace KFrame
 
     void KFTLogModule::ShutDown()
     {
-        KFLogger::Instance()->DeleteLogger( KFGlobal::Instance()->_app_id->GetId() );
+        __UN_TIMER_0__();
         /////////////////////////////////////////////////////////////////////////////
         __UN_NEW_PLAYER__();
         __UN_ENTER_PLAYER__();
@@ -32,6 +37,65 @@ namespace KFrame
         __UN_LOG_ELEMENT__( __STRING__( supplies ) );
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    KFSpdLog* KFTLogModule::CreateLog( const std::string& name )
+    {
+        auto kfglobal = KFGlobal::Instance();
+        auto spdlog = KFLogger::Instance()->NewLogger( kfglobal->_app_id->GetId(), name, kfglobal->_app_name, kfglobal->_app_type, kfglobal->_app_id->ToString() );
+        return spdlog;
+    }
+#define __TLOG__( myfmt, ... )\
+    {\
+        auto content = __FORMAT__( myfmt, __VA_ARGS__ );\
+        spdlog->Log( KFLogEnum::Info, content );\
+    }\
+
+    void KFTLogModule::InitTLogData()
+    {
+        _game_app_id = _kf_project->GetString( "gameid" );
+        _log_version = _kf_project->GetUInt64( "logversion" );
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    __KF_TIMER_FUNCTION__( KFTLogModule::OnTimerLogServerStatus )
+    {
+        auto kfglobal = KFGlobal::Instance();
+        auto spdlog = CreateLog( __STRING__( onelevel ) );
+
+        __TLOG__( "GameSvrState|{}|{}|{}|{}|{}|{}|{}|{}|{}",
+                  _log_version,
+                  kfglobal->_app_id->ToString(),
+                  KFDate::GetTimeString(),
+                  _game_app_id,
+                  _invalid_int,
+                  _kf_ip_address->GetLocalIp(),
+                  _invalid_string,
+                  kfglobal->GetVersion(),
+                  _invalid_string
+                )
+    }
+
+    __KF_TIMER_FUNCTION__( KFTLogModule::OnTimerLogOnlineCount )
+    {
+        auto kfglobal = KFGlobal::Instance();
+        auto spdlog = CreateLog( __STRING__( onelevel ) );
+
+        KFDate nowdate( kfglobal->_real_time );
+        auto hhmm = __FORMAT__( "{}:{}", nowdate.GetHour(), nowdate.GetMinute() );
+
+        __TLOG__( "OnlineCount|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}",
+                  _log_version,
+                  kfglobal->_app_id->ToString(),
+                  KFDate::GetTimeString(),
+                  _game_app_id,
+                  _invalid_int,
+                  _invalid_int,
+                  _invalid_int,
+                  _kf_component->GetEntityCount(),
+                  hhmm,
+                  nowdate.GetDay(),
+                  kfglobal->_real_time
+                )
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     __KF_NEW_PLAYER_FUNCTION__( KFTLogModule::OnNewTLogModule )
     {

@@ -1,0 +1,54 @@
+﻿<?xml version='1.0' encoding='utf-8' ?>
+<Config>
+
+	<!--Zone-->
+	<!--Id 游戏区id, -->
+	<!--LogicId 逻辑区id, 0 不同区不同账号  1 不同区相同账号-->
+	<!--Name 游戏服名字-->
+	<!--Recommend 推荐服务器 -->
+
+	<!--默认-->
+	<Default LogicId="1" Name="测试服{}区"/>
+
+	<Zones Recommend="1">
+		<!-- 公共服务器 -->
+		<Zone Id="1" LogicId="1" Name="开发服"/>
+		<Zone Id="2" LogicId="2" Name="配置服"/>
+		<Zone Id="3" LogicId="3" Name="测试服"/>
+
+
+		<!-- 服务器 -->
+		<Zone Id="11" LogicId="1" Name="小兵服"/>
+		<Zone Id="12" LogicId="1" Name="修逵服"/>
+		<Zone Id="13" LogicId="1" Name="浩贤服"/>
+
+		<!-- 客户端 -->
+		<Zone Id="21" LogicId="1" Name="小杰服"/>
+		<Zone Id="22" LogicId="1" Name="刘双服"/>
+		<Zone Id="23" LogicId="1" Name="队长服"/>
+		<Zone Id="24" LogicId="1" Name="嘉欣服"/>
+		<Zone Id="25" LogicId="1" Name="吴姜服"/>
+		<Zone Id="26" LogicId="1" Name="宝康服"/>
+		<Zone Id="27" LogicId="1" Name="银丽服"/>
+		<Zone Id="28" LogicId="1" Name="林果服"/>
+		<Zone Id="29" LogicId="1" Name="李港服"/>
+
+		<!-- 测试 -->
+		<Zone Id="41" LogicId="1" Name="彭康服"/>
+		<Zone Id="42" LogicId="1" Name="姝灿服"/>
+		<Zone Id="43" LogicId="1" Name="桂聪服"/>
+		<Zone Id="44" LogicId="1" Name="钰茹服"/>
+
+		<!-- 策划 -->
+		<Zone Id="61" LogicId="1" Name="鸿志服"/>
+		<Zone Id="62" LogicId="1" Name="梓侨服"/>
+		<Zone Id="63" LogicId="1" Name="佳吟服"/>
+		<Zone Id="64" LogicId="1" Name="李龙服"/>
+		<Zone Id="65" LogicId="1" Name="天力服"/>
+		<Zone Id="66" LogicId="1" Name="斐迪服"/>
+		<Zone Id="67" LogicId="1" Name="世贤服"/>
+		<Zone Id="68" LogicId="1" Name="耀伟服"/>
+
+	</Zones>
+</Config>
+

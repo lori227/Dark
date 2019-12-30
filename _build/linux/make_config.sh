@@ -8,4 +8,4 @@ mkdir -p $configpath
 \cp -rf $respath/config/*.xml $configpath/
 \cp -rf $respath/config/DesignerConfig1/*.xml $configpath/
 
-sh make_version.sh 1.2 config debug trunk
+sh make_version.sh 1.1 config debug trunk

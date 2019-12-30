@@ -33,7 +33,7 @@ namespace protobuf_EnumMessage_2eproto {
 void InitDefaults() {
 }
 
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[14];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[15];
 const ::google::protobuf::uint32 TableStruct::offsets[1] = {};
 static const ::google::protobuf::internal::MigrationSchema* schemas = NULL;
 static const ::google::protobuf::Message* const* file_default_instances = NULL;
@@ -91,10 +91,14 @@ void AddDescriptorsImpl() {
       "d\020\000\022\r\n\tAutoStore\020\001\022\017\n\013AutoDestory\020\002*Y\n\017H"
       "eroDeathReason\022\021\n\rNoDeathReason\020\000\022\013\n\007NoE"
       "xist\020\001\022\016\n\nNoEnoughHp\020\002\022\026\n\022NoEnoughDurabi"
-      "lity\020\003b\006proto3"
+      "lity\020\003*\220\001\n\022InitialProcessEnum\022\022\n\016Process"
+      "Invalid\020\000\022\r\n\tProcessCG\020\001\022\016\n\nProcessPVE\020\002"
+      "\022\022\n\016ProcessExplore\020\003\022\020\n\014ProcessWorld\020\004\022\017"
+      "\n\013ProcessTask\020\005\022\020\n\014ProcessScene\020\006b\006proto"
+      "3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1334);
+      descriptor, 1481);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "EnumMessage.proto", &protobuf_RegisterTypes);
 }
@@ -336,6 +340,25 @@ bool HeroDeathReason_IsValid(int value) {
     case 1:
     case 2:
     case 3:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::google::protobuf::EnumDescriptor* InitialProcessEnum_descriptor() {
+  protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[14];
+}
+bool InitialProcessEnum_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
       return true;
     default:
       return false;

@@ -382,6 +382,32 @@ inline bool HeroDeathReason_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<HeroDeathReason>(
     HeroDeathReason_descriptor(), name, value);
 }
+enum InitialProcessEnum {
+  ProcessInvalid = 0,
+  ProcessCG = 1,
+  ProcessPVE = 2,
+  ProcessExplore = 3,
+  ProcessWorld = 4,
+  ProcessTask = 5,
+  ProcessScene = 6,
+  InitialProcessEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  InitialProcessEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+LIBPROTOC_EXPORT bool InitialProcessEnum_IsValid(int value);
+const InitialProcessEnum InitialProcessEnum_MIN = ProcessInvalid;
+const InitialProcessEnum InitialProcessEnum_MAX = ProcessScene;
+const int InitialProcessEnum_ARRAYSIZE = InitialProcessEnum_MAX + 1;
+
+LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* InitialProcessEnum_descriptor();
+inline const ::std::string& InitialProcessEnum_Name(InitialProcessEnum value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    InitialProcessEnum_descriptor(), value);
+}
+inline bool InitialProcessEnum_Parse(
+    const ::std::string& name, InitialProcessEnum* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<InitialProcessEnum>(
+    InitialProcessEnum_descriptor(), name, value);
+}
 // ===================================================================
 
 
@@ -474,6 +500,11 @@ template <> struct is_proto_enum< ::KFMsg::HeroDeathReason> : ::std::true_type {
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::HeroDeathReason>() {
   return ::KFMsg::HeroDeathReason_descriptor();
+}
+template <> struct is_proto_enum< ::KFMsg::InitialProcessEnum> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::InitialProcessEnum>() {
+  return ::KFMsg::InitialProcessEnum_descriptor();
 }
 
 }  // namespace protobuf

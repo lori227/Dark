@@ -177,6 +177,9 @@ namespace KFrame
         __STRING_DEFINE__( retaskchain );
         __STRING_DEFINE__( tlog );
         __STRING_DEFINE__( mainstage );
+        __STRING_DEFINE__( onelevel );
+        __STRING_DEFINE__( twolevel );
+        __STRING_DEFINE__( threelevel );
     }
 }
 

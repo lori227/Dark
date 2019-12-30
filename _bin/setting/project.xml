@@ -1,4 +1,17 @@
 <root version="1">
-	<item Id="route" Key="" Value="route@kframe,./"/>
-	<item Id="projectstarttime" Key="" Value="1559318400"/>
+	<!-- uuid -->
+	<item Id="projectstarttime" Value="1559318400"/>
+	<item Id="uuidtimerbits" Value="29"/>
+	<item Id="uuidzonebits" Value="8"/>
+	<item Id="uuidworkerbits" Value="10"/>
+	<item Id="uuidseqbits" Value="16"/>
+
+	<!-- 集群认证数据 -->
+	<item Id="clustername" Value="route"/>
+	<item Id="clusterkey" Value="route@kframe,./"/>
+
+	<!-- tlog -->
+	<item Id="gameid" Value="check0001"/>
+	<item Id="logversion" Value="94"/>
+
 </root>

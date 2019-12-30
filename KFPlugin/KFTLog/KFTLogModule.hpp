@@ -11,8 +11,11 @@
 
 #include "KFrameEx.h"
 #include "KFTLogInterface.h"
+#include "KFTimer/KFTimerInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFKernel/KFKernelInterface.h"
+#include "KFProject/KFProjectInterface.h"
+#include "KFIpAddress/KFIpAddressInterface.h"
 #include "KFLogger/KFSpdLog.h"
 
 namespace KFrame
@@ -46,19 +49,27 @@ namespace KFrame
         __KF_LOG_ELEMENT_FUNCTION__( LogItemElement );
 
     protected:
-        template<typename... P>
-        void TLog( const std::string& myfmt, P&& ... args )
-        {
-            auto content = __FORMAT__( myfmt, std::forward<P>( args )... );
-            _spdlog->Log( KFLogEnum::Info, content );
-        }
+        // 创建日志
+        KFSpdLog* CreateLog( const std::string& name );
+
+        // 初始化log数据
+        void InitTLogData();
+
+        // 打印服务器状态
+        __KF_TIMER_FUNCTION__( OnTimerLogServerStatus );
+
+        // 打印在线总数
+        __KF_TIMER_FUNCTION__( OnTimerLogOnlineCount );
 
     protected:
         // 玩家组件上下文
         KFComponent* _kf_component = nullptr;
 
-        // 日志逻辑
-        KFSpdLog* _spdlog = nullptr;
+        // 游戏appid
+        std::string _game_app_id;
+
+        // 日志版本号
+        uint32 _log_version;
     };
 }
 

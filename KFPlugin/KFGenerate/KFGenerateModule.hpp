@@ -52,7 +52,7 @@ namespace KFrame
         virtual KFData* GenerateNpcHero( KFEntity* player, KFData* kfnpcrecord, uint32 generateid, uint32 level );
 
         // 随机权重数据
-        virtual uint32 RandWeightData( KFEntity* player, KFData* kfhero, const std::string& str, const UInt32Vector& slist );
+        virtual uint32 RandWeightData( KFEntity* player, KFData* kfhero, const std::string& str, const UInt32Vector& slist, bool update = true );
     protected:
         // 英雄等级更新
         __KF_UPDATE_DATA_FUNCTION__( OnHeroLevelUpdate );

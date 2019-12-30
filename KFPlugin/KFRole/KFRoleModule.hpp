@@ -19,6 +19,8 @@
 #include "KFRouteClient/KFRouteClientInterface.h"
 #include "KFIconConfig.hpp"
 #include "KFFactionConfig.hpp"
+#include "KFZConfig/KFInitialProcessConfig.hpp"
+#include "KFTask/KFTaskInterface.h"
 
 namespace KFrame
 {
@@ -58,6 +60,9 @@ namespace KFrame
         // 金币更新
         __KF_UPDATE_DATA_FUNCTION__( OnUpdateMoneyCallBack );
 
+        // 主线流程更新
+        __KF_UPDATE_DATA_FUNCTION__( OnMainStageUpdate );
+
         // 进入游戏检查
         __KF_ENTER_PLAYER_FUNCTION__( OnEnterRoleModule );
 
@@ -65,6 +70,8 @@ namespace KFrame
         // 检查名字的有效性
         uint32 CheckNameValid( const std::string& name, uint32 maxlength );
 
+        // 执行初始化流程
+        void OnExecuteInitialProcess( KFEntity* player, uint32 id );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private:
         // 玩家组件上下文

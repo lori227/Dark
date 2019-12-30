@@ -21,6 +21,7 @@
     <ClInclude Include="KFDataSetting.h" />
     <ClInclude Include="KFDivisorConfig.hpp" />
     <ClInclude Include="KFGenerateConfig.hpp" />
+    <ClInclude Include="KFInitialProcessConfig.hpp" />
     <ClInclude Include="KFNpcConfig.hpp" />
     <ClInclude Include="KFNpcSkillConfig.hpp" />
     <ClInclude Include="KFPinchFaceConfig.hpp" />
@@ -58,6 +59,7 @@
     <ClCompile Include="KFCurrencyConfig.cpp" />
     <ClCompile Include="KFDivisorConfig.cpp" />
     <ClCompile Include="KFGenerateConfig.cpp" />
+    <ClCompile Include="KFInitialProcessConfig.cpp" />
     <ClCompile Include="KFNpcConfig.cpp" />
     <ClCompile Include="KFNpcSkillConfig.cpp" />
     <ClCompile Include="KFPinchFaceConfig.cpp" />

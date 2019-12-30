@@ -53,4 +53,4 @@ chmod 777 gcm_build
 ./gcm_build -p "chess" -s $svnversion -b $2 -c $1 -m $3 -v $projectversion -n 1.2 -t $uptype
 
 cd ../../../../../
-echo $projectversion > /tmp/projectversion
+echo $projectversion > /tmp/$2_projectversion

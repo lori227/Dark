@@ -1,5 +1,5 @@
-<root version="2238">
-	<item Id="1" Store="normal" Explore="explore" Move="normal|extend" Extend="extend" Auto="0" UseLimit="" Sort="1" />
+<root version="2408">
+	<item Id="1" Store="normal" Explore="other" Move="normal|extend" Extend="extend" Auto="0" UseLimit="" Sort="1" />
 	<item Id="2" Store="gift" Explore="other" Move="gift|extend" Extend="extend" Auto="1" UseLimit="" Sort="2" />
 	<item Id="3" Store="drug" Explore="explore" Move="explore|drug|extend" Extend="extend" Auto="1" UseLimit="" Sort="3" />
 	<item Id="4" Store="weapon" Explore="explore" Move="weapon|explore|extend" Extend="extend" Auto="1" UseLimit="" Sort="8" />

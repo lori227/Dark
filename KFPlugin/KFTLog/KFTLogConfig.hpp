@@ -9,7 +9,13 @@ namespace KFrame
     class KFTLogSetting : public KFIntSetting
     {
     public:
+        // 日志名
+        std::string _log_name;
 
+        // 标识名
+        std::string _table_name;
+
+        //
     };
 
     ////////////////////////////////////////////////////////////////////////////////////

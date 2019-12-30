@@ -8,6 +8,7 @@ namespace KFrame
 
         __REGISTER_ENTER_PLAYER__( &KFRoleModule::OnEnterRoleModule );
         __REGISTER_UPDATE_DATA_1__( __STRING__( money ), &KFRoleModule::OnUpdateMoneyCallBack );
+        __REGISTER_UPDATE_DATA_1__( __STRING__( mainstage ), &KFRoleModule::OnMainStageUpdate );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_SET_SEX_REQ, &KFRoleModule::HandleSetSexReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_SET_NAME_REQ, &KFRoleModule::HandleSetNameReq );
@@ -21,6 +22,7 @@ namespace KFrame
     {
         __UN_ENTER_PLAYER__();
         __UN_UPDATE_DATA_1__( __STRING__( money ) );
+        __UN_UPDATE_DATA_1__( __STRING__( mainstage ) );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_SET_NAME_REQ );
         __UN_MESSAGE__( KFMsg::MSG_SET_SEX_REQ );
@@ -53,6 +55,10 @@ namespace KFrame
                 kfbasic->Set( __STRING__( factionid ), setting->_id );
             }
         }
+
+        // 进入初始化流程
+        auto mainstage = player->Get( __STRING__( mainstage ) );
+        OnExecuteInitialProcess( player, mainstage );
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -191,17 +197,39 @@ namespace KFrame
         player->UpdateData( __STRING__( basic ), __STRING__( factionid ), KFEnum::Set, kfmsg.factionid() );
     }
 
+    __KF_UPDATE_DATA_FUNCTION__( KFRoleModule::OnMainStageUpdate )
+    {
+        OnExecuteInitialProcess( player, newvalue );
+    }
+
     __KF_MESSAGE_FUNCTION__( KFRoleModule::HandleUpdateMainStageReq )
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgUpdateMainStageReq );
 
         auto mainstage = player->Get( __STRING__( mainstage ) );
-        if ( mainstage == 0u )
+        if ( kfmsg.stageid() != mainstage + 1u )
         {
-            // 主线流程已结束
+            // 流程递增
             return;
         }
 
         player->UpdateData( __STRING__( mainstage ), KFEnum::Set, kfmsg.stageid() );
+    }
+
+    void KFRoleModule::OnExecuteInitialProcess( KFEntity* player, uint32 id )
+    {
+        auto kfsetting = KFInitialProcessConfig::Instance()->FindSetting( id );
+        if ( kfsetting == nullptr )
+        {
+            return;
+        }
+
+        if ( kfsetting->_type == KFMsg::ProcessTask )
+        {
+            // 如果当前流程为任务，接取任务
+            _kf_task->OpenTask( player, kfsetting->_parameter, KFMsg::ExecuteStatus, 0u );
+
+            player->UpdateData( __STRING__( mainstage ), KFEnum::Add, 1u );
+        }
     }
 }

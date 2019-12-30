@@ -24,11 +24,13 @@ namespace KFrame
         __FIND_MODULE__( _kf_display, KFDisplayInterface );
         __FIND_MODULE__( _kf_route, KFRouteClientInterface );
         __FIND_MODULE__( _kf_config, KFConfigInterface );
+        __FIND_MODULE__( _kf_task, KFTaskInterface );
     }
 
     void KFRolePlugin::AddConfig()
     {
         __KF_ADD_CONFIG__( KFIconConfig );
         __KF_ADD_CONFIG__( KFFactionConfig );
+        __KF_ADD_CONFIG__( KFInitialProcessConfig );
     }
 }

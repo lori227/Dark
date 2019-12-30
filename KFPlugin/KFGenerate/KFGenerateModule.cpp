@@ -446,26 +446,6 @@ namespace KFrame
         auto kfbackground = kfhero->Find( __STRING__( background ) );
         __RAND_WEIGHT_DATA_CLEAR__( kfgeneratesetting->_background_pool_id, KFBackGroundConfig::Instance(), IsValid( race, sex ), backgroundid, includelist );
         kfbackground->Set( backgroundid );
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // 生成等级
-        if ( generatelevel > 0u )
-        {
-            generatelevel += kfhero->Get<uint32>( __STRING__( level ) );
-
-            // 英雄职业上限修正
-            if ( generatelevel > kfprofessionsetting->_max_level )
-            {
-                generatelevel = kfprofessionsetting->_max_level;
-            }
-
-            auto kflevelsetting = KFLevelConfig::Instance()->FindSetting( generatelevel );
-            if ( kflevelsetting != nullptr )
-            {
-                kfhero->Set( __STRING__( level ), generatelevel );
-                kfhero->Set( __STRING__( exp ), kflevelsetting->_exp );
-            }
-        }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -507,6 +487,52 @@ namespace KFrame
             {
                 kfactivedata->Insert( activeid );
             }
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // 生成等级
+        if ( generatelevel > 0u )
+        {
+            generatelevel += kfhero->Get<uint32>( __STRING__( level ) );
+
+            // 英雄职业上限修正
+            if ( generatelevel > kfprofessionsetting->_max_level )
+            {
+                generatelevel = kfprofessionsetting->_max_level;
+            }
+
+            auto kflevelsetting = KFLevelConfig::Instance()->FindSetting( generatelevel );
+            if ( kflevelsetting != nullptr )
+            {
+                kfhero->Set( __STRING__( level ), generatelevel );
+                kfhero->Set( __STRING__( exp ), kflevelsetting->_exp );
+            }
+        }
+
+        auto herolevel = kfhero->Get<uint32>( __STRING__( level ) );
+        {
+            // 添加生成技能和天赋后 再添加等级技能和天赋
+            UInt32Vector active_pool_list;
+            UInt32Vector innate_pool_list;
+
+            for ( uint32 i = 1u; i <= herolevel; i++ )
+            {
+                auto kflevelsetting = KFLevelConfig::Instance()->FindSetting( i );
+                if ( kflevelsetting == nullptr )
+                {
+                    continue;
+                }
+
+                active_pool_list.insert( active_pool_list.end(), kflevelsetting->_active_pool_list.begin(), kflevelsetting->_active_pool_list.end() );
+                innate_pool_list.insert( innate_pool_list.end(), kflevelsetting->_innate_pool_list.begin(), kflevelsetting->_innate_pool_list.end() );
+            }
+
+            // 随机主动技能
+            RandWeightData( player, kfhero, __STRING__( active ), active_pool_list, false );
+
+            // 随机天赋
+            RandWeightData( player, kfhero, __STRING__( innate ), innate_pool_list, false );
         }
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1046,7 +1072,7 @@ namespace KFrame
         RandWeightData( player, kfhero, __STRING__( innate ), kfsetting->_innate_pool_list );
     }
 
-    uint32 KFGenerateModule::RandWeightData( KFEntity* player, KFData* kfhero, const std::string& dataname, const UInt32Vector& slist )
+    uint32 KFGenerateModule::RandWeightData( KFEntity* player, KFData* kfhero, const std::string& dataname, const UInt32Vector& slist, bool update /*= true*/ )
     {
         uint32 randindex = 0u;
         if ( slist.empty() )
@@ -1101,7 +1127,16 @@ namespace KFrame
 
             randindex = index;
             excludelist.insert( randid );
-            player->UpdateData( kfdataarray, index, KFEnum::Set, randid );
+
+            if ( update )
+            {
+                player->UpdateData( kfdataarray, index, KFEnum::Set, randid );
+            }
+            else
+            {
+                kfdataarray->Insert( randid );
+            }
+
         }
 
         return randindex;

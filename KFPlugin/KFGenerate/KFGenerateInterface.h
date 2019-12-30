@@ -20,7 +20,7 @@ namespace KFrame
         virtual KFData* GenerateNpcHero( KFEntity* player, KFData* kfnpcrecord, uint32 generateid, uint32 level ) = 0;
 
         // 随机权重数据
-        virtual uint32 RandWeightData( KFEntity* player, KFData* kfhero, const std::string& str, const UInt32Vector& slist ) = 0;
+        virtual uint32 RandWeightData( KFEntity* player, KFData* kfhero, const std::string& str, const UInt32Vector& slist, bool update = true ) = 0;
     };
 
     ///////////////////////////////////////////////////////////////////////////////////////////

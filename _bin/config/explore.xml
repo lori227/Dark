@@ -1,4 +1,4 @@
-<root version="2028">
+<root version="2438">
 	<item Id="10086" ExploreId="10086" DropVictory="1" DropFail="" Consume="" />
 	<item Id="10101" ExploreId="10101" DropVictory="5100001" DropFail="" Consume="" />
 	<item Id="10102" ExploreId="10102" DropVictory="5100002" DropFail="" Consume="" />
@@ -7,6 +7,9 @@
 	<item Id="10105" ExploreId="10105" DropVictory="5100003" DropFail="" Consume="" />
 	<item Id="10106" ExploreId="10106" DropVictory="5100004" DropFail="" Consume="" />
 	<item Id="10201" ExploreId="10201" DropVictory="" DropFail="" Consume="" />
+	<item Id="10202" ExploreId="10202" DropVictory="" DropFail="" Consume="" />
+	<item Id="10203" ExploreId="10203" DropVictory="" DropFail="" Consume="" />
+	<item Id="10204" ExploreId="10204" DropVictory="" DropFail="" Consume="" />
 	<item Id="10501" ExploreId="10101" DropVictory="5130001" DropFail="" Consume="" />
 	<item Id="10502" ExploreId="10102" DropVictory="5130002" DropFail="" Consume="" />
 	<item Id="10503" ExploreId="10201" DropVictory="5130003" DropFail="" Consume="" />
@@ -22,4 +25,8 @@
 	<item Id="19001" ExploreId="10101" DropVictory="5100001" DropFail="" Consume="" />
 	<item Id="19002" ExploreId="10102" DropVictory="5100002" DropFail="" Consume="" />
 	<item Id="19003" ExploreId="10102" DropVictory="5100002" DropFail="" Consume="" />
+	<item Id="11001" ExploreId="10101" DropVictory="5100001" DropFail="" Consume="" />
+	<item Id="11002" ExploreId="10202" DropVictory="5100002" DropFail="" Consume="" />
+	<item Id="11003" ExploreId="10203" DropVictory="5100003" DropFail="" Consume="" />
+	<item Id="11004" ExploreId="10204" DropVictory="5100004" DropFail="" Consume="" />
 </root>

@@ -1,4 +1,4 @@
-<root version="1536">
+<root version="2478">
 	<item Id="2000001" BluePrint="Rune_SwordOnly" SkillId="190001" />
 	<item Id="2000002" BluePrint="Rune_RideOnly" SkillId="190002" />
 	<item Id="2000003" BluePrint="Rune_AxeOnly" SkillId="190003" />
@@ -34,4 +34,25 @@
 	<item Id="2000033" BluePrint="Rune_Any" SkillId="190033" />
 	<item Id="2000034" BluePrint="Rune_Any" SkillId="190034" />
 	<item Id="2000035" BluePrint="Rune_Any" SkillId="190035" />
+	<item Id="2000036" BluePrint="Rune_BowOnly" SkillId="190036" />
+	<item Id="2000037" BluePrint="Rune_BowOnly" SkillId="190037" />
+	<item Id="2000038" BluePrint="Rune_SpearOnly" SkillId="190038" />
+	<item Id="2000039" BluePrint="Rune_FlyOnly" SkillId="190039" />
+	<item Id="2000040" BluePrint="Rune_RideOnly" SkillId="190040" />
+	<item Id="2000041" BluePrint="Rune_BowOnly" SkillId="190041" />
+	<item Id="2000042" BluePrint="Rune_StaffOnly" SkillId="190042" />
+	<item Id="2000043" BluePrint="Rune_StaffOnly" SkillId="190043" />
+	<item Id="2000044" BluePrint="Rune_HumanOnly" SkillId="190044" />
+	<item Id="2000045" BluePrint="Rune_AxeOnly" SkillId="190045" />
+	<item Id="2000046" BluePrint="Rune_BowOnly" SkillId="190046" />
+	<item Id="2000047" BluePrint="Rune_RideOnly" SkillId="190047" />
+	<item Id="2000048" BluePrint="Rune_OrcOnly" SkillId="190048" />
+	<item Id="2000049" BluePrint="Rune_ElfOnly" SkillId="190049" />
+	<item Id="2000050" BluePrint="Rune_Def&gt;Atk" SkillId="190050" />
+	<item Id="2000051" BluePrint="Rune_StaffOnly" SkillId="190051" />
+	<item Id="2000052" BluePrint="Rune_WalkOnly" SkillId="190052" />
+	<item Id="2000053" BluePrint="Rune_Tal&gt;Spd&amp;Luk" SkillId="190053" />
+	<item Id="2000054" BluePrint="Rune_Luk&gt;Tal&amp;Spd" SkillId="190054" />
+	<item Id="2000055" BluePrint="Rune_Spd&gt;Tal&amp;Luk" SkillId="190055" />
+	<item Id="2000056" BluePrint="Rune_BowOnly" SkillId="190056" />
 </root>
