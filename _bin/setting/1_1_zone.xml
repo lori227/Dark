@@ -38,6 +38,7 @@
 		<Zone Id="42" LogicId="1" Name="姝灿服"/>
 		<Zone Id="43" LogicId="1" Name="桂聪服"/>
 		<Zone Id="44" LogicId="1" Name="钰茹服"/>
+		<Zone Id="45" LogicId="1" Name="嘉媛服"/>
 
 		<!-- 策划 -->
 		<Zone Id="61" LogicId="1" Name="鸿志服"/>

@@ -7,4 +7,4 @@ mkdir -p $configpath
 \cp -rf $respath/config/*.xml $configpath/
 \cp -rf $respath/config/Beta/*.xml $configpath/
 
-sh make_version.sh 1.1 beta debug $1 $2
+sh make_version.sh 1.1 beta debug beta

@@ -8,4 +8,4 @@ mkdir -p $configpath
 \cp -rf $respath/config/*.xml $configpath/
 \cp -rf $respath/config/server/*.xml $configpath/
 
-sh make_version.sh 1.1 develop debug
+sh make_version.sh 1.1 develop debug trunk
