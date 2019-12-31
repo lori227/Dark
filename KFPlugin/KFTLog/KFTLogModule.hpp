@@ -33,6 +33,12 @@ namespace KFrame
         virtual void ShutDown();
 
     protected:
+        // 打印服务器状态
+        __KF_TIMER_FUNCTION__( OnTimerLogServerStatus );
+
+        // 打印在线总数
+        __KF_TIMER_FUNCTION__( OnTimerLogOnlineCount );
+
         // 注册玩家
         __KF_NEW_PLAYER_FUNCTION__( OnNewTLogModule );
 
@@ -48,6 +54,9 @@ namespace KFrame
         // 打印道具
         __KF_LOG_ELEMENT_FUNCTION__( LogItemElement );
 
+        // 创建角色
+        __KF_UPDATE_STRING_FUNCTION__( OnUpdateNameLogCreateRole );
+
     protected:
         // 创建日志
         KFSpdLog* CreateLog( const std::string& name );
@@ -55,11 +64,11 @@ namespace KFrame
         // 初始化log数据
         void InitTLogData();
 
-        // 打印服务器状态
-        __KF_TIMER_FUNCTION__( OnTimerLogServerStatus );
+        // 打印在线时长
+        void LogOnlineTime( KFEntity* player );
 
-        // 打印在线总数
-        __KF_TIMER_FUNCTION__( OnTimerLogOnlineCount );
+        // 打印登录游戏
+        void LogLeaveGame( KFEntity* player );
 
     protected:
         // 玩家组件上下文

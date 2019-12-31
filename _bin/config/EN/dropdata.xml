@@ -1,4 +1,4 @@
-<root version="2478">
+<root version="2523">
 	<item Id="6000001" DropName="exp" DropValue="25" DropKey="0" Weight="100" />
 	<item Id="6001001" DropName="item" DropValue="500" DropKey="1900000" Weight="100" />
 	<item Id="6002001" DropName="item" DropValue="500" DropKey="1900002" Weight="100" />
@@ -755,12 +755,13 @@
 	<item Id="6291009" DropName="drop" DropValue="5800004" DropKey="0" Weight="200" />
 	<item Id="6291010" DropName="drop" DropValue="5240020" DropKey="0" Weight="9800" />
 	<item Id="6291010" DropName="drop" DropValue="5800004" DropKey="0" Weight="200" />
-	<item Id="6400001" DropName="exp" DropValue="0" DropKey="0" Weight="100" />
-	<item Id="6401001" DropName="item" DropValue="2400" DropKey="1900000" Weight="100" />
-	<item Id="6402001" DropName="item" DropValue="0" DropKey="1900002" Weight="100" />
-	<item Id="6400002" DropName="exp" DropValue="0" DropKey="0" Weight="100" />
-	<item Id="6401002" DropName="item" DropValue="2800" DropKey="1900000" Weight="100" />
-	<item Id="6402002" DropName="item" DropValue="0" DropKey="1900002" Weight="100" />
+	<item Id="6400001" DropName="item" DropValue="12000" DropKey="1900002" Weight="100" />
+	<item Id="6400002" DropName="item" DropValue="12000" DropKey="1900301" Weight="100" />
+	<item Id="6400003" DropName="item" DropValue="12000" DropKey="1900201" Weight="100" />
+	<item Id="6400004" DropName="item" DropValue="12000" DropKey="1900000" Weight="100" />
+	<item Id="6400005" DropName="item" DropValue="12000" DropKey="1900004" Weight="100" />
+	<item Id="6400006" DropName="item" DropValue="1" DropKey="1000401" Weight="100" />
+	<item Id="6400007" DropName="item" DropValue="1" DropKey="1000402" Weight="100" />
 	<item Id="6450001" DropName="exp" DropValue="0" DropKey="0" Weight="100" />
 	<item Id="6451001" DropName="item" DropValue="0" DropKey="1900000" Weight="100" />
 	<item Id="6452001" DropName="item" DropValue="0" DropKey="1900002" Weight="100" />

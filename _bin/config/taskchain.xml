@@ -1,5 +1,5 @@
-<root version="2477">
-	<item Id="1" Order="1" Weight="0" Task="21101001" TaskStatus="2" LogicName="chapter" LogicId="11001" LogicStatus="1" FinishStatus="2" ExtendChain="99:10000|1001:10000|1002:10000|1003:10000|1004:10000|1005:10000|1006:10000|1007:10000|1008:10000|1009:10000|1010:10000|1011:10000|1012:10000|2001:10000" StartRefresh="" StopRefresh="" />
+<root version="2531">
+	<item Id="1" Order="1" Weight="0" Task="21101001" TaskStatus="2" LogicName="chapter" LogicId="11001" LogicStatus="1" FinishStatus="2" ExtendChain="99:10000|1001:10000|1002:10000|1003:10000|1004:10000|1005:10000|1006:10000|1007:10000|1008:10000|1009:10000|1010:10000|1011:10000|1012:10000" StartRefresh="" StopRefresh="" />
 	<item Id="1" Order="2" Weight="0" Task="8000001" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
 	<item Id="1" Order="3" Weight="0" Task="21101002" TaskStatus="2" LogicName="chapter" LogicId="11002" LogicStatus="3" FinishStatus="4" ExtendChain="" StartRefresh="" StopRefresh="" />
 	<item Id="1" Order="4" Weight="0" Task="8000103" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
@@ -17,7 +17,7 @@
 	<item Id="1" Order="16" Weight="0" Task="8000006" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
 	<item Id="1" Order="17" Weight="0" Task="21101010" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="15:10000|16:10000|17:10000|18:10000" StartRefresh="" StopRefresh="" />
 	<item Id="1" Order="18" Weight="0" Task="8000108" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
-	<item Id="1" Order="19" Weight="0" Task="21101011" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="19:10000|20:10000|21:10000|22:10000" StartRefresh="2002:10000|2003:10000" StopRefresh="" />
+	<item Id="1" Order="19" Weight="0" Task="21101011" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="19:10000|20:10000|21:10000|22:10000" StartRefresh="2001:10000|2002:10000|2003:10000" StopRefresh="" />
 	<item Id="1" Order="20" Weight="0" Task="8000007" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
 	<item Id="1" Order="21" Weight="0" Task="21101012" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="2004:10000|2005:10000" StopRefresh="" />
 	<item Id="2" Order="1" Weight="0" Task="21100004" TaskStatus="2" LogicName="chapter" LogicId="12003" LogicStatus="7" FinishStatus="8" ExtendChain="" StartRefresh="" StopRefresh="" />
@@ -51,8 +51,7 @@
 	<item Id="99" Order="1" Weight="0" Task="21201013" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
 	<item Id="99" Order="2" Weight="0" Task="8900001" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
 	<item Id="99" Order="3" Weight="0" Task="21201014" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
-	<item Id="2001" Order="1" Weight="1000" Task="21301001" TaskStatus="2" LogicName="chapter" LogicId="11010" LogicStatus="5101" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
-	<item Id="2001" Order="1" Weight="1000" Task="21301001" TaskStatus="2" LogicName="chapter" LogicId="11017" LogicStatus="5101" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
+	<item Id="2001" Order="1" Weight="0" Task="21301001" TaskStatus="2" LogicName="chapter" LogicId="11010" LogicStatus="5101" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
 	<item Id="2002" Order="1" Weight="0" Task="21301002" TaskStatus="2" LogicName="chapter" LogicId="11011" LogicStatus="5103" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
 	<item Id="2003" Order="1" Weight="0" Task="21301003" TaskStatus="2" LogicName="chapter" LogicId="12011" LogicStatus="5105" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
 	<item Id="2004" Order="1" Weight="0" Task="21301004" TaskStatus="2" LogicName="chapter" LogicId="12017" LogicStatus="5107" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />

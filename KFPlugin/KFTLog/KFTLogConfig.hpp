@@ -30,6 +30,9 @@ namespace KFrame
     protected:
         // 读取配置
         virtual void ReadSetting( KFNode& xmlnode, KFTLogSetting* kfsetting );
+
+    public:
+
     };
 }
 

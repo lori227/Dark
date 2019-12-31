@@ -1,4 +1,4 @@
-<root version="2493">
+<root version="2531">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -41,7 +41,6 @@
 	<item name="currency" version="1172" />
 	<item name="traincamp" version="1175" />
 	<item name="affixtext" version="1220" />
-	<item name="buildcondition" version="1534" />
 	<item name="recruitdivisor" version="1536" />
 	<item name="npcskill" version="1536" />
 	<item name="explorerecord" version="1536" />
@@ -70,7 +69,6 @@
 	<item name="faction" version="2045" />
 	<item name="filter" version="2053" />
 	<item name="option" version="2054" />
-	<item name="train" version="2067" />
 	<item name="reward" version="2069" />
 	<item name="foodconsume" version="2071" />
 	<item name="npc" version="2139" />
@@ -83,8 +81,6 @@
 	<item name="buildlevel" version="2402" />
 	<item name="config" version="2405" />
 	<item name="itemtype" version="2408" />
-	<item name="technology" version="2410" />
-	<item name="camptext" version="2410" />
 	<item name="prompttext" version="2432" />
 	<item name="herorace" version="2437" />
 	<item name="herotransfer" version="2437" />
@@ -94,31 +90,35 @@
 	<item name="dialogue" version="2440" />
 	<item name="unlockcondition" version="2440" />
 	<item name="taskcondition" version="2440" />
-	<item name="status" version="2440" />
 	<item name="worldmaptext" version="2440" />
 	<item name="dialoguetext" version="2440" />
 	<item name="itemment" version="2441" />
-	<item name="heroweightpool" version="2442" />
-	<item name="minimap" version="2443" />
-	<item name="gmcommand" version="2448" />
 	<item name="buildbasics" version="2450" />
 	<item name="heroprofession" version="2453" />
-	<item name="uitext" version="2460" />
 	<item name="initialprocess" version="2462" />
 	<item name="heroment" version="2463" />
-	<item name="pve" version="2464" />
-	<item name="class" version="2466" />
-	<item name="taskchain" version="2477" />
-	<item name="chapter" version="2477" />
 	<item name="itemrune" version="2478" />
-	<item name="dropdata" version="2478" />
-	<item name="dropgroup" version="2478" />
 	<item name="itemtext" version="2478" />
 	<item name="herogenerate" version="2481" />
-	<item name="herolevel" version="2481" />
 	<item name="itemcommon" version="2482" />
-	<item name="taskchainrefresh" version="2483" />
-	<item name="task" version="2492" />
 	<item name="tasktext" version="2492" />
 	<item name="unlock" version="2493" />
+	<item name="buildcondition" version="2500" />
+	<item name="uitext" version="2511" />
+	<item name="herolevel" version="2513" />
+	<item name="train" version="2516" />
+	<item name="minimap" version="2518" />
+	<item name="heroweightpool" version="2519" />
+	<item name="status" version="2520" />
+	<item name="dropdata" version="2523" />
+	<item name="dropgroup" version="2523" />
+	<item name="pve" version="2523" />
+	<item name="task" version="2524" />
+	<item name="class" version="2525" />
+	<item name="technology" version="2528" />
+	<item name="gmcommand" version="2529" />
+	<item name="camptext" version="2530" />
+	<item name="taskchainrefresh" version="2531" />
+	<item name="taskchain" version="2531" />
+	<item name="chapter" version="2531" />
 </root>

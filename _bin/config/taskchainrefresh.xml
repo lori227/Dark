@@ -1,5 +1,5 @@
-<root version="2483">
-	<item Id="20001" ResetTime="105" TimerTime="0" Rate="10000" Condition="" ChainId="2001" PickupTime="60" CompleteTime="60" PickupCost="" />
+<root version="2531">
+	<item Id="20001" ResetTime="0" TimerTime="28800" Rate="10000" Condition="" ChainId="2001" PickupTime="28800" CompleteTime="28800" PickupCost="" />
 	<item Id="20002" ResetTime="0" TimerTime="28800" Rate="10000" Condition="" ChainId="2002" PickupTime="28800" CompleteTime="28800" PickupCost="" />
 	<item Id="20003" ResetTime="0" TimerTime="28800" Rate="10000" Condition="" ChainId="2003" PickupTime="28800" CompleteTime="28800" PickupCost="" />
 	<item Id="20004" ResetTime="0" TimerTime="28800" Rate="10000" Condition="" ChainId="2004" PickupTime="28800" CompleteTime="28800" PickupCost="" />

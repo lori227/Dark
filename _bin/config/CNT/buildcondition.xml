@@ -1,4 +1,4 @@
-<root version="1534">
+<root version="2500">
 	<item Id="59000000" Condition="totalsignin" DoneType=">=" DoneValue="1" Limits="" Limits1="" />
 	<item Id="59000001" Condition="buildlevel" DoneType=">=" DoneValue="1" Limits="202" Limits1="" />
 	<item Id="59000203" Condition="unlockbuild" DoneType=">=" DoneValue="1" Limits="203" Limits1="" />
