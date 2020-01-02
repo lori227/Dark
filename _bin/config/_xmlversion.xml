@@ -1,4 +1,4 @@
-<root version="2531">
+<root version="2537">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -110,15 +110,15 @@
 	<item name="minimap" version="2518" />
 	<item name="heroweightpool" version="2519" />
 	<item name="status" version="2520" />
-	<item name="dropdata" version="2523" />
 	<item name="dropgroup" version="2523" />
 	<item name="pve" version="2523" />
-	<item name="task" version="2524" />
-	<item name="class" version="2525" />
 	<item name="technology" version="2528" />
-	<item name="gmcommand" version="2529" />
 	<item name="camptext" version="2530" />
 	<item name="taskchainrefresh" version="2531" />
-	<item name="taskchain" version="2531" />
 	<item name="chapter" version="2531" />
+	<item name="gmcommand" version="2532" />
+	<item name="dropdata" version="2533" />
+	<item name="class" version="2534" />
+	<item name="task" version="2537" />
+	<item name="taskchain" version="2537" />
 </root>

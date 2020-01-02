@@ -13,7 +13,6 @@ namespace KFrame
         // 3分钟打印一次在线玩家
         __LOOP_TIMER_1__( ++timeid, 3 * KFTimeEnum::OneMinuteMicSecond, 1, &KFTLogModule::OnTimerLogOnlineCount );
         /////////////////////////////////////////////////////////////////////////////
-        __REGISTER_NEW_PLAYER__( &KFTLogModule::OnNewTLogModule );
         __REGISTER_ENTER_PLAYER__( &KFTLogModule::OnEnterTLogModule );
         __REGISTER_LEAVE_PLAYER__( &KFTLogModule::OnLeaveTLogModule );
         /////////////////////////////////////////////////////////////////////////////
@@ -31,7 +30,6 @@ namespace KFrame
     {
         __UN_TIMER_0__();
         /////////////////////////////////////////////////////////////////////////////
-        __UN_NEW_PLAYER__();
         __UN_ENTER_PLAYER__();
         __UN_LEAVE_PLAYER__();
         /////////////////////////////////////////////////////////////////////////////
@@ -104,11 +102,6 @@ namespace KFrame
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
-    __KF_NEW_PLAYER_FUNCTION__( KFTLogModule::OnNewTLogModule )
-    {
-
-    }
-
     __KF_UPDATE_STRING_FUNCTION__( KFTLogModule::OnUpdateNameLogCreateRole )
     {
         // 如果原来有名字, 说明是改名字, 不是第一次创建角色

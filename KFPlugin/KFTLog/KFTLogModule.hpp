@@ -39,9 +39,6 @@ namespace KFrame
         // 打印在线总数
         __KF_TIMER_FUNCTION__( OnTimerLogOnlineCount );
 
-        // 注册玩家
-        __KF_NEW_PLAYER_FUNCTION__( OnNewTLogModule );
-
         // 玩家进入游戏
         __KF_ENTER_PLAYER_FUNCTION__( OnEnterTLogModule );
 
