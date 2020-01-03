@@ -51,29 +51,29 @@ namespace KFrame
             return;
         }
 
-        UpdateTechnologyData( player, kfparent, kfsetting->_id );
+        auto status = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( status ), 1.0f );
+        UpdateTechnologyData( player, kfparent, kfsetting->_id, status );
     }
 
     __KF_ADD_DATA_FUNCTION__( KFTechnologyModule::OnAddUnlockTechnology )
     {
-        auto status = kfdata->Get( kfdata->_data_setting->_value_key_name );
-        if ( status != 0u )
-        {
-            OnUpgradeTechnology( player, kfparent, key );
-        }
+        OnUpgradeTechnology( player, kfdata );
     }
 
     __KF_UPDATE_DATA_FUNCTION__( KFTechnologyModule::OnUpdateTechnologyStatus )
     {
-        if ( newvalue != 0u )
-        {
-            OnUpgradeTechnology( player, kfdata->GetParent()->GetParent(), key );
-        }
+        OnUpgradeTechnology( player, kfdata->GetParent() );
     }
 
-    void KFTechnologyModule::OnUpgradeTechnology( KFEntity* player, KFData* kftechnologyrecord, uint32 technologyid )
+    void KFTechnologyModule::OnUpgradeTechnology( KFEntity* player, KFData* kftechnology )
     {
-        auto kfsetting = KFTechnologyConfig::Instance()->FindSetting( technologyid );
+        auto status = kftechnology->Get<uint32>( kftechnology->_data_setting->_value_key_name );
+        if ( status == 0u )
+        {
+            return;
+        }
+
+        auto kfsetting = KFTechnologyConfig::Instance()->FindSetting( kftechnology->GetKeyID() );
         if ( kfsetting == nullptr )
         {
             return;
@@ -92,11 +92,11 @@ namespace KFrame
         // 解锁后置科技
         for ( auto unlockid : kfsetting->_unlock_technology )
         {
-            UpdateTechnologyData( player, kftechnologyrecord, unlockid );
+            UpdateTechnologyData( player, kftechnology->GetParent(), unlockid, 0u );
         }
     }
 
-    void KFTechnologyModule::UpdateTechnologyData( KFEntity* player, KFData* kftechnologyrecord, uint32 technologyid )
+    void KFTechnologyModule::UpdateTechnologyData( KFEntity* player, KFData* kftechnologyrecord, uint32 technologyid, uint32 status )
     {
         auto kfsetting = KFTechnologyConfig::Instance()->FindSetting( technologyid );
         if ( kfsetting == nullptr )
@@ -104,20 +104,21 @@ namespace KFrame
             return;
         }
 
+        auto newstatus = ( status == 0u ? kfsetting->_status : status );
         auto kftechnology = kftechnologyrecord->Find( technologyid );
         if ( kftechnology == nullptr )
         {
             kftechnology = player->CreateData( kftechnologyrecord );
-            kftechnology->Set( __STRING__( status ), kfsetting->_status );
+            kftechnology->Set( __STRING__( status ), newstatus );
             kftechnology->Set( __STRING__( type ), kfsetting->_type );
             player->AddData( kftechnologyrecord, technologyid, kftechnology );
         }
         else
         {
-            auto status = kftechnology->Get( __STRING__( status ) );
-            if ( status == 0u && kfsetting->_status != 0u )
+            auto oldstatus = kftechnology->Get( __STRING__( status ) );
+            if ( oldstatus == 0u && newstatus != 0u )
             {
-                player->UpdateData( kftechnology, __STRING__( status ), KFEnum::Set, kfsetting->_status );
+                player->UpdateData( kftechnology, __STRING__( status ), KFEnum::Set, newstatus );
             }
         }
     }

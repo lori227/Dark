@@ -53,10 +53,10 @@ namespace KFrame
         __KF_MESSAGE_FUNCTION__( HandleUpgradeTechnologyReq );
 
         // 升级科技
-        void OnUpgradeTechnology( KFEntity* player, KFData* kftechnologyrecord, uint32 technologyid );
+        void OnUpgradeTechnology( KFEntity* player, KFData* kftechnology );
 
         // 更新科技数据
-        void UpdateTechnologyData( KFEntity* player, KFData* kftechnologyrecord, uint32 technologyid );
+        void UpdateTechnologyData( KFEntity* player, KFData* kftechnologyrecord, uint32 technologyid, uint32 status );
 
     protected:
         // 玩家组件上下文
