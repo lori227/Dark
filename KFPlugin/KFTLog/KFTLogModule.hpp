@@ -17,6 +17,8 @@
 #include "KFProject/KFProjectInterface.h"
 #include "KFIpAddress/KFIpAddressInterface.h"
 #include "KFLogger/KFSpdLog.h"
+#include "KFZConfig/KFCurrencyConfig.hpp"
+#include "KFZConfig/KFItemConfig.hpp"
 
 namespace KFrame
 {
@@ -46,7 +48,7 @@ namespace KFrame
         __KF_ENTER_PLAYER_FUNCTION__( OnLeaveTLogModule );
 
         // 打印货币
-        __KF_LOG_ELEMENT_FUNCTION__( LogCurrenyElement );
+        __KF_LOG_ELEMENT_FUNCTION__( LogCurrencyElement );
 
         // 打印道具
         __KF_LOG_ELEMENT_FUNCTION__( LogItemElement );

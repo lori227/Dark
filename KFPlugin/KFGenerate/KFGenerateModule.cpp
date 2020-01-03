@@ -23,7 +23,7 @@ namespace KFrame
         auto racepool = KFWeightConfig::Instance()->FindWeightPool( racepoolid );
         if ( racepool == nullptr )
         {
-            __LOG_ERROR__( "race pool=[{}] can't find!", racepoolid );
+            __LOG_ERROR__( "race pool=[{}] can't find", racepoolid );
             return 0u;
         }
 
@@ -87,7 +87,7 @@ namespace KFrame
         }
         if ( kfweight == nullptr )
         {
-            __LOG_ERROR__( "pool=[{}] can't rand race!", racepoolid );
+            __LOG_ERROR__( "pool=[{}] can't rand race", racepoolid );
             return 0u;
         }
 
@@ -317,14 +317,14 @@ namespace KFrame
             {   \
                 if ( excludelist.empty() )\
                 {\
-                    __LOG_ERROR__( "{} pool=[{}] race=[{}] sex=[{}] profession=[{}] move=[{}] weapon=[{}] background=[{}] can't rand weight!", \
+                    __LOG_ERROR__( "{} pool=[{}] race=[{}] sex=[{}] profession=[{}] move=[{}] weapon=[{}] background=[{}] can't rand weight", \
                                    #config, poolid, race, sex, professionid, movetype, weapontype, backgroundid ); \
                 }\
             }\
         }\
         else\
         {\
-            __LOG_ERROR__( "pool=[{}] can't find!", poolid );\
+            __LOG_ERROR__( "pool=[{}] can't find", poolid );\
         }\
     }\
 
@@ -353,7 +353,7 @@ namespace KFrame
         auto kfgeneratesetting = KFGenerateConfig::Instance()->FindSetting( generateid );
         if ( kfgeneratesetting == nullptr )
         {
-            __LOG_ERROR__( "hero generate=[{}] can't find!", generateid );
+            __LOG_ERROR__( "hero generate=[{}] can't find", generateid );
             return nullptr;
         }
 
@@ -374,7 +374,7 @@ namespace KFrame
         auto kfracesetting = KFRaceConfig::Instance()->FindSetting( race );
         if ( kfracesetting == nullptr )
         {
-            __LOG_ERROR__( "race setting=[{}] can't find!", race );
+            __LOG_ERROR__( "race setting=[{}] can't find", race );
             return nullptr;
         }
         kfhero->Set( __STRING__( race ), race );
@@ -400,7 +400,7 @@ namespace KFrame
         auto kfprofessionsetting = KFProfessionConfig::Instance()->FindSetting( professionid );
         if ( kfprofessionsetting == nullptr )
         {
-            __LOG_ERROR__( "profession setting=[{}] can't find!", professionid );
+            __LOG_ERROR__( "profession setting=[{}] can't find", professionid );
             return nullptr;
         }
         kfprofession->Set( professionid );
@@ -552,7 +552,7 @@ namespace KFrame
         }
         else
         {
-            __LOG_ERROR__( "attribute id={} can't find!", kfgeneratesetting->_growth_id );
+            __LOG_ERROR__( "attribute id={} can't find", kfgeneratesetting->_growth_id );
         }
 
         // 初始属性
@@ -578,7 +578,7 @@ namespace KFrame
         }
         else
         {
-            __LOG_ERROR__( "attribute id={} can't find!", kfgeneratesetting->_attr_id );
+            __LOG_ERROR__( "attribute id={} can't find", kfgeneratesetting->_attr_id );
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -648,21 +648,21 @@ namespace KFrame
         auto kfnpcsetting = KFNpcConfig::Instance()->FindSetting( generateid );
         if ( kfnpcsetting == nullptr )
         {
-            __LOG_ERROR__( "npc generateid=[{}] can't find!", generateid );
+            __LOG_ERROR__( "npc generateid=[{}] can't find", generateid );
             return nullptr;
         }
 
         auto kfracesetting = KFRaceConfig::Instance()->FindSetting( kfnpcsetting->_race_id );
         if ( kfracesetting == nullptr )
         {
-            __LOG_ERROR__( "race setting=[{}] can't find!", kfnpcsetting->_race_id );
+            __LOG_ERROR__( "race setting=[{}] can't find", kfnpcsetting->_race_id );
             return nullptr;
         }
 
         auto kfprofessionsetting = KFProfessionConfig::Instance()->FindSetting( kfnpcsetting->_profession_id );
         if ( kfprofessionsetting == nullptr )
         {
-            __LOG_ERROR__( "profession setting=[{}] can't find!", kfnpcsetting->_profession_id );
+            __LOG_ERROR__( "profession setting=[{}] can't find", kfnpcsetting->_profession_id );
             return nullptr;
         }
 
@@ -716,7 +716,7 @@ namespace KFrame
         }
         else
         {
-            __LOG_ERROR__( "npc generateid=[{}] san empty!", generateid );
+            __LOG_ERROR__( "npc generateid=[{}] san empty", generateid );
         }
 
         // 随机性格
@@ -726,7 +726,7 @@ namespace KFrame
             auto weightdata = KFWeightConfig::Instance()->RandWeight( poolid );
             if ( weightdata == nullptr )
             {
-                __LOG_ERROR__( "npc generateid=[{}] character=[{}] rand empty!", generateid, poolid );
+                __LOG_ERROR__( "npc generateid=[{}] character=[{}] rand empty", generateid, poolid );
                 continue;
             }
 
@@ -747,12 +747,12 @@ namespace KFrame
                     weapontype = kfitemsetting->_weapon_type;
                     if ( weapontype == 0u )
                     {
-                        __LOG_ERROR__( "weapon=[{}] weapontype = 0!", kfnpcsetting->_weapon_id );
+                        __LOG_ERROR__( "weapon=[{}] weapontype = 0", kfnpcsetting->_weapon_id );
                     }
                 }
                 else
                 {
-                    __LOG_ERROR__( "weapon=[{}] can't find setting!", kfnpcsetting->_weapon_id );
+                    __LOG_ERROR__( "weapon=[{}] can't find setting", kfnpcsetting->_weapon_id );
                 }
 
                 // 随机主动技能
@@ -783,7 +783,7 @@ namespace KFrame
             }
             else
             {
-                __LOG_ERROR__( "npc generateid=[{}] skillgroup=[{}] no setting!", generateid, skillgroupweight->_id );
+                __LOG_ERROR__( "npc generateid=[{}] skillgroup=[{}] no setting", generateid, skillgroupweight->_id );
             }
         }
 
@@ -819,7 +819,7 @@ namespace KFrame
             }
             else
             {
-                __LOG_ERROR__( "attribute id={} can't find!", kfnpcsetting->_attr_id );
+                __LOG_ERROR__( "attribute id={} can't find", kfnpcsetting->_attr_id );
             }
         }
 
@@ -878,14 +878,14 @@ namespace KFrame
         auto kfracesetting = KFRaceConfig::Instance()->FindSetting( race );
         if ( kfracesetting == nullptr )
         {
-            return __LOG_ERROR__( "race setting=[{}] can't find!", race );
+            return __LOG_ERROR__( "race setting=[{}] can't find", race );
         }
 
         auto profession = kfhero->Get<uint32>( __STRING__( profession ) );
         auto kfprofessionsetting = KFProfessionConfig::Instance()->FindSetting( profession );
         if ( kfprofessionsetting == nullptr )
         {
-            return __LOG_ERROR__( "profession setting=[{}] can't find!", profession );
+            return __LOG_ERROR__( "profession setting=[{}] can't find", profession );
         }
 
         // 成长率
@@ -900,7 +900,7 @@ namespace KFrame
             auto kflevelsetting = KFLevelConfig::Instance()->FindSetting( level );
             if ( kflevelsetting == nullptr )
             {
-                __LOG_ERROR__( "level=[{}] setting can't find!", level );
+                __LOG_ERROR__( "level=[{}] setting can't find", level );
                 continue;
             }
 
@@ -972,19 +972,19 @@ namespace KFrame
         auto kfsetting = KFTransferConfig::Instance()->FindSetting( transferid );
         if ( kfsetting == nullptr )
         {
-            return __LOG_ERROR__( "transfer setting=[{}] can't find!", transferid );
+            return __LOG_ERROR__( "transfer setting=[{}] can't find", transferid );
         }
 
         auto oldprosetting = KFProfessionConfig::Instance()->FindSetting( oldvalue );
         if ( oldprosetting == nullptr )
         {
-            return __LOG_ERROR__( "transfer profession setting=[{}] can't find!", oldvalue );
+            return __LOG_ERROR__( "transfer profession setting=[{}] can't find", oldvalue );
         }
 
         auto newprosetting = KFProfessionConfig::Instance()->FindSetting( newvalue );
         if ( newprosetting == nullptr )
         {
-            return __LOG_ERROR__( "transfer profession setting=[{}] can't find!", newvalue );
+            return __LOG_ERROR__( "transfer profession setting=[{}] can't find", newvalue );
         }
 
         auto kfhero = kfdata->GetParent();
@@ -992,7 +992,7 @@ namespace KFrame
         auto racesetting = KFRaceConfig::Instance()->FindSetting( race );
         if ( racesetting == nullptr )
         {
-            return __LOG_ERROR__( "transfer profession setting=[{}] can't find!", newvalue );
+            return __LOG_ERROR__( "transfer profession setting=[{}] can't find", newvalue );
         }
 
         auto weapontype = kfhero->Get( __STRING__( weapontype ) );

@@ -28,16 +28,19 @@ namespace KFrame
         auto kfelement = kfresult->_element;
         if ( !kfelement->IsObject() )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object!", kfelement->_data_name );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object", kfelement->_data_name );
+            return false;
         }
 
         auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
         if ( kfelementobject->_config_id == _invalid_int )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no id!", kfelement->_data_name );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no id", kfelement->_data_name );
+            return false;
         }
 
         player->UpdateData( __STRING__( dialogue ), __STRING__( id ), KFEnum::Set, kfelementobject->_config_id );
+        return true;
     }
 
     bool KFDialogueModule::SendToClientDialogueStart( KFEntity* player, uint32 dialogid, uint32 delaytime, const char* function, uint32 line )

@@ -1,4 +1,4 @@
-<root version="2523">
+<root version="2542">
 	<item Id="5000001" RandType="2" DropDataId="6000001" Weight="10000" DropCount="0" Reset="0" ConditionType="1" Condition="" />
 	<item Id="5000001" RandType="2" DropDataId="6001001" Weight="10000" DropCount="0" Reset="0" ConditionType="1" Condition="" />
 	<item Id="5000001" RandType="2" DropDataId="6002001" Weight="10000" DropCount="0" Reset="0" ConditionType="1" Condition="" />
@@ -62,6 +62,7 @@
 	<item Id="5100002" RandType="2" DropDataId="6100002" Weight="10000" DropCount="0" Reset="0" ConditionType="1" Condition="" />
 	<item Id="5100002" RandType="2" DropDataId="6104002" Weight="0" DropCount="0" Reset="0" ConditionType="1" Condition="" />
 	<item Id="5100002" RandType="2" DropDataId="6105002" Weight="0" DropCount="0" Reset="0" ConditionType="1" Condition="" />
+	<item Id="5100002" RandType="2" DropDataId="6106002" Weight="10000" DropCount="0" Reset="0" ConditionType="1" Condition="" />
 	<item Id="5100003" RandType="2" DropDataId="6100003" Weight="10000" DropCount="0" Reset="0" ConditionType="1" Condition="" />
 	<item Id="5100003" RandType="2" DropDataId="6104003" Weight="0" DropCount="0" Reset="0" ConditionType="1" Condition="" />
 	<item Id="5100003" RandType="2" DropDataId="6105003" Weight="0" DropCount="0" Reset="0" ConditionType="1" Condition="" />

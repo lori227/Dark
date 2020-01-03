@@ -52,20 +52,23 @@ namespace KFrame
         auto kfelement = kfresult->_element;
         if ( !kfelement->IsObject() )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object!", kfelement->_data_name );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object", kfelement->_data_name );
+            return false;
         }
 
         auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
         if ( kfelementobject->_config_id == _invalid_int )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no id!", kfelement->_data_name );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no id", kfelement->_data_name );
+            return false;
         }
 
         // 任务状态
         auto status = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( status ), 1.0f );
         if ( status == KFMsg::InitStatus )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "task id=[{}] status = 0!", kfelementobject->_config_id );
+            __LOG_ERROR_FUNCTION__( function, line, "task id=[{}] status = 0", kfelementobject->_config_id );
+            return false;
         }
 
         auto taskchainid = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( chain ), 1.0f );
@@ -78,6 +81,7 @@ namespace KFrame
 
         UInt32List logicids;
         OpenTask( player, kfelementobject->_config_id, status, time, 0u, taskchainid, order, logicids );
+        return true;
     }
 
     __KF_REMOVE_DATA_FUNCTION__( KFTaskModule::OnRemoveTask )
@@ -141,7 +145,7 @@ namespace KFrame
         auto kfsetting = KFTaskConfig::Instance()->FindSetting( taskid );
         if ( kfsetting == nullptr )
         {
-            __LOG_ERROR__( "task=[{}] can't find setting!", taskid );
+            __LOG_ERROR__( "task=[{}] can't find setting", taskid );
             return nullptr;
         }
 
@@ -185,7 +189,7 @@ namespace KFrame
         auto kfsetting = KFTaskConfig::Instance()->FindSetting( taskid );
         if ( kfsetting == nullptr )
         {
-            __LOG_ERROR__( "task=[{}] can't find setting!", taskid );
+            __LOG_ERROR__( "task=[{}] can't find setting", taskid );
             return nullptr;
         }
 

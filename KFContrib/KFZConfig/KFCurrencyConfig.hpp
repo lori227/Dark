@@ -20,9 +20,16 @@ namespace KFrame
             _file_name = "currency";
         }
 
+        // 通过货币属性名获取货币ID
+        uint64 GetIdByName( const std::string& name );
+
     protected:
         // 读取配置
         virtual void ReadSetting( KFNode& xmlnode, KFCurrencySetting* kfsetting );
+
+    private:
+        // 货币表(货币名 id)
+        std::unordered_map<std::string, uint64> _currency_map;
     };
 }
 

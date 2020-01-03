@@ -58,7 +58,7 @@ namespace KFrame
                 if ( ip.empty() || port == _invalid_int )
                 {
                     isempty = true;
-                    __LOG_ERROR__( "battle[{}] data error!", KFAppId::ToString( serverid ) );
+                    __LOG_ERROR__( "battle[{}] data error", KFAppId::ToString( serverid ) );
                 }
 
                 // 删除列表
@@ -68,7 +68,7 @@ namespace KFrame
             else
             {
                 isempty = true;
-                __LOG_ERROR__( "battle[{}] no data!", KFAppId::ToString( serverid ) );
+                __LOG_ERROR__( "battle[{}] no data", KFAppId::ToString( serverid ) );
             }
         }
 
@@ -94,7 +94,7 @@ namespace KFrame
             {
                 if ( kfquery->IsOk() )
                 {
-                    __LOG_ERROR__( "version[{}] battle list empty!", version );
+                    __LOG_ERROR__( "version[{}] battle list empty", version );
                 }
                 break;
             }

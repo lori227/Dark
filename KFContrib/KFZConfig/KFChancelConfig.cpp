@@ -16,7 +16,7 @@ namespace KFrame
         auto id = GetChancelId( kfsetting->_type, kfsetting->_level );
         if ( id != kfsetting->_id )
         {
-            __LOG_ERROR__( "herochancel config id error, id = [{}]!", kfsetting->_id );
+            __LOG_ERROR__( "herochancel config id error, id = [{}]", kfsetting->_id );
         }
 
         _type_list.insert( kfsetting->_type );

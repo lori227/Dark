@@ -88,7 +88,7 @@ namespace KFrame
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgStartMatchReq );
 
-        __LOG_DEBUG__( "player=[{}] match=[{}] req!", playerid, kfmsg.matchid() );
+        __LOG_DEBUG__( "player=[{}] match=[{}] req", playerid, kfmsg.matchid() );
 
         // 开始匹配
         auto result = ProcessStartMatch( player, kfmsg.version(), kfmsg.matchid(), kfmsg.serverid() );
@@ -97,7 +97,7 @@ namespace KFrame
             _kf_display->SendToClient( player, result );
         }
 
-        __LOG_DEBUG__( "player=[{}] match=[{}] result=[{}]!", playerid, kfmsg.matchid(), result );
+        __LOG_DEBUG__( "player=[{}] match=[{}] result=[{}]", playerid, kfmsg.matchid(), result );
     }
 
     uint32 KFMatchClientModule::ProcessStartMatch( KFEntity* player, const std::string& version, uint32 matchid, uint64 serverid )
@@ -183,7 +183,7 @@ namespace KFrame
         if ( kfmsg.result() == KFMsg::MatchRequestOk )
         {
             SetMatchData( player, kfmsg.matchid(), kfmsg.serverid() );
-            __LOG_DEBUG__( "player=[{}] match=[{}|{}] ok!", kfmsg.playerid(), kfmsg.matchid(), KFAppId::ToString( kfmsg.serverid() ) );
+            __LOG_DEBUG__( "player=[{}] match=[{}|{}] ok", kfmsg.playerid(), kfmsg.matchid(), KFAppId::ToString( kfmsg.serverid() ) );
         }
 
         _kf_display->SendToClient( player, kfmsg.result() );
@@ -212,7 +212,7 @@ namespace KFrame
 
         SetMatchData( player, _invalid_int, _invalid_int );
         _kf_display->SendToClient( player, KFMsg::MatchCancelOk );
-        __LOG_DEBUG__( "player=[{}] cancel match req!", playerid );
+        __LOG_DEBUG__( "player=[{}] cancel match req", playerid );
     }
 
     __KF_MESSAGE_FUNCTION__( KFMatchClientModule::HandleAffirmMatchReq )
@@ -242,6 +242,6 @@ namespace KFrame
         SetMatchData( player, _invalid_int, _invalid_int );
         _kf_display->SendToClient( player, KFMsg::MatchAffirmTimeout );
 
-        __LOG_DEBUG__( "player=[{}] affirm timeout!", kfmsg.playerid() );
+        __LOG_DEBUG__( "player=[{}] affirm timeout", kfmsg.playerid() );
     }
 }

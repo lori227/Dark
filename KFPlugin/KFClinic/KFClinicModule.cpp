@@ -372,15 +372,18 @@ namespace KFrame
         auto kfelement = kfresult->_element;
         if ( !kfelement->IsObject() )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object!", kfelement->_data_name );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object", kfelement->_data_name );
+            return false;
         }
 
         // 未解锁时获得材料取1级的数据
         auto level = GetClinicLevel( player );
-        auto kfsetting = KFClinicConfig::Instance()->FindSetting( __MAX__( 1u, level ) );
+        level = __MAX__( 1u, level );
+        auto kfsetting = KFClinicConfig::Instance()->FindSetting( level );
         if ( kfsetting == nullptr )
         {
-            return;
+            __LOG_ERROR_FUNCTION__( function, line, "clinic level=[{}] can't find setting", level );
+            return false;
         }
 
         auto kfclinic = player->Find( __STRING__( clinic ) );
@@ -390,8 +393,9 @@ namespace KFrame
         auto totalnum = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( num ), multiple );
         auto maxnum = GetClinicMaterialsMaxNum( player, kfsetting );
         totalnum = __MIN__( totalnum, maxnum - curnum );
-
         player->UpdateData( kfclinic, __STRING__( num ), KFEnum::Add, totalnum );
+
+        return kfresult->AddResult( __STRING__( num ), totalnum );
     }
 
     __KF_ADD_DATA_FUNCTION__( KFClinicModule::OnAddClinicBuild )

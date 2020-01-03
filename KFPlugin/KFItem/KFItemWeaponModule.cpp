@@ -97,7 +97,7 @@ namespace KFrame
                 auto weightdata = KFWeightConfig::Instance()->RandWeight( poolid );
                 if ( weightdata == nullptr )
                 {
-                    __LOG_ERROR__( "weightpool=[{}] can't rand weight!", poolid );
+                    __LOG_ERROR__( "weightpool=[{}] can't rand weight", poolid );
                     continue;
                 }
 

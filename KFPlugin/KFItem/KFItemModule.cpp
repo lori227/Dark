@@ -305,33 +305,37 @@ namespace KFrame
         auto kfelement = kfresult->_element;
         if ( !kfelement->IsObject() )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object!", kfelement->_data_name );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object", kfelement->_data_name );
+            return false;
         }
 
         auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
         if ( kfelementobject->_config_id == _invalid_int )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no id!", kfelement->_data_name );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no id", kfelement->_data_name );
+            return false;
         }
 
         auto kfsetting = KFItemConfig::Instance()->FindSetting( kfelementobject->_config_id );
         if ( kfsetting == nullptr )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "id=[{}] itemsetting = null!", kfelementobject->_config_id );
+            __LOG_ERROR_FUNCTION__( function, line, "id=[{}] itemsetting = null", kfelementobject->_config_id );
+            return false;
         }
 
         // 查找背包数据
         kfparent = FindItemRecord( player, kfsetting, 0u );
         if ( kfparent == nullptr )
         {
-            return;
+            return false;
         }
 
         // 计算物品数量
         auto itemcount = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( count ), multiple );
         if ( itemcount == _invalid_int )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "item id=[{}] count = 0!", kfelementobject->_config_id );
+            __LOG_ERROR_FUNCTION__( function, line, "item id=[{}] count = 0", kfelementobject->_config_id );
+            return false;
         }
 
         // 添加道具调用脚本
@@ -349,7 +353,7 @@ namespace KFrame
             }
             else
             {
-                __LOG_ERROR_FUNCTION__( function, line, "item id=[{}] reward is null!", kfelementobject->_config_id );
+                __LOG_ERROR_FUNCTION__( function, line, "item id=[{}] reward is null", kfelementobject->_config_id );
             }
         }
         else
@@ -360,7 +364,8 @@ namespace KFrame
                 auto itemtime = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( time ), multiple );
                 if ( itemtime == 0u )
                 {
-                    return __LOG_ERROR_FUNCTION__( function, line, "time item id=[{}] count = 0!", kfelementobject->_config_id );
+                    __LOG_ERROR_FUNCTION__( function, line, "time item id=[{}] count = 0", kfelementobject->_config_id );
+                    return false;
                 }
 
                 AddOverlayTimeItem( player, kfparent, kfresult, kfsetting, itemcount, itemtime );
@@ -378,6 +383,8 @@ namespace KFrame
                 }
             }
         }
+
+        return true;
     }
 
     void KFItemModule::AddOverlayTimeItem( KFEntity* player, KFData* kfparent, KFElementResult* kfresult, const KFItemSetting* kfsetting, uint32 count, uint32 time )
@@ -396,7 +403,7 @@ namespace KFrame
             kfitem = AddNewItemData( player, kfparent, kfsetting, count, time );
         }
 
-        kfresult->AddResult( kfitem );
+        kfresult->AddResult( kfsetting->_id, kfitem );
     }
 
     void KFItemModule::AddOverlayCountItem( KFEntity* player, KFData* kfparent, KFElementResult* kfresult, const KFItemSetting* kfsetting, uint32 count )
@@ -456,7 +463,7 @@ namespace KFrame
         do
         {
             auto kfitem = AddNewItemData( player, kfparent, kfsetting, count, 0u );
-            kfresult->AddResult( kfitem );
+            kfresult->AddResult( kfsetting->_id, kfitem );
         } while ( count > 0u );
     }
 
@@ -515,7 +522,7 @@ namespace KFrame
         auto kfsetting = KFItemConfig::Instance()->FindSetting( itemid );
         if ( kfsetting == nullptr )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "item=[{}] can't find setting!", itemid );
+            __LOG_ERROR_FUNCTION__( function, line, "item=[{}] can't find setting", itemid );
             return kfitem;
         }
 
@@ -552,7 +559,7 @@ namespace KFrame
         auto kftypesetting = KFItemTypeConfig::Instance()->FindSetting( kfsetting->_type );
         if ( kftypesetting == nullptr )
         {
-            __LOG_ERROR__( "item=[{}] type=[{}] no type setting!", kfsetting->_id, kfsetting->_type );
+            __LOG_ERROR__( "item=[{}] type=[{}] no type setting", kfsetting->_id, kfsetting->_type );
             return nullptr;
         }
 
@@ -579,7 +586,7 @@ namespace KFrame
 
         if ( kfitemrecord == nullptr )
         {
-            __LOG_ERROR__( "item=[{}] store=[{}] bag=[{}] extend=[{}] status=[{}] error!",
+            __LOG_ERROR__( "item=[{}] store=[{}] bag=[{}] extend=[{}] status=[{}] error",
                            kfsetting->_id, kftypesetting->_store_name, kftypesetting->_bag_name, kftypesetting->_extend_name, status );
         }
 
@@ -621,14 +628,14 @@ namespace KFrame
     {
         if ( !kfelement->IsObject() )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object!", kfelement->_data_name );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object", kfelement->_data_name );
             return false;
         }
 
         auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
         if ( kfelementobject->_config_id == _invalid_int )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no id!", kfelement->_data_name );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no id", kfelement->_data_name );
             return false;
         }
 
@@ -636,14 +643,14 @@ namespace KFrame
         auto itemcount = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( count ), multiple );
         if ( itemcount == _invalid_int )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "item id=[{}] count = 0!", kfelementobject->_config_id );
+            __LOG_ERROR_FUNCTION__( function, line, "item id=[{}] count = 0", kfelementobject->_config_id );
             return false;
         }
 
         auto kfsetting = KFItemConfig::Instance()->FindSetting( kfelementobject->_config_id );
         if ( kfsetting == nullptr )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "item id=[{}] setting = nullptr!", kfelementobject->_config_id );
+            __LOG_ERROR_FUNCTION__( function, line, "item id=[{}] setting = nullptr", kfelementobject->_config_id );
             return false;
         }
 
@@ -698,33 +705,38 @@ namespace KFrame
 
     __KF_REMOVE_ELEMENT_FUNCTION__( KFItemModule::RemoveItemElement )
     {
+        auto kfelement = kfresult->_element;
         if ( !kfelement->IsObject() )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object!", kfelement->_data_name );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object", kfelement->_data_name );
+            return false;
         }
 
         auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
         if ( kfelementobject->_config_id == _invalid_int )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no id!", kfelement->_data_name );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no id", kfelement->_data_name );
+            return false;
         }
 
         auto itemcount = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( count ), multiple );
         if ( itemcount == _invalid_int )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "item id=[{}] count = 0!", kfelementobject->_config_id );
+            __LOG_ERROR_FUNCTION__( function, line, "item id=[{}] count = 0", kfelementobject->_config_id );
+            return false;
         }
 
         auto kfsetting = KFItemConfig::Instance()->FindSetting( kfelementobject->_config_id );
         if ( kfsetting == nullptr )
         {
-            return;
+            __LOG_ERROR_FUNCTION__( function, line, "item id=[{}] can't find setting", kfelementobject->_config_id );
+            return false;
         }
 
         kfparent = FindItemRecord( player, kfsetting, 0u );
         if ( kfparent == nullptr )
         {
-            return;
+            return false;
         }
 
         auto findcount = 0u;
@@ -739,6 +751,7 @@ namespace KFrame
 
             finditem.push_back( kfitem );
             findcount += kfitem->Get<uint32>( __STRING__( count ) );
+
             if ( findcount >= itemcount )
             {
                 break;
@@ -776,11 +789,14 @@ namespace KFrame
             auto removecount = __MIN__( itemcount, kfitem->Get<uint32>( __STRING__( count ) ) );
             player->UpdateData( kfitem, __STRING__( count ), KFEnum::Dec, removecount );
             itemcount -= removecount;
+            kfresult->AddResult( kfsetting->_id, kfitem->_data_setting->_name, __STRING__( count ), removecount );
             if ( itemcount == _invalid_int )
             {
                 break;
             }
         }
+
+        return true;
     }
 
     __KF_ADD_DATA_FUNCTION__( KFItemModule::OnAddItemCallBack )

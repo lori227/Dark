@@ -46,14 +46,14 @@ namespace KFrame
     {
         if ( executedata->_param_list._params.size() < 1u )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "execute explore param size<1!" );
+            __LOG_ERROR_FUNCTION__( function, line, "execute explore param size<1" );
             return false;
         }
 
         auto mapid = executedata->_param_list._params[ 0 ]->_int_value;
         if ( mapid == 0u )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "execute explore mapid=[{}]!", mapid );
+            __LOG_ERROR_FUNCTION__( function, line, "execute explore mapid=[{}]", mapid );
             return false;
         }
 
@@ -168,7 +168,7 @@ namespace KFrame
 
         player->SetStatus( kfrecord->_data.status() );
 
-        __LOG_DEBUG__( "player=[{}] explore=[{}] balance result=[{}]!", player->GetKeyID(), kfrecord->_data.id(), result );
+        __LOG_DEBUG__( "player=[{}] explore=[{}] balance result=[{}]", player->GetKeyID(), kfrecord->_data.id(), result );
 
         // 先结算货币
         kfrecord->BalanceCurrencyEndData( player );
@@ -281,7 +281,7 @@ namespace KFrame
                 return kfrecord;
             }
 
-            __LOG_ERROR__( "player=[{}] parse explorerecord failed!", player->GetKeyID() );
+            __LOG_ERROR__( "player=[{}] parse explorerecord failed", player->GetKeyID() );
         }
 
         kfrecord->_data.set_id( mapid );

@@ -132,7 +132,7 @@ namespace KFrame
         auto battleid = executedata->_param_list._params[1]->_int_value;
         if ( pveid == 0u || battleid == 0u )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "pve execute param pveid=[{}] battleid=[{}]!", pveid, battleid );
+            __LOG_ERROR_FUNCTION__( function, line, "pve execute param pveid=[{}] battleid=[{}]", pveid, battleid );
             return false;
         }
 
@@ -243,14 +243,14 @@ namespace KFrame
                     kfhero->Get( __STRING__( durability ) ) == 0u ||
                     kfhero->Get( __STRING__( fighter ), __STRING__( hp ) ) == 0u )
             {
-                __LOG_ERROR__( "player=[{}] herouuid=[{}] fighthero is invalid!", player->GetKeyID(), herouuid );
+                __LOG_ERROR__( "player=[{}] herouuid=[{}] fighthero is invalid", player->GetKeyID(), herouuid );
                 continue;
             }
 
             auto posflag = kfhero->Get<uint32>( __STRING__( posflag ) );
             if ( posflag != KFMsg::HeroTeam )
             {
-                __LOG_ERROR__( "player=[{}] herouuid=[{}] fighthero not in heroteam!", player->GetKeyID(), herouuid );
+                __LOG_ERROR__( "player=[{}] herouuid=[{}] fighthero not in heroteam", player->GetKeyID(), herouuid );
                 continue;
             }
 
@@ -376,7 +376,7 @@ namespace KFrame
 
         auto teamheronum = _kf_hero_team->GetHeroCount( player );
         auto teamdeathnum = _kf_hero_team->GetDeadHeroCount( player );
-        __LOG_DEBUG__( "player=[{}] pve balance result=[{}]!", player->GetKeyID(), result );
+        __LOG_DEBUG__( "player=[{}] pve balance result=[{}]", player->GetKeyID(), result );
 
         player->SetStatus( kfrecord->_data.status() );
 

@@ -94,7 +94,7 @@ namespace KFrame
             auto ok = KFRewardConfig::Instance()->ParseRewards( kfsetting->_str_cost, kfsetting->_receive_cost );
             if ( !ok )
             {
-                __LOG_ERROR__( "cost=[{}] parse failed!", kfsetting->_str_cost );
+                __LOG_ERROR__( "cost=[{}] parse failed", kfsetting->_str_cost );
             }
         }
     }

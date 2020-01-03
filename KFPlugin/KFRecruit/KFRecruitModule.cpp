@@ -63,7 +63,8 @@ namespace KFrame
         auto kfelement = kfresult->_element;
         if ( !kfelement->IsObject() )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object!", kfelement->_data_name );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object", kfelement->_data_name );
+            return false;
         }
 
         auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
@@ -71,7 +72,8 @@ namespace KFrame
         auto kfgenerate = objvalue->_element->_values.Find( __STRING__( id ) );
         if ( kfgenerate == nullptr )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not generateid!", kfelement->_data_name );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not generateid", kfelement->_data_name );
+            return false;
         }
 
         auto kfrecruit = player->CreateData( kfparent );
@@ -80,12 +82,14 @@ namespace KFrame
         auto rethero = _kf_generate->GeneratePlayerHero( player, kfhero, generateid );
         if ( rethero == nullptr )
         {
-            return;
+            __LOG_ERROR_FUNCTION__( function, line, "recruit generate hero=[{}] failed", generateid );
+            return false;
         }
 
         // 添加到招募列表
         auto uuid = KFGlobal::Instance()->STMakeUUID( __STRING__( hero ) );
         player->AddData( kfparent, uuid, kfrecruit );
+        return true;
     }
 
     __KF_ADD_DATA_FUNCTION__( KFRecruitModule::OnAddRecruitBuild )

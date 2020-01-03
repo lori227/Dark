@@ -30,29 +30,27 @@ namespace KFrame
         auto kfelement = kfresult->_element;
         if ( !kfelement->IsObject() )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object!", kfelement->_data_name );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object", kfelement->_data_name );
+            return false;
         }
 
         auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
         if ( kfelementobject->_config_id == _invalid_int )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no id!", kfelement->_data_name );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no id", kfelement->_data_name );
+            return false;
         }
 
         auto kfsetting = KFTechnologyConfig::Instance()->FindSetting( kfelementobject->_config_id );
         if ( kfsetting == nullptr )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "id=[{}] technologysetting = null!", kfelementobject->_config_id );
+            __LOG_ERROR_FUNCTION__( function, line, "id=[{}] technologysetting = null", kfelementobject->_config_id );
+            return false;
         }
 
-        auto kftechnology = kfparent->Find( kfsetting->_id );
-        if ( kftechnology == nullptr )
-        {
-            return;
-        }
-
-        auto status = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( status ), 1.0f );
+        auto status = kfelementobject->CalcValue( kfparent->_data_setting, kfparent->_data_setting->_value_key_name, 1.0f );
         UpdateTechnologyData( player, kfparent, kfsetting->_id, status );
+        return true;
     }
 
     __KF_ADD_DATA_FUNCTION__( KFTechnologyModule::OnAddUnlockTechnology )
@@ -109,16 +107,16 @@ namespace KFrame
         if ( kftechnology == nullptr )
         {
             kftechnology = player->CreateData( kftechnologyrecord );
-            kftechnology->Set( __STRING__( status ), newstatus );
             kftechnology->Set( __STRING__( type ), kfsetting->_type );
+            kftechnology->Set( kftechnology->_data_setting->_value_key_name, newstatus );
             player->AddData( kftechnologyrecord, technologyid, kftechnology );
         }
         else
         {
-            auto oldstatus = kftechnology->Get( __STRING__( status ) );
+            auto oldstatus = kftechnology->Get( kftechnology->_data_setting->_value_key_name );
             if ( oldstatus == 0u && newstatus != 0u )
             {
-                player->UpdateData( kftechnology, __STRING__( status ), KFEnum::Set, newstatus );
+                player->UpdateData( kftechnology, kftechnology->_data_setting->_value_key_name, KFEnum::Set, newstatus );
             }
         }
     }

@@ -43,13 +43,13 @@ namespace KFrame
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgInformBattleAck );
 
-        __LOG_DEBUG__( "player=[{}] affirm battle!", playerid );
+        __LOG_DEBUG__( "player=[{}] affirm battle", playerid );
 
         auto roomid = player->Get( __STRING__( roomid ) );
         auto roomserverid = player->Get( __STRING__( roomserverid ) );
         if ( roomserverid == _invalid_int || roomid == _invalid_int )
         {
-            return __LOG_ERROR__( "player=[{}] affirm battle failed!", playerid );
+            return __LOG_ERROR__( "player=[{}] affirm battle failed", playerid );
         }
 
         KFMsg::S2SInformBattleToRoomAck ack;
@@ -104,7 +104,7 @@ namespace KFrame
     {
         __SERVER_PROTO_PARSE__( KFMsg::S2SFinishRoomToGameReq );
 
-        __LOG_DEBUG__( "player=[{}] room=[{}] finish!", kfmsg.playerid(), kfmsg.roomid() );
+        __LOG_DEBUG__( "player=[{}] room=[{}] finish", kfmsg.playerid(), kfmsg.roomid() );
 
         SetRoomData( player, _invalid_int, _invalid_int );
 

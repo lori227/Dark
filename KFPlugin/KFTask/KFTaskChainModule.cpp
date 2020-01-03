@@ -92,17 +92,20 @@ namespace KFrame
         auto kfelement = kfresult->_element;
         if ( !kfelement->IsObject() )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object!", kfelement->_data_name );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object", kfelement->_data_name );
+            return false;
         }
 
         auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
         if ( kfelementobject->_config_id == _invalid_int )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no id!", kfelement->_data_name );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no id", kfelement->_data_name );
+            return false;
         }
 
         auto order = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( order ), 1.0f );
         OpenTaskChain( player, kfelementobject->_config_id, order, 0u, 0u, __FUNC_LINE__ );
+        return true;
     }
 
     bool KFTaskChainModule::OpenTaskChain( KFEntity* player, uint32 taskchainid, uint32 order, uint32 time, uint32 refreshid, const char* function, uint32 line )
@@ -110,7 +113,7 @@ namespace KFrame
         auto kftaskchainsetting = KFTaskChainConfig::Instance()->FindSetting( taskchainid );
         if ( kftaskchainsetting == nullptr )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "taskchain=[{}] can't find setting!", taskchainid );
+            __LOG_ERROR_FUNCTION__( function, line, "taskchain=[{}] can't find setting", taskchainid );
             return false;
         }
 
@@ -118,7 +121,7 @@ namespace KFrame
         auto kftaskdatalist = kftaskchainsetting->_task_data_list.Find( order );
         if ( kftaskdatalist == nullptr )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "taskchain=[{}] order=[{}] is error!", taskchainid, order );
+            __LOG_ERROR_FUNCTION__( function, line, "taskchain=[{}] order=[{}] is error", taskchainid, order );
             return false;
         }
 
@@ -136,7 +139,7 @@ namespace KFrame
         auto taskdata = taskdatalist->Rand();
         if ( taskdata == nullptr )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "taskchain=[{}] order=[{}] can't rand taskdata!", taskchainid, order );
+            __LOG_ERROR_FUNCTION__( function, line, "taskchain=[{}] order=[{}] can't rand taskdata", taskchainid, order );
             return false;
         }
 
@@ -250,14 +253,14 @@ namespace KFrame
             auto kfrefreshsetting = KFTaskChainRefreshConfig::Instance()->FindSetting( iter.first );
             if ( kfrefreshsetting == nullptr )
             {
-                __LOG_ERROR__( "player=[{}] refreshid=[{}] can't find refresh setting!", player->GetKeyID(), iter.first );
+                __LOG_ERROR__( "player=[{}] refreshid=[{}] can't find refresh setting", player->GetKeyID(), iter.first );
                 continue;
             }
 
             auto timerrefeshtime = kfrefreshsetting->_timer_refresh_time;
             if ( timerrefeshtime == _invalid_int )
             {
-                __LOG_ERROR__( "refreshid=[{}] be use timerrefeshtime == 0 !", iter.first );
+                __LOG_ERROR__( "refreshid=[{}] be use timerrefeshtime == 0 ", iter.first );
                 continue;
             }
 
@@ -345,7 +348,7 @@ namespace KFrame
         auto kftaskchainsetting = KFTaskChainConfig::Instance()->FindSetting( taskchainid );
         if ( kftaskchainsetting == nullptr )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "player=[{}] taskchain=[{}] can't find setting!", player->GetKeyID(), taskchainid );
+            return __LOG_ERROR_FUNCTION__( function, line, "player=[{}] taskchain=[{}] can't find setting", player->GetKeyID(), taskchainid );
         }
 
         // 附加的掉落组id
@@ -392,7 +395,7 @@ namespace KFrame
         auto kfrecord = player->Find( taskdata->_logic_name );
         if ( kfrecord == nullptr )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "taskchain=[{}] order=[{}] task=[{}] dataname=[{}] no class data!", taskchainid, order, taskdata->_id, taskdata->_logic_name );
+            __LOG_ERROR_FUNCTION__( function, line, "taskchain=[{}] order=[{}] task=[{}] dataname=[{}] no class data", taskchainid, order, taskdata->_id, taskdata->_logic_name );
             return false;
         }
 

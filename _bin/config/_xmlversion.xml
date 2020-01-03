@@ -1,4 +1,4 @@
-<root version="2539">
+<root version="2544">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -84,7 +84,6 @@
 	<item name="herorace" version="2437" />
 	<item name="herotransfer" version="2437" />
 	<item name="npcgenerate" version="2437" />
-	<item name="explore" version="2438" />
 	<item name="rolebasetext" version="2439" />
 	<item name="dialogue" version="2440" />
 	<item name="unlockcondition" version="2440" />
@@ -109,7 +108,6 @@
 	<item name="minimap" version="2518" />
 	<item name="heroweightpool" version="2519" />
 	<item name="status" version="2520" />
-	<item name="dropgroup" version="2523" />
 	<item name="pve" version="2523" />
 	<item name="technology" version="2528" />
 	<item name="camptext" version="2530" />
@@ -117,8 +115,10 @@
 	<item name="chapter" version="2531" />
 	<item name="gmcommand" version="2532" />
 	<item name="class" version="2534" />
-	<item name="task" version="2537" />
 	<item name="taskchain" version="2537" />
-	<item name="dropdata" version="2538" />
 	<item name="prompttext" version="2539" />
+	<item name="dropdata" version="2542" />
+	<item name="dropgroup" version="2542" />
+	<item name="explore" version="2542" />
+	<item name="task" version="2544" />
 </root>

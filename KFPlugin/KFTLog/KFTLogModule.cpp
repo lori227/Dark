@@ -18,9 +18,9 @@ namespace KFrame
         /////////////////////////////////////////////////////////////////////////////
         _kf_component = _kf_kernel->FindComponent( __STRING__( player ) );
         __REGISTER_LOG_ELEMENT__( __STRING__( item ), &KFTLogModule::LogItemElement );
-        __REGISTER_LOG_ELEMENT__( __STRING__( money ), &KFTLogModule::LogCurrenyElement );
-        __REGISTER_LOG_ELEMENT__( __STRING__( diamond ), &KFTLogModule::LogCurrenyElement );
-        __REGISTER_LOG_ELEMENT__( __STRING__( supplies ), &KFTLogModule::LogCurrenyElement );
+        __REGISTER_LOG_ELEMENT__( __STRING__( money ), &KFTLogModule::LogCurrencyElement );
+        __REGISTER_LOG_ELEMENT__( __STRING__( diamond ), &KFTLogModule::LogCurrencyElement );
+        __REGISTER_LOG_ELEMENT__( __STRING__( supplies ), &KFTLogModule::LogCurrencyElement );
 
         /////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_UPDATE_STRING_2__( __STRING__( basic ), __STRING__( name ), &KFTLogModule::OnUpdateNameLogCreateRole );
@@ -290,12 +290,96 @@ namespace KFrame
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     __KF_LOG_ELEMENT_FUNCTION__( KFTLogModule::LogItemElement )
     {
+        auto kfsetting = KFItemConfig::Instance()->FindSetting( kfresult->_config_id );
+        if ( kfsetting == nullptr )
+        {
+            return;
+        }
 
+        auto kfglobal = KFGlobal::Instance();
+        auto spdlog = CreateLog( __STRING__( onelevel ) );
+
+        __TLOG__( "ItemFlow|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}",
+                  _log_version,	// logVersion
+                  kfglobal->_app_id->ToString(),	// vGameSvrId
+                  KFDate::GetTimeString( kfglobal->_real_time ),	// dtEventTime
+                  _game_app_id,	// vGameAppid
+                  _invalid_int,	// vPlatID
+                  kfglobal->_channel,	// vPlatformType
+                  _invalid_int,	// registerZoneID
+                  _invalid_int,	// currentZoneID
+                  player->Get<uint64>( __STRING__( accountid ) ),	// accountID
+                  player->Get<std::string>( __STRING__( account ) ),	// vopenid
+
+                  player->GetKeyID(),	// roleid
+                  _invalid_int,	// level
+                  _invalid_int,	// viplevel
+                  KFDate::GetTimeString( player->Get( __STRING__( birthday ) ) ),	// registerTime
+                  _invalid_int,	// rechargeNum
+                  player->Get( __STRING__( diamond ) ),	// valueAmount
+                  _invalid_int,	// bindAmount
+                  player->Get( __STRING__( money ) ),	// iconAmount
+                  _invalid_string,	// otherAmount
+
+                  kfresult->_sequence,	// sequence
+                  kfsetting->_type,	// goodsType
+                  kfsetting->_id,	// iGoodsId
+                  _invalid_int,	// uniqueId
+                  kfresult->_total_value,	// quantity
+                  _invalid_int,	// afterQuantity
+                  _invalid_int,	// itemCauseid
+                  modulename,	// itemLocation
+                  _invalid_string,	// iMoney
+                  _invalid_string,	// iMoneyType
+                  kfresult->_operate,	// addOrReduce
+                  _invalid_string	// custom
+                );
     }
 
-    __KF_LOG_ELEMENT_FUNCTION__( KFTLogModule::LogCurrenyElement )
+    __KF_LOG_ELEMENT_FUNCTION__( KFTLogModule::LogCurrencyElement )
     {
+        if ( !kfresult->_element->IsValue() )
+        {
+            return;
+        }
 
+        auto kfglobal = KFGlobal::Instance();
+        auto spdlog = CreateLog( __STRING__( onelevel ) );
+
+        auto moneytype = KFCurrencyConfig::Instance()->GetIdByName( kfresult->_element->_data_name );
+        auto aftermoney = player->Get( kfresult->_element->_data_name );
+
+        __TLOG__( "MoneyFlow|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}",
+                  _log_version,	// logVersion
+                  kfglobal->_app_id->ToString(),	// vGameSvrId
+                  KFDate::GetTimeString( kfglobal->_real_time ),	// dtEventTime
+                  _game_app_id,	// vGameAppid
+                  _invalid_int,	// vPlatID
+                  kfglobal->_channel,	// vPlatformType
+                  _invalid_int,	// registerZoneID
+                  _invalid_int,	// currentZoneID
+                  player->Get<uint64>( __STRING__( accountid ) ),	// accountID
+                  player->Get<std::string>( __STRING__( account ) ),	// vopenid
+
+                  player->GetKeyID(),	// roleid
+                  _invalid_int,	// level
+                  _invalid_int,	// viplevel
+                  KFDate::GetTimeString( player->Get( __STRING__( birthday ) ) ),	// registerTime
+                  _invalid_int,	// rechargeNum
+                  player->Get( __STRING__( diamond ) ),	// valueAmount
+                  _invalid_int,	// bindAmount
+                  player->Get( __STRING__( money ) ),	// iconAmount
+                  _invalid_string,	// otherAmount
+
+                  kfresult->_sequence,	// sequence
+                  aftermoney,	// afterMoney
+                  kfresult->_total_value,	// iMoney
+                  moneytype,	// iMoneyType
+                  _invalid_int,	// moneyCauseid
+                  modulename,	// moneyLocation
+                  kfresult->_operate,	// addOrReduce
+                  _invalid_string	// custom
+                );
     }
 
 }

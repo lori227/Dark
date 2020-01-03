@@ -160,15 +160,18 @@ namespace KFrame
         auto kfelement = kfresult->_element;
         if ( !kfelement->IsObject() )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object!", kfelement->_data_name );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object", kfelement->_data_name );
+            return false;
         }
 
         // 未解锁时获得材料取1级的数据
         auto level = GetSmithyLevel( player );
-        auto kfsetting = KFSmithyConfig::Instance()->FindSetting( __MAX__( 1u, level ) );
+        level = __MAX__( 1u, level );
+        auto kfsetting = KFSmithyConfig::Instance()->FindSetting( level );
         if ( kfsetting == nullptr )
         {
-            return;
+            __LOG_ERROR_FUNCTION__( function, line, "smithy level=[{}] can't find setting", level );
+            return false;
         }
 
         auto kfsmithy = player->Find( __STRING__( smithy ) );
@@ -176,9 +179,10 @@ namespace KFrame
 
         auto kfelementobject = reinterpret_cast<KFElementObject*>( kfelement );
         auto totalnum = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( totalnum ), multiple );
-
         totalnum = __MIN__( totalnum, kfsetting->_store_max - curnum );
         player->UpdateData( kfsmithy, __STRING__( totalnum ), KFEnum::Add, totalnum );
+
+        return kfresult->AddResult( __STRING__( totalnum ), totalnum );
     }
 
     __KF_ADD_DATA_FUNCTION__( KFSmithyModule::OnAddSmithyBuild )

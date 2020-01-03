@@ -128,13 +128,13 @@ namespace KFrame
         __PROTO_PARSE__( KFMsg::S2SStartMatchToShardReq );
 
         auto pbplayer = &kfmsg.pbplayer();
-        __LOG_DEBUG__( "player=[{}] match=[{}] serverid=[{}] req!", pbplayer->id(), kfmsg.matchid(), KFAppId::ToString( kfmsg.serverid() ) );
+        __LOG_DEBUG__( "player=[{}] match=[{}] serverid=[{}] req", pbplayer->id(), kfmsg.matchid(), KFAppId::ToString( kfmsg.serverid() ) );
 
         // 处理匹配
         auto result = StartMatch( pbplayer, kfmsg.matchid(), kfmsg.version(), kfmsg.serverid() );
         if ( result != KFMsg::MatchRequestOk )
         {
-            __LOG_ERROR__( "player=[{}] match failed=[{}]!", pbplayer->id(), result );
+            __LOG_ERROR__( "player=[{}] match failed=[{}]", pbplayer->id(), result );
         }
 
         // 发送给玩家
@@ -146,7 +146,7 @@ namespace KFrame
         auto ok = _kf_route->SendToRoute( route, KFMsg::S2S_START_MATCH_TO_GAME_ACK, &ack );
         if ( !ok )
         {
-            __LOG_ERROR__( "player=[{}] send match ack failed!", pbplayer->id() );
+            __LOG_ERROR__( "player=[{}] send match ack failed", pbplayer->id() );
         }
     }
 
@@ -154,12 +154,12 @@ namespace KFrame
     {
         __PROTO_PARSE__( KFMsg::S2SCancelMatchToShardReq );
 
-        __LOG_DEBUG__( "player=[{}] cancel match req!", kfmsg.playerid() );
+        __LOG_DEBUG__( "player=[{}] cancel match req", kfmsg.playerid() );
 
         auto kfplayer = _match_player_manage->Find( kfmsg.playerid() );
         if ( kfplayer == nullptr )
         {
-            return __LOG_ERROR__( "player=[{}] not in match!", kfmsg.playerid() );
+            return __LOG_ERROR__( "player=[{}] not in match", kfmsg.playerid() );
         }
 
         auto kfroom = _match_room_list.Find( kfplayer->_room_id );
@@ -182,18 +182,18 @@ namespace KFrame
     {
         __PROTO_PARSE__( KFMsg::S2SAffirmMatchToShardReq );
 
-        __LOG_DEBUG__( "player=[{}] affrim match!", kfmsg.playerid() );
+        __LOG_DEBUG__( "player=[{}] affrim match", kfmsg.playerid() );
 
         auto kfplayer = _match_player_manage->Find( kfmsg.playerid() );
         if ( kfplayer == nullptr )
         {
-            return __LOG_ERROR__( "can't find player=[{}]!", kfmsg.playerid() );
+            return __LOG_ERROR__( "can't find player=[{}]", kfmsg.playerid() );
         }
 
         auto kfroom = _match_room_list.Find( kfplayer->_room_id );
         if ( kfroom == nullptr )
         {
-            return __LOG_ERROR__( "can't find room=[{}]!", kfplayer->_room_id );
+            return __LOG_ERROR__( "can't find room=[{}]", kfplayer->_room_id );
         }
 
         kfplayer->_pb_player.set_serverid( kfmsg.serverid() );
@@ -204,12 +204,12 @@ namespace KFrame
     {
         __PROTO_PARSE__( KFMsg::S2SCreateRoomToMatchAck );
 
-        __LOG_DEBUG__( "room=[{}] create ack!", kfmsg.roomid() );
+        __LOG_DEBUG__( "room=[{}] create ack", kfmsg.roomid() );
 
         auto kfroom = _match_room_list.Find( kfmsg.roomid() );
         if ( kfroom == nullptr )
         {
-            return __LOG_ERROR__( "can't find room=[{}]!", kfmsg.roomid() );
+            return __LOG_ERROR__( "can't find room=[{}]", kfmsg.roomid() );
         }
 
         kfroom->AffirmCreate();
@@ -219,7 +219,7 @@ namespace KFrame
     {
         __PROTO_PARSE__( KFMsg::S2SQueryMatchToMatchReq );
 
-        __LOG_DEBUG__( "player=[{}] query match req!", kfmsg.playerid() );
+        __LOG_DEBUG__( "player=[{}] query match req", kfmsg.playerid() );
         auto kfplayer = _match_player_manage->Find( kfmsg.playerid() );
         if ( kfplayer != nullptr )
         {
@@ -230,7 +230,7 @@ namespace KFrame
                 kfroom->QueryRoom( kfplayer );
             }
 
-            return __LOG_DEBUG__( "player=[{}] query in match!", kfmsg.playerid() );
+            return __LOG_DEBUG__( "player=[{}] query in match", kfmsg.playerid() );
         }
 
         KFMsg::S2SQueryMatchToGameAck ack;

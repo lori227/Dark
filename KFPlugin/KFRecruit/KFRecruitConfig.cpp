@@ -18,7 +18,7 @@ namespace KFrame
             auto ok = KFRewardConfig::Instance()->ParseRewards( kfsetting->_str_cost, kfsetting->_cost_elements );
             if ( !ok )
             {
-                __LOG_ERROR__( "recruit reward=[{}] parse failed!", kfsetting->_str_cost );
+                __LOG_ERROR__( "recruit reward=[{}] parse failed", kfsetting->_str_cost );
             }
         }
     }

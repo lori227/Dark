@@ -69,7 +69,8 @@ namespace KFrame
         auto kfelement = kfresult->_element;
         if ( !kfelement->IsObject() )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object!", kfelement->_data_name );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object", kfelement->_data_name );
+            return false;
         }
         auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
 
@@ -81,16 +82,19 @@ namespace KFrame
             auto kfhero = kfparent->Find( uuid );
             if ( kfhero == nullptr )
             {
-                return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] uuid[{}] hero not exist!", kfelement->_data_name, uuid );
+                __LOG_ERROR_FUNCTION__( function, line, "element=[{}] uuid[{}] hero not exist", kfelement->_data_name, uuid );
+                return false;
             }
 
             // 更新数据
-            return player->UpdateElementToData( kfelementobject, kfhero, multiple );
+            player->UpdateElementToData( kfelementobject, kfhero, multiple );
+            return true;
         }
 
         if ( kfelementobject->_config_id == 0u )
         {
-            return __LOG_ERROR_FUNCTION__( function, line, "element=[{}] id!", kfelement->_data_name );
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] id", kfelement->_data_name );
+            return false;
         }
 
         // 创建新的英雄
@@ -98,7 +102,8 @@ namespace KFrame
         auto rethero = _kf_generate->GeneratePlayerHero( player, kfhero, kfelementobject->_config_id );
         if ( rethero == nullptr )
         {
-            return;
+            __LOG_ERROR_FUNCTION__( function, line, "generate hero=[{}] failed!=[{}] id", kfelementobject->_config_id );
+            return false;
         }
 
         // 有设定属性
@@ -109,35 +114,37 @@ namespace KFrame
         player->AddData( kfparent, uuid, kfhero );
 
         // 添加结果
-        kfresult->AddResult( kfhero );
+        return kfresult->AddResult( kfelementobject->_config_id, kfhero );
     }
 
     __KF_REMOVE_ELEMENT_FUNCTION__( KFHeroModule::RemoveHeroElement )
     {
+        auto kfelement = kfresult->_element;
         if ( !kfelement->IsObject() )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object!", kfelement->_data_name );
-            return;
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object", kfelement->_data_name );
+            return false;
         }
         auto kfelementobject = reinterpret_cast<KFElementObject*>( kfelement );
 
         auto kfuuid = kfelementobject->_values.Find( __STRING__( uuid ) );
         if ( kfuuid == nullptr )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] uuid not exist!", kfelement->_data_name );
-            return;
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] uuid not exist", kfelement->_data_name );
+            return false;
         }
 
         auto uuid = kfuuid->CalcUseValue( nullptr, 1.0f );
         auto kfhero = kfparent->Find( uuid );
         if ( kfhero == nullptr )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] uuid[{}] hero not exist!", kfelement->_data_name, uuid );
-            return;
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] uuid[{}] hero not exist", kfelement->_data_name, uuid );
+            return false;
         }
 
         // 更新数据
         player->UpdateElementToData( kfelementobject, kfhero, multiple );
+        return true;
     }
 
     __KF_UPDATE_DATA_FUNCTION__( KFHeroModule::OnHeroExpUpdate )

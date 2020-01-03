@@ -43,7 +43,7 @@ namespace KFrame
         // 有效时间过了
         if ( KFGlobal::Instance()->_game_time > _valid_time )
         {
-            __LOG_ERROR__( "room=[{}] battle=[{}|{}:{}] valid timeout!", _id, KFAppId::ToString( _allot_id ), _allot_ip, _allot_port );
+            __LOG_ERROR__( "room=[{}] battle=[{}|{}:{}] valid timeout", _id, KFAppId::ToString( _allot_id ), _allot_ip, _allot_port );
 
             SendFinishToPlayer();
             return false;
@@ -51,7 +51,7 @@ namespace KFrame
 
         if ( _heartbeat_timeout > 0 && KFGlobal::Instance()->_game_time > _heartbeat_timeout )
         {
-            __LOG_ERROR__( "room=[{}] battle=[{}|{}:{}] heartbeat timeout!", _id, KFAppId::ToString( _allot_id ), _allot_ip, _allot_port );
+            __LOG_ERROR__( "room=[{}] battle=[{}|{}:{}] heartbeat timeout", _id, KFAppId::ToString( _allot_id ), _allot_ip, _allot_port );
 
             SendFinishToPlayer();
             return false;
@@ -124,7 +124,7 @@ namespace KFrame
     {
         if ( _battle_open_count > 10u )
         {
-            __LOG_ERROR__( "room=[{}] allot=[{}|{}:{}] open failed!", _id, KFAppId::ToString( _allot_id ), _allot_ip, _allot_port );
+            __LOG_ERROR__( "room=[{}] allot=[{}|{}:{}] open failed", _id, KFAppId::ToString( _allot_id ), _allot_ip, _allot_port );
             return ChangeState( AllotState, 10, __FUNC_LINE__ );
         }
 
@@ -236,7 +236,7 @@ namespace KFrame
 
     void KFBattleRoom::FinishRoom()
     {
-        __LOG_DEBUG__( "room=[{}] battle=[{}] finish!", _id, KFAppId::ToString( _allot_id ) );
+        __LOG_DEBUG__( "room=[{}] battle=[{}] finish", _id, KFAppId::ToString( _allot_id ) );
 
         // 通知房间
         ChangeState( DestoryState, 100, __FUNC_LINE__ );

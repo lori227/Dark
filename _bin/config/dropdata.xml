@@ -1,4 +1,4 @@
-<root version="2538">
+<root version="2542">
 	<item Id="6000001" DropName="exp" DropValue="25" DropKey="0" Weight="100" />
 	<item Id="6001001" DropName="item" DropValue="500" DropKey="1900000" Weight="100" />
 	<item Id="6002001" DropName="item" DropValue="500" DropKey="1900002" Weight="100" />
@@ -66,6 +66,7 @@
 	<item Id="6102002" DropName="item" DropValue="800" DropKey="1900002" Weight="100" />
 	<item Id="6104002" DropName="item" DropValue="2000" DropKey="1900201" Weight="100" />
 	<item Id="6105002" DropName="item" DropValue="2000" DropKey="1900301" Weight="100" />
+	<item Id="6106002" DropName="item" DropValue="10" DropKey="1000101" Weight="100" />
 	<item Id="6100003" DropName="exp" DropValue="600" DropKey="0" Weight="100" />
 	<item Id="6101003" DropName="item" DropValue="1000" DropKey="1900000" Weight="100" />
 	<item Id="6102003" DropName="item" DropValue="1000" DropKey="1900002" Weight="100" />
