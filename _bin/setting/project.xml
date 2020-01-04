@@ -10,8 +10,4 @@
 	<item Id="clustername" Value="route"/>
 	<item Id="clusterkey" Value="route@kframe,./"/>
 
-	<!-- tlog -->
-	<item Id="gameid" Value="check0001"/>
-	<item Id="logversion" Value="94"/>
-
 </root>

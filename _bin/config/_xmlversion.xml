@@ -1,4 +1,4 @@
-<root version="2544">
+<root version="2553">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -75,11 +75,9 @@
 	<item name="itemweapon" version="2306" />
 	<item name="conditiondefine" version="2317" />
 	<item name="meshconfig" version="2349" />
-	<item name="tipstext" version="2350" />
 	<item name="formula" version="2357" />
 	<item name="smithyweapon" version="2387" />
 	<item name="buildlevel" version="2402" />
-	<item name="config" version="2405" />
 	<item name="itemtype" version="2408" />
 	<item name="herorace" version="2437" />
 	<item name="herotransfer" version="2437" />
@@ -90,7 +88,6 @@
 	<item name="taskcondition" version="2440" />
 	<item name="worldmaptext" version="2440" />
 	<item name="dialoguetext" version="2440" />
-	<item name="itemment" version="2441" />
 	<item name="buildbasics" version="2450" />
 	<item name="heroprofession" version="2453" />
 	<item name="initialprocess" version="2462" />
@@ -102,10 +99,8 @@
 	<item name="tasktext" version="2492" />
 	<item name="unlock" version="2493" />
 	<item name="buildcondition" version="2500" />
-	<item name="uitext" version="2511" />
 	<item name="herolevel" version="2513" />
 	<item name="train" version="2516" />
-	<item name="minimap" version="2518" />
 	<item name="heroweightpool" version="2519" />
 	<item name="status" version="2520" />
 	<item name="pve" version="2523" />
@@ -114,11 +109,17 @@
 	<item name="taskchainrefresh" version="2531" />
 	<item name="chapter" version="2531" />
 	<item name="gmcommand" version="2532" />
-	<item name="class" version="2534" />
 	<item name="taskchain" version="2537" />
-	<item name="prompttext" version="2539" />
 	<item name="dropdata" version="2542" />
 	<item name="dropgroup" version="2542" />
 	<item name="explore" version="2542" />
 	<item name="task" version="2544" />
+	<item name="prompttext" version="2546" />
+	<item name="tipstext" version="2548" />
+	<item name="minimap" version="2549" />
+	<item name="itemment" version="2550" />
+	<item name="class" version="2550" />
+	<item name="tlog" version="2552" />
+	<item name="config" version="2552" />
+	<item name="uitext" version="2553" />
 </root>

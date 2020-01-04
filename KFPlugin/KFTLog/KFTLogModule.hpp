@@ -10,15 +10,15 @@
 ************************************************************************/
 
 #include "KFrameEx.h"
+#include "KFLogger/KFSpdLog.h"
 #include "KFTLogInterface.h"
 #include "KFTimer/KFTimerInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFKernel/KFKernelInterface.h"
-#include "KFProject/KFProjectInterface.h"
 #include "KFIpAddress/KFIpAddressInterface.h"
-#include "KFLogger/KFSpdLog.h"
-#include "KFZConfig/KFCurrencyConfig.hpp"
+#include "KFTLogConfig.hpp"
 #include "KFZConfig/KFItemConfig.hpp"
+#include "KFZConfig/KFCurrencyConfig.hpp"
 
 namespace KFrame
 {

@@ -55,8 +55,8 @@ namespace KFrame
 
     void KFTLogModule::InitTLogData()
     {
-        _game_app_id = _kf_project->GetString( "gameid" );
-        _log_version = _kf_project->GetUInt64( "logversion" );
+        _game_app_id = KFTLogConfig::Instance()->GetString( "gameid" );
+        _log_version = KFTLogConfig::Instance()->GetUInt64( "version" );
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     __KF_TIMER_FUNCTION__( KFTLogModule::OnTimerLogServerStatus )

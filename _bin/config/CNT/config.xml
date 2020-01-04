@@ -1,4 +1,4 @@
-<root version="2405">
+<root version="2552">
 	<item Id="redis" Name="redis" FileName="./setting/{}_{}_redis.xml" Reload="0" ClearData="0" ClearFile="0" />
 	<item Id="mongo" Name="mongo" FileName="./setting/{}_{}_mongo.xml" Reload="0" ClearData="0" ClearFile="0" />
 	<item Id="mysql" Name="mysql" FileName="./setting/{}_{}_mysql.xml" Reload="0" ClearData="0" ClearFile="0" />
@@ -90,4 +90,5 @@
 	<item Id="icon" Name="icon" FileName="./config/icon.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="faction" Name="faction" FileName="./config/faction.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="initialprocess" Name="initialprocess" FileName="./config/initialprocess.xml" Reload="1" ClearData="1" ClearFile="0" />
+	<item Id="tlog" Name="tlog" FileName="./config/tlog.xml" Reload="0" ClearData="0" ClearFile="0" />
 </root>
