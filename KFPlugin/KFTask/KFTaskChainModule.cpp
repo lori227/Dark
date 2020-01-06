@@ -190,16 +190,14 @@ namespace KFrame
 
         for ( auto kftask : tasklist )
         {
-            // auto taskid = kftask->Get<uint32>( __STRING__( id ) );
-            // player->RemoveData( kftaskrecord, taskid );
-
-            FinishTaskChain( player, kftask, __FUNC_LINE__ );
+            auto taskid = kftask->Get<uint32>( __STRING__( id ) );
+            player->RemoveData( kftaskrecord, taskid );
         }
     }
 
     void KFTaskChainModule::StartRefreshTaskChain( KFEntity* player, const KFTaskChainRefreshSetting* kfrefreshsetting )
     {
-        // 清除原来的任务链
+        // 清除原来的任务
         CleanTaskChain( player, kfrefreshsetting->_task_chain_id );
 
         {

@@ -16,12 +16,12 @@
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFMessage/KFMessageInterface.h"
 #include "KFDisplay/KFDisplayInterface.h"
+#include "KFExecute/KFExecuteInterface.h"
 #include "KFZConfig/KFItemConfig.hpp"
 #include "KFZConfig/KFItemTypeConfig.hpp"
 
 namespace KFrame
 {
-#define __USE_ITEM_INDEX__ 1u
 #define __BEGIN_ITEM_INDEX__ 1u
 
     class KFItemIndex
@@ -121,6 +121,9 @@ namespace KFrame
 
         // 查找道具
         virtual std::tuple<KFData*, KFData*> FindItem( KFEntity* player, uint64 itemuuid );
+
+        // 判断包裹是否满了
+        virtual bool IsItemRecordFull( KFEntity* player, KFData* kfitemrecord );
     protected:
         // 拆分道具
         __KF_MESSAGE_FUNCTION__( HandleSplitItemReq );
@@ -179,12 +182,19 @@ namespace KFrame
 
         // 离开游戏
         __KF_LEAVE_PLAYER_FUNCTION__( OnLeaveItemModule );
+
+        // 仓库数量
+        __KF_EXECUTE_FUNCTION__( OnExecuteItemMaxCount );
+
     protected:
         virtual void BindInitItemFunction( uint32 itemtype, KFItemFunction& function );
         virtual void UnRegisteInitItemFunction( uint32 itemtype );
     protected:
+        // 背包格子最大数量
+        uint32 GetItemRecordMaxCount( KFEntity* player, KFData* kfitemrecord );
+
         //背包是否满了
-        bool CheckItemRecordFull( KFData* kfitemrecord, const KFItemSetting* kfsetting, uint32 itemcount );
+        bool CheckItemRecordFull( KFEntity* player, KFData* kfitemrecord, const KFItemSetting* kfsetting, uint32 itemcount );
 
         // 获得背包
         KFData* FindItemRecord( KFEntity* player, const KFItemSetting* kfsetting, uint32 itemcount );
@@ -220,7 +230,10 @@ namespace KFrame
         KFData* FindIndexItem( KFData* kfitemrecord, uint32 index );
 
         // 最大索引
-        uint32 ItemMaxIndex( KFEntity* player, KFData* kfitemrecord );
+        uint32 GetItemMaxIndex( KFEntity* player, KFData* kfitemrecord );
+
+        // 添加最大索引
+        void AddItemMaxIndex( KFEntity* player, KFData* kfitemrecord, uint32 count );
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 判断是否能移动道具
         bool CheckItemCanMove( const KFItemSetting* kfsetting, const std::string& sourcename, const std::string& targetname );

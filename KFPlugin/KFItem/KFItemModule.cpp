@@ -20,6 +20,8 @@ namespace KFrame
         __REGISTER_AFTER_ENTER_PLAYER__( &KFItemModule::OnEnterItemModule );
         __REGISTER_LEAVE_PLAYER__( &KFItemModule::OnLeaveItemModule );
         ///////////////////////////////////////////////////////////////////////////////////////////////////
+        __REGISTER_EXECUTE__( __STRING__( item ), &KFItemModule::OnExecuteItemMaxCount );
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_SPLIT_ITEM_REQ, &KFItemModule::HandleSplitItemReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_MERGE_ITEM_REQ, &KFItemModule::HandleMergeItemReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_MOVE_ITEM_REQ, &KFItemModule::HandleMoveItemReq );
@@ -47,6 +49,8 @@ namespace KFrame
         //////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_ENTER_PLAYER__();
         __UN_LEAVE_PLAYER__();
+        //////////////////////////////////////////////////////////////////////////////////////////////////
+        __UN_EXECUTE__( __STRING__( item ) );
         //////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_SPLIT_ITEM_REQ );
         __UN_MESSAGE__( KFMsg::MSG_MERGE_ITEM_REQ );
@@ -135,17 +139,17 @@ namespace KFrame
             return false;
         }
 
-        return !CheckItemRecordFull( kfparent, kfsetting, itemcount );
+        return !CheckItemRecordFull( player, kfparent, kfsetting, itemcount );
     }
 
-    bool KFItemModule::CheckItemRecordFull( KFData* kfitemrecord, const KFItemSetting* kfsetting, uint32 itemcount )
+    bool KFItemModule::CheckItemRecordFull( KFEntity* player, KFData* kfitemrecord, const KFItemSetting* kfsetting, uint32 itemcount )
     {
+        auto maxsize = GetItemRecordMaxCount( player, kfitemrecord );
         auto maxoverlaycount = kfsetting->GetOverlayCount( kfitemrecord->_data_setting->_name );
 
         // 计算占用格子数
-        uint32 usesize = ( itemcount + maxoverlaycount - 1 ) / maxoverlaycount;
-        auto maxsize = kfitemrecord->MaxSize();
         auto cursize = kfitemrecord->Size();
+        uint32 usesize = ( itemcount + maxoverlaycount - 1 ) / maxoverlaycount;
         auto leftsize = ( maxsize > cursize ) ? ( maxsize - cursize ) : 0u;
         if ( leftsize >= usesize )
         {
@@ -202,13 +206,12 @@ namespace KFrame
             return 0u;
         }
 
+        auto maxsize = GetItemRecordMaxCount( player, kfitemrecord );
         auto maxoverlaycount = kfsetting->GetOverlayCount( kfitemrecord->_data_setting->_name );
 
         // 计算占用格子数
-        uint32 usesize = ( itemcount + maxoverlaycount - 1 ) / maxoverlaycount;
-
-        auto maxsize = kfitemrecord->MaxSize();
         auto cursize = kfitemrecord->Size();
+        uint32 usesize = ( itemcount + maxoverlaycount - 1 ) / maxoverlaycount;
         auto leftsize = ( maxsize > cursize ) ? ( maxsize - cursize ) : 0u;
         if ( leftsize >= usesize )
         {
@@ -257,6 +260,42 @@ namespace KFrame
         }
 
         return kftypesetting->_is_auto;
+    }
+
+    uint32 KFItemModule::GetItemRecordMaxCount( KFEntity* player, KFData* kfitemrecord )
+    {
+        auto defaultmaxcount = kfitemrecord->_data_setting->_int_max_value;
+        auto technologymaxcount = player->Get<uint32>( __STRING__( effect ), kfitemrecord->_data_setting->_name );
+        return defaultmaxcount + technologymaxcount;
+    }
+
+    bool KFItemModule::IsItemRecordFull( KFEntity* player, KFData* kfitemrecord )
+    {
+        auto maxcount = GetItemRecordMaxCount( player, kfitemrecord );
+        return kfitemrecord->Size() >= maxcount;
+    }
+
+    __KF_EXECUTE_FUNCTION__( KFItemModule::OnExecuteItemMaxCount )
+    {
+        if ( executedata->_param_list._params.size() < 2u )
+        {
+            return false;
+        }
+
+        auto itemname = executedata->_param_list._params[ 0 ]->_str_value;
+        auto addcount = executedata->_param_list._params[ 1 ]->_int_value;
+        auto kfitemrecord = player->Find( itemname );
+        if ( kfitemrecord == nullptr )
+        {
+            return false;
+        }
+
+        // 添加科技效果
+        player->UpdateData( __STRING__( effect ), itemname, KFEnum::Add, addcount );
+
+        // 添加索引
+        AddItemMaxIndex( player, kfitemrecord, addcount );
+        return true;
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -572,7 +611,7 @@ namespace KFrame
             // 需要判断包满情况
             if ( kfitemrecord != nullptr && itemcount > 0u && !kftypesetting->_extend_name.empty() )
             {
-                auto isfull = CheckItemRecordFull( kfitemrecord, kfsetting, itemcount );
+                auto isfull = CheckItemRecordFull( player, kfitemrecord, kfsetting, itemcount );
                 if ( isfull )
                 {
                     kfitemrecord = player->Find( kftypesetting->_extend_name );
@@ -953,15 +992,12 @@ namespace KFrame
     uint32 KFItemModule::SplitItem( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, uint32 splitcount, KFData* kftargetrecord, uint32 splitindex )
     {
         // 如果没指定索引, 查找一个索引
-        if ( kftargetrecord->_data_setting->_int_logic_value == __USE_ITEM_INDEX__ )
+        if ( splitindex == 0u )
         {
+            splitindex = FindItemEmptyIndex( player, kftargetrecord );
             if ( splitindex == 0u )
             {
-                splitindex = FindItemEmptyIndex( player, kftargetrecord );
-                if ( splitindex == 0u )
-                {
-                    return KFMsg::ItemBagFull;
-                }
+                return KFMsg::ItemBagFull;
             }
         }
 
@@ -985,15 +1021,12 @@ namespace KFrame
     uint32 KFItemModule::MoveItem( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord, uint32 targetindex )
     {
         // 如果没指定索引, 查找一个索引
-        if ( kftargetrecord->_data_setting->_int_logic_value == __USE_ITEM_INDEX__ )
+        if ( targetindex == 0u )
         {
+            targetindex = FindItemEmptyIndex( player, kftargetrecord );
             if ( targetindex == 0u )
             {
-                targetindex = FindItemEmptyIndex( player, kftargetrecord );
-                if ( targetindex == 0u )
-                {
-                    return KFMsg::ItemBagFull;
-                }
+                return KFMsg::ItemBagFull;
             }
         }
 
@@ -1158,7 +1191,7 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::ItemBagNameError );
         }
 
-        auto maxindex = ItemMaxIndex( player, kftargetrecord );
+        auto maxindex = GetItemMaxIndex( player, kftargetrecord );
         if ( kfmsg.targetindex() > maxindex )
         {
             return _kf_display->SendToClient( player, KFMsg::ItemIndexError );
@@ -1351,7 +1384,7 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::ItemBagNameError );
         }
 
-        auto maxindex = ItemMaxIndex( player, kftargetrecord );
+        auto maxindex = GetItemMaxIndex( player, kftargetrecord );
         if ( kfmsg.targetindex() > maxindex )
         {
             return _kf_display->SendToClient( player, KFMsg::ItemIndexError );
@@ -1595,7 +1628,7 @@ namespace KFrame
     void KFItemModule::SortItem( KFEntity* player, const std::string& name )
     {
         auto kfitemrecord = player->Find( name );
-        if ( kfitemrecord == nullptr || kfitemrecord->_data_setting->_int_logic_value != __USE_ITEM_INDEX__ )
+        if ( kfitemrecord == nullptr )
         {
             return;
         }
@@ -1603,7 +1636,9 @@ namespace KFrame
         // 重置格子数量
         ItemIndexKey key( player->GetKeyID(), kfitemrecord->_data_setting->_name );
         auto kfindex = _player_item_index.Create( key );
-        kfindex->InitMaxIndex( kfitemrecord->_data_setting->_int_max_value );
+
+        auto maxitemcount = GetItemRecordMaxCount( player, kfitemrecord );
+        kfindex->InitMaxIndex( maxitemcount );
 
         // sort从小到大, 品质从大到小, id从小到大
         std::map<uint32, std::map<uint32, std::map<const KFItemSetting*, std::set<KFData*>>>> sortlist;
@@ -1761,14 +1796,11 @@ namespace KFrame
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     void KFItemModule::InitItemEmptyIndexData( KFEntity* player, KFData* kfitemrecord )
     {
-        if ( kfitemrecord->_data_setting->_int_logic_value != __USE_ITEM_INDEX__ )
-        {
-            return;
-        }
-
         ItemIndexKey key( player->GetKeyID(), kfitemrecord->_data_setting->_name );
         auto kfindex = _player_item_index.Create( key );
-        kfindex->InitMaxIndex( kfitemrecord->_data_setting->_int_max_value );
+
+        auto maxitemcount = GetItemRecordMaxCount( player, kfitemrecord );
+        kfindex->InitMaxIndex( maxitemcount );
 
         std::list< KFData* > invalid;
         for ( auto kfitem = kfitemrecord->First(); kfitem != nullptr; kfitem = kfitemrecord->Next() )
@@ -1800,13 +1832,8 @@ namespace KFrame
         }
     }
 
-    uint32 KFItemModule::ItemMaxIndex( KFEntity* player, KFData* kfitemrecord )
+    uint32 KFItemModule::GetItemMaxIndex( KFEntity* player, KFData* kfitemrecord )
     {
-        if ( kfitemrecord->_data_setting->_int_logic_value != __USE_ITEM_INDEX__ )
-        {
-            return 0u;
-        }
-
         ItemIndexKey key( player->GetKeyID(), kfitemrecord->_data_setting->_name );
         auto kfindex = _player_item_index.Find( key );
         if ( kfindex == nullptr )
@@ -1817,6 +1844,18 @@ namespace KFrame
         return kfindex->MaxIndex();
     }
 
+    void KFItemModule::AddItemMaxIndex( KFEntity* player, KFData* kfitemrecord, uint32 count )
+    {
+        ItemIndexKey key( player->GetKeyID(), kfitemrecord->_data_setting->_name );
+        auto kfindex = _player_item_index.Find( key );
+        if ( kfindex == nullptr )
+        {
+            return;
+        }
+
+        kfindex->AddMaxIndex( count );
+    }
+
     void KFItemModule::UnInitItemEmptyIndexData( KFEntity* player, const std::string& name )
     {
         ItemIndexKey key( player->GetKeyID(), name );
@@ -1825,11 +1864,6 @@ namespace KFrame
 
     uint32 KFItemModule::FindItemEmptyIndex( KFEntity* player, KFData* kfitemrecord )
     {
-        if ( kfitemrecord->_data_setting->_int_logic_value != __USE_ITEM_INDEX__ )
-        {
-            return 0u;
-        }
-
         ItemIndexKey key( player->GetKeyID(), kfitemrecord->_data_setting->_name );
         auto kfindex = _player_item_index.Find( key );
         if ( kfindex == nullptr )
@@ -1843,11 +1877,6 @@ namespace KFrame
     void KFItemModule::RemoveItemEmptyIndex( KFEntity* player, KFData* kfitem )
     {
         auto kfitemrecord = kfitem->GetParent();
-        if ( kfitemrecord->_data_setting->_int_logic_value != __USE_ITEM_INDEX__ )
-        {
-            return;
-        }
-
         ItemIndexKey key( player->GetKeyID(), kfitemrecord->_data_setting->_name );
         auto kfindex = _player_item_index.Find( key );
         if ( kfindex == nullptr )
@@ -1862,11 +1891,6 @@ namespace KFrame
     void KFItemModule::AddItemEmptyIndex( KFEntity* player, KFData* kfitem )
     {
         auto kfitemrecord = kfitem->GetParent();
-        if ( kfitemrecord->_data_setting->_int_logic_value != __USE_ITEM_INDEX__ )
-        {
-            return;
-        }
-
         ItemIndexKey key( player->GetKeyID(), kfitemrecord->_data_setting->_name );
         auto kfindex = _player_item_index.Find( key );
         if ( kfindex == nullptr )

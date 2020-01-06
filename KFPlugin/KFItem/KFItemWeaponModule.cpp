@@ -213,7 +213,7 @@ namespace KFrame
         if ( kftargetweapon != nullptr && kftargetweapon->GetKeyID() != 0u )
         {
             // 目标英雄有装备武器需要判断背包是否已满
-            if ( kfitemrecord->Size() >= kfitemrecord->MaxSize() )
+            if ( _kf_item->IsItemRecordFull( player, kfitemrecord ) )
             {
                 return _kf_display->SendToClient( player, KFMsg::ItemBagFull );
             }
@@ -254,7 +254,7 @@ namespace KFrame
 
         // 判断武器背包是否满了
         auto kfitemrecord = FindWeaponRecord( player );
-        if ( kfitemrecord->Size() >= kfitemrecord->MaxSize() )
+        if ( _kf_item->IsItemRecordFull( player, kfitemrecord ) )
         {
             return _kf_display->SendToClient( player, KFMsg::ItemBagFull );
         }

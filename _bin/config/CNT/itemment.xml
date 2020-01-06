@@ -1,4 +1,4 @@
-<root version="2550">
+<root version="2554">
 	<item Name="maxitemcount" Key="" Value="12" Channel="0" Service="0" />
 	<item Name="maxstoragecount" Key="" Value="999" Channel="0" Service="0" />
 	<item Name="useitemindex" Key="" Value="1" Channel="0" Service="0" />
@@ -6,4 +6,5 @@
 	<item Name="weaponalarm" Key="" Value="0.2" Channel="0" Service="0" />
 	<item Name="explorebreakoffprob" Key="" Value="7000" Channel="0" Service="0" />
 	<item Name="smithyitemid" Key="" Value="1900004" Channel="0" Service="0" />
+	<item Name="smithystorenum" Key="" Value="2000" Channel="0" Service="0" />
 </root>

@@ -1,4 +1,4 @@
-<root version="2553">
+<root version="2561">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -70,7 +70,6 @@
 	<item name="filter" version="2053" />
 	<item name="option" version="2054" />
 	<item name="reward" version="2069" />
-	<item name="foodconsume" version="2071" />
 	<item name="npc" version="2139" />
 	<item name="itemweapon" version="2306" />
 	<item name="conditiondefine" version="2317" />
@@ -102,9 +101,7 @@
 	<item name="herolevel" version="2513" />
 	<item name="train" version="2516" />
 	<item name="heroweightpool" version="2519" />
-	<item name="status" version="2520" />
 	<item name="pve" version="2523" />
-	<item name="technology" version="2528" />
 	<item name="camptext" version="2530" />
 	<item name="taskchainrefresh" version="2531" />
 	<item name="chapter" version="2531" />
@@ -116,10 +113,13 @@
 	<item name="task" version="2544" />
 	<item name="prompttext" version="2546" />
 	<item name="tipstext" version="2548" />
-	<item name="minimap" version="2549" />
-	<item name="itemment" version="2550" />
 	<item name="class" version="2550" />
 	<item name="tlog" version="2552" />
 	<item name="config" version="2552" />
 	<item name="uitext" version="2553" />
+	<item name="itemment" version="2554" />
+	<item name="status" version="2555" />
+	<item name="foodconsume" version="2559" />
+	<item name="minimap" version="2560" />
+	<item name="technology" version="2561" />
 </root>
