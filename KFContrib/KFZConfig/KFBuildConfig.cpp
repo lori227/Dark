@@ -34,8 +34,8 @@ namespace KFrame
         kfsetting->_upgrade_time = xmlnode.GetUInt32( "UpgradeTime", true );
         kfsetting->_unit_time = xmlnode.GetUInt32( "UnitTime", true );
 
-        kfsetting->_consume_str = xmlnode.GetString( "Consume", true );
-        kfsetting->_onekey_consume_str = xmlnode.GetString( "OnekeyConsume", true );
+        kfsetting->_str_consume = xmlnode.GetString( "Consume", true );
+        kfsetting->_str_onekey_consume = xmlnode.GetString( "OnekeyConsume", true );
     }
 
     void KFBuildConfig::LoadAllComplete()
@@ -43,21 +43,9 @@ namespace KFrame
         for ( auto& iter : _settings._objects )
         {
             auto kfsetting = iter.second;
-            if ( !kfsetting->_consume_str.empty() )
-            {
-                if ( !KFRewardConfig::Instance()->ParseRewards( kfsetting->_consume_str, kfsetting->_consume ) )
-                {
-                    __LOG_ERROR__( "id=[{}] build config consume is error", kfsetting->_id );
-                }
-            }
 
-            if ( !kfsetting->_onekey_consume_str.empty() )
-            {
-                if ( !KFRewardConfig::Instance()->ParseRewards( kfsetting->_onekey_consume_str, kfsetting->_onekey_consume ) )
-                {
-                    __LOG_ERROR__( "id=[{}] build config onekey consume is error", kfsetting->_id );
-                }
-            }
+            KFElementConfig::Instance()->ParseElement( kfsetting->_consume, kfsetting->_str_consume, __FILE__, kfsetting->_id );
+            KFElementConfig::Instance()->ParseElement( kfsetting->_onekey_consume, kfsetting->_str_onekey_consume, __FILE__, kfsetting->_id );
         }
     }
 }

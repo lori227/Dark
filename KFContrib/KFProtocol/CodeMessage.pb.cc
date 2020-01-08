@@ -58,7 +58,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\021CodeMessage.proto\022\005KFMsg*\325\027\n\017ProjectCo"
+      "\n\021CodeMessage.proto\022\005KFMsg*\361\027\n\017ProjectCo"
       "deEnum\022\016\n\nLogicError\020\000\022\024\n\016MatchRequestOk"
       "\020\231\362\001\022\026\n\020MatchAlreadyWait\020\232\362\001\022\021\n\013MatchInR"
       "oom\020\233\362\001\022\025\n\017MatchNotInMatch\020\234\362\001\022\023\n\rMatchC"
@@ -114,30 +114,31 @@ void AddDescriptorsImpl() {
       "or\020\376\363\001\022 \n\032TechnologyLackPreCondition\020\377\363\001"
       "\022\030\n\022TechnologyIsUnlock\020\200\364\001\022\026\n\020Technology"
       "Islock\020\201\364\001\022\025\n\017BuildUpgradeSuc\020\202\364\001\022\024\n\016Tra"
-      "inNotFinish\020\203\364\001\022\025\n\017ExploreMapLimit\020\307\364\001\022\025"
-      "\n\017ExploreMapError\020\310\364\001\022\031\n\023ExploreNotInExp"
-      "lore\020\311\364\001\022\020\n\nPVEIdError\020\312\364\001\022\020\n\nPVEAlready"
-      "\020\313\364\001\022\024\n\016ExploreAlready\020\314\364\001\022\030\n\022ExploreNot"
-      "InStatus\020\315\364\001\022\024\n\016PVENotInStatus\020\316\364\001\022\032\n\024Ex"
-      "ploreHeroTeamEmpty\020\317\364\001\022\032\n\024ExploreHeroTea"
-      "mExist\020\320\364\001\022\023\n\rPVEMapIdError\020\321\364\001\022\024\n\016Chapt"
-      "erIdError\020\221\375\001\022\024\n\016ChapterNotOpen\020\222\375\001\022\027\n\021C"
-      "hapterEventError\020\223\375\001\022\031\n\023ChapterDefaultEr"
-      "ror\020\224\375\001\022\032\n\024ChapterStatusIdError\020\225\375\001\022\032\n\024C"
-      "hapterExecuteFailed\020\226\375\001\022\024\n\016ItemWeaponOnl"
-      "y\020\364\375\001\022\031\n\023ItemWeaponRaceLimit\020\365\375\001\022\031\n\023Item"
-      "WeaponHeroLimit\020\366\375\001\022\032\n\024ItemWeaponLevelLi"
-      "mit\020\367\375\001\022\026\n\020ItemWeaponFailed\020\370\375\001\022\022\n\014ItemW"
-      "eaponOk\020\371\375\001\022\030\n\022ItemWeaponNotExist\020\372\375\001\022\030\n"
-      "\022ItemUnWeaponFailed\020\373\375\001\022\024\n\016ItemUnWeaponO"
-      "k\020\374\375\001\022\037\n\031ItemUpdateDurabilityError\020\375\375\001\022\031"
-      "\n\023PlayerHeadIconSetOK\020\331\376\001\022\030\n\022PlayerFacti"
-      "onSetOK\020\332\376\001\022\034\n\026PlayerHeadIconNotExist\020\333\376"
-      "\001\022\033\n\025PlayerFactionNotExist\020\334\376\001\022\032\n\024Player"
-      "HeadIconNotHad\020\335\376\001b\006proto3"
+      "inNotFinish\020\203\364\001\022\032\n\024SmithyMakeLevelLimit\020"
+      "\204\364\001\022\025\n\017ExploreMapLimit\020\307\364\001\022\025\n\017ExploreMap"
+      "Error\020\310\364\001\022\031\n\023ExploreNotInExplore\020\311\364\001\022\020\n\n"
+      "PVEIdError\020\312\364\001\022\020\n\nPVEAlready\020\313\364\001\022\024\n\016Expl"
+      "oreAlready\020\314\364\001\022\030\n\022ExploreNotInStatus\020\315\364\001"
+      "\022\024\n\016PVENotInStatus\020\316\364\001\022\032\n\024ExploreHeroTea"
+      "mEmpty\020\317\364\001\022\032\n\024ExploreHeroTeamExist\020\320\364\001\022\023"
+      "\n\rPVEMapIdError\020\321\364\001\022\024\n\016ChapterIdError\020\221\375"
+      "\001\022\024\n\016ChapterNotOpen\020\222\375\001\022\027\n\021ChapterEventE"
+      "rror\020\223\375\001\022\031\n\023ChapterDefaultError\020\224\375\001\022\032\n\024C"
+      "hapterStatusIdError\020\225\375\001\022\032\n\024ChapterExecut"
+      "eFailed\020\226\375\001\022\024\n\016ItemWeaponOnly\020\364\375\001\022\031\n\023Ite"
+      "mWeaponRaceLimit\020\365\375\001\022\031\n\023ItemWeaponHeroLi"
+      "mit\020\366\375\001\022\032\n\024ItemWeaponLevelLimit\020\367\375\001\022\026\n\020I"
+      "temWeaponFailed\020\370\375\001\022\022\n\014ItemWeaponOk\020\371\375\001\022"
+      "\030\n\022ItemWeaponNotExist\020\372\375\001\022\030\n\022ItemUnWeapo"
+      "nFailed\020\373\375\001\022\024\n\016ItemUnWeaponOk\020\374\375\001\022\037\n\031Ite"
+      "mUpdateDurabilityError\020\375\375\001\022\031\n\023PlayerHead"
+      "IconSetOK\020\331\376\001\022\030\n\022PlayerFactionSetOK\020\332\376\001\022"
+      "\034\n\026PlayerHeadIconNotExist\020\333\376\001\022\033\n\025PlayerF"
+      "actionNotExist\020\334\376\001\022\032\n\024PlayerHeadIconNotH"
+      "ad\020\335\376\001b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 3066);
+      descriptor, 3094);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "CodeMessage.proto", &protobuf_RegisterTypes);
 }
@@ -244,6 +245,7 @@ bool ProjectCodeEnum_IsValid(int value) {
     case 31233:
     case 31234:
     case 31235:
+    case 31236:
     case 31303:
     case 31304:
     case 31305:

@@ -3,8 +3,7 @@
 
 #include "KFZConfig/KFConfig.h"
 #include "KFZConfig/KFSetting.h"
-#include "KFCore/KFElement.h"
-#include "KFZConfig/KFRewardConfig.h"
+#include "KFZConfig/KFElementConfig.h"
 
 namespace KFrame
 {
@@ -30,7 +29,7 @@ namespace KFrame
         UInt32Vector _innate_pool_list;
 
         // 消耗
-        std::string _cost_str;
+        std::string _str_cost;
         KFElements _cost;
     };
 

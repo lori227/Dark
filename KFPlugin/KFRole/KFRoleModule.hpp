@@ -15,12 +15,10 @@
 #include "KFMessage/KFMessageInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFDisplay/KFDisplayInterface.h"
-#include "KFFilter/KFFilterInterface.h"
-#include "KFRouteClient/KFRouteClientInterface.h"
 #include "KFIconConfig.hpp"
 #include "KFFactionConfig.hpp"
-#include "KFZConfig/KFInitialProcessConfig.hpp"
 #include "KFTask/KFTaskInterface.h"
+#include "KFZConfig/KFInitialProcessConfig.hpp"
 
 namespace KFrame
 {
@@ -38,15 +36,6 @@ namespace KFrame
         ////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
     protected:
-        // 处理设置性别请求
-        __KF_MESSAGE_FUNCTION__( HandleSetSexReq );
-
-        // 处理设置名字请求
-        __KF_MESSAGE_FUNCTION__( HandleSetNameReq );
-
-        // 处理设置名字回馈
-        __KF_MESSAGE_FUNCTION__( HandleSetPlayerNameToGameAck );
-
         // 处理设置玩家头像请求
         __KF_MESSAGE_FUNCTION__( HandleSetPlayerHeadIconReq );
 
@@ -67,9 +56,6 @@ namespace KFrame
         __KF_ENTER_PLAYER_FUNCTION__( OnEnterRoleModule );
 
     protected:
-        // 检查名字的有效性
-        uint32 CheckNameValid( const std::string& name, uint32 maxlength );
-
         // 执行初始化流程
         void OnExecuteInitialProcess( KFEntity* player, uint32 id );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

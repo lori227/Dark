@@ -1,9 +1,8 @@
 ﻿#ifndef __KF_RECRUIT_CONFIG_H__
 #define __KF_RECRUIT_CONFIG_H__
 
-#include "KFCore/KFElement.h"
 #include "KFZConfig/KFConfig.h"
-#include "KFZConfig/KFRewardConfig.h"
+#include "KFZConfig/KFElementConfig.h"
 
 namespace KFrame
 {

@@ -75,6 +75,7 @@ endmacro(BUILD_PLUGIN_WITH_LOGIC project_name)
 ############################################################################################
 ############################################################################################
 ############################################################################################
+add_subdirectory(KFReward)
 add_subdirectory(KFRole)
 add_subdirectory(KFMatchClient)
 add_subdirectory(KFMatchShard)

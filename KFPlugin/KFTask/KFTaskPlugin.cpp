@@ -38,7 +38,6 @@ namespace KFrame
     {
         __KF_ADD_CONFIG__( KFElementConfig );
         __KF_ADD_CONFIG__( KFTaskConfig );
-        __KF_ADD_CONFIG__( KFRewardConfig );
         __KF_ADD_CONFIG__( KFTaskChainConfig );
         __KF_ADD_CONFIG__( KFTaskChainRefreshConfig );
     }

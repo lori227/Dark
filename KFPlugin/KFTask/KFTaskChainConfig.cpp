@@ -91,11 +91,7 @@ namespace KFrame
         for ( auto& iter : _settings._objects )
         {
             auto kfsetting = iter.second;
-            auto ok = KFRewardConfig::Instance()->ParseRewards( kfsetting->_str_cost, kfsetting->_receive_cost );
-            if ( !ok )
-            {
-                __LOG_ERROR__( "cost=[{}] parse failed", kfsetting->_str_cost );
-            }
+            KFElementConfig::Instance()->ParseElement( kfsetting->_receive_cost, kfsetting->_str_cost, __FILE__, kfsetting->_id );
         }
     }
 }

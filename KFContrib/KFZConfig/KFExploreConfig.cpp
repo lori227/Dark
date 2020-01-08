@@ -11,7 +11,7 @@ namespace KFrame
         auto strdropfail = xmlnode.GetString( "DropFail", true );
         KFReadSetting::ParseConditionList( strdropfail, kfsetting->_fail_drop_list );
 
-        kfsetting->_consume_str = xmlnode.GetString( "Consume", true );
+        kfsetting->_str_consume = xmlnode.GetString( "Consume", true );
     }
 
     void KFExploreConfig::LoadAllComplete()
@@ -19,14 +19,7 @@ namespace KFrame
         for ( auto& iter : _settings._objects )
         {
             auto kfsetting = iter.second;
-
-            if ( !kfsetting->_consume_str.empty() )
-            {
-                if ( !KFRewardConfig::Instance()->ParseRewards( kfsetting->_consume_str, kfsetting->_consume ) )
-                {
-                    __LOG_ERROR__( "id=[{}] explore config consume is error", kfsetting->_id );
-                }
-            }
+            KFElementConfig::Instance()->ParseElement( kfsetting->_consume, kfsetting->_str_consume, __FILE__, kfsetting->_id );
         }
     }
 }

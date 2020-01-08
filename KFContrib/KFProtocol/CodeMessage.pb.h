@@ -138,6 +138,7 @@ enum ProjectCodeEnum {
   TechnologyIslock = 31233,
   BuildUpgradeSuc = 31234,
   TrainNotFinish = 31235,
+  SmithyMakeLevelLimit = 31236,
   ExploreMapLimit = 31303,
   ExploreMapError = 31304,
   ExploreNotInExplore = 31305,

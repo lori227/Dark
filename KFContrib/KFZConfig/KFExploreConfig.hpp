@@ -2,8 +2,7 @@
 #define __KF_EXPLORE_CONFIG_H__
 
 #include "KFZConfig/KFConfig.h"
-#include "KFCore/KFElement.h"
-#include "KFZConfig/KFRewardConfig.h"
+#include "KFZConfig/KFElementConfig.h"
 
 namespace KFrame
 {
@@ -17,7 +16,7 @@ namespace KFrame
         UInt32Vector _fail_drop_list;
 
         // 进入消耗
-        std::string _consume_str;
+        std::string _str_consume;
         KFElements _consume;
     };
     ////////////////////////////////////////////////////////////////////////////////

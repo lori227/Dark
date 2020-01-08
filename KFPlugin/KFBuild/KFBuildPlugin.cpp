@@ -33,8 +33,8 @@ namespace KFrame
 
     void KFBuildPlugin::AddConfig()
     {
-        __KF_ADD_CONFIG__( KFRewardConfig );
         __KF_ADD_CONFIG__( KFBuildConfig );
+        __KF_ADD_CONFIG__( KFElementConfig );
         __KF_ADD_CONFIG__( KFTechnologyConfig );
     }
 

@@ -169,42 +169,32 @@ namespace KFrame
         return setting->_max_num + kfeffectmaxnum;
     }
 
-    std::string KFClinicModule::GetClinicCureMoneyCount( KFEntity* player, const KFClinicSetting* setting, uint32 addhp )
+    const std::string& KFClinicModule::CalcClinicCureMoneyCount( KFEntity* player, const KFClinicSetting* setting, uint32 addhp )
     {
-        // 屏蔽花费公式修改
-        if ( false )
+        auto clinicsubmoneypercent = player->Get( __STRING__( effect ), __STRING__( clinicsubmoneypercent ) );
+
+        auto dclinicsubmoneypercent = static_cast<double>( clinicsubmoneypercent ) / KFRandEnum::TenThousand;
+        dclinicsubmoneypercent = dclinicsubmoneypercent > 1.0 ? 1.0 : dclinicsubmoneypercent;
+
+        auto kfformulasetting = KFFormulaConfig::Instance()->FindSetting( setting->_formual_id );
+        if ( kfformulasetting == nullptr || kfformulasetting->_type.empty() || kfformulasetting->_params.size() < 2u )
         {
-            auto clinicsubmoneypercent = player->Get( __STRING__( effect ), __STRING__( clinicsubmoneypercent ) );
-
-            auto dclinicsubmoneypercent = static_cast<double>( clinicsubmoneypercent ) / KFRandEnum::TenThousand;
-            dclinicsubmoneypercent = dclinicsubmoneypercent > 1.0 ? 1.0 : dclinicsubmoneypercent;
-
-            auto kfformulasetting = KFFormulaConfig::Instance()->FindSetting( setting->_formual_id );
-            if ( kfformulasetting == nullptr || kfformulasetting->_type.empty() || kfformulasetting->_params.size() < 2u )
-            {
-                // 没符合要求的公式
-                return _invalid_string;
-            }
-
-            auto param1 = kfformulasetting->_params[0]->_double_value;
-            auto param2 = kfformulasetting->_params[1]->_double_value;
-
-            auto moneycount = static_cast<uint32>(
-                                  std::round(
-                                      static_cast<double>( __MAX__( addhp * param1, param2 ) )
-                                      * ( 1.0 - dclinicsubmoneypercent )
-                                  )
-                              );
-
-            // 费用数据格式
-            auto kfeleemntsetting = KFElementConfig::Instance()->FindElementSetting( kfformulasetting->_type );
-
-            return __FORMAT__( kfeleemntsetting->_element_template, kfformulasetting->_type, moneycount );
+            // 没符合要求的公式
+            return _invalid_string;
         }
-        else
-        {
-            return setting->_strmoney;
-        }
+
+        auto param1 = kfformulasetting->_params[0]->_double_value;
+        auto param2 = kfformulasetting->_params[1]->_double_value;
+
+        auto moneycount = static_cast<uint32>(
+                              std::round(
+                                  static_cast<double>( __MAX__( addhp * param1, param2 ) )
+                                  * ( 1.0 - dclinicsubmoneypercent )
+                              )
+                          );
+
+        // 费用数据格式
+        return KFElementConfig::Instance()->StringElemnt( kfformulasetting->_type, moneycount, 0u );
     }
 
     uint32 KFClinicModule::GetClinicHerosNeedCurehp( KFEntity* player, std::list<uint64>& herolist )
@@ -484,8 +474,7 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::ClinicItemIsNotEnough );
         }
 
-        std::string strmoneycount = GetClinicCureMoneyCount( player, setting, needcurehp );
-
+        auto& strmoneycount = CalcClinicCureMoneyCount( player, setting, needcurehp );
         KFElements elementsmoney;
         elementsmoney.Parse( strmoneycount, __FUNC_LINE__ );
 
@@ -602,12 +591,10 @@ namespace KFrame
         }
 
         auto needcurehp = GetClinicHerosNeedCurehp( player, herolist );
-
-        std::string strmoneycount = GetClinicCureMoneyCount( player, setting, needcurehp );
+        auto& strmoneycount = CalcClinicCureMoneyCount( player, setting, needcurehp );
 
         KFMsg::MsgClinicMedicalFeeAck ack;
         ack.set_element( strmoneycount );
-
         _kf_player->SendToClient( player, KFMsg::MSG_CLINIC_MEDICAL_FEE_ACK, &ack );
 
     }

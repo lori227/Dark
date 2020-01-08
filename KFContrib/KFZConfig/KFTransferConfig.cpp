@@ -23,7 +23,7 @@ namespace KFrame
         auto strinnatepool = xmlnode.GetString( "InnatePool", true );
         KFUtility::SplitList( kfsetting->_innate_pool_list, strinnatepool, __SPLIT_STRING__ );
 
-        kfsetting->_cost_str = xmlnode.GetString( "Cost", true );
+        kfsetting->_str_cost = xmlnode.GetString( "Cost", true );
     }
 
     void KFTransferConfig::LoadAllComplete()
@@ -31,14 +31,7 @@ namespace KFrame
         for ( auto& iter : _settings._objects )
         {
             auto kfsetting = iter.second;
-
-            if ( !kfsetting->_cost_str.empty() )
-            {
-                if ( !KFRewardConfig::Instance()->ParseRewards( kfsetting->_cost_str, kfsetting->_cost ) )
-                {
-                    __LOG_ERROR__( "id=[{}] transfer config cost is error", kfsetting->_id );
-                }
-            }
+            KFElementConfig::Instance()->ParseElement( kfsetting->_cost, kfsetting->_str_cost, __FILE__, kfsetting->_id );
         }
     }
 

@@ -44,6 +44,6 @@ namespace KFrame
         __KF_ADD_CONFIG__( KFSkillConfig );
         __KF_ADD_CONFIG__( KFCharacterConfig );
         __KF_ADD_CONFIG__( KFRaceConfig );
-        __KF_ADD_CONFIG__( KFRewardConfig );
+        __KF_ADD_CONFIG__( KFElementConfig );
     }
 }

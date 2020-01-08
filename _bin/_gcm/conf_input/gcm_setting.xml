@@ -10,9 +10,9 @@
 			<file Name="logger.xml" Type="0"/>
 			<file Name="bus.xml" Type="0"/>
 			<file Name="httpserver.xml" Type="0"/>
-			<file Name="robot.xml" Type="0"/>
 			<file Name="tcpserver.xml" Type="0"/>
 			<file Name="datashard.xml" Type="0"/>
+			<file Name="route.xml" Type="0"/>
 			<file Name="project.xml" Type="0"/>
     </setting>
 </gcm>

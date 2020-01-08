@@ -3,9 +3,8 @@
 
 #include "KFZConfig/KFConfig.h"
 #include "KFZConfig/KFSetting.h"
-#include "KFCore/KFElement.h"
 #include "KFCore/KFCondition.h"
-#include "KFZConfig/KFRewardConfig.h"
+#include "KFZConfig/KFElementConfig.h"
 
 namespace KFrame
 {
@@ -32,11 +31,11 @@ namespace KFrame
         uint64 _unit_time = 0u;
 
         // 升级消耗
-        std::string _consume_str;
+        std::string _str_consume;
         KFElements _consume;
 
         // 快速完成消耗
-        std::string _onekey_consume_str;
+        std::string _str_onekey_consume;
         KFElements _onekey_consume;
     };
 

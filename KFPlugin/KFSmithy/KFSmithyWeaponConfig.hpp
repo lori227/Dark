@@ -1,10 +1,8 @@
 ﻿#ifndef __KF_SMITHY_WEAPON_CONFIG_H__
 #define __KF_SMITHY_WEAPON_CONFIG_H__
 
-#include "KFCore/KFElement.h"
 #include "KFZConfig/KFConfig.h"
 #include "KFZConfig/KFElementConfig.h"
-#include "KFZConfig/KFRewardConfig.h"
 
 namespace KFrame
 {
@@ -18,7 +16,7 @@ namespace KFrame
         uint32 _need_num = 0u;
 
         // 打造消耗
-        std::string _consume_str;
+        std::string _str_consume;
         KFElements _consume;
     };
 

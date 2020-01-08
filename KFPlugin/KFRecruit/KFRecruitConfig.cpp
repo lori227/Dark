@@ -15,11 +15,7 @@ namespace KFrame
         for ( auto& iter : _settings._objects )
         {
             auto kfsetting = iter.second;
-            auto ok = KFRewardConfig::Instance()->ParseRewards( kfsetting->_str_cost, kfsetting->_cost_elements );
-            if ( !ok )
-            {
-                __LOG_ERROR__( "recruit reward=[{}] parse failed", kfsetting->_str_cost );
-            }
+            KFElementConfig::Instance()->ParseElement( kfsetting->_cost_elements, kfsetting->_str_cost, __FILE__, kfsetting->_id );
         }
     }
 }

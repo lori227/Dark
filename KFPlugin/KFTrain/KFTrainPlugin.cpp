@@ -32,7 +32,7 @@ namespace KFrame
     {
         __KF_ADD_CONFIG__( KFTrainConfig );
         __KF_ADD_CONFIG__( KFLevelConfig );
-        __KF_ADD_CONFIG__( KFRewardConfig );
+        __KF_ADD_CONFIG__( KFElementConfig );
     }
 
 }

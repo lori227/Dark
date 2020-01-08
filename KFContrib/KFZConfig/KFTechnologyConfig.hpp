@@ -3,11 +3,10 @@
 
 #include "KFZConfig/KFConfig.h"
 #include "KFZConfig/KFSetting.h"
-#include "KFCore/KFElement.h"
 #include "KFCore/KFCondition.h"
 #include "KFExecuteData.h"
 #include "KFZConfig/KFReadSetting.h"
-#include "KFZConfig/KFRewardConfig.h"
+#include "KFZConfig/KFElementConfig.h"
 
 namespace KFrame
 {

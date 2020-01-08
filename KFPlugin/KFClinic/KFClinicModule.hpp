@@ -92,7 +92,7 @@ namespace KFrame
         uint32 GetClinicMaterialsMaxNum( KFEntity* player, const KFClinicSetting* setting );
 
         // 获取治疗所花费金币量
-        std::string GetClinicCureMoneyCount( KFEntity* player, const KFClinicSetting* setting, uint32 addhp );
+        const std::string& CalcClinicCureMoneyCount( KFEntity* player, const KFClinicSetting* setting, uint32 addhp );
 
         // 获取所选的英雄列表需要的治疗量
         uint32 GetClinicHerosNeedCurehp( KFEntity* player, std::list<uint64>& herolist );

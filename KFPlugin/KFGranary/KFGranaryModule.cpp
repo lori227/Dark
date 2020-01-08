@@ -232,9 +232,7 @@ namespace KFrame
         static KFElements _item_element;
         if ( _item_element.IsEmpty() )
         {
-            auto kfelementsetting = KFElementConfig::Instance()->FindElementSetting( __STRING__( item ) );
-            auto strelement = __FORMAT__( kfelementsetting->_element_template, __STRING__( item ), 1, itemid );
-            auto ok = _item_element.Parse( strelement, __FUNC_LINE__ );
+            auto ok = KFElementConfig::Instance()->FormatElemnt( _item_element, __STRING__( item ), "1", itemid );
             if ( !ok )
             {
                 return _kf_display->SendToClient( player, KFMsg::ElementParseError );

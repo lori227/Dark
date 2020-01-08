@@ -284,6 +284,7 @@ rem ===========================================================================
 rem ===========================================================================
 
 rem frame
+call :CopyInterface KFProject
 call :CopyInterface KFConfig
 call :CopyInterface KFMySQL
 call :CopyInterface KFRedis
@@ -315,7 +316,6 @@ call :CopyInterface KFRouteProxy
 call :CopyInterface KFRouteShard
 call :CopyInterface KFSchedule
 call :CopyInterface KFTimer
-call :CopyInterface KFProject
 
 rem auth
 call :CopyInterface KFAuth

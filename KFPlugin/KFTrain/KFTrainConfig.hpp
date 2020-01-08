@@ -3,8 +3,7 @@
 
 #include "KFZConfig/KFConfig.h"
 #include "KFZConfig/KFSetting.h"
-#include "KFCore/KFElement.h"
-#include "KFZConfig/KFRewardConfig.h"
+#include "KFZConfig/KFElementConfig.h"
 
 namespace KFrame
 {
@@ -27,11 +26,11 @@ namespace KFrame
         uint32 _add_exp = 0u;
 
         // 金钱消耗
-        std::string _consume_str;
+        std::string _str_consume;
         KFElements _consume;
 
         // 一键完成消耗
-        std::string _onekey_consume_str;
+        std::string _str_onekey_consume;
         KFElements _onekey_consume;
 
         // 一键完成单位时间

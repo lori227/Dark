@@ -41,7 +41,6 @@ namespace KFrame
         __KF_ADD_CONFIG__( KFItemConfig );
         __KF_ADD_CONFIG__( KFTransferConfig );
         __KF_ADD_CONFIG__( KFWeaponTypeConfig );
-        __KF_ADD_CONFIG__( KFRewardConfig );
     }
 
 }

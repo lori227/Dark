@@ -30,8 +30,8 @@ fi
 
 framebinpath=$framepath/_bin/bin/linux/$1
 cp -f $framebinpath/KFStartup$filename $binpath/
-cp -f $framebinpath/KFConfig$filename.so $binpath/
 cp -f $framebinpath/KFProject$filename.so $binpath/
+cp -f $framebinpath/KFConfig$filename.so $binpath/
 cp -f $framebinpath/KFMySQL$filename.so $binpath/
 cp -f $framebinpath/KFRedis$filename.so $binpath/
 cp -f $framebinpath/KFMongo$filename.so $binpath/

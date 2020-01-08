@@ -38,7 +38,6 @@ namespace KFrame
         __KF_ADD_CONFIG__( KFGenerateConfig );
         __KF_ADD_CONFIG__( KFFormulaConfig );
         __KF_ADD_CONFIG__( KFElementConfig );
-        __KF_ADD_CONFIG__( KFRewardConfig );
         __KF_ADD_CONFIG__( KFTechnologyConfig );
     }
 }

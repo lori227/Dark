@@ -1,7 +1,14 @@
-<root version="2554">
+<root version="2568">
 	<item Name="maxitemcount" Key="" Value="12" Channel="0" Service="0" />
 	<item Name="maxstoragecount" Key="" Value="999" Channel="0" Service="0" />
-	<item Name="useitemindex" Key="" Value="1" Channel="0" Service="0" />
+	<item Name="exploremaxcount" Key="" Value="12" Channel="0" Service="0" />
+	<item Name="othermaxcount" Key="" Value="999" Channel="0" Service="0" />
+	<item Name="extendmaxcount" Key="" Value="100" Channel="0" Service="0" />
+	<item Name="normalmaxcount" Key="" Value="999" Channel="0" Service="0" />
+	<item Name="giftmaxcount" Key="" Value="999" Channel="0" Service="0" />
+	<item Name="drugmaxcount" Key="" Value="999" Channel="0" Service="0" />
+	<item Name="materialmaxcount" Key="" Value="999" Channel="0" Service="0" />
+	<item Name="weaponmaxcount" Key="" Value="999" Channel="0" Service="0" />
 	<item Name="fooditemid" Key="" Value="1000017" Channel="0" Service="0" />
 	<item Name="weaponalarm" Key="" Value="0.2" Channel="0" Service="0" />
 	<item Name="explorebreakoffprob" Key="" Value="7000" Channel="0" Service="0" />

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Setting>
 	<Includes>
-		<Include File="./startup/common/project.startup"/>
+		<Include File="./startup/common/common.startup"/>
 		<Include File="./startup/common/tcpserver.startup"/>
 		<Include File="./startup/common/tcpclient.startup"/>
 		<Include File="./startup/common/httpserver.startup"/>
@@ -10,6 +10,7 @@
 	</Includes>
 
 	<Plugins>
+		<Plugin Name="KFProject" Config=""/>	
 		<Plugin Name="KFRedis" Config=""/>
 		<Plugin Name="KFWorld" Config=""/>	
 	</Plugins>

@@ -24,13 +24,7 @@ namespace KFrame
         for ( auto& iter : _settings._objects )
         {
             auto kfsetting = iter.second;
-            if ( !kfsetting->_str_consume.empty() )
-            {
-                if ( !KFRewardConfig::Instance()->ParseRewards( kfsetting->_str_consume, kfsetting->_consume ) )
-                {
-                    __LOG_ERROR__( "id=[{}] technology config consume=[{}] is error", kfsetting->_id, kfsetting->_str_consume );
-                }
-            }
+            KFElementConfig::Instance()->ParseElement( kfsetting->_consume, kfsetting->_str_consume, __FILE__, kfsetting->_id );
         }
     }
 }
