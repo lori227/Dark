@@ -1,4 +1,4 @@
-<root version="2584">
+<root version="2636">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -68,9 +68,6 @@
 	<item name="maincamp_camera" version="2016" />
 	<item name="faction" version="2045" />
 	<item name="filter" version="2053" />
-	<item name="option" version="2054" />
-	<item name="reward" version="2069" />
-	<item name="npc" version="2139" />
 	<item name="itemweapon" version="2306" />
 	<item name="conditiondefine" version="2317" />
 	<item name="meshconfig" version="2349" />
@@ -79,12 +76,8 @@
 	<item name="itemtype" version="2408" />
 	<item name="herorace" version="2437" />
 	<item name="herotransfer" version="2437" />
-	<item name="npcgenerate" version="2437" />
 	<item name="rolebasetext" version="2439" />
-	<item name="dialogue" version="2440" />
-	<item name="unlockcondition" version="2440" />
 	<item name="taskcondition" version="2440" />
-	<item name="dialoguetext" version="2440" />
 	<item name="buildbasics" version="2450" />
 	<item name="heroprofession" version="2453" />
 	<item name="initialprocess" version="2462" />
@@ -98,30 +91,38 @@
 	<item name="herolevel" version="2513" />
 	<item name="train" version="2516" />
 	<item name="heroweightpool" version="2519" />
-	<item name="pve" version="2523" />
-	<item name="camptext" version="2530" />
 	<item name="taskchainrefresh" version="2531" />
-	<item name="chapter" version="2531" />
 	<item name="gmcommand" version="2532" />
 	<item name="taskchain" version="2537" />
-	<item name="explore" version="2542" />
 	<item name="tipstext" version="2548" />
 	<item name="tlog" version="2552" />
-	<item name="config" version="2552" />
-	<item name="uitext" version="2553" />
 	<item name="foodconsume" version="2559" />
 	<item name="dropdata" version="2563" />
 	<item name="task" version="2563" />
 	<item name="prompttext" version="2564" />
 	<item name="dropgroup" version="2566" />
 	<item name="itemment" version="2568" />
-	<item name="minimap" version="2570" />
-	<item name="class" version="2573" />
-	<item name="worldmaptext" version="2576" />
-	<item name="status" version="2577" />
 	<item name="itemcommon" version="2578" />
-	<item name="story" version="2582" />
-	<item name="sequence" version="2583" />
-	<item name="buildlevel" version="2584" />
-	<item name="technology" version="2584" />
+	<item name="reward" version="2592" />
+	<item name="dialoguetext" version="2597" />
+	<item name="explore" version="2603" />
+	<item name="sequence" version="2608" />
+	<item name="worldmaptext" version="2608" />
+	<item name="dialoguebranch" version="2609" />
+	<item name="story" version="2609" />
+	<item name="status" version="2610" />
+	<item name="chapter" version="2610" />
+	<item name="dialogue" version="2613" />
+	<item name="npc" version="2613" />
+	<item name="config" version="2614" />
+	<item name="unlockcondition" version="2616" />
+	<item name="uitext" version="2617" />
+	<item name="npcgenerate" version="2619" />
+	<item name="pve" version="2619" />
+	<item name="option" version="2621" />
+	<item name="buildlevel" version="2627" />
+	<item name="technology" version="2627" />
+	<item name="camptext" version="2627" />
+	<item name="class" version="2631" />
+	<item name="minimap" version="2636" />
 </root>

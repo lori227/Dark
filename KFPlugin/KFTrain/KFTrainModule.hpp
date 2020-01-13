@@ -21,6 +21,7 @@
 #include "KFRecordClient/KFRecordClientInterface.h"
 #include "KFTrainConfig.hpp"
 #include "KFZConfig/KFLevelConfig.hpp"
+#include "KFExecute/KFExecuteInterface.h"
 
 namespace KFrame
 {
@@ -64,6 +65,16 @@ namespace KFrame
 
         // 删除训练所英雄
         __KF_REMOVE_DATA_FUNCTION__( OnRemoveTrainHero );
+
+        // 更新 增加单位时间训练经验 科技
+        __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyTrainExp );
+
+        // 更新 降低训练的物资消耗 科技
+        __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyTrainCost );
+
+        // 更新 增加新栏位 科技
+        __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyTrainCount );
+
     protected:
         // 获取训练所等级
         uint32 GetTrainLevel( KFEntity* player );
@@ -97,6 +108,13 @@ namespace KFrame
 
         // 添加训练所条件
         void AddTrainCondition( KFEntity* player, KFData* kftrain );
+
+        // 检查并消耗
+        std::string CheckAndRemoveElement( KFEntity* player, const KFElements* kfelements, const char* function, uint32 line, uint32 consumecount );
+
+        // 获取训练所全部栏数
+        uint32 GetTrainCampCount( KFEntity* player, const KFTrainSetting* kfsetting );
+
     protected:
         // 玩家组件上下文
         KFComponent* _kf_component = nullptr;

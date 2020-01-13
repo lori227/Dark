@@ -62,10 +62,30 @@ namespace KFrame
         return pbcurrency;
     }
 
+    KFMsg::PBExploreData* KFExploreRecord::FindExeploreData( uint32 level )
+    {
+        auto pbexplore = _data.mutable_explore();
+        auto iter = pbexplore->find( level );
+        if ( iter != pbexplore->end() )
+        {
+            return &iter->second;
+        }
+
+        auto& pbdata = ( *pbexplore )[ level ];
+        pbdata.set_level( level );
+        return &pbdata;
+    }
+
+    void KFExploreRecord::RemoveExeploreData( uint32 level )
+    {
+        auto pbexplore = _data.mutable_explore();
+        pbexplore->erase( level );
+    }
 
     KFMsg::PBExploreNpcData* KFExploreRecord::FindNpcData( const std::string& key )
     {
-        auto npcdatalist = _data.mutable_exploredata()->mutable_npcdata();
+        auto pbexplore = FindExeploreData( _data.level() );
+        auto npcdatalist = pbexplore->mutable_npcdata();
         auto iter = npcdatalist->find( key );
         if ( iter != npcdatalist->end() )
         {
@@ -76,8 +96,75 @@ namespace KFrame
         return &npcdata;
     }
 
+    void KFExploreRecord::AddBuffData( uint64 uuid, uint32 value )
+    {
+        auto buff = _data.mutable_buffdata()->mutable_buff();
+
+        KFMsg::PBBuffListData* bufflistdata = nullptr;
+        auto iter = buff->find( uuid );
+        if ( iter != buff->end() )
+        {
+            bufflistdata = &iter->second;
+        }
+        else
+        {
+            bufflistdata = &( ( *buff )[ uuid ] );
+        }
+
+        auto buffdata = bufflistdata->add_bufflist();
+        buffdata->set_id( value );
+    }
+
+    void KFExploreRecord::RemoveBuffData( uint64 uuid, uint32 value )
+    {
+        auto buff = _data.mutable_buffdata()->mutable_buff();
+        auto iter = buff->find( uuid );
+        if ( iter == buff->end() )
+        {
+            return;
+        }
+
+        // 删除该buff
+        auto bufflistdata = &iter->second;
+        auto buffsize = bufflistdata->bufflist_size();
+        for ( int32 index = 0; index < buffsize; ++index )
+        {
+            auto buff = &bufflistdata->bufflist( index );
+            if ( buff->id() == value )
+            {
+                bufflistdata->mutable_bufflist()->DeleteSubrange( index, 1 );
+                break;
+            }
+        }
+    }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    void KFExploreRecord::BalanceBeginData( KFEntity* player )
+    {
+        // 纪录货币的初始值
+        BalanceCurrencyBeginData( player );
+
+        // 纪录英雄的初始数值
+        BalanceHeroBeginData( player );
+
+        // 纪录背包的道具数值
+        BalanceItemBeginData( player );
+    }
+
+    void KFExploreRecord::BalanceEndData( KFEntity* player )
+    {
+        // 货币
+        BalanceCurrencyEndData( player );
+
+        // 英雄最终数据
+        BalanceHeroEndData( player );
+
+        // 道具最终数据
+        BalanceItemEndData( player );
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     void KFExploreRecord::BalanceHeroBeginData( KFEntity* player )
     {
         auto kfherorecord = player->Find( __STRING__( hero ) );
@@ -250,7 +337,7 @@ namespace KFrame
         //__LOG_INFO__( "{}", _data.DebugString() );
 
         // 英雄
-        BalanceHeroRecord( pbdata, status );
+        BalanceHeroRecord( pbdata );
 
         // 道具
         BalanceItemRecord( pbdata, status );
@@ -300,7 +387,7 @@ namespace KFrame
         }
     }
 
-    void KFExploreRecord::BalanceHeroRecord( KFMsg::PBBalanceData* pbdata, uint32 status )
+    void KFExploreRecord::BalanceHeroRecord( KFMsg::PBBalanceData* pbdata )
     {
         for ( auto i = 0; i < _data.herodata_size(); ++i )
         {

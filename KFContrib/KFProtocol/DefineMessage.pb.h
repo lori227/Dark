@@ -47,7 +47,7 @@ namespace protobuf_DefineMessage_2eproto {
 struct LIBPROTOC_EXPORT TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[23];
+  static const ::google::protobuf::internal::ParseTable schema[24];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -64,6 +64,9 @@ LIBPROTOC_EXPORT extern PBBalanceDataDefaultTypeInternal _PBBalanceData_default_
 class PBBalanceDataServer;
 class PBBalanceDataServerDefaultTypeInternal;
 LIBPROTOC_EXPORT extern PBBalanceDataServerDefaultTypeInternal _PBBalanceDataServer_default_instance_;
+class PBBalanceDataServer_ExploreEntry_DoNotUse;
+class PBBalanceDataServer_ExploreEntry_DoNotUseDefaultTypeInternal;
+LIBPROTOC_EXPORT extern PBBalanceDataServer_ExploreEntry_DoNotUseDefaultTypeInternal _PBBalanceDataServer_ExploreEntry_DoNotUse_default_instance_;
 class PBBalanceHero;
 class PBBalanceHeroDefaultTypeInternal;
 LIBPROTOC_EXPORT extern PBBalanceHeroDefaultTypeInternal _PBBalanceHero_default_instance_;
@@ -130,6 +133,7 @@ namespace protobuf {
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceCurrency* Arena::CreateMaybeMessage<::KFMsg::PBBalanceCurrency>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceData* Arena::CreateMaybeMessage<::KFMsg::PBBalanceData>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceDataServer* Arena::CreateMaybeMessage<::KFMsg::PBBalanceDataServer>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceDataServer_ExploreEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBBalanceDataServer_ExploreEntry_DoNotUse>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceHero* Arena::CreateMaybeMessage<::KFMsg::PBBalanceHero>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceHeroServer* Arena::CreateMaybeMessage<::KFMsg::PBBalanceHeroServer>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceHeroServer_BeginattributesEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBBalanceHeroServer_BeginattributesEntry_DoNotUse>(Arena*);
@@ -2239,19 +2243,19 @@ class LIBPROTOC_EXPORT PBExploreData : public ::google::protobuf::Message /* @@p
 
   // accessors -------------------------------------------------------
 
-  // map<string, .KFMsg.PBExploreNpcData> npcdata = 5;
+  // map<string, .KFMsg.PBExploreNpcData> npcdata = 12;
   int npcdata_size() const;
   void clear_npcdata();
-  static const int kNpcdataFieldNumber = 5;
+  static const int kNpcdataFieldNumber = 12;
   const ::google::protobuf::Map< ::std::string, ::KFMsg::PBExploreNpcData >&
       npcdata() const;
   ::google::protobuf::Map< ::std::string, ::KFMsg::PBExploreNpcData >*
       mutable_npcdata();
 
-  // .KFMsg.PBExplorePlayerData playerdata = 4;
+  // .KFMsg.PBExplorePlayerData playerdata = 11;
   bool has_playerdata() const;
   void clear_playerdata();
-  static const int kPlayerdataFieldNumber = 4;
+  static const int kPlayerdataFieldNumber = 11;
   private:
   const ::KFMsg::PBExplorePlayerData& _internal_playerdata() const;
   public:
@@ -2260,35 +2264,53 @@ class LIBPROTOC_EXPORT PBExploreData : public ::google::protobuf::Message /* @@p
   ::KFMsg::PBExplorePlayerData* mutable_playerdata();
   void set_allocated_playerdata(::KFMsg::PBExplorePlayerData* playerdata);
 
-  // .KFMsg.PBExploreBuffData buffdata = 6;
-  bool has_buffdata() const;
-  void clear_buffdata();
-  static const int kBuffdataFieldNumber = 6;
-  private:
-  const ::KFMsg::PBExploreBuffData& _internal_buffdata() const;
-  public:
-  const ::KFMsg::PBExploreBuffData& buffdata() const;
-  ::KFMsg::PBExploreBuffData* release_buffdata();
-  ::KFMsg::PBExploreBuffData* mutable_buffdata();
-  void set_allocated_buffdata(::KFMsg::PBExploreBuffData* buffdata);
+  // uint32 id = 1;
+  void clear_id();
+  static const int kIdFieldNumber = 1;
+  ::google::protobuf::uint32 id() const;
+  void set_id(::google::protobuf::uint32 value);
 
-  // bool save = 1;
+  // bool save = 2;
   void clear_save();
-  static const int kSaveFieldNumber = 1;
+  static const int kSaveFieldNumber = 2;
   bool save() const;
   void set_save(bool value);
 
-  // uint32 random = 2;
+  // uint32 random = 3;
   void clear_random();
-  static const int kRandomFieldNumber = 2;
+  static const int kRandomFieldNumber = 3;
   ::google::protobuf::uint32 random() const;
   void set_random(::google::protobuf::uint32 value);
 
-  // uint32 faith = 3;
-  void clear_faith();
-  static const int kFaithFieldNumber = 3;
-  ::google::protobuf::uint32 faith() const;
-  void set_faith(::google::protobuf::uint32 value);
+  // uint32 level = 4;
+  void clear_level();
+  static const int kLevelFieldNumber = 4;
+  ::google::protobuf::uint32 level() const;
+  void set_level(::google::protobuf::uint32 value);
+
+  // uint32 totallevel = 5;
+  void clear_totallevel();
+  static const int kTotallevelFieldNumber = 5;
+  ::google::protobuf::uint32 totallevel() const;
+  void set_totallevel(::google::protobuf::uint32 value);
+
+  // uint32 lastlevel = 6;
+  void clear_lastlevel();
+  static const int kLastlevelFieldNumber = 6;
+  ::google::protobuf::uint32 lastlevel() const;
+  void set_lastlevel(::google::protobuf::uint32 value);
+
+  // uint32 creation = 7;
+  void clear_creation();
+  static const int kCreationFieldNumber = 7;
+  ::google::protobuf::uint32 creation() const;
+  void set_creation(::google::protobuf::uint32 value);
+
+  // uint32 innerworld = 8;
+  void clear_innerworld();
+  static const int kInnerworldFieldNumber = 8;
+  ::google::protobuf::uint32 innerworld() const;
+  void set_innerworld(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:KFMsg.PBExploreData)
  private:
@@ -2301,13 +2323,38 @@ class LIBPROTOC_EXPORT PBExploreData : public ::google::protobuf::Message /* @@p
       ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
       0 > npcdata_;
   ::KFMsg::PBExplorePlayerData* playerdata_;
-  ::KFMsg::PBExploreBuffData* buffdata_;
+  ::google::protobuf::uint32 id_;
   bool save_;
   ::google::protobuf::uint32 random_;
-  ::google::protobuf::uint32 faith_;
+  ::google::protobuf::uint32 level_;
+  ::google::protobuf::uint32 totallevel_;
+  ::google::protobuf::uint32 lastlevel_;
+  ::google::protobuf::uint32 creation_;
+  ::google::protobuf::uint32 innerworld_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_DefineMessage_2eproto::TableStruct;
 };
+// -------------------------------------------------------------------
+
+class PBBalanceDataServer_ExploreEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<PBBalanceDataServer_ExploreEntry_DoNotUse, 
+    ::google::protobuf::uint32, ::KFMsg::PBExploreData,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<PBBalanceDataServer_ExploreEntry_DoNotUse, 
+    ::google::protobuf::uint32, ::KFMsg::PBExploreData,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
+    0 > SuperType;
+  PBBalanceDataServer_ExploreEntry_DoNotUse();
+  PBBalanceDataServer_ExploreEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const PBBalanceDataServer_ExploreEntry_DoNotUse& other);
+  static const PBBalanceDataServer_ExploreEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const PBBalanceDataServer_ExploreEntry_DoNotUse*>(&_PBBalanceDataServer_ExploreEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
 // -------------------------------------------------------------------
 
 class LIBPROTOC_EXPORT PBBalanceDataServer : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.PBBalanceDataServer) */ {
@@ -2345,7 +2392,7 @@ class LIBPROTOC_EXPORT PBBalanceDataServer : public ::google::protobuf::Message 
                &_PBBalanceDataServer_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    23;
 
   void Swap(PBBalanceDataServer* other);
   friend void swap(PBBalanceDataServer& a, PBBalanceDataServer& b) {
@@ -2395,12 +2442,13 @@ class LIBPROTOC_EXPORT PBBalanceDataServer : public ::google::protobuf::Message 
 
   // nested types ----------------------------------------------------
 
+
   // accessors -------------------------------------------------------
 
-  // repeated .KFMsg.PBBalanceHeroServer herodata = 7;
+  // repeated .KFMsg.PBBalanceHeroServer herodata = 10;
   int herodata_size() const;
   void clear_herodata();
-  static const int kHerodataFieldNumber = 7;
+  static const int kHerodataFieldNumber = 10;
   ::KFMsg::PBBalanceHeroServer* mutable_herodata(int index);
   ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceHeroServer >*
       mutable_herodata();
@@ -2409,10 +2457,10 @@ class LIBPROTOC_EXPORT PBBalanceDataServer : public ::google::protobuf::Message 
   const ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceHeroServer >&
       herodata() const;
 
-  // repeated .KFMsg.PBBalanceItemServer itemdata = 8;
+  // repeated .KFMsg.PBBalanceItemServer itemdata = 11;
   int itemdata_size() const;
   void clear_itemdata();
-  static const int kItemdataFieldNumber = 8;
+  static const int kItemdataFieldNumber = 11;
   ::KFMsg::PBBalanceItemServer* mutable_itemdata(int index);
   ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceItemServer >*
       mutable_itemdata();
@@ -2421,10 +2469,10 @@ class LIBPROTOC_EXPORT PBBalanceDataServer : public ::google::protobuf::Message 
   const ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceItemServer >&
       itemdata() const;
 
-  // repeated .KFMsg.PBBalanceCurrency currencydata = 9;
+  // repeated .KFMsg.PBBalanceCurrency currencydata = 12;
   int currencydata_size() const;
   void clear_currencydata();
-  static const int kCurrencydataFieldNumber = 9;
+  static const int kCurrencydataFieldNumber = 12;
   ::KFMsg::PBBalanceCurrency* mutable_currencydata(int index);
   ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceCurrency >*
       mutable_currencydata();
@@ -2433,10 +2481,10 @@ class LIBPROTOC_EXPORT PBBalanceDataServer : public ::google::protobuf::Message 
   const ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceCurrency >&
       currencydata() const;
 
-  // repeated uint64 killnpc = 10;
+  // repeated uint64 killnpc = 13;
   int killnpc_size() const;
   void clear_killnpc();
-  static const int kKillnpcFieldNumber = 10;
+  static const int kKillnpcFieldNumber = 13;
   ::google::protobuf::uint64 killnpc(int index) const;
   void set_killnpc(int index, ::google::protobuf::uint64 value);
   void add_killnpc(::google::protobuf::uint64 value);
@@ -2445,9 +2493,18 @@ class LIBPROTOC_EXPORT PBBalanceDataServer : public ::google::protobuf::Message 
   ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
       mutable_killnpc();
 
-  // bytes modulename = 2;
+  // map<uint32, .KFMsg.PBExploreData> explore = 15;
+  int explore_size() const;
+  void clear_explore();
+  static const int kExploreFieldNumber = 15;
+  const ::google::protobuf::Map< ::google::protobuf::uint32, ::KFMsg::PBExploreData >&
+      explore() const;
+  ::google::protobuf::Map< ::google::protobuf::uint32, ::KFMsg::PBExploreData >*
+      mutable_explore();
+
+  // bytes modulename = 3;
   void clear_modulename();
-  static const int kModulenameFieldNumber = 2;
+  static const int kModulenameFieldNumber = 3;
   const ::std::string& modulename() const;
   void set_modulename(const ::std::string& value);
   #if LANG_CXX11
@@ -2459,17 +2516,17 @@ class LIBPROTOC_EXPORT PBBalanceDataServer : public ::google::protobuf::Message 
   ::std::string* release_modulename();
   void set_allocated_modulename(::std::string* modulename);
 
-  // .KFMsg.PBExploreData exploredata = 99;
-  bool has_exploredata() const;
-  void clear_exploredata();
-  static const int kExploredataFieldNumber = 99;
+  // .KFMsg.PBExploreBuffData buffdata = 14;
+  bool has_buffdata() const;
+  void clear_buffdata();
+  static const int kBuffdataFieldNumber = 14;
   private:
-  const ::KFMsg::PBExploreData& _internal_exploredata() const;
+  const ::KFMsg::PBExploreBuffData& _internal_buffdata() const;
   public:
-  const ::KFMsg::PBExploreData& exploredata() const;
-  ::KFMsg::PBExploreData* release_exploredata();
-  ::KFMsg::PBExploreData* mutable_exploredata();
-  void set_allocated_exploredata(::KFMsg::PBExploreData* exploredata);
+  const ::KFMsg::PBExploreBuffData& buffdata() const;
+  ::KFMsg::PBExploreBuffData* release_buffdata();
+  ::KFMsg::PBExploreBuffData* mutable_buffdata();
+  void set_allocated_buffdata(::KFMsg::PBExploreBuffData* buffdata);
 
   // uint32 id = 1;
   void clear_id();
@@ -2477,29 +2534,47 @@ class LIBPROTOC_EXPORT PBBalanceDataServer : public ::google::protobuf::Message 
   ::google::protobuf::uint32 id() const;
   void set_id(::google::protobuf::uint32 value);
 
-  // uint32 status = 4;
-  void clear_status();
-  static const int kStatusFieldNumber = 4;
-  ::google::protobuf::uint32 status() const;
-  void set_status(::google::protobuf::uint32 value);
+  // uint32 level = 2;
+  void clear_level();
+  static const int kLevelFieldNumber = 2;
+  ::google::protobuf::uint32 level() const;
+  void set_level(::google::protobuf::uint32 value);
 
-  // uint64 moduleid = 3;
+  // uint64 moduleid = 4;
   void clear_moduleid();
-  static const int kModuleidFieldNumber = 3;
+  static const int kModuleidFieldNumber = 4;
   ::google::protobuf::uint64 moduleid() const;
   void set_moduleid(::google::protobuf::uint64 value);
 
-  // uint64 starttime = 5;
+  // uint64 starttime = 6;
   void clear_starttime();
-  static const int kStarttimeFieldNumber = 5;
+  static const int kStarttimeFieldNumber = 6;
   ::google::protobuf::uint64 starttime() const;
   void set_starttime(::google::protobuf::uint64 value);
 
-  // uint32 usetime = 6;
+  // uint32 status = 5;
+  void clear_status();
+  static const int kStatusFieldNumber = 5;
+  ::google::protobuf::uint32 status() const;
+  void set_status(::google::protobuf::uint32 value);
+
+  // uint32 usetime = 7;
   void clear_usetime();
-  static const int kUsetimeFieldNumber = 6;
+  static const int kUsetimeFieldNumber = 7;
   ::google::protobuf::uint32 usetime() const;
   void set_usetime(::google::protobuf::uint32 value);
+
+  // uint32 faith = 8;
+  void clear_faith();
+  static const int kFaithFieldNumber = 8;
+  ::google::protobuf::uint32 faith() const;
+  void set_faith(::google::protobuf::uint32 value);
+
+  // uint32 extendlevel = 9;
+  void clear_extendlevel();
+  static const int kExtendlevelFieldNumber = 9;
+  ::google::protobuf::uint32 extendlevel() const;
+  void set_extendlevel(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:KFMsg.PBBalanceDataServer)
  private:
@@ -2510,13 +2585,22 @@ class LIBPROTOC_EXPORT PBBalanceDataServer : public ::google::protobuf::Message 
   ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceCurrency > currencydata_;
   ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > killnpc_;
   mutable int _killnpc_cached_byte_size_;
+  ::google::protobuf::internal::MapField<
+      PBBalanceDataServer_ExploreEntry_DoNotUse,
+      ::google::protobuf::uint32, ::KFMsg::PBExploreData,
+      ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+      ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
+      0 > explore_;
   ::google::protobuf::internal::ArenaStringPtr modulename_;
-  ::KFMsg::PBExploreData* exploredata_;
+  ::KFMsg::PBExploreBuffData* buffdata_;
   ::google::protobuf::uint32 id_;
-  ::google::protobuf::uint32 status_;
+  ::google::protobuf::uint32 level_;
   ::google::protobuf::uint64 moduleid_;
   ::google::protobuf::uint64 starttime_;
+  ::google::protobuf::uint32 status_;
   ::google::protobuf::uint32 usetime_;
+  ::google::protobuf::uint32 faith_;
+  ::google::protobuf::uint32 extendlevel_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_DefineMessage_2eproto::TableStruct;
 };
@@ -3797,7 +3881,21 @@ PBExploreBuffData::mutable_buff() {
 
 // PBExploreData
 
-// bool save = 1;
+// uint32 id = 1;
+inline void PBExploreData::clear_id() {
+  id_ = 0u;
+}
+inline ::google::protobuf::uint32 PBExploreData::id() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBExploreData.id)
+  return id_;
+}
+inline void PBExploreData::set_id(::google::protobuf::uint32 value) {
+  
+  id_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBExploreData.id)
+}
+
+// bool save = 2;
 inline void PBExploreData::clear_save() {
   save_ = false;
 }
@@ -3811,7 +3909,7 @@ inline void PBExploreData::set_save(bool value) {
   // @@protoc_insertion_point(field_set:KFMsg.PBExploreData.save)
 }
 
-// uint32 random = 2;
+// uint32 random = 3;
 inline void PBExploreData::clear_random() {
   random_ = 0u;
 }
@@ -3825,21 +3923,77 @@ inline void PBExploreData::set_random(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:KFMsg.PBExploreData.random)
 }
 
-// uint32 faith = 3;
-inline void PBExploreData::clear_faith() {
-  faith_ = 0u;
+// uint32 level = 4;
+inline void PBExploreData::clear_level() {
+  level_ = 0u;
 }
-inline ::google::protobuf::uint32 PBExploreData::faith() const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBExploreData.faith)
-  return faith_;
+inline ::google::protobuf::uint32 PBExploreData::level() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBExploreData.level)
+  return level_;
 }
-inline void PBExploreData::set_faith(::google::protobuf::uint32 value) {
+inline void PBExploreData::set_level(::google::protobuf::uint32 value) {
   
-  faith_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.PBExploreData.faith)
+  level_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBExploreData.level)
 }
 
-// .KFMsg.PBExplorePlayerData playerdata = 4;
+// uint32 totallevel = 5;
+inline void PBExploreData::clear_totallevel() {
+  totallevel_ = 0u;
+}
+inline ::google::protobuf::uint32 PBExploreData::totallevel() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBExploreData.totallevel)
+  return totallevel_;
+}
+inline void PBExploreData::set_totallevel(::google::protobuf::uint32 value) {
+  
+  totallevel_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBExploreData.totallevel)
+}
+
+// uint32 lastlevel = 6;
+inline void PBExploreData::clear_lastlevel() {
+  lastlevel_ = 0u;
+}
+inline ::google::protobuf::uint32 PBExploreData::lastlevel() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBExploreData.lastlevel)
+  return lastlevel_;
+}
+inline void PBExploreData::set_lastlevel(::google::protobuf::uint32 value) {
+  
+  lastlevel_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBExploreData.lastlevel)
+}
+
+// uint32 creation = 7;
+inline void PBExploreData::clear_creation() {
+  creation_ = 0u;
+}
+inline ::google::protobuf::uint32 PBExploreData::creation() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBExploreData.creation)
+  return creation_;
+}
+inline void PBExploreData::set_creation(::google::protobuf::uint32 value) {
+  
+  creation_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBExploreData.creation)
+}
+
+// uint32 innerworld = 8;
+inline void PBExploreData::clear_innerworld() {
+  innerworld_ = 0u;
+}
+inline ::google::protobuf::uint32 PBExploreData::innerworld() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBExploreData.innerworld)
+  return innerworld_;
+}
+inline void PBExploreData::set_innerworld(::google::protobuf::uint32 value) {
+  
+  innerworld_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBExploreData.innerworld)
+}
+
+// .KFMsg.PBExplorePlayerData playerdata = 11;
 inline bool PBExploreData::has_playerdata() const {
   return this != internal_default_instance() && playerdata_ != NULL;
 }
@@ -3893,7 +4047,7 @@ inline void PBExploreData::set_allocated_playerdata(::KFMsg::PBExplorePlayerData
   // @@protoc_insertion_point(field_set_allocated:KFMsg.PBExploreData.playerdata)
 }
 
-// map<string, .KFMsg.PBExploreNpcData> npcdata = 5;
+// map<string, .KFMsg.PBExploreNpcData> npcdata = 12;
 inline int PBExploreData::npcdata_size() const {
   return npcdata_.size();
 }
@@ -3911,59 +4065,7 @@ PBExploreData::mutable_npcdata() {
   return npcdata_.MutableMap();
 }
 
-// .KFMsg.PBExploreBuffData buffdata = 6;
-inline bool PBExploreData::has_buffdata() const {
-  return this != internal_default_instance() && buffdata_ != NULL;
-}
-inline void PBExploreData::clear_buffdata() {
-  if (GetArenaNoVirtual() == NULL && buffdata_ != NULL) {
-    delete buffdata_;
-  }
-  buffdata_ = NULL;
-}
-inline const ::KFMsg::PBExploreBuffData& PBExploreData::_internal_buffdata() const {
-  return *buffdata_;
-}
-inline const ::KFMsg::PBExploreBuffData& PBExploreData::buffdata() const {
-  const ::KFMsg::PBExploreBuffData* p = buffdata_;
-  // @@protoc_insertion_point(field_get:KFMsg.PBExploreData.buffdata)
-  return p != NULL ? *p : *reinterpret_cast<const ::KFMsg::PBExploreBuffData*>(
-      &::KFMsg::_PBExploreBuffData_default_instance_);
-}
-inline ::KFMsg::PBExploreBuffData* PBExploreData::release_buffdata() {
-  // @@protoc_insertion_point(field_release:KFMsg.PBExploreData.buffdata)
-  
-  ::KFMsg::PBExploreBuffData* temp = buffdata_;
-  buffdata_ = NULL;
-  return temp;
-}
-inline ::KFMsg::PBExploreBuffData* PBExploreData::mutable_buffdata() {
-  
-  if (buffdata_ == NULL) {
-    auto* p = CreateMaybeMessage<::KFMsg::PBExploreBuffData>(GetArenaNoVirtual());
-    buffdata_ = p;
-  }
-  // @@protoc_insertion_point(field_mutable:KFMsg.PBExploreData.buffdata)
-  return buffdata_;
-}
-inline void PBExploreData::set_allocated_buffdata(::KFMsg::PBExploreBuffData* buffdata) {
-  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
-  if (message_arena == NULL) {
-    delete buffdata_;
-  }
-  if (buffdata) {
-    ::google::protobuf::Arena* submessage_arena = NULL;
-    if (message_arena != submessage_arena) {
-      buffdata = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, buffdata, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  buffdata_ = buffdata;
-  // @@protoc_insertion_point(field_set_allocated:KFMsg.PBExploreData.buffdata)
-}
+// -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
 
@@ -3983,7 +4085,21 @@ inline void PBBalanceDataServer::set_id(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.id)
 }
 
-// bytes modulename = 2;
+// uint32 level = 2;
+inline void PBBalanceDataServer::clear_level() {
+  level_ = 0u;
+}
+inline ::google::protobuf::uint32 PBBalanceDataServer::level() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.level)
+  return level_;
+}
+inline void PBBalanceDataServer::set_level(::google::protobuf::uint32 value) {
+  
+  level_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.level)
+}
+
+// bytes modulename = 3;
 inline void PBBalanceDataServer::clear_modulename() {
   modulename_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -4036,7 +4152,7 @@ inline void PBBalanceDataServer::set_allocated_modulename(::std::string* modulen
   // @@protoc_insertion_point(field_set_allocated:KFMsg.PBBalanceDataServer.modulename)
 }
 
-// uint64 moduleid = 3;
+// uint64 moduleid = 4;
 inline void PBBalanceDataServer::clear_moduleid() {
   moduleid_ = GOOGLE_ULONGLONG(0);
 }
@@ -4050,7 +4166,7 @@ inline void PBBalanceDataServer::set_moduleid(::google::protobuf::uint64 value) 
   // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.moduleid)
 }
 
-// uint32 status = 4;
+// uint32 status = 5;
 inline void PBBalanceDataServer::clear_status() {
   status_ = 0u;
 }
@@ -4064,7 +4180,7 @@ inline void PBBalanceDataServer::set_status(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.status)
 }
 
-// uint64 starttime = 5;
+// uint64 starttime = 6;
 inline void PBBalanceDataServer::clear_starttime() {
   starttime_ = GOOGLE_ULONGLONG(0);
 }
@@ -4078,7 +4194,7 @@ inline void PBBalanceDataServer::set_starttime(::google::protobuf::uint64 value)
   // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.starttime)
 }
 
-// uint32 usetime = 6;
+// uint32 usetime = 7;
 inline void PBBalanceDataServer::clear_usetime() {
   usetime_ = 0u;
 }
@@ -4092,7 +4208,35 @@ inline void PBBalanceDataServer::set_usetime(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.usetime)
 }
 
-// repeated .KFMsg.PBBalanceHeroServer herodata = 7;
+// uint32 faith = 8;
+inline void PBBalanceDataServer::clear_faith() {
+  faith_ = 0u;
+}
+inline ::google::protobuf::uint32 PBBalanceDataServer::faith() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.faith)
+  return faith_;
+}
+inline void PBBalanceDataServer::set_faith(::google::protobuf::uint32 value) {
+  
+  faith_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.faith)
+}
+
+// uint32 extendlevel = 9;
+inline void PBBalanceDataServer::clear_extendlevel() {
+  extendlevel_ = 0u;
+}
+inline ::google::protobuf::uint32 PBBalanceDataServer::extendlevel() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.extendlevel)
+  return extendlevel_;
+}
+inline void PBBalanceDataServer::set_extendlevel(::google::protobuf::uint32 value) {
+  
+  extendlevel_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.extendlevel)
+}
+
+// repeated .KFMsg.PBBalanceHeroServer herodata = 10;
 inline int PBBalanceDataServer::herodata_size() const {
   return herodata_.size();
 }
@@ -4122,7 +4266,7 @@ PBBalanceDataServer::herodata() const {
   return herodata_;
 }
 
-// repeated .KFMsg.PBBalanceItemServer itemdata = 8;
+// repeated .KFMsg.PBBalanceItemServer itemdata = 11;
 inline int PBBalanceDataServer::itemdata_size() const {
   return itemdata_.size();
 }
@@ -4152,7 +4296,7 @@ PBBalanceDataServer::itemdata() const {
   return itemdata_;
 }
 
-// repeated .KFMsg.PBBalanceCurrency currencydata = 9;
+// repeated .KFMsg.PBBalanceCurrency currencydata = 12;
 inline int PBBalanceDataServer::currencydata_size() const {
   return currencydata_.size();
 }
@@ -4182,7 +4326,7 @@ PBBalanceDataServer::currencydata() const {
   return currencydata_;
 }
 
-// repeated uint64 killnpc = 10;
+// repeated uint64 killnpc = 13;
 inline int PBBalanceDataServer::killnpc_size() const {
   return killnpc_.size();
 }
@@ -4212,63 +4356,83 @@ PBBalanceDataServer::mutable_killnpc() {
   return &killnpc_;
 }
 
-// .KFMsg.PBExploreData exploredata = 99;
-inline bool PBBalanceDataServer::has_exploredata() const {
-  return this != internal_default_instance() && exploredata_ != NULL;
+// .KFMsg.PBExploreBuffData buffdata = 14;
+inline bool PBBalanceDataServer::has_buffdata() const {
+  return this != internal_default_instance() && buffdata_ != NULL;
 }
-inline void PBBalanceDataServer::clear_exploredata() {
-  if (GetArenaNoVirtual() == NULL && exploredata_ != NULL) {
-    delete exploredata_;
+inline void PBBalanceDataServer::clear_buffdata() {
+  if (GetArenaNoVirtual() == NULL && buffdata_ != NULL) {
+    delete buffdata_;
   }
-  exploredata_ = NULL;
+  buffdata_ = NULL;
 }
-inline const ::KFMsg::PBExploreData& PBBalanceDataServer::_internal_exploredata() const {
-  return *exploredata_;
+inline const ::KFMsg::PBExploreBuffData& PBBalanceDataServer::_internal_buffdata() const {
+  return *buffdata_;
 }
-inline const ::KFMsg::PBExploreData& PBBalanceDataServer::exploredata() const {
-  const ::KFMsg::PBExploreData* p = exploredata_;
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.exploredata)
-  return p != NULL ? *p : *reinterpret_cast<const ::KFMsg::PBExploreData*>(
-      &::KFMsg::_PBExploreData_default_instance_);
+inline const ::KFMsg::PBExploreBuffData& PBBalanceDataServer::buffdata() const {
+  const ::KFMsg::PBExploreBuffData* p = buffdata_;
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.buffdata)
+  return p != NULL ? *p : *reinterpret_cast<const ::KFMsg::PBExploreBuffData*>(
+      &::KFMsg::_PBExploreBuffData_default_instance_);
 }
-inline ::KFMsg::PBExploreData* PBBalanceDataServer::release_exploredata() {
-  // @@protoc_insertion_point(field_release:KFMsg.PBBalanceDataServer.exploredata)
+inline ::KFMsg::PBExploreBuffData* PBBalanceDataServer::release_buffdata() {
+  // @@protoc_insertion_point(field_release:KFMsg.PBBalanceDataServer.buffdata)
   
-  ::KFMsg::PBExploreData* temp = exploredata_;
-  exploredata_ = NULL;
+  ::KFMsg::PBExploreBuffData* temp = buffdata_;
+  buffdata_ = NULL;
   return temp;
 }
-inline ::KFMsg::PBExploreData* PBBalanceDataServer::mutable_exploredata() {
+inline ::KFMsg::PBExploreBuffData* PBBalanceDataServer::mutable_buffdata() {
   
-  if (exploredata_ == NULL) {
-    auto* p = CreateMaybeMessage<::KFMsg::PBExploreData>(GetArenaNoVirtual());
-    exploredata_ = p;
+  if (buffdata_ == NULL) {
+    auto* p = CreateMaybeMessage<::KFMsg::PBExploreBuffData>(GetArenaNoVirtual());
+    buffdata_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:KFMsg.PBBalanceDataServer.exploredata)
-  return exploredata_;
+  // @@protoc_insertion_point(field_mutable:KFMsg.PBBalanceDataServer.buffdata)
+  return buffdata_;
 }
-inline void PBBalanceDataServer::set_allocated_exploredata(::KFMsg::PBExploreData* exploredata) {
+inline void PBBalanceDataServer::set_allocated_buffdata(::KFMsg::PBExploreBuffData* buffdata) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == NULL) {
-    delete exploredata_;
+    delete buffdata_;
   }
-  if (exploredata) {
+  if (buffdata) {
     ::google::protobuf::Arena* submessage_arena = NULL;
     if (message_arena != submessage_arena) {
-      exploredata = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, exploredata, submessage_arena);
+      buffdata = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, buffdata, submessage_arena);
     }
     
   } else {
     
   }
-  exploredata_ = exploredata;
-  // @@protoc_insertion_point(field_set_allocated:KFMsg.PBBalanceDataServer.exploredata)
+  buffdata_ = buffdata;
+  // @@protoc_insertion_point(field_set_allocated:KFMsg.PBBalanceDataServer.buffdata)
+}
+
+// map<uint32, .KFMsg.PBExploreData> explore = 15;
+inline int PBBalanceDataServer::explore_size() const {
+  return explore_.size();
+}
+inline void PBBalanceDataServer::clear_explore() {
+  explore_.Clear();
+}
+inline const ::google::protobuf::Map< ::google::protobuf::uint32, ::KFMsg::PBExploreData >&
+PBBalanceDataServer::explore() const {
+  // @@protoc_insertion_point(field_map:KFMsg.PBBalanceDataServer.explore)
+  return explore_.GetMap();
+}
+inline ::google::protobuf::Map< ::google::protobuf::uint32, ::KFMsg::PBExploreData >*
+PBBalanceDataServer::mutable_explore() {
+  // @@protoc_insertion_point(field_mutable_map:KFMsg.PBBalanceDataServer.explore)
+  return explore_.MutableMap();
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

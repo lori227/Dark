@@ -1,4 +1,4 @@
-<root version="2531">
+<root version="2610">
 	<item Id="11001" InitStatus="1" FinishStatus="2" Type="1" />
 	<item Id="11002" InitStatus="3" FinishStatus="4" Type="1" />
 	<item Id="11003" InitStatus="5" FinishStatus="6" Type="1" />
@@ -73,4 +73,5 @@
 	<item Id="6" InitStatus="906" FinishStatus="906" Type="2" />
 	<item Id="7" InitStatus="907" FinishStatus="907" Type="2" />
 	<item Id="8" InitStatus="908" FinishStatus="908" Type="2" />
+	<item Id="23" InitStatus="909" FinishStatus="909" Type="2" />
 </root>

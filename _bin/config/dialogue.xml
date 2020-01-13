@@ -1,66 +1,84 @@
-<root version="2440">
-	<item Id="8000001" Sequence="1" NPC="2000" Position="LEFT" Dialogue="DIALOGUE_001_1" />
-	<item Id="8000001" Sequence="2" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_001_2" />
-	<item Id="8000001" Sequence="3" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_001_3" />
-	<item Id="8000001" Sequence="4" NPC="2000" Position="LEFT" Dialogue="DIALOGUE_001_4" />
-	<item Id="8000001" Sequence="5" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_001_5" />
-	<item Id="8000001" Sequence="6" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_001_6" />
-	<item Id="8000001" Sequence="7" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_001_7" />
-	<item Id="8000002" Sequence="1" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_002_1" />
-	<item Id="8000002" Sequence="2" NPC="2000" Position="LEFT" Dialogue="DIALOGUE_002_2" />
-	<item Id="8000002" Sequence="4" NPC="2000" Position="LEFT" Dialogue="DIALOGUE_002_4" />
-	<item Id="8000002" Sequence="5" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_002_5" />
-	<item Id="8000002" Sequence="6" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_002_6" />
-	<item Id="8000003" Sequence="1" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_003_1" />
-	<item Id="8000003" Sequence="2" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_003_2" />
-	<item Id="8000003" Sequence="3" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_003_3" />
-	<item Id="8000004" Sequence="1" NPC="2000" Position="LEFT" Dialogue="DIALOGUE_004_1" />
-	<item Id="8000004" Sequence="2" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_004_2" />
-	<item Id="8000004" Sequence="3" NPC="2000" Position="LEFT" Dialogue="DIALOGUE_004_3" />
-	<item Id="8000004" Sequence="4" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_004_4" />
-	<item Id="8000004" Sequence="5" NPC="2000" Position="LEFT" Dialogue="DIALOGUE_004_5" />
-	<item Id="8000004" Sequence="6" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_004_6" />
-	<item Id="8000005" Sequence="1" NPC="2000" Position="LEFT" Dialogue="DIALOGUE_005_1" />
-	<item Id="8000005" Sequence="2" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_005_2" />
-	<item Id="8000005" Sequence="3" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_005_3" />
-	<item Id="8000006" Sequence="1" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_006_1" />
-	<item Id="8000006" Sequence="2" NPC="2000" Position="LEFT" Dialogue="DIALOGUE_006_2" />
-	<item Id="8000006" Sequence="3" NPC="2000" Position="LEFT" Dialogue="DIALOGUE_006_3" />
-	<item Id="8000006" Sequence="4" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_006_4" />
-	<item Id="8000006" Sequence="5" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_006_5" />
-	<item Id="8000007" Sequence="1" NPC="2000" Position="LEFT" Dialogue="DIALOGUE_007_1" />
-	<item Id="8000007" Sequence="2" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_007_2" />
-	<item Id="8000007" Sequence="3" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_007_3" />
-	<item Id="8000101" Sequence="1" NPC="2007" Position="LEFT" Dialogue="DIALOGUE_101_1" />
-	<item Id="8000101" Sequence="2" NPC="2007" Position="LEFT" Dialogue="DIALOGUE_101_2" />
-	<item Id="8000101" Sequence="3" NPC="2007" Position="LEFT" Dialogue="DIALOGUE_101_3" />
-	<item Id="8000102" Sequence="1" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_102_1" />
-	<item Id="8000102" Sequence="2" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_102_2" />
-	<item Id="8000102" Sequence="3" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_102_3" />
-	<item Id="8000103" Sequence="1" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_103_1" />
-	<item Id="8000104" Sequence="1" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_104_1" />
-	<item Id="8000104" Sequence="2" NPC="2000" Position="LEFT" Dialogue="DIALOGUE_104_2" />
-	<item Id="8000105" Sequence="1" NPC="2000" Position="LEFT" Dialogue="DIALOGUE_105_1" />
-	<item Id="8000105" Sequence="2" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_105_2" />
-	<item Id="8000106" Sequence="1" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_106_1" />
-	<item Id="8000106" Sequence="2" NPC="2000" Position="LEFT" Dialogue="DIALOGUE_106_2" />
-	<item Id="8000107" Sequence="1" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_107_1" />
-	<item Id="8000107" Sequence="2" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_107_2" />
-	<item Id="8000108" Sequence="1" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_108_1" />
-	<item Id="8000108" Sequence="2" NPC="2000" Position="LEFT" Dialogue="DIALOGUE_108_2" />
-	<item Id="8000108" Sequence="3" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_108_3" />
-	<item Id="8000907" Sequence="1" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_907_1" />
-	<item Id="8000907" Sequence="2" NPC="2006" Position="RIGHT" Dialogue="DIALOGUE_907_2" />
-	<item Id="8100001" Sequence="1" NPC="2008" Position="LEFT" Dialogue="DIALOGUE1_001_1" />
-	<item Id="8100002" Sequence="1" NPC="2008" Position="LEFT" Dialogue="DIALOGUE1_002_1" />
-	<item Id="8100003" Sequence="1" NPC="2008" Position="LEFT" Dialogue="DIALOGUE1_003_1" />
-	<item Id="8100004" Sequence="1" NPC="2008" Position="LEFT" Dialogue="DIALOGUE1_004_1" />
-	<item Id="8100005" Sequence="1" NPC="2008" Position="LEFT" Dialogue="DIALOGUE1_005_1" />
-	<item Id="8100006" Sequence="1" NPC="2008" Position="LEFT" Dialogue="DIALOGUE1_006_1" />
-	<item Id="8100007" Sequence="1" NPC="2008" Position="LEFT" Dialogue="DIALOGUE1_007_1" />
-	<item Id="8100008" Sequence="1" NPC="2008" Position="LEFT" Dialogue="DIALOGUE1_008_1" />
-	<item Id="8100009" Sequence="1" NPC="2008" Position="LEFT" Dialogue="DIALOGUE1_009_1" />
-	<item Id="8100010" Sequence="1" NPC="2008" Position="LEFT" Dialogue="DIALOGUE1_010_1" />
-	<item Id="8100011" Sequence="1" NPC="2008" Position="LEFT" Dialogue="DIALOGUE1_011_1" />
-	<item Id="8100012" Sequence="1" NPC="2008" Position="LEFT" Dialogue="DIALOGUE1_012_1" />
+<root version="2613">
+	<item Id="8000001" Sequence="1" Branch="" />
+	<item Id="8000001" Sequence="2" Branch="" />
+	<item Id="8000001" Sequence="3" Branch="" />
+	<item Id="8000001" Sequence="4" Branch="" />
+	<item Id="8000001" Sequence="5" Branch="" />
+	<item Id="8000001" Sequence="6" Branch="" />
+	<item Id="8000001" Sequence="7" Branch="" />
+	<item Id="8000002" Sequence="1" Branch="" />
+	<item Id="8000002" Sequence="2" Branch="" />
+	<item Id="8000002" Sequence="4" Branch="" />
+	<item Id="8000002" Sequence="5" Branch="" />
+	<item Id="8000002" Sequence="6" Branch="" />
+	<item Id="8000003" Sequence="1" Branch="" />
+	<item Id="8000003" Sequence="2" Branch="" />
+	<item Id="8000003" Sequence="3" Branch="" />
+	<item Id="8000004" Sequence="1" Branch="" />
+	<item Id="8000004" Sequence="2" Branch="" />
+	<item Id="8000004" Sequence="3" Branch="" />
+	<item Id="8000004" Sequence="4" Branch="" />
+	<item Id="8000004" Sequence="5" Branch="" />
+	<item Id="8000004" Sequence="6" Branch="" />
+	<item Id="8000005" Sequence="1" Branch="" />
+	<item Id="8000005" Sequence="2" Branch="" />
+	<item Id="8000005" Sequence="3" Branch="" />
+	<item Id="8000006" Sequence="1" Branch="" />
+	<item Id="8000006" Sequence="2" Branch="" />
+	<item Id="8000006" Sequence="3" Branch="" />
+	<item Id="8000006" Sequence="4" Branch="" />
+	<item Id="8000006" Sequence="5" Branch="" />
+	<item Id="8000007" Sequence="1" Branch="" />
+	<item Id="8000007" Sequence="2" Branch="" />
+	<item Id="8000007" Sequence="3" Branch="" />
+	<item Id="8000101" Sequence="1" Branch="" />
+	<item Id="8000101" Sequence="2" Branch="" />
+	<item Id="8000101" Sequence="3" Branch="" />
+	<item Id="8000102" Sequence="1" Branch="" />
+	<item Id="8000102" Sequence="2" Branch="" />
+	<item Id="8000102" Sequence="3" Branch="" />
+	<item Id="8000103" Sequence="1" Branch="" />
+	<item Id="8000104" Sequence="1" Branch="" />
+	<item Id="8000104" Sequence="2" Branch="" />
+	<item Id="8000105" Sequence="1" Branch="" />
+	<item Id="8000105" Sequence="2" Branch="" />
+	<item Id="8000106" Sequence="1" Branch="" />
+	<item Id="8000106" Sequence="2" Branch="" />
+	<item Id="8000107" Sequence="1" Branch="" />
+	<item Id="8000107" Sequence="2" Branch="" />
+	<item Id="8000108" Sequence="1" Branch="" />
+	<item Id="8000108" Sequence="2" Branch="" />
+	<item Id="8000108" Sequence="3" Branch="" />
+	<item Id="8000907" Sequence="1" Branch="" />
+	<item Id="8000907" Sequence="2" Branch="" />
+	<item Id="8100001" Sequence="1" Branch="" />
+	<item Id="8100002" Sequence="1" Branch="" />
+	<item Id="8100003" Sequence="1" Branch="" />
+	<item Id="8100004" Sequence="1" Branch="" />
+	<item Id="8100005" Sequence="1" Branch="" />
+	<item Id="8100006" Sequence="1" Branch="" />
+	<item Id="8100007" Sequence="1" Branch="" />
+	<item Id="8100008" Sequence="1" Branch="" />
+	<item Id="8100009" Sequence="1" Branch="" />
+	<item Id="8100010" Sequence="1" Branch="" />
+	<item Id="8100011" Sequence="1" Branch="" />
+	<item Id="8100012" Sequence="1" Branch="" />
+	<item Id="9000001" Sequence="1" Branch="" />
+	<item Id="9000001" Sequence="2" Branch="" />
+	<item Id="9000001" Sequence="3" Branch="" />
+	<item Id="9000002" Sequence="1" Branch="" />
+	<item Id="9000002" Sequence="2" Branch="" />
+	<item Id="9000002" Sequence="3" Branch="" />
+	<item Id="9000002" Sequence="4" Branch="" />
+	<item Id="9000002" Sequence="5" Branch="10001&amp;10002&amp;10000" />
+	<item Id="9000003" Sequence="1" Branch="" />
+	<item Id="9000003" Sequence="2" Branch="" />
+	<item Id="9000003" Sequence="3" Branch="" />
+	<item Id="9000004" Sequence="1" Branch="" />
+	<item Id="9000004" Sequence="2" Branch="" />
+	<item Id="9000004" Sequence="3" Branch="" />
+	<item Id="9000004" Sequence="4" Branch="" />
+	<item Id="9000004" Sequence="5" Branch="" />
+	<item Id="9000004" Sequence="6" Branch="" />
+	<item Id="9000004" Sequence="7" Branch="10003&amp;10004" />
 </root>

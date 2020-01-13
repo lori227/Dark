@@ -15,6 +15,16 @@ namespace KFrame
         __REGISTER_ADD_ELEMENT__( __STRING__( smithy ), &KFSmithyModule::AddSmithyElement );
         __REGISTER_ADD_DATA_2__( __STRING__( build ), KFMsg::SmithyBuild, &KFSmithyModule::OnAddSmithyBuild );
         __REGISTER_UPDATE_DATA_2__( __STRING__( smithy ), __STRING__( num ), &KFSmithyModule::OnItemNumUpdate );
+
+        __REGISTER_EXECUTE__( __STRING__( smithycdtime ), &KFSmithyModule::OnExecuteSmithyCdTime );
+        __REGISTER_EXECUTE__( __STRING__( smithyaddnum ), &KFSmithyModule::OnExecuteSmithyAddData );
+        __REGISTER_EXECUTE__( __STRING__( smithycollectmax ), &KFSmithyModule::OnExecuteSmithyAddData );
+        __REGISTER_EXECUTE__( __STRING__( smithystoremax ), &KFSmithyModule::OnExecuteSmithyAddData );
+        __REGISTER_EXECUTE__( __STRING__( smithycritrate ), &KFSmithyModule::OnExecuteSmithyAddData );
+        __REGISTER_EXECUTE__( __STRING__( smithycritvalue ), &KFSmithyModule::OnExecuteSmithyAddData );
+        __REGISTER_EXECUTE__( __STRING__( smithymakemax ), &KFSmithyModule::OnExecuteSmithyAddData );
+        __REGISTER_EXECUTE__( __STRING__( smithymakelevel ), &KFSmithyModule::OnExecuteSmithyMakeLevel );
+
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_SMITHY_GATHER_REQ, &KFSmithyModule::HandleSmithyGatherReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_SMITHY_MAKE_REQ, &KFSmithyModule::HandleSmithyMakeReq );
@@ -31,21 +41,78 @@ namespace KFrame
         __UN_ADD_ELEMENT__( __STRING__( smithy ) );
         __UN_ADD_DATA_2__( __STRING__( build ), KFMsg::SmithyBuild );
         __UN_UPDATE_DATA_2__( __STRING__( smithy ), __STRING__( num ) );
+
+        __UN_EXECUTE__( __STRING__( smithycdtime ) );
+        __UN_EXECUTE__( __STRING__( smithyaddnum ) );
+        __UN_EXECUTE__( __STRING__( smithycollectmax ) );
+        __UN_EXECUTE__( __STRING__( smithystoremax ) );
+        __UN_EXECUTE__( __STRING__( smithycritrate ) );
+        __UN_EXECUTE__( __STRING__( smithycritvalue ) );
+        __UN_EXECUTE__( __STRING__( smithymakemax ) );
+        __UN_EXECUTE__( __STRING__( smithymakelevel ) );
+
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_SMITHY_GATHER_REQ );
         __UN_MESSAGE__( KFMsg::MSG_SMITHY_MAKE_REQ );
     }
 
-    __KF_ENTER_PLAYER_FUNCTION__( KFSmithyModule::OnEnterSmithyModule )
+    __KF_EXECUTE_FUNCTION__( KFSmithyModule::OnExecuteSmithyCdTime )
     {
-        // 检查铁匠铺是否开启
-        if ( !IsSmithyActive( player ) )
+        if ( executedata->_param_list._params.size() < 1u )
         {
-            return;
+            return false;
         }
 
+        auto cdtime = executedata->_param_list._params[0]->_int_value;
+        player->UpdateData( __STRING__( effect ), __STRING__( smithycdtime ), KFEnum::Set, cdtime );
+        return true;
+    }
+
+    __KF_EXECUTE_FUNCTION__( KFSmithyModule::OnExecuteSmithyAddData )
+    {
+        if ( executedata->_param_list._params.size() < 1u )
+        {
+            return false;
+        }
+
+        auto adddata = executedata->_param_list._params[0]->_int_value;
+        player->UpdateData( __STRING__( effect ), executedata->_name, KFEnum::Add, adddata );
+        return true;
+    }
+
+    __KF_EXECUTE_FUNCTION__( KFSmithyModule::OnExecuteSmithyMakeLevel )
+    {
+        if ( executedata->_param_list._params.size() < 2u )
+        {
+            return false;
+        }
+
+        auto kfrecord = player->Find( __STRING__( effect ), __STRING__( smithymakelevel ) );
+
+        auto makelevel = executedata->_param_list._params[0]->_int_value;
+        for ( auto i = 1u; i < executedata->_param_list._params.size(); ++i )
+        {
+            auto weapontype = executedata->_param_list._params[i]->_int_value;
+            if ( weapontype == 0u )
+            {
+                break;
+            }
+
+            player->UpdateData( kfrecord, weapontype, kfrecord->_data_setting->_value_key_name, KFEnum::Add, makelevel );
+        }
+
+        return true;
+    }
+
+    __KF_ENTER_PLAYER_FUNCTION__( KFSmithyModule::OnEnterSmithyModule )
+    {
         // 检查定时器
         CheckSmithyTimer( player );
+    }
+
+    __KF_LEAVE_PLAYER_FUNCTION__( KFSmithyModule::OnLeaveSmithyModule )
+    {
+        __UN_TIMER_1__( player->GetKeyID() );
     }
 
     uint32 KFSmithyModule::GetSmithyLevel( KFEntity* player )
@@ -65,23 +132,24 @@ namespace KFrame
         return level > 0u ? true : false;
     }
 
-    const KFSmithySetting* KFSmithyModule::GetSmithySetting( KFEntity* player )
-    {
-        auto level = GetSmithyLevel( player );
-        return KFSmithyConfig::Instance()->FindSetting( level );
-    }
-
     void KFSmithyModule::CheckSmithyTimer( KFEntity* player )
     {
-        auto setting = GetSmithySetting( player );
-        if ( setting == nullptr || setting->_cd_time == 0u )
+        // 检查铁匠铺是否开启
+        if ( !IsSmithyActive( player ) )
         {
             return;
         }
 
+        auto collectmax = player->Get( __STRING__( effect ), __STRING__( smithycollectmax ) );
         auto kfsmithy = player->Find( __STRING__( smithy ) );
         auto num = kfsmithy->Get<uint32>( __STRING__( num ) );
-        if ( num >= setting->_collect_max )
+        if ( num >= collectmax )
+        {
+            return;
+        }
+
+        auto cdtime = player->Get( __STRING__( effect ), __STRING__( smithycdtime ) );
+        if ( cdtime == 0u )
         {
             return;
         }
@@ -96,32 +164,28 @@ namespace KFrame
         }
         else
         {
-            auto cdtime = nowtime - calctime;
-            if ( cdtime >= setting->_cd_time )
+            auto pasttime = nowtime - calctime;
+            if ( pasttime >= cdtime )
             {
-                auto count = cdtime / setting->_cd_time;
-                auto addnum = count * setting->_add_num;
-                if ( num + addnum >= setting->_collect_max )
+                auto addnum = player->Get( __STRING__( effect ), __STRING__( smithyaddnum ) );
+                auto count = pasttime / cdtime;
+                auto totalnum = count * addnum;
+                if ( num + totalnum >= collectmax )
                 {
-                    player->UpdateData( kfsmithy, __STRING__( num ), KFEnum::Set, setting->_collect_max );
+                    player->UpdateData( kfsmithy, __STRING__( num ), KFEnum::Set, collectmax );
                     return;
                 }
 
-                calctime += count * setting->_cd_time;
+                calctime += count * cdtime;
 
-                player->UpdateData( kfsmithy, __STRING__( num ), KFEnum::Add, addnum );
+                player->UpdateData( kfsmithy, __STRING__( num ), KFEnum::Add, totalnum );
                 player->UpdateData( kfsmithy, __STRING__( calctime ), KFEnum::Set, calctime );
             }
 
-            delaytime = ( setting->_cd_time - ( nowtime - calctime ) % setting->_cd_time ) * 1000u;
+            delaytime = ( cdtime - pasttime % cdtime ) * 1000u;
         }
 
-        __LOOP_TIMER_1__( player->GetKeyID(), setting->_cd_time * 1000u, delaytime, &KFSmithyModule::OnTimerAddItem );
-    }
-
-    __KF_LEAVE_PLAYER_FUNCTION__( KFSmithyModule::OnLeaveSmithyModule )
-    {
-        __UN_TIMER_1__( player->GetKeyID() );
+        __LOOP_TIMER_1__( player->GetKeyID(), cdtime * 1000u, delaytime, &KFSmithyModule::OnTimerAddItem );
     }
 
     __KF_RECORD_VALUE_FUNCTION__( KFSmithyModule::GetDaySmithyTotalNum )
@@ -164,22 +228,25 @@ namespace KFrame
             return false;
         }
 
-        // 未解锁时获得材料取1级的数据
-        auto level = GetSmithyLevel( player );
-        level = __MAX__( 1u, level );
-        auto kfsetting = KFSmithyConfig::Instance()->FindSetting( level );
-        if ( kfsetting == nullptr )
+        auto storemax = player->Get( __STRING__( effect ), __STRING__( smithystoremax ) );
+        if ( storemax == 0u )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "smithy level=[{}] can't find setting", level );
-            return false;
+            // 未解锁时可获得材料数量
+            static auto _option = _kf_option->FindOption( __STRING__( smithystorenum ) );
+            storemax = _option->_uint32_value;
         }
 
         auto kfsmithy = player->Find( __STRING__( smithy ) );
         auto curnum = kfsmithy->Get<uint32>( __STRING__( totalnum ) );
+        if ( curnum >= storemax )
+        {
+            return false;
+        }
 
         auto kfelementobject = reinterpret_cast<KFElementObject*>( kfelement );
         auto totalnum = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( totalnum ), multiple );
-        totalnum = __MIN__( totalnum, kfsetting->_store_max - curnum );
+
+        totalnum = __MIN__( totalnum, storemax - curnum );
         player->UpdateData( kfsmithy, __STRING__( totalnum ), KFEnum::Add, totalnum );
 
         return kfresult->AddResult( __STRING__( totalnum ), totalnum );
@@ -193,16 +260,13 @@ namespace KFrame
 
     __KF_UPDATE_DATA_FUNCTION__( KFSmithyModule::OnItemNumUpdate )
     {
-        auto setting = GetSmithySetting( player );
-        if ( setting == nullptr )
-        {
-            return;
-        }
+        auto cdtime = player->Get( __STRING__( effect ), __STRING__( smithycdtime ) );
+        auto collectmax = player->Get( __STRING__( effect ), __STRING__( smithycollectmax ) );
 
         auto kfparent = kfdata->GetParent();
         auto num = kfdata->Get<uint32>();
         auto calctime = kfparent->Get<uint64>( __STRING__( calctime ) );
-        if ( num >= setting->_collect_max )
+        if ( num >= collectmax )
         {
             if ( calctime != 0u )
             {
@@ -216,7 +280,7 @@ namespace KFrame
             if ( calctime == 0u )
             {
                 // 物品不满开启定时器
-                __LOOP_TIMER_1__( player->GetKeyID(), setting->_cd_time * 1000, 0u, &KFSmithyModule::OnTimerAddItem );
+                __LOOP_TIMER_1__( player->GetKeyID(), cdtime * 1000, 0u, &KFSmithyModule::OnTimerAddItem );
                 player->UpdateData( kfparent, __STRING__( calctime ), KFEnum::Set, KFGlobal::Instance()->_real_time );
             }
         }
@@ -231,32 +295,40 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::BuildFuncNotActive );
         }
 
-        auto setting = GetSmithySetting( player );
-        if ( setting == nullptr )
-        {
-            return _kf_display->SendToClient( player, KFMsg::SmithySettingError );
-        }
-
         auto kfsmithy = player->Find( __STRING__( smithy ) );
-        auto num = kfsmithy->Get<uint32>( __STRING__( num ) );
-        if ( num == 0u )
+        auto addnum = kfsmithy->Get<uint32>( __STRING__( num ) );
+        if ( addnum == 0u )
         {
             // 没有材料不能收获
             return _kf_display->SendToClient( player, KFMsg::SmithyHaveNotItem );
         }
 
+        auto storemax = player->Get( __STRING__( effect ), __STRING__( smithystoremax ) );
         auto totalnum = kfsmithy->Get<uint32>( __STRING__( totalnum ) );
-        if ( totalnum >= setting->_store_max )
+        if ( totalnum >= storemax )
         {
             // 储存已满
             return _kf_display->SendToClient( player, KFMsg::SmithyStoreIsMax );
         }
 
-        auto addnum = num;
-        if ( num + totalnum > setting->_store_max )
+        if ( addnum + totalnum > storemax )
         {
-            addnum = setting->_store_max - totalnum;
+            addnum = storemax - totalnum;
             _kf_display->SendToClient( player, KFMsg::SmithyStoreIsMax );
+        }
+        auto decnum = addnum;
+
+        // 计算暴击率
+        uint32 critresult = _invalid_int;
+        auto critrate = player->Get( __STRING__( effect ), __STRING__( smithycritrate ) );
+        auto critvalue = player->Get( __STRING__( effect ), __STRING__( smithycritvalue ) );
+        auto rand = KFGlobal::Instance()->RandRatio( KFRandEnum::TenThousand );
+        if ( rand < critrate )
+        {
+            addnum += addnum * critvalue / KFRandEnum::TenThousand;
+            addnum = __MIN__( addnum, storemax - totalnum );
+
+            critresult = 1u;
         }
 
         player->UpdateData( kfsmithy, __STRING__( daynum ), KFEnum::Add, addnum );
@@ -264,20 +336,27 @@ namespace KFrame
 
         // 更新数量
         player->UpdateData( kfsmithy, __STRING__( totalnum ), KFEnum::Add, addnum );
-        player->UpdateData( kfsmithy, __STRING__( num ), KFEnum::Dec, addnum );
+        player->UpdateData( kfsmithy, __STRING__( num ), KFEnum::Dec, decnum );
+
+        // 收取暴击协议
+        KFMsg::MsgSmithyGatherAck ack;
+        ack.set_crit( critresult );
+        _kf_player->SendToClient( player, KFMsg::MSG_SMITHY_GATHER_ACK, &ack );
+
+        static auto _option = _kf_option->FindOption( __STRING__( smithyitemid ) );
 
         // 获得道具飘字
         {
             KeyValue values;
-            values[ __STRING__( id ) ] = setting->_item_id;
+            values[ __STRING__( id ) ] = _option->_uint32_value;
             values[ __STRING__( count ) ] = addnum;
-            player->AddDataToShow( __STRING__( smithy ), __STRING__( item ), setting->_item_id, values, false );
+            player->AddDataToShow( __STRING__( smithy ), __STRING__( item ), _option->_uint32_value, values, false );
         }
 
         // 条件更新
         {
             auto kfbuildgather = player->Find( __STRING__( buildgather ) );
-            kfbuildgather->Set( __STRING__( id ), setting->_item_id );
+            kfbuildgather->Set( __STRING__( id ), _option->_uint32_value );
             player->UpdateData( kfbuildgather, __STRING__( count ), KFEnum::Set, addnum );
         }
     }
@@ -297,13 +376,21 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::SmithyWeaponSettingError );
         }
 
-        auto kfsmithysetting = GetSmithySetting( player );
-        if ( kfsmithysetting == nullptr )
+        auto kfitemsetting = KFItemConfig::Instance()->FindSetting( kfmsg.id() );
+        if ( kfweaponsetting == nullptr )
         {
-            return _kf_display->SendToClient( player, KFMsg::SmithySettingError );
+            return _kf_display->SendToClient( player, KFMsg::ItemSettingNotExist );
         }
 
-        if ( kfmsg.num() == 0u || kfmsg.num() > kfsmithysetting->_make_max )
+        auto kflevelrecord = player->Find( __STRING__( effect ), __STRING__( smithymakelevel ) );
+        auto kflevel = kflevelrecord->Find( kfitemsetting->_weapon_type );
+        if ( kflevel == nullptr || kflevel->Get( kflevelrecord->_data_setting->_value_key_name ) < kfitemsetting->_weapon_level )
+        {
+            return _kf_display->SendToClient( player, KFMsg::SmithyMakeLevelLimit );
+        }
+
+        auto makemax = player->Get( __STRING__( effect ), __STRING__( smithymakemax ) );
+        if ( kfmsg.num() == 0u || kfmsg.num() > makemax )
         {
             return _kf_display->SendToClient( player, KFMsg::SmithyMakeNumError );
         }
@@ -342,7 +429,6 @@ namespace KFrame
         _kf_display->SendToClient( player, KFMsg::SmithyMakeWeaponSuc );
 
         // 条件回调
-        auto kfitemsetting = KFItemConfig::Instance()->FindSetting( kfweaponsetting->_id );
         if ( kfitemsetting != nullptr )
         {
             auto kfsmithyweapon = player->Find( __STRING__( smithyweapon ) );
@@ -361,20 +447,12 @@ namespace KFrame
             return;
         }
 
-        auto setting = GetSmithySetting( player );
-        if ( setting == nullptr )
-        {
-            return;
-        }
+        auto addnum = player->Get( __STRING__( effect ), __STRING__( smithyaddnum ) );
+        auto collectmax = player->Get( __STRING__( effect ), __STRING__( smithycollectmax ) );
 
         auto kfsmithy = player->Find( __STRING__( smithy ) );
-
-        auto addnum = setting->_add_num;
         auto curnum = kfsmithy->Get<uint32>( __STRING__( num ) );
-        if ( addnum + curnum > setting->_collect_max )
-        {
-            addnum = setting->_collect_max - curnum;
-        }
+        addnum = __MIN__( addnum, collectmax - curnum );
 
         player->UpdateData( kfsmithy, __STRING__( calctime ), KFEnum::Set, KFGlobal::Instance()->_real_time );
         player->UpdateData( kfsmithy, __STRING__( num ), KFEnum::Add, addnum );

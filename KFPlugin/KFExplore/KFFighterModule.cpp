@@ -296,8 +296,10 @@ namespace KFrame
         // 初始化纪录
         auto kfrecord = _pve_record.Create( player->GetKeyID() );
         kfrecord->Reset();
-        kfrecord->BalanceCurrencyBeginData( player );
+
         kfrecord->BalanceHeroBeginData( player );
+        kfrecord->BalanceCurrencyBeginData( player );
+
         kfrecord->_data.set_status( status );
         kfrecord->_data.set_id( pveid );
         kfrecord->_data.set_moduleid( moduleid );
@@ -348,18 +350,15 @@ namespace KFrame
         auto explorerecord = _kf_explore->GetExploreRecord( player->GetKeyID() );
         if ( explorerecord != nullptr )
         {
-            auto exploredata = explorerecord->_data.mutable_exploredata();
-            ack.mutable_buffdata()->CopyFrom( exploredata->buffdata() );
-
             // 信仰值
-            ack.set_faith( exploredata->faith() );
+            ack.set_faith( explorerecord->_data.faith() );
+            ack.mutable_buffdata()->CopyFrom( explorerecord->_data.buffdata() );
         }
 
         _kf_player->SendToClient( player, KFMsg::MSG_PVE_ACK, &ack, 10u );
 
         player->SetStatus( KFMsg::PVEStatus );
         player->UpdateData( __STRING__( pveid ), KFEnum::Set, pveid );
-
         return KFMsg::Ok;
     }
 

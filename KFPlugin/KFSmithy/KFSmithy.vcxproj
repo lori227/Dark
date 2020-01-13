@@ -12,13 +12,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="KFSmithyConfig.cpp" />
     <ClCompile Include="KFSmithyModule.cpp" />
     <ClCompile Include="KFSmithyPlugin.cpp" />
     <ClCompile Include="KFSmithyWeaponConfig.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="KFSmithyConfig.hpp" />
     <ClInclude Include="KFSmithyInterface.h" />
     <ClInclude Include="KFSmithyModule.hpp" />
     <ClInclude Include="KFSmithyPlugin.hpp" />

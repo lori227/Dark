@@ -148,12 +148,13 @@ enum BalanceEnum {
   Victory = 1,
   Failed = 2,
   Flee = 3,
+  Town = 4,
   BalanceEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   BalanceEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 LIBPROTOC_EXPORT bool BalanceEnum_IsValid(int value);
 const BalanceEnum BalanceEnum_MIN = UnknowBalance;
-const BalanceEnum BalanceEnum_MAX = Flee;
+const BalanceEnum BalanceEnum_MAX = Town;
 const int BalanceEnum_ARRAYSIZE = BalanceEnum_MAX + 1;
 
 LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* BalanceEnum_descriptor();
@@ -390,12 +391,16 @@ enum InitialProcessEnum {
   ProcessWorld = 4,
   ProcessTask = 5,
   ProcessScene = 6,
+  UIDialogue = 7,
+  BubbleDialogue = 8,
+  ProcessSequence = 9,
+  WorldAndDialogue = 10,
   InitialProcessEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   InitialProcessEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 LIBPROTOC_EXPORT bool InitialProcessEnum_IsValid(int value);
 const InitialProcessEnum InitialProcessEnum_MIN = ProcessInvalid;
-const InitialProcessEnum InitialProcessEnum_MAX = ProcessScene;
+const InitialProcessEnum InitialProcessEnum_MAX = WorldAndDialogue;
 const int InitialProcessEnum_ARRAYSIZE = InitialProcessEnum_MAX + 1;
 
 LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* InitialProcessEnum_descriptor();
@@ -407,6 +412,52 @@ inline bool InitialProcessEnum_Parse(
     const ::std::string& name, InitialProcessEnum* value) {
   return ::google::protobuf::internal::ParseNamedEnum<InitialProcessEnum>(
     InitialProcessEnum_descriptor(), name, value);
+}
+enum ExploreEnterEnum {
+  EnterInvalid = 0,
+  EnterChapter = 1,
+  EnterLogin = 2,
+  EnterTown = 3,
+  EnterJump = 4,
+  EnterExtend = 5,
+  ExploreEnterEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  ExploreEnterEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+LIBPROTOC_EXPORT bool ExploreEnterEnum_IsValid(int value);
+const ExploreEnterEnum ExploreEnterEnum_MIN = EnterInvalid;
+const ExploreEnterEnum ExploreEnterEnum_MAX = EnterExtend;
+const int ExploreEnterEnum_ARRAYSIZE = ExploreEnterEnum_MAX + 1;
+
+LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* ExploreEnterEnum_descriptor();
+inline const ::std::string& ExploreEnterEnum_Name(ExploreEnterEnum value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ExploreEnterEnum_descriptor(), value);
+}
+inline bool ExploreEnterEnum_Parse(
+    const ::std::string& name, ExploreEnterEnum* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ExploreEnterEnum>(
+    ExploreEnterEnum_descriptor(), name, value);
+}
+enum ExtendLevelEnum {
+  ExtendLevelInvalid = 0,
+  ExtendLevel = 100,
+  ExtendLevelEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  ExtendLevelEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+LIBPROTOC_EXPORT bool ExtendLevelEnum_IsValid(int value);
+const ExtendLevelEnum ExtendLevelEnum_MIN = ExtendLevelInvalid;
+const ExtendLevelEnum ExtendLevelEnum_MAX = ExtendLevel;
+const int ExtendLevelEnum_ARRAYSIZE = ExtendLevelEnum_MAX + 1;
+
+LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* ExtendLevelEnum_descriptor();
+inline const ::std::string& ExtendLevelEnum_Name(ExtendLevelEnum value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ExtendLevelEnum_descriptor(), value);
+}
+inline bool ExtendLevelEnum_Parse(
+    const ::std::string& name, ExtendLevelEnum* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ExtendLevelEnum>(
+    ExtendLevelEnum_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -505,6 +556,16 @@ template <> struct is_proto_enum< ::KFMsg::InitialProcessEnum> : ::std::true_typ
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::InitialProcessEnum>() {
   return ::KFMsg::InitialProcessEnum_descriptor();
+}
+template <> struct is_proto_enum< ::KFMsg::ExploreEnterEnum> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::ExploreEnterEnum>() {
+  return ::KFMsg::ExploreEnterEnum_descriptor();
+}
+template <> struct is_proto_enum< ::KFMsg::ExtendLevelEnum> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::ExtendLevelEnum>() {
+  return ::KFMsg::ExtendLevelEnum_descriptor();
 }
 
 }  // namespace protobuf

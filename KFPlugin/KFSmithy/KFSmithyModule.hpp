@@ -16,8 +16,9 @@
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFDisplay/KFDisplayInterface.h"
 #include "KFMessage/KFMessageInterface.h"
+#include "KFOption/KFOptionInterface.h"
 #include "KFRecordClient/KFRecordClientInterface.h"
-#include "KFSmithyConfig.hpp"
+#include "KFExecute/KFExecuteInterface.h"
 #include "KFSmithyWeaponConfig.hpp"
 #include "KFZConfig/KFItemConfig.hpp"
 
@@ -64,15 +65,21 @@ namespace KFrame
         // 定时增加道具
         __KF_TIMER_FUNCTION__( OnTimerAddItem );
 
+        // 生产时间间隔
+        __KF_EXECUTE_FUNCTION__( OnExecuteSmithyCdTime );
+
+        // 增加数据
+        __KF_EXECUTE_FUNCTION__( OnExecuteSmithyAddData );
+
+        // 打造等级限制
+        __KF_EXECUTE_FUNCTION__( OnExecuteSmithyMakeLevel );
+
     protected:
         // 获取铁匠铺等级
         uint32 GetSmithyLevel( KFEntity* player );
 
         // 铁匠铺是否激活
         bool IsSmithyActive( KFEntity* player );
-
-        // 获取铁匠铺配置
-        const KFSmithySetting* GetSmithySetting( KFEntity* player );
 
         // 检查定时器
         void CheckSmithyTimer( KFEntity* player );

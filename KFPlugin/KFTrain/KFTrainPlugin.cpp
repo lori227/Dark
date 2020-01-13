@@ -26,6 +26,7 @@ namespace KFrame
         __FIND_MODULE__( _kf_display, KFDisplayInterface );
         __FIND_MODULE__( _kf_hero, KFHeroInterface );
         __FIND_MODULE__( _kf_record_client, KFRecordClientInterface );
+        __FIND_MODULE__( _kf_execute, KFExecuteInterface );
     }
 
     void KFTrainPlugin::AddConfig()

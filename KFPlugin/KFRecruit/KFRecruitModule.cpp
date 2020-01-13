@@ -15,7 +15,6 @@ namespace KFrame
 
         __REGISTER_AFTER_ENTER_PLAYER__( &KFRecruitModule::OnAfterEnterRecruitModule );
 
-
         __REGISTER_EXECUTE__( __STRING__( recruitdivisor ), &KFRecruitModule::OnExecuteTechnologyRecruitDivisor );
         __REGISTER_EXECUTE__( __STRING__( recruitcount ), &KFRecruitModule::OnExecuteTechnologyRecruitCount );
         __REGISTER_EXECUTE__( __STRING__( recruitweight ), &KFRecruitModule::OnExecuteTechnologyRecruitWeight );

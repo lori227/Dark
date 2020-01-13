@@ -5,13 +5,22 @@ namespace KFrame
 {
     void KFExploreConfig::ReadSetting( KFNode& xmlnode, KFExploreSeting* kfsetting )
     {
+        kfsetting->_str_consume = xmlnode.GetString( "Consume", true );
+
+        KFExploreLevel leveldata;
+        leveldata._level = xmlnode.GetUInt32( "Level" );
+        leveldata._explore_id = xmlnode.GetUInt32( "ExploreId" );
+
         auto strdropvictory = xmlnode.GetString( "DropVictory", true );
-        KFReadSetting::ParseConditionList( strdropvictory, kfsetting->_victory_drop_list );
+        KFReadSetting::ParseConditionList( strdropvictory, leveldata._victory_drop_list );
 
         auto strdropfail = xmlnode.GetString( "DropFail", true );
-        KFReadSetting::ParseConditionList( strdropfail, kfsetting->_fail_drop_list );
+        KFReadSetting::ParseConditionList( strdropfail, leveldata._fail_drop_list );
 
-        kfsetting->_str_consume = xmlnode.GetString( "Consume", true );
+        leveldata._createion = xmlnode.GetUInt32( "Creation" );
+        leveldata._inner_world = xmlnode.GetUInt32( "InnerWorld" );
+
+        kfsetting->_levels.emplace( leveldata._level, leveldata );
     }
 
     void KFExploreConfig::LoadAllComplete()

@@ -51,7 +51,12 @@ namespace KFrame
 
     protected:
         // 探索请求
-        __KF_MESSAGE_FUNCTION__( HandleExploreReq );
+        __KF_MESSAGE_FUNCTION__( HandleExploreEnterReq );
+        __KF_MESSAGE_FUNCTION__( HandleExploreJumpReq );
+        __KF_MESSAGE_FUNCTION__( HandleExploreExtendReq );
+
+        // 请求回城
+        __KF_MESSAGE_FUNCTION__( HandleExploreTownReq );
 
         // 退出探索
         __KF_MESSAGE_FUNCTION__( HandleExploreExitReq );
@@ -85,10 +90,32 @@ namespace KFrame
         __KF_EXECUTE_FUNCTION__( OnExecuteExplore );
 
     protected:
-        uint32 RequestExplore( KFEntity* player, uint32 mapid, const std::string& modulename, uint64 moduleid );
+        // 进入探索
+        bool EnterExplore( KFEntity* player, uint32 mapid, uint32 level, uint32 entertype, const std::string& modulename, uint64 moduleid );
+        std::tuple<uint32, KFExploreRecord*, KFMsg::PBExploreData*> ChapterEnterExplore( KFEntity* player, uint32 mapid, uint32 level, const std::string& modulename, uint64 moduleid );
+        std::tuple<uint32, KFExploreRecord*, KFMsg::PBExploreData*> LoginEnterExplore( KFEntity* player, uint32 mapid );
+        std::tuple<uint32, KFExploreRecord*, KFMsg::PBExploreData*> TownEnterExplore( KFEntity* player, uint32 mapid );
+        std::tuple<uint32, KFExploreRecord*, KFMsg::PBExploreData*> JumpEnterExplore( KFEntity* player, uint32 mapid, uint32 level );
+        std::tuple<uint32, KFExploreRecord*, KFMsg::PBExploreData*> ExtendEnterExplore( KFEntity* player, uint32 mapid );
+
+        // 初始化探索数据
+        void InitExploreData( KFMsg::PBExploreData* pbexplore, uint32 exploreid, uint32 maxlevel, uint32 level, uint32 lastlevel );
 
         // 探索结算
         void ExploreBalance( KFEntity* player, uint32 result );
+        void ExploreBalanceVictory( KFEntity* player, KFExploreRecord* kfrecord );
+        void ExploreBalanceFailed( KFEntity* player, KFExploreRecord* kfrecord );
+        void ExploreBalanceFlee( KFEntity* player, KFExploreRecord* kfrecord );
+        void ExploreBalanceTown( KFEntity* player, KFExploreRecord* kfrecord );
+
+        // 结算掉落
+        void ExploreBalanceDrop( KFEntity* player, KFExploreRecord* kfrecord, uint32 result );
+
+        // 结算清空数据
+        void ExploreBalanceClearData( KFEntity* player );
+
+        // 结算结果
+        void ExploreBalanceResultCondition( KFEntity* player, KFExploreRecord* kfrecord, uint32 result );
 
         // 随机探索失败获得道具
         void RandExploreFailedItems( KFEntity* player );
@@ -99,16 +126,9 @@ namespace KFrame
         // 改变队伍英雄buff
         void ChangeTeamHeroBuff( KFEntity* player, uint32 operate, uint32 value );
 
-        // 改变英雄buff
-        void ChangeHeroBuff( KFEntity* player, uint64 uuid, uint32 operate, uint32 value );
-
         //////////////////////////////////////////////////////////////////////////////////////
-        // 初始化探索纪录
-        KFExploreRecord* InitExploreRecord( KFEntity* player, uint32 mapid, const std::string& modulename, uint64 moduleid );
-
         // 离开游戏
         __KF_LEAVE_PLAYER_FUNCTION__( OnLeaveSaveExploreRecord );
-
         //////////////////////////////////////////////////////////////////////////////////////
     protected:
         // 玩家组件上下文

@@ -1,4 +1,4 @@
-<root version="2054">
+<root version="2621">
 	<item Name="disconnettime" Key="" Value="1000" Channel="0" Service="0" />
 	<item Name="playernamelength" Key="" Value="15" Channel="0" Service="0" />
 	<item Name="recruitrefreshtime" Key="" Value="0.4" Channel="0" Service="0" />

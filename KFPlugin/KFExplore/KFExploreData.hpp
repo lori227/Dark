@@ -35,7 +35,24 @@ namespace KFrame
 
         // 查找货币
         KFMsg::PBBalanceCurrency* FindCurrency( const std::string& name );
+
+        // 查找npc数据
+        KFMsg::PBExploreNpcData* FindNpcData( const std::string& key );
+
+        // 查找探索数据
+        KFMsg::PBExploreData* FindExeploreData( uint32 level );
+        void RemoveExeploreData( uint32 level );
+
+        // 添加buff
+        void AddBuffData( uint64 uuid, uint32 value );
+        void RemoveBuffData( uint64 uuid, uint32 value );
         ////////////////////////////////////////////////////////////////////////////////////////////////
+        // 初始化数据
+        void BalanceBeginData( KFEntity* player );
+
+        // 结算数据
+        void BalanceEndData( KFEntity* player );
+
         // 初始化英雄数据
         void BalanceHeroBeginData( KFEntity* player );
 
@@ -60,15 +77,16 @@ namespace KFrame
         // 结算掉落
         void BalanceDrop( KFEntity* player );
         ////////////////////////////////////////////////////////////////////////////////////////////////
-        // 查找npc数据
-        KFMsg::PBExploreNpcData* FindNpcData( const std::string& key );
+
     protected:
+
+
         // 计算道具数据
         void BalanceItemRecordData( KFData* kfitemrecord, uint32 balancetype );
         void BalanceItemData( KFData* kfitem, uint32 balancetype );
 
         // 结算各项数据
-        void BalanceHeroRecord( KFMsg::PBBalanceData* pbdata, uint32 status );
+        void BalanceHeroRecord( KFMsg::PBBalanceData* pbdata );
         void BalanceItemRecord( KFMsg::PBBalanceData* pbdata, uint32 status );
         void BalanceCurrencyRecord( KFMsg::PBBalanceData* pbdata );
     public:

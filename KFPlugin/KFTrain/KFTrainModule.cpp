@@ -11,6 +11,11 @@ namespace KFrame
 
         __REGISTER_REMOVE_DATA_1__( __STRING__( train ), &KFTrainModule::OnRemoveTrainHero );
         __REGISTER_UPDATE_DATA_2__( __STRING__( train ), __STRING__( calctime ), &KFTrainModule::OnUpdateCalcTime );
+
+        __REGISTER_EXECUTE__( __STRING__( trainexp ), &KFTrainModule::OnExecuteTechnologyTrainExp );
+        __REGISTER_EXECUTE__( __STRING__( traincost ), &KFTrainModule::OnExecuteTechnologyTrainCost );
+        __REGISTER_EXECUTE__( __STRING__( traincount ), &KFTrainModule::OnExecuteTechnologyTrainCount );
+
         //////////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_TRAIN_CHANGE_REQ, &KFTrainModule::HandleTrainChangeReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_TRAIN_CLEAN_REQ, &KFTrainModule::HandleTrainCleanReq );
@@ -26,6 +31,11 @@ namespace KFrame
 
         __UN_REMOVE_DATA_1__( __STRING__( train ) );
         __UN_UPDATE_DATA_2__( __STRING__( train ), __STRING__( calctime ) );
+
+        __UN_EXECUTE__( __STRING__( trainexp ) );
+        __UN_EXECUTE__( __STRING__( traincost ) );
+        __UN_EXECUTE__( __STRING__( traincount ) );
+
         //////////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_TRAIN_CHANGE_REQ );
         __UN_MESSAGE__( KFMsg::MSG_TRAIN_CLEAN_REQ );
@@ -57,6 +67,19 @@ namespace KFrame
     __KF_MESSAGE_FUNCTION__( KFTrainModule::HandleTrainChangeReq )
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgTrainChangeReq );
+
+        auto setting = GetTrainSetting( player );
+        if ( setting == nullptr  )
+        {
+            // 训练所配置错误
+            return _kf_display->SendToClient( player, KFMsg::TrainCampSettingError );
+        }
+
+        if ( kfmsg.index() > GetTrainCampCount( player, setting ) )
+        {
+            // 不支持的栏位
+            return _kf_display->SendToClient( player, KFMsg::TrainCampIndexError );
+        }
 
         auto kftraincamprecord = player->Find( __STRING__( train ) );
         if ( kfmsg.uuid() == 0u )
@@ -97,6 +120,12 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::TrainCampSettingError );
         }
 
+        if ( kfmsg.index() > GetTrainCampCount( player, setting ) )
+        {
+            // 训练栏位置错误
+            return _kf_display->SendToClient( player, KFMsg::TrainCampIndexError );
+        }
+
         auto kftraincamprecord = player->Find( __STRING__( train ) );
         auto kftraincamp = kftraincamprecord->Find( kfmsg.index() );
         if ( kftraincamp == nullptr )
@@ -115,14 +144,11 @@ namespace KFrame
         }
 
         auto consumecount = ( endtime - calctime - 1u ) / setting->_unit_time + 1u;
-
-        // 金钱是否足够
-        auto dataname = player->CheckRemoveElement( &setting->_onekey_consume, __FUNC_LINE__, consumecount );
+        auto dataname = CheckAndRemoveElement( player, &setting->_onekey_consume, __FUNC_LINE__, consumecount );
         if ( !dataname.empty() )
         {
             return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
         }
-        player->RemoveElement( &setting->_onekey_consume, __STRING__( trainonekey ), __FUNC_LINE__, consumecount );
 
         auto addcount = ( endtime - calctime ) / setting->_cd_time;
         if ( addcount == 0u )
@@ -133,7 +159,6 @@ namespace KFrame
 
         // 取消定时器
         __UN_TIMER_2__( player->GetKeyID(), kfmsg.index() );
-
         player->UpdateData( kftraincamp, __STRING__( calctime ), KFEnum::Set, endtime );
     }
 
@@ -146,6 +171,12 @@ namespace KFrame
         {
             // 训练营等级错误
             return _kf_display->SendToClient( player, KFMsg::TrainCampLevelError );
+        }
+
+        if ( kfmsg.index() > GetTrainCampCount( player, setting ) )
+        {
+            // 训练栏位置错误
+            return _kf_display->SendToClient( player, KFMsg::TrainCampIndexError );
         }
 
         auto kftrain = player->Find( __STRING__( train ), kfmsg.index() );
@@ -177,13 +208,11 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::HeroLevelIsMax );
         }
 
-        // 金钱是否足够
-        auto dataname = player->CheckRemoveElement( &setting->_consume, __FUNC_LINE__ );
+        auto dataname = CheckAndRemoveElement( player, &setting->_consume, __FUNC_LINE__, 1u );
         if ( !dataname.empty() )
         {
             return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
         }
-        player->RemoveElement( &setting->_consume, __STRING__( trainhero ), __FUNC_LINE__ );
 
         // 更新训练时间
         player->UpdateData( kftrain, __STRING__( calctime ), KFEnum::Set, KFGlobal::Instance()->_real_time );
@@ -273,6 +302,34 @@ namespace KFrame
         }
     }
 
+    std::string KFTrainModule::CheckAndRemoveElement( KFEntity* player, const KFElements* kfelements, const char* function, uint32 line, uint32 consumecount )
+    {
+        // 折扣
+        auto costreducescale = player->Get<uint32>( __STRING__( effect ), __STRING__( traincost ) ) / ( double )KFRandEnum::TenThousand;
+
+        // 消耗倍数
+        auto costscale = 1.0f * consumecount * ( 1.0f - costreducescale );
+
+        // 金钱是否足够
+        auto& dataname = player->CheckRemoveElement( kfelements, __FUNC_LINE__, costscale );
+        if ( dataname.empty() )
+        {
+            player->RemoveElement( kfelements, __STRING__( trainonekey ), __FUNC_LINE__, costscale );
+        }
+
+        return dataname;
+    }
+
+    uint32 KFTrainModule::GetTrainCampCount( KFEntity* player, const KFTrainSetting* kfsetting )
+    {
+        // 训练所等级的栏数
+        uint32 count = kfsetting->_count;
+
+        // 科技所额外的栏数
+        count += player->Get<uint32>( __STRING__( effect ), __STRING__( traincount ) );
+        return count;
+    }
+
     void KFTrainModule::AddTrainHero( KFEntity* player, KFData* kftrainrecord, uint64 uuid, uint32 index )
     {
         if ( !IsTrainActive( player ) )
@@ -313,13 +370,11 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::HeroNotInHeroList );
         }
 
-        // 金钱是否足够
-        auto dataname = player->CheckRemoveElement( &setting->_consume, __FUNC_LINE__ );
+        auto dataname = CheckAndRemoveElement( player, &setting->_consume, __FUNC_LINE__, 1u );
         if ( !dataname.empty() )
         {
             return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
         }
-        player->RemoveElement( &setting->_consume, __STRING__( trainhero ), __FUNC_LINE__ );
 
         auto kftrain = kftrainrecord->Find( index );
         if ( kftrain != nullptr )
@@ -446,8 +501,11 @@ namespace KFrame
         auto kflevel = kfhero->Find( __STRING__( level ) );
         auto oldlevel = kflevel->Get();
 
+        // 科技: 增加单位时间训练经验
+        auto expaddscale = player->Get<uint32>( __STRING__( effect ), __STRING__( trainexp ) ) / ( double )KFRandEnum::TenThousand;
+
         // 为当前英雄增加经验
-        auto addexp = setting->_add_exp * count;
+        auto addexp = setting->_add_exp * ( 1 + expaddscale ) * count;
         addexp = _kf_hero->AddExp( player, kfhero, addexp );
         if ( addexp != 0u )
         {
@@ -506,4 +564,44 @@ namespace KFrame
 
         _kf_record_client->AddCampRecord( player, kfhero, upgradetime, KFMsg::TrainBuild, newlevel );
     }
+
+    __KF_EXECUTE_FUNCTION__( KFTrainModule::OnExecuteTechnologyTrainExp )
+    {
+        if ( executedata->_param_list._params.size() < 1u )
+        {
+            return false;
+        }
+
+        // 增加经验的比例(万分比)
+        auto expaddscale = executedata->_param_list._params[0]->_int_value;
+        player->UpdateData( __STRING__( effect ), __STRING__( trainexp ), KFEnum::Add, expaddscale );
+        return true;
+    }
+
+    __KF_EXECUTE_FUNCTION__( KFTrainModule::OnExecuteTechnologyTrainCost )
+    {
+        if ( executedata->_param_list._params.size() < 1u )
+        {
+            return false;
+        }
+
+        // 降低消耗的比例(万分比)
+        auto costreducescale = executedata->_param_list._params[0]->_int_value;
+        player->UpdateData( __STRING__( effect ), __STRING__( traincost ), KFEnum::Add, costreducescale );
+        return true;
+    }
+
+    __KF_EXECUTE_FUNCTION__( KFTrainModule::OnExecuteTechnologyTrainCount )
+    {
+        if ( executedata->_param_list._params.size() < 1u )
+        {
+            return false;
+        }
+
+        // 新增栏位数量
+        auto addcamp = executedata->_param_list._params[0]->_int_value;
+        player->UpdateData( __STRING__( effect ), __STRING__( traincount ), KFEnum::Add, addcamp );
+        return true;
+    }
+
 }

@@ -1,4 +1,4 @@
-<root version="2552">
+<root version="2614">
 	<item Id="redis" Name="redis" FileName="./setting/{}_{}_redis.xml" Reload="0" ClearData="0" ClearFile="0" />
 	<item Id="mongo" Name="mongo" FileName="./setting/{}_{}_mongo.xml" Reload="0" ClearData="0" ClearFile="0" />
 	<item Id="mysql" Name="mysql" FileName="./setting/{}_{}_mysql.xml" Reload="0" ClearData="0" ClearFile="0" />
@@ -9,12 +9,10 @@
 	<item Id="tcp" Name="tcpserver" FileName="./setting/tcpserver.xml" Reload="0" ClearData="0" ClearFile="0" />
 	<item Id="datashard" Name="datashard" FileName="./setting/datashard.xml" Reload="0" ClearData="0" ClearFile="0" />
 	<item Id="robot" Name="robot" FileName="./setting/robot.xml" Reload="0" ClearData="0" ClearFile="0" />
-	<item Id="project" Name="project" FileName="./setting/project.xml" Reload="0" ClearData="0" ClearFile="0" />
-	<item Id="route" Name="route" FileName="./config/route.xml" Reload="1" ClearData="1" ClearFile="0" />
+	<item Id="route" Name="route" FileName="./setting/route.xml" Reload="0" ClearData="0" ClearFile="0" />
 	<item Id="channel" Name="channel" FileName="./config/channel.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="filter" Name="filter" FileName="./config/filter.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="class" Name="class" FileName="./config/class.xml" Reload="1" ClearData="0" ClearFile="0" />
-	<item Id="element" Name="element" FileName="./config/element.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="relation" Name="relation" FileName="./config/relation.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="rank" Name="rank" FileName="./config/rank.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="compound" Name="compound" FileName="./config/compound.xml" Reload="1" ClearData="1" ClearFile="0" />
@@ -35,6 +33,8 @@
 	<item Id="unlock" Name="unlock" FileName="./config/unlock.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="condition" Name="unlockcondition" FileName="./config/unlockcondition.xml" Reload="1" ClearData="1" ClearFile="1" />
 	<item Id="formula" Name="formula" FileName="./config/formula.xml" Reload="1" ClearData="1" ClearFile="0" />
+	<item Id="project" Name="project" FileName="./setting/project.xml" Reload="0" ClearData="0" ClearFile="0" />
+	<item Id="reward" Name="reward" FileName="./config/reward.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="match" Name="match" FileName="./config/match.xml" Reload="1" ClearData="0" ClearFile="0" />
 	<item Id="option" Name="heroment" FileName="./config/heroment.xml" Reload="1" ClearData="0" ClearFile="0" />
 	<item Id="option" Name="itemment" FileName="./config/itemment.xml" Reload="1" ClearData="0" ClearFile="0" />
@@ -73,7 +73,6 @@
 	<item Id="shopgeneral" Name="shopgeneral" FileName="./config/shopgeneral.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="shopgoods" Name="shopgoods" FileName="./config/shopgoods.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="granary" Name="granary" FileName="./config/granary.xml" Reload="1" ClearData="1" ClearFile="0" />
-	<item Id="smithy" Name="smithy" FileName="./config/smithy.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="smithyweapon" Name="smithyweapon" FileName="./config/smithyweapon.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="foodconsume" Name="foodconsume" FileName="./config/foodconsume.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="chapter" Name="chapter" FileName="./config/chapter.xml" Reload="1" ClearData="1" ClearFile="0" />
@@ -82,13 +81,14 @@
 	<item Id="taskchain" Name="taskchain" FileName="./config/taskchain.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="taskchainrefresh" Name="taskchainrefresh" FileName="./config/taskchainrefresh.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="condition" Name="taskcondition" FileName="./config/taskcondition.xml" Reload="1" ClearData="1" ClearFile="1" />
-	<item Id="reward" Name="reward" FileName="./config/reward.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="currency" Name="currency" FileName="./config/currency.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="buildlevel" Name="buildlevel" FileName="./config/buildlevel.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="technology" Name="technology" FileName="./config/technology.xml" Reload="1" ClearData="1" ClearFile="0" />
-	<item Id="condition" Name="buildcondition" FileName="./config/buildcondition.xml" Reload="1" ClearData="1" ClearFile="1" />
 	<item Id="icon" Name="icon" FileName="./config/icon.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="faction" Name="faction" FileName="./config/faction.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="initialprocess" Name="initialprocess" FileName="./config/initialprocess.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="tlog" Name="tlog" FileName="./config/tlog.xml" Reload="0" ClearData="0" ClearFile="0" />
+	<item Id="dialogue" Name="dialogue" FileName="./config/dialogue.xml" Reload="1" ClearData="1" ClearFile="0" />
+	<item Id="dialoguebranch" Name="dialoguebranch" FileName="./config/dialoguebranch.xml" Reload="1" ClearData="1" ClearFile="0" />
+	<item Id="story" Name="story" FileName="./config/story.xml" Reload="1" ClearData="1" ClearFile="0" />
 </root>

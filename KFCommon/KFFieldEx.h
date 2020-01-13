@@ -180,6 +180,20 @@ namespace KFrame
         __STRING_DEFINE__( onelevel );
         __STRING_DEFINE__( twolevel );
         __STRING_DEFINE__( threelevel );
+        __STRING_DEFINE__( smithycdtime );
+        __STRING_DEFINE__( smithyaddnum );
+        __STRING_DEFINE__( smithycollectmax );
+        __STRING_DEFINE__( smithystoremax );
+        __STRING_DEFINE__( smithycritrate );
+        __STRING_DEFINE__( smithycritvalue );
+        __STRING_DEFINE__( smithymakemax );
+        __STRING_DEFINE__( smithymakelevel );
+        __STRING_DEFINE__( smithyitemid );
+        __STRING_DEFINE__( smithystorenum );
+        __STRING_DEFINE__( trainexp );
+        __STRING_DEFINE__( traincost );
+        __STRING_DEFINE__( traincount );
+        __STRING_DEFINE__( exploretown );
     }
 }
 

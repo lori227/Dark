@@ -4,14 +4,12 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="KFSmithyPlugin.cpp" />
     <ClCompile Include="KFSmithyModule.cpp" />
-    <ClCompile Include="KFSmithyConfig.cpp" />
     <ClCompile Include="KFSmithyWeaponConfig.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="KFSmithyPlugin.hpp" />
     <ClInclude Include="KFSmithyModule.hpp" />
     <ClInclude Include="KFSmithyInterface.h" />
-    <ClInclude Include="KFSmithyConfig.hpp" />
     <ClInclude Include="KFSmithyWeaponConfig.hpp" />
   </ItemGroup>
 </Project>

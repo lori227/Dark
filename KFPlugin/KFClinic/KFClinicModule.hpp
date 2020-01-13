@@ -72,6 +72,9 @@ namespace KFrame
         // 额外增加治疗材料的存储上限
         __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyClinicMaxNum );
 
+        // 额外减少单个材料所需要花费的货币比例
+        __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyClinicMoneySubPercent );
+
     protected:
         // 获取医疗所等级
         uint32 GetClinicLevel( KFEntity* player );
@@ -91,11 +94,14 @@ namespace KFrame
         // 获取治疗材料的存储上限
         uint32 GetClinicMaterialsMaxNum( KFEntity* player, const KFClinicSetting* setting );
 
-        // 获取治疗所花费金币量
-        const std::string& CalcClinicCureMoneyCount( KFEntity* player, const KFClinicSetting* setting, uint32 addhp );
-
         // 获取所选的英雄列表需要的治疗量
-        uint32 GetClinicHerosNeedCurehp( KFEntity* player, std::list<uint64>& herolist );
+        uint32 CalcClinicHerosNeedCurehp( KFEntity* player, UInt64List& herolist );
+
+        // 能否使用治疗所治疗, 返回错误码
+        uint32 CalcClinicCureMoney( KFEntity* player, UInt64List& herolist );
+
+        // 获取治疗所花费金币量
+        std::string CalcClinicMoney( KFEntity* player, const KFClinicSetting* setting, uint32 addhp );
 
     protected:
         // 玩家组件上下文

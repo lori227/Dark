@@ -16,7 +16,8 @@ namespace KFrame
         __REGISTER_UPDATE_DATA_2__( __STRING__( clinic ), __STRING__( num ), &KFClinicModule::OnItemNumUpdate );
 
         __REGISTER_EXECUTE__( __STRING__( clinicaddnum ), &KFClinicModule::OnExecuteTechnologyClinicAddNum );
-        __REGISTER_EXECUTE__( __STRING__( clinicmaxnum ), &KFClinicModule::OnExecuteTechnologyClinicAddNum );
+        __REGISTER_EXECUTE__( __STRING__( clinicmaxnum ), &KFClinicModule::OnExecuteTechnologyClinicMaxNum );
+        __REGISTER_EXECUTE__( __STRING__( clinicsubmoneypercent ), &KFClinicModule::OnExecuteTechnologyClinicMoneySubPercent );
 
         ///////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_CLINIC_CURE_REQ, &KFClinicModule::HandleClinicCureReq );
@@ -33,8 +34,44 @@ namespace KFrame
         __UN_ADD_ELEMENT__( __STRING__( smithy ) );
         __UN_ADD_DATA_2__( __STRING__( build ), KFMsg::ClinicBuild );
         __UN_UPDATE_DATA_2__( __STRING__( clinic ), __STRING__( num ) );
+
+        __UN_EXECUTE__( __STRING__( clinicaddnum ) );
+        __UN_EXECUTE__( __STRING__( clinicmaxnum ) );
+        __UN_EXECUTE__( __STRING__( clinicsubmoneypercent ) );
         ///////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_CLINIC_CURE_REQ );
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////
+    __KF_ADD_ELEMENT_FUNCTION__( KFClinicModule::AddClinicElement )
+    {
+        auto kfelement = kfresult->_element;
+        if ( !kfelement->IsObject() )
+        {
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object", kfelement->_data_name );
+            return false;
+        }
+
+        // 未解锁时获得材料取1级的数据
+        auto level = GetClinicLevel( player );
+        level = __MAX__( 1u, level );
+        auto kfsetting = KFClinicConfig::Instance()->FindSetting( level );
+        if ( kfsetting == nullptr )
+        {
+            __LOG_ERROR_FUNCTION__( function, line, "clinic level=[{}] can't find setting", level );
+            return false;
+        }
+
+        auto kfclinic = player->Find( __STRING__( clinic ) );
+        auto curnum = kfclinic->Get<uint32>( __STRING__( num ) );
+
+        auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
+        auto totalnum = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( num ), multiple );
+        auto maxnum = GetClinicMaterialsMaxNum( player, kfsetting );
+        totalnum = __MIN__( totalnum, maxnum - curnum );
+        player->UpdateData( kfclinic, __STRING__( num ), KFEnum::Add, totalnum );
+
+        return kfresult->AddResult( __STRING__( num ), totalnum );
     }
 
     __KF_ENTER_PLAYER_FUNCTION__( KFClinicModule::OnEnterClinicModule )
@@ -49,6 +86,12 @@ namespace KFrame
         CheckClinicTimer( player );
     }
 
+
+    __KF_LEAVE_PLAYER_FUNCTION__( KFClinicModule::OnLeaveClinicModule )
+    {
+        __UN_TIMER_1__( player->GetKeyID() );
+    }
+
     __KF_EXECUTE_FUNCTION__( KFClinicModule::OnExecuteTechnologyClinicAddNum )
     {
         if ( executedata->_param_list._params.size() < 1u )
@@ -56,8 +99,8 @@ namespace KFrame
             return false;
         }
 
-        auto add_num = executedata->_param_list._params[0]->_int_value;
-        player->UpdateData( __STRING__( effect ), __STRING__( clinicaddnum ), KFEnum::Add, add_num );
+        auto addnum = executedata->_param_list._params[0]->_int_value;
+        player->UpdateData( __STRING__( effect ), __STRING__( clinicaddnum ), KFEnum::Add, addnum );
         return true;
     }
 
@@ -68,8 +111,20 @@ namespace KFrame
             return false;
         }
 
-        auto max_num = executedata->_param_list._params[0]->_int_value;
-        player->UpdateData( __STRING__( effect ), __STRING__( clinicmaxnum ), KFEnum::Add, max_num );
+        auto maxnum = executedata->_param_list._params[0]->_int_value;
+        player->UpdateData( __STRING__( effect ), __STRING__( clinicmaxnum ), KFEnum::Add, maxnum );
+        return true;
+    }
+
+    __KF_EXECUTE_FUNCTION__( KFClinicModule::OnExecuteTechnologyClinicMoneySubPercent )
+    {
+        if ( executedata->_param_list._params.size() < 1u )
+        {
+            return false;
+        }
+
+        auto percent = executedata->_param_list._params[0]->_int_value;
+        player->UpdateData( __STRING__( effect ), __STRING__( clinicsubmoneypercent ), KFEnum::Add, percent );
         return true;
     }
 
@@ -147,84 +202,14 @@ namespace KFrame
 
     uint32 KFClinicModule::GetClinicUnitTimeMaterialsAddNum( KFEntity* player, const KFClinicSetting* setting )
     {
-        if ( player == nullptr || setting == nullptr )
-        {
-            return 0u;
-        }
-
         auto kfeffectaddnum = player->Get( __STRING__( effect ), __STRING__( clinicaddnum ) );
-
         return setting->_add_num + kfeffectaddnum;
     }
 
     uint32 KFClinicModule::GetClinicMaterialsMaxNum( KFEntity* player, const KFClinicSetting* setting )
     {
-        if ( player == nullptr || setting == nullptr )
-        {
-            return 0u;
-        }
-
         auto kfeffectmaxnum = player->Get( __STRING__( effect ), __STRING__( clinicmaxnum ) );
-
         return setting->_max_num + kfeffectmaxnum;
-    }
-
-    const std::string& KFClinicModule::CalcClinicCureMoneyCount( KFEntity* player, const KFClinicSetting* setting, uint32 addhp )
-    {
-        auto clinicsubmoneypercent = player->Get( __STRING__( effect ), __STRING__( clinicsubmoneypercent ) );
-
-        auto dclinicsubmoneypercent = static_cast<double>( clinicsubmoneypercent ) / KFRandEnum::TenThousand;
-        dclinicsubmoneypercent = dclinicsubmoneypercent > 1.0 ? 1.0 : dclinicsubmoneypercent;
-
-        auto kfformulasetting = KFFormulaConfig::Instance()->FindSetting( setting->_formual_id );
-        if ( kfformulasetting == nullptr || kfformulasetting->_type.empty() || kfformulasetting->_params.size() < 2u )
-        {
-            // 没符合要求的公式
-            return _invalid_string;
-        }
-
-        auto param1 = kfformulasetting->_params[0]->_double_value;
-        auto param2 = kfformulasetting->_params[1]->_double_value;
-
-        auto moneycount = static_cast<uint32>(
-                              std::round(
-                                  static_cast<double>( __MAX__( addhp * param1, param2 ) )
-                                  * ( 1.0 - dclinicsubmoneypercent )
-                              )
-                          );
-
-        // 费用数据格式
-        return KFElementConfig::Instance()->StringElemnt( kfformulasetting->_type, moneycount, 0u );
-    }
-
-    uint32 KFClinicModule::GetClinicHerosNeedCurehp( KFEntity* player, std::list<uint64>& herolist )
-    {
-        auto needcurehp = 0u;
-        auto size = ( uint32 )herolist.size();
-
-        for ( auto& uuid : herolist )
-        {
-            auto kfhero = player->Find( __STRING__( hero ), uuid );
-            if ( kfhero == nullptr )
-            {
-                continue;
-            }
-
-            auto kffight = kfhero->Find( __STRING__( fighter ) );
-            auto hp = kffight->Get( __STRING__( hp ) );
-            auto maxhp = kffight->Get( __STRING__( maxhp ) );
-            if ( hp < maxhp )
-            {
-                needcurehp += maxhp - hp;
-            }
-        }
-
-        return needcurehp;
-    }
-
-    __KF_LEAVE_PLAYER_FUNCTION__( KFClinicModule::OnLeaveClinicModule )
-    {
-        __UN_TIMER_1__( player->GetKeyID() );
     }
 
     __KF_RECORD_VALUE_FUNCTION__( KFClinicModule::GetDayClinicTotalNum )
@@ -357,37 +342,6 @@ namespace KFrame
         dbvalue.AddValue( __STRING__( clinicnum ), totalnum );
     }
 
-    __KF_ADD_ELEMENT_FUNCTION__( KFClinicModule::AddClinicElement )
-    {
-        auto kfelement = kfresult->_element;
-        if ( !kfelement->IsObject() )
-        {
-            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object", kfelement->_data_name );
-            return false;
-        }
-
-        // 未解锁时获得材料取1级的数据
-        auto level = GetClinicLevel( player );
-        level = __MAX__( 1u, level );
-        auto kfsetting = KFClinicConfig::Instance()->FindSetting( level );
-        if ( kfsetting == nullptr )
-        {
-            __LOG_ERROR_FUNCTION__( function, line, "clinic level=[{}] can't find setting", level );
-            return false;
-        }
-
-        auto kfclinic = player->Find( __STRING__( clinic ) );
-        auto curnum = kfclinic->Get<uint32>( __STRING__( num ) );
-
-        auto kfelementobject = reinterpret_cast<KFElementObject*>( kfelement );
-        auto totalnum = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( num ), multiple );
-        auto maxnum = GetClinicMaterialsMaxNum( player, kfsetting );
-        totalnum = __MIN__( totalnum, maxnum - curnum );
-        player->UpdateData( kfclinic, __STRING__( num ), KFEnum::Add, totalnum );
-
-        return kfresult->AddResult( __STRING__( num ), totalnum );
-    }
-
     __KF_ADD_DATA_FUNCTION__( KFClinicModule::OnAddClinicBuild )
     {
         // 医疗所功能开启
@@ -428,43 +382,87 @@ namespace KFrame
         }
     }
 
-    __KF_MESSAGE_FUNCTION__( KFClinicModule::HandleClinicCureReq )
+    __KF_TIMER_FUNCTION__( KFClinicModule::OnTimerAddItem )
     {
-        __CLIENT_PROTO_PARSE__( KFMsg::MsgClinicCureReq );
-
-        if ( !IsClinicActive( player ) )
+        auto player = _kf_player->FindPlayer( objectid );
+        if ( player == nullptr )
         {
-            return _kf_display->SendToClient( player, KFMsg::BuildFuncNotActive );
+            return;
         }
 
         auto setting = GetClinicSetting( player );
         if ( setting == nullptr )
         {
-            return _kf_display->SendToClient( player, KFMsg::BuildFuncNotActive );
+            return;
         }
 
-        if ( ( uint32 )kfmsg.uuid_size() > setting->_count )
+        auto kfclinic = player->Find( __STRING__( clinic ) );
+
+        // 单位时间的产量
+        auto addnum = GetClinicUnitTimeMaterialsAddNum( player, setting );
+        auto curnum = kfclinic->Get<uint32>( __STRING__( num ) );
+        auto maxnum = GetClinicMaterialsMaxNum( player, setting );
+
+        if ( addnum + curnum > maxnum )
         {
-            return _kf_display->SendToClient( player, KFMsg::ClinicCountIsNotEnough );
+            addnum = maxnum - curnum;
         }
 
-        std::list<uint64> herolist;
+        player->UpdateData( kfclinic, __STRING__( calctime ), KFEnum::Set, KFGlobal::Instance()->_real_time );
+        player->UpdateData( kfclinic, __STRING__( num ), KFEnum::Add, addnum );
+        player->UpdateData( kfclinic, __STRING__( daynum ), KFEnum::Add, addnum );
+        player->UpdateData( kfclinic, __STRING__( daytime ), KFEnum::Set, KFGlobal::Instance()->_real_time );
+    }
+
+    __KF_MESSAGE_FUNCTION__( KFClinicModule::HandleClinicMedicalFeeReq )
+    {
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgClinicMedicalFeeReq );
+
+        UInt64List herolist;
         for ( auto i = 0u; i < ( uint32 )kfmsg.uuid_size(); i++ )
         {
             herolist.emplace_back( kfmsg.uuid( i ) );
         }
 
-        auto needcurehp = GetClinicHerosNeedCurehp( player, herolist );
-        if ( needcurehp == 0 )
+        // 计算费用
+        int needcurehp = 0u;
+        if ( CalcClinicCureMoney( player, herolist ) == KFMsg::Ok )
         {
-            // 没有英雄需要治疗
+            needcurehp = CalcClinicHerosNeedCurehp( player, herolist );
+        }
+
+        auto setting = GetClinicSetting( player );
+        std::string strcost = CalcClinicMoney( player, setting, needcurehp );
+
+        KFMsg::MsgClinicMedicalFeeAck ack;
+        ack.set_element( strcost );
+        _kf_player->SendToClient( player, KFMsg::MSG_CLINIC_MEDICAL_FEE_ACK, &ack );
+    }
+
+    __KF_MESSAGE_FUNCTION__( KFClinicModule::HandleClinicCureReq )
+    {
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgClinicCureReq );
+
+        UInt64List herolist;
+        for ( auto i = 0u; i < ( uint32 )kfmsg.uuid_size(); i++ )
+        {
+            herolist.emplace_back( kfmsg.uuid( i ) );
+        }
+
+        auto result = CalcClinicCureMoney( player, herolist );
+        if ( result != KFMsg::Ok )
+        {
+            return _kf_display->SendToClient( player, result );
+        }
+
+        auto needcurehp = CalcClinicHerosNeedCurehp( player, herolist );
+        if ( needcurehp == 0u )
+        {
             return _kf_display->SendToClient( player, KFMsg::ClinicNotNeedCure );
         }
 
-        if ( setting->_add_hp == 0u || setting->_consume_num == 0u )
-        {
-            return _kf_display->SendToClient( player, KFMsg::ClinicSettingError );
-        }
+        auto setting = GetClinicSetting( player );
+        std::string strcost = CalcClinicMoney( player, setting, needcurehp );
 
         auto kfclinic = player->Find( __STRING__( clinic ) );
         auto num = kfclinic->Get( __STRING__( num ) );
@@ -474,11 +472,9 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::ClinicItemIsNotEnough );
         }
 
-        auto& strmoneycount = CalcClinicCureMoneyCount( player, setting, needcurehp );
-        KFElements elementsmoney;
-        elementsmoney.Parse( strmoneycount, __FUNC_LINE__ );
-
         // 金钱是否足够
+        KFElements elementsmoney;
+        elementsmoney.Parse( strcost, __FUNC_LINE__ );
         auto dataname = player->CheckRemoveElement( &elementsmoney, __FUNC_LINE__ );
         if ( !dataname.empty() )
         {
@@ -532,70 +528,83 @@ namespace KFrame
         player->UpdateData( kfclinic, __STRING__( num ), KFEnum::Dec, totaldecnum );
     }
 
-    __KF_TIMER_FUNCTION__( KFClinicModule::OnTimerAddItem )
+    uint32 KFClinicModule::CalcClinicCureMoney( KFEntity* player, UInt64List& herolist )
     {
-        auto player = _kf_player->FindPlayer( objectid );
-        if ( player == nullptr )
-        {
-            return;
-        }
-
-        auto setting = GetClinicSetting( player );
-        if ( setting == nullptr )
-        {
-            return;
-        }
-
-        auto kfclinic = player->Find( __STRING__( clinic ) );
-
-        // 单位时间的产量
-        auto addnum = GetClinicUnitTimeMaterialsAddNum( player, setting );
-        auto curnum = kfclinic->Get<uint32>( __STRING__( num ) );
-        auto maxnum = GetClinicMaterialsMaxNum( player, setting );
-
-        if ( addnum + curnum > maxnum )
-        {
-            addnum = maxnum - curnum;
-        }
-
-        player->UpdateData( kfclinic, __STRING__( calctime ), KFEnum::Set, KFGlobal::Instance()->_real_time );
-        player->UpdateData( kfclinic, __STRING__( num ), KFEnum::Add, addnum );
-        player->UpdateData( kfclinic, __STRING__( daynum ), KFEnum::Add, addnum );
-        player->UpdateData( kfclinic, __STRING__( daytime ), KFEnum::Set, KFGlobal::Instance()->_real_time );
-    }
-
-    __KF_MESSAGE_FUNCTION__( KFClinicModule::HandleClinicMedicalFeeReq )
-    {
-        __CLIENT_PROTO_PARSE__( KFMsg::MsgClinicMedicalFeeReq );
-
         if ( !IsClinicActive( player ) )
         {
-            return _kf_display->SendToClient( player, KFMsg::BuildFuncNotActive );
+            return KFMsg::BuildFuncNotActive;
         }
 
         auto setting = GetClinicSetting( player );
         if ( setting == nullptr )
         {
-            return _kf_display->SendToClient( player, KFMsg::BuildFuncNotActive );
+            return KFMsg::BuildFuncNotActive;
         }
 
-        if ( ( uint32 )kfmsg.uuid_size() > setting->_count )
+        if ( setting->_add_hp == 0u || setting->_consume_num == 0u )
         {
-            return _kf_display->SendToClient( player, KFMsg::ClinicCountIsNotEnough );
+            return KFMsg::ClinicSettingError;
         }
 
-        std::list<uint64> herolist;
-        for ( auto i = 0u; i < ( uint32 )kfmsg.uuid_size(); i++ )
+        if ( herolist.size() > setting->_count )
         {
-            herolist.emplace_back( kfmsg.uuid( i ) );
+            return KFMsg::ClinicCountIsNotEnough;
         }
 
-        auto needcurehp = GetClinicHerosNeedCurehp( player, herolist );
-        auto& strmoneycount = CalcClinicCureMoneyCount( player, setting, needcurehp );
+        return KFMsg::Ok;
+    }
 
-        KFMsg::MsgClinicMedicalFeeAck ack;
-        ack.set_element( strmoneycount );
-        _kf_player->SendToClient( player, KFMsg::MSG_CLINIC_MEDICAL_FEE_ACK, &ack );
+    uint32 KFClinicModule::CalcClinicHerosNeedCurehp( KFEntity* player, UInt64List& herolist )
+    {
+        auto needcurehp = 0u;
+        for ( auto& uuid : herolist )
+        {
+            auto kfhero = player->Find( __STRING__( hero ), uuid );
+            if ( kfhero == nullptr )
+            {
+                continue;
+            }
 
+            auto kffight = kfhero->Find( __STRING__( fighter ) );
+            auto hp = kffight->Get( __STRING__( hp ) );
+            auto maxhp = kffight->Get( __STRING__( maxhp ) );
+            if ( hp < maxhp )
+            {
+                needcurehp += maxhp - hp;
+            }
+        }
+
+        return needcurehp;
+    }
+
+    std::string KFClinicModule::CalcClinicMoney( KFEntity* player, const KFClinicSetting* setting, uint32 addhp )
+    {
+        auto kfformulasetting = KFFormulaConfig::Instance()->FindSetting( setting->_formual_id );
+        auto moneycount = 0u;
+
+        if ( addhp > 0 )
+        {
+            // 折扣比例
+            auto clinicsubmoneypercent = player->Get<uint32>( __STRING__( effect ), __STRING__( clinicsubmoneypercent ) ) / ( double )KFRandEnum::TenThousand;
+
+            if ( kfformulasetting == nullptr || kfformulasetting->_type.empty() || kfformulasetting->_params.size() < 2u )
+            {
+                // 没符合要求的公式
+                return _invalid_string;
+            }
+
+            auto param1 = kfformulasetting->_params[0]->_double_value;
+            auto param2 = kfformulasetting->_params[1]->_double_value;
+
+            moneycount = static_cast<uint32>(
+                             std::round(
+                                 static_cast<double>( __MAX__( addhp * param1, param2 ) )
+                                 * ( 1.0 - clinicsubmoneypercent )
+                             )
+                         );
+        }
+
+        // 费用数据格式
+        return KFElementConfig::Instance()->StringElemnt( kfformulasetting->_type, moneycount, 0u );
     }
 }
