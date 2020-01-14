@@ -1,10 +1,10 @@
-﻿#ifndef __KF_EXPLORE_PLUGIN_H__
-#define __KF_EXPLORE_PLUGIN_H__
+﻿#ifndef __KF_REALM_PLUGIN_H__
+#define __KF_REALM_PLUGIN_H__
 #include "KFrame.h"
 
 namespace KFrame
 {
-    class KFExplorePlugin : public KFPlugin
+    class KFRealmPlugin : public KFPlugin
     {
     public:
         // 注册

@@ -1,4 +1,4 @@
-<root version="2636">
+<root version="0">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -81,7 +81,6 @@
 	<item name="buildbasics" version="2450" />
 	<item name="heroprofession" version="2453" />
 	<item name="initialprocess" version="2462" />
-	<item name="heroment" version="2463" />
 	<item name="itemrune" version="2478" />
 	<item name="itemtext" version="2478" />
 	<item name="herogenerate" version="2481" />
@@ -100,19 +99,12 @@
 	<item name="dropdata" version="2563" />
 	<item name="task" version="2563" />
 	<item name="prompttext" version="2564" />
-	<item name="dropgroup" version="2566" />
 	<item name="itemment" version="2568" />
 	<item name="itemcommon" version="2578" />
 	<item name="reward" version="2592" />
-	<item name="dialoguetext" version="2597" />
-	<item name="explore" version="2603" />
-	<item name="sequence" version="2608" />
 	<item name="worldmaptext" version="2608" />
 	<item name="dialoguebranch" version="2609" />
-	<item name="story" version="2609" />
-	<item name="status" version="2610" />
 	<item name="chapter" version="2610" />
-	<item name="dialogue" version="2613" />
 	<item name="npc" version="2613" />
 	<item name="config" version="2614" />
 	<item name="unlockcondition" version="2616" />
@@ -125,4 +117,12 @@
 	<item name="camptext" version="2627" />
 	<item name="class" version="2631" />
 	<item name="minimap" version="2636" />
+	<item name="dropgroup" version="2637" />
+	<item name="heroment" version="2638" />
+	<item name="dialogue" version="2641" />
+	<item name="dialoguetext" version="2641" />
+	<item name="sequence" version="2644" />
+	<item name="status" version="2645" />
+	<item name="explore" version="2645" />
+	<item name="story" version="2647" />
 </root>

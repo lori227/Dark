@@ -87,33 +87,9 @@ LIBPROTOC_EXPORT extern MsgDialogueStartAckDefaultTypeInternal _MsgDialogueStart
 class MsgDialogueStartReq;
 class MsgDialogueStartReqDefaultTypeInternal;
 LIBPROTOC_EXPORT extern MsgDialogueStartReqDefaultTypeInternal _MsgDialogueStartReq_default_instance_;
-class MsgExploreBalanceAck;
-class MsgExploreBalanceAckDefaultTypeInternal;
-LIBPROTOC_EXPORT extern MsgExploreBalanceAckDefaultTypeInternal _MsgExploreBalanceAck_default_instance_;
-class MsgExploreBalanceReq;
-class MsgExploreBalanceReqDefaultTypeInternal;
-LIBPROTOC_EXPORT extern MsgExploreBalanceReqDefaultTypeInternal _MsgExploreBalanceReq_default_instance_;
 class MsgExploreDropReq;
 class MsgExploreDropReqDefaultTypeInternal;
 LIBPROTOC_EXPORT extern MsgExploreDropReqDefaultTypeInternal _MsgExploreDropReq_default_instance_;
-class MsgExploreEnterAck;
-class MsgExploreEnterAckDefaultTypeInternal;
-LIBPROTOC_EXPORT extern MsgExploreEnterAckDefaultTypeInternal _MsgExploreEnterAck_default_instance_;
-class MsgExploreEnterReq;
-class MsgExploreEnterReqDefaultTypeInternal;
-LIBPROTOC_EXPORT extern MsgExploreEnterReqDefaultTypeInternal _MsgExploreEnterReq_default_instance_;
-class MsgExploreExitReq;
-class MsgExploreExitReqDefaultTypeInternal;
-LIBPROTOC_EXPORT extern MsgExploreExitReqDefaultTypeInternal _MsgExploreExitReq_default_instance_;
-class MsgExploreExtendReq;
-class MsgExploreExtendReqDefaultTypeInternal;
-LIBPROTOC_EXPORT extern MsgExploreExtendReqDefaultTypeInternal _MsgExploreExtendReq_default_instance_;
-class MsgExploreJumpReq;
-class MsgExploreJumpReqDefaultTypeInternal;
-LIBPROTOC_EXPORT extern MsgExploreJumpReqDefaultTypeInternal _MsgExploreJumpReq_default_instance_;
-class MsgExploreTownReq;
-class MsgExploreTownReqDefaultTypeInternal;
-LIBPROTOC_EXPORT extern MsgExploreTownReqDefaultTypeInternal _MsgExploreTownReq_default_instance_;
 class MsgFightHeroListReq;
 class MsgFightHeroListReqDefaultTypeInternal;
 LIBPROTOC_EXPORT extern MsgFightHeroListReqDefaultTypeInternal _MsgFightHeroListReq_default_instance_;
@@ -183,6 +159,30 @@ LIBPROTOC_EXPORT extern MsgQueryRecordAckDefaultTypeInternal _MsgQueryRecordAck_
 class MsgQueryRecordReq;
 class MsgQueryRecordReqDefaultTypeInternal;
 LIBPROTOC_EXPORT extern MsgQueryRecordReqDefaultTypeInternal _MsgQueryRecordReq_default_instance_;
+class MsgRealmBalanceAck;
+class MsgRealmBalanceAckDefaultTypeInternal;
+LIBPROTOC_EXPORT extern MsgRealmBalanceAckDefaultTypeInternal _MsgRealmBalanceAck_default_instance_;
+class MsgRealmBalanceReq;
+class MsgRealmBalanceReqDefaultTypeInternal;
+LIBPROTOC_EXPORT extern MsgRealmBalanceReqDefaultTypeInternal _MsgRealmBalanceReq_default_instance_;
+class MsgRealmEnterAck;
+class MsgRealmEnterAckDefaultTypeInternal;
+LIBPROTOC_EXPORT extern MsgRealmEnterAckDefaultTypeInternal _MsgRealmEnterAck_default_instance_;
+class MsgRealmEnterReq;
+class MsgRealmEnterReqDefaultTypeInternal;
+LIBPROTOC_EXPORT extern MsgRealmEnterReqDefaultTypeInternal _MsgRealmEnterReq_default_instance_;
+class MsgRealmExitReq;
+class MsgRealmExitReqDefaultTypeInternal;
+LIBPROTOC_EXPORT extern MsgRealmExitReqDefaultTypeInternal _MsgRealmExitReq_default_instance_;
+class MsgRealmExtendReq;
+class MsgRealmExtendReqDefaultTypeInternal;
+LIBPROTOC_EXPORT extern MsgRealmExtendReqDefaultTypeInternal _MsgRealmExtendReq_default_instance_;
+class MsgRealmJumpReq;
+class MsgRealmJumpReqDefaultTypeInternal;
+LIBPROTOC_EXPORT extern MsgRealmJumpReqDefaultTypeInternal _MsgRealmJumpReq_default_instance_;
+class MsgRealmTownReq;
+class MsgRealmTownReqDefaultTypeInternal;
+LIBPROTOC_EXPORT extern MsgRealmTownReqDefaultTypeInternal _MsgRealmTownReq_default_instance_;
 class MsgRecruitHeroReq;
 class MsgRecruitHeroReqDefaultTypeInternal;
 LIBPROTOC_EXPORT extern MsgRecruitHeroReqDefaultTypeInternal _MsgRecruitHeroReq_default_instance_;
@@ -292,15 +292,7 @@ template<> LIBPROTOC_EXPORT ::KFMsg::MsgClinicMedicalFeeReq* Arena::CreateMaybeM
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgDialogueFinishReq* Arena::CreateMaybeMessage<::KFMsg::MsgDialogueFinishReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgDialogueStartAck* Arena::CreateMaybeMessage<::KFMsg::MsgDialogueStartAck>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgDialogueStartReq* Arena::CreateMaybeMessage<::KFMsg::MsgDialogueStartReq>(Arena*);
-template<> LIBPROTOC_EXPORT ::KFMsg::MsgExploreBalanceAck* Arena::CreateMaybeMessage<::KFMsg::MsgExploreBalanceAck>(Arena*);
-template<> LIBPROTOC_EXPORT ::KFMsg::MsgExploreBalanceReq* Arena::CreateMaybeMessage<::KFMsg::MsgExploreBalanceReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgExploreDropReq* Arena::CreateMaybeMessage<::KFMsg::MsgExploreDropReq>(Arena*);
-template<> LIBPROTOC_EXPORT ::KFMsg::MsgExploreEnterAck* Arena::CreateMaybeMessage<::KFMsg::MsgExploreEnterAck>(Arena*);
-template<> LIBPROTOC_EXPORT ::KFMsg::MsgExploreEnterReq* Arena::CreateMaybeMessage<::KFMsg::MsgExploreEnterReq>(Arena*);
-template<> LIBPROTOC_EXPORT ::KFMsg::MsgExploreExitReq* Arena::CreateMaybeMessage<::KFMsg::MsgExploreExitReq>(Arena*);
-template<> LIBPROTOC_EXPORT ::KFMsg::MsgExploreExtendReq* Arena::CreateMaybeMessage<::KFMsg::MsgExploreExtendReq>(Arena*);
-template<> LIBPROTOC_EXPORT ::KFMsg::MsgExploreJumpReq* Arena::CreateMaybeMessage<::KFMsg::MsgExploreJumpReq>(Arena*);
-template<> LIBPROTOC_EXPORT ::KFMsg::MsgExploreTownReq* Arena::CreateMaybeMessage<::KFMsg::MsgExploreTownReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgFightHeroListReq* Arena::CreateMaybeMessage<::KFMsg::MsgFightHeroListReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgFinishRoomReq* Arena::CreateMaybeMessage<::KFMsg::MsgFinishRoomReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgGranaryGatherReq* Arena::CreateMaybeMessage<::KFMsg::MsgGranaryGatherReq>(Arena*);
@@ -324,6 +316,14 @@ template<> LIBPROTOC_EXPORT ::KFMsg::MsgPVEBalanceReq* Arena::CreateMaybeMessage
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgPVEReq* Arena::CreateMaybeMessage<::KFMsg::MsgPVEReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgQueryRecordAck* Arena::CreateMaybeMessage<::KFMsg::MsgQueryRecordAck>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgQueryRecordReq* Arena::CreateMaybeMessage<::KFMsg::MsgQueryRecordReq>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::MsgRealmBalanceAck* Arena::CreateMaybeMessage<::KFMsg::MsgRealmBalanceAck>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::MsgRealmBalanceReq* Arena::CreateMaybeMessage<::KFMsg::MsgRealmBalanceReq>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::MsgRealmEnterAck* Arena::CreateMaybeMessage<::KFMsg::MsgRealmEnterAck>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::MsgRealmEnterReq* Arena::CreateMaybeMessage<::KFMsg::MsgRealmEnterReq>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::MsgRealmExitReq* Arena::CreateMaybeMessage<::KFMsg::MsgRealmExitReq>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::MsgRealmExtendReq* Arena::CreateMaybeMessage<::KFMsg::MsgRealmExtendReq>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::MsgRealmJumpReq* Arena::CreateMaybeMessage<::KFMsg::MsgRealmJumpReq>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::MsgRealmTownReq* Arena::CreateMaybeMessage<::KFMsg::MsgRealmTownReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgRecruitHeroReq* Arena::CreateMaybeMessage<::KFMsg::MsgRecruitHeroReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgRefreshRecruitReq* Arena::CreateMaybeMessage<::KFMsg::MsgRefreshRecruitReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgRemoveDivisorReq* Arena::CreateMaybeMessage<::KFMsg::MsgRemoveDivisorReq>(Arena*);
@@ -398,18 +398,18 @@ enum ClientProtocol {
   MSG_UPGRADE_TECHNOLOGY_REQ = 3233,
   MSG_TRANSFER_PRO_REQ = 3250,
   MSG_SELECT_INNATE_REQ = 3251,
-  MSG_EXPLORE_ENTER_REQ = 3301,
-  MSG_EXPLORE_ENTER_ACK = 3302,
+  MSG_REALM_ENTER_REQ = 3301,
+  MSG_REALM_ENTER_ACK = 3302,
   MSG_PVE_REQ = 3303,
   MSG_PVE_ACK = 3304,
   MSG_PVE_BALANCE_REQ = 3305,
-  MSG_EXPLORE_EXIT_REQ = 3306,
-  MSG_EXPLORE_JUMP_REQ = 3307,
+  MSG_REALM_EXIT_REQ = 3306,
+  MSG_REALM_JUMP_REQ = 3307,
   MSG_UPDATE_FIGHTER_HERO_REQ = 3308,
-  MSG_EXPLORE_EXTEND_REQ = 3309,
+  MSG_REALM_EXTEND_REQ = 3309,
   MSG_PVE_BALANCE_ACK = 3310,
-  MSG_EXPLORE_BALANCE_REQ = 3311,
-  MSG_EXPLORE_BALANCE_ACK = 3312,
+  MSG_REALM_BALANCE_REQ = 3311,
+  MSG_REALM_BALANCE_ACK = 3312,
   MSG_UPDATE_EXPLORE_PLAYER_REQ = 3313,
   MSG_UPDATE_EXPLORE_NPC_REQ = 3314,
   MSG_UPDATE_EXPLORE_BUFF_ACK = 3315,
@@ -418,7 +418,7 @@ enum ClientProtocol {
   MSG_UPDATE_FAITH_REQ = 3318,
   MSG_INTERACT_ITEM_REQ = 3319,
   MSG_FIGHT_HERO_LIST_REQ = 3320,
-  MSG_EXPLORE_TOWN_REQ = 3321,
+  MSG_REALM_TOWN_REQ = 3321,
   MSG_QUERY_RECORD_REQ = 3351,
   MSG_QUERY_RECORD_ACK = 3352,
   MSG_CHAPTER_EXECUTE_STATUS_REQ = 3371,
@@ -3564,24 +3564,24 @@ class LIBPROTOC_EXPORT MsgSmithyGatherAck : public ::google::protobuf::Message /
 };
 // -------------------------------------------------------------------
 
-class LIBPROTOC_EXPORT MsgExploreEnterReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.MsgExploreEnterReq) */ {
+class LIBPROTOC_EXPORT MsgRealmEnterReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.MsgRealmEnterReq) */ {
  public:
-  MsgExploreEnterReq();
-  virtual ~MsgExploreEnterReq();
+  MsgRealmEnterReq();
+  virtual ~MsgRealmEnterReq();
 
-  MsgExploreEnterReq(const MsgExploreEnterReq& from);
+  MsgRealmEnterReq(const MsgRealmEnterReq& from);
 
-  inline MsgExploreEnterReq& operator=(const MsgExploreEnterReq& from) {
+  inline MsgRealmEnterReq& operator=(const MsgRealmEnterReq& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  MsgExploreEnterReq(MsgExploreEnterReq&& from) noexcept
-    : MsgExploreEnterReq() {
+  MsgRealmEnterReq(MsgRealmEnterReq&& from) noexcept
+    : MsgRealmEnterReq() {
     *this = ::std::move(from);
   }
 
-  inline MsgExploreEnterReq& operator=(MsgExploreEnterReq&& from) noexcept {
+  inline MsgRealmEnterReq& operator=(MsgRealmEnterReq&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -3591,34 +3591,34 @@ class LIBPROTOC_EXPORT MsgExploreEnterReq : public ::google::protobuf::Message /
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const MsgExploreEnterReq& default_instance();
+  static const MsgRealmEnterReq& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MsgExploreEnterReq* internal_default_instance() {
-    return reinterpret_cast<const MsgExploreEnterReq*>(
-               &_MsgExploreEnterReq_default_instance_);
+  static inline const MsgRealmEnterReq* internal_default_instance() {
+    return reinterpret_cast<const MsgRealmEnterReq*>(
+               &_MsgRealmEnterReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     29;
 
-  void Swap(MsgExploreEnterReq* other);
-  friend void swap(MsgExploreEnterReq& a, MsgExploreEnterReq& b) {
+  void Swap(MsgRealmEnterReq* other);
+  friend void swap(MsgRealmEnterReq& a, MsgRealmEnterReq& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline MsgExploreEnterReq* New() const final {
-    return CreateMaybeMessage<MsgExploreEnterReq>(NULL);
+  inline MsgRealmEnterReq* New() const final {
+    return CreateMaybeMessage<MsgRealmEnterReq>(NULL);
   }
 
-  MsgExploreEnterReq* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<MsgExploreEnterReq>(arena);
+  MsgRealmEnterReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<MsgRealmEnterReq>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const MsgExploreEnterReq& from);
-  void MergeFrom(const MsgExploreEnterReq& from);
+  void CopyFrom(const MsgRealmEnterReq& from);
+  void MergeFrom(const MsgRealmEnterReq& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -3635,7 +3635,7 @@ class LIBPROTOC_EXPORT MsgExploreEnterReq : public ::google::protobuf::Message /
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(MsgExploreEnterReq* other);
+  void InternalSwap(MsgRealmEnterReq* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -3657,41 +3657,41 @@ class LIBPROTOC_EXPORT MsgExploreEnterReq : public ::google::protobuf::Message /
   ::google::protobuf::uint32 type() const;
   void set_type(::google::protobuf::uint32 value);
 
-  // uint32 mapid = 2;
-  void clear_mapid();
-  static const int kMapidFieldNumber = 2;
-  ::google::protobuf::uint32 mapid() const;
-  void set_mapid(::google::protobuf::uint32 value);
+  // uint32 realmid = 2;
+  void clear_realmid();
+  static const int kRealmidFieldNumber = 2;
+  ::google::protobuf::uint32 realmid() const;
+  void set_realmid(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:KFMsg.MsgExploreEnterReq)
+  // @@protoc_insertion_point(class_scope:KFMsg.MsgRealmEnterReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 type_;
-  ::google::protobuf::uint32 mapid_;
+  ::google::protobuf::uint32 realmid_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_ClientMessage_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
-class LIBPROTOC_EXPORT MsgExploreJumpReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.MsgExploreJumpReq) */ {
+class LIBPROTOC_EXPORT MsgRealmJumpReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.MsgRealmJumpReq) */ {
  public:
-  MsgExploreJumpReq();
-  virtual ~MsgExploreJumpReq();
+  MsgRealmJumpReq();
+  virtual ~MsgRealmJumpReq();
 
-  MsgExploreJumpReq(const MsgExploreJumpReq& from);
+  MsgRealmJumpReq(const MsgRealmJumpReq& from);
 
-  inline MsgExploreJumpReq& operator=(const MsgExploreJumpReq& from) {
+  inline MsgRealmJumpReq& operator=(const MsgRealmJumpReq& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  MsgExploreJumpReq(MsgExploreJumpReq&& from) noexcept
-    : MsgExploreJumpReq() {
+  MsgRealmJumpReq(MsgRealmJumpReq&& from) noexcept
+    : MsgRealmJumpReq() {
     *this = ::std::move(from);
   }
 
-  inline MsgExploreJumpReq& operator=(MsgExploreJumpReq&& from) noexcept {
+  inline MsgRealmJumpReq& operator=(MsgRealmJumpReq&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -3701,34 +3701,34 @@ class LIBPROTOC_EXPORT MsgExploreJumpReq : public ::google::protobuf::Message /*
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const MsgExploreJumpReq& default_instance();
+  static const MsgRealmJumpReq& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MsgExploreJumpReq* internal_default_instance() {
-    return reinterpret_cast<const MsgExploreJumpReq*>(
-               &_MsgExploreJumpReq_default_instance_);
+  static inline const MsgRealmJumpReq* internal_default_instance() {
+    return reinterpret_cast<const MsgRealmJumpReq*>(
+               &_MsgRealmJumpReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     30;
 
-  void Swap(MsgExploreJumpReq* other);
-  friend void swap(MsgExploreJumpReq& a, MsgExploreJumpReq& b) {
+  void Swap(MsgRealmJumpReq* other);
+  friend void swap(MsgRealmJumpReq& a, MsgRealmJumpReq& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline MsgExploreJumpReq* New() const final {
-    return CreateMaybeMessage<MsgExploreJumpReq>(NULL);
+  inline MsgRealmJumpReq* New() const final {
+    return CreateMaybeMessage<MsgRealmJumpReq>(NULL);
   }
 
-  MsgExploreJumpReq* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<MsgExploreJumpReq>(arena);
+  MsgRealmJumpReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<MsgRealmJumpReq>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const MsgExploreJumpReq& from);
-  void MergeFrom(const MsgExploreJumpReq& from);
+  void CopyFrom(const MsgRealmJumpReq& from);
+  void MergeFrom(const MsgRealmJumpReq& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -3745,7 +3745,7 @@ class LIBPROTOC_EXPORT MsgExploreJumpReq : public ::google::protobuf::Message /*
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(MsgExploreJumpReq* other);
+  void InternalSwap(MsgRealmJumpReq* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -3767,7 +3767,7 @@ class LIBPROTOC_EXPORT MsgExploreJumpReq : public ::google::protobuf::Message /*
   ::google::protobuf::uint32 level() const;
   void set_level(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:KFMsg.MsgExploreJumpReq)
+  // @@protoc_insertion_point(class_scope:KFMsg.MsgRealmJumpReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -3777,24 +3777,24 @@ class LIBPROTOC_EXPORT MsgExploreJumpReq : public ::google::protobuf::Message /*
 };
 // -------------------------------------------------------------------
 
-class LIBPROTOC_EXPORT MsgExploreExtendReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.MsgExploreExtendReq) */ {
+class LIBPROTOC_EXPORT MsgRealmExtendReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.MsgRealmExtendReq) */ {
  public:
-  MsgExploreExtendReq();
-  virtual ~MsgExploreExtendReq();
+  MsgRealmExtendReq();
+  virtual ~MsgRealmExtendReq();
 
-  MsgExploreExtendReq(const MsgExploreExtendReq& from);
+  MsgRealmExtendReq(const MsgRealmExtendReq& from);
 
-  inline MsgExploreExtendReq& operator=(const MsgExploreExtendReq& from) {
+  inline MsgRealmExtendReq& operator=(const MsgRealmExtendReq& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  MsgExploreExtendReq(MsgExploreExtendReq&& from) noexcept
-    : MsgExploreExtendReq() {
+  MsgRealmExtendReq(MsgRealmExtendReq&& from) noexcept
+    : MsgRealmExtendReq() {
     *this = ::std::move(from);
   }
 
-  inline MsgExploreExtendReq& operator=(MsgExploreExtendReq&& from) noexcept {
+  inline MsgRealmExtendReq& operator=(MsgRealmExtendReq&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -3804,34 +3804,34 @@ class LIBPROTOC_EXPORT MsgExploreExtendReq : public ::google::protobuf::Message 
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const MsgExploreExtendReq& default_instance();
+  static const MsgRealmExtendReq& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MsgExploreExtendReq* internal_default_instance() {
-    return reinterpret_cast<const MsgExploreExtendReq*>(
-               &_MsgExploreExtendReq_default_instance_);
+  static inline const MsgRealmExtendReq* internal_default_instance() {
+    return reinterpret_cast<const MsgRealmExtendReq*>(
+               &_MsgRealmExtendReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     31;
 
-  void Swap(MsgExploreExtendReq* other);
-  friend void swap(MsgExploreExtendReq& a, MsgExploreExtendReq& b) {
+  void Swap(MsgRealmExtendReq* other);
+  friend void swap(MsgRealmExtendReq& a, MsgRealmExtendReq& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline MsgExploreExtendReq* New() const final {
-    return CreateMaybeMessage<MsgExploreExtendReq>(NULL);
+  inline MsgRealmExtendReq* New() const final {
+    return CreateMaybeMessage<MsgRealmExtendReq>(NULL);
   }
 
-  MsgExploreExtendReq* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<MsgExploreExtendReq>(arena);
+  MsgRealmExtendReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<MsgRealmExtendReq>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const MsgExploreExtendReq& from);
-  void MergeFrom(const MsgExploreExtendReq& from);
+  void CopyFrom(const MsgRealmExtendReq& from);
+  void MergeFrom(const MsgRealmExtendReq& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -3848,7 +3848,7 @@ class LIBPROTOC_EXPORT MsgExploreExtendReq : public ::google::protobuf::Message 
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(MsgExploreExtendReq* other);
+  void InternalSwap(MsgRealmExtendReq* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -3870,7 +3870,7 @@ class LIBPROTOC_EXPORT MsgExploreExtendReq : public ::google::protobuf::Message 
   ::google::protobuf::uint32 exploreid() const;
   void set_exploreid(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:KFMsg.MsgExploreExtendReq)
+  // @@protoc_insertion_point(class_scope:KFMsg.MsgRealmExtendReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -3880,24 +3880,24 @@ class LIBPROTOC_EXPORT MsgExploreExtendReq : public ::google::protobuf::Message 
 };
 // -------------------------------------------------------------------
 
-class LIBPROTOC_EXPORT MsgExploreEnterAck : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.MsgExploreEnterAck) */ {
+class LIBPROTOC_EXPORT MsgRealmEnterAck : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.MsgRealmEnterAck) */ {
  public:
-  MsgExploreEnterAck();
-  virtual ~MsgExploreEnterAck();
+  MsgRealmEnterAck();
+  virtual ~MsgRealmEnterAck();
 
-  MsgExploreEnterAck(const MsgExploreEnterAck& from);
+  MsgRealmEnterAck(const MsgRealmEnterAck& from);
 
-  inline MsgExploreEnterAck& operator=(const MsgExploreEnterAck& from) {
+  inline MsgRealmEnterAck& operator=(const MsgRealmEnterAck& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  MsgExploreEnterAck(MsgExploreEnterAck&& from) noexcept
-    : MsgExploreEnterAck() {
+  MsgRealmEnterAck(MsgRealmEnterAck&& from) noexcept
+    : MsgRealmEnterAck() {
     *this = ::std::move(from);
   }
 
-  inline MsgExploreEnterAck& operator=(MsgExploreEnterAck&& from) noexcept {
+  inline MsgRealmEnterAck& operator=(MsgRealmEnterAck&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -3907,34 +3907,34 @@ class LIBPROTOC_EXPORT MsgExploreEnterAck : public ::google::protobuf::Message /
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const MsgExploreEnterAck& default_instance();
+  static const MsgRealmEnterAck& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MsgExploreEnterAck* internal_default_instance() {
-    return reinterpret_cast<const MsgExploreEnterAck*>(
-               &_MsgExploreEnterAck_default_instance_);
+  static inline const MsgRealmEnterAck* internal_default_instance() {
+    return reinterpret_cast<const MsgRealmEnterAck*>(
+               &_MsgRealmEnterAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     32;
 
-  void Swap(MsgExploreEnterAck* other);
-  friend void swap(MsgExploreEnterAck& a, MsgExploreEnterAck& b) {
+  void Swap(MsgRealmEnterAck* other);
+  friend void swap(MsgRealmEnterAck& a, MsgRealmEnterAck& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline MsgExploreEnterAck* New() const final {
-    return CreateMaybeMessage<MsgExploreEnterAck>(NULL);
+  inline MsgRealmEnterAck* New() const final {
+    return CreateMaybeMessage<MsgRealmEnterAck>(NULL);
   }
 
-  MsgExploreEnterAck* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<MsgExploreEnterAck>(arena);
+  MsgRealmEnterAck* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<MsgRealmEnterAck>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const MsgExploreEnterAck& from);
-  void MergeFrom(const MsgExploreEnterAck& from);
+  void CopyFrom(const MsgRealmEnterAck& from);
+  void MergeFrom(const MsgRealmEnterAck& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -3951,7 +3951,7 @@ class LIBPROTOC_EXPORT MsgExploreEnterAck : public ::google::protobuf::Message /
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(MsgExploreEnterAck* other);
+  void InternalSwap(MsgRealmEnterAck* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -3979,41 +3979,61 @@ class LIBPROTOC_EXPORT MsgExploreEnterAck : public ::google::protobuf::Message /
   ::KFMsg::PBExploreData* mutable_exploredata();
   void set_allocated_exploredata(::KFMsg::PBExploreData* exploredata);
 
+  // .KFMsg.PBHeroBuffData buffdata = 4;
+  bool has_buffdata() const;
+  void clear_buffdata();
+  static const int kBuffdataFieldNumber = 4;
+  private:
+  const ::KFMsg::PBHeroBuffData& _internal_buffdata() const;
+  public:
+  const ::KFMsg::PBHeroBuffData& buffdata() const;
+  ::KFMsg::PBHeroBuffData* release_buffdata();
+  ::KFMsg::PBHeroBuffData* mutable_buffdata();
+  void set_allocated_buffdata(::KFMsg::PBHeroBuffData* buffdata);
+
   // uint32 faith = 2;
   void clear_faith();
   static const int kFaithFieldNumber = 2;
   ::google::protobuf::uint32 faith() const;
   void set_faith(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:KFMsg.MsgExploreEnterAck)
+  // uint32 realmid = 3;
+  void clear_realmid();
+  static const int kRealmidFieldNumber = 3;
+  ::google::protobuf::uint32 realmid() const;
+  void set_realmid(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:KFMsg.MsgRealmEnterAck)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::KFMsg::PBExploreData* exploredata_;
+  ::KFMsg::PBHeroBuffData* buffdata_;
   ::google::protobuf::uint32 faith_;
+  ::google::protobuf::uint32 realmid_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_ClientMessage_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
-class LIBPROTOC_EXPORT MsgExploreExitReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.MsgExploreExitReq) */ {
+class LIBPROTOC_EXPORT MsgRealmExitReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.MsgRealmExitReq) */ {
  public:
-  MsgExploreExitReq();
-  virtual ~MsgExploreExitReq();
+  MsgRealmExitReq();
+  virtual ~MsgRealmExitReq();
 
-  MsgExploreExitReq(const MsgExploreExitReq& from);
+  MsgRealmExitReq(const MsgRealmExitReq& from);
 
-  inline MsgExploreExitReq& operator=(const MsgExploreExitReq& from) {
+  inline MsgRealmExitReq& operator=(const MsgRealmExitReq& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  MsgExploreExitReq(MsgExploreExitReq&& from) noexcept
-    : MsgExploreExitReq() {
+  MsgRealmExitReq(MsgRealmExitReq&& from) noexcept
+    : MsgRealmExitReq() {
     *this = ::std::move(from);
   }
 
-  inline MsgExploreExitReq& operator=(MsgExploreExitReq&& from) noexcept {
+  inline MsgRealmExitReq& operator=(MsgRealmExitReq&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -4023,34 +4043,34 @@ class LIBPROTOC_EXPORT MsgExploreExitReq : public ::google::protobuf::Message /*
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const MsgExploreExitReq& default_instance();
+  static const MsgRealmExitReq& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MsgExploreExitReq* internal_default_instance() {
-    return reinterpret_cast<const MsgExploreExitReq*>(
-               &_MsgExploreExitReq_default_instance_);
+  static inline const MsgRealmExitReq* internal_default_instance() {
+    return reinterpret_cast<const MsgRealmExitReq*>(
+               &_MsgRealmExitReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     33;
 
-  void Swap(MsgExploreExitReq* other);
-  friend void swap(MsgExploreExitReq& a, MsgExploreExitReq& b) {
+  void Swap(MsgRealmExitReq* other);
+  friend void swap(MsgRealmExitReq& a, MsgRealmExitReq& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline MsgExploreExitReq* New() const final {
-    return CreateMaybeMessage<MsgExploreExitReq>(NULL);
+  inline MsgRealmExitReq* New() const final {
+    return CreateMaybeMessage<MsgRealmExitReq>(NULL);
   }
 
-  MsgExploreExitReq* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<MsgExploreExitReq>(arena);
+  MsgRealmExitReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<MsgRealmExitReq>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const MsgExploreExitReq& from);
-  void MergeFrom(const MsgExploreExitReq& from);
+  void CopyFrom(const MsgRealmExitReq& from);
+  void MergeFrom(const MsgRealmExitReq& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -4067,7 +4087,7 @@ class LIBPROTOC_EXPORT MsgExploreExitReq : public ::google::protobuf::Message /*
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(MsgExploreExitReq* other);
+  void InternalSwap(MsgRealmExitReq* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -4083,7 +4103,7 @@ class LIBPROTOC_EXPORT MsgExploreExitReq : public ::google::protobuf::Message /*
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:KFMsg.MsgExploreExitReq)
+  // @@protoc_insertion_point(class_scope:KFMsg.MsgRealmExitReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -4092,24 +4112,24 @@ class LIBPROTOC_EXPORT MsgExploreExitReq : public ::google::protobuf::Message /*
 };
 // -------------------------------------------------------------------
 
-class LIBPROTOC_EXPORT MsgExploreTownReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.MsgExploreTownReq) */ {
+class LIBPROTOC_EXPORT MsgRealmTownReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.MsgRealmTownReq) */ {
  public:
-  MsgExploreTownReq();
-  virtual ~MsgExploreTownReq();
+  MsgRealmTownReq();
+  virtual ~MsgRealmTownReq();
 
-  MsgExploreTownReq(const MsgExploreTownReq& from);
+  MsgRealmTownReq(const MsgRealmTownReq& from);
 
-  inline MsgExploreTownReq& operator=(const MsgExploreTownReq& from) {
+  inline MsgRealmTownReq& operator=(const MsgRealmTownReq& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  MsgExploreTownReq(MsgExploreTownReq&& from) noexcept
-    : MsgExploreTownReq() {
+  MsgRealmTownReq(MsgRealmTownReq&& from) noexcept
+    : MsgRealmTownReq() {
     *this = ::std::move(from);
   }
 
-  inline MsgExploreTownReq& operator=(MsgExploreTownReq&& from) noexcept {
+  inline MsgRealmTownReq& operator=(MsgRealmTownReq&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -4119,34 +4139,34 @@ class LIBPROTOC_EXPORT MsgExploreTownReq : public ::google::protobuf::Message /*
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const MsgExploreTownReq& default_instance();
+  static const MsgRealmTownReq& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MsgExploreTownReq* internal_default_instance() {
-    return reinterpret_cast<const MsgExploreTownReq*>(
-               &_MsgExploreTownReq_default_instance_);
+  static inline const MsgRealmTownReq* internal_default_instance() {
+    return reinterpret_cast<const MsgRealmTownReq*>(
+               &_MsgRealmTownReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     34;
 
-  void Swap(MsgExploreTownReq* other);
-  friend void swap(MsgExploreTownReq& a, MsgExploreTownReq& b) {
+  void Swap(MsgRealmTownReq* other);
+  friend void swap(MsgRealmTownReq& a, MsgRealmTownReq& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline MsgExploreTownReq* New() const final {
-    return CreateMaybeMessage<MsgExploreTownReq>(NULL);
+  inline MsgRealmTownReq* New() const final {
+    return CreateMaybeMessage<MsgRealmTownReq>(NULL);
   }
 
-  MsgExploreTownReq* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<MsgExploreTownReq>(arena);
+  MsgRealmTownReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<MsgRealmTownReq>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const MsgExploreTownReq& from);
-  void MergeFrom(const MsgExploreTownReq& from);
+  void CopyFrom(const MsgRealmTownReq& from);
+  void MergeFrom(const MsgRealmTownReq& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -4163,7 +4183,7 @@ class LIBPROTOC_EXPORT MsgExploreTownReq : public ::google::protobuf::Message /*
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(MsgExploreTownReq* other);
+  void InternalSwap(MsgRealmTownReq* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -4179,7 +4199,7 @@ class LIBPROTOC_EXPORT MsgExploreTownReq : public ::google::protobuf::Message /*
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:KFMsg.MsgExploreTownReq)
+  // @@protoc_insertion_point(class_scope:KFMsg.MsgRealmTownReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -4188,24 +4208,24 @@ class LIBPROTOC_EXPORT MsgExploreTownReq : public ::google::protobuf::Message /*
 };
 // -------------------------------------------------------------------
 
-class LIBPROTOC_EXPORT MsgExploreBalanceReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.MsgExploreBalanceReq) */ {
+class LIBPROTOC_EXPORT MsgRealmBalanceReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.MsgRealmBalanceReq) */ {
  public:
-  MsgExploreBalanceReq();
-  virtual ~MsgExploreBalanceReq();
+  MsgRealmBalanceReq();
+  virtual ~MsgRealmBalanceReq();
 
-  MsgExploreBalanceReq(const MsgExploreBalanceReq& from);
+  MsgRealmBalanceReq(const MsgRealmBalanceReq& from);
 
-  inline MsgExploreBalanceReq& operator=(const MsgExploreBalanceReq& from) {
+  inline MsgRealmBalanceReq& operator=(const MsgRealmBalanceReq& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  MsgExploreBalanceReq(MsgExploreBalanceReq&& from) noexcept
-    : MsgExploreBalanceReq() {
+  MsgRealmBalanceReq(MsgRealmBalanceReq&& from) noexcept
+    : MsgRealmBalanceReq() {
     *this = ::std::move(from);
   }
 
-  inline MsgExploreBalanceReq& operator=(MsgExploreBalanceReq&& from) noexcept {
+  inline MsgRealmBalanceReq& operator=(MsgRealmBalanceReq&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -4215,34 +4235,34 @@ class LIBPROTOC_EXPORT MsgExploreBalanceReq : public ::google::protobuf::Message
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const MsgExploreBalanceReq& default_instance();
+  static const MsgRealmBalanceReq& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MsgExploreBalanceReq* internal_default_instance() {
-    return reinterpret_cast<const MsgExploreBalanceReq*>(
-               &_MsgExploreBalanceReq_default_instance_);
+  static inline const MsgRealmBalanceReq* internal_default_instance() {
+    return reinterpret_cast<const MsgRealmBalanceReq*>(
+               &_MsgRealmBalanceReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     35;
 
-  void Swap(MsgExploreBalanceReq* other);
-  friend void swap(MsgExploreBalanceReq& a, MsgExploreBalanceReq& b) {
+  void Swap(MsgRealmBalanceReq* other);
+  friend void swap(MsgRealmBalanceReq& a, MsgRealmBalanceReq& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline MsgExploreBalanceReq* New() const final {
-    return CreateMaybeMessage<MsgExploreBalanceReq>(NULL);
+  inline MsgRealmBalanceReq* New() const final {
+    return CreateMaybeMessage<MsgRealmBalanceReq>(NULL);
   }
 
-  MsgExploreBalanceReq* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<MsgExploreBalanceReq>(arena);
+  MsgRealmBalanceReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<MsgRealmBalanceReq>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const MsgExploreBalanceReq& from);
-  void MergeFrom(const MsgExploreBalanceReq& from);
+  void CopyFrom(const MsgRealmBalanceReq& from);
+  void MergeFrom(const MsgRealmBalanceReq& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -4259,7 +4279,7 @@ class LIBPROTOC_EXPORT MsgExploreBalanceReq : public ::google::protobuf::Message
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(MsgExploreBalanceReq* other);
+  void InternalSwap(MsgRealmBalanceReq* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -4281,7 +4301,7 @@ class LIBPROTOC_EXPORT MsgExploreBalanceReq : public ::google::protobuf::Message
   ::google::protobuf::uint32 result() const;
   void set_result(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:KFMsg.MsgExploreBalanceReq)
+  // @@protoc_insertion_point(class_scope:KFMsg.MsgRealmBalanceReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -4291,24 +4311,24 @@ class LIBPROTOC_EXPORT MsgExploreBalanceReq : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
-class LIBPROTOC_EXPORT MsgExploreBalanceAck : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.MsgExploreBalanceAck) */ {
+class LIBPROTOC_EXPORT MsgRealmBalanceAck : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.MsgRealmBalanceAck) */ {
  public:
-  MsgExploreBalanceAck();
-  virtual ~MsgExploreBalanceAck();
+  MsgRealmBalanceAck();
+  virtual ~MsgRealmBalanceAck();
 
-  MsgExploreBalanceAck(const MsgExploreBalanceAck& from);
+  MsgRealmBalanceAck(const MsgRealmBalanceAck& from);
 
-  inline MsgExploreBalanceAck& operator=(const MsgExploreBalanceAck& from) {
+  inline MsgRealmBalanceAck& operator=(const MsgRealmBalanceAck& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  MsgExploreBalanceAck(MsgExploreBalanceAck&& from) noexcept
-    : MsgExploreBalanceAck() {
+  MsgRealmBalanceAck(MsgRealmBalanceAck&& from) noexcept
+    : MsgRealmBalanceAck() {
     *this = ::std::move(from);
   }
 
-  inline MsgExploreBalanceAck& operator=(MsgExploreBalanceAck&& from) noexcept {
+  inline MsgRealmBalanceAck& operator=(MsgRealmBalanceAck&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -4318,34 +4338,34 @@ class LIBPROTOC_EXPORT MsgExploreBalanceAck : public ::google::protobuf::Message
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const MsgExploreBalanceAck& default_instance();
+  static const MsgRealmBalanceAck& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MsgExploreBalanceAck* internal_default_instance() {
-    return reinterpret_cast<const MsgExploreBalanceAck*>(
-               &_MsgExploreBalanceAck_default_instance_);
+  static inline const MsgRealmBalanceAck* internal_default_instance() {
+    return reinterpret_cast<const MsgRealmBalanceAck*>(
+               &_MsgRealmBalanceAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     36;
 
-  void Swap(MsgExploreBalanceAck* other);
-  friend void swap(MsgExploreBalanceAck& a, MsgExploreBalanceAck& b) {
+  void Swap(MsgRealmBalanceAck* other);
+  friend void swap(MsgRealmBalanceAck& a, MsgRealmBalanceAck& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline MsgExploreBalanceAck* New() const final {
-    return CreateMaybeMessage<MsgExploreBalanceAck>(NULL);
+  inline MsgRealmBalanceAck* New() const final {
+    return CreateMaybeMessage<MsgRealmBalanceAck>(NULL);
   }
 
-  MsgExploreBalanceAck* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<MsgExploreBalanceAck>(arena);
+  MsgRealmBalanceAck* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<MsgRealmBalanceAck>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const MsgExploreBalanceAck& from);
-  void MergeFrom(const MsgExploreBalanceAck& from);
+  void CopyFrom(const MsgRealmBalanceAck& from);
+  void MergeFrom(const MsgRealmBalanceAck& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -4362,7 +4382,7 @@ class LIBPROTOC_EXPORT MsgExploreBalanceAck : public ::google::protobuf::Message
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(MsgExploreBalanceAck* other);
+  void InternalSwap(MsgRealmBalanceAck* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -4396,7 +4416,7 @@ class LIBPROTOC_EXPORT MsgExploreBalanceAck : public ::google::protobuf::Message
   ::google::protobuf::uint32 result() const;
   void set_result(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:KFMsg.MsgExploreBalanceAck)
+  // @@protoc_insertion_point(class_scope:KFMsg.MsgRealmBalanceAck)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -4520,11 +4540,17 @@ class LIBPROTOC_EXPORT MsgPVEReq : public ::google::protobuf::Message /* @@proto
   ::google::protobuf::uint32 battleid() const;
   void set_battleid(::google::protobuf::uint32 value);
 
-  // uint32 mapid = 4;
-  void clear_mapid();
-  static const int kMapidFieldNumber = 4;
-  ::google::protobuf::uint32 mapid() const;
-  void set_mapid(::google::protobuf::uint32 value);
+  // uint32 exploreid = 4;
+  void clear_exploreid();
+  static const int kExploreidFieldNumber = 4;
+  ::google::protobuf::uint32 exploreid() const;
+  void set_exploreid(::google::protobuf::uint32 value);
+
+  // uint32 realmid = 5;
+  void clear_realmid();
+  static const int kRealmidFieldNumber = 5;
+  ::google::protobuf::uint32 realmid() const;
+  void set_realmid(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:KFMsg.MsgPVEReq)
  private:
@@ -4533,7 +4559,8 @@ class LIBPROTOC_EXPORT MsgPVEReq : public ::google::protobuf::Message /* @@proto
   ::google::protobuf::internal::ArenaStringPtr modulename_;
   ::google::protobuf::uint32 pveid_;
   ::google::protobuf::uint32 battleid_;
-  ::google::protobuf::uint32 mapid_;
+  ::google::protobuf::uint32 exploreid_;
+  ::google::protobuf::uint32 realmid_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_ClientMessage_2eproto::TableStruct;
 };
@@ -4687,17 +4714,17 @@ class LIBPROTOC_EXPORT MsgPVEAck : public ::google::protobuf::Message /* @@proto
   ::google::protobuf::Map< ::google::protobuf::uint64, ::KFMsg::PBObject >*
       mutable_npc();
 
-  // .KFMsg.PBExploreBuffData buffdata = 6;
+  // .KFMsg.PBHeroBuffData buffdata = 6;
   bool has_buffdata() const;
   void clear_buffdata();
   static const int kBuffdataFieldNumber = 6;
   private:
-  const ::KFMsg::PBExploreBuffData& _internal_buffdata() const;
+  const ::KFMsg::PBHeroBuffData& _internal_buffdata() const;
   public:
-  const ::KFMsg::PBExploreBuffData& buffdata() const;
-  ::KFMsg::PBExploreBuffData* release_buffdata();
-  ::KFMsg::PBExploreBuffData* mutable_buffdata();
-  void set_allocated_buffdata(::KFMsg::PBExploreBuffData* buffdata);
+  const ::KFMsg::PBHeroBuffData& buffdata() const;
+  ::KFMsg::PBHeroBuffData* release_buffdata();
+  ::KFMsg::PBHeroBuffData* mutable_buffdata();
+  void set_allocated_buffdata(::KFMsg::PBHeroBuffData* buffdata);
 
   // uint32 pveid = 1;
   void clear_pveid();
@@ -4733,7 +4760,7 @@ class LIBPROTOC_EXPORT MsgPVEAck : public ::google::protobuf::Message /* @@proto
       ::google::protobuf::internal::WireFormatLite::TYPE_UINT64,
       ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
       0 > npc_;
-  ::KFMsg::PBExploreBuffData* buffdata_;
+  ::KFMsg::PBHeroBuffData* buffdata_;
   ::google::protobuf::uint32 pveid_;
   ::google::protobuf::uint32 battleid_;
   ::google::protobuf::uint32 faith_;
@@ -9246,106 +9273,106 @@ inline void MsgSmithyGatherAck::set_crit(::google::protobuf::uint32 value) {
 
 // -------------------------------------------------------------------
 
-// MsgExploreEnterReq
+// MsgRealmEnterReq
 
 // uint32 type = 1;
-inline void MsgExploreEnterReq::clear_type() {
+inline void MsgRealmEnterReq::clear_type() {
   type_ = 0u;
 }
-inline ::google::protobuf::uint32 MsgExploreEnterReq::type() const {
-  // @@protoc_insertion_point(field_get:KFMsg.MsgExploreEnterReq.type)
+inline ::google::protobuf::uint32 MsgRealmEnterReq::type() const {
+  // @@protoc_insertion_point(field_get:KFMsg.MsgRealmEnterReq.type)
   return type_;
 }
-inline void MsgExploreEnterReq::set_type(::google::protobuf::uint32 value) {
+inline void MsgRealmEnterReq::set_type(::google::protobuf::uint32 value) {
   
   type_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.MsgExploreEnterReq.type)
+  // @@protoc_insertion_point(field_set:KFMsg.MsgRealmEnterReq.type)
 }
 
-// uint32 mapid = 2;
-inline void MsgExploreEnterReq::clear_mapid() {
-  mapid_ = 0u;
+// uint32 realmid = 2;
+inline void MsgRealmEnterReq::clear_realmid() {
+  realmid_ = 0u;
 }
-inline ::google::protobuf::uint32 MsgExploreEnterReq::mapid() const {
-  // @@protoc_insertion_point(field_get:KFMsg.MsgExploreEnterReq.mapid)
-  return mapid_;
+inline ::google::protobuf::uint32 MsgRealmEnterReq::realmid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.MsgRealmEnterReq.realmid)
+  return realmid_;
 }
-inline void MsgExploreEnterReq::set_mapid(::google::protobuf::uint32 value) {
+inline void MsgRealmEnterReq::set_realmid(::google::protobuf::uint32 value) {
   
-  mapid_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.MsgExploreEnterReq.mapid)
+  realmid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.MsgRealmEnterReq.realmid)
 }
 
 // -------------------------------------------------------------------
 
-// MsgExploreJumpReq
+// MsgRealmJumpReq
 
 // uint32 level = 1;
-inline void MsgExploreJumpReq::clear_level() {
+inline void MsgRealmJumpReq::clear_level() {
   level_ = 0u;
 }
-inline ::google::protobuf::uint32 MsgExploreJumpReq::level() const {
-  // @@protoc_insertion_point(field_get:KFMsg.MsgExploreJumpReq.level)
+inline ::google::protobuf::uint32 MsgRealmJumpReq::level() const {
+  // @@protoc_insertion_point(field_get:KFMsg.MsgRealmJumpReq.level)
   return level_;
 }
-inline void MsgExploreJumpReq::set_level(::google::protobuf::uint32 value) {
+inline void MsgRealmJumpReq::set_level(::google::protobuf::uint32 value) {
   
   level_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.MsgExploreJumpReq.level)
+  // @@protoc_insertion_point(field_set:KFMsg.MsgRealmJumpReq.level)
 }
 
 // -------------------------------------------------------------------
 
-// MsgExploreExtendReq
+// MsgRealmExtendReq
 
 // uint32 exploreid = 1;
-inline void MsgExploreExtendReq::clear_exploreid() {
+inline void MsgRealmExtendReq::clear_exploreid() {
   exploreid_ = 0u;
 }
-inline ::google::protobuf::uint32 MsgExploreExtendReq::exploreid() const {
-  // @@protoc_insertion_point(field_get:KFMsg.MsgExploreExtendReq.exploreid)
+inline ::google::protobuf::uint32 MsgRealmExtendReq::exploreid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.MsgRealmExtendReq.exploreid)
   return exploreid_;
 }
-inline void MsgExploreExtendReq::set_exploreid(::google::protobuf::uint32 value) {
+inline void MsgRealmExtendReq::set_exploreid(::google::protobuf::uint32 value) {
   
   exploreid_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.MsgExploreExtendReq.exploreid)
+  // @@protoc_insertion_point(field_set:KFMsg.MsgRealmExtendReq.exploreid)
 }
 
 // -------------------------------------------------------------------
 
-// MsgExploreEnterAck
+// MsgRealmEnterAck
 
 // .KFMsg.PBExploreData exploredata = 1;
-inline bool MsgExploreEnterAck::has_exploredata() const {
+inline bool MsgRealmEnterAck::has_exploredata() const {
   return this != internal_default_instance() && exploredata_ != NULL;
 }
-inline const ::KFMsg::PBExploreData& MsgExploreEnterAck::_internal_exploredata() const {
+inline const ::KFMsg::PBExploreData& MsgRealmEnterAck::_internal_exploredata() const {
   return *exploredata_;
 }
-inline const ::KFMsg::PBExploreData& MsgExploreEnterAck::exploredata() const {
+inline const ::KFMsg::PBExploreData& MsgRealmEnterAck::exploredata() const {
   const ::KFMsg::PBExploreData* p = exploredata_;
-  // @@protoc_insertion_point(field_get:KFMsg.MsgExploreEnterAck.exploredata)
+  // @@protoc_insertion_point(field_get:KFMsg.MsgRealmEnterAck.exploredata)
   return p != NULL ? *p : *reinterpret_cast<const ::KFMsg::PBExploreData*>(
       &::KFMsg::_PBExploreData_default_instance_);
 }
-inline ::KFMsg::PBExploreData* MsgExploreEnterAck::release_exploredata() {
-  // @@protoc_insertion_point(field_release:KFMsg.MsgExploreEnterAck.exploredata)
+inline ::KFMsg::PBExploreData* MsgRealmEnterAck::release_exploredata() {
+  // @@protoc_insertion_point(field_release:KFMsg.MsgRealmEnterAck.exploredata)
   
   ::KFMsg::PBExploreData* temp = exploredata_;
   exploredata_ = NULL;
   return temp;
 }
-inline ::KFMsg::PBExploreData* MsgExploreEnterAck::mutable_exploredata() {
+inline ::KFMsg::PBExploreData* MsgRealmEnterAck::mutable_exploredata() {
   
   if (exploredata_ == NULL) {
     auto* p = CreateMaybeMessage<::KFMsg::PBExploreData>(GetArenaNoVirtual());
     exploredata_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:KFMsg.MsgExploreEnterAck.exploredata)
+  // @@protoc_insertion_point(field_mutable:KFMsg.MsgRealmEnterAck.exploredata)
   return exploredata_;
 }
-inline void MsgExploreEnterAck::set_allocated_exploredata(::KFMsg::PBExploreData* exploredata) {
+inline void MsgRealmEnterAck::set_allocated_exploredata(::KFMsg::PBExploreData* exploredata) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == NULL) {
     delete reinterpret_cast< ::google::protobuf::MessageLite*>(exploredata_);
@@ -9361,97 +9388,159 @@ inline void MsgExploreEnterAck::set_allocated_exploredata(::KFMsg::PBExploreData
     
   }
   exploredata_ = exploredata;
-  // @@protoc_insertion_point(field_set_allocated:KFMsg.MsgExploreEnterAck.exploredata)
+  // @@protoc_insertion_point(field_set_allocated:KFMsg.MsgRealmEnterAck.exploredata)
 }
 
 // uint32 faith = 2;
-inline void MsgExploreEnterAck::clear_faith() {
+inline void MsgRealmEnterAck::clear_faith() {
   faith_ = 0u;
 }
-inline ::google::protobuf::uint32 MsgExploreEnterAck::faith() const {
-  // @@protoc_insertion_point(field_get:KFMsg.MsgExploreEnterAck.faith)
+inline ::google::protobuf::uint32 MsgRealmEnterAck::faith() const {
+  // @@protoc_insertion_point(field_get:KFMsg.MsgRealmEnterAck.faith)
   return faith_;
 }
-inline void MsgExploreEnterAck::set_faith(::google::protobuf::uint32 value) {
+inline void MsgRealmEnterAck::set_faith(::google::protobuf::uint32 value) {
   
   faith_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.MsgExploreEnterAck.faith)
+  // @@protoc_insertion_point(field_set:KFMsg.MsgRealmEnterAck.faith)
+}
+
+// uint32 realmid = 3;
+inline void MsgRealmEnterAck::clear_realmid() {
+  realmid_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgRealmEnterAck::realmid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.MsgRealmEnterAck.realmid)
+  return realmid_;
+}
+inline void MsgRealmEnterAck::set_realmid(::google::protobuf::uint32 value) {
+  
+  realmid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.MsgRealmEnterAck.realmid)
+}
+
+// .KFMsg.PBHeroBuffData buffdata = 4;
+inline bool MsgRealmEnterAck::has_buffdata() const {
+  return this != internal_default_instance() && buffdata_ != NULL;
+}
+inline const ::KFMsg::PBHeroBuffData& MsgRealmEnterAck::_internal_buffdata() const {
+  return *buffdata_;
+}
+inline const ::KFMsg::PBHeroBuffData& MsgRealmEnterAck::buffdata() const {
+  const ::KFMsg::PBHeroBuffData* p = buffdata_;
+  // @@protoc_insertion_point(field_get:KFMsg.MsgRealmEnterAck.buffdata)
+  return p != NULL ? *p : *reinterpret_cast<const ::KFMsg::PBHeroBuffData*>(
+      &::KFMsg::_PBHeroBuffData_default_instance_);
+}
+inline ::KFMsg::PBHeroBuffData* MsgRealmEnterAck::release_buffdata() {
+  // @@protoc_insertion_point(field_release:KFMsg.MsgRealmEnterAck.buffdata)
+  
+  ::KFMsg::PBHeroBuffData* temp = buffdata_;
+  buffdata_ = NULL;
+  return temp;
+}
+inline ::KFMsg::PBHeroBuffData* MsgRealmEnterAck::mutable_buffdata() {
+  
+  if (buffdata_ == NULL) {
+    auto* p = CreateMaybeMessage<::KFMsg::PBHeroBuffData>(GetArenaNoVirtual());
+    buffdata_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:KFMsg.MsgRealmEnterAck.buffdata)
+  return buffdata_;
+}
+inline void MsgRealmEnterAck::set_allocated_buffdata(::KFMsg::PBHeroBuffData* buffdata) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete reinterpret_cast< ::google::protobuf::MessageLite*>(buffdata_);
+  }
+  if (buffdata) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      buffdata = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, buffdata, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  buffdata_ = buffdata;
+  // @@protoc_insertion_point(field_set_allocated:KFMsg.MsgRealmEnterAck.buffdata)
 }
 
 // -------------------------------------------------------------------
 
-// MsgExploreExitReq
+// MsgRealmExitReq
 
 // -------------------------------------------------------------------
 
-// MsgExploreTownReq
+// MsgRealmTownReq
 
 // -------------------------------------------------------------------
 
-// MsgExploreBalanceReq
+// MsgRealmBalanceReq
 
 // uint32 result = 1;
-inline void MsgExploreBalanceReq::clear_result() {
+inline void MsgRealmBalanceReq::clear_result() {
   result_ = 0u;
 }
-inline ::google::protobuf::uint32 MsgExploreBalanceReq::result() const {
-  // @@protoc_insertion_point(field_get:KFMsg.MsgExploreBalanceReq.result)
+inline ::google::protobuf::uint32 MsgRealmBalanceReq::result() const {
+  // @@protoc_insertion_point(field_get:KFMsg.MsgRealmBalanceReq.result)
   return result_;
 }
-inline void MsgExploreBalanceReq::set_result(::google::protobuf::uint32 value) {
+inline void MsgRealmBalanceReq::set_result(::google::protobuf::uint32 value) {
   
   result_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.MsgExploreBalanceReq.result)
+  // @@protoc_insertion_point(field_set:KFMsg.MsgRealmBalanceReq.result)
 }
 
 // -------------------------------------------------------------------
 
-// MsgExploreBalanceAck
+// MsgRealmBalanceAck
 
 // uint32 result = 1;
-inline void MsgExploreBalanceAck::clear_result() {
+inline void MsgRealmBalanceAck::clear_result() {
   result_ = 0u;
 }
-inline ::google::protobuf::uint32 MsgExploreBalanceAck::result() const {
-  // @@protoc_insertion_point(field_get:KFMsg.MsgExploreBalanceAck.result)
+inline ::google::protobuf::uint32 MsgRealmBalanceAck::result() const {
+  // @@protoc_insertion_point(field_get:KFMsg.MsgRealmBalanceAck.result)
   return result_;
 }
-inline void MsgExploreBalanceAck::set_result(::google::protobuf::uint32 value) {
+inline void MsgRealmBalanceAck::set_result(::google::protobuf::uint32 value) {
   
   result_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.MsgExploreBalanceAck.result)
+  // @@protoc_insertion_point(field_set:KFMsg.MsgRealmBalanceAck.result)
 }
 
 // .KFMsg.PBBalanceData balance = 2;
-inline bool MsgExploreBalanceAck::has_balance() const {
+inline bool MsgRealmBalanceAck::has_balance() const {
   return this != internal_default_instance() && balance_ != NULL;
 }
-inline const ::KFMsg::PBBalanceData& MsgExploreBalanceAck::_internal_balance() const {
+inline const ::KFMsg::PBBalanceData& MsgRealmBalanceAck::_internal_balance() const {
   return *balance_;
 }
-inline const ::KFMsg::PBBalanceData& MsgExploreBalanceAck::balance() const {
+inline const ::KFMsg::PBBalanceData& MsgRealmBalanceAck::balance() const {
   const ::KFMsg::PBBalanceData* p = balance_;
-  // @@protoc_insertion_point(field_get:KFMsg.MsgExploreBalanceAck.balance)
+  // @@protoc_insertion_point(field_get:KFMsg.MsgRealmBalanceAck.balance)
   return p != NULL ? *p : *reinterpret_cast<const ::KFMsg::PBBalanceData*>(
       &::KFMsg::_PBBalanceData_default_instance_);
 }
-inline ::KFMsg::PBBalanceData* MsgExploreBalanceAck::release_balance() {
-  // @@protoc_insertion_point(field_release:KFMsg.MsgExploreBalanceAck.balance)
+inline ::KFMsg::PBBalanceData* MsgRealmBalanceAck::release_balance() {
+  // @@protoc_insertion_point(field_release:KFMsg.MsgRealmBalanceAck.balance)
   
   ::KFMsg::PBBalanceData* temp = balance_;
   balance_ = NULL;
   return temp;
 }
-inline ::KFMsg::PBBalanceData* MsgExploreBalanceAck::mutable_balance() {
+inline ::KFMsg::PBBalanceData* MsgRealmBalanceAck::mutable_balance() {
   
   if (balance_ == NULL) {
     auto* p = CreateMaybeMessage<::KFMsg::PBBalanceData>(GetArenaNoVirtual());
     balance_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:KFMsg.MsgExploreBalanceAck.balance)
+  // @@protoc_insertion_point(field_mutable:KFMsg.MsgRealmBalanceAck.balance)
   return balance_;
 }
-inline void MsgExploreBalanceAck::set_allocated_balance(::KFMsg::PBBalanceData* balance) {
+inline void MsgRealmBalanceAck::set_allocated_balance(::KFMsg::PBBalanceData* balance) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == NULL) {
     delete reinterpret_cast< ::google::protobuf::MessageLite*>(balance_);
@@ -9467,7 +9556,7 @@ inline void MsgExploreBalanceAck::set_allocated_balance(::KFMsg::PBBalanceData* 
     
   }
   balance_ = balance;
-  // @@protoc_insertion_point(field_set_allocated:KFMsg.MsgExploreBalanceAck.balance)
+  // @@protoc_insertion_point(field_set_allocated:KFMsg.MsgRealmBalanceAck.balance)
 }
 
 // -------------------------------------------------------------------
@@ -9555,18 +9644,32 @@ inline void MsgPVEReq::set_allocated_modulename(::std::string* modulename) {
   // @@protoc_insertion_point(field_set_allocated:KFMsg.MsgPVEReq.modulename)
 }
 
-// uint32 mapid = 4;
-inline void MsgPVEReq::clear_mapid() {
-  mapid_ = 0u;
+// uint32 exploreid = 4;
+inline void MsgPVEReq::clear_exploreid() {
+  exploreid_ = 0u;
 }
-inline ::google::protobuf::uint32 MsgPVEReq::mapid() const {
-  // @@protoc_insertion_point(field_get:KFMsg.MsgPVEReq.mapid)
-  return mapid_;
+inline ::google::protobuf::uint32 MsgPVEReq::exploreid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.MsgPVEReq.exploreid)
+  return exploreid_;
 }
-inline void MsgPVEReq::set_mapid(::google::protobuf::uint32 value) {
+inline void MsgPVEReq::set_exploreid(::google::protobuf::uint32 value) {
   
-  mapid_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.MsgPVEReq.mapid)
+  exploreid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.MsgPVEReq.exploreid)
+}
+
+// uint32 realmid = 5;
+inline void MsgPVEReq::clear_realmid() {
+  realmid_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgPVEReq::realmid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.MsgPVEReq.realmid)
+  return realmid_;
+}
+inline void MsgPVEReq::set_realmid(::google::protobuf::uint32 value) {
+  
+  realmid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.MsgPVEReq.realmid)
 }
 
 // -------------------------------------------------------------------
@@ -9649,36 +9752,36 @@ MsgPVEAck::mutable_npc() {
   return npc_.MutableMap();
 }
 
-// .KFMsg.PBExploreBuffData buffdata = 6;
+// .KFMsg.PBHeroBuffData buffdata = 6;
 inline bool MsgPVEAck::has_buffdata() const {
   return this != internal_default_instance() && buffdata_ != NULL;
 }
-inline const ::KFMsg::PBExploreBuffData& MsgPVEAck::_internal_buffdata() const {
+inline const ::KFMsg::PBHeroBuffData& MsgPVEAck::_internal_buffdata() const {
   return *buffdata_;
 }
-inline const ::KFMsg::PBExploreBuffData& MsgPVEAck::buffdata() const {
-  const ::KFMsg::PBExploreBuffData* p = buffdata_;
+inline const ::KFMsg::PBHeroBuffData& MsgPVEAck::buffdata() const {
+  const ::KFMsg::PBHeroBuffData* p = buffdata_;
   // @@protoc_insertion_point(field_get:KFMsg.MsgPVEAck.buffdata)
-  return p != NULL ? *p : *reinterpret_cast<const ::KFMsg::PBExploreBuffData*>(
-      &::KFMsg::_PBExploreBuffData_default_instance_);
+  return p != NULL ? *p : *reinterpret_cast<const ::KFMsg::PBHeroBuffData*>(
+      &::KFMsg::_PBHeroBuffData_default_instance_);
 }
-inline ::KFMsg::PBExploreBuffData* MsgPVEAck::release_buffdata() {
+inline ::KFMsg::PBHeroBuffData* MsgPVEAck::release_buffdata() {
   // @@protoc_insertion_point(field_release:KFMsg.MsgPVEAck.buffdata)
   
-  ::KFMsg::PBExploreBuffData* temp = buffdata_;
+  ::KFMsg::PBHeroBuffData* temp = buffdata_;
   buffdata_ = NULL;
   return temp;
 }
-inline ::KFMsg::PBExploreBuffData* MsgPVEAck::mutable_buffdata() {
+inline ::KFMsg::PBHeroBuffData* MsgPVEAck::mutable_buffdata() {
   
   if (buffdata_ == NULL) {
-    auto* p = CreateMaybeMessage<::KFMsg::PBExploreBuffData>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::KFMsg::PBHeroBuffData>(GetArenaNoVirtual());
     buffdata_ = p;
   }
   // @@protoc_insertion_point(field_mutable:KFMsg.MsgPVEAck.buffdata)
   return buffdata_;
 }
-inline void MsgPVEAck::set_allocated_buffdata(::KFMsg::PBExploreBuffData* buffdata) {
+inline void MsgPVEAck::set_allocated_buffdata(::KFMsg::PBHeroBuffData* buffdata) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == NULL) {
     delete reinterpret_cast< ::google::protobuf::MessageLite*>(buffdata_);

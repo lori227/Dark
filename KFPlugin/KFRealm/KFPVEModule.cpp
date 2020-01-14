@@ -1,28 +1,28 @@
-﻿#include "KFFighterModule.hpp"
+﻿#include "KFPVEModule.hpp"
 
 namespace KFrame
 {
-    void KFFighterModule::BeforeRun()
+    void KFPVEModule::BeforeRun()
     {
         _kf_component = _kf_kernel->FindComponent( __STRING__( player ) );
 
-        __REGISTER_LEAVE_PLAYER__( &KFFighterModule::OnPlayerLeave );
+        __REGISTER_LEAVE_PLAYER__( &KFPVEModule::OnPlayerLeave );
         ///////////////////////////////////////////////////////////////////////////////////////////////////
-        __REGISTER_DROP_LOGIC__( __STRING__( exp ), &KFFighterModule::OnDropHeroExp );
-        __REGISTER_DROP_LOGIC__( __STRING__( addhp ), &KFFighterModule::OnDropHeroAddHp );
-        __REGISTER_DROP_LOGIC__( __STRING__( dechp ), &KFFighterModule::OnDropHeroDecHp );
+        __REGISTER_DROP_LOGIC__( __STRING__( exp ), &KFPVEModule::OnDropHeroExp );
+        __REGISTER_DROP_LOGIC__( __STRING__( addhp ), &KFPVEModule::OnDropHeroAddHp );
+        __REGISTER_DROP_LOGIC__( __STRING__( dechp ), &KFPVEModule::OnDropHeroDecHp );
 
-        __REGISTER_EXECUTE__( __STRING__( pve ), &KFFighterModule::OnExecutePVEFighter );
+        __REGISTER_EXECUTE__( __STRING__( pve ), &KFPVEModule::OnExecutePVEFighter );
         ///////////////////////////////////////////////////////////////////////////////////////////////////
-        __REGISTER_MESSAGE__( KFMsg::MSG_PVE_REQ, &KFFighterModule::HandlePVEReq );
-        __REGISTER_MESSAGE__( KFMsg::MSG_PVE_BALANCE_REQ, &KFFighterModule::HandlePVEBalanceReq );
-        __REGISTER_MESSAGE__( KFMsg::MSG_UPDATE_FIGHTER_HERO_REQ, &KFFighterModule::HandleUpdateFighterHeroReq );
-        __REGISTER_MESSAGE__( KFMsg::MSG_KILL_NPC_REQ, &KFFighterModule::HandleKillNpcReq );
-        __REGISTER_MESSAGE__( KFMsg::MSG_FIGHT_HERO_LIST_REQ, &KFFighterModule::HandleFightHeroListReq );
+        __REGISTER_MESSAGE__( KFMsg::MSG_PVE_REQ, &KFPVEModule::HandlePVEReq );
+        __REGISTER_MESSAGE__( KFMsg::MSG_PVE_BALANCE_REQ, &KFPVEModule::HandlePVEBalanceReq );
+        __REGISTER_MESSAGE__( KFMsg::MSG_UPDATE_FIGHTER_HERO_REQ, &KFPVEModule::HandleUpdateFighterHeroReq );
+        __REGISTER_MESSAGE__( KFMsg::MSG_KILL_NPC_REQ, &KFPVEModule::HandleKillNpcReq );
+        __REGISTER_MESSAGE__( KFMsg::MSG_FIGHT_HERO_LIST_REQ, &KFPVEModule::HandleFightHeroListReq );
 
     }
 
-    void KFFighterModule::BeforeShut()
+    void KFPVEModule::BeforeShut()
     {
         __UN_LEAVE_PLAYER__();
 
@@ -40,39 +40,39 @@ namespace KFrame
         __UN_MESSAGE__( KFMsg::MSG_FIGHT_HERO_LIST_REQ );
     }
 
-    __KF_LEAVE_PLAYER_FUNCTION__( KFFighterModule::OnPlayerLeave )
+    __KF_LEAVE_PLAYER_FUNCTION__( KFPVEModule::OnPlayerLeave )
     {
         _pve_record.Remove( player->GetKeyID() );
     }
 
-    __KF_MESSAGE_FUNCTION__( KFFighterModule::HandlePVEReq )
+    __KF_MESSAGE_FUNCTION__( KFPVEModule::HandlePVEReq )
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgPVEReq );
 
-        auto mapid = player->Get<uint32>( __STRING__( mapid ) );
-        if ( kfmsg.mapid() != 0u && mapid != kfmsg.mapid() )
+        auto realmid = player->Get<uint32>( __STRING__( realmid ) );
+        if ( kfmsg.realmid() != 0u && realmid != kfmsg.realmid() )
         {
             return _kf_display->SendToClient( player, KFMsg::PVEMapIdError );
         }
 
-        auto result = PVEFighter( player, kfmsg.pveid(), kfmsg.battleid(), kfmsg.modulename(), mapid );
+        auto result = PVEFighter( player, kfmsg.pveid(), kfmsg.battleid(), kfmsg.modulename(), realmid );
         if ( result != KFMsg::Ok )
         {
             _kf_display->SendToClient( player, result );
         }
     }
 
-    __KF_MESSAGE_FUNCTION__( KFFighterModule::HandlePVEBalanceReq )
+    __KF_MESSAGE_FUNCTION__( KFPVEModule::HandlePVEBalanceReq )
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgPVEBalanceReq );
-        auto result = PVEFighterBalance( player, kfmsg.result(), kfmsg.truns() );
+        auto result = PVEBalance( player, kfmsg.result(), kfmsg.truns() );
         if ( result != KFMsg::Ok )
         {
             _kf_display->SendToClient( player, result );
         }
     }
 
-    __KF_DROP_LOGIC_FUNCTION__( KFFighterModule::OnDropHeroExp )
+    __KF_DROP_LOGIC_FUNCTION__( KFPVEModule::OnDropHeroExp )
     {
         auto kfherorecord = player->Find( __STRING__( hero ) );
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
@@ -106,21 +106,21 @@ namespace KFrame
         }
     }
 
-    __KF_DROP_LOGIC_FUNCTION__( KFFighterModule::OnDropHeroAddHp )
+    __KF_DROP_LOGIC_FUNCTION__( KFPVEModule::OnDropHeroAddHp )
     {
         auto hp = dropdata->GetValue();
         ChangeTeamHeroHp( player, KFEnum::Add, hp );
         player->AddDataToShow( dropdata->_data_name, hp, false );
     }
 
-    __KF_DROP_LOGIC_FUNCTION__( KFFighterModule::OnDropHeroDecHp )
+    __KF_DROP_LOGIC_FUNCTION__( KFPVEModule::OnDropHeroDecHp )
     {
         auto hp = dropdata->GetValue();
         ChangeTeamHeroHp( player, KFEnum::Dec, hp );
         player->AddDataToShow( dropdata->_data_name, hp, false );
     }
 
-    __KF_EXECUTE_FUNCTION__( KFFighterModule::OnExecutePVEFighter )
+    __KF_EXECUTE_FUNCTION__( KFPVEModule::OnExecutePVEFighter )
     {
         if ( executedata->_param_list._params.size() < 2u )
         {
@@ -145,7 +145,7 @@ namespace KFrame
         return result == KFMsg::Ok;
     }
 
-    __KF_MESSAGE_FUNCTION__( KFFighterModule::HandleUpdateFighterHeroReq )
+    __KF_MESSAGE_FUNCTION__( KFPVEModule::HandleUpdateFighterHeroReq )
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgUpdateFighterHeroReq );
 
@@ -188,14 +188,14 @@ namespace KFrame
         }
     }
 
-    __KF_MESSAGE_FUNCTION__( KFFighterModule::HandleKillNpcReq )
+    __KF_MESSAGE_FUNCTION__( KFPVEModule::HandleKillNpcReq )
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgKillNpcReq );
 
         auto kfrecord = _pve_record.Find( playerid );
         if ( kfrecord == nullptr )
         {
-            return _kf_display->SendToClient( player, KFMsg::ExploreNotInStatus );
+            return _kf_display->SendToClient( player, KFMsg::PVENotInStatus );
         }
 
         auto kfnpc = player->Find( __STRING__( npc ), kfmsg.npcuuid() );
@@ -218,19 +218,19 @@ namespace KFrame
         }
     }
 
-    __KF_MESSAGE_FUNCTION__( KFFighterModule::HandleFightHeroListReq )
+    __KF_MESSAGE_FUNCTION__( KFPVEModule::HandleFightHeroListReq )
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgFightHeroListReq );
 
         auto kfrecord = _pve_record.Find( playerid );
         if ( kfrecord == nullptr )
         {
-            return _kf_display->SendToClient( player, KFMsg::ExploreNotInStatus );
+            return _kf_display->SendToClient( player, KFMsg::PVENotInStatus );
         }
 
         if ( !kfrecord->_fight_hero.empty() )
         {
-            return _kf_display->SendToClient( player, KFMsg::ExploreHeroTeamExist );
+            return _kf_display->SendToClient( player, KFMsg::PVEHeroTeamExist );
         }
 
         auto kfherorecord = player->Find( __STRING__( hero ) );
@@ -262,7 +262,7 @@ namespace KFrame
         _kf_hero_team->DecTeamHeroDurability( player, kfrecord->_fight_hero );
     }
 
-    uint32 KFFighterModule::PVEFighter( KFEntity* player, uint32 pveid, uint32 battleid, const std::string& modulename, uint64 moduleid )
+    uint32 KFPVEModule::PVEFighter( KFEntity* player, uint32 pveid, uint32 battleid, const std::string& modulename, uint64 moduleid )
     {
         auto status = player->GetStatus();
         if ( status == KFMsg::PVEStatus )
@@ -273,7 +273,7 @@ namespace KFrame
         auto count = _kf_hero_team->GetAliveHeroCount( player );
         if ( count == 0u )
         {
-            return KFMsg::ExploreHeroTeamEmpty;
+            return KFMsg::PVEHeroTeamEmpty;
         }
 
         auto kfsetting = KFPVEConfig::Instance()->FindSetting( pveid );
@@ -347,12 +347,12 @@ namespace KFrame
         }
 
         // buff (探索特有)
-        auto explorerecord = _kf_explore->GetExploreRecord( player->GetKeyID() );
-        if ( explorerecord != nullptr )
+        auto realmdata = _kf_realm->GetRealmData( player->GetKeyID() );
+        if ( realmdata != nullptr )
         {
             // 信仰值
-            ack.set_faith( explorerecord->_data.faith() );
-            ack.mutable_buffdata()->CopyFrom( explorerecord->_data.buffdata() );
+            ack.set_faith( realmdata->_data.faith() );
+            ack.mutable_buffdata()->CopyFrom( realmdata->_data.buffdata() );
         }
 
         _kf_player->SendToClient( player, KFMsg::MSG_PVE_ACK, &ack, 10u );
@@ -362,7 +362,7 @@ namespace KFrame
         return KFMsg::Ok;
     }
 
-    uint32 KFFighterModule::PVEFighterBalance( KFEntity* player, uint32 result, uint32 truns )
+    uint32 KFPVEModule::PVEBalance( KFEntity* player, uint32 result, uint32 truns )
     {
         auto kfrecord = _pve_record.Find( player->GetKeyID() );
         if ( kfrecord == nullptr )
@@ -393,13 +393,13 @@ namespace KFrame
             switch ( result )
             {
             case KFMsg::Victory:
-                _kf_drop->Drop( player, kfsetting->_victory_drop_list, __STRING__( balance ), __FUNC_LINE__ );
+                _kf_drop->Drop( player, kfsetting->_victory_drop_list, __STRING__( pve ), __FUNC_LINE__ );
                 break;
             case KFMsg::Failed:
-                _kf_drop->Drop( player, kfsetting->_fail_drop_list, __STRING__( balance ), __FUNC_LINE__ );
+                _kf_drop->Drop( player, kfsetting->_fail_drop_list, __STRING__( pve ), __FUNC_LINE__ );
                 break;
             }
-            kfrecord->BalanceDrop( player );
+            kfrecord->BalanceAddDropData( player );
         }
 
         // 结算最终数据
@@ -410,7 +410,7 @@ namespace KFrame
         ack.set_result( result );
         ack.set_moduleid( kfrecord->_data.moduleid() );
         ack.set_modulename( kfrecord->_data.modulename() );
-        kfrecord->BalanceRecord( ack.mutable_balance(), KFMsg::PVEStatus );
+        kfrecord->BalanceRealmRecord( ack.mutable_balance(), KFMsg::PVEStatus );
         _kf_player->SendToClient( player, KFMsg::MSG_PVE_BALANCE_ACK, &ack, 10u );
 
         // 设置回调属性
@@ -437,8 +437,8 @@ namespace KFrame
         player->Set( __STRING__( pveid ), 0u );
         player->CleanData( __STRING__( npc ), false );
 
-        auto explorerecord = _kf_explore->GetExploreRecord( player->GetKeyID() );
-        if ( explorerecord == nullptr )
+        auto kfrealmdata = _kf_realm->GetRealmData( player->GetKeyID() );
+        if ( kfrealmdata == nullptr )
         {
             // 不在探索里面 战斗后就移除寿命不足
             _kf_hero_team->RemoveTeamHeroDurability( player );
@@ -450,7 +450,7 @@ namespace KFrame
         return KFMsg::Ok;
     }
 
-    void KFFighterModule::StatisticsHeroKillNpcs( KFEntity* player, KFExploreRecord* kfrecord, uint32 pveresult )
+    void KFPVEModule::StatisticsHeroKillNpcs( KFEntity* player, KFRealmData* kfrecord, uint32 pveresult )
     {
         auto kfnpcrecord = player->Find( __STRING__( npc ) );
 
@@ -476,7 +476,7 @@ namespace KFrame
         player->CleanData( kfnpcrecord, false );
     }
 
-    void KFFighterModule::StatisticsHeroKillNpc( KFEntity* player, KFData* kfnpcrecord, KFExploreRecord* kfrecord, uint32 pveresult, uint64 herouuid, uint64 npcid )
+    void KFPVEModule::StatisticsHeroKillNpc( KFEntity* player, KFData* kfnpcrecord, KFRealmData* kfrecord, uint32 pveresult, uint64 herouuid, uint64 npcid )
     {
         auto kfnpc = kfnpcrecord->Find( npcid );
         if ( kfnpc == nullptr )
@@ -500,7 +500,7 @@ namespace KFrame
         player->RemoveData( kfnpcrecord, npcid );
     }
 
-    void KFFighterModule::ChangeTeamHeroHp( KFEntity* player, uint32 operate, uint32 value )
+    void KFPVEModule::ChangeTeamHeroHp( KFEntity* player, uint32 operate, uint32 value )
     {
         auto kfherorecord = player->Find( __STRING__( hero ) );
         auto kfteamarray = player->Find( __STRING__( heroteam ) );

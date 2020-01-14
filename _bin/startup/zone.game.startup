@@ -35,7 +35,7 @@
 		<Plugin Name="KFItem" Config=""/>
 		<Plugin Name="KFDrop" Config=""/>
 		<Plugin Name="KFClinic" Config=""/>
-		<Plugin Name="KFExplore" Config=""/>
+		<Plugin Name="KFRealm" Config=""/>
 		<Plugin Name="KFChapter" Config=""/>
 		<Plugin Name="KFCamp" Config=""/>
 		<Plugin Name="KFRecordClient" Config=""/>

@@ -1,24 +1,24 @@
-﻿#include "KFExplorePlugin.hpp"
-#include "KFExploreModule.hpp"
-#include "KFFighterModule.hpp"
+﻿#include "KFRealmPlugin.hpp"
+#include "KFPVEModule.hpp"
+#include "KFRealmModule.hpp"
 #include "KFConfig/KFConfigInterface.h"
 //////////////////////////////////////////////////////////////////////////
 
 namespace KFrame
 {
-    void KFExplorePlugin::Install()
+    void KFRealmPlugin::Install()
     {
-        __REGISTER_MODULE__( KFExplore );
-        __REGISTER_MODULE__( KFFighter );
+        __REGISTER_MODULE__( KFPVE );
+        __REGISTER_MODULE__( KFRealm );
     }
 
-    void KFExplorePlugin::UnInstall()
+    void KFRealmPlugin::UnInstall()
     {
-        __UN_MODULE__( KFExplore );
-        __UN_MODULE__( KFFighter );
+        __UN_MODULE__( KFPVE );
+        __UN_MODULE__( KFRealm );
     }
 
-    void KFExplorePlugin::LoadModule()
+    void KFRealmPlugin::LoadModule()
     {
         __FIND_MODULE__( _kf_drop, KFDropInterface );
         __FIND_MODULE__( _kf_hero, KFHeroInterface );
@@ -32,15 +32,14 @@ namespace KFrame
         __FIND_MODULE__( _kf_execute, KFExecuteInterface );
         __FIND_MODULE__( _kf_generate, KFGenerateInterface );
         __FIND_MODULE__( _kf_hero_team, KFHeroTeamInterface );
-        __FIND_MODULE__( _kf_explore, KFExploreInterface );
-        __FIND_MODULE__( _kf_fighter, KFFighterInterface );
+        __FIND_MODULE__( _kf_realm, KFRealmInterface );
 
     }
 
-    void KFExplorePlugin::AddConfig()
+    void KFRealmPlugin::AddConfig()
     {
         __KF_ADD_CONFIG__( KFPVEConfig );
-        __KF_ADD_CONFIG__( KFExploreConfig );
+        __KF_ADD_CONFIG__( KFRealmConfig );
         __KF_ADD_CONFIG__( KFFoodConsumeConfig );
         __KF_ADD_CONFIG__( KFElementConfig );
         __KF_ADD_CONFIG__( KFCurrencyConfig );

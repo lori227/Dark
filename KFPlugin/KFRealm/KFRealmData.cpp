@@ -1,21 +1,21 @@
-﻿#include "KFExploreData.hpp"
+﻿#include "KFRealmData.hpp"
 #include "KFHero/KFHeroInterface.h"
 #include "KFItem/KFItemInterface.h"
 
 namespace KFrame
 {
-    KFExploreRecord::~KFExploreRecord()
+    KFRealmData::~KFRealmData()
     {
         Reset();
     }
 
-    KFExploreRecord* KFExploreRecord::Reset()
+    KFRealmData* KFRealmData::Reset()
     {
         _data.Clear();
         return this;
     }
 
-    KFMsg::PBBalanceItemServer* KFExploreRecord::FindItem( uint32 id, uint64 uuid )
+    KFMsg::PBBalanceItemServer* KFRealmData::FindItem( uint32 id, uint64 uuid )
     {
         for ( auto i = 0; i < _data.itemdata_size(); ++i )
         {
@@ -32,7 +32,7 @@ namespace KFrame
         return pbitem;
     }
 
-    KFMsg::PBBalanceHeroServer* KFExploreRecord::FindHero( uint64 uuid )
+    KFMsg::PBBalanceHeroServer* KFRealmData::FindHero( uint64 uuid )
     {
         for ( auto i = 0; i < _data.herodata_size(); ++i )
         {
@@ -46,7 +46,7 @@ namespace KFrame
         return nullptr;
     }
 
-    KFMsg::PBBalanceCurrency* KFExploreRecord::FindCurrency( const std::string& name )
+    KFMsg::PBBalanceCurrency* KFRealmData::FindCurrency( const std::string& name )
     {
         for ( auto i = 0; i < _data.currencydata_size(); ++i )
         {
@@ -62,7 +62,7 @@ namespace KFrame
         return pbcurrency;
     }
 
-    KFMsg::PBExploreData* KFExploreRecord::FindExeploreData( uint32 level )
+    KFMsg::PBExploreData* KFRealmData::FindExeploreData( uint32 level )
     {
         auto pbexplore = _data.mutable_explore();
         auto iter = pbexplore->find( level );
@@ -76,13 +76,13 @@ namespace KFrame
         return &pbdata;
     }
 
-    void KFExploreRecord::RemoveExeploreData( uint32 level )
+    void KFRealmData::RemoveExeploreData( uint32 level )
     {
         auto pbexplore = _data.mutable_explore();
         pbexplore->erase( level );
     }
 
-    KFMsg::PBExploreNpcData* KFExploreRecord::FindNpcData( const std::string& key )
+    KFMsg::PBExploreNpcData* KFRealmData::FindNpcData( const std::string& key )
     {
         auto pbexplore = FindExeploreData( _data.level() );
         auto npcdatalist = pbexplore->mutable_npcdata();
@@ -96,7 +96,7 @@ namespace KFrame
         return &npcdata;
     }
 
-    void KFExploreRecord::AddBuffData( uint64 uuid, uint32 value )
+    void KFRealmData::AddBuffData( uint64 uuid, uint32 value )
     {
         auto buff = _data.mutable_buffdata()->mutable_buff();
 
@@ -115,7 +115,7 @@ namespace KFrame
         buffdata->set_id( value );
     }
 
-    void KFExploreRecord::RemoveBuffData( uint64 uuid, uint32 value )
+    void KFRealmData::RemoveBuffData( uint64 uuid, uint32 value )
     {
         auto buff = _data.mutable_buffdata()->mutable_buff();
         auto iter = buff->find( uuid );
@@ -139,8 +139,17 @@ namespace KFrame
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    void KFExploreRecord::BalanceBeginData( KFEntity* player )
+    void KFRealmData::BalanceClearData( KFEntity* player )
     {
+        _data.clear_itemdata();
+        _data.clear_herodata();
+        _data.clear_currencydata();
+    }
+
+    void KFRealmData::BalanceBeginData( KFEntity* player )
+    {
+        BalanceClearData( player );
+
         // 纪录货币的初始值
         BalanceCurrencyBeginData( player );
 
@@ -151,7 +160,7 @@ namespace KFrame
         BalanceItemBeginData( player );
     }
 
-    void KFExploreRecord::BalanceEndData( KFEntity* player )
+    void KFRealmData::BalanceEndData( KFEntity* player )
     {
         // 货币
         BalanceCurrencyEndData( player );
@@ -165,7 +174,7 @@ namespace KFrame
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    void KFExploreRecord::BalanceHeroBeginData( KFEntity* player )
+    void KFRealmData::BalanceHeroBeginData( KFEntity* player )
     {
         auto kfherorecord = player->Find( __STRING__( hero ) );
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
@@ -204,7 +213,7 @@ namespace KFrame
         }
     }
 
-    void KFExploreRecord::BalanceHeroEndData( KFEntity* player )
+    void KFRealmData::BalanceHeroEndData( KFEntity* player )
     {
         auto kfherorecord = player->Find( __STRING__( hero ) );
         for ( auto i = 0; i < _data.herodata_size(); ++i )
@@ -247,7 +256,7 @@ namespace KFrame
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    void KFExploreRecord::BalanceItemBeginData( KFEntity* player )
+    void KFRealmData::BalanceItemBeginData( KFEntity* player )
     {
         // 道具
         auto kfitemrecord = player->Find( __STRING__( explore ) );
@@ -258,7 +267,7 @@ namespace KFrame
         BalanceItemRecordData( kfotherrecord, StartType );
     }
 
-    void KFExploreRecord::BalanceItemEndData( KFEntity* player )
+    void KFRealmData::BalanceItemEndData( KFEntity* player )
     {
         // 道具
         auto kfitemrecord = player->Find( __STRING__( explore ) );
@@ -269,7 +278,7 @@ namespace KFrame
         BalanceItemRecordData( kfotherrecord, EndType );
     }
 
-    void KFExploreRecord::BalanceItemRecordData( KFData* kfitemrecord, uint32 balancetype )
+    void KFRealmData::BalanceItemRecordData( KFData* kfitemrecord, uint32 balancetype )
     {
         for ( auto kfitem = kfitemrecord->First(); kfitem != nullptr; kfitem = kfitemrecord->Next() )
         {
@@ -277,7 +286,7 @@ namespace KFrame
         }
     }
 
-    void KFExploreRecord::BalanceItemData( KFData* kfitem, uint32 balancetype )
+    void KFRealmData::BalanceItemData( KFData* kfitem, uint32 balancetype )
     {
         auto count = kfitem->Get<uint32>( __STRING__( count ) );
         auto itemid = kfitem->Get<uint32>( kfitem->_data_setting->_config_key_name );
@@ -309,7 +318,7 @@ namespace KFrame
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    void KFExploreRecord::BalanceCurrencyBeginData( KFEntity* player )
+    void KFRealmData::BalanceCurrencyBeginData( KFEntity* player )
     {
         // 所有货币
         for ( auto& iter : KFCurrencyConfig::Instance()->_settings._objects )
@@ -320,7 +329,7 @@ namespace KFrame
         }
     }
 
-    void KFExploreRecord::BalanceCurrencyEndData( KFEntity* player )
+    void KFRealmData::BalanceCurrencyEndData( KFEntity* player )
     {
         // 所有货币
         for ( auto& iter : KFCurrencyConfig::Instance()->_settings._objects )
@@ -332,7 +341,7 @@ namespace KFrame
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    void KFExploreRecord::BalanceRecord( KFMsg::PBBalanceData* pbdata, uint32 status )
+    void KFRealmData::BalanceRealmRecord( KFMsg::PBBalanceData* pbdata, uint32 status )
     {
         //__LOG_INFO__( "{}", _data.DebugString() );
 
@@ -348,7 +357,7 @@ namespace KFrame
         //__LOG_INFO__( "{}", pbdata->DebugString() );
     }
 
-    void KFExploreRecord::BalanceDrop( KFEntity* player )
+    void KFRealmData::BalanceAddDropData( KFEntity* player )
     {
         KFMsg::PBShowElement pbelement;
         if ( !player->GetShowElement( &pbelement ) )
@@ -387,7 +396,7 @@ namespace KFrame
         }
     }
 
-    void KFExploreRecord::BalanceHeroRecord( KFMsg::PBBalanceData* pbdata )
+    void KFRealmData::BalanceHeroRecord( KFMsg::PBBalanceData* pbdata )
     {
         for ( auto i = 0; i < _data.herodata_size(); ++i )
         {
@@ -438,7 +447,7 @@ namespace KFrame
         }
     }
 
-    void KFExploreRecord::BalanceItemRecord( KFMsg::PBBalanceData* pbdata, uint32 status )
+    void KFRealmData::BalanceItemRecord( KFMsg::PBBalanceData* pbdata, uint32 status )
     {
         for ( auto i = 0; i < _data.itemdata_size(); ++i )
         {
@@ -465,7 +474,7 @@ namespace KFrame
         }
     }
 
-    void KFExploreRecord::BalanceCurrencyRecord( KFMsg::PBBalanceData* pbdata )
+    void KFRealmData::BalanceCurrencyRecord( KFMsg::PBBalanceData* pbdata )
     {
         for ( auto i = 0; i < _data.currencydata_size(); ++i )
         {

@@ -61,12 +61,6 @@ LIBPROTOC_EXPORT extern PBBalanceCurrencyDefaultTypeInternal _PBBalanceCurrency_
 class PBBalanceData;
 class PBBalanceDataDefaultTypeInternal;
 LIBPROTOC_EXPORT extern PBBalanceDataDefaultTypeInternal _PBBalanceData_default_instance_;
-class PBBalanceDataServer;
-class PBBalanceDataServerDefaultTypeInternal;
-LIBPROTOC_EXPORT extern PBBalanceDataServerDefaultTypeInternal _PBBalanceDataServer_default_instance_;
-class PBBalanceDataServer_ExploreEntry_DoNotUse;
-class PBBalanceDataServer_ExploreEntry_DoNotUseDefaultTypeInternal;
-LIBPROTOC_EXPORT extern PBBalanceDataServer_ExploreEntry_DoNotUseDefaultTypeInternal _PBBalanceDataServer_ExploreEntry_DoNotUse_default_instance_;
 class PBBalanceHero;
 class PBBalanceHeroDefaultTypeInternal;
 LIBPROTOC_EXPORT extern PBBalanceHeroDefaultTypeInternal _PBBalanceHero_default_instance_;
@@ -100,12 +94,6 @@ LIBPROTOC_EXPORT extern PBBuffDataDefaultTypeInternal _PBBuffData_default_instan
 class PBBuffListData;
 class PBBuffListDataDefaultTypeInternal;
 LIBPROTOC_EXPORT extern PBBuffListDataDefaultTypeInternal _PBBuffListData_default_instance_;
-class PBExploreBuffData;
-class PBExploreBuffDataDefaultTypeInternal;
-LIBPROTOC_EXPORT extern PBExploreBuffDataDefaultTypeInternal _PBExploreBuffData_default_instance_;
-class PBExploreBuffData_BuffEntry_DoNotUse;
-class PBExploreBuffData_BuffEntry_DoNotUseDefaultTypeInternal;
-LIBPROTOC_EXPORT extern PBExploreBuffData_BuffEntry_DoNotUseDefaultTypeInternal _PBExploreBuffData_BuffEntry_DoNotUse_default_instance_;
 class PBExploreData;
 class PBExploreDataDefaultTypeInternal;
 LIBPROTOC_EXPORT extern PBExploreDataDefaultTypeInternal _PBExploreData_default_instance_;
@@ -121,19 +109,29 @@ LIBPROTOC_EXPORT extern PBExplorePlayerDataDefaultTypeInternal _PBExplorePlayerD
 class PBFighterHeroData;
 class PBFighterHeroDataDefaultTypeInternal;
 LIBPROTOC_EXPORT extern PBFighterHeroDataDefaultTypeInternal _PBFighterHeroData_default_instance_;
+class PBHeroBuffData;
+class PBHeroBuffDataDefaultTypeInternal;
+LIBPROTOC_EXPORT extern PBHeroBuffDataDefaultTypeInternal _PBHeroBuffData_default_instance_;
+class PBHeroBuffData_BuffEntry_DoNotUse;
+class PBHeroBuffData_BuffEntry_DoNotUseDefaultTypeInternal;
+LIBPROTOC_EXPORT extern PBHeroBuffData_BuffEntry_DoNotUseDefaultTypeInternal _PBHeroBuffData_BuffEntry_DoNotUse_default_instance_;
 class PBMatchPlayer;
 class PBMatchPlayerDefaultTypeInternal;
 LIBPROTOC_EXPORT extern PBMatchPlayerDefaultTypeInternal _PBMatchPlayer_default_instance_;
 class PBMatchPlayer_HeroEntry_DoNotUse;
 class PBMatchPlayer_HeroEntry_DoNotUseDefaultTypeInternal;
 LIBPROTOC_EXPORT extern PBMatchPlayer_HeroEntry_DoNotUseDefaultTypeInternal _PBMatchPlayer_HeroEntry_DoNotUse_default_instance_;
+class PBRealmData;
+class PBRealmDataDefaultTypeInternal;
+LIBPROTOC_EXPORT extern PBRealmDataDefaultTypeInternal _PBRealmData_default_instance_;
+class PBRealmData_ExploreEntry_DoNotUse;
+class PBRealmData_ExploreEntry_DoNotUseDefaultTypeInternal;
+LIBPROTOC_EXPORT extern PBRealmData_ExploreEntry_DoNotUseDefaultTypeInternal _PBRealmData_ExploreEntry_DoNotUse_default_instance_;
 }  // namespace KFMsg
 namespace google {
 namespace protobuf {
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceCurrency* Arena::CreateMaybeMessage<::KFMsg::PBBalanceCurrency>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceData* Arena::CreateMaybeMessage<::KFMsg::PBBalanceData>(Arena*);
-template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceDataServer* Arena::CreateMaybeMessage<::KFMsg::PBBalanceDataServer>(Arena*);
-template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceDataServer_ExploreEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBBalanceDataServer_ExploreEntry_DoNotUse>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceHero* Arena::CreateMaybeMessage<::KFMsg::PBBalanceHero>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceHeroServer* Arena::CreateMaybeMessage<::KFMsg::PBBalanceHeroServer>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceHeroServer_BeginattributesEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBBalanceHeroServer_BeginattributesEntry_DoNotUse>(Arena*);
@@ -145,15 +143,17 @@ template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceItem* Arena::CreateMaybeMessage<::
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceItemServer* Arena::CreateMaybeMessage<::KFMsg::PBBalanceItemServer>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBuffData* Arena::CreateMaybeMessage<::KFMsg::PBBuffData>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBuffListData* Arena::CreateMaybeMessage<::KFMsg::PBBuffListData>(Arena*);
-template<> LIBPROTOC_EXPORT ::KFMsg::PBExploreBuffData* Arena::CreateMaybeMessage<::KFMsg::PBExploreBuffData>(Arena*);
-template<> LIBPROTOC_EXPORT ::KFMsg::PBExploreBuffData_BuffEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBExploreBuffData_BuffEntry_DoNotUse>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBExploreData* Arena::CreateMaybeMessage<::KFMsg::PBExploreData>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBExploreData_NpcdataEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBExploreData_NpcdataEntry_DoNotUse>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBExploreNpcData* Arena::CreateMaybeMessage<::KFMsg::PBExploreNpcData>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBExplorePlayerData* Arena::CreateMaybeMessage<::KFMsg::PBExplorePlayerData>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBFighterHeroData* Arena::CreateMaybeMessage<::KFMsg::PBFighterHeroData>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::PBHeroBuffData* Arena::CreateMaybeMessage<::KFMsg::PBHeroBuffData>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::PBHeroBuffData_BuffEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBHeroBuffData_BuffEntry_DoNotUse>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBMatchPlayer* Arena::CreateMaybeMessage<::KFMsg::PBMatchPlayer>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBMatchPlayer_HeroEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBMatchPlayer_HeroEntry_DoNotUse>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::PBRealmData* Arena::CreateMaybeMessage<::KFMsg::PBRealmData>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::PBRealmData_ExploreEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBRealmData_ExploreEntry_DoNotUse>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 namespace KFMsg {
@@ -2001,45 +2001,45 @@ class LIBPROTOC_EXPORT PBBuffListData : public ::google::protobuf::Message /* @@
 };
 // -------------------------------------------------------------------
 
-class PBExploreBuffData_BuffEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<PBExploreBuffData_BuffEntry_DoNotUse, 
+class PBHeroBuffData_BuffEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<PBHeroBuffData_BuffEntry_DoNotUse, 
     ::google::protobuf::uint64, ::KFMsg::PBBuffListData,
     ::google::protobuf::internal::WireFormatLite::TYPE_UINT64,
     ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
     0 > {
 public:
-  typedef ::google::protobuf::internal::MapEntry<PBExploreBuffData_BuffEntry_DoNotUse, 
+  typedef ::google::protobuf::internal::MapEntry<PBHeroBuffData_BuffEntry_DoNotUse, 
     ::google::protobuf::uint64, ::KFMsg::PBBuffListData,
     ::google::protobuf::internal::WireFormatLite::TYPE_UINT64,
     ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
     0 > SuperType;
-  PBExploreBuffData_BuffEntry_DoNotUse();
-  PBExploreBuffData_BuffEntry_DoNotUse(::google::protobuf::Arena* arena);
-  void MergeFrom(const PBExploreBuffData_BuffEntry_DoNotUse& other);
-  static const PBExploreBuffData_BuffEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const PBExploreBuffData_BuffEntry_DoNotUse*>(&_PBExploreBuffData_BuffEntry_DoNotUse_default_instance_); }
+  PBHeroBuffData_BuffEntry_DoNotUse();
+  PBHeroBuffData_BuffEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const PBHeroBuffData_BuffEntry_DoNotUse& other);
+  static const PBHeroBuffData_BuffEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const PBHeroBuffData_BuffEntry_DoNotUse*>(&_PBHeroBuffData_BuffEntry_DoNotUse_default_instance_); }
   void MergeFrom(const ::google::protobuf::Message& other) final;
   ::google::protobuf::Metadata GetMetadata() const;
 };
 
 // -------------------------------------------------------------------
 
-class LIBPROTOC_EXPORT PBExploreBuffData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.PBExploreBuffData) */ {
+class LIBPROTOC_EXPORT PBHeroBuffData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.PBHeroBuffData) */ {
  public:
-  PBExploreBuffData();
-  virtual ~PBExploreBuffData();
+  PBHeroBuffData();
+  virtual ~PBHeroBuffData();
 
-  PBExploreBuffData(const PBExploreBuffData& from);
+  PBHeroBuffData(const PBHeroBuffData& from);
 
-  inline PBExploreBuffData& operator=(const PBExploreBuffData& from) {
+  inline PBHeroBuffData& operator=(const PBHeroBuffData& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  PBExploreBuffData(PBExploreBuffData&& from) noexcept
-    : PBExploreBuffData() {
+  PBHeroBuffData(PBHeroBuffData&& from) noexcept
+    : PBHeroBuffData() {
     *this = ::std::move(from);
   }
 
-  inline PBExploreBuffData& operator=(PBExploreBuffData&& from) noexcept {
+  inline PBHeroBuffData& operator=(PBHeroBuffData&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -2049,34 +2049,34 @@ class LIBPROTOC_EXPORT PBExploreBuffData : public ::google::protobuf::Message /*
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const PBExploreBuffData& default_instance();
+  static const PBHeroBuffData& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const PBExploreBuffData* internal_default_instance() {
-    return reinterpret_cast<const PBExploreBuffData*>(
-               &_PBExploreBuffData_default_instance_);
+  static inline const PBHeroBuffData* internal_default_instance() {
+    return reinterpret_cast<const PBHeroBuffData*>(
+               &_PBHeroBuffData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     19;
 
-  void Swap(PBExploreBuffData* other);
-  friend void swap(PBExploreBuffData& a, PBExploreBuffData& b) {
+  void Swap(PBHeroBuffData* other);
+  friend void swap(PBHeroBuffData& a, PBHeroBuffData& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline PBExploreBuffData* New() const final {
-    return CreateMaybeMessage<PBExploreBuffData>(NULL);
+  inline PBHeroBuffData* New() const final {
+    return CreateMaybeMessage<PBHeroBuffData>(NULL);
   }
 
-  PBExploreBuffData* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<PBExploreBuffData>(arena);
+  PBHeroBuffData* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<PBHeroBuffData>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const PBExploreBuffData& from);
-  void MergeFrom(const PBExploreBuffData& from);
+  void CopyFrom(const PBHeroBuffData& from);
+  void MergeFrom(const PBHeroBuffData& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -2093,7 +2093,7 @@ class LIBPROTOC_EXPORT PBExploreBuffData : public ::google::protobuf::Message /*
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(PBExploreBuffData* other);
+  void InternalSwap(PBHeroBuffData* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -2119,12 +2119,12 @@ class LIBPROTOC_EXPORT PBExploreBuffData : public ::google::protobuf::Message /*
   ::google::protobuf::Map< ::google::protobuf::uint64, ::KFMsg::PBBuffListData >*
       mutable_buff();
 
-  // @@protoc_insertion_point(class_scope:KFMsg.PBExploreBuffData)
+  // @@protoc_insertion_point(class_scope:KFMsg.PBHeroBuffData)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::MapField<
-      PBExploreBuffData_BuffEntry_DoNotUse,
+      PBHeroBuffData_BuffEntry_DoNotUse,
       ::google::protobuf::uint64, ::KFMsg::PBBuffListData,
       ::google::protobuf::internal::WireFormatLite::TYPE_UINT64,
       ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
@@ -2336,45 +2336,45 @@ class LIBPROTOC_EXPORT PBExploreData : public ::google::protobuf::Message /* @@p
 };
 // -------------------------------------------------------------------
 
-class PBBalanceDataServer_ExploreEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<PBBalanceDataServer_ExploreEntry_DoNotUse, 
+class PBRealmData_ExploreEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<PBRealmData_ExploreEntry_DoNotUse, 
     ::google::protobuf::uint32, ::KFMsg::PBExploreData,
     ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
     ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
     0 > {
 public:
-  typedef ::google::protobuf::internal::MapEntry<PBBalanceDataServer_ExploreEntry_DoNotUse, 
+  typedef ::google::protobuf::internal::MapEntry<PBRealmData_ExploreEntry_DoNotUse, 
     ::google::protobuf::uint32, ::KFMsg::PBExploreData,
     ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
     ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
     0 > SuperType;
-  PBBalanceDataServer_ExploreEntry_DoNotUse();
-  PBBalanceDataServer_ExploreEntry_DoNotUse(::google::protobuf::Arena* arena);
-  void MergeFrom(const PBBalanceDataServer_ExploreEntry_DoNotUse& other);
-  static const PBBalanceDataServer_ExploreEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const PBBalanceDataServer_ExploreEntry_DoNotUse*>(&_PBBalanceDataServer_ExploreEntry_DoNotUse_default_instance_); }
+  PBRealmData_ExploreEntry_DoNotUse();
+  PBRealmData_ExploreEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const PBRealmData_ExploreEntry_DoNotUse& other);
+  static const PBRealmData_ExploreEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const PBRealmData_ExploreEntry_DoNotUse*>(&_PBRealmData_ExploreEntry_DoNotUse_default_instance_); }
   void MergeFrom(const ::google::protobuf::Message& other) final;
   ::google::protobuf::Metadata GetMetadata() const;
 };
 
 // -------------------------------------------------------------------
 
-class LIBPROTOC_EXPORT PBBalanceDataServer : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.PBBalanceDataServer) */ {
+class LIBPROTOC_EXPORT PBRealmData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.PBRealmData) */ {
  public:
-  PBBalanceDataServer();
-  virtual ~PBBalanceDataServer();
+  PBRealmData();
+  virtual ~PBRealmData();
 
-  PBBalanceDataServer(const PBBalanceDataServer& from);
+  PBRealmData(const PBRealmData& from);
 
-  inline PBBalanceDataServer& operator=(const PBBalanceDataServer& from) {
+  inline PBRealmData& operator=(const PBRealmData& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  PBBalanceDataServer(PBBalanceDataServer&& from) noexcept
-    : PBBalanceDataServer() {
+  PBRealmData(PBRealmData&& from) noexcept
+    : PBRealmData() {
     *this = ::std::move(from);
   }
 
-  inline PBBalanceDataServer& operator=(PBBalanceDataServer&& from) noexcept {
+  inline PBRealmData& operator=(PBRealmData&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -2384,34 +2384,34 @@ class LIBPROTOC_EXPORT PBBalanceDataServer : public ::google::protobuf::Message 
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const PBBalanceDataServer& default_instance();
+  static const PBRealmData& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const PBBalanceDataServer* internal_default_instance() {
-    return reinterpret_cast<const PBBalanceDataServer*>(
-               &_PBBalanceDataServer_default_instance_);
+  static inline const PBRealmData* internal_default_instance() {
+    return reinterpret_cast<const PBRealmData*>(
+               &_PBRealmData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     23;
 
-  void Swap(PBBalanceDataServer* other);
-  friend void swap(PBBalanceDataServer& a, PBBalanceDataServer& b) {
+  void Swap(PBRealmData* other);
+  friend void swap(PBRealmData& a, PBRealmData& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline PBBalanceDataServer* New() const final {
-    return CreateMaybeMessage<PBBalanceDataServer>(NULL);
+  inline PBRealmData* New() const final {
+    return CreateMaybeMessage<PBRealmData>(NULL);
   }
 
-  PBBalanceDataServer* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<PBBalanceDataServer>(arena);
+  PBRealmData* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<PBRealmData>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const PBBalanceDataServer& from);
-  void MergeFrom(const PBBalanceDataServer& from);
+  void CopyFrom(const PBRealmData& from);
+  void MergeFrom(const PBRealmData& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -2428,7 +2428,7 @@ class LIBPROTOC_EXPORT PBBalanceDataServer : public ::google::protobuf::Message 
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(PBBalanceDataServer* other);
+  void InternalSwap(PBRealmData* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -2516,17 +2516,17 @@ class LIBPROTOC_EXPORT PBBalanceDataServer : public ::google::protobuf::Message 
   ::std::string* release_modulename();
   void set_allocated_modulename(::std::string* modulename);
 
-  // .KFMsg.PBExploreBuffData buffdata = 14;
+  // .KFMsg.PBHeroBuffData buffdata = 14;
   bool has_buffdata() const;
   void clear_buffdata();
   static const int kBuffdataFieldNumber = 14;
   private:
-  const ::KFMsg::PBExploreBuffData& _internal_buffdata() const;
+  const ::KFMsg::PBHeroBuffData& _internal_buffdata() const;
   public:
-  const ::KFMsg::PBExploreBuffData& buffdata() const;
-  ::KFMsg::PBExploreBuffData* release_buffdata();
-  ::KFMsg::PBExploreBuffData* mutable_buffdata();
-  void set_allocated_buffdata(::KFMsg::PBExploreBuffData* buffdata);
+  const ::KFMsg::PBHeroBuffData& buffdata() const;
+  ::KFMsg::PBHeroBuffData* release_buffdata();
+  ::KFMsg::PBHeroBuffData* mutable_buffdata();
+  void set_allocated_buffdata(::KFMsg::PBHeroBuffData* buffdata);
 
   // uint32 id = 1;
   void clear_id();
@@ -2576,7 +2576,7 @@ class LIBPROTOC_EXPORT PBBalanceDataServer : public ::google::protobuf::Message 
   ::google::protobuf::uint32 extendlevel() const;
   void set_extendlevel(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:KFMsg.PBBalanceDataServer)
+  // @@protoc_insertion_point(class_scope:KFMsg.PBRealmData)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -2586,13 +2586,13 @@ class LIBPROTOC_EXPORT PBBalanceDataServer : public ::google::protobuf::Message 
   ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > killnpc_;
   mutable int _killnpc_cached_byte_size_;
   ::google::protobuf::internal::MapField<
-      PBBalanceDataServer_ExploreEntry_DoNotUse,
+      PBRealmData_ExploreEntry_DoNotUse,
       ::google::protobuf::uint32, ::KFMsg::PBExploreData,
       ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
       ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
       0 > explore_;
   ::google::protobuf::internal::ArenaStringPtr modulename_;
-  ::KFMsg::PBExploreBuffData* buffdata_;
+  ::KFMsg::PBHeroBuffData* buffdata_;
   ::google::protobuf::uint32 id_;
   ::google::protobuf::uint32 level_;
   ::google::protobuf::uint64 moduleid_;
@@ -3855,23 +3855,23 @@ PBBuffListData::bufflist() const {
 
 // -------------------------------------------------------------------
 
-// PBExploreBuffData
+// PBHeroBuffData
 
 // map<uint64, .KFMsg.PBBuffListData> buff = 1;
-inline int PBExploreBuffData::buff_size() const {
+inline int PBHeroBuffData::buff_size() const {
   return buff_.size();
 }
-inline void PBExploreBuffData::clear_buff() {
+inline void PBHeroBuffData::clear_buff() {
   buff_.Clear();
 }
 inline const ::google::protobuf::Map< ::google::protobuf::uint64, ::KFMsg::PBBuffListData >&
-PBExploreBuffData::buff() const {
-  // @@protoc_insertion_point(field_map:KFMsg.PBExploreBuffData.buff)
+PBHeroBuffData::buff() const {
+  // @@protoc_insertion_point(field_map:KFMsg.PBHeroBuffData.buff)
   return buff_.GetMap();
 }
 inline ::google::protobuf::Map< ::google::protobuf::uint64, ::KFMsg::PBBuffListData >*
-PBExploreBuffData::mutable_buff() {
-  // @@protoc_insertion_point(field_mutable_map:KFMsg.PBExploreBuffData.buff)
+PBHeroBuffData::mutable_buff() {
+  // @@protoc_insertion_point(field_mutable_map:KFMsg.PBHeroBuffData.buff)
   return buff_.MutableMap();
 }
 
@@ -4069,329 +4069,329 @@ PBExploreData::mutable_npcdata() {
 
 // -------------------------------------------------------------------
 
-// PBBalanceDataServer
+// PBRealmData
 
 // uint32 id = 1;
-inline void PBBalanceDataServer::clear_id() {
+inline void PBRealmData::clear_id() {
   id_ = 0u;
 }
-inline ::google::protobuf::uint32 PBBalanceDataServer::id() const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.id)
+inline ::google::protobuf::uint32 PBRealmData::id() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.id)
   return id_;
 }
-inline void PBBalanceDataServer::set_id(::google::protobuf::uint32 value) {
+inline void PBRealmData::set_id(::google::protobuf::uint32 value) {
   
   id_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.id)
+  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.id)
 }
 
 // uint32 level = 2;
-inline void PBBalanceDataServer::clear_level() {
+inline void PBRealmData::clear_level() {
   level_ = 0u;
 }
-inline ::google::protobuf::uint32 PBBalanceDataServer::level() const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.level)
+inline ::google::protobuf::uint32 PBRealmData::level() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.level)
   return level_;
 }
-inline void PBBalanceDataServer::set_level(::google::protobuf::uint32 value) {
+inline void PBRealmData::set_level(::google::protobuf::uint32 value) {
   
   level_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.level)
+  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.level)
 }
 
 // bytes modulename = 3;
-inline void PBBalanceDataServer::clear_modulename() {
+inline void PBRealmData::clear_modulename() {
   modulename_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& PBBalanceDataServer::modulename() const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.modulename)
+inline const ::std::string& PBRealmData::modulename() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.modulename)
   return modulename_.GetNoArena();
 }
-inline void PBBalanceDataServer::set_modulename(const ::std::string& value) {
+inline void PBRealmData::set_modulename(const ::std::string& value) {
   
   modulename_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.modulename)
+  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.modulename)
 }
 #if LANG_CXX11
-inline void PBBalanceDataServer::set_modulename(::std::string&& value) {
+inline void PBRealmData::set_modulename(::std::string&& value) {
   
   modulename_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:KFMsg.PBBalanceDataServer.modulename)
+  // @@protoc_insertion_point(field_set_rvalue:KFMsg.PBRealmData.modulename)
 }
 #endif
-inline void PBBalanceDataServer::set_modulename(const char* value) {
+inline void PBRealmData::set_modulename(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   modulename_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:KFMsg.PBBalanceDataServer.modulename)
+  // @@protoc_insertion_point(field_set_char:KFMsg.PBRealmData.modulename)
 }
-inline void PBBalanceDataServer::set_modulename(const void* value, size_t size) {
+inline void PBRealmData::set_modulename(const void* value, size_t size) {
   
   modulename_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:KFMsg.PBBalanceDataServer.modulename)
+  // @@protoc_insertion_point(field_set_pointer:KFMsg.PBRealmData.modulename)
 }
-inline ::std::string* PBBalanceDataServer::mutable_modulename() {
+inline ::std::string* PBRealmData::mutable_modulename() {
   
-  // @@protoc_insertion_point(field_mutable:KFMsg.PBBalanceDataServer.modulename)
+  // @@protoc_insertion_point(field_mutable:KFMsg.PBRealmData.modulename)
   return modulename_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* PBBalanceDataServer::release_modulename() {
-  // @@protoc_insertion_point(field_release:KFMsg.PBBalanceDataServer.modulename)
+inline ::std::string* PBRealmData::release_modulename() {
+  // @@protoc_insertion_point(field_release:KFMsg.PBRealmData.modulename)
   
   return modulename_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void PBBalanceDataServer::set_allocated_modulename(::std::string* modulename) {
+inline void PBRealmData::set_allocated_modulename(::std::string* modulename) {
   if (modulename != NULL) {
     
   } else {
     
   }
   modulename_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), modulename);
-  // @@protoc_insertion_point(field_set_allocated:KFMsg.PBBalanceDataServer.modulename)
+  // @@protoc_insertion_point(field_set_allocated:KFMsg.PBRealmData.modulename)
 }
 
 // uint64 moduleid = 4;
-inline void PBBalanceDataServer::clear_moduleid() {
+inline void PBRealmData::clear_moduleid() {
   moduleid_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint64 PBBalanceDataServer::moduleid() const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.moduleid)
+inline ::google::protobuf::uint64 PBRealmData::moduleid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.moduleid)
   return moduleid_;
 }
-inline void PBBalanceDataServer::set_moduleid(::google::protobuf::uint64 value) {
+inline void PBRealmData::set_moduleid(::google::protobuf::uint64 value) {
   
   moduleid_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.moduleid)
+  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.moduleid)
 }
 
 // uint32 status = 5;
-inline void PBBalanceDataServer::clear_status() {
+inline void PBRealmData::clear_status() {
   status_ = 0u;
 }
-inline ::google::protobuf::uint32 PBBalanceDataServer::status() const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.status)
+inline ::google::protobuf::uint32 PBRealmData::status() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.status)
   return status_;
 }
-inline void PBBalanceDataServer::set_status(::google::protobuf::uint32 value) {
+inline void PBRealmData::set_status(::google::protobuf::uint32 value) {
   
   status_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.status)
+  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.status)
 }
 
 // uint64 starttime = 6;
-inline void PBBalanceDataServer::clear_starttime() {
+inline void PBRealmData::clear_starttime() {
   starttime_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint64 PBBalanceDataServer::starttime() const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.starttime)
+inline ::google::protobuf::uint64 PBRealmData::starttime() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.starttime)
   return starttime_;
 }
-inline void PBBalanceDataServer::set_starttime(::google::protobuf::uint64 value) {
+inline void PBRealmData::set_starttime(::google::protobuf::uint64 value) {
   
   starttime_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.starttime)
+  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.starttime)
 }
 
 // uint32 usetime = 7;
-inline void PBBalanceDataServer::clear_usetime() {
+inline void PBRealmData::clear_usetime() {
   usetime_ = 0u;
 }
-inline ::google::protobuf::uint32 PBBalanceDataServer::usetime() const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.usetime)
+inline ::google::protobuf::uint32 PBRealmData::usetime() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.usetime)
   return usetime_;
 }
-inline void PBBalanceDataServer::set_usetime(::google::protobuf::uint32 value) {
+inline void PBRealmData::set_usetime(::google::protobuf::uint32 value) {
   
   usetime_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.usetime)
+  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.usetime)
 }
 
 // uint32 faith = 8;
-inline void PBBalanceDataServer::clear_faith() {
+inline void PBRealmData::clear_faith() {
   faith_ = 0u;
 }
-inline ::google::protobuf::uint32 PBBalanceDataServer::faith() const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.faith)
+inline ::google::protobuf::uint32 PBRealmData::faith() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.faith)
   return faith_;
 }
-inline void PBBalanceDataServer::set_faith(::google::protobuf::uint32 value) {
+inline void PBRealmData::set_faith(::google::protobuf::uint32 value) {
   
   faith_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.faith)
+  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.faith)
 }
 
 // uint32 extendlevel = 9;
-inline void PBBalanceDataServer::clear_extendlevel() {
+inline void PBRealmData::clear_extendlevel() {
   extendlevel_ = 0u;
 }
-inline ::google::protobuf::uint32 PBBalanceDataServer::extendlevel() const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.extendlevel)
+inline ::google::protobuf::uint32 PBRealmData::extendlevel() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.extendlevel)
   return extendlevel_;
 }
-inline void PBBalanceDataServer::set_extendlevel(::google::protobuf::uint32 value) {
+inline void PBRealmData::set_extendlevel(::google::protobuf::uint32 value) {
   
   extendlevel_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.extendlevel)
+  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.extendlevel)
 }
 
 // repeated .KFMsg.PBBalanceHeroServer herodata = 10;
-inline int PBBalanceDataServer::herodata_size() const {
+inline int PBRealmData::herodata_size() const {
   return herodata_.size();
 }
-inline void PBBalanceDataServer::clear_herodata() {
+inline void PBRealmData::clear_herodata() {
   herodata_.Clear();
 }
-inline ::KFMsg::PBBalanceHeroServer* PBBalanceDataServer::mutable_herodata(int index) {
-  // @@protoc_insertion_point(field_mutable:KFMsg.PBBalanceDataServer.herodata)
+inline ::KFMsg::PBBalanceHeroServer* PBRealmData::mutable_herodata(int index) {
+  // @@protoc_insertion_point(field_mutable:KFMsg.PBRealmData.herodata)
   return herodata_.Mutable(index);
 }
 inline ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceHeroServer >*
-PBBalanceDataServer::mutable_herodata() {
-  // @@protoc_insertion_point(field_mutable_list:KFMsg.PBBalanceDataServer.herodata)
+PBRealmData::mutable_herodata() {
+  // @@protoc_insertion_point(field_mutable_list:KFMsg.PBRealmData.herodata)
   return &herodata_;
 }
-inline const ::KFMsg::PBBalanceHeroServer& PBBalanceDataServer::herodata(int index) const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.herodata)
+inline const ::KFMsg::PBBalanceHeroServer& PBRealmData::herodata(int index) const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.herodata)
   return herodata_.Get(index);
 }
-inline ::KFMsg::PBBalanceHeroServer* PBBalanceDataServer::add_herodata() {
-  // @@protoc_insertion_point(field_add:KFMsg.PBBalanceDataServer.herodata)
+inline ::KFMsg::PBBalanceHeroServer* PBRealmData::add_herodata() {
+  // @@protoc_insertion_point(field_add:KFMsg.PBRealmData.herodata)
   return herodata_.Add();
 }
 inline const ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceHeroServer >&
-PBBalanceDataServer::herodata() const {
-  // @@protoc_insertion_point(field_list:KFMsg.PBBalanceDataServer.herodata)
+PBRealmData::herodata() const {
+  // @@protoc_insertion_point(field_list:KFMsg.PBRealmData.herodata)
   return herodata_;
 }
 
 // repeated .KFMsg.PBBalanceItemServer itemdata = 11;
-inline int PBBalanceDataServer::itemdata_size() const {
+inline int PBRealmData::itemdata_size() const {
   return itemdata_.size();
 }
-inline void PBBalanceDataServer::clear_itemdata() {
+inline void PBRealmData::clear_itemdata() {
   itemdata_.Clear();
 }
-inline ::KFMsg::PBBalanceItemServer* PBBalanceDataServer::mutable_itemdata(int index) {
-  // @@protoc_insertion_point(field_mutable:KFMsg.PBBalanceDataServer.itemdata)
+inline ::KFMsg::PBBalanceItemServer* PBRealmData::mutable_itemdata(int index) {
+  // @@protoc_insertion_point(field_mutable:KFMsg.PBRealmData.itemdata)
   return itemdata_.Mutable(index);
 }
 inline ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceItemServer >*
-PBBalanceDataServer::mutable_itemdata() {
-  // @@protoc_insertion_point(field_mutable_list:KFMsg.PBBalanceDataServer.itemdata)
+PBRealmData::mutable_itemdata() {
+  // @@protoc_insertion_point(field_mutable_list:KFMsg.PBRealmData.itemdata)
   return &itemdata_;
 }
-inline const ::KFMsg::PBBalanceItemServer& PBBalanceDataServer::itemdata(int index) const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.itemdata)
+inline const ::KFMsg::PBBalanceItemServer& PBRealmData::itemdata(int index) const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.itemdata)
   return itemdata_.Get(index);
 }
-inline ::KFMsg::PBBalanceItemServer* PBBalanceDataServer::add_itemdata() {
-  // @@protoc_insertion_point(field_add:KFMsg.PBBalanceDataServer.itemdata)
+inline ::KFMsg::PBBalanceItemServer* PBRealmData::add_itemdata() {
+  // @@protoc_insertion_point(field_add:KFMsg.PBRealmData.itemdata)
   return itemdata_.Add();
 }
 inline const ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceItemServer >&
-PBBalanceDataServer::itemdata() const {
-  // @@protoc_insertion_point(field_list:KFMsg.PBBalanceDataServer.itemdata)
+PBRealmData::itemdata() const {
+  // @@protoc_insertion_point(field_list:KFMsg.PBRealmData.itemdata)
   return itemdata_;
 }
 
 // repeated .KFMsg.PBBalanceCurrency currencydata = 12;
-inline int PBBalanceDataServer::currencydata_size() const {
+inline int PBRealmData::currencydata_size() const {
   return currencydata_.size();
 }
-inline void PBBalanceDataServer::clear_currencydata() {
+inline void PBRealmData::clear_currencydata() {
   currencydata_.Clear();
 }
-inline ::KFMsg::PBBalanceCurrency* PBBalanceDataServer::mutable_currencydata(int index) {
-  // @@protoc_insertion_point(field_mutable:KFMsg.PBBalanceDataServer.currencydata)
+inline ::KFMsg::PBBalanceCurrency* PBRealmData::mutable_currencydata(int index) {
+  // @@protoc_insertion_point(field_mutable:KFMsg.PBRealmData.currencydata)
   return currencydata_.Mutable(index);
 }
 inline ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceCurrency >*
-PBBalanceDataServer::mutable_currencydata() {
-  // @@protoc_insertion_point(field_mutable_list:KFMsg.PBBalanceDataServer.currencydata)
+PBRealmData::mutable_currencydata() {
+  // @@protoc_insertion_point(field_mutable_list:KFMsg.PBRealmData.currencydata)
   return &currencydata_;
 }
-inline const ::KFMsg::PBBalanceCurrency& PBBalanceDataServer::currencydata(int index) const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.currencydata)
+inline const ::KFMsg::PBBalanceCurrency& PBRealmData::currencydata(int index) const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.currencydata)
   return currencydata_.Get(index);
 }
-inline ::KFMsg::PBBalanceCurrency* PBBalanceDataServer::add_currencydata() {
-  // @@protoc_insertion_point(field_add:KFMsg.PBBalanceDataServer.currencydata)
+inline ::KFMsg::PBBalanceCurrency* PBRealmData::add_currencydata() {
+  // @@protoc_insertion_point(field_add:KFMsg.PBRealmData.currencydata)
   return currencydata_.Add();
 }
 inline const ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceCurrency >&
-PBBalanceDataServer::currencydata() const {
-  // @@protoc_insertion_point(field_list:KFMsg.PBBalanceDataServer.currencydata)
+PBRealmData::currencydata() const {
+  // @@protoc_insertion_point(field_list:KFMsg.PBRealmData.currencydata)
   return currencydata_;
 }
 
 // repeated uint64 killnpc = 13;
-inline int PBBalanceDataServer::killnpc_size() const {
+inline int PBRealmData::killnpc_size() const {
   return killnpc_.size();
 }
-inline void PBBalanceDataServer::clear_killnpc() {
+inline void PBRealmData::clear_killnpc() {
   killnpc_.Clear();
 }
-inline ::google::protobuf::uint64 PBBalanceDataServer::killnpc(int index) const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.killnpc)
+inline ::google::protobuf::uint64 PBRealmData::killnpc(int index) const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.killnpc)
   return killnpc_.Get(index);
 }
-inline void PBBalanceDataServer::set_killnpc(int index, ::google::protobuf::uint64 value) {
+inline void PBRealmData::set_killnpc(int index, ::google::protobuf::uint64 value) {
   killnpc_.Set(index, value);
-  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceDataServer.killnpc)
+  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.killnpc)
 }
-inline void PBBalanceDataServer::add_killnpc(::google::protobuf::uint64 value) {
+inline void PBRealmData::add_killnpc(::google::protobuf::uint64 value) {
   killnpc_.Add(value);
-  // @@protoc_insertion_point(field_add:KFMsg.PBBalanceDataServer.killnpc)
+  // @@protoc_insertion_point(field_add:KFMsg.PBRealmData.killnpc)
 }
 inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
-PBBalanceDataServer::killnpc() const {
-  // @@protoc_insertion_point(field_list:KFMsg.PBBalanceDataServer.killnpc)
+PBRealmData::killnpc() const {
+  // @@protoc_insertion_point(field_list:KFMsg.PBRealmData.killnpc)
   return killnpc_;
 }
 inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
-PBBalanceDataServer::mutable_killnpc() {
-  // @@protoc_insertion_point(field_mutable_list:KFMsg.PBBalanceDataServer.killnpc)
+PBRealmData::mutable_killnpc() {
+  // @@protoc_insertion_point(field_mutable_list:KFMsg.PBRealmData.killnpc)
   return &killnpc_;
 }
 
-// .KFMsg.PBExploreBuffData buffdata = 14;
-inline bool PBBalanceDataServer::has_buffdata() const {
+// .KFMsg.PBHeroBuffData buffdata = 14;
+inline bool PBRealmData::has_buffdata() const {
   return this != internal_default_instance() && buffdata_ != NULL;
 }
-inline void PBBalanceDataServer::clear_buffdata() {
+inline void PBRealmData::clear_buffdata() {
   if (GetArenaNoVirtual() == NULL && buffdata_ != NULL) {
     delete buffdata_;
   }
   buffdata_ = NULL;
 }
-inline const ::KFMsg::PBExploreBuffData& PBBalanceDataServer::_internal_buffdata() const {
+inline const ::KFMsg::PBHeroBuffData& PBRealmData::_internal_buffdata() const {
   return *buffdata_;
 }
-inline const ::KFMsg::PBExploreBuffData& PBBalanceDataServer::buffdata() const {
-  const ::KFMsg::PBExploreBuffData* p = buffdata_;
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceDataServer.buffdata)
-  return p != NULL ? *p : *reinterpret_cast<const ::KFMsg::PBExploreBuffData*>(
-      &::KFMsg::_PBExploreBuffData_default_instance_);
+inline const ::KFMsg::PBHeroBuffData& PBRealmData::buffdata() const {
+  const ::KFMsg::PBHeroBuffData* p = buffdata_;
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.buffdata)
+  return p != NULL ? *p : *reinterpret_cast<const ::KFMsg::PBHeroBuffData*>(
+      &::KFMsg::_PBHeroBuffData_default_instance_);
 }
-inline ::KFMsg::PBExploreBuffData* PBBalanceDataServer::release_buffdata() {
-  // @@protoc_insertion_point(field_release:KFMsg.PBBalanceDataServer.buffdata)
+inline ::KFMsg::PBHeroBuffData* PBRealmData::release_buffdata() {
+  // @@protoc_insertion_point(field_release:KFMsg.PBRealmData.buffdata)
   
-  ::KFMsg::PBExploreBuffData* temp = buffdata_;
+  ::KFMsg::PBHeroBuffData* temp = buffdata_;
   buffdata_ = NULL;
   return temp;
 }
-inline ::KFMsg::PBExploreBuffData* PBBalanceDataServer::mutable_buffdata() {
+inline ::KFMsg::PBHeroBuffData* PBRealmData::mutable_buffdata() {
   
   if (buffdata_ == NULL) {
-    auto* p = CreateMaybeMessage<::KFMsg::PBExploreBuffData>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::KFMsg::PBHeroBuffData>(GetArenaNoVirtual());
     buffdata_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:KFMsg.PBBalanceDataServer.buffdata)
+  // @@protoc_insertion_point(field_mutable:KFMsg.PBRealmData.buffdata)
   return buffdata_;
 }
-inline void PBBalanceDataServer::set_allocated_buffdata(::KFMsg::PBExploreBuffData* buffdata) {
+inline void PBRealmData::set_allocated_buffdata(::KFMsg::PBHeroBuffData* buffdata) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == NULL) {
     delete buffdata_;
@@ -4407,24 +4407,24 @@ inline void PBBalanceDataServer::set_allocated_buffdata(::KFMsg::PBExploreBuffDa
     
   }
   buffdata_ = buffdata;
-  // @@protoc_insertion_point(field_set_allocated:KFMsg.PBBalanceDataServer.buffdata)
+  // @@protoc_insertion_point(field_set_allocated:KFMsg.PBRealmData.buffdata)
 }
 
 // map<uint32, .KFMsg.PBExploreData> explore = 15;
-inline int PBBalanceDataServer::explore_size() const {
+inline int PBRealmData::explore_size() const {
   return explore_.size();
 }
-inline void PBBalanceDataServer::clear_explore() {
+inline void PBRealmData::clear_explore() {
   explore_.Clear();
 }
 inline const ::google::protobuf::Map< ::google::protobuf::uint32, ::KFMsg::PBExploreData >&
-PBBalanceDataServer::explore() const {
-  // @@protoc_insertion_point(field_map:KFMsg.PBBalanceDataServer.explore)
+PBRealmData::explore() const {
+  // @@protoc_insertion_point(field_map:KFMsg.PBRealmData.explore)
   return explore_.GetMap();
 }
 inline ::google::protobuf::Map< ::google::protobuf::uint32, ::KFMsg::PBExploreData >*
-PBBalanceDataServer::mutable_explore() {
-  // @@protoc_insertion_point(field_mutable_map:KFMsg.PBBalanceDataServer.explore)
+PBRealmData::mutable_explore() {
+  // @@protoc_insertion_point(field_mutable_map:KFMsg.PBRealmData.explore)
   return explore_.MutableMap();
 }
 

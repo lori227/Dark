@@ -1,12 +1,12 @@
-﻿#ifndef __KF_EXPLORE_CONFIG_H__
-#define __KF_EXPLORE_CONFIG_H__
+﻿#ifndef __KF_REALM_CONFIG_H__
+#define __KF_REALM_CONFIG_H__
 
 #include "KFZConfig/KFConfig.h"
 #include "KFZConfig/KFElementConfig.h"
 
 namespace KFrame
 {
-    class KFExploreLevel
+    class KFRealmLevel
     {
     public:
         // 层级
@@ -28,18 +28,18 @@ namespace KFrame
         uint32 _inner_world = 0u;
     };
 
-    class KFExploreSeting : public KFIntSetting
+    class KFRealmSeting : public KFIntSetting
     {
     public:
         // 探索层数
-        std::unordered_map< uint32, KFExploreLevel > _levels;
+        std::unordered_map< uint32, KFRealmLevel > _levels;
 
         // 进入消耗
         std::string _str_consume;
         KFElements _consume;
 
     public:
-        const KFExploreLevel* FindExploreLevel( uint32 level ) const
+        const KFRealmLevel* FindRealmLevel( uint32 level ) const
         {
             auto iter = _levels.find( level );
             if ( iter == _levels.end() )
@@ -52,18 +52,18 @@ namespace KFrame
     };
     ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
-    class KFExploreConfig : public KFConfigT< KFExploreSeting >, public KFInstance< KFExploreConfig >
+    class KFRealmConfig : public KFConfigT< KFRealmSeting >, public KFInstance< KFRealmConfig >
     {
     public:
-        KFExploreConfig()
+        KFRealmConfig()
         {
-            _file_name = "explore";
+            _file_name = "realm";
         }
 
         virtual void LoadAllComplete();
 
         // 查找探索
-        const KFExploreLevel* FindExploreLevel( uint32 id, uint32 level )
+        const KFRealmLevel* FindRealmLevel( uint32 id, uint32 level )
         {
             auto kfsetting = FindSetting( id );
             if ( kfsetting == nullptr )
@@ -71,12 +71,12 @@ namespace KFrame
                 return nullptr;
             }
 
-            return kfsetting->FindExploreLevel( level );
+            return kfsetting->FindRealmLevel( level );
         }
 
     protected:
         // 读取配置
-        virtual void ReadSetting( KFNode& xmlnode, KFExploreSeting* kfsetting );
+        virtual void ReadSetting( KFNode& xmlnode, KFRealmSeting* kfsetting );
     };
 }
 

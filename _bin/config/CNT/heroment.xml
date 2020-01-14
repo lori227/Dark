@@ -1,4 +1,4 @@
-<root version="2463">
+<root version="2638">
 	<item Name="defaultprofession" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="defaultbackground" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="generatedirectattribute" Key="" Value="9" Channel="0" Service="0" />
@@ -37,4 +37,5 @@
 	<item Name="buildupgrademaxnum" Key="" Value="2" Channel="0" Service="0" />
 	<item Name="roledeath_characterpool" Key="" Value="4069001" Channel="0" Service="0" />
 	<item Name="heronamelength" Key="" Value="40" Channel="0" Service="0" />
+	<item Name="exploregrainwarningcount" Key="" Value="50" Channel="0" Service="0" />
 </root>

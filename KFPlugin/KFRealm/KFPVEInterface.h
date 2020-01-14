@@ -1,17 +1,17 @@
-﻿#ifndef __KF_FIGHTER_INTERFACE_H__
-#define __KF_FIGHTER_INTERFACE_H__
+﻿#ifndef __KF_PVE_INTERFACE_H__
+#define __KF_PVE_INTERFACE_H__
 
 #include "KFrame.h"
 
 namespace KFrame
 {
-    class KFFighterInterface : public KFModule
+    class KFPVEInterface : public KFModule
     {
     public:
     };
 
     //////////////////////////////////////////////////////////////////////////
-    __KF_INTERFACE__( _kf_fighter, KFFighterInterface );
+    __KF_INTERFACE__( _kf_pve, KFPVEInterface );
     //////////////////////////////////////////////////////////////////////////
 }
 

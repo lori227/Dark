@@ -1,13 +1,13 @@
-﻿#include "KFExploreConfig.hpp"
+﻿#include "KFRealmConfig.hpp"
 #include "KFZConfig/KFReadSetting.h"
 
 namespace KFrame
 {
-    void KFExploreConfig::ReadSetting( KFNode& xmlnode, KFExploreSeting* kfsetting )
+    void KFRealmConfig::ReadSetting( KFNode& xmlnode, KFRealmSeting* kfsetting )
     {
         kfsetting->_str_consume = xmlnode.GetString( "Consume", true );
 
-        KFExploreLevel leveldata;
+        KFRealmLevel leveldata;
         leveldata._level = xmlnode.GetUInt32( "Level" );
         leveldata._explore_id = xmlnode.GetUInt32( "ExploreId" );
 
@@ -23,7 +23,7 @@ namespace KFrame
         kfsetting->_levels.emplace( leveldata._level, leveldata );
     }
 
-    void KFExploreConfig::LoadAllComplete()
+    void KFRealmConfig::LoadAllComplete()
     {
         for ( auto& iter : _settings._objects )
         {

@@ -54,9 +54,13 @@ namespace KFrame
         __STRING_DEFINE__( daytime );
         __STRING_DEFINE__( dip );
         __STRING_DEFINE__( npc );
-        __STRING_DEFINE__( mapid );
-        __STRING_DEFINE__( random );
         __STRING_DEFINE__( explore );
+        //__STRING_DEFINE__( exploreid );
+        __STRING_DEFINE__( random );
+        __STRING_DEFINE__( realm );
+        __STRING_DEFINE__( realmid );
+        __STRING_DEFINE__( realmtown );
+        __STRING_DEFINE__( realmdata );
         __STRING_DEFINE__( activeindex );
         __STRING_DEFINE__( maincamp );
         __STRING_DEFINE__( itemid );
@@ -85,13 +89,11 @@ namespace KFrame
         __STRING_DEFINE__( playerdaily );
         __STRING_DEFINE__( clinicnum );
         __STRING_DEFINE__( record );
-        __STRING_DEFINE__( playerrecord );
-        __STRING_DEFINE__( explorerecord );
         __STRING_DEFINE__( fighterid );
         __STRING_DEFINE__( chapter );
         __STRING_DEFINE__( event );
         __STRING_DEFINE__( pveresult );
-        __STRING_DEFINE__( exploreresult );
+        __STRING_DEFINE__( realmresult );
         __STRING_DEFINE__( chapterid );
         __STRING_DEFINE__( pve );
         __STRING_DEFINE__( moduleid );
@@ -193,7 +195,7 @@ namespace KFrame
         __STRING_DEFINE__( trainexp );
         __STRING_DEFINE__( traincost );
         __STRING_DEFINE__( traincount );
-        __STRING_DEFINE__( exploretown );
+        __STRING_DEFINE__( playerrecord );
     }
 }
 

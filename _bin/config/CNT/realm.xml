@@ -10,8 +10,6 @@
 	<item Id="10106" Level="1" ExploreId="10106" Consume="" DropVictory="5100004" DropFail="" Creation="0" InnerWorld="0" />
 	<item Id="10201" Level="1" ExploreId="10201" Consume="" DropVictory="" DropFail="" Creation="0" InnerWorld="0" />
 	<item Id="10202" Level="1" ExploreId="10202" Consume="" DropVictory="" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10202" Level="2" ExploreId="10203" Consume="" DropVictory="" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10202" Level="3" ExploreId="10204" Consume="" DropVictory="" DropFail="" Creation="0" InnerWorld="0" />
 	<item Id="10203" Level="1" ExploreId="10203" Consume="" DropVictory="" DropFail="" Creation="0" InnerWorld="0" />
 	<item Id="10204" Level="1" ExploreId="10204" Consume="" DropVictory="" DropFail="" Creation="0" InnerWorld="0" />
 	<item Id="10501" Level="1" ExploreId="10101" Consume="" DropVictory="5130001" DropFail="" Creation="0" InnerWorld="0" />

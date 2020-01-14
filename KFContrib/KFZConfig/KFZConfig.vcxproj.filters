@@ -51,9 +51,6 @@
     <ClInclude Include="KFMatchConfig.hpp">
       <Filter>Match</Filter>
     </ClInclude>
-    <ClInclude Include="KFExploreConfig.hpp">
-      <Filter>Explore</Filter>
-    </ClInclude>
     <ClInclude Include="KFChapterConfig.hpp">
       <Filter>GamePlay</Filter>
     </ClInclude>
@@ -61,10 +58,10 @@
       <Filter>Record</Filter>
     </ClInclude>
     <ClInclude Include="KFPVEConfig.hpp">
-      <Filter>Explore</Filter>
+      <Filter>Realm</Filter>
     </ClInclude>
     <ClInclude Include="KFFoodConsumeConfig.hpp">
-      <Filter>Explore</Filter>
+      <Filter>Realm</Filter>
     </ClInclude>
     <ClInclude Include="KFStatusConfig.hpp">
       <Filter>GamePlay</Filter>
@@ -103,6 +100,9 @@
     <ClInclude Include="KFInitialProcessConfig.hpp">
       <Filter>GamePlay</Filter>
     </ClInclude>
+    <ClInclude Include="KFRealmConfig.hpp">
+      <Filter>Realm</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Option">
@@ -120,9 +120,6 @@
     <Filter Include="Match">
       <UniqueIdentifier>{b5b19dd8-1b0e-4cfb-9b86-fa248f8737c3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Explore">
-      <UniqueIdentifier>{ca3f8859-147d-473b-91c1-15dd1704962a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Record">
       <UniqueIdentifier>{41187416-d938-46f4-b7ab-e9af3b16692b}</UniqueIdentifier>
     </Filter>
@@ -131,6 +128,9 @@
     </Filter>
     <Filter Include="Build">
       <UniqueIdentifier>{da9bc7cf-1438-4d43-94d9-5237a86097e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Realm">
+      <UniqueIdentifier>{ca3f8859-147d-473b-91c1-15dd1704962a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -179,9 +179,6 @@
     <ClCompile Include="KFMatchConfig.cpp">
       <Filter>Match</Filter>
     </ClCompile>
-    <ClCompile Include="KFExploreConfig.cpp">
-      <Filter>Explore</Filter>
-    </ClCompile>
     <ClCompile Include="KFChapterConfig.cpp">
       <Filter>GamePlay</Filter>
     </ClCompile>
@@ -189,10 +186,10 @@
       <Filter>Record</Filter>
     </ClCompile>
     <ClCompile Include="KFPVEConfig.cpp">
-      <Filter>Explore</Filter>
+      <Filter>Realm</Filter>
     </ClCompile>
     <ClCompile Include="KFFoodConsumeConfig.cpp">
-      <Filter>Explore</Filter>
+      <Filter>Realm</Filter>
     </ClCompile>
     <ClCompile Include="KFStatusConfig.cpp">
       <Filter>GamePlay</Filter>
@@ -226,6 +223,9 @@
     </ClCompile>
     <ClCompile Include="KFInitialProcessConfig.cpp">
       <Filter>GamePlay</Filter>
+    </ClCompile>
+    <ClCompile Include="KFRealmConfig.cpp">
+      <Filter>Realm</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

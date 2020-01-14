@@ -1,8 +1,8 @@
-<root version="2317">
-	<item Id="exploreclean" ParentName="player" DataName="mapid" CallType="3" InitCalc="" TriggerType="3" TriggerCheck="16" TriggerUse="2" TriggerValue="0" UseOperate="3" UseType="0" UseValue="0" />
+<root platform="" version="0">
 	<item Id="pveclean" ParentName="player" DataName="pveid" CallType="3" InitCalc="" TriggerType="3" TriggerCheck="16" TriggerUse="2" TriggerValue="0" UseOperate="3" UseType="0" UseValue="0" />
-	<item Id="explore" ParentName="balance" DataName="exploreresult" CallType="3" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
-	<item Id="explorevictory" ParentName="balance" DataName="exploreresult" CallType="3" InitCalc="" TriggerType="3" TriggerCheck="13" TriggerUse="2" TriggerValue="1" UseOperate="1" UseType="0" UseValue="1" />
+	<item Id="exploreclean" ParentName="player" DataName="realmid" CallType="3" InitCalc="" TriggerType="3" TriggerCheck="16" TriggerUse="2" TriggerValue="0" UseOperate="3" UseType="0" UseValue="0" />
+	<item Id="explore" ParentName="balance" DataName="realmresult" CallType="3" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
+	<item Id="explorevictory" ParentName="balance" DataName="realmresult" CallType="3" InitCalc="" TriggerType="3" TriggerCheck="13" TriggerUse="2" TriggerValue="1" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="pve" ParentName="balance" DataName="pveresult" CallType="3" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="pvevictory" ParentName="balance" DataName="pveresult" CallType="3" InitCalc="" TriggerType="3" TriggerCheck="13" TriggerUse="2" TriggerValue="1" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="onceexplorepve" ParentName="balance" DataName="pveresult" CallType="3" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />

@@ -31,7 +31,7 @@
     <ClInclude Include="KFReadSetting.h" />
     <ClInclude Include="KFRewardConfig.h" />
     <ClInclude Include="KFStatusConfig.hpp" />
-    <ClInclude Include="KFExploreConfig.hpp" />
+    <ClInclude Include="KFRealmConfig.hpp" />
     <ClInclude Include="KFFoodConsumeConfig.hpp" />
     <ClInclude Include="KFPVEConfig.hpp" />
     <ClInclude Include="KFHeroAttrConfig.hpp" />
@@ -66,7 +66,7 @@
     <ClCompile Include="KFTechnologyConfig.cpp" />
     <ClCompile Include="KFWeaponAffixConfig.cpp" />
     <ClCompile Include="KFStatusConfig.cpp" />
-    <ClCompile Include="KFExploreConfig.cpp" />
+    <ClCompile Include="KFRealmConfig.cpp" />
     <ClCompile Include="KFFoodConsumeConfig.cpp" />
     <ClCompile Include="KFPVEConfig.cpp" />
     <ClCompile Include="KFHeroAttrConfig.cpp" />

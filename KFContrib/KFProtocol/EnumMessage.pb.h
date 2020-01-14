@@ -143,30 +143,6 @@ inline bool HeroLockEnum_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<HeroLockEnum>(
     HeroLockEnum_descriptor(), name, value);
 }
-enum BalanceEnum {
-  UnknowBalance = 0,
-  Victory = 1,
-  Failed = 2,
-  Flee = 3,
-  Town = 4,
-  BalanceEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  BalanceEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
-};
-LIBPROTOC_EXPORT bool BalanceEnum_IsValid(int value);
-const BalanceEnum BalanceEnum_MIN = UnknowBalance;
-const BalanceEnum BalanceEnum_MAX = Town;
-const int BalanceEnum_ARRAYSIZE = BalanceEnum_MAX + 1;
-
-LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* BalanceEnum_descriptor();
-inline const ::std::string& BalanceEnum_Name(BalanceEnum value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    BalanceEnum_descriptor(), value);
-}
-inline bool BalanceEnum_Parse(
-    const ::std::string& name, BalanceEnum* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<BalanceEnum>(
-    BalanceEnum_descriptor(), name, value);
-}
 enum BuildEnum {
   InvalidBuild = 0,
   HeroList = 200,
@@ -413,30 +389,30 @@ inline bool InitialProcessEnum_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<InitialProcessEnum>(
     InitialProcessEnum_descriptor(), name, value);
 }
-enum ExploreEnterEnum {
+enum RealmEnterEnum {
   EnterInvalid = 0,
   EnterChapter = 1,
   EnterLogin = 2,
   EnterTown = 3,
   EnterJump = 4,
   EnterExtend = 5,
-  ExploreEnterEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  ExploreEnterEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+  RealmEnterEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  RealmEnterEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
-LIBPROTOC_EXPORT bool ExploreEnterEnum_IsValid(int value);
-const ExploreEnterEnum ExploreEnterEnum_MIN = EnterInvalid;
-const ExploreEnterEnum ExploreEnterEnum_MAX = EnterExtend;
-const int ExploreEnterEnum_ARRAYSIZE = ExploreEnterEnum_MAX + 1;
+LIBPROTOC_EXPORT bool RealmEnterEnum_IsValid(int value);
+const RealmEnterEnum RealmEnterEnum_MIN = EnterInvalid;
+const RealmEnterEnum RealmEnterEnum_MAX = EnterExtend;
+const int RealmEnterEnum_ARRAYSIZE = RealmEnterEnum_MAX + 1;
 
-LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* ExploreEnterEnum_descriptor();
-inline const ::std::string& ExploreEnterEnum_Name(ExploreEnterEnum value) {
+LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* RealmEnterEnum_descriptor();
+inline const ::std::string& RealmEnterEnum_Name(RealmEnterEnum value) {
   return ::google::protobuf::internal::NameOfEnum(
-    ExploreEnterEnum_descriptor(), value);
+    RealmEnterEnum_descriptor(), value);
 }
-inline bool ExploreEnterEnum_Parse(
-    const ::std::string& name, ExploreEnterEnum* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<ExploreEnterEnum>(
-    ExploreEnterEnum_descriptor(), name, value);
+inline bool RealmEnterEnum_Parse(
+    const ::std::string& name, RealmEnterEnum* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<RealmEnterEnum>(
+    RealmEnterEnum_descriptor(), name, value);
 }
 enum ExtendLevelEnum {
   ExtendLevelInvalid = 0,
@@ -458,6 +434,31 @@ inline bool ExtendLevelEnum_Parse(
     const ::std::string& name, ExtendLevelEnum* value) {
   return ::google::protobuf::internal::ParseNamedEnum<ExtendLevelEnum>(
     ExtendLevelEnum_descriptor(), name, value);
+}
+enum BalanceEnum {
+  UnknowBalance = 0,
+  Victory = 1,
+  Failed = 2,
+  Flee = 3,
+  Town = 4,
+  Chapter = 100,
+  BalanceEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  BalanceEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+LIBPROTOC_EXPORT bool BalanceEnum_IsValid(int value);
+const BalanceEnum BalanceEnum_MIN = UnknowBalance;
+const BalanceEnum BalanceEnum_MAX = Chapter;
+const int BalanceEnum_ARRAYSIZE = BalanceEnum_MAX + 1;
+
+LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* BalanceEnum_descriptor();
+inline const ::std::string& BalanceEnum_Name(BalanceEnum value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    BalanceEnum_descriptor(), value);
+}
+inline bool BalanceEnum_Parse(
+    const ::std::string& name, BalanceEnum* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<BalanceEnum>(
+    BalanceEnum_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -501,11 +502,6 @@ template <> struct is_proto_enum< ::KFMsg::HeroLockEnum> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::HeroLockEnum>() {
   return ::KFMsg::HeroLockEnum_descriptor();
-}
-template <> struct is_proto_enum< ::KFMsg::BalanceEnum> : ::std::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::BalanceEnum>() {
-  return ::KFMsg::BalanceEnum_descriptor();
 }
 template <> struct is_proto_enum< ::KFMsg::BuildEnum> : ::std::true_type {};
 template <>
@@ -557,15 +553,20 @@ template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::InitialProcessEnum>() {
   return ::KFMsg::InitialProcessEnum_descriptor();
 }
-template <> struct is_proto_enum< ::KFMsg::ExploreEnterEnum> : ::std::true_type {};
+template <> struct is_proto_enum< ::KFMsg::RealmEnterEnum> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::ExploreEnterEnum>() {
-  return ::KFMsg::ExploreEnterEnum_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::RealmEnterEnum>() {
+  return ::KFMsg::RealmEnterEnum_descriptor();
 }
 template <> struct is_proto_enum< ::KFMsg::ExtendLevelEnum> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::ExtendLevelEnum>() {
   return ::KFMsg::ExtendLevelEnum_descriptor();
+}
+template <> struct is_proto_enum< ::KFMsg::BalanceEnum> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::BalanceEnum>() {
+  return ::KFMsg::BalanceEnum_descriptor();
 }
 
 }  // namespace protobuf

@@ -31,10 +31,10 @@ namespace KFrame
 
         UpdateTeamDeadHero( player );
 
-        auto mapid = player->Get<uint32>( __STRING__( mapid ) );
-        if ( mapid != 0u )
+        // 探索地图内不做处理
+        auto realmid = player->Get<uint32>( __STRING__( realmid ) );
+        if ( realmid != 0u )
         {
-            // 探索地图内不做处理
             return;
         }
 

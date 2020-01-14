@@ -1,5 +1,5 @@
-﻿#ifndef __KF_EXPLORE_DATA_H__
-#define __KF_EXPLORE_DATA_H__
+﻿#ifndef __KF_REALM_DATA_H__
+#define __KF_REALM_DATA_H__
 
 #include "KFrameEx.h"
 #include "KFCore/KFData.h"
@@ -11,7 +11,7 @@
 namespace KFrame
 {
     ////////////////////////////////////////////////////////////////////////////////
-    class KFExploreRecord
+    class KFRealmData
     {
     public:
         enum BalanceType
@@ -21,11 +21,11 @@ namespace KFrame
             EndType = 1,		// 结束
         };
 
-        KFExploreRecord() = default;
-        ~KFExploreRecord();
+        KFRealmData() = default;
+        ~KFRealmData();
 
         // 重置
-        KFExploreRecord* Reset();
+        KFRealmData* Reset();
 
         // 查找英雄
         KFMsg::PBBalanceHeroServer* FindHero( uint64 uuid );
@@ -71,15 +71,16 @@ namespace KFrame
         // 最终货币数据
         void BalanceCurrencyEndData( KFEntity* player );
 
-        // 结算
-        void BalanceRecord( KFMsg::PBBalanceData* pbdata, uint32 status );
-
         // 结算掉落
-        void BalanceDrop( KFEntity* player );
+        void BalanceAddDropData( KFEntity* player );
+
+        // 结算
+        void BalanceRealmRecord( KFMsg::PBBalanceData* pbdata, uint32 status );
         ////////////////////////////////////////////////////////////////////////////////////////////////
 
     protected:
-
+        // 清空结算数据
+        void BalanceClearData( KFEntity* player );
 
         // 计算道具数据
         void BalanceItemRecordData( KFData* kfitemrecord, uint32 balancetype );
@@ -90,8 +91,8 @@ namespace KFrame
         void BalanceItemRecord( KFMsg::PBBalanceData* pbdata, uint32 status );
         void BalanceCurrencyRecord( KFMsg::PBBalanceData* pbdata );
     public:
-        // 结算数据
-        KFMsg::PBBalanceDataServer _data;
+        // 秘境数据
+        KFMsg::PBRealmData _data;
 
         // 玩家的出战英雄列表
         UInt64Set _fight_hero;

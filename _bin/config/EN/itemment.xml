@@ -1,4 +1,4 @@
-<root version="2568">
+<root platform="" version="0">
 	<item Name="maxitemcount" Key="" Value="12" Channel="0" Service="0" />
 	<item Name="maxstoragecount" Key="" Value="999" Channel="0" Service="0" />
 	<item Name="exploremaxcount" Key="" Value="12" Channel="0" Service="0" />
@@ -14,4 +14,6 @@
 	<item Name="explorebreakoffprob" Key="" Value="7000" Channel="0" Service="0" />
 	<item Name="smithyitemid" Key="" Value="1900004" Channel="0" Service="0" />
 	<item Name="smithystorenum" Key="" Value="2000" Channel="0" Service="0" />
+	<item Name="tranconsume" Key="" Value="[[1,3,1000]]" Channel="0" Service="0" />
+	<item Name="tranonekeyconsume" Key="" Value="[[1,2,3]]" Channel="0" Service="0" />
 </root>

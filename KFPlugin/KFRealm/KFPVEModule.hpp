@@ -1,5 +1,5 @@
-﻿#ifndef __KF_FIGHTER_MOUDLE_H__
-#define __KF_FIGHTER_MOUDLE_H__
+﻿#ifndef __KF_PVE_MOUDLE_H__
+#define __KF_PVE_MOUDLE_H__
 
 /************************************************************************
 //    @Module			:    场景战斗模块
@@ -10,9 +10,9 @@
 ************************************************************************/
 
 #include "KFrameEx.h"
-#include "KFExploreData.hpp"
-#include "KFExploreInterface.h"
-#include "KFFighterInterface.h"
+#include "KFRealmData.hpp"
+#include "KFPVEInterface.h"
+#include "KFRealmInterface.h"
 #include "KFHero/KFHeroInterface.h"
 #include "KFHero/KFHeroTeamInterface.h"
 #include "KFDrop/KFDropInterface.h"
@@ -23,17 +23,16 @@
 #include "KFDisplay/KFDisplayInterface.h"
 #include "KFGenerate/KFGenerateInterface.h"
 #include "KFOption/KFOptionInterface.h"
-#include "KFConfig/KFConfigInterface.h"
 #include "KFZConfig/KFPVEConfig.hpp"
 
 namespace KFrame
 {
     ///////////////////////////////////////////////////////////////////////////////////////
-    class KFFighterModule : public KFFighterInterface
+    class KFPVEModule : public KFPVEInterface
     {
     public:
-        KFFighterModule() = default;
-        ~KFFighterModule() = default;
+        KFPVEModule() = default;
+        ~KFPVEModule() = default;
 
         // 逻辑
         virtual void BeforeRun();
@@ -80,11 +79,11 @@ namespace KFrame
         uint32 PVEFighter( KFEntity* player, uint32 pveid, uint32 battleid, const std::string& modulename, uint64 moduleid );
 
         // 结算战斗
-        uint32 PVEFighterBalance( KFEntity* player, uint32 result, uint32 truns );
+        uint32 PVEBalance( KFEntity* player, uint32 result, uint32 truns );
 
         // 统计英雄击杀npc
-        void StatisticsHeroKillNpcs( KFEntity* player, KFExploreRecord* kfrecord, uint32 pveresult );
-        void StatisticsHeroKillNpc( KFEntity* player, KFData* kfnpcrecord, KFExploreRecord* kfrecord, uint32 pveresult, uint64 herouuid, uint64 npcid );
+        void StatisticsHeroKillNpcs( KFEntity* player, KFRealmData* kfrecord, uint32 pveresult );
+        void StatisticsHeroKillNpc( KFEntity* player, KFData* kfnpcrecord, KFRealmData* kfrecord, uint32 pveresult, uint64 herouuid, uint64 npcid );
 
         // 改变队伍英雄血量
         void ChangeTeamHeroHp( KFEntity* player, uint32 operate, uint32 value );
@@ -93,7 +92,7 @@ namespace KFrame
         KFComponent* _kf_component = nullptr;
 
         // 玩家的战斗结算数据
-        KFHashMap< uint64, uint64, KFExploreRecord > _pve_record;
+        KFHashMap< uint64, uint64, KFRealmData > _pve_record;
 
     };
 }

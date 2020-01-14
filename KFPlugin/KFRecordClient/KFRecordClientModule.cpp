@@ -129,7 +129,7 @@ namespace KFrame
         recorddata.AddValue( __STRING__( weapontype ), kfhero->Get<uint32>( __STRING__( weapontype ) ) );
         recorddata.AddValue( __STRING__( name ), kfhero->Get<std::string>( __STRING__( name ) ) );
         recorddata.AddValue( __STRING__( time ), KFGlobal::Instance()->_real_time );
-        recorddata.AddValue( __STRING__( mapid ), player->Get<uint32>( __STRING__( mapid ) ) );
+        recorddata.AddValue( __STRING__( realmid ), player->Get<uint32>( __STRING__( realmid ) ) );
         auto kfsetting = KFProfessionConfig::Instance()->FindSetting( profession );
         if ( kfsetting != nullptr )
         {

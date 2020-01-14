@@ -12,24 +12,24 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="KFExploreData.cpp" />
-    <ClCompile Include="KFExploreModule.cpp" />
-    <ClCompile Include="KFExplorePlugin.cpp" />
-    <ClCompile Include="KFFighterModule.cpp" />
+    <ClCompile Include="KFRealmData.cpp" />
+    <ClCompile Include="KFPVEModule.cpp" />
+    <ClCompile Include="KFRealmModule.cpp" />
+    <ClCompile Include="KFRealmPlugin.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="KFExploreData.hpp" />
-    <ClInclude Include="KFExploreInterface.h" />
-    <ClInclude Include="KFExploreModule.hpp" />
-    <ClInclude Include="KFExplorePlugin.hpp" />
-    <ClInclude Include="KFFighterInterface.h" />
-    <ClInclude Include="KFFighterModule.hpp" />
+    <ClInclude Include="KFRealmData.hpp" />
+    <ClInclude Include="KFPVEInterface.h" />
+    <ClInclude Include="KFPVEModule.hpp" />
+    <ClInclude Include="KFRealmInterface.h" />
+    <ClInclude Include="KFRealmModule.hpp" />
+    <ClInclude Include="KFRealmPlugin.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DF015D52-0B86-4AEF-852C-DF57B281B364}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>NFProxyPlugin</RootNamespace>
-    <ProjectName>KFExplore</ProjectName>
+    <ProjectName>KFRealm</ProjectName>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
