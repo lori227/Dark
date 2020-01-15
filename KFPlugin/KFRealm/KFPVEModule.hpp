@@ -12,7 +12,6 @@
 #include "KFrameEx.h"
 #include "KFRealmData.hpp"
 #include "KFPVEInterface.h"
-#include "KFRealmInterface.h"
 #include "KFHero/KFHeroInterface.h"
 #include "KFHero/KFHeroTeamInterface.h"
 #include "KFDrop/KFDropInterface.h"

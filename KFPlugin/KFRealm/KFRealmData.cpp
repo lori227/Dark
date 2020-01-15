@@ -148,6 +148,7 @@ namespace KFrame
 
     void KFRealmData::BalanceBeginData( KFEntity* player )
     {
+        // 清空数据
         BalanceClearData( player );
 
         // 纪录货币的初始值

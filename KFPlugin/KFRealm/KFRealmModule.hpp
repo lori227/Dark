@@ -45,9 +45,8 @@ namespace KFrame
         virtual void BeforeShut();
 
         ////////////////////////////////////////////////////////////////////////////////
-
-        virtual KFRealmData* GetRealmData( uint64 keyid );
-
+        // 获得秘境数据
+        KFRealmData* GetRealmData( uint64 keyid );
     protected:
         // 秘境请求
         __KF_MESSAGE_FUNCTION__( HandleRealmEnterReq );

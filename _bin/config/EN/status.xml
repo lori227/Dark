@@ -80,7 +80,7 @@
 	<item Id="906" ExecuteName="pve" ExecuteParam1="6" ExecuteParam2="500991" />
 	<item Id="907" ExecuteName="pve" ExecuteParam1="7" ExecuteParam2="500993" />
 	<item Id="908" ExecuteName="realm" ExecuteParam1="10105" ExecuteParam2="" />
-	<item Id="909" ExecuteName="story" ExecuteParam1="1000101" ExecuteParam2="" />
+	<item Id="909" ExecuteName="story" ExecuteParam1="1" ExecuteParam2="" />
 	<item Id="1001" ExecuteName="pve" ExecuteParam1="490001" ExecuteParam2="500001" />
 	<item Id="1002" ExecuteName="pve" ExecuteParam1="490001" ExecuteParam2="500001" />
 	<item Id="1003" ExecuteName="pve" ExecuteParam1="490002" ExecuteParam2="500001" />

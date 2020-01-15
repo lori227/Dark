@@ -29,6 +29,8 @@
 	<item Id="19003" Level="1" ExploreId="10102" Consume="" DropVictory="5100002" DropFail="" Creation="0" InnerWorld="0" />
 	<item Id="11001" Level="1" ExploreId="10101" Consume="" DropVictory="5100001" DropFail="" Creation="0" InnerWorld="0" />
 	<item Id="11002" Level="1" ExploreId="10202" Consume="" DropVictory="5100002" DropFail="" Creation="0" InnerWorld="0" />
+	<item Id="11002" Level="2" ExploreId="10203" Consume="" DropVictory="5100002" DropFail="" Creation="0" InnerWorld="0" />
+	<item Id="11002" Level="3" ExploreId="10204" Consume="" DropVictory="5100002" DropFail="" Creation="0" InnerWorld="0" />
 	<item Id="11003" Level="1" ExploreId="10203" Consume="" DropVictory="5100003" DropFail="" Creation="0" InnerWorld="0" />
 	<item Id="11004" Level="1" ExploreId="10204" Consume="" DropVictory="5100004" DropFail="" Creation="0" InnerWorld="0" />
 </root>

@@ -1,4 +1,5 @@
 ﻿#include "KFPVEModule.hpp"
+#include "KFRealmModule.hpp"
 
 namespace KFrame
 {
@@ -347,12 +348,12 @@ namespace KFrame
         }
 
         // buff (探索特有)
-        auto realmdata = _kf_realm->GetRealmData( player->GetKeyID() );
-        if ( realmdata != nullptr )
+        auto kfrealmdata = static_cast<KFRealmModule*>( _kf_realm )->GetRealmData( player->GetKeyID() );
+        if ( kfrealmdata != nullptr )
         {
             // 信仰值
-            ack.set_faith( realmdata->_data.faith() );
-            ack.mutable_buffdata()->CopyFrom( realmdata->_data.buffdata() );
+            ack.set_faith( kfrealmdata->_data.faith() );
+            ack.mutable_buffdata()->CopyFrom( kfrealmdata->_data.buffdata() );
         }
 
         _kf_player->SendToClient( player, KFMsg::MSG_PVE_ACK, &ack, 10u );
@@ -437,7 +438,7 @@ namespace KFrame
         player->Set( __STRING__( pveid ), 0u );
         player->CleanData( __STRING__( npc ), false );
 
-        auto kfrealmdata = _kf_realm->GetRealmData( player->GetKeyID() );
+        auto kfrealmdata = static_cast< KFRealmModule* >( _kf_realm )->GetRealmData( player->GetKeyID() );
         if ( kfrealmdata == nullptr )
         {
             // 不在探索里面 战斗后就移除寿命不足

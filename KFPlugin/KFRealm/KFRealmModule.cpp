@@ -409,6 +409,9 @@ namespace KFrame
         ack.set_result( result );
         kfrealmdata->BalanceRealmRecord( ack.mutable_balance(), KFMsg::ExploreStatus );
         _kf_player->SendToClient( player, KFMsg::MSG_REALM_BALANCE_ACK, &ack, 10u );
+
+        // 清除秘境数据
+        _realm_data.Remove( player->GetKeyID() );
     }
 
     void KFRealmModule::RealmBalanceVictory( KFEntity* player, KFRealmData* kfrealmdata )
@@ -498,9 +501,6 @@ namespace KFrame
 
     void KFRealmModule::RealmBalanceClearData( KFEntity* player, uint32 result )
     {
-        // 清除纪录
-        _realm_data.Remove( player->GetKeyID() );
-
         // 探索结束后就移除寿命不足的英雄
         _kf_hero_team->RemoveTeamHeroDurability( player );
 
