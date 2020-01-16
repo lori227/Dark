@@ -494,10 +494,10 @@ namespace KFrame
         switch ( result )
         {
         case KFMsg::Victory:
-            _kf_drop->Drop( player, kfsetting->_victory_drop_list, __STRING__( realm ), __FUNC_LINE__ );
+            _kf_drop->Drop( player, kfsetting->_victory_drop_list, __STRING__( realm ), kfrealmdata->_data.id(), __FUNC_LINE__ );
             break;
         case KFMsg::Failed:
-            _kf_drop->Drop( player, kfsetting->_fail_drop_list, __STRING__( realm ), __FUNC_LINE__ );
+            _kf_drop->Drop( player, kfsetting->_fail_drop_list, __STRING__( realm ), kfrealmdata->_data.id(), __FUNC_LINE__ );
             break;
         }
 
@@ -813,7 +813,7 @@ namespace KFrame
 
         if ( droplist.size() > 0 )
         {
-            _kf_drop->Drop( player, droplist, __STRING__( exploredrop ), __FUNC_LINE__ );
+            _kf_drop->Drop( player, droplist, __STRING__( exploredrop ), 0u, __FUNC_LINE__ );
         }
     }
 

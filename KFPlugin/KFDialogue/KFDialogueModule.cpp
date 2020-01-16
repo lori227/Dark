@@ -43,7 +43,7 @@ namespace KFrame
         return true;
     }
 
-    bool KFDialogueModule::SendToClientDialogueStart( KFEntity* player, uint32 dialogid, uint32 delaytime, const char* function, uint32 line )
+    bool KFDialogueModule::SendToClientDialogueStart( KFEntity* player, uint32 dialogid, uint32 delaytime, const std::string& modulename, uint64 moduleid )
     {
         player->Set( __STRING__( dialogue ), __STRING__( id ), dialogid );
 
@@ -62,12 +62,12 @@ namespace KFrame
 
         auto dialogid = executedata->_param_list._params[ 0 ]->_int_value;
         auto delaytime = executedata->_param_list._params[ 1 ]->_int_value;
-        return SendToClientDialogueStart( player, dialogid, delaytime, function, line );
+        return SendToClientDialogueStart( player, dialogid, delaytime, modulename, moduleid );
     }
 
     __KF_DROP_LOGIC_FUNCTION__( KFDialogueModule::OnDropDialogue )
     {
-        SendToClientDialogueStart( player, dropdata->_data_key, dropdata->_min_value, function, line );
+        SendToClientDialogueStart( player, dropdata->_data_key, dropdata->_min_value, modulename, moduleid );
     }
 
     __KF_MESSAGE_FUNCTION__( KFDialogueModule::HandleReceiveDialogueFinishReq )

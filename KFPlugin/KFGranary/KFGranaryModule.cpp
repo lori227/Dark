@@ -240,7 +240,7 @@ namespace KFrame
         }
 
         // 添加物品进背包
-        player->AddElement( &_item_element, __STRING__( granary ), __FUNC_LINE__, canaddcount );
+        player->AddElement( &_item_element, canaddcount, __STRING__( granary ), 0u, __FUNC_LINE__ );
 
         player->UpdateData( kfgranary, __STRING__( daynum ), KFEnum::Add, canaddcount );
         player->UpdateData( kfgranary, __STRING__( daytime ), KFEnum::Set, KFGlobal::Instance()->_real_time );

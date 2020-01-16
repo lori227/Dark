@@ -370,7 +370,7 @@ namespace KFrame
         }
 
         // 计算物品数量
-        auto itemcount = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( count ), multiple );
+        auto itemcount = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( count ), kfresult->_multiple );
         if ( itemcount == _invalid_int )
         {
             __LOG_ERROR_FUNCTION__( function, line, "item id=[{}] count = 0", kfelementobject->_config_id );
@@ -388,7 +388,7 @@ namespace KFrame
             // 礼包道具 进入仓库自动使用
             if ( !kfsetting->_reward.IsEmpty() )
             {
-                player->AddElement( &kfsetting->_reward, __FUNC_LINE__, itemcount );
+                player->AddElement( &kfsetting->_reward, itemcount, kfresult->_module_name, kfresult->_module_id, __FUNC_LINE__ );
             }
             else
             {
@@ -400,7 +400,7 @@ namespace KFrame
             if ( kfsetting->_overlay_type == KFItemEnum::OverlayByTime )
             {
                 // 计算时间
-                auto itemtime = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( time ), multiple );
+                auto itemtime = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( time ), kfresult->_multiple );
                 if ( itemtime == 0u )
                 {
                     __LOG_ERROR_FUNCTION__( function, line, "time item id=[{}] count = 0", kfelementobject->_config_id );
@@ -1604,7 +1604,7 @@ namespace KFrame
             const KFItemSetting* kfitemsetting = nullptr;
             std::tie( kfsourceitem, kfitemsetting ) = tupledata;
             auto itemnum = kfsourceitem->Get<uint32>( __STRING__( count ) );
-            player->AddElement( &kfitemsetting->_reward, __FUNC_LINE__, itemnum );
+            player->AddElement( &kfitemsetting->_reward, itemnum, __STRING__( useitem ), kfitemsetting->_id, __FUNC_LINE__ );
         }
 
         for ( auto iter : destorylist )

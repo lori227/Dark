@@ -328,7 +328,7 @@ namespace KFrame
                   kfresult->_total_value,	// quantity
                   _invalid_int,	// afterQuantity
                   _invalid_int,	// itemCauseid
-                  modulename,	// itemLocation
+                  kfresult->_module_name,	// itemLocation
                   _invalid_string,	// iMoney
                   _invalid_string,	// iMoneyType
                   kfresult->_operate,	// addOrReduce
@@ -376,7 +376,7 @@ namespace KFrame
                   kfresult->_total_value,	// iMoney
                   moneytype,	// iMoneyType
                   _invalid_int,	// moneyCauseid
-                  modulename,	// moneyLocation
+                  kfresult->_module_name,	// moneyLocation
                   kfresult->_operate,	// addOrReduce
                   _invalid_string	// custom
                 );

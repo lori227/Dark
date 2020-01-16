@@ -158,7 +158,7 @@ namespace KFrame
 
         for ( auto i = 0u; i < 11u; ++i )
         {
-            player->AddElement( &elements, __FUNC_LINE__ );
+            player->AddElement( &elements, _default_multiple, __STRING__( match ), 0u, __FUNC_LINE__ );
         }
 
         // 英雄列表

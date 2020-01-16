@@ -390,10 +390,10 @@ namespace KFrame
             switch ( result )
             {
             case KFMsg::Victory:
-                _kf_drop->Drop( player, kfsetting->_victory_drop_list, __STRING__( pve ), __FUNC_LINE__ );
+                _kf_drop->Drop( player, kfsetting->_victory_drop_list, __STRING__( pve ), kfsetting->_id, __FUNC_LINE__ );
                 break;
             case KFMsg::Failed:
-                _kf_drop->Drop( player, kfsetting->_fail_drop_list, __STRING__( pve ), __FUNC_LINE__ );
+                _kf_drop->Drop( player, kfsetting->_fail_drop_list, __STRING__( pve ), kfsetting->_id, __FUNC_LINE__ );
                 break;
             }
             kfrecord->BalanceAddDropData( player );

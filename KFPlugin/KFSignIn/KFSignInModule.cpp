@@ -45,7 +45,7 @@ namespace KFrame
         player->UpdateData( __STRING__( sevenreward ), KFEnum::Or, kfmsg.day() );
 
         // 添加奖励
-        player->AddElement( &kfsetting->_reward, __STRING__( signin ), __FUNC_LINE__ );
+        player->AddElement( &kfsetting->_reward, _default_multiple, __STRING__( signin ), kfmsg.day(), __FUNC_LINE__ );
 
         // 额外的奖励
         if ( kfsetting->_probability > 0u )
@@ -53,7 +53,7 @@ namespace KFrame
             auto rand = KFGlobal::Instance()->RandRatio( KFRandEnum::TenThousand );
             if ( rand < kfsetting->_probability )
             {
-                player->AddElement( &kfsetting->_extend, __STRING__( signin ), __FUNC_LINE__ );
+                player->AddElement( &kfsetting->_extend, _default_multiple, __STRING__( signin ), kfmsg.day(), __FUNC_LINE__ );
             }
         }
 

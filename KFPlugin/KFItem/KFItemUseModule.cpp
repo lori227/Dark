@@ -103,12 +103,12 @@ namespace KFrame
         // 判断各类资源是否满了
         if ( kfsetting->_drop_id != 0u )
         {
-            _kf_drop->Drop( player, kfsetting->_drop_id, __STRING__( useitem ), __FUNC_LINE__ );
+            _kf_drop->Drop( player, kfsetting->_drop_id, __STRING__( useitem ), kfsetting->_id, __FUNC_LINE__ );
         }
 
         if ( !kfsetting->_reward.IsEmpty() )
         {
-            player->AddElement( &kfsetting->_reward, __STRING__( useitem ), __FUNC_LINE__ );
+            player->AddElement( &kfsetting->_reward, _default_multiple, __STRING__( useitem ), kfsetting->_id, __FUNC_LINE__ );
         }
 
         return true;

@@ -1,4 +1,4 @@
-<root version="0">
+<root version="2690">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -97,7 +97,7 @@
 	<item name="tlog" version="2552" />
 	<item name="foodconsume" version="2559" />
 	<item name="dropdata" version="2563" />
-	<item name="task" version="2562" />
+	<item name="task" version="2563" />
 	<item name="prompttext" version="2564" />
 	<item name="itemment" version="2568" />
 	<item name="itemcommon" version="2578" />
@@ -125,4 +125,5 @@
 	<item name="status" version="2645" />
 	<item name="explore" version="2645" />
 	<item name="story" version="2647" />
+	<item name="realm" version="2690" />
 </root>

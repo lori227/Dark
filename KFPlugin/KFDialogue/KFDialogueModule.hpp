@@ -48,7 +48,7 @@ namespace KFrame
 
     protected:
         // 通知客户端对话消息
-        bool SendToClientDialogueStart( KFEntity* player, uint32 dialogid, uint32 delaytime, const char* function, uint32 line );
+        bool SendToClientDialogueStart( KFEntity* player, uint32 dialogid, uint32 delaytime, const std::string& modulename, uint64 moduleid );
 
     protected:
         // 玩家组件上下文

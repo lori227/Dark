@@ -1,4 +1,4 @@
-<root platform="" version="0">
+<root platform="" version="2690">
 	<item Id="10086" Level="1" ExploreId="10086" Consume="" DropVictory="1" DropFail="" Creation="0" InnerWorld="0" />
 	<item Id="10101" Level="1" ExploreId="10101" Consume="" DropVictory="5100001" DropFail="" Creation="0" InnerWorld="0" />
 	<item Id="10102" Level="1" ExploreId="10102" Consume="" DropVictory="5100002" DropFail="" Creation="0" InnerWorld="0" />

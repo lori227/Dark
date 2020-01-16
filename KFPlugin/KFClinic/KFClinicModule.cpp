@@ -66,7 +66,7 @@ namespace KFrame
         auto curnum = kfclinic->Get<uint32>( __STRING__( num ) );
 
         auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
-        auto totalnum = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( num ), multiple );
+        uint32 totalnum = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( num ), kfresult->_multiple );
         auto maxnum = GetClinicMaterialsMaxNum( player, kfsetting );
         totalnum = __MIN__( totalnum, maxnum - curnum );
         player->UpdateData( kfclinic, __STRING__( num ), KFEnum::Add, totalnum );
@@ -85,7 +85,6 @@ namespace KFrame
         // 检查定时器
         CheckClinicTimer( player );
     }
-
 
     __KF_LEAVE_PLAYER_FUNCTION__( KFClinicModule::OnLeaveClinicModule )
     {
