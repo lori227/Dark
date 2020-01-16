@@ -56,6 +56,12 @@ namespace KFrame
         // 物品数量更新
         __KF_UPDATE_DATA_FUNCTION__( OnItemNumUpdate );
 
+        // 间隔时间更新
+        __KF_UPDATE_DATA_FUNCTION__( OnCdTimeUpdate );
+
+        // 收集上限更新
+        __KF_UPDATE_DATA_FUNCTION__( OnCollectMaxUpdate );
+
         // 收获请求
         __KF_MESSAGE_FUNCTION__( HandleSmithyGatherReq );
 
@@ -83,6 +89,9 @@ namespace KFrame
 
         // 检查定时器
         void CheckSmithyTimer( KFEntity* player );
+
+        // 铁匠铺数据更新
+        void OnSmithyDataUpdate( KFEntity* player );
 
     protected:
         // 玩家组件上下文

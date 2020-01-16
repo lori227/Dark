@@ -11,7 +11,9 @@ namespace KFrame
         __REGISTER_ENTER_PLAYER__( &KFHeroModule::OnEnterHeroModule );
 
         __REGISTER_ADD_ELEMENT__( __STRING__( hero ), &KFHeroModule::AddHeroElement );
+        __REGISTER_CHECK_REMOVE_ELEMENT__( __STRING__( hero ), &KFHeroModule::CheckRemoveHeroElement );
         __REGISTER_REMOVE_ELEMENT__( __STRING__( hero ), &KFHeroModule::RemoveHeroElement );
+
         __REGISTER_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( exp ), &KFHeroModule::OnHeroExpUpdate );
         __REGISTER_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( active ), &KFHeroModule::OnHeroActiveUpdate );
 
@@ -29,6 +31,8 @@ namespace KFrame
 
         __UN_ADD_ELEMENT__( __STRING__( hero ) );
         __UN_REMOVE_ELEMENT__( __STRING__( hero ) );
+        __UN_CHECK_REMOVE_ELEMENT__( __STRING__( hero ) );
+
         __UN_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( exp ) );
         __UN_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( active ) );
 
@@ -87,7 +91,7 @@ namespace KFrame
             }
 
             // 更新数据
-            player->UpdateElementToData( kfelementobject, kfhero, multiple );
+            player->UpdateElementToData( kfhero, kfelementobject, kfresult->_multiple );
             return true;
         }
 
@@ -107,7 +111,7 @@ namespace KFrame
         }
 
         // 有设定属性
-        player->SetElementToData( kfelementobject, kfhero, multiple );
+        player->SetElementToData( kfhero, kfelementobject, kfresult->_multiple );
 
         // 创建guid
         auto uuid = KFGlobal::Instance()->STMakeUUID( __STRING__( hero ) );
@@ -115,6 +119,11 @@ namespace KFrame
 
         // 添加结果
         return kfresult->AddResult( kfelementobject->_config_id, kfhero );
+    }
+
+    __KF_CHECK_REMOVE_ELEMENT_FUNCTION__( KFHeroModule::CheckRemoveHeroElement )
+    {
+        return true;
     }
 
     __KF_REMOVE_ELEMENT_FUNCTION__( KFHeroModule::RemoveHeroElement )
@@ -143,7 +152,7 @@ namespace KFrame
         }
 
         // 更新数据
-        player->UpdateElementToData( kfelementobject, kfhero, multiple );
+        player->UpdateElementToData( kfhero, kfelementobject, kfresult->_multiple );
         return true;
     }
 

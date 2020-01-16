@@ -82,6 +82,9 @@ namespace KFrame
         // 添加英雄
         __KF_ADD_ELEMENT_FUNCTION__( AddHeroElement );
 
+        // 判断能否添加英雄
+        __KF_CHECK_REMOVE_ELEMENT_FUNCTION__( CheckRemoveHeroElement );
+
         // 删除英雄
         __KF_REMOVE_ELEMENT_FUNCTION__( RemoveHeroElement );
 

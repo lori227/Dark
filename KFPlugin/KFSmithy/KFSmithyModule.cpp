@@ -15,6 +15,8 @@ namespace KFrame
         __REGISTER_ADD_ELEMENT__( __STRING__( smithy ), &KFSmithyModule::AddSmithyElement );
         __REGISTER_ADD_DATA_2__( __STRING__( build ), KFMsg::SmithyBuild, &KFSmithyModule::OnAddSmithyBuild );
         __REGISTER_UPDATE_DATA_2__( __STRING__( smithy ), __STRING__( num ), &KFSmithyModule::OnItemNumUpdate );
+        __REGISTER_UPDATE_DATA_2__( __STRING__( effect ), __STRING__( smithycdtime ), &KFSmithyModule::OnCdTimeUpdate );
+        __REGISTER_UPDATE_DATA_2__( __STRING__( effect ), __STRING__( smithycollectmax ), &KFSmithyModule::OnCollectMaxUpdate );
 
         __REGISTER_EXECUTE__( __STRING__( smithycdtime ), &KFSmithyModule::OnExecuteSmithyCdTime );
         __REGISTER_EXECUTE__( __STRING__( smithyaddnum ), &KFSmithyModule::OnExecuteSmithyAddData );
@@ -41,6 +43,8 @@ namespace KFrame
         __UN_ADD_ELEMENT__( __STRING__( smithy ) );
         __UN_ADD_DATA_2__( __STRING__( build ), KFMsg::SmithyBuild );
         __UN_UPDATE_DATA_2__( __STRING__( smithy ), __STRING__( num ) );
+        __UN_UPDATE_DATA_2__( __STRING__( effect ), __STRING__( smithycdtime ) );
+        __UN_UPDATE_DATA_2__( __STRING__( effect ), __STRING__( smithycollectmax ) );
 
         __UN_EXECUTE__( __STRING__( smithycdtime ) );
         __UN_EXECUTE__( __STRING__( smithyaddnum ) );
@@ -260,19 +264,48 @@ namespace KFrame
 
     __KF_UPDATE_DATA_FUNCTION__( KFSmithyModule::OnItemNumUpdate )
     {
-        auto cdtime = player->Get( __STRING__( effect ), __STRING__( smithycdtime ) );
-        auto collectmax = player->Get( __STRING__( effect ), __STRING__( smithycollectmax ) );
+        OnSmithyDataUpdate( player );
+    }
 
-        auto kfparent = kfdata->GetParent();
-        auto num = kfdata->Get<uint32>();
-        auto calctime = kfparent->Get<uint64>( __STRING__( calctime ) );
+    __KF_UPDATE_DATA_FUNCTION__( KFSmithyModule::OnCdTimeUpdate )
+    {
+        // 间隔时间修改先取消定时器，时间清零
+        __UN_TIMER_1__( player->GetKeyID() );
+        player->UpdateData( __STRING__( smithy ), __STRING__( calctime ), KFEnum::Set, 0u );
+
+        OnSmithyDataUpdate( player );
+    }
+
+    __KF_UPDATE_DATA_FUNCTION__( KFSmithyModule::OnCollectMaxUpdate )
+    {
+        OnSmithyDataUpdate( player );
+    }
+
+    void KFSmithyModule::OnSmithyDataUpdate( KFEntity* player )
+    {
+        auto cdtime = player->Get( __STRING__( effect ), __STRING__( smithycdtime ) );
+        if ( cdtime == 0u )
+        {
+            return;
+        }
+
+        auto collectmax = player->Get( __STRING__( effect ), __STRING__( smithycollectmax ) );
+        if ( collectmax == 0u )
+        {
+            return;
+        }
+
+        auto kfsmithy = player->Find( __STRING__( smithy ) );
+        auto num = kfsmithy->Get<uint32>( __STRING__( num ) );
+        auto calctime = kfsmithy->Get<uint64>( __STRING__( calctime ) );
+
         if ( num >= collectmax )
         {
             if ( calctime != 0u )
             {
                 // 物品满取消定时器
                 __UN_TIMER_1__( player->GetKeyID() );
-                player->UpdateData( kfparent, __STRING__( calctime ), KFEnum::Set, 0u );
+                player->UpdateData( kfsmithy, __STRING__( calctime ), KFEnum::Set, 0u );
             }
         }
         else
@@ -281,7 +314,7 @@ namespace KFrame
             {
                 // 物品不满开启定时器
                 __LOOP_TIMER_1__( player->GetKeyID(), cdtime * 1000, 0u, &KFSmithyModule::OnTimerAddItem );
-                player->UpdateData( kfparent, __STRING__( calctime ), KFEnum::Set, KFGlobal::Instance()->_real_time );
+                player->UpdateData( kfsmithy, __STRING__( calctime ), KFEnum::Set, KFGlobal::Instance()->_real_time );
             }
         }
     }
@@ -412,12 +445,13 @@ namespace KFrame
         }
 
         // 消耗是否足够
-        dataname = player->CheckRemoveElement( &kfweaponsetting->_consume, __FUNC_LINE__, kfmsg.num() );
-        if ( !dataname.empty() )
         {
-            return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
+            auto& dataname = player->RemoveElement( &kfweaponsetting->_consume, kfmsg.num(), __STRING__( smithymake ), kfitemsetting->_id, __FUNC_LINE__ );
+            if ( !dataname.empty() )
+            {
+                return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
+            }
         }
-        player->RemoveElement( &kfweaponsetting->_consume, __STRING__( smithymake ), __FUNC_LINE__, kfmsg.num() );
 
         // 扣除材料
         player->UpdateData( kfsmithy, __STRING__( totalnum ), KFEnum::Dec, neednum );

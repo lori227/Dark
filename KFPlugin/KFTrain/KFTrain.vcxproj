@@ -12,12 +12,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="KFTrainConfig.cpp" />
     <ClCompile Include="KFTrainModule.cpp" />
     <ClCompile Include="KFTrainPlugin.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="KFTrainConfig.hpp" />
     <ClInclude Include="KFTrainInterface.h" />
     <ClInclude Include="KFTrainModule.hpp" />
     <ClInclude Include="KFTrainPlugin.hpp" />

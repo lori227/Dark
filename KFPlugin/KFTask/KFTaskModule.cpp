@@ -600,12 +600,11 @@ namespace KFrame
         if ( kfrefreshsetting != nullptr )
         {
             // 判断接取消耗
-            auto& dataname = player->CheckRemoveElement( &kfrefreshsetting->_receive_cost, __FUNC_LINE__ );
+            auto& dataname = player->RemoveElement( &kfrefreshsetting->_receive_cost, _default_multiple, __STRING__( taskreceive ), kfsetting->_id, __FUNC_LINE__ );
             if ( !dataname.empty() )
             {
                 return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
             }
-            player->RemoveElement( &kfrefreshsetting->_receive_cost, __STRING__( taskreceive ), __FUNC_LINE__ );
 
             if ( kfrefreshsetting->_done_time != 0u )
             {

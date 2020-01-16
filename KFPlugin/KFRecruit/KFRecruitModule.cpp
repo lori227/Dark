@@ -310,16 +310,11 @@ namespace KFrame
             return KFMsg::HeroRecruitRefreshGenerate;
         }
 
-        if ( !kfrecruitsetting->_cost_elements.IsEmpty() )
+        // 扣除资源
+        auto& dataname = player->RemoveElement( &kfrecruitsetting->_cost_elements, _default_multiple, __STRING__( recruitrefresh ), 0u, __FUNC_LINE__ );
+        if ( !dataname.empty() )
         {
-            // 判断资源是否足够
-            auto dataname = player->CheckRemoveElement( &kfrecruitsetting->_cost_elements, __FUNC_LINE__ );
-            if ( !dataname.empty() )
-            {
-                return KFMsg::DataNotEnough;
-            }
-            // 扣除资源
-            player->RemoveElement( &kfrecruitsetting->_cost_elements, __STRING__( recruitrefresh ), __FUNC_LINE__ );
+            return KFMsg::DataNotEnough;
         }
 
         // 清空原来的英雄
@@ -623,13 +618,12 @@ namespace KFrame
                 return _kf_display->SendToClient( player, KFMsg::HeroRecruitCostError );
             }
 
-            auto dataname = player->CheckRemoveElement( &costelements, __FUNC_LINE__ );
+            auto id = kfrecruit->Get<uint32>( __STRING__( hero ), __STRING__( id ) );
+            auto& dataname = player->RemoveElement( &costelements, _default_multiple, __STRING__( recruithero ), id, __FUNC_LINE__ );
             if ( !dataname.empty() )
             {
                 return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
             }
-
-            player->RemoveElement( &costelements, __STRING__( recruithero ), __FUNC_LINE__ );
         }
 
         // 招募英雄

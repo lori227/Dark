@@ -108,6 +108,9 @@ namespace KFrame
         void RealmBalanceFlee( KFEntity* player, KFRealmData* kfrealmdata );
         void RealmBalanceTown( KFEntity* player, KFRealmData* kfrealmdata );
 
+        // 发送结算消息
+        void SendRealmBalanceToClient( KFEntity* player, KFRealmData* kfrealmdata, uint32 result );
+
         // 结算掉落
         void RealmBalanceDrop( KFEntity* player, KFRealmData* kfrealmdata, uint32 result );
 
@@ -125,7 +128,7 @@ namespace KFrame
         void ExploreInitData( KFMsg::PBExploreData* pbexplore, uint32 exploreid, uint32 maxlevel, uint32 level, uint32 lastlevel );
 
         // 探索扣除粮食
-        void ExploreCostFood( KFEntity* player, KFMsg::PBExplorePlayerData* playerdata );
+        void ExploreCostFood( KFEntity* player, KFMsg::PBExploreData* pbexplore );
         //////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////
         // 改变队伍英雄buff

@@ -758,7 +758,7 @@ namespace KFrame
             return false;
         }
 
-        auto itemcount = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( count ), multiple );
+        auto itemcount = kfelementobject->GetValue( __STRING__( count ) );
         if ( itemcount == _invalid_int )
         {
             __LOG_ERROR_FUNCTION__( function, line, "item id=[{}] count = 0", kfelementobject->_config_id );

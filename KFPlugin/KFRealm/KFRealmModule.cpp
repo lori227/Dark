@@ -148,15 +148,10 @@ namespace KFrame
         }
 
         // 判断和扣除花费
-        if ( !kfsetting->_consume.IsEmpty() )
+        auto& dataname = player->RemoveElement( &kfsetting->_consume, _default_multiple, __STRING__( realm ), realmid, __FUNC_LINE__ );
+        if ( !dataname.empty() )
         {
-            auto dataname = player->CheckRemoveElement( &kfsetting->_consume, __FUNC_LINE__ );
-            if ( !dataname.empty() )
-            {
-                return std::make_tuple( KFMsg::DataNotEnough, nullptr, nullptr );
-            }
-
-            player->RemoveElement( &kfsetting->_consume, __STRING__( realm ), __FUNC_LINE__ );
+            return std::make_tuple( KFMsg::DataNotEnough, nullptr, nullptr );
         }
 
         // 销毁原来的探索数据, 包括背包
@@ -403,15 +398,14 @@ namespace KFrame
             RealmBalanceTown( player, kfrealmdata );
             break;
         }
+    }
 
-        // 发送消息
+    void KFRealmModule::SendRealmBalanceToClient( KFEntity* player, KFRealmData* kfrealmdata, uint32 result )
+    {
         KFMsg::MsgRealmBalanceAck ack;
         ack.set_result( result );
         kfrealmdata->BalanceRealmRecord( ack.mutable_balance(), KFMsg::ExploreStatus );
         _kf_player->SendToClient( player, KFMsg::MSG_REALM_BALANCE_ACK, &ack, 10u );
-
-        // 清除秘境数据
-        _realm_data.Remove( player->GetKeyID() );
     }
 
     void KFRealmModule::RealmBalanceVictory( KFEntity* player, KFRealmData* kfrealmdata )
@@ -425,6 +419,9 @@ namespace KFrame
         // 结算最终数据
         kfrealmdata->BalanceHeroEndData( player );
         kfrealmdata->BalanceItemEndData( player );
+
+        // 发送消息
+        SendRealmBalanceToClient( player, kfrealmdata, KFMsg::Victory );
 
         // 设置回调属性
         RealmBalanceResultCondition( player, kfrealmdata, KFMsg::Victory );
@@ -448,6 +445,9 @@ namespace KFrame
         kfrealmdata->BalanceHeroEndData( player );
         kfrealmdata->BalanceItemEndData( player );
 
+        // 发送消息
+        SendRealmBalanceToClient( player, kfrealmdata, KFMsg::Failed );
+
         // 设置回调属性
         RealmBalanceResultCondition( player, kfrealmdata, KFMsg::Failed );
 
@@ -460,6 +460,9 @@ namespace KFrame
         // 先结算
         kfrealmdata->BalanceEndData( player );
 
+        // 发送消息
+        SendRealmBalanceToClient( player, kfrealmdata, KFMsg::Flee );
+
         // 清空探索数据
         RealmBalanceClearData( player, KFMsg::Flee );
     }
@@ -468,6 +471,9 @@ namespace KFrame
     {
         // 结算获得的道具
         kfrealmdata->BalanceEndData( player );
+
+        // 发送消息
+        SendRealmBalanceToClient( player, kfrealmdata, KFMsg::Town );
 
         // 设置回城状态
         player->UpdateData( __STRING__( realmtown ), KFEnum::Set, 1u );
@@ -501,6 +507,9 @@ namespace KFrame
 
     void KFRealmModule::RealmBalanceClearData( KFEntity* player, uint32 result )
     {
+        // 清除数据
+        _realm_data.Remove( player->GetKeyID() );
+
         // 探索结束后就移除寿命不足的英雄
         _kf_hero_team->RemoveTeamHeroDurability( player );
 
@@ -677,10 +686,10 @@ namespace KFrame
         }
 
         // 计算移动步数, 扣除粮食
-        ExploreCostFood( player, playerdata );
+        ExploreCostFood( player, pbexplore );
     }
 
-    void KFRealmModule::ExploreCostFood( KFEntity* player, KFMsg::PBExplorePlayerData* playerdata )
+    void KFRealmModule::ExploreCostFood( KFEntity* player, KFMsg::PBExploreData* pbexplore )
     {
         // 当前队伍活着的英雄数量
         auto teamheronum = _kf_hero_team->GetAliveHeroCount( player );
@@ -695,6 +704,7 @@ namespace KFrame
             return;
         }
 
+        auto playerdata = pbexplore->mutable_playerdata();
         auto count = playerdata->step() / kfsetting->_step_count;
         if ( count == 0u )
         {
@@ -729,7 +739,7 @@ namespace KFrame
             auto hpnum = 0u;
             if ( havenum > 0u )
             {
-                player->RemoveElement( &_item_element, __STRING__( explore ), __FUNC_LINE__, havenum );
+                player->RemoveElement( &_item_element, havenum, __STRING__( explore ), pbexplore->id(), __FUNC_LINE__ );
 
                 // 消耗粮食次数
                 auto foodcount = ( havenum - 1u ) / kfsetting->_food_num + 1u;
@@ -771,7 +781,7 @@ namespace KFrame
         }
         else
         {
-            player->RemoveElement( &_item_element, __STRING__( explore ), __FUNC_LINE__, neednum );
+            player->RemoveElement( &_item_element, neednum, __STRING__( explore ), pbexplore->id(), __FUNC_LINE__ );
         }
     }
 

@@ -54,15 +54,11 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::HeroLevelNotEnough );
         }
 
-        if ( !kfsetting->_cost.IsEmpty() )
+        // 扣除消耗
+        auto& dataname = player->RemoveElement( &kfsetting->_cost, _default_multiple, __STRING__( transfer ), transferid, __FUNC_LINE__ );
+        if ( !dataname.empty() )
         {
-            auto dataname = player->CheckRemoveElement( &kfsetting->_cost, __FUNC_LINE__ );
-            if ( !dataname.empty() )
-            {
-                return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
-            }
-
-            player->RemoveElement( &kfsetting->_cost, __STRING__( transfer ), __FUNC_LINE__ );
+            return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
         }
 
         auto weapontype = kfhero->Get( __STRING__( weapontype ) );

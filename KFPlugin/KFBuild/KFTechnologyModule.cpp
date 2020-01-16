@@ -220,15 +220,10 @@ namespace KFrame
         }
 
         // 资源是否足够
-        if ( !kftechsetting->_consume.IsEmpty() )
+        auto& dataname = player->RemoveElement( &kftechsetting->_consume, _default_multiple, __STRING__( technology ), kftechsetting->_id, __FUNC_LINE__ );
+        if ( !dataname.empty() )
         {
-            auto dataname = player->CheckRemoveElement( &kftechsetting->_consume, __FUNC_LINE__ );
-            if ( !dataname.empty() )
-            {
-                return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
-            }
-
-            player->RemoveElement( &kftechsetting->_consume, __STRING__( technology ), __FUNC_LINE__ );
+            return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
         }
 
         // 更新科技状态

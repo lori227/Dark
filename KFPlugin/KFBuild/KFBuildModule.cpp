@@ -128,15 +128,10 @@ namespace KFrame
         }
 
         // 资源是否足够
-        if ( !kfsetting->_consume.IsEmpty() )
+        auto& dataname = player->RemoveElement( &kfsetting->_consume, _default_multiple, __STRING__( buildupgrade ), kfsetting->_id, __FUNC_LINE__ );
+        if ( !dataname.empty() )
         {
-            auto dataname = player->CheckRemoveElement( &kfsetting->_consume, __FUNC_LINE__ );
-            if ( !dataname.empty() )
-            {
-                return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
-            }
-
-            player->RemoveElement( &kfsetting->_consume, __STRING__( buildupgrade ), __FUNC_LINE__ );
+            return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
         }
 
         // 开始升级
@@ -172,13 +167,11 @@ namespace KFrame
         }
 
         auto count = ( upgradetime - nowtime - 1u ) / kfsetting->_unit_time + 1u;
-
-        auto dataname = player->CheckRemoveElement( &kfsetting->_onekey_consume, __FUNC_LINE__, count );
+        auto& dataname = player->RemoveElement( &kfsetting->_onekey_consume, count, __STRING__( buildonekey ), kfsetting->_id, __FUNC_LINE__ );
         if ( !dataname.empty() )
         {
             return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
         }
-        player->RemoveElement( &kfsetting->_onekey_consume, __STRING__( buildonekey ), __FUNC_LINE__, count );
 
         player->UpdateData( kfbuild, __STRING__( time ), KFEnum::Set, nowtime );
     }

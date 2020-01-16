@@ -1,4 +1,4 @@
-<root version="2563">
+<root platform="" version="0">
 	<item Id="6000001" DropName="exp" DropValue="25" DropKey="0" Weight="100" />
 	<item Id="6001001" DropName="item" DropValue="500" DropKey="1900000" Weight="100" />
 	<item Id="6002001" DropName="item" DropValue="500" DropKey="1900002" Weight="100" />
@@ -95,7 +95,7 @@
 	<item Id="6110131" DropName="item" DropValue="3" DropKey="1900001" Weight="100" />
 	<item Id="6110132" DropName="hero" DropValue="4100107" DropKey="0" Weight="100" />
 	<item Id="6110133" DropName="item" DropValue="2" DropKey="3180401" Weight="100" />
-	<item Id="6110133" DropName="item" DropValue="1000" DropKey="1900003" Weight="100" />
+	<item Id="6110134" DropName="item" DropValue="1000" DropKey="1900003" Weight="100" />
 	<item Id="6110141" DropName="item" DropValue="3" DropKey="1900001" Weight="100" />
 	<item Id="6110142" DropName="item" DropValue="500" DropKey="1900003" Weight="100" />
 	<item Id="6110151" DropName="item" DropValue="3" DropKey="1900001" Weight="100" />

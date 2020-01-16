@@ -192,9 +192,11 @@ namespace KFrame
         __STRING_DEFINE__( smithymakelevel );
         __STRING_DEFINE__( smithyitemid );
         __STRING_DEFINE__( smithystorenum );
-        __STRING_DEFINE__( trainexp );
-        __STRING_DEFINE__( traincost );
+        __STRING_DEFINE__( traincostscaledec );
         __STRING_DEFINE__( traincount );
+        __STRING_DEFINE__( trainunitexp );
+        __STRING_DEFINE__( trainexpscale );
+        __STRING_DEFINE__( exploretown );
         __STRING_DEFINE__( playerrecord );
     }
 }

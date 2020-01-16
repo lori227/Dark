@@ -283,15 +283,11 @@ namespace KFrame
             return KFMsg::PVEIdError;
         }
 
-        if ( !kfsetting->_consume.IsEmpty() )
+        // 扣除费用
+        auto& dataname = player->RemoveElement( &kfsetting->_consume, _default_multiple, __STRING__( pve ), pveid, __FUNC_LINE__ );
+        if ( !dataname.empty() )
         {
-            auto dataname = player->CheckRemoveElement( &kfsetting->_consume, __FUNC_LINE__ );
-            if ( !dataname.empty() )
-            {
-                return KFMsg::DataNotEnough;
-            }
-
-            player->RemoveElement( &kfsetting->_consume, __STRING__( pve ), __FUNC_LINE__ );
+            return KFMsg::DataNotEnough;
         }
 
         // 初始化纪录

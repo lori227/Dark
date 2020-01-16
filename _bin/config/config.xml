@@ -24,7 +24,6 @@
 	<item Id="reset" Name="reset" FileName="./config/reset.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="signin" Name="signin" FileName="./config/signin.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="store" Name="store" FileName="./config/store.xml" Reload="1" ClearData="1" ClearFile="0" />
-	<item Id="task" Name="task" FileName="./config/task.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="achieve" Name="achieve" FileName="./config/achieve.xml" Reload="1" ClearData="1" ClearFile="0" />
 	<item Id="option" Name="option" FileName="./config/option.xml" Reload="1" ClearData="0" ClearFile="0" />
 	<item Id="dropdata" Name="dropdata" FileName="./config/dropdata.xml" Reload="1" ClearData="1" ClearFile="0" />

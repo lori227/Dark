@@ -19,12 +19,14 @@
 #include "KFMessage/KFMessageInterface.h"
 #include "KFHero/KFHeroInterface.h"
 #include "KFRecordClient/KFRecordClientInterface.h"
-#include "KFTrainConfig.hpp"
 #include "KFZConfig/KFLevelConfig.hpp"
 #include "KFExecute/KFExecuteInterface.h"
+#include "KFOption/KFOptionInterface.h"
+#include "KFZConfig/KFElementConfig.h"
 
 namespace KFrame
 {
+    class KFTrainSetting;
     class KFTrainModule : public KFTrainInterface
     {
     public:
@@ -66,14 +68,10 @@ namespace KFrame
         // 删除训练所英雄
         __KF_REMOVE_DATA_FUNCTION__( OnRemoveTrainHero );
 
-        // 更新 增加单位时间训练经验 科技
-        __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyTrainExp );
-
-        // 更新 降低训练的物资消耗 科技
-        __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyTrainCost );
-
-        // 更新 增加新栏位 科技
-        __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyTrainCount );
+        // 科技效果
+        __KF_EXECUTE_FUNCTION__( OnExecuteTrainCostScaleDec );
+        __KF_EXECUTE_FUNCTION__( OnExecuteTrainUnitExp );
+        __KF_EXECUTE_FUNCTION__( OnExecuteTrainExpScale );
 
     protected:
         // 获取训练所等级
@@ -85,11 +83,11 @@ namespace KFrame
         // 通过uuid获取训练栏位置
         KFData* GetTrainById( KFEntity* player, uint64 uuid );
 
-        // 获取训练所配置
+        // 获取训练所玩家参数
         const KFTrainSetting* GetTrainSetting( KFEntity* player );
 
         // 添加英雄到栏位
-        void AddTrainHero( KFEntity* player, KFData* kftrainrecord, uint64 uuid, uint32 index );
+        void AddTrainHero( KFEntity* player, KFData* kftrainrecord, const KFTrainSetting* kfsetting, uint64 uuid, uint32 index );
 
         // 检查定时器
         void EnterStartTrainTimer( KFEntity* player );
@@ -98,7 +96,7 @@ namespace KFrame
         void StartTrainTimer( KFEntity* player, const KFTrainSetting* kfsetting, uint32 index, uint32 delaytime );
 
         // 添加训练所英雄经验
-        uint32 AddTrainHeroExp( KFEntity* player, KFData* kftrain, uint32 count, bool isnow = false );
+        uint32 AddTrainHeroExp( KFEntity* player, KFData* kftrain, const KFTrainSetting* kfsetting, uint32 count, bool isnow = false );
 
         // 添加训练所英雄升级纪录
         void AddTrainHeroLevelRecord( KFEntity* player, const KFTrainSetting* kfsetting, KFData* kftrain, KFData* kfhero, uint32 newlevel, uint32 addexp );
@@ -109,15 +107,50 @@ namespace KFrame
         // 添加训练所条件
         void AddTrainCondition( KFEntity* player, KFData* kftrain );
 
-        // 检查并消耗
-        std::string CheckAndRemoveElement( KFEntity* player, const KFElements* kfelements, const char* function, uint32 line, uint32 consumecount );
-
-        // 获取训练所全部栏数
-        uint32 GetTrainCampCount( KFEntity* player, const KFTrainSetting* kfsetting );
+        // 通用科技效果操作
+        bool CommonAddEffectHandle( KFEntity* player, const KFExecuteData* executedata, const std::string& fieldname );
 
     protected:
         // 玩家组件上下文
         KFComponent* _kf_component = nullptr;
+    };
+
+    class KFTrainSetting
+    {
+    public:
+        KFTrainSetting();
+
+        // 特化数据
+        const void UpdateTrainSetting( KFEntity* player );
+
+    private:
+        KFTrainSetting( const KFTrainSetting& other ) = delete;
+        KFTrainSetting& operator=( const KFTrainSetting& other ) = delete;
+
+    public:
+        // 栏位数量
+        uint32 _count = 0u;
+
+        // 总时间(s)
+        uint64 _total_time = 0u;
+
+        // 间隔时间(s)
+        uint64 _cd_time = 0u;
+
+        // 单位时间增加经验
+        uint32 _unit_exp = 0u;
+        double _scale_unit_exp = 1.0;
+        uint32 _add_exp = 0u;
+
+        // 消耗
+        KFElements _consume;
+        KFElements _onekey_consume;
+
+        // 消耗缩放比例
+        double _scale_cost = 1.0;
+
+        // 一键完成单位时间（单位消耗-单位时间）
+        uint32 _unit_time;
     };
 }
 

@@ -464,12 +464,11 @@ namespace KFrame
         // 金钱是否足够
         KFElements elementsmoney;
         elementsmoney.Parse( strcost, __FUNC_LINE__ );
-        auto dataname = player->CheckRemoveElement( &elementsmoney, __FUNC_LINE__ );
+        auto& dataname = player->RemoveElement( &elementsmoney, _default_multiple, __STRING__( clinic ), 0u, __FUNC_LINE__ );
         if ( !dataname.empty() )
         {
             return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
         }
-        player->RemoveElement( &elementsmoney, __STRING__( clinic ), __FUNC_LINE__ );
 
         auto totaldecnum = 0;
         for ( auto i = 0u; i < ( uint32 )kfmsg.uuid_size() && i < setting->_count; i++ )
