@@ -416,7 +416,7 @@ inline bool RealmEnterEnum_Parse(
 }
 enum ExtendLevelEnum {
   ExtendLevelInvalid = 0,
-  ExtendLevel = 100,
+  ExtendLevel = 10000,
   ExtendLevelEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   ExtendLevelEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };

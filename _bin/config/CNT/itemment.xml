@@ -1,4 +1,4 @@
-<root platform="" version="0">
+<root platform="" version="2711">
 	<item Name="maxitemcount" Key="" Value="12" Channel="0" Service="0" />
 	<item Name="maxstoragecount" Key="" Value="999" Channel="0" Service="0" />
 	<item Name="exploremaxcount" Key="" Value="12" Channel="0" Service="0" />
@@ -10,15 +10,15 @@
 	<item Name="materialmaxcount" Key="" Value="999" Channel="0" Service="0" />
 	<item Name="weaponmaxcount" Key="" Value="999" Channel="0" Service="0" />
 	<item Name="fooditemid" Key="" Value="1000017" Channel="0" Service="0" />
-	<item Name="granarycdtime" Key="" Value="60" Channel="0" Service="0" />
+	<item Name="granarycdtime" Key="" Value="600" Channel="0" Service="0" />
 	<item Name="granaryfreebuycount" Key="" Value="3" Channel="0" Service="0" />
 	<item Name="weaponalarm" Key="" Value="0.2" Channel="0" Service="0" />
 	<item Name="explorebreakoffprob" Key="" Value="7000" Channel="0" Service="0" />
 	<item Name="smithyitemid" Key="" Value="1900004" Channel="0" Service="0" />
 	<item Name="smithystorenum" Key="" Value="2000" Channel="0" Service="0" />
 	<item Name="smithycdtime" Key="" Value="60" Channel="0" Service="0" />
-	<item Name="trainconsumefid" Key="" Value="0" Channel="0" Service="0" />
-	<item Name="trainonekeyconsumefid" Key="" Value="0" Channel="0" Service="0" />
+	<item Name="trainconsumefid" Key="" Value="4" Channel="0" Service="0" />
+	<item Name="trainonekeyconsumefid" Key="" Value="5" Channel="0" Service="0" />
 	<item Name="traintotaltime" Key="" Value="600" Channel="0" Service="0" />
 	<item Name="traincdtime" Key="" Value="60" Channel="0" Service="0" />
 	<item Name="trainunittime" Key="" Value="600" Channel="0" Service="0" />

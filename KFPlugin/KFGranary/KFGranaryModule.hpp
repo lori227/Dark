@@ -19,8 +19,9 @@
 #include "KFMessage/KFMessageInterface.h"
 #include "KFItem/KFItemInterface.h"
 #include "KFRecordClient/KFRecordClientInterface.h"
-#include "KFGranaryConfig.hpp"
+#include "KFExecute/KFExecuteInterface.h"
 #include "KFZConfig/KFElementConfig.h"
+#include "KFGranaryConfig.hpp"
 
 namespace KFrame
 {
@@ -53,8 +54,14 @@ namespace KFrame
         // 物品数量更新
         __KF_UPDATE_DATA_FUNCTION__( OnItemNumUpdate );
 
+        // 增加科技数据
+        __KF_EXECUTE_FUNCTION__( OnExecuteGranaryAddData );
+
         // 收获请求
         __KF_MESSAGE_FUNCTION__( HandleGranaryGatherReq );
+
+        // 购买请求
+        __KF_MESSAGE_FUNCTION__( HandleGranaryBuyReq );
 
         // 定时增加道具
         __KF_TIMER_FUNCTION__( OnTimerAddItem );
@@ -65,9 +72,6 @@ namespace KFrame
 
         // 粮仓是否激活
         bool IsGranaryActive( KFEntity* player );
-
-        // 获取粮仓配置
-        const KFGranarySetting* GetGranarySetting( KFEntity* player );
 
         // 检查定时器
         void CheckGranaryTimer( KFEntity* player );

@@ -10,7 +10,7 @@ namespace KFrame
     {
     public:
         // 种族限制
-        std::set< uint32 > _race_list;
+        UInt32Set _race_list;
 
         // 性别限制
         uint32 _sex_limit = 0u;
@@ -19,7 +19,7 @@ namespace KFrame
         uint32 _move_type = 0u;
 
         // 武器类型
-        std::set< uint32 > _weapon_type_list;
+        UInt32Set _weapon_type_list;
 
         // 英雄属性偏好率
         std::unordered_map< std::string, uint32 > _attribute;

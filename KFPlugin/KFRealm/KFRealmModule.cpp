@@ -79,7 +79,7 @@ namespace KFrame
         __CLIENT_PROTO_PARSE__( KFMsg::MsgRealmJumpReq );
 
         auto realmid = player->Get<uint32>( __STRING__( realmid ) );
-        RealmEnter( player, realmid, kfmsg.level(), KFMsg::EnterJump, _invalid_string, _invalid_int );
+        RealmEnter( player, realmid, kfmsg.level(), KFMsg::EnterJump, _invalid_string, kfmsg.birthplace() );
     }
 
     __KF_MESSAGE_FUNCTION__( KFRealmModule::HandleRealmExtendReq )
@@ -106,7 +106,7 @@ namespace KFrame
             std::tie( result, kfrealmdata, pbexplore ) = RealmTownEnter( player, realmid );
             break;
         case KFMsg::EnterJump:		// 跳转地图
-            std::tie( result, kfrealmdata, pbexplore ) = RealmJumpEnter( player, realmid, level );
+            std::tie( result, kfrealmdata, pbexplore ) = RealmJumpEnter( player, realmid, level, moduleid );
             break;
         case KFMsg::EnterExtend:	// 进裂隙层
             std::tie( result, kfrealmdata, pbexplore ) = RealmExtendEnter( player, realmid );
@@ -286,7 +286,7 @@ namespace KFrame
         return std::make_tuple( KFMsg::Ok, kfrealmdata, pbexplore );
     }
 
-    std::tuple<uint32, KFRealmData*, KFMsg::PBExploreData*> KFRealmModule::RealmJumpEnter( KFEntity* player, uint32 realmid, uint32 level )
+    std::tuple<uint32, KFRealmData*, KFMsg::PBExploreData*> KFRealmModule::RealmJumpEnter( KFEntity* player, uint32 realmid, uint32 level, uint32 birthplace )
     {
         auto kfrealmdata = _realm_data.Find( player->GetKeyID() );
         if ( kfrealmdata == nullptr )
@@ -312,10 +312,10 @@ namespace KFrame
         if ( lastlevel < KFMsg::ExtendLevel )
         {
             auto pbexplore = kfrealmdata->FindExeploreData( lastlevel );
-            pbexplore->mutable_npcdata()->clear();
 
-            pbexplore->mutable_playerdata()->set_step( 0 );
-            pbexplore->mutable_playerdata()->mutable_fovarr()->Clear();
+            pbexplore->set_save( false );
+            pbexplore->mutable_npcdata()->clear();
+            pbexplore->mutable_playerdata()->Clear();
         }
         else
         {
@@ -323,6 +323,7 @@ namespace KFrame
         }
 
         auto pbexplore = kfrealmdata->FindExeploreData( level );
+        pbexplore->set_birthplace( birthplace );
         pbexplore->set_creation( kfexplorelevel->_createion );
         pbexplore->set_innerworld( kfexplorelevel->_inner_world );
         ExploreInitData( pbexplore, kfexplorelevel->_explore_id, ( uint32 )kfsetting->_levels.size(), level, lastlevel );
@@ -691,65 +692,57 @@ namespace KFrame
 
     void KFRealmModule::ExploreCostFood( KFEntity* player, KFMsg::PBExploreData* pbexplore )
     {
-        // 当前队伍活着的英雄数量
-        auto teamheronum = _kf_hero_team->GetAliveHeroCount( player );
-        if ( teamheronum == _invalid_int )
-        {
-            return;
-        }
-
-        auto kfsetting = KFFoodConsumeConfig::Instance()->FindSetting( teamheronum );
-        if ( kfsetting == nullptr || kfsetting->_step_count == 0u )
+        auto kfsetting = KFRealmConfig::Instance()->FindSetting( pbexplore->id() );
+        if ( kfsetting == nullptr || kfsetting->_food_step == 0u || kfsetting->_hp_step == 0u )
         {
             return;
         }
 
         auto playerdata = pbexplore->mutable_playerdata();
-        auto count = playerdata->step() / kfsetting->_step_count;
-        if ( count == 0u )
-        {
-            return;
-        }
-        playerdata->set_step( playerdata->step() - count * kfsetting->_step_count );
 
-        // 需要粮食数量
-        auto neednum = kfsetting->_food_num * count;
-        if ( neednum == 0u )
-        {
-            return;
-        }
-
-        // 当前背包拥有粮食数量
+        // 拥有粮食数量
         static auto _option = _kf_option->FindOption( __STRING__( fooditemid ) );
-        auto havenum = player->GetConfigValue( __STRING__( item ), _option->_uint32_value, neednum );
+        auto havenum = player->GetConfigValue( __STRING__( item ), _option->_uint32_value, 1u );
 
-        static KFElements _item_element;
-        if ( _item_element.IsEmpty() )
+        if ( havenum > 0u )
         {
-            auto ok = KFElementConfig::Instance()->FormatElemnt( _item_element, __STRING__( item ), "1", _option->_uint32_value );
-            if ( !ok )
+            auto count = playerdata->step() / kfsetting->_food_step;
+            if ( count == 0u )
             {
                 return;
             }
+            playerdata->set_step( playerdata->step() - count * kfsetting->_food_step );
+
+            // 需要粮食数量
+            auto neednum = kfsetting->_food_num * count;
+
+            // 当前背包拥有粮食数量
+            static auto _option = _kf_option->FindOption( __STRING__( fooditemid ) );
+            havenum = player->GetConfigValue( __STRING__( item ), _option->_uint32_value, neednum );
+            neednum = __MIN__( neednum, havenum );
+
+            static KFElements _item_element;
+            if ( _item_element.IsEmpty() )
+            {
+                auto ok = KFElementConfig::Instance()->FormatElemnt( _item_element, __STRING__( item ), "1", _option->_uint32_value );
+                if ( !ok )
+                {
+                    return;
+                }
+            }
+
+            player->RemoveElement( &_item_element, neednum, __STRING__( explore ), pbexplore->id(), __FUNC_LINE__ );
         }
-
-        if ( neednum > havenum )
+        else
         {
-            // 消耗血量
-            auto hpnum = 0u;
-            if ( havenum > 0u )
+            auto count = playerdata->step() / kfsetting->_hp_step;
+            if ( count == 0u )
             {
-                player->RemoveElement( &_item_element, havenum, __STRING__( explore ), pbexplore->id(), __FUNC_LINE__ );
-
-                // 消耗粮食次数
-                auto foodcount = ( havenum - 1u ) / kfsetting->_food_num + 1u;
-                hpnum = ( count - foodcount ) * kfsetting->_hp_num;
+                return;
             }
-            else
-            {
-                hpnum = count * kfsetting->_hp_num;
-            }
+            playerdata->set_step( playerdata->step() - count * kfsetting->_hp_step );
 
+            auto dechp = kfsetting->_hp_num * count;
             auto kfherorecord = player->Find( __STRING__( hero ) );
             auto kfteamarray = player->Find( __STRING__( heroteam ) );
             for ( auto kfteam = kfteamarray->First(); kfteam != nullptr; kfteam = kfteamarray->Next() )
@@ -761,27 +754,11 @@ namespace KFrame
                 }
 
                 auto kffighter = kfhero->Find( __STRING__( fighter ) );
-                auto curhp = kffighter->Get( __STRING__( hp ) ) ;
-                if ( curhp <= 1u )
-                {
-                    // 英雄1滴血不需要继续扣血
-                    continue;
-                }
+                auto hp = kffighter->Get( __STRING__( hp ) );
 
-                if ( curhp > hpnum )
-                {
-                    player->UpdateData( kffighter, __STRING__( hp ), KFEnum::Dec, hpnum );
-                }
-                else
-                {
-                    // 不够扣则扣到1血
-                    player->UpdateData( kffighter, __STRING__( hp ), KFEnum::Set, 1u );
-                }
+                dechp = ( ( hp > dechp ) ? dechp : 1u );
+                player->UpdateData( kffighter, __STRING__( hp ), KFEnum::Dec, dechp );
             }
-        }
-        else
-        {
-            player->RemoveElement( &_item_element, neednum, __STRING__( explore ), pbexplore->id(), __FUNC_LINE__ );
         }
     }
 

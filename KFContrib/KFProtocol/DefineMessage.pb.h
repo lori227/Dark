@@ -2312,6 +2312,12 @@ class LIBPROTOC_EXPORT PBExploreData : public ::google::protobuf::Message /* @@p
   ::google::protobuf::uint32 innerworld() const;
   void set_innerworld(::google::protobuf::uint32 value);
 
+  // uint32 birthplace = 9;
+  void clear_birthplace();
+  static const int kBirthplaceFieldNumber = 9;
+  ::google::protobuf::uint32 birthplace() const;
+  void set_birthplace(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:KFMsg.PBExploreData)
  private:
 
@@ -2331,6 +2337,7 @@ class LIBPROTOC_EXPORT PBExploreData : public ::google::protobuf::Message /* @@p
   ::google::protobuf::uint32 lastlevel_;
   ::google::protobuf::uint32 creation_;
   ::google::protobuf::uint32 innerworld_;
+  ::google::protobuf::uint32 birthplace_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_DefineMessage_2eproto::TableStruct;
 };
@@ -3991,6 +3998,20 @@ inline void PBExploreData::set_innerworld(::google::protobuf::uint32 value) {
   
   innerworld_ = value;
   // @@protoc_insertion_point(field_set:KFMsg.PBExploreData.innerworld)
+}
+
+// uint32 birthplace = 9;
+inline void PBExploreData::clear_birthplace() {
+  birthplace_ = 0u;
+}
+inline ::google::protobuf::uint32 PBExploreData::birthplace() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBExploreData.birthplace)
+  return birthplace_;
+}
+inline void PBExploreData::set_birthplace(::google::protobuf::uint32 value) {
+  
+  birthplace_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBExploreData.birthplace)
 }
 
 // .KFMsg.PBExplorePlayerData playerdata = 11;

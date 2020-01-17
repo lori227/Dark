@@ -102,13 +102,13 @@ namespace KFrame
         ChangeState( DestroyState, 1000 );
         //////////////////////////////////////////////////////
 
-        std::set< uint64 > _removes;
+        UInt64Set removes;
         for ( auto& iter : _player_list._objects )
         {
             auto player = iter.second;
             if ( player->_is_affirm )
             {
-                _removes.insert( player->_id );
+                removes.insert( player->_id );
                 _match_queue->AddPlayer( player );
             }
             else
@@ -119,7 +119,7 @@ namespace KFrame
             }
         }
 
-        for ( auto id : _removes )
+        for ( auto id : removes )
         {
             _player_list.Remove( id, false );
         }

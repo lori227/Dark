@@ -149,16 +149,16 @@ namespace KFrame
         player->CleanData( __STRING__( hero ) );
 
         static auto _init = false;
-        static KFElements elements;
+        static KFElements _elements;
         if ( !_init )
         {
             std::string _element = "[{\"hero\":{\"generateid\":\"4100001\"}}]";
-            _init = elements.Parse( _element, __FUNC_LINE__ );
+            _init = _elements.Parse( _element, __FUNC_LINE__ );
         }
 
         for ( auto i = 0u; i < 11u; ++i )
         {
-            player->AddElement( &elements, _default_multiple, __STRING__( match ), 0u, __FUNC_LINE__ );
+            player->AddElement( &_elements, _default_multiple, __STRING__( match ), 0u, __FUNC_LINE__ );
         }
 
         // 英雄列表

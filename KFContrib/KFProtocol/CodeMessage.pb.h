@@ -140,6 +140,9 @@ enum ProjectCodeEnum {
   TrainNotFinish = 31235,
   SmithyMakeLevelLimit = 31236,
   FormulaParamError = 31237,
+  GranaryBuyCountLimit = 31238,
+  GranaryBuySettingError = 31239,
+  GranaryBuyParamError = 31240,
   RealmMapError = 31301,
   RealmLevelError = 31302,
   RealmNotInExplore = 31305,
@@ -177,12 +180,24 @@ enum ProjectCodeEnum {
   PlayerHeadIconNotExist = 32603,
   PlayerFactionNotExist = 32604,
   PlayerHeadIconNotHad = 32605,
+  StorySettingNotExist = 32700,
+  StoryNotExist = 32701,
+  StorySequenceIsError = 32702,
+  StoryTriggerTypeLimit = 32703,
+  DialogueSettingNotExist = 32704,
+  DialogueNotExist = 32705,
+  DialogueHaveNotBranch = 32706,
+  DialogueBranchNotExist = 32707,
+  DialogueBranchLackCondition = 32708,
+  BranchSettingNotExist = 32709,
+  DialogueBranchSelectSuc = 32710,
+  StoryHaveDialogueBranch = 32711,
   ProjectCodeEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   ProjectCodeEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 LIBPROTOC_EXPORT bool ProjectCodeEnum_IsValid(int value);
 const ProjectCodeEnum ProjectCodeEnum_MIN = LogicError;
-const ProjectCodeEnum ProjectCodeEnum_MAX = PlayerHeadIconNotHad;
+const ProjectCodeEnum ProjectCodeEnum_MAX = StoryHaveDialogueBranch;
 const int ProjectCodeEnum_ARRAYSIZE = ProjectCodeEnum_MAX + 1;
 
 LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* ProjectCodeEnum_descriptor();

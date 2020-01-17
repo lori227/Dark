@@ -34,6 +34,7 @@ namespace KFrame
     {
         __KF_ADD_CONFIG__( KFLevelConfig );
         __KF_ADD_CONFIG__( KFElementConfig );
+        __KF_ADD_CONFIG__( KFFormulaConfig );
     }
 
 }

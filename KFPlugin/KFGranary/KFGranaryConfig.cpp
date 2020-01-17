@@ -4,8 +4,15 @@ namespace KFrame
 {
     void KFGranaryConfig::ReadSetting( KFNode& xmlnode, KFGranarySetting* kfsetting )
     {
-        kfsetting->_cd_time = xmlnode.GetUInt64( "CdTime", true );
-        kfsetting->_add_num = xmlnode.GetUInt32( "AddNum", true );
-        kfsetting->_max_num = xmlnode.GetUInt32( "MaxNum", true );
+        kfsetting->_str_consume = xmlnode.GetString( "Consume", true );
+    }
+
+    void KFGranaryConfig::LoadAllComplete()
+    {
+        for ( auto& iter : _settings._objects )
+        {
+            auto kfsetting = iter.second;
+            KFElementConfig::Instance()->ParseElement( kfsetting->_consume, kfsetting->_str_consume, __FILE__, kfsetting->_id );
+        }
     }
 }

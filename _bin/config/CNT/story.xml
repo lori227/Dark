@@ -1,4 +1,4 @@
-<root platform="" version="0">
+<root platform="" version="2700">
 	<item Id="1" StoryId="10001" Array="1" TriggerType="1" Type="9" Parameter1="200001" Parameter2="0" />
 	<item Id="2" StoryId="10001" Array="2" TriggerType="1" Type="7" Parameter1="9000001" Parameter2="0" />
 	<item Id="3" StoryId="10001" Array="3" TriggerType="1" Type="8" Parameter1="9000002" Parameter2="0" />
@@ -8,4 +8,8 @@
 	<item Id="7" StoryId="3000" Array="1" TriggerType="0" Type="8" Parameter1="8200001" Parameter2="0" />
 	<item Id="8" StoryId="3001" Array="1" TriggerType="0" Type="8" Parameter1="8200002" Parameter2="0" />
 	<item Id="9" StoryId="3002" Array="1" TriggerType="0" Type="8" Parameter1="8200003" Parameter2="0" />
+	<item Id="10" StoryId="4001" Array="1" TriggerType="1" Type="9" Parameter1="200001" Parameter2="0" />
+	<item Id="11" StoryId="4001" Array="2" TriggerType="1" Type="9" Parameter1="200002" Parameter2="0" />
+	<item Id="12" StoryId="4001" Array="3" TriggerType="1" Type="8" Parameter1="8200002" Parameter2="0" />
+	<item Id="13" StoryId="4001" Array="4" TriggerType="1" Type="10" Parameter1="11001" Parameter2="3002" />
 </root>

@@ -17,6 +17,10 @@
 #include "KFMessage/KFMessageInterface.h"
 #include "KFDrop/KFDropInterface.h"
 #include "KFExecute/KFExecuteInterface.h"
+#include "KFCondition/KFConditionInterface.h"
+#include "KFZConfig/KFDialogueConfig.hpp"
+#include "KFZConfig/KFDialogueBranchConfig.hpp"
+#include "KFZConfig/KFElementConfig.h"
 
 namespace KFrame
 {
@@ -31,6 +35,9 @@ namespace KFrame
 
         // 关闭
         virtual void BeforeShut();
+
+        // 添加对话
+        virtual void AddDialogue( KFEntity* player, uint32 dialogid, uint32 type = KFMsg::UIDialogue );
         ////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
     protected:
@@ -43,12 +50,16 @@ namespace KFrame
         // 进入世界地图点
         __KF_EXECUTE_FUNCTION__( OnExecuteDialogue );
 
-        // 告知完成对话
-        __KF_MESSAGE_FUNCTION__( HandleReceiveDialogueFinishReq );
+        // 更新对话请求
+        __KF_MESSAGE_FUNCTION__( HandleUpdateDialogueReq );
+
+        // 选择分支请求
+        __KF_MESSAGE_FUNCTION__( HandleSelectDialogueBranchReq );
+
 
     protected:
         // 通知客户端对话消息
-        bool SendToClientDialogueStart( KFEntity* player, uint32 dialogid, uint32 delaytime, const std::string& modulename, uint64 moduleid );
+        bool SendToClientDialogueStart( KFEntity* player, uint32 dialogid, uint32 sequence, uint32 type );
 
     protected:
         // 玩家组件上下文

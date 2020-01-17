@@ -198,6 +198,20 @@ namespace KFrame
         __STRING_DEFINE__( trainexpscale );
         __STRING_DEFINE__( exploretown );
         __STRING_DEFINE__( playerrecord );
+        __STRING_DEFINE__( story );
+        __STRING_DEFINE__( mainstory );
+        __STRING_DEFINE__( sequence );
+        __STRING_DEFINE__( dialoguebranch );
+        __STRING_DEFINE__( granaryaddnum );
+        __STRING_DEFINE__( granarymaxnum );
+        __STRING_DEFINE__( granarybuycount );
+        __STRING_DEFINE__( granarybuyfactor );
+        __STRING_DEFINE__( granarycritrate );
+        __STRING_DEFINE__( granarycritvalue );
+        __STRING_DEFINE__( granarycdtime );
+        __STRING_DEFINE__( granaryfreebuycount );
+        __STRING_DEFINE__( buycount );
+        __STRING_DEFINE__( granarybuy );
     }
 }
 

@@ -26,6 +26,7 @@ namespace KFrame
         __FIND_MODULE__( _kf_option, KFOptionInterface );
         __FIND_MODULE__( _kf_item, KFItemInterface );
         __FIND_MODULE__( _kf_record_client, KFRecordClientInterface );
+        __FIND_MODULE__( _kf_execute, KFExecuteInterface );
     }
 
     void KFGranaryPlugin::AddConfig()

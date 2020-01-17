@@ -36,7 +36,7 @@ namespace KFrame
 
     void KFRoomShardModule::Run()
     {
-        std::set< uint64 > removes;
+        UInt64Set removes;
         for ( auto& iter : _room_list._objects )
         {
             auto kfroom = iter.second;

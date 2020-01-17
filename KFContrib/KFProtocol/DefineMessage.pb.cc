@@ -767,6 +767,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreData, lastlevel_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreData, creation_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreData, innerworld_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreData, birthplace_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreData, playerdata_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreData, npcdata_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData_ExploreEntry_DoNotUse, _has_bits_),
@@ -822,8 +823,8 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 185, -1, sizeof(::KFMsg::PBHeroBuffData)},
   { 191, 198, sizeof(::KFMsg::PBExploreData_NpcdataEntry_DoNotUse)},
   { 200, -1, sizeof(::KFMsg::PBExploreData)},
-  { 215, 222, sizeof(::KFMsg::PBRealmData_ExploreEntry_DoNotUse)},
-  { 224, -1, sizeof(::KFMsg::PBRealmData)},
+  { 216, 223, sizeof(::KFMsg::PBRealmData_ExploreEntry_DoNotUse)},
+  { 225, -1, sizeof(::KFMsg::PBRealmData)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -925,30 +926,31 @@ void AddDescriptorsImpl() {
       "BHeroBuffData\022-\n\004buff\030\001 \003(\0132\037.KFMsg.PBHe"
       "roBuffData.BuffEntry\032B\n\tBuffEntry\022\013\n\003key"
       "\030\001 \001(\004\022$\n\005value\030\002 \001(\0132\025.KFMsg.PBBuffList"
-      "Data:\0028\001\"\302\002\n\rPBExploreData\022\n\n\002id\030\001 \001(\r\022\014"
+      "Data:\0028\001\"\326\002\n\rPBExploreData\022\n\n\002id\030\001 \001(\r\022\014"
       "\n\004save\030\002 \001(\010\022\016\n\006random\030\003 \001(\r\022\r\n\005level\030\004 "
       "\001(\r\022\022\n\ntotallevel\030\005 \001(\r\022\021\n\tlastlevel\030\006 \001"
       "(\r\022\020\n\010creation\030\007 \001(\r\022\022\n\ninnerworld\030\010 \001(\r"
-      "\022.\n\nplayerdata\030\013 \001(\0132\032.KFMsg.PBExplorePl"
-      "ayerData\0222\n\007npcdata\030\014 \003(\0132!.KFMsg.PBExpl"
-      "oreData.NpcdataEntry\032G\n\014NpcdataEntry\022\013\n\003"
-      "key\030\001 \001(\t\022&\n\005value\030\002 \001(\0132\027.KFMsg.PBExplo"
-      "reNpcData:\0028\001\"\344\003\n\013PBRealmData\022\n\n\002id\030\001 \001("
-      "\r\022\r\n\005level\030\002 \001(\r\022\022\n\nmodulename\030\003 \001(\014\022\020\n\010"
-      "moduleid\030\004 \001(\004\022\016\n\006status\030\005 \001(\r\022\021\n\tstartt"
-      "ime\030\006 \001(\004\022\017\n\007usetime\030\007 \001(\r\022\r\n\005faith\030\010 \001("
-      "\r\022\023\n\013extendlevel\030\t \001(\r\022,\n\010herodata\030\n \003(\013"
-      "2\032.KFMsg.PBBalanceHeroServer\022,\n\010itemdata"
-      "\030\013 \003(\0132\032.KFMsg.PBBalanceItemServer\022.\n\014cu"
-      "rrencydata\030\014 \003(\0132\030.KFMsg.PBBalanceCurren"
-      "cy\022\017\n\007killnpc\030\r \003(\004\022\'\n\010buffdata\030\016 \001(\0132\025."
-      "KFMsg.PBHeroBuffData\0220\n\007explore\030\017 \003(\0132\037."
-      "KFMsg.PBRealmData.ExploreEntry\032D\n\014Explor"
-      "eEntry\022\013\n\003key\030\001 \001(\r\022#\n\005value\030\002 \001(\0132\024.KFM"
-      "sg.PBExploreData:\0028\001b\006proto3"
+      "\022\022\n\nbirthplace\030\t \001(\r\022.\n\nplayerdata\030\013 \001(\013"
+      "2\032.KFMsg.PBExplorePlayerData\0222\n\007npcdata\030"
+      "\014 \003(\0132!.KFMsg.PBExploreData.NpcdataEntry"
+      "\032G\n\014NpcdataEntry\022\013\n\003key\030\001 \001(\t\022&\n\005value\030\002"
+      " \001(\0132\027.KFMsg.PBExploreNpcData:\0028\001\"\344\003\n\013PB"
+      "RealmData\022\n\n\002id\030\001 \001(\r\022\r\n\005level\030\002 \001(\r\022\022\n\n"
+      "modulename\030\003 \001(\014\022\020\n\010moduleid\030\004 \001(\004\022\016\n\006st"
+      "atus\030\005 \001(\r\022\021\n\tstarttime\030\006 \001(\004\022\017\n\007usetime"
+      "\030\007 \001(\r\022\r\n\005faith\030\010 \001(\r\022\023\n\013extendlevel\030\t \001"
+      "(\r\022,\n\010herodata\030\n \003(\0132\032.KFMsg.PBBalanceHe"
+      "roServer\022,\n\010itemdata\030\013 \003(\0132\032.KFMsg.PBBal"
+      "anceItemServer\022.\n\014currencydata\030\014 \003(\0132\030.K"
+      "FMsg.PBBalanceCurrency\022\017\n\007killnpc\030\r \003(\004\022"
+      "\'\n\010buffdata\030\016 \001(\0132\025.KFMsg.PBHeroBuffData"
+      "\0220\n\007explore\030\017 \003(\0132\037.KFMsg.PBRealmData.Ex"
+      "ploreEntry\032D\n\014ExploreEntry\022\013\n\003key\030\001 \001(\r\022"
+      "#\n\005value\030\002 \001(\0132\024.KFMsg.PBExploreData:\0028\001"
+      "b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2868);
+      descriptor, 2888);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "DefineMessage.proto", &protobuf_RegisterTypes);
   ::protobuf_FrameDefineMessage_2eproto::AddDescriptors();
@@ -6661,6 +6663,7 @@ const int PBExploreData::kTotallevelFieldNumber;
 const int PBExploreData::kLastlevelFieldNumber;
 const int PBExploreData::kCreationFieldNumber;
 const int PBExploreData::kInnerworldFieldNumber;
+const int PBExploreData::kBirthplaceFieldNumber;
 const int PBExploreData::kPlayerdataFieldNumber;
 const int PBExploreData::kNpcdataFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -6683,15 +6686,15 @@ PBExploreData::PBExploreData(const PBExploreData& from)
     playerdata_ = NULL;
   }
   ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&innerworld_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(innerworld_));
+    static_cast<size_t>(reinterpret_cast<char*>(&birthplace_) -
+    reinterpret_cast<char*>(&id_)) + sizeof(birthplace_));
   // @@protoc_insertion_point(copy_constructor:KFMsg.PBExploreData)
 }
 
 void PBExploreData::SharedCtor() {
   ::memset(&playerdata_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&innerworld_) -
-      reinterpret_cast<char*>(&playerdata_)) + sizeof(innerworld_));
+      reinterpret_cast<char*>(&birthplace_) -
+      reinterpret_cast<char*>(&playerdata_)) + sizeof(birthplace_));
 }
 
 PBExploreData::~PBExploreData() {
@@ -6729,8 +6732,8 @@ void PBExploreData::Clear() {
   }
   playerdata_ = NULL;
   ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&innerworld_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(innerworld_));
+      reinterpret_cast<char*>(&birthplace_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(birthplace_));
   _internal_metadata_.Clear();
 }
 
@@ -6856,6 +6859,20 @@ bool PBExploreData::MergePartialFromCodedStream(
         break;
       }
 
+      // uint32 birthplace = 9;
+      case 9: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(72u /* 72 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &birthplace_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       // .KFMsg.PBExplorePlayerData playerdata = 11;
       case 11: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
@@ -6955,6 +6972,11 @@ void PBExploreData::SerializeWithCachedSizes(
   // uint32 innerworld = 8;
   if (this->innerworld() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->innerworld(), output);
+  }
+
+  // uint32 birthplace = 9;
+  if (this->birthplace() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(9, this->birthplace(), output);
   }
 
   // .KFMsg.PBExplorePlayerData playerdata = 11;
@@ -7064,6 +7086,11 @@ void PBExploreData::SerializeWithCachedSizes(
   // uint32 innerworld = 8;
   if (this->innerworld() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->innerworld(), target);
+  }
+
+  // uint32 birthplace = 9;
+  if (this->birthplace() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(9, this->birthplace(), target);
   }
 
   // .KFMsg.PBExplorePlayerData playerdata = 11;
@@ -7218,6 +7245,13 @@ size_t PBExploreData::ByteSizeLong() const {
         this->innerworld());
   }
 
+  // uint32 birthplace = 9;
+  if (this->birthplace() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->birthplace());
+  }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -7273,6 +7307,9 @@ void PBExploreData::MergeFrom(const PBExploreData& from) {
   if (from.innerworld() != 0) {
     set_innerworld(from.innerworld());
   }
+  if (from.birthplace() != 0) {
+    set_birthplace(from.birthplace());
+  }
 }
 
 void PBExploreData::CopyFrom(const ::google::protobuf::Message& from) {
@@ -7309,6 +7346,7 @@ void PBExploreData::InternalSwap(PBExploreData* other) {
   swap(lastlevel_, other->lastlevel_);
   swap(creation_, other->creation_);
   swap(innerworld_, other->innerworld_);
+  swap(birthplace_, other->birthplace_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 

@@ -60,9 +60,6 @@
     <ClInclude Include="KFPVEConfig.hpp">
       <Filter>Realm</Filter>
     </ClInclude>
-    <ClInclude Include="KFFoodConsumeConfig.hpp">
-      <Filter>Realm</Filter>
-    </ClInclude>
     <ClInclude Include="KFStatusConfig.hpp">
       <Filter>GamePlay</Filter>
     </ClInclude>
@@ -102,6 +99,15 @@
     </ClInclude>
     <ClInclude Include="KFRealmConfig.hpp">
       <Filter>Realm</Filter>
+    </ClInclude>
+    <ClInclude Include="KFDialogueBranchConfig.hpp">
+      <Filter>GamePlay</Filter>
+    </ClInclude>
+    <ClInclude Include="KFDialogueConfig.hpp">
+      <Filter>GamePlay</Filter>
+    </ClInclude>
+    <ClInclude Include="KFStoryConfig.hpp">
+      <Filter>GamePlay</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -188,9 +194,6 @@
     <ClCompile Include="KFPVEConfig.cpp">
       <Filter>Realm</Filter>
     </ClCompile>
-    <ClCompile Include="KFFoodConsumeConfig.cpp">
-      <Filter>Realm</Filter>
-    </ClCompile>
     <ClCompile Include="KFStatusConfig.cpp">
       <Filter>GamePlay</Filter>
     </ClCompile>
@@ -226,6 +229,15 @@
     </ClCompile>
     <ClCompile Include="KFRealmConfig.cpp">
       <Filter>Realm</Filter>
+    </ClCompile>
+    <ClCompile Include="KFDialogueBranchConfig.cpp">
+      <Filter>GamePlay</Filter>
+    </ClCompile>
+    <ClCompile Include="KFDialogueConfig.cpp">
+      <Filter>GamePlay</Filter>
+    </ClCompile>
+    <ClCompile Include="KFStoryConfig.cpp">
+      <Filter>GamePlay</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

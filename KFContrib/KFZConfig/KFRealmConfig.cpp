@@ -6,6 +6,10 @@ namespace KFrame
     void KFRealmConfig::ReadSetting( KFNode& xmlnode, KFRealmSeting* kfsetting )
     {
         kfsetting->_str_consume = xmlnode.GetString( "Consume", true );
+        kfsetting->_food_num = xmlnode.GetUInt32( "FoodNum", true );
+        kfsetting->_food_step = xmlnode.GetUInt32( "FoodStep", true );
+        kfsetting->_hp_num = xmlnode.GetUInt32( "HpNum", true );
+        kfsetting->_hp_step = xmlnode.GetUInt32( "HpStep", true );
 
         KFRealmLevel leveldata;
         leveldata._level = xmlnode.GetUInt32( "Level" );

@@ -18,7 +18,7 @@ namespace KFrame
         std::string _extend_name;
 
         // 移动目标名字列表
-        std::set< std::string > _move_name_list;
+        StringSet _move_name_list;
 
         // 自动处理
         uint32 _is_auto = 0u;

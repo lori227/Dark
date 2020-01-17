@@ -47,7 +47,7 @@ namespace KFrame
 
         // 房间逻辑
         {
-            std::set< uint64 > _removes;
+            UInt64Set _removes;
             for ( auto& iter : _match_room_list._objects )
             {
                 auto kfroom = iter.second;

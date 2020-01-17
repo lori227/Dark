@@ -2,20 +2,17 @@
 #define __KF_GRANARY_CONFIG_H__
 
 #include "KFZConfig/KFConfig.h"
+#include "KFZConfig/KFSetting.h"
+#include "KFZConfig/KFElementConfig.h"
 
 namespace KFrame
 {
     class KFGranarySetting : public KFIntSetting
     {
     public:
-        // 间隔时间
-        uint64 _cd_time = 0u;
-
-        // 增加数量
-        uint32 _add_num = 0u;
-
-        // 最大数量
-        uint32 _max_num = 0u;
+        // 消耗
+        std::string _str_consume;
+        KFElements _consume;
     };
 
     class KFGranaryConfig : public KFConfigT< KFGranarySetting >, public KFInstance< KFGranaryConfig >
@@ -23,8 +20,10 @@ namespace KFrame
     public:
         KFGranaryConfig()
         {
-            _file_name = "granary";
+            _file_name = "granarybuy";
         }
+
+        virtual void LoadAllComplete();
 
     protected:
         // 读取配置

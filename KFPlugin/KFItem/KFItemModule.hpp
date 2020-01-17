@@ -84,7 +84,7 @@ namespace KFrame
         uint32 _max_count = 0u;
 
         // 空索引列表
-        std::set< uint32 > _indexs;
+        UInt32Set _indexs;
     };
 
     class KFItemModule : public KFItemInterface
@@ -276,7 +276,7 @@ namespace KFrame
         KFComponent* _kf_component = nullptr;
 
         // 物品属性列表
-        std::vector< std::string > _item_data_list;
+        StringVector _item_data_list;
 
         // 保存玩家的背包格子信息
         typedef std::pair<uint64, std::string> ItemIndexKey;

@@ -42,7 +42,7 @@ namespace KFrame
 
     private:
         // 死亡类型列表
-        std::set< uint32 > _type_list;
+        UInt32Set _type_list;
     };
 }
 

@@ -23,10 +23,44 @@
 #include "KFExecute/KFExecuteInterface.h"
 #include "KFOption/KFOptionInterface.h"
 #include "KFZConfig/KFElementConfig.h"
+#include "KFZConfig/KFFormulaConfig.h"
 
 namespace KFrame
 {
-    class KFTrainSetting;
+    class KFTrainSetting
+    {
+    public:
+        // 常态数据
+        void UpdateStaticPart();
+        // 特化数据
+        void UpdateDynamicPart( KFEntity* player );
+
+    public:
+        // 栏位数量
+        uint32 _count = 0u;
+
+        // 总时间(s)
+        uint64 _total_time = 0u;
+
+        // 间隔时间(s)
+        uint64 _cd_time = 0u;
+
+        // 单位时间增加经验
+        uint32 _add_exp = 0u;
+
+        // 训练消耗公式
+        uint32 _consume_fid = 0u;
+
+        // 消耗缩放比例（只对训练消耗）
+        double _scale_consume = 1.0;
+
+        // 加速消耗公式
+        uint32 _onekey_consume_fid = 0u;
+
+        // 一键完成单位时间（单位消耗-单位时间）
+        uint32 _unit_time = 0u;
+    };
+
     class KFTrainModule : public KFTrainInterface
     {
     public:
@@ -58,6 +92,12 @@ namespace KFrame
 
         // 再次训练请求
         __KF_MESSAGE_FUNCTION__( HandleTrainAgainReq );
+
+        // 训练费用请求
+        __KF_MESSAGE_FUNCTION__( HandleTrainFeeReq );
+
+        // 一键完成训练费用请求
+        __KF_MESSAGE_FUNCTION__( HandleTrainOneKeyFeeReq );
 
         // 定时增加经验
         __KF_TIMER_FUNCTION__( OnTimerAddExp );
@@ -110,48 +150,15 @@ namespace KFrame
         // 通用科技效果操作
         bool CommonAddEffectHandle( KFEntity* player, const KFExecuteData* executedata, const std::string& fieldname );
 
+        // 计算消耗
+        const KFElements* CalcTrainConsume( KFEntity* player, const KFTrainSetting* setting );
+        const KFElements* CalcTrainOneKeyConsume( KFEntity* player, const KFTrainSetting* setting, uint32 lefttime );
+
     protected:
         // 玩家组件上下文
         KFComponent* _kf_component = nullptr;
     };
 
-    class KFTrainSetting
-    {
-    public:
-        KFTrainSetting();
-
-        // 特化数据
-        const void UpdateTrainSetting( KFEntity* player );
-
-    private:
-        KFTrainSetting( const KFTrainSetting& other ) = delete;
-        KFTrainSetting& operator=( const KFTrainSetting& other ) = delete;
-
-    public:
-        // 栏位数量
-        uint32 _count = 0u;
-
-        // 总时间(s)
-        uint64 _total_time = 0u;
-
-        // 间隔时间(s)
-        uint64 _cd_time = 0u;
-
-        // 单位时间增加经验
-        uint32 _unit_exp = 0u;
-        double _scale_unit_exp = 1.0;
-        uint32 _add_exp = 0u;
-
-        // 消耗
-        KFElements _consume;
-        KFElements _onekey_consume;
-
-        // 消耗缩放比例
-        double _scale_cost = 1.0;
-
-        // 一键完成单位时间（单位消耗-单位时间）
-        uint32 _unit_time;
-    };
 }
 
 

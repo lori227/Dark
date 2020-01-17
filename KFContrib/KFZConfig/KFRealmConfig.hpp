@@ -38,6 +38,18 @@ namespace KFrame
         std::string _str_consume;
         KFElements _consume;
 
+        // 粮食消耗
+        uint32 _food_num = 0u;
+
+        // 粮食消耗步数
+        uint32 _food_step = 0u;
+
+        // 生命消耗
+        uint32 _hp_num = 0u;
+
+        // 生命消耗步数
+        uint32 _hp_step = 0u;
+
     public:
         const KFRealmLevel* FindRealmLevel( uint32 level ) const
         {

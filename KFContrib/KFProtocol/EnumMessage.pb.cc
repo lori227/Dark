@@ -98,13 +98,14 @@ void AddDescriptorsImpl() {
       "e\020\n*s\n\016RealmEnterEnum\022\020\n\014EnterInvalid\020\000\022"
       "\020\n\014EnterChapter\020\001\022\016\n\nEnterLogin\020\002\022\r\n\tEnt"
       "erTown\020\003\022\r\n\tEnterJump\020\004\022\017\n\013EnterExtend\020\005"
-      "*:\n\017ExtendLevelEnum\022\026\n\022ExtendLevelInvali"
-      "d\020\000\022\017\n\013ExtendLevel\020d*Z\n\013BalanceEnum\022\021\n\rU"
-      "nknowBalance\020\000\022\013\n\007Victory\020\001\022\n\n\006Failed\020\002\022"
-      "\010\n\004Flee\020\003\022\010\n\004Town\020\004\022\013\n\007Chapter\020db\006proto3"
+      "*;\n\017ExtendLevelEnum\022\026\n\022ExtendLevelInvali"
+      "d\020\000\022\020\n\013ExtendLevel\020\220N*Z\n\013BalanceEnum\022\021\n\r"
+      "UnknowBalance\020\000\022\013\n\007Victory\020\001\022\n\n\006Failed\020\002"
+      "\022\010\n\004Flee\020\003\022\010\n\004Town\020\004\022\013\n\007Chapter\020db\006proto"
+      "3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1760);
+      descriptor, 1761);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "EnumMessage.proto", &protobuf_RegisterTypes);
 }
@@ -384,7 +385,7 @@ const ::google::protobuf::EnumDescriptor* ExtendLevelEnum_descriptor() {
 bool ExtendLevelEnum_IsValid(int value) {
   switch (value) {
     case 0:
-    case 100:
+    case 10000:
       return true;
     default:
       return false;

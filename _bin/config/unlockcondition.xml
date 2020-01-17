@@ -1,4 +1,4 @@
-<root platform="" version="0">
+<root platform="" version="2698">
 	<item Id="39000000" Condition="totalsignin" DoneType=">=" DoneValue="1" Limits="" Limits1="" Limits2="" />
 	<item Id="39000001" Condition="buildlevel" DoneType=">=" DoneValue="99" Limits="202" Limits1="" Limits2="" />
 	<item Id="40004001" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="21101001" Limits1="" Limits2="" />
@@ -202,6 +202,36 @@
 	<item Id="59000428" Condition="buildlevel" DoneType=">=" DoneValue="28" Limits="205" Limits1="" Limits2="" />
 	<item Id="59000429" Condition="buildlevel" DoneType=">=" DoneValue="29" Limits="205" Limits1="" Limits2="" />
 	<item Id="59000430" Condition="buildlevel" DoneType=">=" DoneValue="30" Limits="205" Limits1="" Limits2="" />
+	<item Id="59000501" Condition="buildlevel" DoneType=">=" DoneValue="1" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000502" Condition="buildlevel" DoneType=">=" DoneValue="2" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000503" Condition="buildlevel" DoneType=">=" DoneValue="3" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000504" Condition="buildlevel" DoneType=">=" DoneValue="4" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000505" Condition="buildlevel" DoneType=">=" DoneValue="5" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000506" Condition="buildlevel" DoneType=">=" DoneValue="6" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000507" Condition="buildlevel" DoneType=">=" DoneValue="7" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000508" Condition="buildlevel" DoneType=">=" DoneValue="8" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000509" Condition="buildlevel" DoneType=">=" DoneValue="9" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000510" Condition="buildlevel" DoneType=">=" DoneValue="10" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000511" Condition="buildlevel" DoneType=">=" DoneValue="11" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000512" Condition="buildlevel" DoneType=">=" DoneValue="12" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000513" Condition="buildlevel" DoneType=">=" DoneValue="13" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000514" Condition="buildlevel" DoneType=">=" DoneValue="14" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000515" Condition="buildlevel" DoneType=">=" DoneValue="15" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000516" Condition="buildlevel" DoneType=">=" DoneValue="16" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000517" Condition="buildlevel" DoneType=">=" DoneValue="17" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000518" Condition="buildlevel" DoneType=">=" DoneValue="18" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000519" Condition="buildlevel" DoneType=">=" DoneValue="19" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000520" Condition="buildlevel" DoneType=">=" DoneValue="20" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000521" Condition="buildlevel" DoneType=">=" DoneValue="21" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000522" Condition="buildlevel" DoneType=">=" DoneValue="22" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000523" Condition="buildlevel" DoneType=">=" DoneValue="23" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000524" Condition="buildlevel" DoneType=">=" DoneValue="24" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000525" Condition="buildlevel" DoneType=">=" DoneValue="25" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000526" Condition="buildlevel" DoneType=">=" DoneValue="26" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000527" Condition="buildlevel" DoneType=">=" DoneValue="27" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000528" Condition="buildlevel" DoneType=">=" DoneValue="28" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000529" Condition="buildlevel" DoneType=">=" DoneValue="29" Limits="212" Limits1="" Limits2="" />
+	<item Id="59000530" Condition="buildlevel" DoneType=">=" DoneValue="30" Limits="212" Limits1="" Limits2="" />
 	<item Id="101" Condition="killnpc" DoneType=">=" DoneValue="4" Limits="race=1601" Limits1="" Limits2="" />
 	<item Id="102" Condition="killnpc" DoneType=">=" DoneValue="4" Limits="killprofession=1100" Limits1="race=1601" Limits2="" />
 	<item Id="103" Condition="killnpc" DoneType=">=" DoneValue="2" Limits="race=1601" Limits1="" Limits2="" />

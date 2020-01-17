@@ -11,10 +11,20 @@ namespace KFrame
         __REGISTER_LEAVE_PLAYER__( &KFGranaryModule::OnLeaveGranaryModule );
         __REGISTER_RECORD_VALUE__( &KFGranaryModule::GetDayGranaryTotalNum );
 
-        __REGISTER_ADD_DATA_2__( __STRING__( build ), KFMsg::GranaryBuild, &KFGranaryModule::OnAddGranaryBuild );
+        __REGISTER_ADD_DATA_2__( __STRING__( build ), KFMsg::WarehouseBuild, &KFGranaryModule::OnAddGranaryBuild );
         __REGISTER_UPDATE_DATA_2__( __STRING__( granary ), __STRING__( num ), &KFGranaryModule::OnItemNumUpdate );
+        __REGISTER_UPDATE_DATA_2__( __STRING__( effect ), __STRING__( granarymaxnum ), &KFGranaryModule::OnItemNumUpdate );
+
+        __REGISTER_EXECUTE__( __STRING__( granaryaddnum ), &KFGranaryModule::OnExecuteGranaryAddData );
+        __REGISTER_EXECUTE__( __STRING__( granarymaxnum ), &KFGranaryModule::OnExecuteGranaryAddData );
+        __REGISTER_EXECUTE__( __STRING__( granarybuycount ), &KFGranaryModule::OnExecuteGranaryAddData );
+        __REGISTER_EXECUTE__( __STRING__( granarybuyfactor ), &KFGranaryModule::OnExecuteGranaryAddData );
+        __REGISTER_EXECUTE__( __STRING__( granarycritrate ), &KFGranaryModule::OnExecuteGranaryAddData );
+        __REGISTER_EXECUTE__( __STRING__( granarycritvalue ), &KFGranaryModule::OnExecuteGranaryAddData );
+
         ////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_GRANARY_GATHER_REQ, &KFGranaryModule::HandleGranaryGatherReq );
+        __REGISTER_MESSAGE__( KFMsg::MSG_GRANARY_BUY_REQ, &KFGranaryModule::HandleGranaryBuyReq );
     }
 
     void KFGranaryModule::BeforeShut()
@@ -24,27 +34,48 @@ namespace KFrame
         __UN_LEAVE_PLAYER__();
         __UN_RECORD_VALUE__();
 
-        __UN_ADD_DATA_2__( __STRING__( build ), KFMsg::GranaryBuild );
+        __UN_ADD_DATA_2__( __STRING__( build ), KFMsg::WarehouseBuild );
         __UN_UPDATE_DATA_2__( __STRING__( granary ), __STRING__( num ) );
+        __UN_UPDATE_DATA_2__( __STRING__( effect ), __STRING__( granarymaxnum ) );
+
+        __UN_EXECUTE__( __STRING__( granaryaddnum ) );
+        __UN_EXECUTE__( __STRING__( granarymaxnum ) );
+        __UN_EXECUTE__( __STRING__( granarybuycount ) );
+        __UN_EXECUTE__( __STRING__( granarybuyfactor ) );
+        __UN_EXECUTE__( __STRING__( granarycritrate ) );
+        __UN_EXECUTE__( __STRING__( granarycritvalue ) );
+
         ////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_GRANARY_GATHER_REQ );
+        __UN_MESSAGE__( KFMsg::MSG_GRANARY_BUY_REQ );
     }
 
     __KF_ENTER_PLAYER_FUNCTION__( KFGranaryModule::OnEnterGranaryModule )
     {
-        // 检查粮仓是否开启
-        if ( !IsGranaryActive( player ) )
-        {
-            return;
-        }
-
         // 检查定时器
         CheckGranaryTimer( player );
     }
 
+    __KF_LEAVE_PLAYER_FUNCTION__( KFGranaryModule::OnLeaveGranaryModule )
+    {
+        __UN_TIMER_1__( player->GetKeyID() );
+    }
+
+    __KF_EXECUTE_FUNCTION__( KFGranaryModule::OnExecuteGranaryAddData )
+    {
+        if ( executedata->_param_list._params.size() < 1u )
+        {
+            return false;
+        }
+
+        auto adddata = executedata->_param_list._params[0]->_int_value;
+        player->UpdateData( __STRING__( effect ), executedata->_name, KFEnum::Add, adddata );
+        return true;
+    }
+
     uint32 KFGranaryModule::GetGranaryLevel( KFEntity* player )
     {
-        auto kfbuild = player->Find( __STRING__( build ), KFMsg::GranaryBuild );
+        auto kfbuild = player->Find( __STRING__( build ), KFMsg::WarehouseBuild );
         if ( kfbuild == nullptr )
         {
             return 0u;
@@ -55,27 +86,31 @@ namespace KFrame
 
     bool KFGranaryModule::IsGranaryActive( KFEntity* player )
     {
-        auto kfbuild = player->Find( __STRING__( build ), KFMsg::GranaryBuild );
+        auto kfbuild = player->Find( __STRING__( build ), KFMsg::WarehouseBuild );
         return kfbuild != nullptr;
-    }
-
-    const KFGranarySetting* KFGranaryModule::GetGranarySetting( KFEntity* player )
-    {
-        auto level = GetGranaryLevel( player );
-        return KFGranaryConfig::Instance()->FindSetting( level );
     }
 
     void KFGranaryModule::CheckGranaryTimer( KFEntity* player )
     {
-        auto setting = GetGranarySetting( player );
-        if ( setting == nullptr || setting->_cd_time == 0u )
+        // 检查粮仓是否开启
+        if ( !IsGranaryActive( player ) )
         {
             return;
         }
 
+        static auto _option = _kf_option->FindOption( __STRING__( granarycdtime ) );
+        auto cdtime = _option->_uint32_value;
+        if ( cdtime == 0u )
+        {
+            return;
+        }
+
+        auto addnum = player->Get<uint32>( __STRING__( effect ), __STRING__( granaryaddnum ) );
+        auto maxnum = player->Get<uint32>( __STRING__( effect ), __STRING__( granarymaxnum ) );
+
         auto kfgranary = player->Find( __STRING__( granary ) );
         auto num = kfgranary->Get<uint32>( __STRING__( num ) );
-        if ( num >= setting->_max_num )
+        if ( num >= maxnum )
         {
             return;
         }
@@ -90,31 +125,26 @@ namespace KFrame
         }
         else
         {
-            auto cdtime = nowtime - calctime;
-            if ( cdtime >= setting->_cd_time )
+            auto pasttime = nowtime - calctime;
+            if ( pasttime >= cdtime )
             {
-                auto count = cdtime / setting->_cd_time;
-                auto addnum = count * setting->_add_num;
-                if ( num + addnum >= setting->_max_num )
+                auto count = pasttime / cdtime;
+                auto totalnum = count * addnum;
+                if ( num + totalnum >= maxnum )
                 {
-                    player->UpdateData( kfgranary, __STRING__( num ), KFEnum::Set, setting->_max_num );
+                    player->UpdateData( kfgranary, __STRING__( num ), KFEnum::Set, maxnum );
                     return;
                 }
 
-                calctime += count * setting->_cd_time;
-                player->UpdateData( kfgranary, __STRING__( num ), KFEnum::Add, addnum );
+                calctime += count * cdtime;
+                player->UpdateData( kfgranary, __STRING__( num ), KFEnum::Add, totalnum );
                 player->UpdateData( kfgranary, __STRING__( calctime ), KFEnum::Set, calctime );
             }
 
-            delaytime = ( setting->_cd_time - ( nowtime - calctime ) % setting->_cd_time ) * 1000u;
+            delaytime = ( cdtime - pasttime % cdtime ) * 1000u;
         }
 
-        __LOOP_TIMER_1__( player->GetKeyID(), setting->_cd_time * 1000u, delaytime, &KFGranaryModule::OnTimerAddItem );
-    }
-
-    __KF_LEAVE_PLAYER_FUNCTION__( KFGranaryModule::OnLeaveGranaryModule )
-    {
-        __UN_TIMER_1__( player->GetKeyID() );
+        __LOOP_TIMER_1__( player->GetKeyID(), cdtime * 1000u, delaytime, &KFGranaryModule::OnTimerAddItem );
     }
 
     __KF_RECORD_VALUE_FUNCTION__( KFGranaryModule::GetDayGranaryTotalNum )
@@ -158,33 +188,40 @@ namespace KFrame
 
     __KF_UPDATE_DATA_FUNCTION__( KFGranaryModule::OnItemNumUpdate )
     {
-        auto setting = GetGranarySetting( player );
-        if ( setting == nullptr )
+        static auto _option = _kf_option->FindOption( __STRING__( granarycdtime ) );
+        auto cdtime = _option->_uint32_value;
+        if ( cdtime == 0u )
         {
             return;
         }
 
-        auto kfparent = kfdata->GetParent();
-        auto num = kfdata->Get<uint32>();
-        auto calctime = kfparent->Get<uint64>( __STRING__( calctime ) );
-        if ( num >= setting->_max_num  )
+        auto maxnum = player->Get<uint32>( __STRING__( effect ), __STRING__( granarymaxnum ) );
+        if ( maxnum == 0u )
+        {
+            return;
+        }
+
+        auto kfgranary = player->Find( __STRING__( granary ) );
+        auto num = kfgranary->Get<uint32>( __STRING__( num ) );
+        auto calctime = kfgranary->Get<uint64>( __STRING__( calctime ) );
+        if ( num >= maxnum )
         {
             if ( calctime != 0u )
             {
                 // 物品满取消定时器
                 __UN_TIMER_1__( player->GetKeyID() );
 
-                player->UpdateData( kfparent, __STRING__( calctime ), KFEnum::Set, 0u );
+                player->UpdateData( kfgranary, __STRING__( calctime ), KFEnum::Set, 0u );
             }
         }
         else
         {
             if ( calctime == 0u )
             {
-                player->UpdateData( kfparent, __STRING__( calctime ), KFEnum::Set, KFGlobal::Instance()->_real_time );
+                player->UpdateData( kfgranary, __STRING__( calctime ), KFEnum::Set, KFGlobal::Instance()->_real_time );
 
                 // 物品不满开启定时器
-                __LOOP_TIMER_1__( player->GetKeyID(), setting->_cd_time * 1000, 0u, &KFGranaryModule::OnTimerAddItem );
+                __LOOP_TIMER_1__( player->GetKeyID(), cdtime * 1000, 0u, &KFGranaryModule::OnTimerAddItem );
             }
         }
     }
@@ -198,12 +235,6 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::BuildFuncNotActive );
         }
 
-        auto setting = GetGranarySetting( player );
-        if ( setting == nullptr )
-        {
-            return _kf_display->SendToClient( player, KFMsg::GranarySettingError );
-        }
-
         auto kfgranary = player->Find( __STRING__( granary ) );
         auto num = kfgranary->Get( __STRING__( num ) );
         if ( num == 0u )
@@ -215,19 +246,85 @@ namespace KFrame
         static auto _option = _kf_option->FindOption( __STRING__( fooditemid ) );
         auto itemid = _option->_uint32_value;
 
+        static KFElements _item_element;
+        if ( _item_element.IsEmpty() )
+        {
+            auto ok = KFElementConfig::Instance()->FormatElemnt( _item_element, __STRING__( item ), "1", itemid );
+            if ( !ok )
+            {
+                return _kf_display->SendToClient( player, KFMsg::ElementParseError );
+            }
+        }
+
+        auto totalcount = num;
+
+        // 计算暴击率
+        uint32 critresult = _invalid_int;
+        auto critrate = player->Get( __STRING__( effect ), __STRING__( granarycritrate ) );
+        auto critvalue = player->Get( __STRING__( effect ), __STRING__( granarycritvalue ) );
+        auto rand = KFGlobal::Instance()->RandRatio( KFRandEnum::TenThousand );
+        if ( rand < critrate )
+        {
+            totalcount += totalcount * critvalue / KFRandEnum::TenThousand;
+            critresult = 1u;
+        }
+
         // 粮食放进仓库
-        auto canaddcount = _kf_item->GetCanAddItemCount( player, itemid, num );
+        auto canaddcount = _kf_item->GetCanAddItemCount( player, itemid, totalcount );
         if ( canaddcount == 0u )
         {
             // 仓库已满
             return _kf_display->SendToClient( player, KFMsg::ItemBagIsFull );
         }
 
-        if ( canaddcount != num )
+        if ( canaddcount != totalcount )
         {
             // 仓库已满
             _kf_display->SendToClient( player, KFMsg::ItemBagIsFull );
         }
+
+        // 收取暴击协议
+        KFMsg::MsgGranaryGatherAck ack;
+        ack.set_crit( critresult );
+        _kf_player->SendToClient( player, KFMsg::MSG_GRANARY_GATHER_ACK, &ack );
+
+        // 添加物品进背包
+        player->AddElement( &_item_element, canaddcount, __STRING__( granary ), 0u, __FUNC_LINE__ );
+
+        player->UpdateData( kfgranary, __STRING__( daynum ), KFEnum::Add, canaddcount );
+        player->UpdateData( kfgranary, __STRING__( daytime ), KFEnum::Set, KFGlobal::Instance()->_real_time );
+
+        // 更新数量
+        auto leftnum = ( ( num > canaddcount ) ? ( num - canaddcount ) : 0u );
+        player->UpdateData( kfgranary, __STRING__( num ), KFEnum::Set, leftnum );
+
+        // 条件更新
+        {
+            auto kfbuildgather = player->Find( __STRING__( buildgather ) );
+            kfbuildgather->Set( __STRING__( id ), itemid );
+            player->UpdateData( kfbuildgather, __STRING__( count ), KFEnum::Set, canaddcount );
+        }
+    }
+
+    __KF_MESSAGE_FUNCTION__( KFGranaryModule::HandleGranaryBuyReq )
+    {
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgGranaryBuyReq );
+
+        // 已购买次数
+        auto buycount = player->Get<uint32>( __STRING__( granary ), __STRING__( buycount ) );
+        static auto _buy_option = _kf_option->FindOption( __STRING__( granaryfreebuycount ) );
+        auto freecount = _buy_option->_uint32_value;
+
+        // 付费购买次数
+        auto paycount = player->Get<uint32>( __STRING__( effect ), __STRING__( granarybuycount ) );
+
+        if ( buycount >= freecount + paycount )
+        {
+            return _kf_display->SendToClient( player, KFMsg::GranaryBuyCountLimit );
+        }
+
+        static auto _item_option = _kf_option->FindOption( __STRING__( fooditemid ) );
+        auto itemid = _item_option->_uint32_value;
 
         static KFElements _item_element;
         if ( _item_element.IsEmpty() )
@@ -239,21 +336,48 @@ namespace KFrame
             }
         }
 
-        // 添加物品进背包
+        auto addnum = player->Get<uint32>( __STRING__( effect ), __STRING__( granaryaddnum ) );
+        auto buyfactor = player->Get<uint32>( __STRING__( effect ), __STRING__( granarybuyfactor ) );
+
+        static auto _time_option = _kf_option->FindOption( __STRING__( granarycdtime ) );
+        auto cdtime = _time_option->_uint32_value / KFTimeEnum::OneMinuteSecond;
+        if ( addnum == 0u || cdtime == 0u || buyfactor == 0u )
+        {
+            return _kf_display->SendToClient( player, KFMsg::GranaryBuyParamError );
+        }
+
+        // 判断仓库是否已满
+        auto totalcount = addnum / cdtime * buyfactor;
+
+        auto canaddcount = _kf_item->GetCanAddItemCount( player, itemid, totalcount );
+        if ( canaddcount == 0u )
+        {
+            // 仓库已满
+            return _kf_display->SendToClient( player, KFMsg::ItemBagIsFull );
+        }
+
+        if ( buycount >= freecount )
+        {
+            auto count = buycount - freecount + 1u;
+            auto kfgranarysetting = KFGranaryConfig::Instance()->FindSetting( count );
+            if ( kfgranarysetting == nullptr )
+            {
+                return _kf_display->SendToClient( player, KFMsg::GranaryBuySettingError );
+            }
+
+            // 付费购买
+            auto& dataname = player->RemoveElement( &kfgranarysetting->_consume, _default_multiple, __STRING__( granarybuy ), kfgranarysetting->_id, __FUNC_LINE__ );
+            if ( !dataname.empty() )
+            {
+                return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
+            }
+
+        }
+
+        // 添加粮食进背包
         player->AddElement( &_item_element, canaddcount, __STRING__( granary ), 0u, __FUNC_LINE__ );
 
-        player->UpdateData( kfgranary, __STRING__( daynum ), KFEnum::Add, canaddcount );
-        player->UpdateData( kfgranary, __STRING__( daytime ), KFEnum::Set, KFGlobal::Instance()->_real_time );
-
-        // 更新数量
-        player->UpdateData( kfgranary, __STRING__( num ), KFEnum::Set, num - canaddcount );
-
-        // 条件更新
-        {
-            auto kfbuildgather = player->Find( __STRING__( buildgather ) );
-            kfbuildgather->Set( __STRING__( id ), itemid );
-            player->UpdateData( kfbuildgather, __STRING__( count ), KFEnum::Set, canaddcount );
-        }
+        player->UpdateData( __STRING__( granary ), __STRING__( buycount ), KFEnum::Add, 1u );
     }
 
     __KF_TIMER_FUNCTION__( KFGranaryModule::OnTimerAddItem )
@@ -264,20 +388,16 @@ namespace KFrame
             return;
         }
 
-        auto setting = GetGranarySetting( player );
-        if ( setting == nullptr )
+        auto addnum = player->Get<uint32>( __STRING__( effect ), __STRING__( granaryaddnum ) );
+        auto maxnum = player->Get<uint32>( __STRING__( effect ), __STRING__( granarymaxnum ) );
+        if ( addnum == 0u || maxnum == 0u )
         {
             return;
         }
 
         auto kfgranary = player->Find( __STRING__( granary ) );
-
-        auto addnum = setting->_add_num;
         auto curnum = kfgranary->Get<uint32>( __STRING__( num ) );
-        if ( addnum + curnum > setting->_max_num )
-        {
-            addnum = setting->_max_num - curnum;
-        }
+        addnum = __MIN__( addnum, maxnum - curnum );
 
         player->UpdateData( kfgranary, __STRING__( calctime ), KFEnum::Set, KFGlobal::Instance()->_real_time );
         player->UpdateData( kfgranary, __STRING__( num ), KFEnum::Add, addnum );

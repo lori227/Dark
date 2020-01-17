@@ -423,8 +423,8 @@ namespace KFrame
 
     DivisorList& KFRecruitModule::CalcRecruitHeroDivisor( KFData* kfeffect )
     {
-        static DivisorList outlist;
-        outlist.clear();
+        static DivisorList _out_list;
+        _out_list.clear();
 
         auto kfrecord = kfeffect->Find( __STRING__( recruitdivisor ) );
         for ( auto kfdivisor = kfrecord->First(); kfdivisor != nullptr; kfdivisor = kfrecord->Next() )
@@ -438,17 +438,17 @@ namespace KFrame
             auto kfsetting = KFDivisorConfig::Instance()->FindSetting( kfdivisor->GetKeyID() );
             if ( kfsetting != nullptr )
             {
-                outlist.push_back( kfsetting );
+                _out_list.push_back( kfsetting );
             }
         }
 
-        return outlist;
+        return _out_list;
     }
 
     DivisorList& KFRecruitModule::DivisorListByType( KFData* kfdivisorrecord, uint32 type )
     {
-        static DivisorList outlist;
-        outlist.clear();
+        static DivisorList _out_list;
+        _out_list.clear();
 
         for ( auto kfdivisor = kfdivisorrecord->First(); kfdivisor != nullptr; kfdivisor = kfdivisorrecord->Next() )
         {
@@ -461,11 +461,11 @@ namespace KFrame
             auto kfsetting = KFDivisorConfig::Instance()->FindSetting( kfdivisor->GetKeyID() );
             if ( kfsetting != nullptr && kfsetting->_type == type )
             {
-                outlist.push_back( kfsetting );
+                _out_list.push_back( kfsetting );
             }
         }
 
-        return outlist;
+        return _out_list;
     }
 
     void KFRecruitModule::GenerateRecruitHero( KFEntity* player, KFData* kfeffect, KFData* kfrecruitrecord, uint32 generateid,

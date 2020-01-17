@@ -44,7 +44,9 @@ namespace KFrame
     KFSpdLog* KFTLogModule::CreateLog( const std::string& name )
     {
         auto kfglobal = KFGlobal::Instance();
-        auto spdlog = KFLogger::Instance()->NewLogger( kfglobal->_app_id->GetId(), name, kfglobal->_app_name, kfglobal->_app_type, kfglobal->_app_id->ToString() );
+        auto filename = __FORMAT__( "{}_{{}}_{}.{}.{}_{}.log",
+                                    kfglobal->_local_ip, kfglobal->_app_type, kfglobal->_app_id->GetZoneId(), kfglobal->_app_id->GetWorkId(), name );
+        auto spdlog = KFLogger::Instance()->NewLogger( kfglobal->_app_id->GetId(), name, filename );
         return spdlog;
     }
 #define __TLOG__( myfmt, ... )\

@@ -61,7 +61,7 @@ namespace KFrame
         uint32 StartMatch( const KFMsg::PBMatchPlayer* pbplayer, uint32 matchid, const std::string& version, uint64 battleserverid );
     private:
         // 版本列表
-        std::set< std::string > _battle_version_list;
+        StringSet _battle_version_list;
 
         // 匹配模式列表
         KFHashMap< uint32, uint32, KFMatchQueue > _match_queue_list;

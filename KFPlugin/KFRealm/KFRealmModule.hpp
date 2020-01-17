@@ -27,7 +27,6 @@
 #include "KFZConfig/KFElementConfig.h"
 #include "KFZConfig/KFRealmConfig.hpp"
 #include "KFZConfig/KFPVEConfig.hpp"
-#include "KFZConfig/KFFoodConsumeConfig.hpp"
 
 namespace KFrame
 {
@@ -98,7 +97,7 @@ namespace KFrame
         std::tuple<uint32, KFRealmData*, KFMsg::PBExploreData*> RealmChapterEnter( KFEntity* player, uint32 realmid, uint32 level, const std::string& modulename, uint64 moduleid );
         std::tuple<uint32, KFRealmData*, KFMsg::PBExploreData*> RealmLoginEnter( KFEntity* player, uint32 realmid );
         std::tuple<uint32, KFRealmData*, KFMsg::PBExploreData*> RealmTownEnter( KFEntity* player, uint32 realmid );
-        std::tuple<uint32, KFRealmData*, KFMsg::PBExploreData*> RealmJumpEnter( KFEntity* player, uint32 realmid, uint32 level );
+        std::tuple<uint32, KFRealmData*, KFMsg::PBExploreData*> RealmJumpEnter( KFEntity* player, uint32 realmid, uint32 level, uint32 birthplace );
         std::tuple<uint32, KFRealmData*, KFMsg::PBExploreData*> RealmExtendEnter( KFEntity* player, uint32 exploreid );
 
         // 探索结算

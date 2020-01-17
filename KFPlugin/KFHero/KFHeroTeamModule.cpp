@@ -149,7 +149,7 @@ namespace KFrame
 
     void KFHeroTeamModule::DecTeamHeroDurability( KFEntity* player, const UInt64Set& fightheros )
     {
-        static auto decdurabilitycount = _kf_option->FindOption( "roledurability_pveconsume" );
+        static auto _dec_durability_count = _kf_option->FindOption( "roledurability_pveconsume" );
 
         auto kfherorecord = player->Find( __STRING__( hero ) );
         for ( auto& iter : fightheros )
@@ -161,7 +161,7 @@ namespace KFrame
             }
 
             // 扣除指定耐久度
-            player->UpdateData( kfhero, __STRING__( durability ), KFEnum::Dec, decdurabilitycount->_uint32_value );
+            player->UpdateData( kfhero, __STRING__( durability ), KFEnum::Dec, _dec_durability_count->_uint32_value );
         }
     }
 
