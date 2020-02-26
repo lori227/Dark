@@ -58,7 +58,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\021CodeMessage.proto\022\005KFMsg*\230\034\n\017ProjectCo"
+      "\n\021CodeMessage.proto\022\005KFMsg*\265\037\n\017ProjectCo"
       "deEnum\022\016\n\nLogicError\020\000\022\024\n\016MatchRequestOk"
       "\020\231\362\001\022\026\n\020MatchAlreadyWait\020\232\362\001\022\021\n\013MatchInR"
       "oom\020\233\362\001\022\025\n\017MatchNotInMatch\020\234\362\001\022\023\n\rMatchC"
@@ -126,33 +126,43 @@ void AddDescriptorsImpl() {
       "TeamExist\020\320\364\001\022\023\n\rPVEMapIdError\020\321\364\001\022\024\n\016Re"
       "almDataError\020\322\364\001\022\025\n\017RealmIdMismatch\020\323\364\001\022"
       "\022\n\014RealmNotTown\020\324\364\001\022\021\n\013RealmInTown\020\325\364\001\022\030"
-      "\n\022RealmHeroTeamEmpty\020\326\364\001\022\024\n\016ChapterIdErr"
-      "or\020\221\375\001\022\024\n\016ChapterNotOpen\020\222\375\001\022\027\n\021ChapterE"
-      "ventError\020\223\375\001\022\031\n\023ChapterDefaultError\020\224\375\001"
-      "\022\032\n\024ChapterStatusIdError\020\225\375\001\022\032\n\024ChapterE"
-      "xecuteFailed\020\226\375\001\022\024\n\016ItemWeaponOnly\020\364\375\001\022\031"
-      "\n\023ItemWeaponRaceLimit\020\365\375\001\022\031\n\023ItemWeaponH"
-      "eroLimit\020\366\375\001\022\032\n\024ItemWeaponLevelLimit\020\367\375\001"
-      "\022\026\n\020ItemWeaponFailed\020\370\375\001\022\022\n\014ItemWeaponOk"
-      "\020\371\375\001\022\030\n\022ItemWeaponNotExist\020\372\375\001\022\030\n\022ItemUn"
-      "WeaponFailed\020\373\375\001\022\024\n\016ItemUnWeaponOk\020\374\375\001\022\037"
-      "\n\031ItemUpdateDurabilityError\020\375\375\001\022\031\n\023Playe"
-      "rHeadIconSetOK\020\331\376\001\022\030\n\022PlayerFactionSetOK"
-      "\020\332\376\001\022\034\n\026PlayerHeadIconNotExist\020\333\376\001\022\033\n\025Pl"
-      "ayerFactionNotExist\020\334\376\001\022\032\n\024PlayerHeadIco"
-      "nNotHad\020\335\376\001\022\032\n\024StorySettingNotExist\020\274\377\001\022"
-      "\023\n\rStoryNotExist\020\275\377\001\022\032\n\024StorySequenceIsE"
-      "rror\020\276\377\001\022\033\n\025StoryTriggerTypeLimit\020\277\377\001\022\035\n"
-      "\027DialogueSettingNotExist\020\300\377\001\022\026\n\020Dialogue"
-      "NotExist\020\301\377\001\022\033\n\025DialogueHaveNotBranch\020\302\377"
-      "\001\022\034\n\026DialogueBranchNotExist\020\303\377\001\022!\n\033Dialo"
-      "gueBranchLackCondition\020\304\377\001\022\033\n\025BranchSett"
-      "ingNotExist\020\305\377\001\022\035\n\027DialogueBranchSelectS"
-      "uc\020\306\377\001\022\035\n\027StoryHaveDialogueBranch\020\307\377\001b\006p"
-      "roto3"
+      "\n\022RealmHeroTeamEmpty\020\326\364\001\022\023\n\rPVECanNotFle"
+      "e\020\327\364\001\022\023\n\rNpcGroupError\020\330\364\001\022\023\n\rGambleIdEr"
+      "ror\020\331\364\001\022\026\n\020GambleParamError\020\333\364\001\022\025\n\017Excha"
+      "ngeIdError\020\334\364\001\022\025\n\017ExchangeNotRune\020\335\364\001\022\030\n"
+      "\022ExchangeLevelError\020\336\364\001\022\023\n\rSelectIdError"
+      "\020\337\364\001\022\026\n\020SelectCountError\020\340\364\001\022\025\n\017SelectUU"
+      "IDError\020\341\364\001\022\027\n\021SelectRecordError\020\342\364\001\022\027\n\021"
+      "MultiEventIdError\020\343\364\001\022\032\n\024MultiEventIndex"
+      "Error\020\344\364\001\022\024\n\016ChapterIdError\020\221\375\001\022\024\n\016Chapt"
+      "erNotOpen\020\222\375\001\022\027\n\021ChapterEventError\020\223\375\001\022\031"
+      "\n\023ChapterDefaultError\020\224\375\001\022\032\n\024ChapterStat"
+      "usIdError\020\225\375\001\022\032\n\024ChapterExecuteFailed\020\226\375"
+      "\001\022\024\n\016ItemWeaponOnly\020\364\375\001\022\031\n\023ItemWeaponRac"
+      "eLimit\020\365\375\001\022\031\n\023ItemWeaponHeroLimit\020\366\375\001\022\032\n"
+      "\024ItemWeaponLevelLimit\020\367\375\001\022\026\n\020ItemWeaponF"
+      "ailed\020\370\375\001\022\022\n\014ItemWeaponOk\020\371\375\001\022\030\n\022ItemWea"
+      "ponNotExist\020\372\375\001\022\030\n\022ItemUnWeaponFailed\020\373\375"
+      "\001\022\024\n\016ItemUnWeaponOk\020\374\375\001\022\037\n\031ItemUpdateDur"
+      "abilityError\020\375\375\001\022\031\n\023ItemRuneCompondOnly\020"
+      "\376\375\001\022\031\n\023ItemCanNotUseToHero\020\377\375\001\022\026\n\020ItemRu"
+      "neSlotFull\020\200\376\001\022\031\n\023PlayerHeadIconSetOK\020\331\376"
+      "\001\022\030\n\022PlayerFactionSetOK\020\332\376\001\022\034\n\026PlayerHea"
+      "dIconNotExist\020\333\376\001\022\033\n\025PlayerFactionNotExi"
+      "st\020\334\376\001\022\032\n\024PlayerHeadIconNotHad\020\335\376\001\022\032\n\024St"
+      "orySettingNotExist\020\274\377\001\022\023\n\rStoryNotExist\020"
+      "\275\377\001\022\032\n\024StorySequenceIsError\020\276\377\001\022\033\n\025Story"
+      "TriggerTypeLimit\020\277\377\001\022\035\n\027DialogueSettingN"
+      "otExist\020\300\377\001\022\026\n\020DialogueNotExist\020\301\377\001\022\033\n\025D"
+      "ialogueHaveNotBranch\020\302\377\001\022\034\n\026DialogueBran"
+      "chNotExist\020\303\377\001\022!\n\033DialogueBranchLackCond"
+      "ition\020\304\377\001\022\033\n\025BranchSettingNotExist\020\305\377\001\022\035"
+      "\n\027DialogueBranchSelectSuc\020\306\377\001\022\035\n\027StoryHa"
+      "veDialogueBranch\020\307\377\001\022\034\n\026StorySequenceNot"
+      "Finish\020\310\377\001b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 3645);
+      descriptor, 4058);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "CodeMessage.proto", &protobuf_RegisterTypes);
 }
@@ -280,6 +290,19 @@ bool ProjectCodeEnum_IsValid(int value) {
     case 31316:
     case 31317:
     case 31318:
+    case 31319:
+    case 31320:
+    case 31321:
+    case 31323:
+    case 31324:
+    case 31325:
+    case 31326:
+    case 31327:
+    case 31328:
+    case 31329:
+    case 31330:
+    case 31331:
+    case 31332:
     case 32401:
     case 32402:
     case 32403:
@@ -296,6 +319,9 @@ bool ProjectCodeEnum_IsValid(int value) {
     case 32507:
     case 32508:
     case 32509:
+    case 32510:
+    case 32511:
+    case 32512:
     case 32601:
     case 32602:
     case 32603:
@@ -313,6 +339,7 @@ bool ProjectCodeEnum_IsValid(int value) {
     case 32709:
     case 32710:
     case 32711:
+    case 32712:
       return true;
     default:
       return false;

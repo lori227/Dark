@@ -19,6 +19,7 @@
 #include "KFGenerate/KFGenerateInterface.h"
 #include "KFZConfig/KFLevelConfig.hpp"
 #include "KFZConfig/KFProfessionConfig.hpp"
+#include "KFRealm/KFRealmInterface.h"
 
 namespace KFrame
 {
@@ -42,10 +43,10 @@ namespace KFrame
         virtual uint32 AddExp( KFEntity* player, KFData* kfhero, uint32 exp );
 
         // 判断英雄是否达到最大等级
-        virtual bool IsMaxLevel( KFData* kfhero );
+        virtual bool IsMaxLevel( KFEntity* player, KFData* kfhero );
 
         // 添加hp
-        virtual uint32 AddHp( KFEntity* player, KFData* kfhero, uint32 hp );
+        virtual uint32 OperateHp( KFEntity* player, KFData* kfhero, uint32 operate, uint32 hp );
 
         // 添加属性
         virtual uint32 AddHeroData( KFEntity* player, KFData* kfhero, const std::string& name, int32 value );
@@ -92,10 +93,14 @@ namespace KFrame
         __KF_UPDATE_DATA_FUNCTION__( OnHeroExpUpdate );
 
         // 英雄主动技能更新
-        __KF_UPDATE_DATA_FUNCTION__( OnHeroActiveUpdate );
+        __KF_ADD_DATA_FUNCTION__( OnHeroActiveUpdate );
 
         // 最大英雄数量
         __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyMaxHeroCount );
+
+    public:
+        // 获取英雄最大等级
+        uint32 GetMaxLevel( KFEntity* player, KFData* kfhero );
 
     protected:
         // 玩家上下文组件

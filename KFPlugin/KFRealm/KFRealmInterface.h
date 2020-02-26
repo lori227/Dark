@@ -5,9 +5,18 @@
 
 namespace KFrame
 {
+    class KFRealmData;
     class KFRealmInterface : public KFModule
     {
     public:
+        // 获得秘境数据
+        virtual KFRealmData* GetRealmData( KFEntity* player ) = 0;
+
+        // 判断是否在里世界
+        virtual bool IsInnerWorld( KFEntity* player ) = 0;
+
+        // 获取生命回复比列
+        virtual double GetAddHpRate( KFEntity* player ) = 0;
     };
 
     //////////////////////////////////////////////////////////////////////////

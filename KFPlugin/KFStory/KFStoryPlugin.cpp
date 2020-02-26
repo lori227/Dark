@@ -32,6 +32,8 @@ namespace KFrame
     {
         __KF_ADD_CONFIG__( KFStoryConfig );
         __KF_ADD_CONFIG__( KFDialogueConfig );
+        __KF_ADD_CONFIG__( KFChapterConfig );
+        __KF_ADD_CONFIG__( KFStatusConfig );
     }
 
 }

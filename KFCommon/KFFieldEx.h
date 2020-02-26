@@ -65,7 +65,6 @@ namespace KFrame
         __STRING_DEFINE__( maincamp );
         __STRING_DEFINE__( itemid );
         __STRING_DEFINE__( itemnum );
-        __STRING_DEFINE__( build );
         __STRING_DEFINE__( activetime );
         __STRING_DEFINE__( buildskinid );
         __STRING_DEFINE__( buildskin );
@@ -156,6 +155,7 @@ namespace KFrame
         __STRING_DEFINE__( mingrowth );
         __STRING_DEFINE__( maxgrowth );
         __STRING_DEFINE__( dialogue );
+        __STRING_DEFINE__( cliniccdtime );
         __STRING_DEFINE__( clinicaddnum );
         __STRING_DEFINE__( clinicmaxnum );
         __STRING_DEFINE__( clinicsubmoneypercent );
@@ -202,6 +202,8 @@ namespace KFrame
         __STRING_DEFINE__( mainstory );
         __STRING_DEFINE__( sequence );
         __STRING_DEFINE__( dialoguebranch );
+        __STRING_DEFINE__( parentid );
+        __STRING_DEFINE__( childid );
         __STRING_DEFINE__( granaryaddnum );
         __STRING_DEFINE__( granarymaxnum );
         __STRING_DEFINE__( granarybuycount );
@@ -212,6 +214,25 @@ namespace KFrame
         __STRING_DEFINE__( granaryfreebuycount );
         __STRING_DEFINE__( buycount );
         __STRING_DEFINE__( granarybuy );
+        __STRING_DEFINE__( camplevellimit );
+        __STRING_DEFINE__( campupgradelist );
+        __STRING_DEFINE__( campdectime );
+        __STRING_DEFINE__( campdecconsume );
+        __STRING_DEFINE__( food );
+        __STRING_DEFINE__( rune );
+        __STRING_DEFINE__( faith );
+        __STRING_DEFINE__( enterfaith );
+        __STRING_DEFINE__( leavefaith );
+        __STRING_DEFINE__( flee );
+        __STRING_DEFINE__( foodpercent );
+        __STRING_DEFINE__( moneypercent );
+        __STRING_DEFINE__( suppliespercent );
+        __STRING_DEFINE__( runeequips );
+        __STRING_DEFINE__( gamble );
+        __STRING_DEFINE__( pvedata );
+        __STRING_DEFINE__( exchange );
+        __STRING_DEFINE__( select );
+        __STRING_DEFINE__( jump );
     }
 }
 

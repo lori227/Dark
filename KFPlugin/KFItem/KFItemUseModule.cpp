@@ -85,8 +85,11 @@ namespace KFrame
     {
         switch ( kfsetting->_type )
         {
-        case KFItemEnum::Gift:	// 礼包
+        case KFItemEnum::Gift:		// 礼包
             return UseGiftItem( player, kfitem, kfsetting );
+            break;
+        case KFItemEnum::Drug:		// 药品道具
+            return UseDrugItem( player, kfitem, kfsetting );
             break;
         case KFItemEnum::Script:	// 脚本
             return UseScriptItem( player, kfitem, kfsetting );
@@ -109,6 +112,26 @@ namespace KFrame
         if ( !kfsetting->_reward.IsEmpty() )
         {
             player->AddElement( &kfsetting->_reward, _default_multiple, __STRING__( useitem ), kfsetting->_id, __FUNC_LINE__ );
+        }
+
+        return true;
+    }
+
+    bool KFItemUseModule::UseDrugItem( KFEntity* player, KFData* kfitem, const KFItemSetting* kfsetting )
+    {
+        if ( kfsetting->_use_target > 0u )
+        {
+            return false;
+        }
+
+        for ( auto& iter : kfsetting->_drug_values )
+        {
+            // 信仰之水
+            if ( iter.first == __STRING__( faith ) )
+            {
+                auto operater = ( iter.second > 0 ) ? ( KFEnum::Add ) : ( KFEnum::Dec );
+                _kf_pve->OperateFaith( player, operater, abs( iter.second ) );
+            }
         }
 
         return true;
@@ -167,6 +190,12 @@ namespace KFrame
         if ( kfsetting->_type != KFItemEnum::Drug )
         {
             return _kf_display->SendToClient( player, KFMsg::ItemCanNotUse );
+        }
+
+        // 该药品不能对英雄使用
+        if ( kfsetting->_use_target == 0u )
+        {
+            return _kf_display->SendToClient( player, KFMsg::ItemCanNotUseToHero );
         }
 
         if ( !CheckCanUseItem( player, kfsetting ) )

@@ -26,17 +26,6 @@ namespace KFrame
 
         // 里世界类型
         uint32 _inner_world = 0u;
-    };
-
-    class KFRealmSeting : public KFIntSetting
-    {
-    public:
-        // 探索层数
-        std::unordered_map< uint32, KFRealmLevel > _levels;
-
-        // 进入消耗
-        std::string _str_consume;
-        KFElements _consume;
 
         // 粮食消耗
         uint32 _food_num = 0u;
@@ -49,7 +38,20 @@ namespace KFrame
 
         // 生命消耗步数
         uint32 _hp_step = 0u;
+    };
 
+    class KFRealmSeting : public KFIntSetting
+    {
+    public:
+        // 探索层数
+        std::unordered_map< uint32, KFRealmLevel > _levels;
+
+        // 进入消耗
+        std::string _str_consume;
+        KFElements _consume;
+
+        // 道具惩罚规则
+        UInt32Map _punish_list;
     public:
         const KFRealmLevel* FindRealmLevel( uint32 level ) const
         {
@@ -60,6 +62,18 @@ namespace KFrame
             }
 
             return &iter->second;
+        }
+
+        // 惩罚扣除道具万分比
+        uint32 GetFunishItemWeight( uint32 itemid ) const
+        {
+            auto iter = _punish_list.find( itemid );
+            if ( iter == _punish_list.end() )
+            {
+                return KFRandEnum::TenThousand;
+            }
+
+            return KFRandEnum::TenThousand - iter->second;
         }
     };
     ////////////////////////////////////////////////////////////////////////////////

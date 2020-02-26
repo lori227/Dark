@@ -1,39 +1,45 @@
-<root platform="" version="2723">
-	<item Id="10086" Level="1" ExploreId="10086" Consume="" FoodStep="0" HpStep="0" FoodNum="0" HpNum="0" DropVictory="1" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10101" Level="1" ExploreId="10101" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100001" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10102" Level="1" ExploreId="10102" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100002" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10102" Level="2" ExploreId="10103" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100002" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10102" Level="3" ExploreId="10104" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100002" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10103" Level="1" ExploreId="10103" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100002" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10104" Level="1" ExploreId="10104" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100004" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10105" Level="1" ExploreId="10105" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100003" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10106" Level="1" ExploreId="10106" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100004" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10201" Level="1" ExploreId="10201" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10202" Level="1" ExploreId="10202" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10203" Level="1" ExploreId="10203" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10204" Level="1" ExploreId="10204" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10501" Level="1" ExploreId="10101" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5130001" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10502" Level="1" ExploreId="10102" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5130002" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10503" Level="1" ExploreId="10201" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5130003" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10504" Level="1" ExploreId="10102" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5130004" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10505" Level="1" ExploreId="10105" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5130005" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10506" Level="1" ExploreId="10105" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5130006" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10601" Level="1" ExploreId="10103" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5410001" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10602" Level="1" ExploreId="10103" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5410002" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10603" Level="1" ExploreId="10104" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5410003" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10604" Level="1" ExploreId="10104" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5410004" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10605" Level="1" ExploreId="10105" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5410005" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="10606" Level="1" ExploreId="10105" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5410006" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="19001" Level="1" ExploreId="10101" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100001" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="19002" Level="1" ExploreId="10102" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100002" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="19003" Level="1" ExploreId="10102" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100002" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="11001" Level="1" ExploreId="10101" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100001" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="11002" Level="1" ExploreId="10202" Consume="" FoodStep="10" HpStep="10" FoodNum="12" HpNum="1" DropVictory="5100002" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="11002" Level="2" ExploreId="10203" Consume="" FoodStep="10" HpStep="10" FoodNum="12" HpNum="1" DropVictory="5100002" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="11002" Level="3" ExploreId="10204" Consume="" FoodStep="10" HpStep="10" FoodNum="12" HpNum="1" DropVictory="5100002" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="11003" Level="1" ExploreId="10203" Consume="" FoodStep="10" HpStep="10" FoodNum="14" HpNum="1" DropVictory="5100003" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="11004" Level="1" ExploreId="10204" Consume="" FoodStep="10" HpStep="10" FoodNum="16" HpNum="1" DropVictory="5100004" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="20001" Level="1" ExploreId="10101" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100001" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="20001" Level="2" ExploreId="10102" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100001" DropFail="" Creation="0" InnerWorld="0" />
-	<item Id="20001" Level="3" ExploreId="10102" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100001" DropFail="" Creation="0" InnerWorld="0" />
+<root platform="" version="3011">
+	<item Id="10086" Level="1" ExploreId="10086" Consume="" FoodStep="0" HpStep="0" FoodNum="0" HpNum="0" DropVictory="1" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10101" Level="1" ExploreId="10101" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100001" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10102" Level="1" ExploreId="10102" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100002" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10102" Level="2" ExploreId="10103" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100002" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10102" Level="3" ExploreId="10104" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100002" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10103" Level="1" ExploreId="10103" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100002" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10104" Level="1" ExploreId="10104" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100004" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10105" Level="1" ExploreId="10105" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100003" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10106" Level="1" ExploreId="10106" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100004" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10201" Level="1" ExploreId="10201" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10202" Level="1" ExploreId="10202" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10203" Level="1" ExploreId="10203" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10204" Level="1" ExploreId="10204" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10501" Level="1" ExploreId="10101" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5130001" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10502" Level="1" ExploreId="10102" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5130002" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10503" Level="1" ExploreId="10201" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5130003" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10504" Level="1" ExploreId="10102" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5130004" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10505" Level="1" ExploreId="10105" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5130005" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10506" Level="1" ExploreId="10105" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5130006" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10601" Level="1" ExploreId="10103" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5410001" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10602" Level="1" ExploreId="10103" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5410002" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10603" Level="1" ExploreId="10104" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5410003" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10604" Level="1" ExploreId="10104" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5410004" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10605" Level="1" ExploreId="10105" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5410005" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="10606" Level="1" ExploreId="10105" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5410006" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="19001" Level="1" ExploreId="10101" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100001" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="19002" Level="1" ExploreId="10102" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100002" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="19003" Level="1" ExploreId="10102" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100002" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="11001" Level="1" ExploreId="10101" Consume="" FoodStep="10" HpStep="10" FoodNum="10" HpNum="1" DropVictory="5100001" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="11002" Level="1" ExploreId="10202" Consume="" FoodStep="10" HpStep="10" FoodNum="12" HpNum="1" DropVictory="5100002" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="11002" Level="2" ExploreId="10203" Consume="" FoodStep="10" HpStep="10" FoodNum="12" HpNum="1" DropVictory="5100002" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="11002" Level="3" ExploreId="10204" Consume="" FoodStep="10" HpStep="10" FoodNum="12" HpNum="1" DropVictory="5100002" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="11003" Level="1" ExploreId="10203" Consume="" FoodStep="10" HpStep="10" FoodNum="14" HpNum="1" DropVictory="5100003" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="11004" Level="1" ExploreId="10204" Consume="" FoodStep="10" HpStep="10" FoodNum="16" HpNum="1" DropVictory="5100004" DropFail="" Punish="" Creation="0" InnerWorld="0" />
+	<item Id="20001" Level="1" ExploreId="10101" Consume="" FoodStep="5" HpStep="10" FoodNum="12" HpNum="2" DropVictory="5100001" DropFail="" Punish="1900000,8000|1900002,8000|1900201,5000|1900301,5000" Creation="0" InnerWorld="0" />
+	<item Id="20001" Level="2" ExploreId="10102" Consume="" FoodStep="5" HpStep="10" FoodNum="12" HpNum="2" DropVictory="5100001" DropFail="" Punish="1900000,8000|1900002,8000|1900201,5000|1900301,5000" Creation="1010102" InnerWorld="0" />
+	<item Id="20001" Level="3" ExploreId="10102" Consume="" FoodStep="5" HpStep="10" FoodNum="12" HpNum="2" DropVictory="5100001" DropFail="" Punish="1900000,8000|1900002,8000|1900201,5000|1900301,5000" Creation="1010103" InnerWorld="0" />
+	<item Id="20002" Level="1" ExploreId="10201" Consume="" FoodStep="5" HpStep="10" FoodNum="12" HpNum="2" DropVictory="5100002" DropFail="" Punish="1900000,8000|1900002,8000|1900201,5000|1900301,5000" Creation="1020101" InnerWorld="0" />
+	<item Id="20002" Level="2" ExploreId="10201" Consume="" FoodStep="5" HpStep="10" FoodNum="12" HpNum="2" DropVictory="5100002" DropFail="" Punish="1900000,8000|1900002,8000|1900201,5000|1900301,5000" Creation="1020102" InnerWorld="0" />
+	<item Id="20002" Level="3" ExploreId="10201" Consume="" FoodStep="5" HpStep="10" FoodNum="12" HpNum="2" DropVictory="5100002" DropFail="" Punish="1900000,8000|1900002,8000|1900201,5000|1900301,5000" Creation="1020103" InnerWorld="0" />
+	<item Id="20003" Level="1" ExploreId="10301" Consume="" FoodStep="5" HpStep="10" FoodNum="14" HpNum="3" DropVictory="5100003" DropFail="" Punish="1900000,8000|1900002,8000|1900201,5000|1900301,5000" Creation="1030101" InnerWorld="0" />
+	<item Id="20003" Level="2" ExploreId="10301" Consume="" FoodStep="5" HpStep="10" FoodNum="14" HpNum="3" DropVictory="5100003" DropFail="" Punish="1900000,8000|1900002,8000|1900201,5000|1900301,5000" Creation="1030102" InnerWorld="0" />
+	<item Id="20003" Level="3" ExploreId="10301" Consume="" FoodStep="5" HpStep="10" FoodNum="14" HpNum="3" DropVictory="5100003" DropFail="" Punish="1900000,8000|1900002,8000|1900201,5000|1900301,5000" Creation="1030103" InnerWorld="0" />
 </root>

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8' ?>
+﻿<?xml version='1.0' encoding='utf-8' ?>
 <Config>
 	<!-- 日志服务器 -->
 	<LogServer Url="Http://192.168.2.30:6001/"/>
@@ -24,5 +24,11 @@
 			<App Id="91.3.1" Ip="127.0.0.1" Type="1" Port="11030"/>
 		</Server>
 	</TcpServer>
+
+  <!-- vpn 地址-->
+  <Vpns>
+    <Vpn Zone="1" Ip="14.23.149.115"/>
+    <Vpn Zone="2" Ip="14.23.149.115"/>
+  </Vpns>
 </Config>
 

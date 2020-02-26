@@ -16,6 +16,7 @@
 #include "KFDisplay/KFDisplayInterface.h"
 #include "KFMessage/KFMessageInterface.h"
 #include "KFGenerate/KFGenerateInterface.h"
+#include "KFHero/KFHeroInterface.h"
 
 namespace KFrame
 {
@@ -52,6 +53,9 @@ namespace KFrame
         // 清空队伍英雄ep
         virtual void ClearTeamHeroEp( KFEntity* player );
 
+
+        // 操作队伍英雄血量
+        virtual void OperateTeamHeroHp( KFEntity* player, uint32 operate, uint32 value );
         ////////////////////////////////////////////////////////////////////////////////
     protected:
         // 进入游戏

@@ -15,6 +15,7 @@
 #include "KFKernel/KFKernelInterface.h"
 #include "KFMessage/KFMessageInterface.h"
 #include "KFDisplay/KFDisplayInterface.h"
+#include "KFExecute/KFExecuteInterface.h"
 #include "KFBuildSkinConfig.hpp"
 
 namespace KFrame
@@ -33,6 +34,9 @@ namespace KFrame
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected:
+        // 中军帐科技改变
+        __KF_EXECUTE_FUNCTION__( OnExecuteCampAddData );
+
         // 选择建筑外观
         __KF_MESSAGE_FUNCTION__( HandleSetBuildSkinReq );
     };

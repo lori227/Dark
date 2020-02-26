@@ -2,6 +2,8 @@
 #define __KF_INITIAL_PROCESS_CONFIG_H__
 
 #include "KFZConfig/KFConfig.h"
+#include "KFZConfig/KFChapterConfig.hpp"
+#include "KFZConfig/KFStatusConfig.hpp"
 
 namespace KFrame
 {
@@ -26,6 +28,8 @@ namespace KFrame
         {
             _file_name = "initialprocess";
         }
+
+        virtual void LoadAllComplete();
 
     protected:
         // 读取配置

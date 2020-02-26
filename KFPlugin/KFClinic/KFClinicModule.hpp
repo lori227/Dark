@@ -19,12 +19,42 @@
 #include "KFDisplay/KFDisplayInterface.h"
 #include "KFMessage/KFMessageInterface.h"
 #include "KFRecordClient/KFRecordClientInterface.h"
-#include "KFClinicConfig.hpp"
 #include "KFZConfig/KFFormulaConfig.h"
 #include "KFZConfig/KFElementConfig.h"
+#include "KFOption/KFOptionInterface.h"
 
 namespace KFrame
 {
+    class KFClinicSetting
+    {
+    public:
+        // 常态数据
+        void UpdateStaticPart();
+        // 特化数据
+        void UpdateDynamicPart( KFEntity* player );
+
+    public:
+        // HP物品 存储上限
+        uint32 _hp_item_max_count = 0u;
+        // HP物品 每次获得的冷却时间(s)
+        uint32 _hp_item_cd_time = 0u;
+        // HP物品 每次获得的数量
+        uint32 _hp_item_add_count = 0u;
+        // HP物品 使用后的回复量
+        uint32 _hp_item_cure = 0u;
+
+        // 医疗 栏位数量
+        uint32 _cure_count = 0u;
+
+        // 医疗 消耗材料数量
+        uint32 _consume_hp_item_count = 0u;
+
+        // 医疗 消耗金币公式id
+        uint32 _consume_money_fid = 0u;
+        // 医疗 消耗金币缩放
+        double _scale_consume_money = 1.0;
+    };
+
     class KFClinicModule : public KFClinicInterface
     {
     public:
@@ -66,14 +96,8 @@ namespace KFrame
         // 定时增加道具
         __KF_TIMER_FUNCTION__( OnTimerAddItem );
 
-        // 额外增加的单位时间产出材料量
-        __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyClinicAddNum );
-
-        // 额外增加治疗材料的存储上限
-        __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyClinicMaxNum );
-
-        // 额外减少单个材料所需要花费的货币比例
-        __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyClinicMoneySubPercent );
+        // 医疗所执行科技效果
+        __KF_EXECUTE_FUNCTION__( OnExecuteClinicAddData );
 
     protected:
         // 获取医疗所等级
@@ -88,21 +112,18 @@ namespace KFrame
         // 检查定时器
         void CheckClinicTimer( KFEntity* player );
 
-        // 获取单位时间产出的材料量
-        uint32 GetClinicUnitTimeMaterialsAddNum( KFEntity* player, const KFClinicSetting* setting );
-
-        // 获取治疗材料的存储上限
-        uint32 GetClinicMaterialsMaxNum( KFEntity* player, const KFClinicSetting* setting );
-
         // 获取所选的英雄列表需要的治疗量
         uint32 CalcClinicHerosNeedCurehp( KFEntity* player, const UInt64List& herolist );
 
         // 能否使用治疗所治疗, 返回错误码
-        typedef std::tuple<uint32, std::string, const KFClinicSetting*, uint32> CalcCureMoneyReturn;
+        typedef std::tuple<uint32, const KFElements*, const KFClinicSetting*, uint32> CalcCureMoneyReturn;
         CalcCureMoneyReturn CalcClinicCureMoney( KFEntity* player, const UInt64List& herolist );
 
         // 获取治疗所花费金币量
-        std::string CalcClinicMoney( KFEntity* player, const KFClinicSetting* setting, uint32 addhp );
+        const KFElements* CalcClinicConsumeMoney( KFEntity* player, const KFClinicSetting* setting, uint32 addhp );
+
+        // 通用科技效果操作
+        bool CommonAddEffectHandle( KFEntity* player, const KFExecuteData* executedata, const std::string& fieldname );
 
     protected:
         // 玩家组件上下文

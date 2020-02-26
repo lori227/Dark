@@ -7,7 +7,7 @@ namespace KFrame
         auto strbranch = xmlnode.GetString( "Branch" );
         if ( strbranch != _invalid_string )
         {
-            KFUtility::SplitList( kfsetting->_branch, strbranch, __SPLIT_STRING__ );
+            KFUtility::SplitList( kfsetting->_branch, strbranch, __AND_STRING__ );
 
             // 只保存有分支的序列
             kfsetting->_sequence = xmlnode.GetUInt32( "Sequence", true );

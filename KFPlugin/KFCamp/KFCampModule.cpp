@@ -6,13 +6,35 @@ namespace KFrame
     void KFCampModule::BeforeRun()
     {
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        __REGISTER_EXECUTE__( __STRING__( camplevellimit ), &KFCampModule::OnExecuteCampAddData );
+        __REGISTER_EXECUTE__( __STRING__( campupgradelist ), &KFCampModule::OnExecuteCampAddData );
+        __REGISTER_EXECUTE__( __STRING__( campdectime ), &KFCampModule::OnExecuteCampAddData );
+        __REGISTER_EXECUTE__( __STRING__( campdecconsume ), &KFCampModule::OnExecuteCampAddData );
+
         __REGISTER_MESSAGE__( KFMsg::MSG_SET_BUILD_SKIN_REQ, &KFCampModule::HandleSetBuildSkinReq );
     }
 
     void KFCampModule::BeforeShut()
     {
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        __UN_EXECUTE__( __STRING__( camplevellimit ) );
+        __UN_EXECUTE__( __STRING__( campupgradelist ) );
+        __UN_EXECUTE__( __STRING__( campdectime ) );
+        __UN_EXECUTE__( __STRING__( campdecconsume ) );
+
         __UN_MESSAGE__( KFMsg::MSG_SET_BUILD_SKIN_REQ );
+    }
+
+    __KF_EXECUTE_FUNCTION__( KFCampModule::OnExecuteCampAddData )
+    {
+        if ( executedata->_param_list._params.size() < 1u )
+        {
+            return false;
+        }
+
+        auto adddata = executedata->_param_list._params[0]->_int_value;
+        player->UpdateData( __STRING__( effect ), executedata->_name, KFEnum::Add, adddata );
+        return true;
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

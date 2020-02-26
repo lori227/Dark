@@ -10,6 +10,16 @@
 
 namespace KFrame
 {
+    class KFGambleData
+    {
+    public:
+        // 抽奖次数
+        uint32 _gamble_count = 0u;
+
+        // 上次消耗个数
+        uint32 _cost_item_count = 0u;
+    };
+
     ////////////////////////////////////////////////////////////////////////////////
     class KFRealmData
     {
@@ -46,6 +56,7 @@ namespace KFrame
         // 添加buff
         void AddBuffData( uint64 uuid, uint32 value );
         void RemoveBuffData( uint64 uuid, uint32 value );
+
         ////////////////////////////////////////////////////////////////////////////////////////////////
         // 初始化数据
         void BalanceBeginData( KFEntity* player );
@@ -77,7 +88,8 @@ namespace KFrame
         // 结算
         void BalanceRealmRecord( KFMsg::PBBalanceData* pbdata, uint32 status );
         ////////////////////////////////////////////////////////////////////////////////////////////////
-
+        // 是否在里世界
+        bool IsInnerWorld() const;
     protected:
         // 清空结算数据
         void BalanceClearData( KFEntity* player );
@@ -96,6 +108,9 @@ namespace KFrame
 
         // 玩家的出战英雄列表
         UInt64Set _fight_hero;
+
+        // 玩家抽奖数据
+        KFHashMap< uint32, uint32, KFGambleData > _gamble_list;
     };
 }
 

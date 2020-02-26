@@ -566,7 +566,7 @@ namespace KFrame
         }
 
         double ratio = 1.0f - static_cast< double >( discount ) / static_cast< double >( KFRandEnum::TenThousand );
-        auto finalprice = static_cast< double >( price ) * ratio;
+        auto finalprice = static_cast< double >( price ) * ratio + 0.5;
         return static_cast< uint32 >( finalprice );
     }
 

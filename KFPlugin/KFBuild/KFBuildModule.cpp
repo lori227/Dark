@@ -111,10 +111,7 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::BuildInUpgradeTime );
         }
 
-        auto upgradebuildnum = GetUpgradeBuildNum( player );
-
-        static auto _option = _kf_option->FindOption( __STRING__( buildupgrademaxnum ) );
-        if ( upgradebuildnum >= _option->_uint32_value )
+        if ( IsUpgradeListLimit( player ) )
         {
             // 没有空闲的升级队列
             return _kf_display->SendToClient( player, KFMsg::BuildNoFreeUpgradeList );
@@ -127,15 +124,24 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::BuildUpgradeLackCondition );
         }
 
+        auto decconsume = player->Get<uint32>( __STRING__( effect ), __STRING__( campdecconsume ) );
+        decconsume = __MIN__( decconsume, KFRandEnum::TenThousand );
+        double multiple = 1.0 - static_cast<double>( decconsume ) / KFRandEnum::TenThousand;
+
         // 资源是否足够
-        auto& dataname = player->RemoveElement( &kfsetting->_consume, _default_multiple, __STRING__( buildupgrade ), kfsetting->_id, __FUNC_LINE__ );
+        auto& dataname = player->RemoveElement( &kfsetting->_consume, multiple, __STRING__( buildupgrade ), kfsetting->_id, __FUNC_LINE__ );
         if ( !dataname.empty() )
         {
             return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
         }
 
         // 开始升级
-        upgradetime = KFGlobal::Instance()->_real_time + kfsetting->_upgrade_time;
+        auto dectime = player->Get<uint32>( __STRING__( effect ), __STRING__( campdectime ) );
+        dectime = __MIN__( dectime, KFRandEnum::TenThousand );
+        double ratio = 1.0 - static_cast<double>( dectime ) / KFRandEnum::TenThousand;
+
+        upgradetime = static_cast<uint64>( ratio * kfsetting->_upgrade_time + 0.5 );
+        upgradetime += KFGlobal::Instance()->_real_time;
         player->UpdateData( kfbuild, __STRING__( time ), KFEnum::Set, upgradetime );
     }
 
@@ -210,19 +216,27 @@ namespace KFrame
         _kf_display->SendToClient( player, KFMsg::BuildUpgradeSuc );
     }
 
-    uint32 KFBuildModule::GetUpgradeBuildNum( KFEntity* player )
+    bool KFBuildModule::IsUpgradeListLimit( KFEntity* player )
     {
+        auto upgradelist = player->Get<uint32>( __STRING__( effect ), __STRING__( campupgradelist ) );
+
         uint32 upgradenum = 0u;
+        auto nowtime = KFGlobal::Instance()->_real_time;
         auto kfbuildrecord = player->Find( __STRING__( build ) );
         for ( auto kfbuild = kfbuildrecord->First(); kfbuild != nullptr; kfbuild = kfbuildrecord->Next() )
         {
-            if ( kfbuild->Get<uint64>( __STRING__( time ) ) > 0u )
+            auto upgradetime = kfbuild->Get<uint64>( __STRING__( time ) );
+            if ( upgradetime > nowtime )
             {
                 upgradenum++;
+                if ( upgradenum >= upgradelist )
+                {
+                    return true;
+                }
             }
         }
 
-        return upgradenum;
+        return false;
     }
 
     void KFBuildModule::UnlockTechnologyLevel( KFEntity* player, KFData* kfdata )

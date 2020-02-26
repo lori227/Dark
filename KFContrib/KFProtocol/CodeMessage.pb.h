@@ -159,6 +159,19 @@ enum ProjectCodeEnum {
   RealmNotTown = 31316,
   RealmInTown = 31317,
   RealmHeroTeamEmpty = 31318,
+  PVECanNotFlee = 31319,
+  NpcGroupError = 31320,
+  GambleIdError = 31321,
+  GambleParamError = 31323,
+  ExchangeIdError = 31324,
+  ExchangeNotRune = 31325,
+  ExchangeLevelError = 31326,
+  SelectIdError = 31327,
+  SelectCountError = 31328,
+  SelectUUIDError = 31329,
+  SelectRecordError = 31330,
+  MultiEventIdError = 31331,
+  MultiEventIndexError = 31332,
   ChapterIdError = 32401,
   ChapterNotOpen = 32402,
   ChapterEventError = 32403,
@@ -175,6 +188,9 @@ enum ProjectCodeEnum {
   ItemUnWeaponFailed = 32507,
   ItemUnWeaponOk = 32508,
   ItemUpdateDurabilityError = 32509,
+  ItemRuneCompondOnly = 32510,
+  ItemCanNotUseToHero = 32511,
+  ItemRuneSlotFull = 32512,
   PlayerHeadIconSetOK = 32601,
   PlayerFactionSetOK = 32602,
   PlayerHeadIconNotExist = 32603,
@@ -192,12 +208,13 @@ enum ProjectCodeEnum {
   BranchSettingNotExist = 32709,
   DialogueBranchSelectSuc = 32710,
   StoryHaveDialogueBranch = 32711,
+  StorySequenceNotFinish = 32712,
   ProjectCodeEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   ProjectCodeEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 LIBPROTOC_EXPORT bool ProjectCodeEnum_IsValid(int value);
 const ProjectCodeEnum ProjectCodeEnum_MIN = LogicError;
-const ProjectCodeEnum ProjectCodeEnum_MAX = StoryHaveDialogueBranch;
+const ProjectCodeEnum ProjectCodeEnum_MAX = StorySequenceNotFinish;
 const int ProjectCodeEnum_ARRAYSIZE = ProjectCodeEnum_MAX + 1;
 
 LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* ProjectCodeEnum_descriptor();

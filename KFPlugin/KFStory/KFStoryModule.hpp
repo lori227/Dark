@@ -35,6 +35,9 @@ namespace KFrame
 
         // 关闭
         virtual void BeforeShut();
+
+        // 添加剧情
+        virtual void AddStory( KFEntity* player, uint32 storyid );
         ////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
     protected:
@@ -50,17 +53,17 @@ namespace KFrame
         // 执行剧情
         __KF_EXECUTE_FUNCTION__( OnExecuteStory );
 
-        // 添加剧情
-        __KF_ADD_DATA_FUNCTION__( OnAddStoryCallBack );
-
-        // 删除剧情
-        __KF_REMOVE_DATA_FUNCTION__( OnRemoveStoryCallBack );
-
         // 删除对话
         __KF_REMOVE_DATA_FUNCTION__( OnRemoveDialogueCallBack );
 
         // 剧情序列更新
         __KF_UPDATE_DATA_FUNCTION__( OnUpdateSequenceCallBack );
+
+        // PVE结算更新
+        __KF_UPDATE_DATA_FUNCTION__( OnUpdatePVECallBack );
+
+        // 探索结算更新
+        __KF_UPDATE_DATA_FUNCTION__( OnUpdateRealmCallBack );
 
         // 更新剧情序列请求
         __KF_MESSAGE_FUNCTION__( HandleUpdateStoryReq );
@@ -69,14 +72,17 @@ namespace KFrame
         __KF_MESSAGE_FUNCTION__( HandleStartStoryReq );
 
     public:
-        // 添加剧情
-        void AddStory( KFEntity* player, uint32 storyid );
+        // 检查剧情
+        void CheckStory( KFEntity* player );
 
-        // 检查主剧情
-        void CheckMainStory( KFEntity* player );
+        // 删除剧情
+        void RemoveStory( KFEntity* player, uint32 storyid );
 
-        // 序列更新
-        void OnExecuteSequence( KFEntity* player, uint32 storyid, uint32 sequence );
+        // 增加序列
+        void AddSequence( KFEntity* player, KFData* kfdata, uint32 type );
+
+        // 执行剧情
+        void ExecuteStory( KFEntity* player, uint32 storyid );
 
     protected:
         // 玩家组件上下文

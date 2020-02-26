@@ -2,37 +2,22 @@
 
 namespace KFrame
 {
+#define __KF_SET_STATIC_OPTION_TRAIN__( optionname, optionvalue, classvar)  \
+    {   \
+        static auto _static_var = _kf_option->FindOption( optionname ); \
+        if ( _static_var->optionvalue != classvar )  \
+        {   \
+            classvar = _static_var->optionvalue;   \
+        }   \
+    }   \
+
     void KFTrainSetting::UpdateStaticPart()
     {
-        static auto _train_consume_fid = _kf_option->FindOption( "trainconsumefid" );
-        if ( _train_consume_fid->_uint32_value != _consume_fid )
-        {
-            _consume_fid = _train_consume_fid->_uint32_value;
-        }
-
-        static auto _train_onekey_consume_fid = _kf_option->FindOption( "trainonekeyconsumefid" );
-        if ( _train_onekey_consume_fid->_uint32_value != _onekey_consume_fid )
-        {
-            _onekey_consume_fid = _train_onekey_consume_fid->_uint32_value;
-        }
-
-        static auto _train_total_time = _kf_option->FindOption( "traintotaltime" );
-        if ( _train_total_time->_uint32_value != _total_time )
-        {
-            _total_time = _train_total_time->_uint32_value;
-        }
-
-        static auto _train_cd_time = _kf_option->FindOption( "traincdtime" );
-        if ( _train_cd_time->_uint32_value != _cd_time )
-        {
-            _cd_time = _train_cd_time->_uint32_value;
-        }
-
-        static auto _train_unit_time = _kf_option->FindOption( "trainunittime" );
-        if ( _train_unit_time->_uint32_value != _unit_time )
-        {
-            _unit_time = _train_unit_time->_uint32_value;
-        }
+        __KF_SET_STATIC_OPTION_TRAIN__( "trainconsumefid", _uint32_value, _consume_fid );
+        __KF_SET_STATIC_OPTION_TRAIN__( "trainonekeyconsumefid", _uint32_value, _onekey_consume_fid );
+        __KF_SET_STATIC_OPTION_TRAIN__( "traintotaltime", _uint32_value, _total_time );
+        __KF_SET_STATIC_OPTION_TRAIN__( "traincdtime", _uint32_value, _cd_time );
+        __KF_SET_STATIC_OPTION_TRAIN__( "trainunittime", _uint32_value, _unit_time );
     }
 
     void  KFTrainSetting::UpdateDynamicPart( KFEntity* player )
@@ -60,6 +45,7 @@ namespace KFrame
         __REGISTER_UPDATE_DATA_2__( __STRING__( train ), __STRING__( calctime ), &KFTrainModule::OnUpdateCalcTime );
 
         __REGISTER_EXECUTE__( __STRING__( traincostscaledec ), &KFTrainModule::OnExecuteTrainCostScaleDec );
+        __REGISTER_EXECUTE__( __STRING__( traincount ), &KFTrainModule::OnExecuteTrainCount );
         __REGISTER_EXECUTE__( __STRING__( trainunitexp ), &KFTrainModule::OnExecuteTrainUnitExp );
         __REGISTER_EXECUTE__( __STRING__( trainexpscale ), &KFTrainModule::OnExecuteTrainExpScale );
 
@@ -261,7 +247,7 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::HeroNotExist );
         }
 
-        if ( _kf_hero->IsMaxLevel( kfhero ) )
+        if ( _kf_hero->IsMaxLevel( player, kfhero ) )
         {
             // 当前英雄已满级
             return _kf_display->SendToClient( player, KFMsg::HeroLevelIsMax );
@@ -385,19 +371,21 @@ namespace KFrame
 
     __KF_EXECUTE_FUNCTION__( KFTrainModule::OnExecuteTrainCostScaleDec )
     {
-        // 消耗货币所需比例
         return CommonAddEffectHandle( player, executedata, __STRING__( traincostscaledec ) );
+    }
+
+    __KF_EXECUTE_FUNCTION__( KFTrainModule::OnExecuteTrainCount )
+    {
+        return CommonAddEffectHandle( player, executedata, __STRING__( traincount ) );
     }
 
     __KF_EXECUTE_FUNCTION__( KFTrainModule::OnExecuteTrainUnitExp )
     {
-        // 训练所单位时间所得经验
         return CommonAddEffectHandle( player, executedata, __STRING__( trainunitexp ) );
     }
 
     __KF_EXECUTE_FUNCTION__( KFTrainModule::OnExecuteTrainExpScale )
     {
-        // 训练所单位时间所得经验比例
         return CommonAddEffectHandle( player, executedata, __STRING__( trainexpscale ) );
     }
 
@@ -439,7 +427,7 @@ namespace KFrame
         auto param1 = kfformulasetting->_params[0]->_double_value;
 
         // 消耗个数 = 训练总经验 * 公式参数1 * 消耗缩放比例
-        auto totalexp = setting->_add_exp * setting->_total_time;
+        auto totalexp = double( setting->_total_time ) / KFTimeEnum::OneMinuteSecond * setting->_add_exp;
         auto costnum = static_cast<uint32>( std::round( totalexp * param1 * setting->_scale_consume ) );
 
         // 费用数据格式
@@ -578,7 +566,7 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::HeroNotExist );
         }
 
-        if ( _kf_hero->IsMaxLevel( kfhero ) )
+        if ( _kf_hero->IsMaxLevel( player, kfhero ) )
         {
             // 当前英雄已满级
             return _kf_display->SendToClient( player, KFMsg::HeroLevelIsMax );

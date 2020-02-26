@@ -1,7 +1,7 @@
-<root platform="" version="2721">
+<root platform="" version="2995">
 	<item Id="1" Type="money" Param1="1000" Param2="100" Param3="100" Param4="500" Param5="1" />
 	<item Id="2" Type="diamond" Param1="2" Param2="110" Param3="1" Param4="1" Param5="10" />
-	<item Id="3" Type="money" Param1="10" Param2="100" Param3="" Param4="" Param5="" />
+	<item Id="3" Type="money" Param1="1" Param2="100" Param3="" Param4="" Param5="" />
 	<item Id="4" Type="killexp" Param1="50" Param2="20" Param3="" Param4="" Param5="" />
 	<item Id="5" Type="supplies" Param1="0.5" Param2="" Param3="" Param4="" Param5="" />
 	<item Id="6" Type="diamond" Param1="10" Param2="1" Param3="" Param4="" Param5="" />

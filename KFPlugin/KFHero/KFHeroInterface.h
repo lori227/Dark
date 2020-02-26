@@ -15,10 +15,10 @@ namespace KFrame
         virtual uint32 AddExp( KFEntity* player, KFData* kfhero, uint32 exp ) = 0;
 
         // 判断英雄是否达到最大等级
-        virtual bool IsMaxLevel( KFData* kfhero ) = 0;
+        virtual bool IsMaxLevel( KFEntity* player, KFData* kfhero ) = 0;
 
-        // 添加hp
-        virtual uint32 AddHp( KFEntity* player, KFData* kfhero, uint32 hp ) = 0;
+        // 改变hp
+        virtual uint32 OperateHp( KFEntity* player, KFData* kfhero, uint32 operate, uint32 hp ) = 0;
 
         // 添加属性
         virtual uint32 AddHeroData( KFEntity* player, KFData* kfhero, const std::string& name, int32 value ) = 0;

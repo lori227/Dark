@@ -8,6 +8,9 @@ namespace KFrame
     class KFPVEInterface : public KFModule
     {
     public:
+
+        // 操作(里世界)信仰值
+        virtual void OperateFaith( KFEntity* player, uint32 operate, uint32 value ) = 0;
     };
 
     //////////////////////////////////////////////////////////////////////////

@@ -1,4 +1,4 @@
-<root version="2440">
+<root platform="" version="3015">
 	<item Id="30000200" Condition="unlockbuild" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="200" Limits1="" Limits2="" />
 	<item Id="30000201" Condition="unlockbuild" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="201" Limits1="" Limits2="" />
 	<item Id="30000202" Condition="unlockbuild" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="202" Limits1="" Limits2="" />
@@ -72,6 +72,9 @@
 	<item Id="31012017" Condition="explorevictory" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="1" Calculate="0" LimitCondition="" Limits="11002" Limits1="" Limits2="" />
 	<item Id="31012018" Condition="explorevictory" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="1" Calculate="0" LimitCondition="" Limits="11003" Limits1="" Limits2="" />
 	<item Id="31012019" Condition="explorevictory" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="1" Calculate="0" LimitCondition="" Limits="11004" Limits1="" Limits2="" />
+	<item Id="31012020" Condition="explorevictory" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="1" Calculate="0" LimitCondition="" Limits="20001" Limits1="" Limits2="" />
+	<item Id="31012021" Condition="explorevictory" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="1" Calculate="0" LimitCondition="" Limits="20002" Limits1="" Limits2="" />
+	<item Id="31012022" Condition="explorevictory" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="1" Calculate="0" LimitCondition="" Limits="20003" Limits1="" Limits2="" />
 	<item Id="31013001" Condition="explorevictory" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="1" Calculate="0" LimitCondition="" Limits="10501" Limits1="" Limits2="" />
 	<item Id="31013002" Condition="pvevictory" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="1" Calculate="0" LimitCondition="" Limits="450001" Limits1="" Limits2="" />
 	<item Id="31013003" Condition="explorevictory" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="1" Calculate="0" LimitCondition="" Limits="10502" Limits1="" Limits2="" />
@@ -201,6 +204,7 @@
 	<item Id="912" Condition="trainhero" DoneType=">=" DoneValue="3" Clean="" PlaceLimit="1" Calculate="0" LimitCondition="" Limits="race=1601" Limits1="" Limits2="" />
 	<item Id="913" Condition="smithyweapon" DoneType=">=" DoneValue="3" Clean="" PlaceLimit="1" Calculate="0" LimitCondition="" Limits="type=1801" Limits1="" Limits2="" />
 	<item Id="914" Condition="gathertimes" DoneType=">=" DoneValue="2" Clean="" PlaceLimit="1" Calculate="0" LimitCondition="" Limits="1000017" Limits1="" Limits2="" />
+	<item Id="915" Condition="story" DoneType="=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="10003" Limits1="" Limits2="" />
 	<item Id="21301001" Condition="pvevictory" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="1" Calculate="0" LimitCondition="" Limits="460001" Limits1="" Limits2="" />
 	<item Id="21301002" Condition="pvevictory" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="1" Calculate="0" LimitCondition="" Limits="460002" Limits1="" Limits2="" />
 	<item Id="21301003" Condition="pvevictory" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="1" Calculate="0" LimitCondition="" Limits="460003" Limits1="" Limits2="" />

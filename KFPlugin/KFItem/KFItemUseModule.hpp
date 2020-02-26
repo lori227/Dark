@@ -18,6 +18,7 @@
 #include "KFDisplay/KFDisplayInterface.h"
 #include "KFDrop/KFDropInterface.h"
 #include "KFHero/KFHeroInterface.h"
+#include "KFRealm/KFPVEInterface.h"
 #include "KFZConfig/KFItemConfig.hpp"
 
 namespace KFrame
@@ -47,6 +48,7 @@ namespace KFrame
         // 使用道具
         bool UseItem( KFEntity* player, KFData* kfitem, const KFItemSetting* kfsetting );
         bool UseGiftItem( KFEntity* player, KFData* kfitem, const KFItemSetting* kfsetting );
+        bool UseDrugItem( KFEntity* player, KFData* kfitem, const KFItemSetting* kfsetting );
         bool UseScriptItem( KFEntity* player, KFData* kfitem, const KFItemSetting* kfsetting );
 
         // 判断道具是否能使用

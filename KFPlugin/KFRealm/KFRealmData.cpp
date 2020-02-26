@@ -485,4 +485,9 @@ namespace KFrame
             pbcurrencyclient->CopyFrom( *pbcurrencyserver );
         }
     }
+
+    bool KFRealmData::IsInnerWorld() const
+    {
+        return _data.innerworld() > 0u;
+    }
 }

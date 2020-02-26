@@ -38,7 +38,6 @@ namespace KFrame
                 continue;
             }
 
-            // 对上次没计算完的定时器补全
             auto lefttime = 0u;
             auto time = kfretaskchain->Get<uint64>( __STRING__( time ) );
             if ( time > KFGlobal::Instance()->_real_time )
@@ -47,9 +46,14 @@ namespace KFrame
             }
             else
             {
+                // 计算最后一次循环的剩余时间
                 lefttime = ( KFGlobal::Instance()->_real_time - time ) % kfsetting->_timer_refresh_time;
+
+                // 重新附上最后一次循环
+                OpenTaskChain( player, kfsetting->_task_chain_id, 1u, lefttime, kfsetting->_id, __FUNC_LINE__ );
             }
 
+            // 重新附上该有的任务链定时器
             __LOOP_TIMER_2__( player->GetKeyID(), refreshid, kfsetting->_timer_refresh_time * 1000u, lefttime * 1000u, &KFTaskChainModule::OnTimerTaskChainRefreshTimeout );
         }
 

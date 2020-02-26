@@ -17,7 +17,6 @@
 #include "KFDisplay/KFDisplayInterface.h"
 #include "KFMessage/KFMessageInterface.h"
 #include "KFCondition/KFConditionInterface.h"
-#include "KFOption/KFOptionInterface.h"
 #include "KFZConfig/KFBuildConfig.hpp"
 #include "KFZConfig/KFTechnologyConfig.hpp"
 
@@ -59,8 +58,8 @@ namespace KFrame
 
     protected:
 
-        // 获取建筑正在升级数量
-        uint32 GetUpgradeBuildNum( KFEntity* player );
+        // 是否升级队列限制
+        bool IsUpgradeListLimit( KFEntity* player );
 
         // 解锁科技等级
         void UnlockTechnologyLevel( KFEntity* player, KFData* kfdata );

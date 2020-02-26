@@ -18,6 +18,7 @@
 #include "KFIconConfig.hpp"
 #include "KFFactionConfig.hpp"
 #include "KFTask/KFTaskInterface.h"
+#include "KFStory/KFStoryInterface.h"
 #include "KFZConfig/KFInitialProcessConfig.hpp"
 
 namespace KFrame
@@ -52,12 +53,27 @@ namespace KFrame
         // 主线流程更新
         __KF_UPDATE_DATA_FUNCTION__( OnMainStageUpdate );
 
+        // 删除剧情
+        __KF_REMOVE_DATA_FUNCTION__( OnRemoveStoryCallBack );
+
+        // 更新剧情
+        __KF_UPDATE_DATA_FUNCTION__( OnUpdateStoryCallBack );
+
+        // PVE结算更新
+        __KF_UPDATE_DATA_FUNCTION__( OnUpdatePVECallBack );
+
+        // 探索结算更新
+        __KF_UPDATE_DATA_FUNCTION__( OnUpdateRealmCallBack );
+
         // 进入游戏检查
         __KF_ENTER_PLAYER_FUNCTION__( OnEnterRoleModule );
 
     protected:
         // 执行初始化流程
         void OnExecuteInitialProcess( KFEntity* player, uint32 id );
+
+        // 增加序列
+        void AddSequence( KFEntity* player, KFData* kfdata, uint32 type );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private:
         // 玩家组件上下文

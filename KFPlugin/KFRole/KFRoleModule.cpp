@@ -9,6 +9,11 @@ namespace KFrame
         __REGISTER_ENTER_PLAYER__( &KFRoleModule::OnEnterRoleModule );
         __REGISTER_UPDATE_DATA_1__( __STRING__( money ), &KFRoleModule::OnUpdateMoneyCallBack );
         __REGISTER_UPDATE_DATA_1__( __STRING__( mainstage ), &KFRoleModule::OnMainStageUpdate );
+        __REGISTER_REMOVE_DATA_1__( __STRING__( story ), &KFRoleModule::OnRemoveStoryCallBack );
+        __REGISTER_UPDATE_DATA_2__( __STRING__( story ), __STRING__( sequence ), &KFRoleModule::OnUpdateStoryCallBack );
+        __REGISTER_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( pveresult ), &KFRoleModule::OnUpdatePVECallBack );
+        __REGISTER_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( realmresult ), &KFRoleModule::OnUpdateRealmCallBack );
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_SET_PLAYER_HEADICON_REQ, &KFRoleModule::HandleSetPlayerHeadIconReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_SET_PLAYER_FACTION_REQ, &KFRoleModule::HandleSetPlayerFactionReq );
@@ -20,6 +25,10 @@ namespace KFrame
         __UN_ENTER_PLAYER__();
         __UN_UPDATE_DATA_1__( __STRING__( money ) );
         __UN_UPDATE_DATA_1__( __STRING__( mainstage ) );
+        __UN_REMOVE_DATA_1__( __STRING__( story ) );
+        __UN_UPDATE_DATA_2__( __STRING__( story ), __STRING__( sequence ) );
+        __UN_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( pveresult ) );
+        __UN_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( realmresult ) );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_SET_PLAYER_HEADICON_REQ );
         __UN_MESSAGE__( KFMsg::MSG_SET_PLAYER_FACTION_REQ );
@@ -108,18 +117,86 @@ namespace KFrame
         OnExecuteInitialProcess( player, newvalue );
     }
 
+    __KF_REMOVE_DATA_FUNCTION__( KFRoleModule::OnRemoveStoryCallBack )
+    {
+        AddSequence( player, kfdata, KFMsg::ProcessStory );
+    }
+
+    __KF_UPDATE_DATA_FUNCTION__( KFRoleModule::OnUpdateStoryCallBack )
+    {
+        if ( newvalue != 0u )
+        {
+            return;
+        }
+
+        AddSequence( player, kfdata->GetParent(), KFMsg::ProcessStory );
+    }
+
+    __KF_UPDATE_DATA_FUNCTION__( KFRoleModule::OnUpdatePVECallBack )
+    {
+        if ( newvalue != KFMsg::Victory )
+        {
+            return;
+        }
+
+        AddSequence( player, kfdata->GetParent(), KFMsg::ProcessPVE );
+    }
+
+    __KF_UPDATE_DATA_FUNCTION__( KFRoleModule::OnUpdateRealmCallBack )
+    {
+        if ( newvalue != KFMsg::Victory )
+        {
+            return;
+        }
+
+        AddSequence( player, kfdata->GetParent(), KFMsg::ProcessExplore );
+    }
+
+    void KFRoleModule::AddSequence( KFEntity* player, KFData* kfdata, uint32 type )
+    {
+        auto mainstage = player->Get( __STRING__( mainstage ) );
+        auto kfsetting = KFInitialProcessConfig::Instance()->FindSetting( mainstage );
+        if ( kfsetting == nullptr )
+        {
+            return;
+        }
+
+        if ( kfsetting->_type != type )
+        {
+            return;
+        }
+
+        auto id = kfdata->Get<uint32>( __STRING__( id ) );
+        if ( kfsetting->_parameter == id )
+        {
+            player->UpdateData( __STRING__( mainstage ), KFEnum::Add, 1u );
+        }
+    }
+
     __KF_MESSAGE_FUNCTION__( KFRoleModule::HandleUpdateMainStageReq )
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgUpdateMainStageReq );
 
         auto mainstage = player->Get( __STRING__( mainstage ) );
+        /*auto kfsetting = KFInitialProcessConfig::Instance()->FindSetting( mainstage );
+        if ( kfsetting == nullptr )
+        {
+            return;
+        }
+
+        if ( kfsetting->_type == KFMsg::ProcessPVE || kfsetting->_type == KFMsg::ProcessExplore
+                || kfsetting->_type == KFMsg::ProcessTask || kfsetting->_type == KFMsg::ProcessStory )
+        {
+            return;
+        }*/
+
         if ( kfmsg.stageid() != mainstage + 1u )
         {
             // 流程递增
             return;
         }
 
-        player->UpdateData( __STRING__( mainstage ), KFEnum::Set, kfmsg.stageid() );
+        player->UpdateData( __STRING__( mainstage ), KFEnum::Add, 1u );
     }
 
     void KFRoleModule::OnExecuteInitialProcess( KFEntity* player, uint32 id )
@@ -136,6 +213,10 @@ namespace KFrame
             _kf_task->OpenTask( player, kfsetting->_parameter, KFMsg::ExecuteStatus, 0u );
 
             player->UpdateData( __STRING__( mainstage ), KFEnum::Add, 1u );
+        }
+        else if ( kfsetting->_type == KFMsg::ProcessStory )
+        {
+            _kf_story->AddStory( player, kfsetting->_parameter );
         }
     }
 }

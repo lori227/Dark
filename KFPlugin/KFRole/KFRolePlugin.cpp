@@ -23,6 +23,7 @@ namespace KFrame
         __FIND_MODULE__( _kf_display, KFDisplayInterface );
         __FIND_MODULE__( _kf_config, KFConfigInterface );
         __FIND_MODULE__( _kf_task, KFTaskInterface );
+        __FIND_MODULE__( _kf_story, KFStoryInterface );
     }
 
     void KFRolePlugin::AddConfig()
@@ -30,5 +31,7 @@ namespace KFrame
         __KF_ADD_CONFIG__( KFIconConfig );
         __KF_ADD_CONFIG__( KFFactionConfig );
         __KF_ADD_CONFIG__( KFInitialProcessConfig );
+        __KF_ADD_CONFIG__( KFChapterConfig );
+        __KF_ADD_CONFIG__( KFStatusConfig );
     }
 }

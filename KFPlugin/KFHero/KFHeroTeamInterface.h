@@ -28,6 +28,10 @@ namespace KFrame
 
         // 清空队伍英雄的ep
         virtual void ClearTeamHeroEp( KFEntity* player ) = 0;
+
+        // 操作队伍英雄血量
+        virtual void OperateTeamHeroHp( KFEntity* player, uint32 operate, uint32 value ) = 0;
+
     };
 
     //////////////////////////////////////////////////////////////////////////////////

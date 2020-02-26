@@ -12,12 +12,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="KFClinicConfig.cpp" />
     <ClCompile Include="KFClinicModule.cpp" />
     <ClCompile Include="KFClinicPlugin.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="KFClinicConfig.hpp" />
     <ClInclude Include="KFClinicInterface.h" />
     <ClInclude Include="KFClinicModule.hpp" />
     <ClInclude Include="KFClinicPlugin.hpp" />

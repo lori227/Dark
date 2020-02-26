@@ -464,28 +464,32 @@ namespace KFrame
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 随机天赋
-        auto kfinnatedata = kfhero->Find( __STRING__( innate ) );
+        auto kfinnaterecord = kfhero->Find( __STRING__( innate ) );
         for ( auto poolid : kfgeneratesetting->_innate_pool_list )
         {
-            auto innateid = kfinnatedata->_data_setting->_int_init_value;
+            auto innateid = 0u;
 
             __RAND_WEIGHT_DATA_CLEAR__( poolid, KFSkillConfig::Instance(), IsValid( race, professionid, backgroundid, weapontype ), innateid, includelist );
             if ( innateid != 0u )
             {
-                kfinnatedata->Insert( innateid );
+                auto kfinnate = player->CreateData( kfinnaterecord );
+                kfinnate->Set( __STRING__( level ), 1u );
+                kfinnaterecord->Add( innateid, kfinnate );
             }
         }
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 随机主动技能
-        auto kfactivedata = kfhero->Find( __STRING__( active ) );
+        auto kfactiverecord = kfhero->Find( __STRING__( active ) );
         for ( auto poolid : kfgeneratesetting->_active_pool_list )
         {
-            auto activeid = kfactivedata->_data_setting->_int_init_value;
+            auto activeid = 0u;
             __RAND_WEIGHT_DATA_CLEAR__( poolid, KFSkillConfig::Instance(), IsValid( race, professionid, backgroundid, weapontype ), activeid, includelist );
             if ( activeid != 0u )
             {
-                kfactivedata->Insert( activeid );
+                auto kfactive = player->CreateData( kfactiverecord );
+                kfactive->Set( __STRING__( level ), 1u );
+                kfactiverecord->Add( activeid, kfactive );
             }
         }
 
@@ -758,26 +762,30 @@ namespace KFrame
                 // 随机主动技能
                 static UInt32Set excludelist;
                 static UInt32Set includelist;
-                auto kfactivedata = kfnpc->Find( __STRING__( active ) );
+                auto kfactiverecord = kfnpc->Find( __STRING__( active ) );
                 for ( auto poolid : kfskillsetting->_active_pool_list )
                 {
                     auto activeid = 0u;
                     __RAND_WEIGHT_DATA_CLEAR__( poolid, KFSkillConfig::Instance(), IsValid( race, professionid, backgroundid, weapontype ), activeid, includelist );
                     if ( activeid != 0u )
                     {
-                        kfactivedata->Insert( activeid );
+                        auto kfactive = player->CreateData( kfactiverecord );
+                        kfactive->Set( __STRING__( level ), 1u );
+                        kfactiverecord->Add( activeid, kfactive );
                     }
                 }
 
                 // 天赋技能
-                auto kfinnatedata = kfnpc->Find( __STRING__( innate ) );
+                auto kfinnaterecord = kfnpc->Find( __STRING__( innate ) );
                 for ( auto poolid : kfskillsetting->_innate_pool_list )
                 {
                     auto innateid = 0u;
                     __RAND_WEIGHT_DATA_CLEAR__( poolid, KFSkillConfig::Instance(), IsValid( race, professionid, backgroundid, weapontype ), innateid, includelist );
                     if ( innateid != 0u )
                     {
-                        kfinnatedata->Insert( innateid );
+                        auto kfinnate = player->CreateData( kfinnaterecord );
+                        kfinnate->Set( __STRING__( level ), 1u );
+                        kfinnaterecord->Add( innateid, kfinnate );
                     }
                 }
             }
@@ -1058,41 +1066,59 @@ namespace KFrame
         player->UpdateData( kfhero, __STRING__( classlv ), KFEnum::Set, newprosetting->_class_lv );
 
         // 随机主动技能
-        auto randindex = RandWeightData( player, kfhero, __STRING__( active ), kfsetting->_active_pool_list );
-        if ( randindex != 0u )
+        auto randlist = RandWeightData( player, kfhero, __STRING__( active ), kfsetting->_active_pool_list );
+        if ( !randlist.empty() )
         {
             // 转职主动技能更新为最新的技能
-            player->UpdateData( kfhero, __STRING__( activeindex ), KFEnum::Set, randindex );
+            player->UpdateData( kfhero, __STRING__( activeindex ), KFEnum::Set, *randlist.rbegin() );
         }
 
         // 随机性格
         RandWeightData( player, kfhero, __STRING__( character ), kfsetting->_character_pool_list );
 
         // 随机天赋
-        RandWeightData( player, kfhero, __STRING__( innate ), kfsetting->_innate_pool_list );
+        randlist = RandWeightData( player, kfhero, __STRING__( innate ), kfsetting->_innate_pool_list );
+        for ( auto iter : randlist )
+        {
+            // 转职获得的天赋增加标记
+            auto kfinnate = kfhero->Find( __STRING__( innate ), iter );
+            player->UpdateData( kfinnate, __STRING__( flag ), KFEnum::Set, 1u );
+        }
     }
 
-    uint32 KFGenerateModule::RandWeightData( KFEntity* player, KFData* kfhero, const std::string& dataname, const UInt32Vector& slist, bool update /*= true*/ )
+    UInt32Vector& KFGenerateModule::RandWeightData( KFEntity* player, KFData* kfhero, const std::string& dataname, const UInt32Vector& slist, bool update /*= true*/ )
     {
-        uint32 randindex = 0u;
+        static UInt32Vector randlist;
+        randlist.clear();
+
         if ( slist.empty() )
         {
-            return randindex;
+            return randlist;
         }
 
         auto kfdataarray = kfhero->Find( dataname );
         if ( kfdataarray == nullptr )
         {
-            return randindex;
+            return randlist;
         }
 
         if ( kfdataarray->IsFull() )
         {
-            return randindex;
+            return randlist;
         }
 
         UInt32Set excludelist;
-        kfdataarray->GetHashs( excludelist );
+        if ( kfdataarray->_data_type == KFDataDefine::Type_Array )
+        {
+            kfdataarray->GetHashs( excludelist );
+        }
+        else if ( kfdataarray->_data_type == KFDataDefine::Type_Record )
+        {
+            for ( auto kfdata = kfdataarray->First(); kfdata != nullptr; kfdata = kfdataarray->Next() )
+            {
+                excludelist.insert( kfdata->Get<uint32>( kfdataarray->_data_setting->_config_key_name ) );
+            }
+        }
 
         static UInt32Set includelist;
         auto movetype = 0u;
@@ -1108,37 +1134,57 @@ namespace KFrame
             if ( dataname == __STRING__( active ) || dataname == __STRING__( innate ) )
             {
                 __RAND_WEIGHT_DATA__( poolid, KFSkillConfig::Instance(), IsValid( race, professionid, backgroundid, weapontype ), randid, includelist );
+
+                if ( randid == 0u )
+                {
+                    continue;
+                }
+
+                randlist.emplace_back( randid );
+                excludelist.insert( randid );
+
+                if ( update )
+                {
+                    auto kfdata = player->CreateData( kfdataarray );
+                    kfdata->Set( __STRING__( level ), 1u );
+                    player->AddData( kfdataarray, randid, kfdata );
+                }
+                else
+                {
+                    auto kfdata = player->CreateData( kfdataarray );
+                    kfdata->Set( __STRING__( level ), 1u );
+                    kfdataarray->Add( randid, kfdata );
+                }
             }
             else if ( dataname == __STRING__( character ) )
             {
                 __RAND_WEIGHT_DATA__( poolid, KFCharacterConfig::Instance(), IsValid( race, backgroundid, professionid ), randid, includelist );
+
+                if ( randid == 0u )
+                {
+                    continue;
+                }
+
+                randlist.emplace_back( randid );
+                excludelist.insert( randid );
+
+                if ( update )
+                {
+                    auto index = kfdataarray->GetEmpty();
+                    player->UpdateData( kfdataarray, index, KFEnum::Set, randid );
+                }
+                else
+                {
+                    kfdataarray->Insert( randid );
+                }
             }
 
-            if ( randid == 0u )
-            {
-                continue;
-            }
-
-            auto index = kfdataarray->GetEmpty();
-            if ( index >= kfdataarray->MaxSize() )
+            if ( kfdataarray->IsFull() )
             {
                 break;
             }
-
-            randindex = index;
-            excludelist.insert( randid );
-
-            if ( update )
-            {
-                player->UpdateData( kfdataarray, index, KFEnum::Set, randid );
-            }
-            else
-            {
-                kfdataarray->Insert( randid );
-            }
-
         }
 
-        return randindex;
+        return randlist;
     }
 }

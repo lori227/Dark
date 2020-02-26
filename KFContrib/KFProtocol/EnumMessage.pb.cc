@@ -33,7 +33,7 @@ namespace protobuf_EnumMessage_2eproto {
 void InitDefaults() {
 }
 
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[17];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[18];
 const ::google::protobuf::uint32 TableStruct::offsets[1] = {};
 static const ::google::protobuf::internal::MigrationSchema* schemas = NULL;
 static const ::google::protobuf::Message* const* file_default_instances = NULL;
@@ -76,36 +76,38 @@ void AddDescriptorsImpl() {
       "ild\020\325\001*`\n\nRecordEnum\022\021\n\rInvalidRecord\020\000\022"
       "\016\n\nCampRecord\020\001\022\017\n\013DailyRecord\020\002\022\016\n\nDead"
       "Record\020\003\022\016\n\nLifeRecord\020\004*+\n\rLifeEventEnu"
-      "m\022\014\n\010HeroBorn\020\000\022\014\n\010HeroDead\020\001*|\n\022PlayerS"
-      "tatusEnumEx\022\020\n\014UnknowStatus\020\000\022\020\n\014OnlineS"
-      "tatus\020\001\022\021\n\rOfflineStatus\020\002\022\021\n\rExploreSta"
-      "tus\020\003\022\r\n\tPVEStatus\020\004\022\r\n\tPVPStatus\020\005*c\n\014N"
-      "oticeEnumEx\022\020\n\014UnknowNotice\020\000\022\024\n\020NoticeC"
-      "ampRecord\020d\022\025\n\021NoticeDailyRecord\020e\022\024\n\020No"
-      "ticeDeadRecord\020f*>\n\nExpireEnum\022\021\n\rInvali"
-      "dExpire\020\000\022\016\n\nTimeExpire\020\001\022\r\n\tNumExpire\020\002"
-      "*;\n\017BalanceShowEnum\022\016\n\nUnknowShow\020\000\022\013\n\007E"
-      "xplore\020\001\022\013\n\007Balance\020\002*\?\n\014ItemAutoEnum\022\017\n"
-      "\013AutoInvalid\020\000\022\r\n\tAutoStore\020\001\022\017\n\013AutoDes"
-      "tory\020\002*Y\n\017HeroDeathReason\022\021\n\rNoDeathReas"
-      "on\020\000\022\013\n\007NoExist\020\001\022\016\n\nNoEnoughHp\020\002\022\026\n\022NoE"
-      "noughDurability\020\003*\337\001\n\022InitialProcessEnum"
-      "\022\022\n\016ProcessInvalid\020\000\022\r\n\tProcessCG\020\001\022\016\n\nP"
-      "rocessPVE\020\002\022\022\n\016ProcessExplore\020\003\022\020\n\014Proce"
-      "ssWorld\020\004\022\017\n\013ProcessTask\020\005\022\020\n\014ProcessSce"
-      "ne\020\006\022\016\n\nUIDialogue\020\007\022\022\n\016BubbleDialogue\020\010"
-      "\022\023\n\017ProcessSequence\020\t\022\024\n\020WorldAndDialogu"
-      "e\020\n*s\n\016RealmEnterEnum\022\020\n\014EnterInvalid\020\000\022"
-      "\020\n\014EnterChapter\020\001\022\016\n\nEnterLogin\020\002\022\r\n\tEnt"
-      "erTown\020\003\022\r\n\tEnterJump\020\004\022\017\n\013EnterExtend\020\005"
-      "*;\n\017ExtendLevelEnum\022\026\n\022ExtendLevelInvali"
-      "d\020\000\022\020\n\013ExtendLevel\020\220N*Z\n\013BalanceEnum\022\021\n\r"
-      "UnknowBalance\020\000\022\013\n\007Victory\020\001\022\n\n\006Failed\020\002"
-      "\022\010\n\004Flee\020\003\022\010\n\004Town\020\004\022\013\n\007Chapter\020db\006proto"
-      "3"
+      "m\022\014\n\010HeroBorn\020\000\022\014\n\010HeroDead\020\001*\222\001\n\022Player"
+      "StatusEnumEx\022\020\n\014UnknowStatus\020\000\022\020\n\014Online"
+      "Status\020\001\022\021\n\rOfflineStatus\020\002\022\021\n\rExploreSt"
+      "atus\020\003\022\r\n\tPVEStatus\020\004\022\r\n\tPVPStatus\020\005\022\024\n\020"
+      "DropSelectStatus\020\006*c\n\014NoticeEnumEx\022\020\n\014Un"
+      "knowNotice\020\000\022\024\n\020NoticeCampRecord\020d\022\025\n\021No"
+      "ticeDailyRecord\020e\022\024\n\020NoticeDeadRecord\020f*"
+      ">\n\nExpireEnum\022\021\n\rInvalidExpire\020\000\022\016\n\nTime"
+      "Expire\020\001\022\r\n\tNumExpire\020\002*;\n\017BalanceShowEn"
+      "um\022\016\n\nUnknowShow\020\000\022\013\n\007Explore\020\001\022\013\n\007Balan"
+      "ce\020\002*\?\n\014ItemAutoEnum\022\017\n\013AutoInvalid\020\000\022\r\n"
+      "\tAutoStore\020\001\022\017\n\013AutoDestory\020\002*Y\n\017HeroDea"
+      "thReason\022\021\n\rNoDeathReason\020\000\022\013\n\007NoExist\020\001"
+      "\022\016\n\nNoEnoughHp\020\002\022\026\n\022NoEnoughDurability\020\003"
+      "*\362\001\n\022InitialProcessEnum\022\022\n\016ProcessInvali"
+      "d\020\000\022\r\n\tProcessCG\020\001\022\016\n\nProcessPVE\020\002\022\022\n\016Pr"
+      "ocessExplore\020\003\022\022\n\016ProcessChapter\020\004\022\017\n\013Pr"
+      "ocessTask\020\005\022\020\n\014ProcessScene\020\006\022\016\n\nUIDialo"
+      "gue\020\007\022\022\n\016BubbleDialogue\020\010\022\023\n\017ProcessSequ"
+      "ence\020\t\022\023\n\017ChapterAndStory\020\n\022\020\n\014ProcessSt"
+      "ory\020\013*s\n\016RealmEnterEnum\022\020\n\014EnterInvalid\020"
+      "\000\022\020\n\014EnterChapter\020\001\022\016\n\nEnterLogin\020\002\022\r\n\tE"
+      "nterTown\020\003\022\r\n\tEnterJump\020\004\022\017\n\013EnterExtend"
+      "\020\005*;\n\017ExtendLevelEnum\022\026\n\022ExtendLevelInva"
+      "lid\020\000\022\020\n\013ExtendLevel\020\220N*Z\n\013BalanceEnum\022\021"
+      "\n\rUnknowBalance\020\000\022\013\n\007Victory\020\001\022\n\n\006Failed"
+      "\020\002\022\010\n\004Flee\020\003\022\010\n\004Town\020\004\022\013\n\007Chapter\020d*1\n\010J"
+      "umpEnum\022\017\n\013JumpInvalid\020\000\022\t\n\005Leave\020\001\022\t\n\005E"
+      "nter\020\002b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1761);
+      descriptor, 1854);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "EnumMessage.proto", &protobuf_RegisterTypes);
 }
@@ -254,6 +256,7 @@ bool PlayerStatusEnumEx_IsValid(int value) {
     case 3:
     case 4:
     case 5:
+    case 6:
       return true;
     default:
       return false;
@@ -354,6 +357,7 @@ bool InitialProcessEnum_IsValid(int value) {
     case 8:
     case 9:
     case 10:
+    case 11:
       return true;
     default:
       return false;
@@ -404,6 +408,21 @@ bool BalanceEnum_IsValid(int value) {
     case 3:
     case 4:
     case 100:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::google::protobuf::EnumDescriptor* JumpEnum_descriptor() {
+  protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[17];
+}
+bool JumpEnum_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
       return true;
     default:
       return false;

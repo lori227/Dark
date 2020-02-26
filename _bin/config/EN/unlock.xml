@@ -1,6 +1,6 @@
-<root version="2493">
+<root platform="" version="2819">
 	<item Id="1" DataName="build" DataKey="202" DataValue="1" UnLockCondition="39001001" />
-	<item Id="2" DataName="build" DataKey="203" DataValue="1" UnLockCondition="39001006" />
+	<item Id="2" DataName="build" DataKey="203" DataValue="1" UnLockCondition="59001204" />
 	<item Id="3" DataName="build" DataKey="204" DataValue="1" UnLockCondition="39001003" />
 	<item Id="4" DataName="build" DataKey="205" DataValue="1" UnLockCondition="39001006" />
 	<item Id="5" DataName="build" DataKey="206" DataValue="1" UnLockCondition="39000001" />
@@ -11,4 +11,7 @@
 	<item Id="10" DataName="build" DataKey="211" DataValue="1" UnLockCondition="39000001" />
 	<item Id="11" DataName="build" DataKey="212" DataValue="1" UnLockCondition="39001001" />
 	<item Id="12" DataName="build" DataKey="213" DataValue="1" UnLockCondition="39001004" />
+	<item Id="13" DataName="innerworld" DataKey="1" DataValue="0" UnLockCondition="39001001" />
+	<item Id="14" DataName="innerworld" DataKey="2" DataValue="0" UnLockCondition="39001003" />
+	<item Id="15" DataName="innerworld" DataKey="3" DataValue="0" UnLockCondition="39001004" />
 </root>

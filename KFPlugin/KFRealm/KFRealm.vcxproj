@@ -12,12 +12,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="KFGambleModule.cpp" />
     <ClCompile Include="KFRealmData.cpp" />
     <ClCompile Include="KFPVEModule.cpp" />
     <ClCompile Include="KFRealmModule.cpp" />
     <ClCompile Include="KFRealmPlugin.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="KFGambleInterface.h" />
+    <ClInclude Include="KFGambleModule.hpp" />
     <ClInclude Include="KFRealmData.hpp" />
     <ClInclude Include="KFPVEInterface.h" />
     <ClInclude Include="KFPVEModule.hpp" />

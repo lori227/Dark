@@ -1,4 +1,4 @@
-<root version="2638">
+<root platform="" version="2991">
 	<item Name="defaultprofession" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="defaultbackground" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="generatedirectattribute" Key="" Value="9" Channel="0" Service="0" />
@@ -29,7 +29,7 @@
 	<item Name="herolistbuildid" Key="" Value="200" Channel="0" Service="0" />
 	<item Name="transferleveloffest" Key="" Value="4" Channel="0" Service="0" />
 	<item Name="Powercoefficient_B" Key="" Value="0" Channel="0" Service="0" />
-	<item Name="initclinicnum" Key="" Value="200" Channel="0" Service="0" />
+	<item Name="initclinicnum" Key="" Value="5000" Channel="0" Service="0" />
 	<item Name="initgranarynum" Key="" Value="100" Channel="0" Service="0" />
 	<item Name="initsmithynum" Key="" Value="100" Channel="0" Service="0" />
 	<item Name="roledurability_pve" Key="" Value="50" Channel="0" Service="0" />

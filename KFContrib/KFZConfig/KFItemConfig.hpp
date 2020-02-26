@@ -34,14 +34,15 @@ namespace KFrame
         // 读取材料配置
         void ReadMaterialSetting( KFNode& xmlnode, KFItemSetting* kfsetting );
 
-        // 读取关卡道具
-        void ReadRuneSetting( KFNode& xmlnode, KFItemSetting* kfsetting );
-
         // 读取其他配置
         void ReadOtherSetting( KFNode& xmlnode, KFItemSetting* kfsetting );
 
         // 读取粮食道具
         void ReadFoodSetting( KFNode& xmlnode, KFItemSetting* kfsetting );
+
+        // 读取符石道具
+        void ReadRuneSetting( KFNode& xmlnode, KFItemSetting* kfsetting );
+
     };
 }
 

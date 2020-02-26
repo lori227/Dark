@@ -2,6 +2,8 @@
 #define __KF_STORY_CONFIG_H__
 
 #include "KFZConfig/KFConfig.h"
+#include "KFZConfig/KFChapterConfig.hpp"
+#include "KFZConfig/KFStatusConfig.hpp"
 
 namespace KFrame
 {
@@ -66,6 +68,8 @@ namespace KFrame
 
             return kfsetting->FindStorySequence( sequence );
         }
+
+        virtual void LoadAllComplete();
 
     protected:
         // 读取配置

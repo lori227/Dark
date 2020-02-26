@@ -15,7 +15,7 @@ namespace KFrame
         __REGISTER_REMOVE_ELEMENT__( __STRING__( hero ), &KFHeroModule::RemoveHeroElement );
 
         __REGISTER_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( exp ), &KFHeroModule::OnHeroExpUpdate );
-        __REGISTER_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( active ), &KFHeroModule::OnHeroActiveUpdate );
+        __REGISTER_ADD_DATA_1__( __STRING__( active ), &KFHeroModule::OnHeroActiveUpdate );
 
         __REGISTER_EXECUTE__( __STRING__( maxherocount ), &KFHeroModule::OnExecuteTechnologyMaxHeroCount );
         ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -34,7 +34,7 @@ namespace KFrame
         __UN_CHECK_REMOVE_ELEMENT__( __STRING__( hero ) );
 
         __UN_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( exp ) );
-        __UN_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( active ) );
+        __UN_UPDATE_DATA_1__( __STRING__( active ) );
 
         __UN_EXECUTE__( __STRING__( maxherocount ) );
         /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -173,7 +173,7 @@ namespace KFrame
         }
     }
 
-    __KF_UPDATE_DATA_FUNCTION__( KFHeroModule::OnHeroActiveUpdate )
+    __KF_ADD_DATA_FUNCTION__( KFHeroModule::OnHeroActiveUpdate )
     {
         auto kfhero = kfdata->GetParent()->GetParent();
         if ( kfhero == nullptr )
@@ -285,7 +285,7 @@ namespace KFrame
         }
 
         auto kfactive = kfhero->Find( __STRING__( active ), kfmsg.index() );
-        if ( kfactive == nullptr || kfactive->Get<uint32>() == 0u )
+        if ( kfactive == nullptr )
         {
             return _kf_display->SendToClient( player, KFMsg::HeroSkillIndexError );
         }
@@ -323,14 +323,17 @@ namespace KFrame
 
     uint32 KFHeroModule::AddHeroData( KFEntity* player, KFData* kfhero, const std::string& name, int32 value )
     {
+        auto operatevalue = abs( value );
+        auto operate = ( value > 0 ) ? KFEnum::Add : KFEnum::Dec;
+
         if ( name == __STRING__( hp ) )
         {
-            return AddHp( player, kfhero, abs( value ) );
+            return OperateHp( player, kfhero, operate, operatevalue );
         }
 
         if ( name == __STRING__( exp ) )
         {
-            return AddExp( player, kfhero, abs( value ) );
+            return AddExp( player, kfhero, operatevalue );
         }
 
         auto kfdata = kfhero->Find( name );
@@ -343,30 +346,15 @@ namespace KFrame
             }
         }
 
-        if ( value >= 0 )
-        {
-            player->UpdateData( kfdata, KFEnum::Add, abs( value ) );
-
-        }
-        else
-        {
-            player->UpdateData( kfdata, KFEnum::Dec, abs( value ) );
-        }
-
-        return abs( value );
+        player->UpdateData( kfdata, operate, operatevalue );
+        return operatevalue;
     }
 
     uint32 KFHeroModule::AddExp( KFEntity* player, KFData* kfhero, uint32 exp )
     {
-        auto profession = kfhero->Get( __STRING__( profession ) );
-        auto kfsetting = KFProfessionConfig::Instance()->FindSetting( profession );
-        if ( kfsetting == nullptr )
-        {
-            return 0u;
-        }
-
+        auto maxlevel = GetMaxLevel( player, kfhero );
         auto level = kfhero->Get( __STRING__( level ) );
-        if ( level >= kfsetting->_max_level )
+        if ( level >= maxlevel )
         {
             // 英雄已满级
             return 0u;
@@ -380,46 +368,70 @@ namespace KFrame
         }
 
         auto curexp = kfhero->Get( __STRING__( exp ) );
-        auto maxexp = KFLevelConfig::Instance()->FindSetting( kfsetting->_max_level )->_exp;
+        auto maxexp = KFLevelConfig::Instance()->FindSetting( maxlevel )->_exp;
+
         if ( curexp + exp > maxexp )
         {
             // 经验溢出
-            exp = maxexp - curexp;
+            exp = ( maxexp > curexp ) ? ( maxexp - curexp ) : 0u;
         }
 
         player->UpdateData( kfhero, __STRING__( exp ), KFEnum::Add, exp );
         return exp;
     }
 
-    bool KFHeroModule::IsMaxLevel( KFData* kfhero )
+    bool KFHeroModule::IsMaxLevel( KFEntity* player, KFData* kfhero )
+    {
+        auto maxlevel = GetMaxLevel( player, kfhero );
+        auto level = kfhero->Get( __STRING__( level ) );
+        return level >= maxlevel;
+    }
+
+    uint32 KFHeroModule::GetMaxLevel( KFEntity* player, KFData* kfhero )
     {
         auto profession = kfhero->Get( __STRING__( profession ) );
         auto kfsetting = KFProfessionConfig::Instance()->FindSetting( profession );
         if ( kfsetting == nullptr )
         {
-            return false;
+            return 0u;
         }
 
-        auto level = kfhero->Get( __STRING__( level ) );
-        return level >= kfsetting->_max_level;
+        auto maxlevel = kfsetting->_max_level;
+
+        auto limitlevel = player->Get<uint32>( __STRING__( effect ), __STRING__( camplevellimit ) );
+        if ( limitlevel > 0u && limitlevel < maxlevel )
+        {
+            maxlevel = limitlevel;
+        }
+
+        return maxlevel;
     }
 
-    uint32 KFHeroModule::AddHp( KFEntity* player, KFData* kfhero, uint32 hp )
+    uint32 KFHeroModule::OperateHp( KFEntity* player, KFData* kfhero, uint32 operate, uint32 hp )
     {
         auto kffighter = kfhero->Find( __STRING__( fighter ) );
+        auto nowhp = kffighter->Get<uint32>( __STRING__( hp ) );
         auto maxhp = kffighter->Get<uint32>( __STRING__( maxhp ) );
 
-        auto kfhp = kffighter->Find( __STRING__( hp ) );
-        auto nowhp = kfhp->Get<uint32>();
-
-        auto addhp = maxhp - nowhp;
-        addhp = __MIN__( addhp, hp );
-        if ( addhp > 0u )
+        if ( operate == KFEnum::Add )
         {
-            player->UpdateData( kfhp, KFEnum::Add, addhp );
+            auto addhprate = _kf_realm->GetAddHpRate( player );
+            hp = static_cast< uint32 >( std::ceil( addhprate * hp ) );
+
+            auto canaddhp = maxhp - nowhp;
+            hp = __MIN__( hp, canaddhp );
+        }
+        else if ( operate == KFEnum::Set )
+        {
+            hp = __MIN__( hp, maxhp );
+        }
+        else if ( operate == KFEnum::Dec )
+        {
+            hp = ( hp >= nowhp ? 1 : hp );
         }
 
-        return addhp;
+        player->UpdateData( kffighter, __STRING__( hp ), operate, hp );
+        return hp;
     }
 
     KFData* KFHeroModule::FindAliveHero( KFData* kfherorecord, uint64 uuid )

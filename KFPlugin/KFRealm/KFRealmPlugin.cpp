@@ -1,6 +1,7 @@
 ﻿#include "KFRealmPlugin.hpp"
 #include "KFPVEModule.hpp"
 #include "KFRealmModule.hpp"
+#include "KFGambleModule.hpp"
 #include "KFConfig/KFConfigInterface.h"
 //////////////////////////////////////////////////////////////////////////
 
@@ -10,12 +11,14 @@ namespace KFrame
     {
         __REGISTER_MODULE__( KFPVE );
         __REGISTER_MODULE__( KFRealm );
+        __REGISTER_MODULE__( KFGamble );
     }
 
     void KFRealmPlugin::UnInstall()
     {
         __UN_MODULE__( KFPVE );
         __UN_MODULE__( KFRealm );
+        __UN_MODULE__( KFGamble );
     }
 
     void KFRealmPlugin::LoadModule()
@@ -33,7 +36,7 @@ namespace KFrame
         __FIND_MODULE__( _kf_generate, KFGenerateInterface );
         __FIND_MODULE__( _kf_hero_team, KFHeroTeamInterface );
         __FIND_MODULE__( _kf_realm, KFRealmInterface );
-
+        __FIND_MODULE__( _kf_rune, KFItemRuneInterface );
     }
 
     void KFRealmPlugin::AddConfig()
@@ -44,5 +47,12 @@ namespace KFrame
         __KF_ADD_CONFIG__( KFCurrencyConfig );
         __KF_ADD_CONFIG__( KFItemConfig );
         __KF_ADD_CONFIG__( KFElementConfig );
+        __KF_ADD_CONFIG__( KFPunishConfig );
+        __KF_ADD_CONFIG__( KFNpcGroupConfig );
+        __KF_ADD_CONFIG__( KFInnerWorldConfig );
+        __KF_ADD_CONFIG__( KFGambleConfig );
+        __KF_ADD_CONFIG__( KFExchangeConfig );
+        __KF_ADD_CONFIG__( KFSelectConfig );
+        __KF_ADD_CONFIG__( KFMultiEventConfig );
     }
 }

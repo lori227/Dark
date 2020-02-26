@@ -93,17 +93,22 @@ namespace KFrame
             return 0u;
         }
 
+        return GetItemCount( player, kfitemrecord, kfsetting->_id, maxvalue );
+    }
+
+    uint32 KFItemModule::GetItemCount( KFEntity* player, KFData* kfitemrecord, uint32 itemid, uint32 maxcount /* = __MAX_UINT32__ */ )
+    {
         auto totalcount = 0u;
         for ( auto kfitem = kfitemrecord->First(); kfitem != nullptr; kfitem = kfitemrecord->Next() )
         {
-            auto itemid = kfitem->Get<uint32>( kfitemrecord->_data_setting->_config_key_name );
+            auto id = kfitem->Get<uint32>( kfitemrecord->_data_setting->_config_key_name );
             if ( itemid != id )
             {
                 continue;
             }
 
             totalcount += kfitem->Get<uint32>( __STRING__( count ) );
-            if ( totalcount >= maxvalue )
+            if ( totalcount >= maxcount )
             {
                 break;
             }
@@ -267,6 +272,12 @@ namespace KFrame
         auto defaultmaxcount = kfitemrecord->_data_setting->_int_max_value;
         auto technologymaxcount = player->Get<uint32>( __STRING__( effect ), kfitemrecord->_data_setting->_name );
         return defaultmaxcount + technologymaxcount;
+    }
+
+    uint32 KFItemModule::GetItemEmptyCount( KFEntity* player, KFData* kfitemrecord )
+    {
+        auto maxcount = GetItemRecordMaxCount( player, kfitemrecord );
+        return maxcount - kfitemrecord->Size();
     }
 
     bool KFItemModule::IsItemRecordFull( KFEntity* player, KFData* kfitemrecord )
@@ -593,6 +604,17 @@ namespace KFrame
         return kfitem;
     }
 
+    KFData* KFItemModule::FindItemRecord( KFEntity* player, KFData* kfitem )
+    {
+        auto kfsetting = KFItemConfig::Instance()->FindSetting( kfitem->Get<uint32>( kfitem->_data_setting->_config_key_name ) );
+        if ( kfsetting == nullptr )
+        {
+            return nullptr;
+        }
+
+        return FindItemRecord( player, kfsetting, 0u );
+    }
+
     KFData* KFItemModule::FindItemRecord( KFEntity* player, const KFItemSetting* kfsetting, uint32 itemcount )
     {
         auto kftypesetting = KFItemTypeConfig::Instance()->FindSetting( kfsetting->_type );
@@ -617,6 +639,10 @@ namespace KFrame
                     kfitemrecord = player->Find( kftypesetting->_extend_name );
                 }
             }
+        }
+        else if ( status == KFMsg::DropSelectStatus )
+        {
+            kfitemrecord = player->Find( __STRING__( select ) );
         }
         else
         {
@@ -716,26 +742,23 @@ namespace KFrame
             }
         }
 
-        auto status = player->GetStatus();
-        if ( status == KFMsg::ExploreStatus || status == KFMsg::PVEStatus )
-        {
-            return false;
-        }
-
         // 主营地可消耗背包内道具
-        KFData* kfitemrecord = player->Find( __STRING__( explore ) );
-        for ( auto kfitem = kfitemrecord->First(); kfitem != nullptr; kfitem = kfitemrecord->Next() )
+        if ( kfparent->_data_setting->_name != __STRING__( explore ) )
         {
-            auto itemid = kfitem->Get( kfparent->_data_setting->_config_key_name );
-            if ( itemid != kfsetting->_id )
+            auto kfitemrecord = player->Find( __STRING__( explore ) );
+            for ( auto kfitem = kfitemrecord->First(); kfitem != nullptr; kfitem = kfitemrecord->Next() )
             {
-                continue;
-            }
+                auto itemid = kfitem->Get( kfparent->_data_setting->_config_key_name );
+                if ( itemid != kfsetting->_id )
+                {
+                    continue;
+                }
 
-            totalcount += kfitem->Get<uint32>( __STRING__( count ) );
-            if ( totalcount >= itemcount )
-            {
-                return true;
+                totalcount += kfitem->Get<uint32>( __STRING__( count ) );
+                if ( totalcount >= itemcount )
+                {
+                    return true;
+                }
             }
         }
 
@@ -790,34 +813,29 @@ namespace KFrame
 
             finditem.push_back( kfitem );
             findcount += kfitem->Get<uint32>( __STRING__( count ) );
-
             if ( findcount >= itemcount )
             {
                 break;
             }
         }
 
-        if ( findcount < itemcount )
+        // 物品数量不够,主营地可消耗背包内道具
+        if ( findcount < itemcount && kfparent->_data_setting->_name != __STRING__( explore ) )
         {
-            auto status = player->GetStatus();
-            if ( status != KFMsg::ExploreStatus && status != KFMsg::PVEStatus )
+            auto kfitemrecord = player->Find( __STRING__( explore ) );
+            for ( auto kfitem = kfitemrecord->First(); kfitem != nullptr; kfitem = kfitemrecord->Next() )
             {
-                // 物品数量不够,主营地可消耗背包内道具
-                KFData* kfitemrecord = player->Find( __STRING__( explore ) );
-                for ( auto kfitem = kfitemrecord->First(); kfitem != nullptr; kfitem = kfitemrecord->Next() )
+                auto itemid = kfitem->Get<uint32>( kfparent->_data_setting->_config_key_name );
+                if ( itemid != kfelementobject->_config_id )
                 {
-                    auto itemid = kfitem->Get<uint32>( kfparent->_data_setting->_config_key_name );
-                    if ( itemid != kfelementobject->_config_id )
-                    {
-                        continue;
-                    }
+                    continue;
+                }
 
-                    finditem.push_back( kfitem );
-                    findcount += kfitem->Get<uint32>( __STRING__( count ) );
-                    if ( findcount >= itemcount )
-                    {
-                        break;
-                    }
+                finditem.push_back( kfitem );
+                findcount += kfitem->Get<uint32>( __STRING__( count ) );
+                if ( findcount >= itemcount )
+                {
+                    break;
                 }
             }
         }
@@ -837,6 +855,81 @@ namespace KFrame
 
         return true;
     }
+
+    void KFItemModule::RemoveItem( KFEntity* player, KFData* kfitemrecord, uint32 itemid, uint32 itemcount )
+    {
+        if ( itemcount == 0u )
+        {
+            return;
+        }
+
+        auto findcount = 0u;
+        std::list< KFData* > finditem;
+        for ( auto kfitem = kfitemrecord->First(); kfitem != nullptr; kfitem = kfitemrecord->Next() )
+        {
+            auto id = kfitem->Get<uint32>( kfitemrecord->_data_setting->_config_key_name );
+            if ( id != itemid )
+            {
+                continue;
+            }
+
+            finditem.push_back( kfitem );
+            findcount += kfitem->Get<uint32>( __STRING__( count ) );
+            if ( findcount >= itemcount )
+            {
+                break;
+            }
+        }
+
+        for ( auto kfitem : finditem )
+        {
+            auto removecount = __MIN__( itemcount, kfitem->Get<uint32>( __STRING__( count ) ) );
+            player->UpdateData( kfitem, __STRING__( count ), KFEnum::Dec, removecount );
+            itemcount -= removecount;
+            if ( itemcount == _invalid_int )
+            {
+                break;
+            }
+        }
+
+        //static KFElements _item_element;
+        //if ( _item_element.IsEmpty() )
+        //{
+        //auto ok = KFElementConfig::Instance()->FormatElemnt( _item_element, __STRING__( item ), "1", _food_option->_uint32_value );
+        //if ( !ok )
+        //{
+        //  return;
+        //}
+        //}
+
+        //player->RemoveElement( &_item_element, neednum, __STRING__( explore ), pbexplore->id(), __FUNC_LINE__ );
+    }
+
+    uint32 KFItemModule::RandRemoveItem( KFEntity* player, KFData* kfitemrecord, uint32& itemcount )
+    {
+        itemcount = 0u;
+        std::vector< KFData* > itemlist;
+        for ( auto kfitem = kfitemrecord->First(); kfitem != nullptr; kfitem = kfitemrecord->Next() )
+        {
+            itemlist.push_back( kfitem );
+        }
+
+        auto count = itemlist.size();
+        if ( count == 0u )
+        {
+            return 0u;
+        }
+
+        auto index = KFGlobal::Instance()->RandRatio( count );
+        auto kfitem = itemlist.at( index );
+
+        auto itemid = kfitem->Get<uint32>( kfitemrecord->_data_setting->_config_key_name );
+        itemcount = kfitem->Get<uint32>( __STRING__( count ) );
+        player->RemoveData( kfitemrecord, kfitem->GetKeyID() );
+
+        return itemid;
+    }
+
 
     __KF_ADD_DATA_FUNCTION__( KFItemModule::OnAddItemCallBack )
     {

@@ -6,6 +6,7 @@
     <ClCompile Include="KFRealmData.cpp" />
     <ClCompile Include="KFRealmModule.cpp" />
     <ClCompile Include="KFRealmPlugin.cpp" />
+    <ClCompile Include="KFGambleModule.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="KFPVEModule.hpp" />
@@ -14,5 +15,7 @@
     <ClInclude Include="KFRealmInterface.h" />
     <ClInclude Include="KFRealmModule.hpp" />
     <ClInclude Include="KFRealmPlugin.hpp" />
+    <ClInclude Include="KFGambleInterface.h" />
+    <ClInclude Include="KFGambleModule.hpp" />
   </ItemGroup>
 </Project>

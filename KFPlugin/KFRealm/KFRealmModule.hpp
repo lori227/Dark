@@ -24,9 +24,8 @@
 #include "KFGenerate/KFGenerateInterface.h"
 #include "KFOption/KFOptionInterface.h"
 #include "KFZConfig/KFItemConfig.hpp"
-#include "KFZConfig/KFElementConfig.h"
 #include "KFZConfig/KFRealmConfig.hpp"
-#include "KFZConfig/KFPVEConfig.hpp"
+#include "KFZConfig/KFInnerWorldConfig.hpp"
 
 namespace KFrame
 {
@@ -45,7 +44,14 @@ namespace KFrame
 
         ////////////////////////////////////////////////////////////////////////////////
         // 获得秘境数据
-        KFRealmData* GetRealmData( uint64 keyid );
+        virtual KFRealmData* GetRealmData( KFEntity* player );
+
+        // 判断是否在里世界
+        virtual bool IsInnerWorld( KFEntity* player );
+
+        // 获取生命回复比列
+        virtual double GetAddHpRate( KFEntity* player );
+
     protected:
         // 秘境请求
         __KF_MESSAGE_FUNCTION__( HandleRealmEnterReq );
@@ -61,8 +67,6 @@ namespace KFrame
         // 秘境结算
         __KF_MESSAGE_FUNCTION__( HandleRealmBalanceReq );
 
-        // 更新信仰值
-        __KF_MESSAGE_FUNCTION__( HandleUpdateFaithReq );
         //////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////
         // 更新探索内玩家数据
@@ -76,12 +80,24 @@ namespace KFrame
 
         // 物件交互请求
         __KF_MESSAGE_FUNCTION__( HandleInteractItemReq );
+
+        // 处理添加buff
+        __KF_MESSAGE_FUNCTION__( HandleHeroAddBuffReq );
+
+        // 处理删除buff
+        __KF_MESSAGE_FUNCTION__( HandleHeroRemoveBuffReq );
     protected:
         // 掉落增加英雄buff
         __KF_DROP_LOGIC_FUNCTION__( OnDropHeroAddBuff );
 
         // 掉落减少英雄buff
         __KF_DROP_LOGIC_FUNCTION__( OnDropHeroDecBuff );
+
+        // 掉落增加英雄血量
+        __KF_DROP_LOGIC_FUNCTION__( OnDropHeroAddHp );
+
+        // 掉落减少英雄血量
+        __KF_DROP_LOGIC_FUNCTION__( OnDropHeroDecHp );
 
         // 秘境逻辑事件
         __KF_EXECUTE_FUNCTION__( OnExecuteRealm );
@@ -116,11 +132,15 @@ namespace KFrame
         // 结算清空数据
         void RealmBalanceClearData( KFEntity* player, uint32 result );
 
+        // 结算道具
+        void RealmBalanceItem( KFEntity* player, uint32 result );
+
         // 结算结果
         void RealmBalanceResultCondition( KFEntity* player, KFRealmData* kfrealmdata, uint32 result );
+        void RealmJumpCondition( KFEntity* player, uint32 realmid, uint32 lastlevel, uint32 nowlevel );
 
         // 随机探索失败获得道具
-        void RealmRandFailedItems( KFEntity* player );
+        void RealmRandFailedItems( KFEntity* player, KFRealmData* kfrealmdata );
         //////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////
         // 初始化探索数据
@@ -132,6 +152,10 @@ namespace KFrame
         //////////////////////////////////////////////////////////////////////////////////////
         // 改变队伍英雄buff
         void ChangeTeamHeroBuff( KFEntity* player, uint32 operate, uint32 value );
+
+        // 获取玩家当前秘境层配置
+        const KFRealmLevel* FindRealmLevelSetting( KFEntity* player );
+
     protected:
         // 玩家组件上下文
         KFComponent* _kf_component = nullptr;

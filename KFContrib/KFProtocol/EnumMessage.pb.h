@@ -229,12 +229,13 @@ enum PlayerStatusEnumEx {
   ExploreStatus = 3,
   PVEStatus = 4,
   PVPStatus = 5,
+  DropSelectStatus = 6,
   PlayerStatusEnumEx_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   PlayerStatusEnumEx_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 LIBPROTOC_EXPORT bool PlayerStatusEnumEx_IsValid(int value);
 const PlayerStatusEnumEx PlayerStatusEnumEx_MIN = UnknowStatus;
-const PlayerStatusEnumEx PlayerStatusEnumEx_MAX = PVPStatus;
+const PlayerStatusEnumEx PlayerStatusEnumEx_MAX = DropSelectStatus;
 const int PlayerStatusEnumEx_ARRAYSIZE = PlayerStatusEnumEx_MAX + 1;
 
 LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* PlayerStatusEnumEx_descriptor();
@@ -364,19 +365,20 @@ enum InitialProcessEnum {
   ProcessCG = 1,
   ProcessPVE = 2,
   ProcessExplore = 3,
-  ProcessWorld = 4,
+  ProcessChapter = 4,
   ProcessTask = 5,
   ProcessScene = 6,
   UIDialogue = 7,
   BubbleDialogue = 8,
   ProcessSequence = 9,
-  WorldAndDialogue = 10,
+  ChapterAndStory = 10,
+  ProcessStory = 11,
   InitialProcessEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   InitialProcessEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 LIBPROTOC_EXPORT bool InitialProcessEnum_IsValid(int value);
 const InitialProcessEnum InitialProcessEnum_MIN = ProcessInvalid;
-const InitialProcessEnum InitialProcessEnum_MAX = WorldAndDialogue;
+const InitialProcessEnum InitialProcessEnum_MAX = ProcessStory;
 const int InitialProcessEnum_ARRAYSIZE = InitialProcessEnum_MAX + 1;
 
 LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* InitialProcessEnum_descriptor();
@@ -459,6 +461,28 @@ inline bool BalanceEnum_Parse(
     const ::std::string& name, BalanceEnum* value) {
   return ::google::protobuf::internal::ParseNamedEnum<BalanceEnum>(
     BalanceEnum_descriptor(), name, value);
+}
+enum JumpEnum {
+  JumpInvalid = 0,
+  Leave = 1,
+  Enter = 2,
+  JumpEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  JumpEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+LIBPROTOC_EXPORT bool JumpEnum_IsValid(int value);
+const JumpEnum JumpEnum_MIN = JumpInvalid;
+const JumpEnum JumpEnum_MAX = Enter;
+const int JumpEnum_ARRAYSIZE = JumpEnum_MAX + 1;
+
+LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* JumpEnum_descriptor();
+inline const ::std::string& JumpEnum_Name(JumpEnum value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    JumpEnum_descriptor(), value);
+}
+inline bool JumpEnum_Parse(
+    const ::std::string& name, JumpEnum* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<JumpEnum>(
+    JumpEnum_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -567,6 +591,11 @@ template <> struct is_proto_enum< ::KFMsg::BalanceEnum> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::BalanceEnum>() {
   return ::KFMsg::BalanceEnum_descriptor();
+}
+template <> struct is_proto_enum< ::KFMsg::JumpEnum> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::JumpEnum>() {
+  return ::KFMsg::JumpEnum_descriptor();
 }
 
 }  // namespace protobuf

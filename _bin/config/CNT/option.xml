@@ -1,4 +1,4 @@
-<root version="2621">
+<root platform="" version="2961">
 	<item Name="disconnettime" Key="" Value="1000" Channel="0" Service="0" />
 	<item Name="playernamelength" Key="" Value="15" Channel="0" Service="0" />
 	<item Name="recruitrefreshtime" Key="" Value="0.4" Channel="0" Service="0" />
@@ -15,4 +15,6 @@
 	<item Name="builduplevel" Key="" Value="0.4" Channel="0" Service="0" />
 	<item Name="recruitmentfixedtime" Key="" Value="0" Channel="0" Service="0" />
 	<item Name="playerfirstfight" Key="" Value="11001" Channel="0" Service="0" />
+	<item Name="enterfaith" Key="" Value="100" Channel="0" Service="0" />
+	<item Name="leavefaith" Key="" Value="0" Channel="0" Service="0" />
 </root>

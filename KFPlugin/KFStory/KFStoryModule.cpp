@@ -12,10 +12,10 @@ namespace KFrame
         __REGISTER_DROP_LOGIC__( __STRING__( story ), &KFStoryModule::OnDropStory );
         __REGISTER_ADD_ELEMENT__( __STRING__( story ), &KFStoryModule::AddStoryElement );
 
-        __REGISTER_ADD_DATA_1__( __STRING__( story ), &KFStoryModule::OnAddStoryCallBack );
-        __REGISTER_REMOVE_DATA_1__( __STRING__( story ), &KFStoryModule::OnRemoveStoryCallBack );
         __REGISTER_REMOVE_DATA_1__( __STRING__( dialogue ), &KFStoryModule::OnRemoveDialogueCallBack );
         __REGISTER_UPDATE_DATA_2__( __STRING__( story ), __STRING__( sequence ), &KFStoryModule::OnUpdateSequenceCallBack );
+        __REGISTER_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( pveresult ), &KFStoryModule::OnUpdatePVECallBack );
+        __REGISTER_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( realmresult ), &KFStoryModule::OnUpdateRealmCallBack );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_START_STORY_REQ, &KFStoryModule::HandleStartStoryReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_UPDATE_STORY_REQ, &KFStoryModule::HandleUpdateStoryReq );
@@ -28,10 +28,10 @@ namespace KFrame
         __UN_DROP_LOGIC__( __STRING__( story ) );
         __UN_ADD_ELEMENT__( __STRING__( story ) );
 
-        __UN_ADD_DATA_1__( __STRING__( story ) );
-        __UN_REMOVE_DATA_1__( __STRING__( story ) );
         __UN_REMOVE_DATA_1__( __STRING__( dialogue ) );
         __UN_UPDATE_DATA_2__( __STRING__( story ), __STRING__( sequence ) );
+        __UN_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( pveresult ) );
+        __UN_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( realmresult ) );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_START_STORY_REQ );
         __UN_MESSAGE__( KFMsg::MSG_UPDATE_STORY_REQ );
@@ -48,21 +48,31 @@ namespace KFrame
                 // 如果主剧情不存在或主剧情不为被动触发，则清空
                 player->UpdateData( __STRING__( mainstory ), KFEnum::Set, 0u );
 
-                CheckMainStory( player );
+                CheckStory( player );
             }
-
+            else
+            {
+                ExecuteStory( player, mainstory );
+            }
         }
         else
         {
-            CheckMainStory( player );
+            CheckStory( player );
         }
     }
 
-    void KFStoryModule::CheckMainStory( KFEntity* player )
+    void KFStoryModule::CheckStory( KFEntity* player )
     {
         auto kfstoryrecord = player->Find( __STRING__( story ) );
         for ( auto kfstory = kfstoryrecord->First(); kfstory != nullptr; kfstory = kfstoryrecord->Next() )
         {
+            auto sequence = kfstory->Get<uint32>( __STRING__( sequence ) );
+            if ( sequence == 0u )
+            {
+                // 该剧情已结束
+                continue;
+            }
+
             auto storyid = kfstory->Get<uint32>( __STRING__( id ) );
             auto kfstorysetting = KFStoryConfig::Instance()->FindSetting( storyid );
             if ( kfstorysetting == nullptr )
@@ -76,11 +86,90 @@ namespace KFrame
             }
 
             player->UpdateData( __STRING__( mainstory ), KFEnum::Set, storyid );
-
-            auto sequence = kfstory->Get<uint32>( __STRING__( sequence ) );
-            OnExecuteSequence( player, storyid, sequence );
+            ExecuteStory( player, storyid );
 
             break;
+        }
+    }
+
+    void KFStoryModule::RemoveStory( KFEntity* player, uint32 storyid )
+    {
+        auto kfstoryrecord = player->Find( __STRING__( story ) );
+        auto kfstory = kfstoryrecord->Find( storyid );
+        if ( kfstory == nullptr )
+        {
+            return;
+        }
+
+        // 删除剧情列表
+        UInt32Set removeset;
+        removeset.insert( storyid );
+
+        auto parentid = kfstory->Get<uint32>( __STRING__( parentid ) );
+        while ( parentid != 0u )
+        {
+            auto kfparentstory = kfstoryrecord->Find( parentid );
+            if ( kfparentstory == nullptr )
+            {
+                break;
+            }
+
+            if ( removeset.find( parentid ) != removeset.end() )
+            {
+                // 防止剧情链循环
+                break;
+            }
+
+            removeset.insert( parentid );;
+
+            parentid = kfparentstory->Get<uint32>( __STRING__( parentid ) );
+        }
+
+        for ( auto iter : removeset )
+        {
+            player->RemoveData( kfstoryrecord, iter );
+        }
+
+        auto mainstory = player->Get<uint32>( __STRING__( mainstory ) );
+        if ( removeset.find( mainstory ) != removeset.end() )
+        {
+            // 当主剧情结束后，自动跳转到下一个剧情id
+            player->UpdateData( __STRING__( mainstory ), KFEnum::Set, 0u );
+
+            CheckStory( player );
+        }
+    }
+
+    void KFStoryModule::AddSequence( KFEntity* player, KFData* kfdata, uint32 type )
+    {
+        auto mainstory = player->Get( __STRING__( mainstory ) );
+        if ( mainstory == 0u )
+        {
+            return;
+        }
+
+        auto kfstory = player->Find( __STRING__( story ), mainstory );
+        if ( kfstory == nullptr )
+        {
+            return;
+        }
+
+        auto sequence = kfstory->Get<uint32>( __STRING__( sequence ) );
+        auto kfsetting = KFStoryConfig::Instance()->FindStorySequence( mainstory, sequence );
+        if ( kfsetting == nullptr )
+        {
+            return;
+        }
+
+        if ( kfsetting->_type != type )
+        {
+            return;
+        }
+
+        auto id = kfdata->Get<uint32>( __STRING__( id ) );
+        if ( kfsetting->_parameter1 == id )
+        {
+            player->UpdateData( kfstory, __STRING__( sequence ), KFEnum::Add, 1u );
         }
     }
 
@@ -122,63 +211,9 @@ namespace KFrame
         AddStory( player, dropdata->_data_key );
     }
 
-    __KF_ADD_DATA_FUNCTION__( KFStoryModule::OnAddStoryCallBack )
-    {
-        auto mainstory = player->Get<uint32>( __STRING__( mainstory ) );
-        auto storyid = kfdata->Get<uint32>( __STRING__( id ) );
-        if ( mainstory == 0u )
-        {
-            player->UpdateData( __STRING__( mainstory ), KFEnum::Set, storyid );
-        }
-
-        auto sequence = kfdata->Get<uint32>( __STRING__( sequence ) );
-        OnExecuteSequence( player, storyid, sequence );
-    }
-
-    __KF_REMOVE_DATA_FUNCTION__( KFStoryModule::OnRemoveStoryCallBack )
-    {
-        auto storyid = kfdata->Get<uint32>( __STRING__( id ) );
-        auto mainstory = player->Get( __STRING__( mainstory ) );
-        if ( mainstory == storyid )
-        {
-            // 当主剧情结束后，自动跳转到下一个自动执行的剧情id
-            player->UpdateData( __STRING__( mainstory ), KFEnum::Set, 0u );
-
-            CheckMainStory( player );
-        }
-    }
-
     __KF_REMOVE_DATA_FUNCTION__( KFStoryModule::OnRemoveDialogueCallBack )
     {
-        auto mainstory = player->Get( __STRING__( mainstory ) );
-        if ( mainstory == 0u )
-        {
-            return;
-        }
-
-        auto kfstory = player->Find( __STRING__( story ), mainstory );
-        if ( kfstory == nullptr )
-        {
-            return;
-        }
-
-        auto sequence = kfstory->Get<uint32>( __STRING__( sequence ) );
-        auto kfsetting = KFStoryConfig::Instance()->FindStorySequence( mainstory, sequence );
-        if ( kfsetting == nullptr )
-        {
-            return;
-        }
-
-        if ( kfsetting->_type != KFMsg::UIDialogue && kfsetting->_type != KFMsg::BubbleDialogue )
-        {
-            return;
-        }
-
-        auto dialogueid = kfdata->Get<uint32>( __STRING__( id ) );
-        if ( kfsetting->_parameter1 == dialogueid )
-        {
-            player->UpdateData( kfstory, __STRING__( sequence ), KFEnum::Add, 1u );
-        }
+        AddSequence( player, kfdata, KFMsg::BubbleDialogue );
     }
 
     __KF_UPDATE_DATA_FUNCTION__( KFStoryModule::OnUpdateSequenceCallBack )
@@ -188,7 +223,8 @@ namespace KFrame
             return;
         }
 
-        auto storyid = kfdata->GetParent()->Get<uint32>( __STRING__( id ) );
+        auto kfstory = kfdata->GetParent();
+        auto storyid = kfstory->Get<uint32>( __STRING__( id ) );
 
         auto kfsetting = KFStoryConfig::Instance()->FindSetting( storyid );
         if ( kfsetting == nullptr )
@@ -196,15 +232,48 @@ namespace KFrame
             return;
         }
 
-        // 剧情序列数
         auto count = kfsetting->_sequences.size();
         if ( newvalue > count )
         {
-            player->RemoveData( __STRING__( story ), storyid );
+            auto childid = kfstory->Get<uint32>( __STRING__( childid ) );
+            if ( childid == 0u )
+            {
+                // 没有子剧情，则删除剧情
+                RemoveStory( player, storyid );
+            }
+            else
+            {
+                // 有子剧情，则继续执行子剧情
+                player->UpdateData( kfstory, __STRING__( sequence ), KFEnum::Set, 0u );
+
+                player->UpdateData( __STRING__( mainstory ), KFEnum::Set, childid );
+                ExecuteStory( player, childid );
+            }
+
             return;
         }
 
-        OnExecuteSequence( player, storyid, newvalue );
+        ExecuteStory( player, storyid );
+    }
+
+    __KF_UPDATE_DATA_FUNCTION__( KFStoryModule::OnUpdatePVECallBack )
+    {
+        if ( newvalue != KFMsg::Victory )
+        {
+            return;
+        }
+
+        AddSequence( player, kfdata->GetParent(), KFMsg::ProcessPVE );
+    }
+
+    __KF_UPDATE_DATA_FUNCTION__( KFStoryModule::OnUpdateRealmCallBack )
+    {
+        if ( newvalue != KFMsg::Victory )
+        {
+            return;
+        }
+
+        AddSequence( player, kfdata->GetParent(), KFMsg::ProcessExplore );
     }
 
     __KF_MESSAGE_FUNCTION__( KFStoryModule::HandleStartStoryReq )
@@ -224,23 +293,7 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::StoryTriggerTypeLimit );
         }
 
-        // 更换同步顺序, 先删除条件，再添加条件，再更新
-        player->SyncDataSequence( KFEnum::Dec, KFEnum::Add, KFEnum::Set );
-
-        auto kfstoryrecord = player->Find( __STRING__( story ) );
-        auto kfstory = kfstoryrecord->Find( kfmsg.storyid() );
-        if ( kfstory == nullptr )
-        {
-            kfstory = player->CreateData( kfstoryrecord );
-            kfstory->Set( __STRING__( sequence ), 1u );		// 默认序列1开始
-
-            player->AddData( kfstoryrecord, kfmsg.storyid(), kfstory );
-        }
-
-        player->UpdateData( __STRING__( mainstory ), KFEnum::Set, kfmsg.storyid() );
-
-        auto sequence = kfstory->Get<uint32>( __STRING__( sequence ) );
-        OnExecuteSequence( player, kfmsg.storyid(), sequence );
+        AddStory( player, kfmsg.storyid() );
     }
 
     __KF_MESSAGE_FUNCTION__( KFStoryModule::HandleUpdateStoryReq )
@@ -263,12 +316,22 @@ namespace KFrame
         }
 
         auto sequenceid = kfstory->Get<uint32>( __STRING__( sequence ) );
-
-        // 剧情序列对话有分支，不能跳过
         auto storysequence = kfstorysetting->FindStorySequence( sequenceid );
-        if ( storysequence != nullptr &&
-                ( storysequence->_type == KFMsg::UIDialogue || storysequence->_type == KFMsg::BubbleDialogue ) )
+        if ( storysequence == nullptr )
         {
+            return _kf_display->SendToClient( player, KFMsg::StorySequenceIsError );
+        }
+
+        if ( storysequence->_type == KFMsg::ProcessPVE ||
+                storysequence->_type == KFMsg::ProcessExplore ||
+                storysequence->_type == KFMsg::ProcessTask )
+        {
+            return _kf_display->SendToClient( player, KFMsg::StorySequenceNotFinish );
+        }
+
+        if ( storysequence->_type == KFMsg::BubbleDialogue )
+        {
+            // 剧情序列对话有分支，不能跳过
             auto dialogueid = storysequence->_parameter1;
             auto kfdialoguesetting = KFDialogueConfig::Instance()->FindSetting( dialogueid );
             if ( kfdialoguesetting != nullptr && kfdialoguesetting->_sequence > 0u )
@@ -291,31 +354,60 @@ namespace KFrame
 
         auto kfstoryrecord = player->Find( __STRING__( story ) );
         auto kfstory = kfstoryrecord->Find( storyid );
+
+        // 更换同步顺序, 先删除条件，再添加条件，再更新
+        player->SyncDataSequence( KFEnum::Dec, KFEnum::Add, KFEnum::Set );
+
         if ( kfstory == nullptr )
         {
             kfstory = player->CreateData( kfstoryrecord );
-            kfstory->Set( __STRING__( sequence ), 1u );		// 默认序列1开始
+            kfstory->Set( __STRING__( sequence ), 1u );
 
             player->AddData( kfstoryrecord, storyid, kfstory );
         }
+
+        UInt32Set storyset;
+        storyset.insert( storyid );
+
+        auto sequence = kfstory->Get<uint32>( __STRING__( sequence ) );
+        while ( sequence == 0u )
+        {
+            storyid = kfstory->Get<uint32>( __STRING__( childid ) );
+            auto kfchildstory = kfstoryrecord->Find( storyid );
+            if ( kfchildstory == nullptr )
+            {
+                return;
+            }
+
+            if ( storyset.find( storyid ) != storyset.end() )
+            {
+                // 防止剧情链循环
+                RemoveStory( player, storyid );
+                return;
+            }
+            storyset.insert( storyid );
+
+            sequence = kfchildstory->Get<uint32>( __STRING__( sequence ) );
+        }
+
+        player->UpdateData( __STRING__( mainstory ), KFEnum::Set, storyid );
+        ExecuteStory( player, storyid );
     }
 
-    void KFStoryModule::OnExecuteSequence( KFEntity* player, uint32 storyid, uint32 sequence )
+    void KFStoryModule::ExecuteStory( KFEntity* player, uint32 storyid )
     {
-        auto kfsetting = KFStoryConfig::Instance()->FindSetting( storyid );
-        if ( kfsetting == nullptr )
+        auto kfstory = player->Find( __STRING__( story ), storyid );
+        if ( kfstory == nullptr )
         {
             return;
         }
+        auto sequence = kfstory->Get<uint32>( __STRING__( sequence ) );
 
-        auto storysequence = kfsetting->FindStorySequence( sequence );
+        auto storysequence = KFStoryConfig::Instance()->FindStorySequence( storyid, sequence );
         if ( storysequence == nullptr )
         {
             return;
         }
-
-        auto kfstoryrecord = player->Find( __STRING__( story ) );
-        auto kfstory = kfstoryrecord->Find( storyid );
 
         if ( storysequence->_type == KFMsg::ProcessTask )
         {

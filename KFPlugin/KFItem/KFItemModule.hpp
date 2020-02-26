@@ -12,6 +12,7 @@
 #include "KFItemInterface.h"
 #include "KFLua/KFLuaInterface.h"
 #include "KFTimer/KFTimerInterface.h"
+#include "KFOption/KFOptionInterface.h"
 #include "KFKernel/KFKernelInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFMessage/KFMessageInterface.h"
@@ -122,8 +123,23 @@ namespace KFrame
         // 查找道具
         virtual std::tuple<KFData*, KFData*> FindItem( KFEntity* player, uint64 itemuuid );
 
+        // 获得背包空格子数量
+        virtual uint32 GetItemEmptyCount( KFEntity* player, KFData* kfitemrecord );
+
         // 判断包裹是否满了
         virtual bool IsItemRecordFull( KFEntity* player, KFData* kfitemrecord );
+
+        // 获得包裹内道具数量
+        virtual uint32 GetItemCount( KFEntity* player, KFData* kfitemrecord, uint32 itemid, uint32 maxcount = __MAX_UINT32__ );
+
+        // 删除包裹内道具
+        virtual void RemoveItem( KFEntity* player, KFData* kfitemrecord, uint32 itemid, uint32 itemcount );
+
+        // 随机删除包裹内道具
+        virtual uint32 RandRemoveItem( KFEntity* player, KFData* kfitemrecord, uint32& itemcount );
+
+        // 获得背包属性
+        virtual KFData* FindItemRecord( KFEntity* player, KFData* kfitem );
     protected:
         // 拆分道具
         __KF_MESSAGE_FUNCTION__( HandleSplitItemReq );

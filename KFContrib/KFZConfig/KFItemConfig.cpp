@@ -96,6 +96,7 @@ namespace KFrame
     void KFItemConfig::ReadDrugSetting( KFNode& xmlnode, KFItemSetting* kfsetting )
     {
         kfsetting->_drug_type = xmlnode.GetUInt32( "DrugType" );
+        kfsetting->_use_target = xmlnode.GetUInt32( "UseTarget" );
 
         auto strrestore = xmlnode.GetString( "Restore" );
         __JSON_PARSE_STRING__( kfjson, strrestore );
@@ -139,7 +140,12 @@ namespace KFrame
 
     void KFItemConfig::ReadRuneSetting( KFNode& xmlnode, KFItemSetting* kfsetting )
     {
+        if ( xmlnode.GetUInt32( "RewardAutoSet", true ) == 1u )
+        {
+            kfsetting->_get_auto_set = true;
+        }
 
+        kfsetting->_compound_id = xmlnode.GetUInt32( "CompoundId" );
     }
 
     void KFItemConfig::ReadFoodSetting( KFNode& xmlnode, KFItemSetting* kfsetting )

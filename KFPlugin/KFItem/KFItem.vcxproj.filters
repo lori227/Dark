@@ -6,6 +6,7 @@
     <ClCompile Include="KFItemModule.cpp" />
     <ClCompile Include="KFItemUseModule.cpp" />
     <ClCompile Include="KFItemWeaponModule.cpp" />
+    <ClCompile Include="KFItemRuneModule.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="KFItemInterface.h" />
@@ -13,5 +14,6 @@
     <ClInclude Include="KFItemPlugin.hpp" />
     <ClInclude Include="KFItemUseModule.hpp" />
     <ClInclude Include="KFItemWeaponModule.hpp" />
+    <ClInclude Include="KFItemRuneModule.hpp" />
   </ItemGroup>
 </Project>

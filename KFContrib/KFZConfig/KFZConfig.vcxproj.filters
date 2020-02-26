@@ -109,6 +109,30 @@
     <ClInclude Include="KFStoryConfig.hpp">
       <Filter>GamePlay</Filter>
     </ClInclude>
+    <ClInclude Include="KFPunishConfig.hpp">
+      <Filter>Realm</Filter>
+    </ClInclude>
+    <ClInclude Include="KFNpcGroupConfig.hpp">
+      <Filter>Realm</Filter>
+    </ClInclude>
+    <ClInclude Include="KFCompoundRuneConfig.hpp">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="KFInnerWorldConfig.hpp">
+      <Filter>Realm</Filter>
+    </ClInclude>
+    <ClInclude Include="KFGambleConfig.hpp">
+      <Filter>Realm</Filter>
+    </ClInclude>
+    <ClInclude Include="KFExchangeConfig.hpp">
+      <Filter>Realm</Filter>
+    </ClInclude>
+    <ClInclude Include="KFSelectConfig.hpp">
+      <Filter>Realm</Filter>
+    </ClInclude>
+    <ClInclude Include="KFMultiEventConfig.hpp">
+      <Filter>Realm</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Option">
@@ -238,6 +262,30 @@
     </ClCompile>
     <ClCompile Include="KFStoryConfig.cpp">
       <Filter>GamePlay</Filter>
+    </ClCompile>
+    <ClCompile Include="KFPunishConfig.cpp">
+      <Filter>Realm</Filter>
+    </ClCompile>
+    <ClCompile Include="KFNpcGroupConfig.cpp">
+      <Filter>Realm</Filter>
+    </ClCompile>
+    <ClCompile Include="KFCompoundRuneConfig.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="KFInnerWorldConfig.cpp">
+      <Filter>Realm</Filter>
+    </ClCompile>
+    <ClCompile Include="KFGambleConfig.cpp">
+      <Filter>Realm</Filter>
+    </ClCompile>
+    <ClCompile Include="KFExchangeConfig.cpp">
+      <Filter>Realm</Filter>
+    </ClCompile>
+    <ClCompile Include="KFSelectConfig.cpp">
+      <Filter>Realm</Filter>
+    </ClCompile>
+    <ClCompile Include="KFMultiEventConfig.cpp">
+      <Filter>Realm</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

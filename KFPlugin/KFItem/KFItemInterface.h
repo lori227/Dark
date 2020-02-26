@@ -32,8 +32,23 @@ namespace KFrame
         // 查找道具
         virtual std::tuple<KFData*, KFData*> FindItem( KFEntity* player, uint64 itemuuid ) = 0;
 
+        // 获得背包空格子数量
+        virtual uint32 GetItemEmptyCount( KFEntity* player, KFData* kfitemrecord ) = 0;
+
         // 判断包裹是否满了
         virtual bool IsItemRecordFull( KFEntity* player, KFData* kfitemrecord ) = 0;
+
+        // 获得包裹内道具数量
+        virtual uint32 GetItemCount( KFEntity* player, KFData* kfitemrecord, uint32 itemid, uint32 maxcount = __MAX_UINT32__ ) = 0;
+
+        // 删除包裹内道具
+        virtual void RemoveItem( KFEntity* player, KFData* kfitemrecord, uint32 itemid, uint32 itemcount ) = 0;
+
+        // 随机删除包裹内道具
+        virtual uint32 RandRemoveItem( KFEntity* player, KFData* kfitemrecord, uint32& itemcount ) = 0;
+
+        // 获得背包属性
+        virtual KFData* FindItemRecord( KFEntity* player, KFData* kfitem ) = 0;
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 初始化数据
@@ -71,6 +86,15 @@ namespace KFrame
     public:
     };
     __KF_INTERFACE__( _kf_weapon, KFItemWeaponInterface );
+    //////////////////////////////////////////////////////////////////////////
+    class KFItemRuneInterface : public KFModule
+    {
+    public:
+        // 清空符石槽数据
+        virtual bool ClearRuneSlotData( KFEntity* player ) = 0;
+
+    };
+    __KF_INTERFACE__( _kf_rune, KFItemRuneInterface );
     //////////////////////////////////////////////////////////////////////////
 }
 

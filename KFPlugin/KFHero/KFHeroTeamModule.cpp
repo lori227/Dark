@@ -198,8 +198,7 @@ namespace KFrame
 
         for ( auto kfteam = kfteamarray->First(); kfteam != nullptr; kfteam = kfteamarray->Next() )
         {
-            auto uuid = kfteam->Get<uint64>();
-            auto kfhero = kfherorecord->Find( uuid );
+            auto kfhero = kfherorecord->Find( kfteam->Get<uint64>() );
             if ( kfhero == nullptr )
             {
                 continue;
@@ -309,4 +308,31 @@ namespace KFrame
         player->UpdateData( kfteamarray, kfmsg.newindex(), KFEnum::Set, oldvalue );
     }
 
+    void KFHeroTeamModule::OperateTeamHeroHp( KFEntity* player, uint32 operate, uint32 value )
+    {
+        auto kfherorecord = player->Find( __STRING__( hero ) );
+        auto kfteamarray = player->Find( __STRING__( heroteam ) );
+        for ( auto kfteam = kfteamarray->First(); kfteam != nullptr; kfteam = kfteamarray->Next() )
+        {
+            auto kfhero = _kf_hero->FindAliveHero( kfherorecord, kfteam->Get<uint64>() );
+            if ( kfhero == nullptr )
+            {
+                continue;
+            }
+
+            auto kffighter = kfhero->Find( __STRING__( fighter ) );
+            auto hp = kffighter->Get<uint32>( __STRING__( hp ) );
+            auto changehp = value;
+            if ( operate == KFEnum::Dec && hp <= value )
+            {
+                // 探索减hp最小为1
+                changehp = hp - 1u;
+            }
+
+            if ( changehp != 0u )
+            {
+                _kf_hero->OperateHp( player, kfhero, operate, changehp );
+            }
+        }
+    }
 }

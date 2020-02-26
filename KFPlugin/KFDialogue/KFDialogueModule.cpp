@@ -83,11 +83,15 @@ namespace KFrame
                 kfbranch = kfbranchrecord->Find( iter );
                 auto kfconditionobject = kfbranch->Find( __STRING__( conditions ) );
 
-                // 添加下一级的升级条件
+                // 添加条件
                 _kf_condition->AddCondition( player, kfconditionobject, kfbranchsetting->_condition, kfbranchsetting->_condition_type );
 
                 // 初始化条件
-                _kf_condition->InitCondition( player, kfconditionobject, KFConditionEnum::LimitNull, false );
+                auto complete = _kf_condition->InitCondition( player, kfconditionobject, KFConditionEnum::LimitNull, false );
+                if ( !complete )
+                {
+                    kfbranchrecord->Remove( iter );
+                }
             }
 
             // 数据同步到客户端
@@ -169,7 +173,13 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::DialogueNotExist );
         }
 
-        player->UpdateData( kfdialogue, __STRING__( sequence ), KFEnum::Set, kfdialoguesetting->_sequence );
+        auto sequence = 1u;
+        if ( kfmsg.flag() == _invalid_int )
+        {
+            sequence = kfdialoguesetting->_sequence;
+        }
+
+        player->UpdateData( kfdialogue, __STRING__( sequence ), KFEnum::Set, sequence );
     }
 
     __KF_MESSAGE_FUNCTION__( KFDialogueModule::HandleSelectDialogueBranchReq )
@@ -225,7 +235,41 @@ namespace KFrame
         }
 
         // 执行
-        _kf_execute->Execute( player, &kfbranchsetting->_execute_data, __FUNC_LINE__ );
+        auto executedata = &kfbranchsetting->_execute_data;
+        if ( executedata->_name == __STRING__( story ) )
+        {
+            if ( executedata->_param_list._params.size() > 0u )
+            {
+                auto storyid = executedata->_param_list._params[0]->_int_value;
+                auto kfstoryrecord = player->Find( __STRING__( story ) );
+
+                // 当前故事的子故事
+                auto mainstory = player->Get<uint32>( __STRING__( mainstory ) );
+                auto kfmainstory = kfstoryrecord->Find( mainstory );
+                if ( kfmainstory != nullptr )
+                {
+                    player->UpdateData( kfmainstory, __STRING__( childid ), KFEnum::Set, storyid );
+                }
+
+                auto kfstory = kfstoryrecord->Find( storyid );
+                if ( kfstory == nullptr )
+                {
+                    kfstory = player->CreateData( kfstoryrecord );
+                    kfstory->Set( __STRING__( sequence ), 1u );
+                    kfstory->Set( __STRING__( parentid ), mainstory );
+
+                    player->AddData( kfstoryrecord, storyid, kfstory );
+                }
+                else
+                {
+                    player->UpdateData( kfmainstory, __STRING__( parentid ), KFEnum::Set, mainstory );
+                }
+            }
+        }
+        else
+        {
+            _kf_execute->Execute( player, executedata, __FUNC_LINE__ );
+        }
 
         // 通知选择分支成功
         _kf_display->SendToClient( player, KFMsg::DialogueBranchSelectSuc );

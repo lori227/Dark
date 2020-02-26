@@ -50,7 +50,7 @@ namespace KFrame
 
     public:
         // 删除英雄天赋
-        bool RemoveInnateId( KFEntity* player, uint64 uuid, uint32 id );
+        bool RemoveInnateId( KFEntity* player, KFData* kfhero, uint32 id );
 
     protected:
         KFComponent* _kf_component = nullptr;

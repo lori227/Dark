@@ -1,8 +1,10 @@
-<root platform="" version="0">
+<root platform="" version="3004">
 	<item Id="pveclean" ParentName="player" DataName="pveid" CallType="3" InitCalc="" TriggerType="3" TriggerCheck="16" TriggerUse="2" TriggerValue="0" UseOperate="3" UseType="0" UseValue="0" />
 	<item Id="exploreclean" ParentName="player" DataName="realmid" CallType="3" InitCalc="" TriggerType="3" TriggerCheck="16" TriggerUse="2" TriggerValue="0" UseOperate="3" UseType="0" UseValue="0" />
 	<item Id="explore" ParentName="balance" DataName="realmresult" CallType="3" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="explorevictory" ParentName="balance" DataName="realmresult" CallType="3" InitCalc="" TriggerType="3" TriggerCheck="13" TriggerUse="2" TriggerValue="1" UseOperate="1" UseType="0" UseValue="1" />
+	<item Id="exploreleave" ParentName="balance" DataName="jump" CallType="3" InitCalc="" TriggerType="3" TriggerCheck="13" TriggerUse="2" TriggerValue="1" UseOperate="1" UseType="0" UseValue="1" />
+	<item Id="exploreenter" ParentName="balance" DataName="jump" CallType="3" InitCalc="" TriggerType="3" TriggerCheck="13" TriggerUse="2" TriggerValue="2" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="pve" ParentName="balance" DataName="pveresult" CallType="3" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="pvevictory" ParentName="balance" DataName="pveresult" CallType="3" InitCalc="" TriggerType="3" TriggerCheck="13" TriggerUse="2" TriggerValue="1" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="onceexplorepve" ParentName="balance" DataName="pveresult" CallType="3" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
@@ -38,7 +40,8 @@
 	<item Id="removehero" ParentName="hero" DataName="durability" CallType="2" InitCalc="" TriggerType="0" TriggerCheck="16" TriggerUse="2" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="killnpc" ParentName="npc" DataName="" CallType="2" InitCalc="" TriggerType="0" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="interaction" ParentName="interaction" DataName="id" CallType="3" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
-	<item Id="dialogue" ParentName="dialogue" DataName="id" CallType="3" InitCalc="" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="3" UseType="0" UseValue="1" />
+	<item Id="dialogue" ParentName="dialogue" DataName="id" CallType="2" InitCalc="" TriggerType="0" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
+	<item Id="story" ParentName="story" DataName="id" CallType="2" InitCalc="" TriggerType="0" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="technology" ParentName="technology" DataName="status" CallType="1" InitCalc="2" TriggerType="0" TriggerCheck="13" TriggerUse="0" TriggerValue="1" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="technology" ParentName="technology" DataName="status" CallType="3" InitCalc="2" TriggerType="0" TriggerCheck="13" TriggerUse="0" TriggerValue="1" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="technologytype" ParentName="technology" DataName="status" CallType="1" InitCalc="0" TriggerType="0" TriggerCheck="13" TriggerUse="0" TriggerValue="1" UseOperate="1" UseType="0" UseValue="1" />

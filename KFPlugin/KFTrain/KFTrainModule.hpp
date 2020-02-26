@@ -108,9 +108,16 @@ namespace KFrame
         // 删除训练所英雄
         __KF_REMOVE_DATA_FUNCTION__( OnRemoveTrainHero );
 
-        // 科技效果
+        // 消耗货币所需比例
         __KF_EXECUTE_FUNCTION__( OnExecuteTrainCostScaleDec );
+
+        // 训练所栏位
+        __KF_EXECUTE_FUNCTION__( OnExecuteTrainCount );
+
+        // 训练所单位时间所得经验
         __KF_EXECUTE_FUNCTION__( OnExecuteTrainUnitExp );
+
+        // 训练所单位时间所得经验比例
         __KF_EXECUTE_FUNCTION__( OnExecuteTrainExpScale );
 
     protected:
