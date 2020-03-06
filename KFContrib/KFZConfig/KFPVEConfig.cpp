@@ -5,7 +5,10 @@ namespace KFrame
 {
     void KFPVEConfig::ReadSetting( KFNode& xmlnode, KFPVESetting* kfsetting )
     {
-        kfsetting->_npc_group_id = xmlnode.GetUInt32( "NpcGroup" );
+        kfsetting->_npc_rand_id = xmlnode.GetUInt32( "NpcRand" );
+
+        auto strdungeon = xmlnode.GetString( "DungeonId" );
+        KFUtility::SplitList( kfsetting->_dungeon_id_list, strdungeon, __SPLIT_STRING__ );
 
         auto strdropvictory = xmlnode.GetString( "DropVictory", true );
         KFReadSetting::ParseConditionList( strdropvictory, kfsetting->_victory_drop_list );
@@ -34,10 +37,10 @@ namespace KFrame
             auto kfsetting = iter.second;
             KFElementConfig::Instance()->ParseElement( kfsetting->_consume, kfsetting->_str_consume, __FILE__, kfsetting->_id );
 
-            kfsetting->_npc_group_setting = KFNpcGroupConfig::Instance()->FindSetting( kfsetting->_npc_group_id );
-            if ( kfsetting->_npc_group_setting == nullptr )
+            kfsetting->_npc_rand_setting = KFNpcRandConfig::Instance()->FindSetting( kfsetting->_npc_rand_id );
+            if ( kfsetting->_npc_rand_setting == nullptr )
             {
-                __LOG_ERROR__( "npcgroup=[{}] can't find setting", kfsetting->_npc_group_id );
+                __LOG_ERROR__( "pve=[{}] npcrandid=[{}] can't find setting", kfsetting->_id, kfsetting->_npc_rand_id );
             }
         }
     }

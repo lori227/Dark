@@ -37,7 +37,7 @@ namespace KFrame
         virtual void BeforeShut();
 
         // 添加对话
-        virtual void AddDialogue( KFEntity* player, uint32 dialogid, uint32 type = KFMsg::UIDialogue );
+        virtual void AddDialogue( KFEntity* player, uint32 dialogid, uint32 type = KFMsg::UIDialogue, uint32 storyid = 0u );
         ////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
     protected:
@@ -59,7 +59,7 @@ namespace KFrame
 
     protected:
         // 通知客户端对话消息
-        bool SendToClientDialogueStart( KFEntity* player, uint32 dialogid, uint32 sequence, uint32 type );
+        bool SendToClientDialogueStart( KFEntity* player, uint32 dialogid, uint32 sequence, uint32 type, uint32 storyid );
 
     protected:
         // 玩家组件上下文

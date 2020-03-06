@@ -11,6 +11,7 @@
 
 #include "KFrameEx.h"
 #include "KFItemInterface.h"
+#include "KFItemUseInterface.h"
 #include "KFLua/KFLuaInterface.h"
 #include "KFKernel/KFKernelInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"

@@ -4,6 +4,7 @@
 #include "KFZConfig/KFConfig.h"
 #include "KFZConfig/KFElementConfig.h"
 #include "KFZConfig/KFNpcGroupConfig.hpp"
+#include "KFZConfig/KFNpcRandConfig.hpp"
 
 namespace KFrame
 {
@@ -12,9 +13,12 @@ namespace KFrame
     class KFPVESetting : public KFIntSetting
     {
     public:
-        // npc生成列表
-        uint32 _npc_group_id = 0;
-        const KFNpcGroupSetting* _npc_group_setting = nullptr;
+        // npc随机配置
+        uint32 _npc_rand_id = 0u;
+        const KFNpcRandSetting* _npc_rand_setting = nullptr;
+
+        // 地形随机
+        UInt32Vector _dungeon_id_list;
 
         // 成功道具掉落
         UInt32Vector _victory_drop_list;
@@ -37,6 +41,20 @@ namespace KFrame
 
         // 逃跑失败惩罚id
         uint32 _punish_id = 0u;
+
+    public:
+        // 随机地形id
+        uint32 RandDungeonId() const
+        {
+            auto count = _dungeon_id_list.size();
+            if ( count == 0u )
+            {
+                return 0u;
+            }
+
+            auto index = KFGlobal::Instance()->RandRatio( count );
+            return _dungeon_id_list.at( index );
+        }
     };
 
     ////////////////////////////////////////////////////////////////////////////////

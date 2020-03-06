@@ -1,5 +1,6 @@
-<root platform="" version="2905">
+<root platform="" version="3105">
 	<item Channel="0" Service="0" Type="0" Elements="[{&quot;taskchain&quot;:{&quot;id&quot;:&quot;1&quot;}}]" />
 	<item Channel="0" Service="0" Type="0" Elements="[{&quot;hero&quot;:{&quot;id&quot;:&quot;4100004&quot;}},{&quot;hero&quot;:{&quot;id&quot;:&quot;4100005&quot;}}]" />
 	<item Channel="0" Service="0" Type="0" Elements="[{&quot;buildskin&quot;:{&quot;id&quot;:&quot;1&quot;}}]" />
+	<item Channel="0" Service="0" Type="0" Elements="[{&quot;mainstage&quot;:&quot;1&quot;}]" />
 </root>

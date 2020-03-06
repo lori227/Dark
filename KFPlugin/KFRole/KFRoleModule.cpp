@@ -178,7 +178,14 @@ namespace KFrame
         __CLIENT_PROTO_PARSE__( KFMsg::MsgUpdateMainStageReq );
 
         auto mainstage = player->Get( __STRING__( mainstage ) );
-        /*auto kfsetting = KFInitialProcessConfig::Instance()->FindSetting( mainstage );
+
+        if ( kfmsg.stageid() != mainstage + 1u )
+        {
+            // 流程递增
+            return;
+        }
+
+        auto kfsetting = KFInitialProcessConfig::Instance()->FindSetting( mainstage );
         if ( kfsetting == nullptr )
         {
             return;
@@ -187,12 +194,6 @@ namespace KFrame
         if ( kfsetting->_type == KFMsg::ProcessPVE || kfsetting->_type == KFMsg::ProcessExplore
                 || kfsetting->_type == KFMsg::ProcessTask || kfsetting->_type == KFMsg::ProcessStory )
         {
-            return;
-        }*/
-
-        if ( kfmsg.stageid() != mainstage + 1u )
-        {
-            // 流程递增
             return;
         }
 

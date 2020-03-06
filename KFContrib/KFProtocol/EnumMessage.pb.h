@@ -337,29 +337,6 @@ inline bool ItemAutoEnum_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<ItemAutoEnum>(
     ItemAutoEnum_descriptor(), name, value);
 }
-enum HeroDeathReason {
-  NoDeathReason = 0,
-  NoExist = 1,
-  NoEnoughHp = 2,
-  NoEnoughDurability = 3,
-  HeroDeathReason_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  HeroDeathReason_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
-};
-LIBPROTOC_EXPORT bool HeroDeathReason_IsValid(int value);
-const HeroDeathReason HeroDeathReason_MIN = NoDeathReason;
-const HeroDeathReason HeroDeathReason_MAX = NoEnoughDurability;
-const int HeroDeathReason_ARRAYSIZE = HeroDeathReason_MAX + 1;
-
-LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* HeroDeathReason_descriptor();
-inline const ::std::string& HeroDeathReason_Name(HeroDeathReason value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    HeroDeathReason_descriptor(), value);
-}
-inline bool HeroDeathReason_Parse(
-    const ::std::string& name, HeroDeathReason* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<HeroDeathReason>(
-    HeroDeathReason_descriptor(), name, value);
-}
 enum InitialProcessEnum {
   ProcessInvalid = 0,
   ProcessCG = 1,
@@ -443,6 +420,7 @@ enum BalanceEnum {
   Failed = 2,
   Flee = 3,
   Town = 4,
+  Ace = 5,
   Chapter = 100,
   BalanceEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   BalanceEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
@@ -566,11 +544,6 @@ template <> struct is_proto_enum< ::KFMsg::ItemAutoEnum> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::ItemAutoEnum>() {
   return ::KFMsg::ItemAutoEnum_descriptor();
-}
-template <> struct is_proto_enum< ::KFMsg::HeroDeathReason> : ::std::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::HeroDeathReason>() {
-  return ::KFMsg::HeroDeathReason_descriptor();
 }
 template <> struct is_proto_enum< ::KFMsg::InitialProcessEnum> : ::std::true_type {};
 template <>

@@ -33,7 +33,7 @@ namespace protobuf_EnumMessage_2eproto {
 void InitDefaults() {
 }
 
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[18];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[17];
 const ::google::protobuf::uint32 TableStruct::offsets[1] = {};
 static const ::google::protobuf::internal::MigrationSchema* schemas = NULL;
 static const ::google::protobuf::Message* const* file_default_instances = NULL;
@@ -87,27 +87,25 @@ void AddDescriptorsImpl() {
       "Expire\020\001\022\r\n\tNumExpire\020\002*;\n\017BalanceShowEn"
       "um\022\016\n\nUnknowShow\020\000\022\013\n\007Explore\020\001\022\013\n\007Balan"
       "ce\020\002*\?\n\014ItemAutoEnum\022\017\n\013AutoInvalid\020\000\022\r\n"
-      "\tAutoStore\020\001\022\017\n\013AutoDestory\020\002*Y\n\017HeroDea"
-      "thReason\022\021\n\rNoDeathReason\020\000\022\013\n\007NoExist\020\001"
-      "\022\016\n\nNoEnoughHp\020\002\022\026\n\022NoEnoughDurability\020\003"
-      "*\362\001\n\022InitialProcessEnum\022\022\n\016ProcessInvali"
-      "d\020\000\022\r\n\tProcessCG\020\001\022\016\n\nProcessPVE\020\002\022\022\n\016Pr"
-      "ocessExplore\020\003\022\022\n\016ProcessChapter\020\004\022\017\n\013Pr"
-      "ocessTask\020\005\022\020\n\014ProcessScene\020\006\022\016\n\nUIDialo"
-      "gue\020\007\022\022\n\016BubbleDialogue\020\010\022\023\n\017ProcessSequ"
-      "ence\020\t\022\023\n\017ChapterAndStory\020\n\022\020\n\014ProcessSt"
-      "ory\020\013*s\n\016RealmEnterEnum\022\020\n\014EnterInvalid\020"
-      "\000\022\020\n\014EnterChapter\020\001\022\016\n\nEnterLogin\020\002\022\r\n\tE"
-      "nterTown\020\003\022\r\n\tEnterJump\020\004\022\017\n\013EnterExtend"
-      "\020\005*;\n\017ExtendLevelEnum\022\026\n\022ExtendLevelInva"
-      "lid\020\000\022\020\n\013ExtendLevel\020\220N*Z\n\013BalanceEnum\022\021"
-      "\n\rUnknowBalance\020\000\022\013\n\007Victory\020\001\022\n\n\006Failed"
-      "\020\002\022\010\n\004Flee\020\003\022\010\n\004Town\020\004\022\013\n\007Chapter\020d*1\n\010J"
-      "umpEnum\022\017\n\013JumpInvalid\020\000\022\t\n\005Leave\020\001\022\t\n\005E"
-      "nter\020\002b\006proto3"
+      "\tAutoStore\020\001\022\017\n\013AutoDestory\020\002*\362\001\n\022Initia"
+      "lProcessEnum\022\022\n\016ProcessInvalid\020\000\022\r\n\tProc"
+      "essCG\020\001\022\016\n\nProcessPVE\020\002\022\022\n\016ProcessExplor"
+      "e\020\003\022\022\n\016ProcessChapter\020\004\022\017\n\013ProcessTask\020\005"
+      "\022\020\n\014ProcessScene\020\006\022\016\n\nUIDialogue\020\007\022\022\n\016Bu"
+      "bbleDialogue\020\010\022\023\n\017ProcessSequence\020\t\022\023\n\017C"
+      "hapterAndStory\020\n\022\020\n\014ProcessStory\020\013*s\n\016Re"
+      "almEnterEnum\022\020\n\014EnterInvalid\020\000\022\020\n\014EnterC"
+      "hapter\020\001\022\016\n\nEnterLogin\020\002\022\r\n\tEnterTown\020\003\022"
+      "\r\n\tEnterJump\020\004\022\017\n\013EnterExtend\020\005*;\n\017Exten"
+      "dLevelEnum\022\026\n\022ExtendLevelInvalid\020\000\022\020\n\013Ex"
+      "tendLevel\020\220N*c\n\013BalanceEnum\022\021\n\rUnknowBal"
+      "ance\020\000\022\013\n\007Victory\020\001\022\n\n\006Failed\020\002\022\010\n\004Flee\020"
+      "\003\022\010\n\004Town\020\004\022\007\n\003Ace\020\005\022\013\n\007Chapter\020d*1\n\010Jum"
+      "pEnum\022\017\n\013JumpInvalid\020\000\022\t\n\005Leave\020\001\022\t\n\005Ent"
+      "er\020\002b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1854);
+      descriptor, 1772);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "EnumMessage.proto", &protobuf_RegisterTypes);
 }
@@ -324,25 +322,9 @@ bool ItemAutoEnum_IsValid(int value) {
   }
 }
 
-const ::google::protobuf::EnumDescriptor* HeroDeathReason_descriptor() {
-  protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[12];
-}
-bool HeroDeathReason_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-      return true;
-    default:
-      return false;
-  }
-}
-
 const ::google::protobuf::EnumDescriptor* InitialProcessEnum_descriptor() {
   protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[13];
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[12];
 }
 bool InitialProcessEnum_IsValid(int value) {
   switch (value) {
@@ -366,7 +348,7 @@ bool InitialProcessEnum_IsValid(int value) {
 
 const ::google::protobuf::EnumDescriptor* RealmEnterEnum_descriptor() {
   protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[14];
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[13];
 }
 bool RealmEnterEnum_IsValid(int value) {
   switch (value) {
@@ -384,7 +366,7 @@ bool RealmEnterEnum_IsValid(int value) {
 
 const ::google::protobuf::EnumDescriptor* ExtendLevelEnum_descriptor() {
   protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[15];
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[14];
 }
 bool ExtendLevelEnum_IsValid(int value) {
   switch (value) {
@@ -398,7 +380,7 @@ bool ExtendLevelEnum_IsValid(int value) {
 
 const ::google::protobuf::EnumDescriptor* BalanceEnum_descriptor() {
   protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[16];
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[15];
 }
 bool BalanceEnum_IsValid(int value) {
   switch (value) {
@@ -407,6 +389,7 @@ bool BalanceEnum_IsValid(int value) {
     case 2:
     case 3:
     case 4:
+    case 5:
     case 100:
       return true;
     default:
@@ -416,7 +399,7 @@ bool BalanceEnum_IsValid(int value) {
 
 const ::google::protobuf::EnumDescriptor* JumpEnum_descriptor() {
   protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[17];
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[16];
 }
 bool JumpEnum_IsValid(int value) {
   switch (value) {

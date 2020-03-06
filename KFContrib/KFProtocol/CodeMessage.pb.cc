@@ -58,7 +58,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\021CodeMessage.proto\022\005KFMsg*\265\037\n\017ProjectCo"
+      "\n\021CodeMessage.proto\022\005KFMsg*\317 \n\017ProjectCo"
       "deEnum\022\016\n\nLogicError\020\000\022\024\n\016MatchRequestOk"
       "\020\231\362\001\022\026\n\020MatchAlreadyWait\020\232\362\001\022\021\n\013MatchInR"
       "oom\020\233\362\001\022\025\n\017MatchNotInMatch\020\234\362\001\022\023\n\rMatchC"
@@ -134,35 +134,39 @@ void AddDescriptorsImpl() {
       "\020\337\364\001\022\026\n\020SelectCountError\020\340\364\001\022\025\n\017SelectUU"
       "IDError\020\341\364\001\022\027\n\021SelectRecordError\020\342\364\001\022\027\n\021"
       "MultiEventIdError\020\343\364\001\022\032\n\024MultiEventIndex"
-      "Error\020\344\364\001\022\024\n\016ChapterIdError\020\221\375\001\022\024\n\016Chapt"
-      "erNotOpen\020\222\375\001\022\027\n\021ChapterEventError\020\223\375\001\022\031"
-      "\n\023ChapterDefaultError\020\224\375\001\022\032\n\024ChapterStat"
-      "usIdError\020\225\375\001\022\032\n\024ChapterExecuteFailed\020\226\375"
-      "\001\022\024\n\016ItemWeaponOnly\020\364\375\001\022\031\n\023ItemWeaponRac"
-      "eLimit\020\365\375\001\022\031\n\023ItemWeaponHeroLimit\020\366\375\001\022\032\n"
-      "\024ItemWeaponLevelLimit\020\367\375\001\022\026\n\020ItemWeaponF"
-      "ailed\020\370\375\001\022\022\n\014ItemWeaponOk\020\371\375\001\022\030\n\022ItemWea"
-      "ponNotExist\020\372\375\001\022\030\n\022ItemUnWeaponFailed\020\373\375"
-      "\001\022\024\n\016ItemUnWeaponOk\020\374\375\001\022\037\n\031ItemUpdateDur"
-      "abilityError\020\375\375\001\022\031\n\023ItemRuneCompondOnly\020"
-      "\376\375\001\022\031\n\023ItemCanNotUseToHero\020\377\375\001\022\026\n\020ItemRu"
-      "neSlotFull\020\200\376\001\022\031\n\023PlayerHeadIconSetOK\020\331\376"
-      "\001\022\030\n\022PlayerFactionSetOK\020\332\376\001\022\034\n\026PlayerHea"
-      "dIconNotExist\020\333\376\001\022\033\n\025PlayerFactionNotExi"
-      "st\020\334\376\001\022\032\n\024PlayerHeadIconNotHad\020\335\376\001\022\032\n\024St"
-      "orySettingNotExist\020\274\377\001\022\023\n\rStoryNotExist\020"
-      "\275\377\001\022\032\n\024StorySequenceIsError\020\276\377\001\022\033\n\025Story"
-      "TriggerTypeLimit\020\277\377\001\022\035\n\027DialogueSettingN"
-      "otExist\020\300\377\001\022\026\n\020DialogueNotExist\020\301\377\001\022\033\n\025D"
-      "ialogueHaveNotBranch\020\302\377\001\022\034\n\026DialogueBran"
-      "chNotExist\020\303\377\001\022!\n\033DialogueBranchLackCond"
-      "ition\020\304\377\001\022\033\n\025BranchSettingNotExist\020\305\377\001\022\035"
-      "\n\027DialogueBranchSelectSuc\020\306\377\001\022\035\n\027StoryHa"
-      "veDialogueBranch\020\307\377\001\022\034\n\026StorySequenceNot"
-      "Finish\020\310\377\001b\006proto3"
+      "Error\020\344\364\001\022\022\n\014NpcRandError\020\345\364\001\022\024\n\016Chapter"
+      "IdError\020\221\375\001\022\024\n\016ChapterNotOpen\020\222\375\001\022\027\n\021Cha"
+      "pterEventError\020\223\375\001\022\031\n\023ChapterDefaultErro"
+      "r\020\224\375\001\022\032\n\024ChapterStatusIdError\020\225\375\001\022\032\n\024Cha"
+      "pterExecuteFailed\020\226\375\001\022\024\n\016ItemWeaponOnly\020"
+      "\364\375\001\022\031\n\023ItemWeaponRaceLimit\020\365\375\001\022\031\n\023ItemWe"
+      "aponHeroLimit\020\366\375\001\022\032\n\024ItemWeaponLevelLimi"
+      "t\020\367\375\001\022\026\n\020ItemWeaponFailed\020\370\375\001\022\022\n\014ItemWea"
+      "ponOk\020\371\375\001\022\030\n\022ItemWeaponNotExist\020\372\375\001\022\030\n\022I"
+      "temUnWeaponFailed\020\373\375\001\022\024\n\016ItemUnWeaponOk\020"
+      "\374\375\001\022\037\n\031ItemUpdateDurabilityError\020\375\375\001\022\031\n\023"
+      "ItemCanNotUseToHero\020\376\375\001\022\026\n\020RuneIsNotAuto"
+      "Set\020\377\375\001\022\024\n\016RuneSlotIsFull\020\200\376\001\022\030\n\022RuneSlo"
+      "tIndexError\020\201\376\001\022\027\n\021RuneSameTypeLimit\020\202\376\001"
+      "\022\022\n\014RunePutOnSuc\020\203\376\001\022\024\n\016RuneTakeOffSuc\020\204"
+      "\376\001\022\025\n\017RuneTakeOffFail\020\205\376\001\022\025\n\017RuneSlotIsE"
+      "mpty\020\206\376\001\022\031\n\023PlayerHeadIconSetOK\020\331\376\001\022\030\n\022P"
+      "layerFactionSetOK\020\332\376\001\022\034\n\026PlayerHeadIconN"
+      "otExist\020\333\376\001\022\033\n\025PlayerFactionNotExist\020\334\376\001"
+      "\022\032\n\024PlayerHeadIconNotHad\020\335\376\001\022\032\n\024StorySet"
+      "tingNotExist\020\274\377\001\022\023\n\rStoryNotExist\020\275\377\001\022\032\n"
+      "\024StorySequenceIsError\020\276\377\001\022\033\n\025StoryTrigge"
+      "rTypeLimit\020\277\377\001\022\035\n\027DialogueSettingNotExis"
+      "t\020\300\377\001\022\026\n\020DialogueNotExist\020\301\377\001\022\033\n\025Dialogu"
+      "eHaveNotBranch\020\302\377\001\022\034\n\026DialogueBranchNotE"
+      "xist\020\303\377\001\022!\n\033DialogueBranchLackCondition\020"
+      "\304\377\001\022\033\n\025BranchSettingNotExist\020\305\377\001\022\035\n\027Dial"
+      "ogueBranchSelectSuc\020\306\377\001\022\035\n\027StoryHaveDial"
+      "ogueBranch\020\307\377\001\022\034\n\026StorySequenceNotFinish"
+      "\020\310\377\001b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 4058);
+      descriptor, 4212);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "CodeMessage.proto", &protobuf_RegisterTypes);
 }
@@ -303,6 +307,7 @@ bool ProjectCodeEnum_IsValid(int value) {
     case 31330:
     case 31331:
     case 31332:
+    case 31333:
     case 32401:
     case 32402:
     case 32403:
@@ -322,6 +327,12 @@ bool ProjectCodeEnum_IsValid(int value) {
     case 32510:
     case 32511:
     case 32512:
+    case 32513:
+    case 32514:
+    case 32515:
+    case 32516:
+    case 32517:
+    case 32518:
     case 32601:
     case 32602:
     case 32603:

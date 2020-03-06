@@ -16,7 +16,6 @@
     <ClInclude Include="KFChancelConfig.hpp" />
     <ClInclude Include="KFChapterConfig.hpp" />
     <ClInclude Include="KFCharacterConfig.hpp" />
-    <ClInclude Include="KFCompoundRuneConfig.hpp" />
     <ClInclude Include="KFConfig.h" />
     <ClInclude Include="KFCurrencyConfig.hpp" />
     <ClInclude Include="KFDataSetting.h" />
@@ -31,6 +30,7 @@
     <ClInclude Include="KFMultiEventConfig.hpp" />
     <ClInclude Include="KFNpcConfig.hpp" />
     <ClInclude Include="KFNpcGroupConfig.hpp" />
+    <ClInclude Include="KFNpcRandConfig.hpp" />
     <ClInclude Include="KFNpcSkillConfig.hpp" />
     <ClInclude Include="KFPinchFaceConfig.hpp" />
     <ClInclude Include="KFPunishConfig.hpp" />
@@ -66,7 +66,6 @@
     <ClCompile Include="KFChancelConfig.cpp" />
     <ClCompile Include="KFChapterConfig.cpp" />
     <ClCompile Include="KFCharacterConfig.cpp" />
-    <ClCompile Include="KFCompoundRuneConfig.cpp" />
     <ClCompile Include="KFCurrencyConfig.cpp" />
     <ClCompile Include="KFDialogueBranchConfig.cpp" />
     <ClCompile Include="KFDialogueConfig.cpp" />
@@ -79,6 +78,7 @@
     <ClCompile Include="KFMultiEventConfig.cpp" />
     <ClCompile Include="KFNpcConfig.cpp" />
     <ClCompile Include="KFNpcGroupConfig.cpp" />
+    <ClCompile Include="KFNpcRandConfig.cpp" />
     <ClCompile Include="KFNpcSkillConfig.cpp" />
     <ClCompile Include="KFPinchFaceConfig.cpp" />
     <ClCompile Include="KFPunishConfig.cpp" />

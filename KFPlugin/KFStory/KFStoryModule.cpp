@@ -243,6 +243,9 @@ namespace KFrame
             }
             else
             {
+                // 更换同步顺序, 先删除条件，再添加条件，再更新
+                player->SyncDataSequence( KFEnum::Dec, KFEnum::Add, KFEnum::Set );
+
                 // 有子剧情，则继续执行子剧情
                 player->UpdateData( kfstory, __STRING__( sequence ), KFEnum::Set, 0u );
 
@@ -349,6 +352,7 @@ namespace KFrame
         auto kfstorysetting = KFStoryConfig::Instance()->FindSetting( storyid );
         if ( kfstorysetting == nullptr )
         {
+            __LOG_ERROR__( "storyid [{}] is not exist", storyid );
             return;
         }
 
@@ -419,7 +423,7 @@ namespace KFrame
         else if ( storysequence->_type == KFMsg::UIDialogue || storysequence->_type == KFMsg::BubbleDialogue )
         {
             // 当前序列为对话，添加对话
-            _kf_dialogue->AddDialogue( player, storysequence->_parameter1, storysequence->_type );
+            _kf_dialogue->AddDialogue( player, storysequence->_parameter1, storysequence->_type, storyid );
         }
     }
 }

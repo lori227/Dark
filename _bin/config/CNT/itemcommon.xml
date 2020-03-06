@@ -1,4 +1,4 @@
-<root platform="" version="2951">
+<root platform="" version="3115">
 	<item Id="1000002" Type="1" Quality="3" OverlayType="1" OverlayCount="100" ExploreOverlayCount="100" UseCount="0" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
 	<item Id="1000003" Type="2" Quality="5" OverlayType="1" OverlayCount="1" ExploreOverlayCount="1" UseCount="1" UseLimit="1" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
 	<item Id="1000004" Type="2" Quality="4" OverlayType="1" OverlayCount="100" ExploreOverlayCount="100" UseCount="1" UseLimit="1" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
@@ -14,7 +14,7 @@
 	<item Id="1000014" Type="1" Quality="1" OverlayType="1" OverlayCount="10" ExploreOverlayCount="10" UseCount="0" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
 	<item Id="1000015" Type="1" Quality="1" OverlayType="1" OverlayCount="20" ExploreOverlayCount="20" UseCount="1" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
 	<item Id="1000016" Type="1" Quality="1" OverlayType="1" OverlayCount="999" ExploreOverlayCount="999" UseCount="1" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
-	<item Id="1000017" Type="8" Quality="4" OverlayType="1" OverlayCount="100" ExploreOverlayCount="100" UseCount="0" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
+	<item Id="1000017" Type="8" Quality="4" OverlayType="1" OverlayCount="999" ExploreOverlayCount="100" UseCount="0" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
 	<item Id="1000101" Type="1" Quality="5" OverlayType="1" OverlayCount="100" ExploreOverlayCount="100" UseCount="0" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
 	<item Id="1000201" Type="1" Quality="6" OverlayType="1" OverlayCount="100" ExploreOverlayCount="100" UseCount="0" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
 	<item Id="1000301" Type="3" Quality="3" OverlayType="1" OverlayCount="999" ExploreOverlayCount="999" UseCount="1" UseLimit="2" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />

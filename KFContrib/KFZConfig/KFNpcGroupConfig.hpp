@@ -12,6 +12,9 @@ namespace KFrame
     public:
         // npc生成列表
         UInt32Vector _npc_generate_list;
+
+        // 显示模型
+        std::string _show_model;
     };
 
     ////////////////////////////////////////////////////////////////////////////////

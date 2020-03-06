@@ -423,11 +423,12 @@ namespace KFrame
         }
         else if ( operate == KFEnum::Set )
         {
+            hp = __MAX__( hp, 1u );
             hp = __MIN__( hp, maxhp );
         }
         else if ( operate == KFEnum::Dec )
         {
-            hp = ( hp >= nowhp ? 1 : hp );
+            hp = ( hp >= nowhp ? ( nowhp - 1 ) : hp );
         }
 
         player->UpdateData( kffighter, __STRING__( hp ), operate, hp );
@@ -442,26 +443,12 @@ namespace KFrame
             return nullptr;
         }
 
-        auto hp = kfhero->Get<uint32>( __STRING__( fighter ), __STRING__( hp ) );
-        if ( hp == 0u )
+        auto durability = kfhero->Get<uint32>( __STRING__( durability ) );
+        if ( durability == 0u )
         {
             return nullptr;
         }
 
         return kfhero;
-    }
-    uint32 KFHeroModule::GetHeroDeathReason( KFData* kfhero )
-    {
-        if ( kfhero == nullptr )
-        {
-            return KFMsg::NoExist;
-        }
-
-        if ( kfhero->Get<uint32>( __STRING__( durability ) ) == 0u )
-        {
-            return KFMsg::NoEnoughDurability;
-        }
-
-        return KFMsg::NoDeathReason;
     }
 }

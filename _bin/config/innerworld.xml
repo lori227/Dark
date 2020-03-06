@@ -1,3 +1,3 @@
-<root platform="" version="2948">
-	<item Id="1" ReducedTreatment="50" InnerWorldType="1" BuffConditions="|Innerword_OrcOnly" InnerWorldBuff="280025|280035" Description="无名之雾" />
+<root platform="" version="3039">
+	<item Id="1" ReducedTreatment="50" InnerWorldType="1" BuffConditions="" InnerWorldBuff="280025" Description="无名之雾" />
 </root>

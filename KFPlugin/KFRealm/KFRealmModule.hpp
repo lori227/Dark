@@ -15,6 +15,7 @@
 #include "KFHero/KFHeroInterface.h"
 #include "KFHero/KFHeroTeamInterface.h"
 #include "KFItem/KFItemInterface.h"
+#include "KFItem/KFItemMoveInterface.h"
 #include "KFDrop/KFDropInterface.h"
 #include "KFExecute/KFExecuteInterface.h"
 #include "KFKernel/KFKernelInterface.h"
@@ -26,6 +27,7 @@
 #include "KFZConfig/KFItemConfig.hpp"
 #include "KFZConfig/KFRealmConfig.hpp"
 #include "KFZConfig/KFInnerWorldConfig.hpp"
+#include "KFItem/KFItemRuneInterface.h"
 
 namespace KFrame
 {
@@ -93,16 +95,12 @@ namespace KFrame
         // 掉落减少英雄buff
         __KF_DROP_LOGIC_FUNCTION__( OnDropHeroDecBuff );
 
-        // 掉落增加英雄血量
-        __KF_DROP_LOGIC_FUNCTION__( OnDropHeroAddHp );
-
-        // 掉落减少英雄血量
-        __KF_DROP_LOGIC_FUNCTION__( OnDropHeroDecHp );
-
         // 秘境逻辑事件
         __KF_EXECUTE_FUNCTION__( OnExecuteRealm );
 
     protected:
+        virtual void BindEnterRealmFunction( const std::string& module, KFEnterRealmFunction& function );
+        virtual void UnBindEnterRealmFunction( const std::string& module );
         //////////////////////////////////////////////////////////////////////////////////////
         // 离开游戏
         __KF_LEAVE_PLAYER_FUNCTION__( OnLeaveSaveRealmData );
@@ -128,6 +126,7 @@ namespace KFrame
 
         // 结算掉落
         void RealmBalanceDrop( KFEntity* player, KFRealmData* kfrealmdata, uint32 result );
+        const UInt32Vector& GetRealmDropList( const KFRealmLevel* kfsetting, uint32 result );
 
         // 结算清空数据
         void RealmBalanceClearData( KFEntity* player, uint32 result );
@@ -162,6 +161,9 @@ namespace KFrame
 
         // 玩家的探索结算数据
         KFHashMap< uint64, uint64, KFRealmData > _realm_data;
+
+        // 进入秘境回调
+        KFBind< std::string, const std::string&, KFEnterRealmFunction > _enter_realm_function;
     };
 }
 

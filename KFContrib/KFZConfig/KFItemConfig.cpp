@@ -3,6 +3,13 @@
 
 namespace KFrame
 {
+    void KFItemConfig::ClearSetting()
+    {
+        _rune_type_level.clear();
+        _rune_compound.clear();
+        KFConfigT< KFItemSetting >::ClearSetting();
+    }
+
     void KFItemConfig::ReadSetting( KFNode& xmlnode, KFItemSetting* kfsetting )
     {
         switch ( kfsetting->_type )
@@ -34,6 +41,22 @@ namespace KFrame
             ReadCommonSetting( xmlnode, kfsetting );
             break;
         }
+    }
+
+    void KFItemConfig::LoadAllComplete()
+    {
+        _rune_compound.clear();
+        for ( auto iter : _rune_type_level )
+        {
+            auto nextkey = iter.first + 1u;
+            auto nextiter = _rune_type_level.find( nextkey );
+            if ( nextiter != _rune_type_level.end() )
+            {
+                _rune_compound[iter.second] = nextiter->second;
+            }
+        }
+
+        _rune_type_level.clear();
     }
 
     void KFItemConfig::ReadCommonSetting( KFNode& xmlnode, KFItemSetting* kfsetting )
@@ -140,16 +163,36 @@ namespace KFrame
 
     void KFItemConfig::ReadRuneSetting( KFNode& xmlnode, KFItemSetting* kfsetting )
     {
-        if ( xmlnode.GetUInt32( "RewardAutoSet", true ) == 1u )
+        if ( xmlnode.GetUInt32( "AutoSet", true ) == 1u )
         {
-            kfsetting->_get_auto_set = true;
+            kfsetting->_auto_set = true;
         }
 
-        kfsetting->_compound_id = xmlnode.GetUInt32( "CompoundId" );
+        kfsetting->_rune_type = xmlnode.GetUInt32( "RuneType", true );
+        kfsetting->_rune_level = xmlnode.GetUInt32( "RuneLevel" );
+
+        if ( kfsetting->_rune_type == 0u )
+        {
+            return;
+        }
+
+        auto key = kfsetting->_rune_type * 10000u + kfsetting->_rune_level;
+        _rune_type_level[key] = kfsetting->_id;
     }
 
     void KFItemConfig::ReadFoodSetting( KFNode& xmlnode, KFItemSetting* kfsetting )
     {
 
+    }
+
+    uint32 KFItemConfig::GetRuneCompoundId( uint32 id )
+    {
+        auto iter = _rune_compound.find( id );
+        if ( iter != _rune_compound.end() )
+        {
+            return iter->second;
+        }
+
+        return _invalid_int;
     }
 }

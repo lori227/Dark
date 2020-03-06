@@ -9,9 +9,6 @@ namespace KFrame
         __REGISTER_LEAVE_PLAYER__( &KFRealmModule::OnLeaveSaveRealmData );
         __REGISTER_DROP_LOGIC__( __STRING__( addbuff ), &KFRealmModule::OnDropHeroAddBuff );
         __REGISTER_DROP_LOGIC__( __STRING__( decbuff ), &KFRealmModule::OnDropHeroDecBuff );
-        __REGISTER_DROP_LOGIC__( __STRING__( addhp ), &KFRealmModule::OnDropHeroAddHp );
-        __REGISTER_DROP_LOGIC__( __STRING__( dechp ), &KFRealmModule::OnDropHeroDecHp );
-
 
         __REGISTER_EXECUTE__( __STRING__( realm ), &KFRealmModule::OnExecuteRealm );
         ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -35,8 +32,6 @@ namespace KFrame
 
         __UN_DROP_LOGIC__( __STRING__( addbuff ) );
         __UN_DROP_LOGIC__( __STRING__( decbuff ) );
-        __UN_DROP_LOGIC__( __STRING__( addhp ) );
-        __UN_DROP_LOGIC__( __STRING__( dechp ) );
 
         __UN_EXECUTE__( __STRING__( realm ) );
         //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -53,7 +48,20 @@ namespace KFrame
         __UN_MESSAGE__( KFMsg::MSG_ADD_BUFF_REQ );
         __UN_MESSAGE__( KFMsg::MSG_REMOVE_BUFF_REQ );
     }
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    void KFRealmModule::BindEnterRealmFunction( const std::string& module, KFEnterRealmFunction& function )
+    {
+        auto kffunction = _enter_realm_function.Create( module );
+        kffunction->_function = function;
+    }
 
+    void KFRealmModule::UnBindEnterRealmFunction( const std::string& module )
+    {
+        _enter_realm_function.Remove( module );
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////
     __KF_EXECUTE_FUNCTION__( KFRealmModule::OnExecuteRealm )
     {
         if ( executedata->_param_list._params.size() < 2u )
@@ -78,7 +86,7 @@ namespace KFrame
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgRealmEnterReq );
 
-        RealmEnter( player, kfmsg.realmid(), 0u, kfmsg.type(), _invalid_string, _invalid_int );
+        RealmEnter( player, kfmsg.realmid(), 1u, kfmsg.type(), _invalid_string, _invalid_int );
     }
 
     __KF_MESSAGE_FUNCTION__( KFRealmModule::HandleRealmJumpReq )
@@ -138,7 +146,16 @@ namespace KFrame
         ack.set_worldflag( kfrealmdata->_data.innerworld() );
         ack.mutable_exploredata()->CopyFrom( *pbexplore );
         ack.mutable_buffdata()->CopyFrom( kfrealmdata->_data.buffdata() );
-        return _kf_player->SendToClient( player, KFMsg::MSG_REALM_ENTER_ACK, &ack );
+        _kf_player->SendToClient( player, KFMsg::MSG_REALM_ENTER_ACK, &ack );
+
+        // 进入秘境回调
+        for ( auto& iter : _enter_realm_function._objects )
+        {
+            auto kffunction = iter.second;
+            kffunction->_function( player, kfrealmdata, entertype );
+        }
+
+        return true;
     }
 
     std::tuple<uint32, KFRealmData*, KFMsg::PBExploreData*> KFRealmModule::RealmChapterEnter( KFEntity* player, uint32 realmid, uint32 level, const std::string& modulename, uint64 moduleid )
@@ -183,18 +200,18 @@ namespace KFrame
         kfrealmdata->_data.set_extendlevel( KFMsg::ExtendLevel );
         kfrealmdata->_data.set_starttime( KFGlobal::Instance()->_real_time );
 
-        // 纪录结算开始数据
-        kfrealmdata->BalanceBeginData( player );
-
         // level explore
         auto pbexplore = kfrealmdata->FindExeploreData( level );
         pbexplore->set_creation( kfexplorelevel->_createion );
         pbexplore->set_innerworld( kfexplorelevel->_inner_world );
+        pbexplore->set_innerworldparameter( kfexplorelevel->_inner_parameter );
         ExploreInitData( pbexplore, kfexplorelevel->_explore_id, ( uint32 )kfsetting->_levels.size(), level, 0u );
 
         // 进入关卡条件回调
         RealmJumpCondition( player, realmid, 0u, level );
 
+        // 纪录背包数据
+        kfrealmdata->RecordBeginItems( player );
         return std::make_tuple( KFMsg::Ok, kfrealmdata, pbexplore );
     }
 
@@ -211,6 +228,7 @@ namespace KFrame
         pbexplore->set_id( exploreid );
         pbexplore->set_totallevel( maxlevel );
         pbexplore->set_random( KFGlobal::Instance()->RandRatio( ( uint32 )__MAX_INT32__ ) );
+        pbexplore->mutable_npcdata()->clear();
     }
 
     std::tuple<uint32, KFRealmData*, KFMsg::PBExploreData*> KFRealmModule::RealmLoginEnter( KFEntity* player, uint32 realmid )
@@ -291,8 +309,8 @@ namespace KFrame
             kfrealmdata->_data.set_starttime( KFGlobal::Instance()->_real_time );
         }
 
-        // 重新统计数据
-        kfrealmdata->BalanceBeginData( player );
+        // 纪录初始道具信息
+        kfrealmdata->RecordBeginItems( player );
 
         auto pbexplore = kfrealmdata->FindExeploreData( kfrealmdata->_data.level() );
         return std::make_tuple( KFMsg::Ok, kfrealmdata, pbexplore );
@@ -338,6 +356,7 @@ namespace KFrame
         pbexplore->set_birthplace( birthplace );
         pbexplore->set_creation( kfexplorelevel->_createion );
         pbexplore->set_innerworld( kfexplorelevel->_inner_world );
+        pbexplore->set_innerworldparameter( kfexplorelevel->_inner_parameter );
         ExploreInitData( pbexplore, kfexplorelevel->_explore_id, ( uint32 )kfsetting->_levels.size(), level, lastlevel );
 
         // 完成/进入关卡条件回调
@@ -445,21 +464,21 @@ namespace KFrame
     {
         KFMsg::MsgRealmBalanceAck ack;
         ack.set_result( result );
-        kfrealmdata->BalanceRealmRecord( ack.mutable_balance(), KFMsg::ExploreStatus );
-        _kf_player->SendToClient( player, KFMsg::MSG_REALM_BALANCE_ACK, &ack, 10u );
+        kfrealmdata->BalanceRealmRecord( ack.mutable_balance() );
+        _kf_player->SendToClient( player, KFMsg::MSG_REALM_BALANCE_ACK, &ack );
     }
 
     void KFRealmModule::RealmBalanceVictory( KFEntity* player, KFRealmData* kfrealmdata )
     {
-        // 先结算货币
-        kfrealmdata->BalanceCurrencyEndData( player );
+        // 纪录英雄数据
+        kfrealmdata->RecordBeginHeros( player );
 
         // 结算掉落
         RealmBalanceDrop( player, kfrealmdata, KFMsg::Victory );
 
         // 结算最终数据
-        kfrealmdata->BalanceHeroEndData( player );
-        kfrealmdata->BalanceItemEndData( player );
+        kfrealmdata->RecordEndItems( player );
+        kfrealmdata->RecordEndHeros( player );
 
         // 发送消息
         SendRealmBalanceToClient( player, kfrealmdata, KFMsg::Victory );
@@ -474,8 +493,8 @@ namespace KFrame
 
     void KFRealmModule::RealmBalanceFailed( KFEntity* player, KFRealmData* kfrealmdata )
     {
-        // 先结算货币
-        kfrealmdata->BalanceCurrencyEndData( player );
+        // 纪录英雄数据
+        kfrealmdata->RecordBeginHeros( player );
 
         // 结算掉落
         RealmBalanceDrop( player, kfrealmdata, KFMsg::Failed );
@@ -484,8 +503,8 @@ namespace KFrame
         RealmRandFailedItems( player, kfrealmdata );
 
         // 结算最终数据
-        kfrealmdata->BalanceHeroEndData( player );
-        kfrealmdata->BalanceItemEndData( player );
+        kfrealmdata->RecordEndItems( player );
+        kfrealmdata->RecordEndHeros( player );
 
         // 发送消息
         SendRealmBalanceToClient( player, kfrealmdata, KFMsg::Failed );
@@ -502,8 +521,8 @@ namespace KFrame
         // 随机探索失败获得道具
         RealmRandFailedItems( player, kfrealmdata );
 
-        // 先结算
-        kfrealmdata->BalanceEndData( player );
+        // 纪录最终道具
+        kfrealmdata->RecordEndItems( player );
 
         // 发送消息
         SendRealmBalanceToClient( player, kfrealmdata, KFMsg::Flee );
@@ -515,7 +534,7 @@ namespace KFrame
     void KFRealmModule::RealmBalanceTown( KFEntity* player, KFRealmData* kfrealmdata )
     {
         // 结算获得的道具
-        kfrealmdata->BalanceEndData( player );
+        kfrealmdata->RecordEndItems( player );
 
         // 发送消息
         SendRealmBalanceToClient( player, kfrealmdata, KFMsg::Town );
@@ -525,6 +544,9 @@ namespace KFrame
 
         // 结算背包
         RealmBalanceItem( player, KFMsg::Town );
+
+        // 重新纪录玩家道具信息
+        kfrealmdata->RecordBeginItems( player );
     }
 
     void KFRealmModule::RealmBalanceDrop( KFEntity* player, KFRealmData* kfrealmdata, uint32 result )
@@ -535,22 +557,28 @@ namespace KFrame
             return;
         }
 
-        // 把原来的显示同步到客户端
-        player->ShowElementToClient();
-
-        // 结算胜利掉落
-        switch ( result )
+        auto& droplist = GetRealmDropList( kfsetting, result );
+        if ( !droplist.empty() )
         {
-        case KFMsg::Victory:
-            _kf_drop->Drop( player, kfsetting->_victory_drop_list, __STRING__( realm ), kfrealmdata->_data.id(), __FUNC_LINE__ );
-            break;
-        case KFMsg::Failed:
-            _kf_drop->Drop( player, kfsetting->_fail_drop_list, __STRING__( realm ), kfrealmdata->_data.id(), __FUNC_LINE__ );
-            break;
+            // 把原来的显示同步到客户端
+            player->ShowElementToClient();
+
+            // 掉落
+            _kf_drop->Drop( player, droplist, __STRING__( realm ), kfrealmdata->_data.id(), __FUNC_LINE__ );
+
+            // 掉落显示
+            kfrealmdata->BalanceDropData( player );
+        }
+    }
+
+    const UInt32Vector& KFRealmModule::GetRealmDropList( const KFRealmLevel* kfsetting, uint32 result )
+    {
+        if ( result == KFMsg::Victory )
+        {
+            return kfsetting->_victory_drop_list;
         }
 
-        // 掉落显示
-        kfrealmdata->BalanceAddDropData( player );
+        return kfsetting->_fail_drop_list;
     }
 
     void KFRealmModule::RealmBalanceClearData( KFEntity* player, uint32 result )
@@ -559,10 +587,10 @@ namespace KFrame
         _realm_data.Remove( player->GetKeyID() );
 
         // 探索结束后就移除寿命不足的英雄
-        _kf_hero_team->RemoveTeamHeroDurability( player );
+        _kf_hero_team->RemoveDurabilityHero( player );
 
         // 清空队伍英雄ep
-        _kf_hero_team->ClearTeamHeroEp( player );
+        _kf_hero_team->ClearHeroEp( player );
 
         // 清除探索内道具背包
         RealmBalanceItem( player, result );
@@ -584,14 +612,15 @@ namespace KFrame
         case KFMsg::Victory:
         case KFMsg::Failed:
         case KFMsg::Flee:
-            _kf_item->CleanItem( player, __STRING__( other ), true );
-            _kf_item->CleanItem( player, __STRING__( explore ), true );
+            _kf_item_move->CleanItem( player, __STRING__( other ), true );
+            _kf_item_move->CleanItem( player, __STRING__( explore ), true );
+            _kf_item_move->CleanItem( player, __STRING__( rune ), true );
             break;
         case KFMsg::Chapter:
             player->CleanData( __STRING__( other ) );
             break;
         case KFMsg::Town:
-            _kf_item->CleanItem( player, __STRING__( other ), true );
+            _kf_item_move->CleanItem( player, __STRING__( other ), true );
             break;
         }
     }
@@ -637,6 +666,10 @@ namespace KFrame
         for ( auto& iter : destoryitemlist )
         {
             player->MoveData( iter.first, __STRING__( count ), KFEnum::Dec, iter.second );
+
+            // 纪录失去的道具
+            auto pbitem = kfrealmdata->FindLose( iter.first->Get<uint32>( __STRING__( id ) ) );
+            pbitem->set_count( pbitem->count() + iter.second );
         }
     }
 
@@ -663,15 +696,19 @@ namespace KFrame
         auto kfrecord = _realm_data.Find( player->GetKeyID() );
         if ( kfrecord == nullptr )
         {
-            return;
+            player->Set( __STRING__( realmid ), 0u );
+            player->Set( __STRING__( realmdata ), _invalid_string );
         }
+        else
+        {
+            auto usetime = KFGlobal::Instance()->_real_time - kfrecord->_data.starttime();
+            kfrecord->_data.set_usetime( kfrecord->_data.usetime() + usetime );
 
-        auto usetime = KFGlobal::Instance()->_real_time - kfrecord->_data.starttime();
-        kfrecord->_data.set_usetime( kfrecord->_data.usetime() + usetime );
-
-        auto strdata = kfrecord->_data.SerializeAsString();
-        player->Set( __STRING__( realmdata ), strdata );
-        _realm_data.Remove( player->GetKeyID() );
+            auto strdata = kfrecord->_data.SerializeAsString();
+            player->Set( __STRING__( realmdata ), strdata );
+            player->Set( __STRING__( realmid ), kfrecord->_data.id() );
+            _realm_data.Remove( player->GetKeyID() );
+        }
     }
 
     __KF_DROP_LOGIC_FUNCTION__( KFRealmModule::OnDropHeroAddBuff )
@@ -820,7 +857,7 @@ namespace KFrame
                 playerdata->set_step( playerdata->step() - count * kfsetting->_hp_step );
 
                 auto dechp = kfsetting->_hp_num * count;
-                _kf_hero_team->OperateTeamHeroHp( player, KFEnum::Dec, dechp );
+                _kf_hero_team->OperateHpValue( player, KFEnum::Dec, dechp );
             }
         }
     }
@@ -836,7 +873,11 @@ namespace KFrame
 
         auto pbnpcdata = kfmsg.npcdata();
         auto findnpcdata = kfrealmdata->FindNpcData( pbnpcdata.key() );
-        findnpcdata->CopyFrom( pbnpcdata );
+        findnpcdata->set_x( pbnpcdata.x() );
+        findnpcdata->set_y( pbnpcdata.y() );
+        findnpcdata->set_z( pbnpcdata.z() );
+        findnpcdata->set_yaw( pbnpcdata.yaw() );
+        findnpcdata->set_bkilled( pbnpcdata.bkilled() );
     }
 
     __KF_MESSAGE_FUNCTION__( KFRealmModule::HandleExploreDropReq )
@@ -894,20 +935,6 @@ namespace KFrame
 
         kfinteraction->Set( __STRING__( field ), kfmsg.field() );
         player->UpdateData( kfinteraction, __STRING__( id ), KFEnum::Set, kfmsg.itemid() );
-    }
-
-    __KF_DROP_LOGIC_FUNCTION__( KFRealmModule::OnDropHeroAddHp )
-    {
-        auto hp = dropdata->GetValue();
-        _kf_hero_team->OperateTeamHeroHp( player, KFEnum::Add, hp );
-        player->AddDataToShow( dropdata->_logic_name, hp, false );
-    }
-
-    __KF_DROP_LOGIC_FUNCTION__( KFRealmModule::OnDropHeroDecHp )
-    {
-        auto hp = dropdata->GetValue();
-        _kf_hero_team->OperateTeamHeroHp( player, KFEnum::Dec, hp );
-        player->AddDataToShow( dropdata->_logic_name, hp, false );
     }
 
     const KFRealmLevel* KFRealmModule::FindRealmLevelSetting( KFEntity* player )

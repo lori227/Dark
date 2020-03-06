@@ -115,9 +115,6 @@
     <ClInclude Include="KFNpcGroupConfig.hpp">
       <Filter>Realm</Filter>
     </ClInclude>
-    <ClInclude Include="KFCompoundRuneConfig.hpp">
-      <Filter>Item</Filter>
-    </ClInclude>
     <ClInclude Include="KFInnerWorldConfig.hpp">
       <Filter>Realm</Filter>
     </ClInclude>
@@ -131,6 +128,9 @@
       <Filter>Realm</Filter>
     </ClInclude>
     <ClInclude Include="KFMultiEventConfig.hpp">
+      <Filter>Realm</Filter>
+    </ClInclude>
+    <ClInclude Include="KFNpcRandConfig.hpp">
       <Filter>Realm</Filter>
     </ClInclude>
   </ItemGroup>
@@ -269,9 +269,6 @@
     <ClCompile Include="KFNpcGroupConfig.cpp">
       <Filter>Realm</Filter>
     </ClCompile>
-    <ClCompile Include="KFCompoundRuneConfig.cpp">
-      <Filter>Item</Filter>
-    </ClCompile>
     <ClCompile Include="KFInnerWorldConfig.cpp">
       <Filter>Realm</Filter>
     </ClCompile>
@@ -285,6 +282,9 @@
       <Filter>Realm</Filter>
     </ClCompile>
     <ClCompile Include="KFMultiEventConfig.cpp">
+      <Filter>Realm</Filter>
+    </ClCompile>
+    <ClCompile Include="KFNpcRandConfig.cpp">
       <Filter>Realm</Filter>
     </ClCompile>
   </ItemGroup>

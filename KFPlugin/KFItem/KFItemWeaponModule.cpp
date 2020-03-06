@@ -66,9 +66,6 @@ namespace KFrame
             return false;
         }
 
-        auto index = _kf_item->FindItemEmptyIndex( player, kfitemrecord );
-        kfweapon->Set( __STRING__( index ), index );
-
         if ( removehero )
         {
             player->AddData( kfitemrecord, kfweapon->GetKeyID(), kfweapon, false );
@@ -170,9 +167,6 @@ namespace KFrame
 
         // 更换同步顺序, 武器是先移除, 然后会update到英雄身上
         player->SyncDataSequence( KFEnum::Dec, KFEnum::Set, KFEnum::Add );
-
-        // 添加新的背包格子
-        _kf_item->AddItemEmptyIndex( player, kfitem );
 
         // 卸载武器
         MoveHeroWeapon( player, kfhero, kfitemrecord, false );

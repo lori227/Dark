@@ -25,9 +25,6 @@ namespace KFrame
 
         // 查找存活的英雄
         virtual KFData* FindAliveHero( KFData* kfherorecord, uint64 uuid ) = 0;
-
-        // 获取英雄死亡原因
-        virtual uint32 GetHeroDeathReason( KFData* kfhero ) = 0;
     };
 
     __KF_INTERFACE__( _kf_hero, KFHeroInterface );

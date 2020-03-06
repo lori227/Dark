@@ -7,6 +7,8 @@ namespace KFrame
         // 生成
         auto strgenerate = xmlnode.GetString( "Npc" );
         KFUtility::SplitList( kfsetting->_npc_generate_list, strgenerate, __SPLIT_STRING__ );
+
+        kfsetting->_show_model = xmlnode.GetString( "SpawnModel" );
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////
 

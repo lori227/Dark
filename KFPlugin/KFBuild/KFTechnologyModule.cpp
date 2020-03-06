@@ -175,7 +175,7 @@ namespace KFrame
             _kf_execute->Execute( player, &kfsetting->_execute_data, __FUNC_LINE__ );
 
             // 建筑科技的数量
-            auto kfbuild = kfbuildrecord->Find( kfsetting->_id );
+            auto kfbuild = kfbuildrecord->Find( kfsetting->_build_id );
             if ( kfbuild != nullptr )
             {
                 kfbuild->Operate( __STRING__( technology ), KFEnum::Add, 1u );

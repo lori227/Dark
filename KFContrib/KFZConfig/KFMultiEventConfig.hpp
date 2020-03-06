@@ -31,6 +31,7 @@ namespace KFrame
     public:
         KFMultiEventConfig()
         {
+            _key_name = "MultiId";
             _file_name = "multievent";
         }
 

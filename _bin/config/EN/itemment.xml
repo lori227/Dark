@@ -1,4 +1,4 @@
-<root platform="" version="3008">
+<root platform="" version="3207">
 	<item Name="maxitemcount" Key="" Value="12" Channel="0" Service="0" />
 	<item Name="maxstoragecount" Key="" Value="999" Channel="0" Service="0" />
 	<item Name="exploremaxcount" Key="" Value="12" Channel="0" Service="0" />
@@ -12,7 +12,7 @@
 	<item Name="weaponmaxcount" Key="" Value="999" Channel="0" Service="0" />
 	<item Name="fooditemid" Key="" Value="1000017" Channel="0" Service="0" />
 	<item Name="granarycdtime" Key="" Value="600" Channel="0" Service="0" />
-	<item Name="granaryfreebuycount" Key="" Value="3" Channel="0" Service="0" />
+	<item Name="granaryfreebuycount" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="weaponalarm" Key="" Value="0.2" Channel="0" Service="0" />
 	<item Name="smithyitemid" Key="" Value="1900004" Channel="0" Service="0" />
 	<item Name="smithystorenum" Key="" Value="2000" Channel="0" Service="0" />
@@ -28,8 +28,7 @@
 	<item Name="cliniccurecount" Key="" Value="4" Channel="0" Service="0" />
 	<item Name="clinicconsumefid" Key="" Value="3" Channel="0" Service="0" />
 	<item Name="clinicconsumenum" Key="" Value="10" Channel="0" Service="0" />
-	<item Name="maxrunelevel" Key="" Value="3" Channel="0" Service="0" />
-	<item Name="runesynthesisnumb" Key="" Value="3" Channel="0" Service="0" />
-	<item Name="maxruneequip" Key="" Value="8" Channel="0" Service="0" />
+	<item Name="runecompoundnum" Key="" Value="3" Channel="0" Service="0" />
+	<item Name="maxruneslot" Key="" Value="8" Channel="0" Service="0" />
 	<item Name="selectmaxcount" Key="" Value="10" Channel="0" Service="0" />
 </root>

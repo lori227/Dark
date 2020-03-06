@@ -37,6 +37,7 @@ namespace KFrame
         __FIND_MODULE__( _kf_hero_team, KFHeroTeamInterface );
         __FIND_MODULE__( _kf_realm, KFRealmInterface );
         __FIND_MODULE__( _kf_rune, KFItemRuneInterface );
+        __FIND_MODULE__( _kf_item_move, KFItemMoveInterface );
     }
 
     void KFRealmPlugin::AddConfig()
@@ -49,6 +50,7 @@ namespace KFrame
         __KF_ADD_CONFIG__( KFElementConfig );
         __KF_ADD_CONFIG__( KFPunishConfig );
         __KF_ADD_CONFIG__( KFNpcGroupConfig );
+        __KF_ADD_CONFIG__( KFNpcRandConfig );
         __KF_ADD_CONFIG__( KFInnerWorldConfig );
         __KF_ADD_CONFIG__( KFGambleConfig );
         __KF_ADD_CONFIG__( KFExchangeConfig );

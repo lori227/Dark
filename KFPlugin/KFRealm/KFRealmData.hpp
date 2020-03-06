@@ -43,8 +43,8 @@ namespace KFrame
         // 查找道具
         KFMsg::PBBalanceItemServer* FindItem( uint32 id, uint64 uuid );
 
-        // 查找货币
-        KFMsg::PBBalanceCurrency* FindCurrency( const std::string& name );
+        // 丢失的道具
+        KFMsg::PBBalanceItem* FindLose( uint32 id );
 
         // 查找npc数据
         KFMsg::PBExploreNpcData* FindNpcData( const std::string& key );
@@ -56,52 +56,55 @@ namespace KFrame
         // 添加buff
         void AddBuffData( uint64 uuid, uint32 value );
         void RemoveBuffData( uint64 uuid, uint32 value );
-
         ////////////////////////////////////////////////////////////////////////////////////////////////
-        // 初始化数据
-        void BalanceBeginData( KFEntity* player );
-
-        // 结算数据
-        void BalanceEndData( KFEntity* player );
-
-        // 初始化英雄数据
-        void BalanceHeroBeginData( KFEntity* player );
-
-        // 英雄最终数据
-        void BalanceHeroEndData( KFEntity* player );
-
         // 初始化道具数据
-        void BalanceItemBeginData( KFEntity* player );
+        void RecordBeginItems( KFEntity* player );
 
         // 道具最终数据
-        void BalanceItemEndData( KFEntity* player );
+        void RecordEndItems( KFEntity* player );
 
-        // 初始化货币数据
-        void BalanceCurrencyBeginData( KFEntity* player );
+        // 初始化英雄数据
+        void RecordBeginHeros( KFEntity* player );
 
-        // 最终货币数据
-        void BalanceCurrencyEndData( KFEntity* player );
-
+        // 英雄最终数据
+        void RecordEndHeros( KFEntity* player );
+        ////////////////////////////////////////////////////////////////////////////////////////////////
         // 结算掉落
-        void BalanceAddDropData( KFEntity* player );
+        void BalanceDropData( KFEntity* player );
 
         // 结算
-        void BalanceRealmRecord( KFMsg::PBBalanceData* pbdata, uint32 status );
+        void BalanceRealmRecord( KFMsg::PBBalanceData* pbdata );
         ////////////////////////////////////////////////////////////////////////////////////////////////
         // 是否在里世界
         bool IsInnerWorld() const;
     protected:
-        // 清空结算数据
-        void BalanceClearData( KFEntity* player );
-
+        // 计算英雄数据
+        void RecordHeroBeginData( KFData* kfhero, KFMsg::PBBalanceHeroServer* pbhero );
+        void RecordHeroEndData( KFData* kfhero, KFMsg::PBBalanceHeroServer* pbhero );
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////
         // 计算道具数据
-        void BalanceItemRecordData( KFData* kfitemrecord, uint32 balancetype );
-        void BalanceItemData( KFData* kfitem, uint32 balancetype );
-
+        void RecordItemRecordData( KFData* kfitemrecord, uint32 balancetype );
+        void RecordHeroWeapon( KFEntity* player, uint32 balancetype );
+        void RecordItemData( KFData* kfitem, uint32 balancetype );
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////
         // 结算各项数据
         void BalanceHeroRecord( KFMsg::PBBalanceData* pbdata );
-        void BalanceItemRecord( KFMsg::PBBalanceData* pbdata, uint32 status );
-        void BalanceCurrencyRecord( KFMsg::PBBalanceData* pbdata );
+        void BalanceItemRecord( KFMsg::PBBalanceData* pbdata );
+
+        // 判断是否是出战英雄
+        bool IsFightHero( uint64 herouuid );
+
+        // 计算英雄属性
+        void BalanceHeroAttributes( const KFMsg::PBBalanceHeroServer* pbheroserver, KFMsg::PBBalanceHero* pbheroclient );
+
+        // 结算英雄主动技能
+        void BalanceHeroActives( const KFMsg::PBBalanceHeroServer* pbheroserver, KFMsg::PBBalanceHero* pbheroclient );
+
+        // 计算英雄天赋技能
+        void BalanceHeroInnates( const KFMsg::PBBalanceHeroServer* pbheroserver, KFMsg::PBBalanceHero* pbheroclient );
+
     public:
         // 秘境数据
         KFMsg::PBRealmData _data;

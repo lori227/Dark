@@ -15,6 +15,11 @@ namespace KFrame
         return this;
     }
 
+    bool KFRealmData::IsInnerWorld() const
+    {
+        return _data.innerworld() > 0u;
+    }
+
     KFMsg::PBBalanceItemServer* KFRealmData::FindItem( uint32 id, uint64 uuid )
     {
         for ( auto i = 0; i < _data.itemdata_size(); ++i )
@@ -32,6 +37,22 @@ namespace KFrame
         return pbitem;
     }
 
+    KFMsg::PBBalanceItem* KFRealmData::FindLose( uint32 id )
+    {
+        for ( auto i = 0; i < _data.loseitem_size(); ++i )
+        {
+            auto pbitem = _data.mutable_loseitem( i );
+            if ( pbitem->id() == id )
+            {
+                return pbitem;
+            }
+        }
+
+        auto pbitem = _data.add_loseitem();
+        pbitem->set_id( id );
+        return pbitem;
+    }
+
     KFMsg::PBBalanceHeroServer* KFRealmData::FindHero( uint64 uuid )
     {
         for ( auto i = 0; i < _data.herodata_size(); ++i )
@@ -46,22 +67,6 @@ namespace KFrame
         return nullptr;
     }
 
-    KFMsg::PBBalanceCurrency* KFRealmData::FindCurrency( const std::string& name )
-    {
-        for ( auto i = 0; i < _data.currencydata_size(); ++i )
-        {
-            auto pbcurrency = _data.mutable_currencydata( i );
-            if ( pbcurrency->name() == name )
-            {
-                return pbcurrency;
-            }
-        }
-
-        auto pbcurrency = _data.add_currencydata();
-        pbcurrency->set_name( name );
-        return pbcurrency;
-    }
-
     KFMsg::PBExploreData* KFRealmData::FindExeploreData( uint32 level )
     {
         auto pbexplore = _data.mutable_explore();
@@ -73,6 +78,7 @@ namespace KFrame
 
         auto& pbdata = ( *pbexplore )[ level ];
         pbdata.set_level( level );
+        pbdata.mutable_npcdata()->clear();
         return &pbdata;
     }
 
@@ -127,7 +133,7 @@ namespace KFrame
         // 删除该buff
         auto bufflistdata = &iter->second;
         auto buffsize = bufflistdata->bufflist_size();
-        for ( int32 index = 0; index < buffsize; ++index )
+        for ( auto index = 0; index < buffsize; ++index )
         {
             auto buff = &bufflistdata->bufflist( index );
             if ( buff->id() == value )
@@ -139,43 +145,7 @@ namespace KFrame
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    void KFRealmData::BalanceClearData( KFEntity* player )
-    {
-        _data.clear_itemdata();
-        _data.clear_herodata();
-        _data.clear_currencydata();
-    }
-
-    void KFRealmData::BalanceBeginData( KFEntity* player )
-    {
-        // 清空数据
-        BalanceClearData( player );
-
-        // 纪录货币的初始值
-        BalanceCurrencyBeginData( player );
-
-        // 纪录英雄的初始数值
-        BalanceHeroBeginData( player );
-
-        // 纪录背包的道具数值
-        BalanceItemBeginData( player );
-    }
-
-    void KFRealmData::BalanceEndData( KFEntity* player )
-    {
-        // 货币
-        BalanceCurrencyEndData( player );
-
-        // 英雄最终数据
-        BalanceHeroEndData( player );
-
-        // 道具最终数据
-        BalanceItemEndData( player );
-    }
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    void KFRealmData::BalanceHeroBeginData( KFEntity* player )
+    void KFRealmData::RecordBeginHeros( KFEntity* player )
     {
         auto kfherorecord = player->Find( __STRING__( hero ) );
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
@@ -188,106 +158,156 @@ namespace KFrame
                 continue;
             }
 
-            auto pbhero = _data.add_herodata();
-            pbhero->set_uuid( uuid );
-            pbhero->set_name( kfhero->Get<std::string>( __STRING__( name ) ) );
-            pbhero->set_race( kfhero->Get<uint32>( __STRING__( race ) ) );
-            pbhero->set_profession( kfhero->Get<uint32>( __STRING__( profession ) ) );
-            pbhero->set_sex( kfhero->Get<uint32>( __STRING__( sex ) ) );
-            pbhero->set_beginexp( kfhero->Get<uint32>( __STRING__( exp ) ) );
-            pbhero->set_beginlevel( kfhero->Get<uint32>( __STRING__( level ) ) );
+            RecordHeroBeginData( kfhero, _data.add_herodata() );
+        }
+    }
 
-            // 战斗属性
-            auto kffighter = kfhero->Find( __STRING__( fighter ) );
-            auto& pbattributes = *pbhero->mutable_beginattributes();
-            for ( auto kfchild = kffighter->First(); kfchild != nullptr; kfchild = kffighter->Next() )
+    void KFRealmData::RecordEndHeros( KFEntity* player )
+    {
+        auto kfherorecord = player->Find( __STRING__( hero ) );
+        for ( auto i = 0; i < _data.herodata_size(); ++i )
+        {
+            auto pbhero = _data.mutable_herodata( i );
+            auto kfhero = _kf_hero->FindAliveHero( kfherorecord, pbhero->uuid() );
+            if ( kfhero == nullptr )
             {
-                pbattributes[ kfchild->_data_setting->_name ] = kfchild->Get<uint32>();
+                continue;
+            }
+
+            RecordHeroEndData( kfhero, pbhero );
+        }
+    }
+
+    void KFRealmData::RecordHeroBeginData( KFData* kfhero, KFMsg::PBBalanceHeroServer* pbhero )
+    {
+        pbhero->set_death( true );
+        pbhero->set_uuid( kfhero->GetKeyID() );
+        pbhero->set_name( kfhero->Get<std::string>( __STRING__( name ) ) );
+        pbhero->set_race( kfhero->Get<uint32>( __STRING__( race ) ) );
+        pbhero->set_profession( kfhero->Get<uint32>( __STRING__( profession ) ) );
+        pbhero->set_sex( kfhero->Get<uint32>( __STRING__( sex ) ) );
+
+        pbhero->set_beginexp( kfhero->Get<uint32>( __STRING__( exp ) ) );
+        pbhero->set_beginlevel( kfhero->Get<uint32>( __STRING__( level ) ) );
+        //////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////
+        // 战斗属性
+        auto kffighter = kfhero->Find( __STRING__( fighter ) );
+        auto& pbattributes = *pbhero->mutable_beginattributes();
+        for ( auto kfchild = kffighter->First(); kfchild != nullptr; kfchild = kffighter->Next() )
+        {
+            pbattributes[ kfchild->_data_setting->_name ] = kfchild->Get<uint32>();
+        }
+
+        // 主动技能
+        auto kfactiverecord = kfhero->Find( __STRING__( active ) );
+        for ( auto kfactive = kfactiverecord->First(); kfactive != nullptr; kfactive = kfactiverecord->Next() )
+        {
+            pbhero->add_beginactive( kfactive->GetKeyID() );
+        }
+
+        // 天赋技能
+        auto kfinnaterecord = kfhero->Find( __STRING__( innate ) );
+        for ( auto kfinnate = kfinnaterecord->First(); kfinnate != nullptr; kfinnate = kfinnaterecord->Next() )
+        {
+            pbhero->add_begininnate( kfinnate->GetKeyID() );
+        }
+    }
+
+    void KFRealmData::RecordHeroEndData( KFData* kfhero, KFMsg::PBBalanceHeroServer* pbhero )
+    {
+        pbhero->set_death( false );
+        pbhero->set_endexp( kfhero->Get<uint32>( __STRING__( exp ) ) );
+        pbhero->set_endlevel( kfhero->Get<uint32>( __STRING__( level ) ) );
+        if ( pbhero->endlevel() == pbhero->beginlevel() )
+        {
+            return;
+        }
+
+        // 战斗属性
+        auto kffighter = kfhero->Find( __STRING__( fighter ) );
+        auto& pbattributes = *pbhero->mutable_endattributes();
+        for ( auto kfchild = kffighter->First(); kfchild != nullptr; kfchild = kffighter->Next() )
+        {
+            pbattributes[ kfchild->_data_setting->_name ] = kfchild->Get<uint32>();
+        }
+
+        // 主动技能
+        auto kfactiverecord = kfhero->Find( __STRING__( active ) );
+        for ( auto kfactive = kfactiverecord->First(); kfactive != nullptr; kfactive = kfactiverecord->Next() )
+        {
+            pbhero->add_endactive( kfactive->GetKeyID() );
+        }
+
+        // 天赋技能
+        auto kfinnaterecord = kfhero->Find( __STRING__( innate ) );
+        for ( auto kfinnate = kfinnaterecord->First(); kfinnate != nullptr; kfinnate = kfinnaterecord->Next() )
+        {
+            pbhero->add_endinnate( kfinnate->GetKeyID() );
+        }
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    void KFRealmData::RecordBeginItems( KFEntity* player )
+    {
+        _data.clear_itemdata();
+
+        // 探索背包
+        auto kfitemrecord = player->Find( __STRING__( explore ) );
+        RecordItemRecordData( kfitemrecord, StartType );
+
+        // 奖励背包
+        auto kfotherrecord = player->Find( __STRING__( other ) );
+        RecordItemRecordData( kfotherrecord, StartType );
+
+        // 英雄装备
+        RecordHeroWeapon( player, StartType );
+    }
+
+    void KFRealmData::RecordEndItems( KFEntity* player )
+    {
+        // 探索背包
+        auto kfitemrecord = player->Find( __STRING__( explore ) );
+        RecordItemRecordData( kfitemrecord, EndType );
+
+        // 奖励背包
+        auto kfotherrecord = player->Find( __STRING__( other ) );
+        RecordItemRecordData( kfotherrecord, EndType );
+
+        // 英雄装备
+        RecordHeroWeapon( player, EndType );
+    }
+
+    void KFRealmData::RecordHeroWeapon( KFEntity* player, uint32 balancetype )
+    {
+        auto kfherorecord = player->Find( __STRING__( hero ) );
+        auto kfteamarray = player->Find( __STRING__( heroteam ) );
+        for ( auto kfteam = kfteamarray->First(); kfteam != nullptr; kfteam = kfteamarray->Next() )
+        {
+            auto kfhero = kfherorecord->Find( kfteam->Get<uint64>() );
+            if ( kfhero == nullptr )
+            {
+                continue;
             }
 
             // 计算武器
             auto kfweapon = kfhero->Find( __STRING__( weapon ) );
             if ( kfweapon != nullptr && kfweapon->GetKeyID() != 0u )
             {
-                BalanceItemData( kfweapon, StartType );
+                RecordItemData( kfweapon, balancetype );
             }
         }
     }
 
-    void KFRealmData::BalanceHeroEndData( KFEntity* player )
-    {
-        auto kfherorecord = player->Find( __STRING__( hero ) );
-        for ( auto i = 0; i < _data.herodata_size(); ++i )
-        {
-            auto pbhero = _data.mutable_herodata( i );
-            auto kfhero = kfherorecord->Find( pbhero->uuid() );
-            auto deathreason = _kf_hero->GetHeroDeathReason( kfhero );
-
-            // 对有效单位计算
-            if ( deathreason == KFMsg::NoDeathReason )
-            {
-                pbhero->set_death( false );
-                pbhero->set_endexp( kfhero->Get<uint32>( __STRING__( exp ) ) );
-                pbhero->set_endlevel( kfhero->Get<uint32>( __STRING__( level ) ) );
-                if ( pbhero->endlevel() != pbhero->beginlevel() )
-                {
-                    // 战斗属性
-                    auto kffighter = kfhero->Find( __STRING__( fighter ) );
-                    auto& pbattributes = *pbhero->mutable_endattributes();
-                    for ( auto kfchild = kffighter->First(); kfchild != nullptr; kfchild = kffighter->Next() )
-                    {
-                        pbattributes[kfchild->_data_setting->_name] = kfchild->Get<uint32>();
-                    }
-                }
-
-                // 计算武器
-                auto kfweapon = kfhero->Find( __STRING__( weapon ) );
-                if ( kfweapon != nullptr && kfweapon->GetKeyID() != 0u )
-                {
-                    BalanceItemData( kfweapon, EndType );
-                }
-            }
-            else
-            {
-                pbhero->set_death( true );
-                pbhero->set_deathreason( deathreason );
-            }
-        }
-    }
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    void KFRealmData::BalanceItemBeginData( KFEntity* player )
-    {
-        // 道具
-        auto kfitemrecord = player->Find( __STRING__( explore ) );
-        BalanceItemRecordData( kfitemrecord, StartType );
-
-        // other
-        auto kfotherrecord = player->Find( __STRING__( other ) );
-        BalanceItemRecordData( kfotherrecord, StartType );
-    }
-
-    void KFRealmData::BalanceItemEndData( KFEntity* player )
-    {
-        // 道具
-        auto kfitemrecord = player->Find( __STRING__( explore ) );
-        BalanceItemRecordData( kfitemrecord, EndType );
-
-        // other
-        auto kfotherrecord = player->Find( __STRING__( other ) );
-        BalanceItemRecordData( kfotherrecord, EndType );
-    }
-
-    void KFRealmData::BalanceItemRecordData( KFData* kfitemrecord, uint32 balancetype )
+    void KFRealmData::RecordItemRecordData( KFData* kfitemrecord, uint32 balancetype )
     {
         for ( auto kfitem = kfitemrecord->First(); kfitem != nullptr; kfitem = kfitemrecord->Next() )
         {
-            BalanceItemData( kfitem, balancetype );
+            RecordItemData( kfitem, balancetype );
         }
     }
 
-    void KFRealmData::BalanceItemData( KFData* kfitem, uint32 balancetype )
+    void KFRealmData::RecordItemData( KFData* kfitem, uint32 balancetype )
     {
         auto count = kfitem->Get<uint32>( __STRING__( count ) );
         auto itemid = kfitem->Get<uint32>( kfitem->_data_setting->_config_key_name );
@@ -319,46 +339,19 @@ namespace KFrame
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    void KFRealmData::BalanceCurrencyBeginData( KFEntity* player )
+    void KFRealmData::BalanceRealmRecord( KFMsg::PBBalanceData* pbdata )
     {
-        // 所有货币
-        for ( auto& iter : KFCurrencyConfig::Instance()->_settings._objects )
-        {
-            auto kfsetting = iter.second;
-            auto pbcurrency = FindCurrency( kfsetting->_name );
-            pbcurrency->set_beginvalue( player->Get<uint32>( kfsetting->_name ) );
-        }
-    }
-
-    void KFRealmData::BalanceCurrencyEndData( KFEntity* player )
-    {
-        // 所有货币
-        for ( auto& iter : KFCurrencyConfig::Instance()->_settings._objects )
-        {
-            auto kfsetting = iter.second;
-            auto pbcurrency = FindCurrency( kfsetting->_name );
-            pbcurrency->set_endvalue( player->Get<uint32>( kfsetting->_name ) );
-        }
-    }
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    void KFRealmData::BalanceRealmRecord( KFMsg::PBBalanceData* pbdata, uint32 status )
-    {
-        //__LOG_INFO__( "{}", _data.DebugString() );
-
         // 英雄
         BalanceHeroRecord( pbdata );
 
-        // 道具
-        BalanceItemRecord( pbdata, status );
+        // 获得的道具
+        BalanceItemRecord( pbdata );
 
-        // 货币
-        BalanceCurrencyRecord( pbdata );
-
-        //__LOG_INFO__( "{}", pbdata->DebugString() );
+        // 失去的道具
+        pbdata->mutable_loseitem()->Swap( _data.mutable_loseitem() );
     }
 
-    void KFRealmData::BalanceAddDropData( KFEntity* player )
+    void KFRealmData::BalanceDropData( KFEntity* player )
     {
         KFMsg::PBShowElement pbelement;
         if ( !player->GetShowElement( &pbelement ) )
@@ -397,58 +390,7 @@ namespace KFrame
         }
     }
 
-    void KFRealmData::BalanceHeroRecord( KFMsg::PBBalanceData* pbdata )
-    {
-        for ( auto i = 0; i < _data.herodata_size(); ++i )
-        {
-            auto pbheroserver = &_data.herodata( i );
-
-            // PVE只结算出战英雄列表
-            if ( !_fight_hero.empty() && _fight_hero.find( pbheroserver->uuid() ) == _fight_hero.end() )
-            {
-                continue;
-            }
-
-            auto pbheroclient = pbdata->add_herodata();
-
-            pbheroclient->set_uuid( pbheroserver->uuid() );
-            pbheroclient->set_death( pbheroserver->death() );
-            if ( pbheroclient->death() )
-            {
-                pbheroclient->set_name( pbheroserver->name() );
-                pbheroclient->set_race( pbheroserver->race() );
-                pbheroclient->set_profession( pbheroserver->profession() );
-                pbheroclient->set_sex( pbheroserver->sex() );
-                pbheroclient->set_deathreason( pbheroserver->deathreason() );
-            }
-            else
-            {
-                pbheroclient->set_exp( pbheroserver->endexp() - pbheroserver->beginexp() );
-                pbheroclient->set_level( pbheroserver->endlevel() - pbheroserver->beginlevel() );
-                if ( pbheroclient->level() > 0u )
-                {
-                    // 战斗属性
-                    auto& pbattributes = *pbheroclient->mutable_attributes();
-                    auto& pbbeginattributes = pbheroserver->beginattributes();
-                    auto& pbendattributes = pbheroserver->endattributes();
-                    for ( auto& iter : pbendattributes )
-                    {
-                        auto& name = iter.first;
-                        auto beigniter = pbbeginattributes.find( name );
-                        if ( beigniter != pbbeginattributes.end() )
-                        {
-                            if ( iter.second > beigniter->second )
-                            {
-                                pbattributes[ name ] = iter.second - beigniter->second;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    void KFRealmData::BalanceItemRecord( KFMsg::PBBalanceData* pbdata, uint32 status )
+    void KFRealmData::BalanceItemRecord( KFMsg::PBBalanceData* pbdata )
     {
         for ( auto i = 0; i < _data.itemdata_size(); ++i )
         {
@@ -458,36 +400,127 @@ namespace KFrame
                 continue;
             }
 
-            // 探索自动销毁的道具不做统计
-            if ( status == KFMsg::ExploreStatus )
-            {
-                auto auto_type = _kf_item->GetItemAutoType( pbitemserver->id() );
-                if ( auto_type == KFMsg::AutoDestory )
-                {
-                    continue;
-                }
-            }
-
-            auto pbitemclient = pbdata->add_itemdata();
+            auto pbitemclient = pbdata->add_gainitem();
             pbitemclient->set_id( pbitemserver->id() );
             pbitemclient->set_uuid( pbitemserver->uuid() );
             pbitemclient->set_count( pbitemserver->endcount() - pbitemserver->begincount() );
         }
     }
 
-    void KFRealmData::BalanceCurrencyRecord( KFMsg::PBBalanceData* pbdata )
+    bool KFRealmData::IsFightHero( uint64 herouuid )
     {
-        for ( auto i = 0; i < _data.currencydata_size(); ++i )
+        if ( _fight_hero.empty() )
         {
-            auto pbcurrencyserver = &_data.currencydata( i );
+            return true;
+        }
 
-            auto pbcurrencyclient = pbdata->add_currencydata();
-            pbcurrencyclient->CopyFrom( *pbcurrencyserver );
+        // PVE只结算出战英雄列表
+        return _fight_hero.find( herouuid ) != _fight_hero.end();
+    }
+
+    void KFRealmData::BalanceHeroRecord( KFMsg::PBBalanceData* pbdata )
+    {
+        for ( auto i = 0; i < _data.herodata_size(); ++i )
+        {
+            auto pbheroserver = &_data.herodata( i );
+            if ( !IsFightHero( pbheroserver->uuid() ) )
+            {
+                continue;
+            }
+
+            auto pbheroclient = pbdata->add_herodata();
+            pbheroclient->set_death( pbheroserver->death() );
+            if ( pbheroclient->death() )
+            {
+                pbheroclient->set_sex( pbheroserver->sex() );
+                pbheroclient->set_name( pbheroserver->name() );
+                pbheroclient->set_race( pbheroserver->race() );
+                pbheroclient->set_profession( pbheroserver->profession() );
+            }
+            else
+            {
+                pbheroclient->set_uuid( pbheroserver->uuid() );
+                pbheroclient->set_exp( pbheroserver->endexp() - pbheroserver->beginexp() );
+                pbheroclient->set_level( pbheroserver->endlevel() - pbheroserver->beginlevel() );
+                if ( pbheroclient->level() > 0u )
+                {
+                    // 战斗属性
+                    BalanceHeroAttributes( pbheroserver, pbheroclient );
+
+                    // 主动技能
+                    BalanceHeroActives( pbheroserver, pbheroclient );
+
+                    // 天赋技能
+                    BalanceHeroInnates( pbheroserver, pbheroclient );
+                }
+            }
         }
     }
 
-    bool KFRealmData::IsInnerWorld() const
+    void KFRealmData::BalanceHeroAttributes( const KFMsg::PBBalanceHeroServer* pbheroserver, KFMsg::PBBalanceHero* pbheroclient )
     {
-        return _data.innerworld() > 0u;
+        auto& pbattributes = *pbheroclient->mutable_attributes();
+        auto& pbbeginattributes = pbheroserver->beginattributes();
+        auto& pbendattributes = pbheroserver->endattributes();
+        for ( auto& enditer : pbendattributes )
+        {
+            auto& name = enditer.first;
+            auto beigniter = pbbeginattributes.find( name );
+            if ( beigniter != pbbeginattributes.end() )
+            {
+                if ( enditer.second > beigniter->second )
+                {
+                    pbattributes[ name ] = enditer.second - beigniter->second;
+                }
+            }
+        }
+    }
+
+    void KFRealmData::BalanceHeroActives( const KFMsg::PBBalanceHeroServer* pbheroserver, KFMsg::PBBalanceHero* pbheroclient )
+    {
+        static auto _check_begin_active = []( const KFMsg::PBBalanceHeroServer * pbheroserver, uint32 activeid )
+        {
+            for ( auto i = 0; i < pbheroserver->beginactive_size(); ++i )
+            {
+                if ( pbheroserver->beginactive( i ) == activeid )
+                {
+                    return true;
+                }
+            }
+            return false;
+        };
+
+        for ( auto i = 0; i < pbheroserver->endactive_size(); ++i )
+        {
+            auto activeid = pbheroserver->endactive( i );
+            if ( !_check_begin_active( pbheroserver, activeid ) )
+            {
+                pbheroclient->add_active( activeid );
+            }
+        }
+    }
+
+    void KFRealmData::BalanceHeroInnates( const KFMsg::PBBalanceHeroServer* pbheroserver, KFMsg::PBBalanceHero* pbheroclient )
+    {
+        static auto _check_begin_innate = []( const KFMsg::PBBalanceHeroServer * pbheroserver, uint32 innateid )
+        {
+            for ( auto i = 0; i < pbheroserver->begininnate_size(); ++i )
+            {
+                if ( pbheroserver->begininnate( i ) == innateid )
+                {
+                    return true;
+                }
+            }
+            return false;
+        };
+
+        for ( auto i = 0; i < pbheroserver->endinnate_size(); ++i )
+        {
+            auto innateid = pbheroserver->endinnate( i );
+            if ( !_check_begin_innate( pbheroserver, innateid ) )
+            {
+                pbheroclient->add_innate( innateid );
+            }
+        }
     }
 }

@@ -11,23 +11,17 @@ namespace KFrame
     class KFItemInterface : public KFModule
     {
     public:
+        // 获得背包列表
+        virtual const StringVector& GetItemRecordList() = 0;
+
+        // 背包格子最大数量
+        virtual uint32 GetItemRecordMaxCount( KFEntity* player, KFData* kfitemrecord ) = 0;
+
         // 创建一个道具
         virtual KFData* CreateItem( KFEntity* player, uint32 itemid, KFData* kfitem, const char* function, uint32 line ) = 0;
 
-        // 清空包裹
-        virtual void CleanItem( KFEntity* player, const std::string& name, bool isauto = false ) = 0;
-
         // 获取能添加物品数量
         virtual uint32 GetCanAddItemCount( KFEntity* player, uint32 itemid, uint32 num ) = 0;
-
-        // 获取物品自动操作类型
-        virtual uint32 GetItemAutoType( uint32 itemid ) = 0;
-
-        // 查找空的格子存放道具
-        virtual uint32 FindItemEmptyIndex( KFEntity* player, KFData* kfitemrecord ) = 0;
-
-        // 清空格子信息
-        virtual void AddItemEmptyIndex( KFEntity* player, KFData* kfitem ) = 0;
 
         // 查找道具
         virtual std::tuple<KFData*, KFData*> FindItem( KFEntity* player, uint64 itemuuid ) = 0;
@@ -41,14 +35,20 @@ namespace KFrame
         // 获得包裹内道具数量
         virtual uint32 GetItemCount( KFEntity* player, KFData* kfitemrecord, uint32 itemid, uint32 maxcount = __MAX_UINT32__ ) = 0;
 
+        // 添加物品
+        virtual void AddItem( KFEntity* player, KFData* kfitemrecord, uint32 itemid, uint32 itemcount, bool callback = true ) = 0;
+
         // 删除包裹内道具
         virtual void RemoveItem( KFEntity* player, KFData* kfitemrecord, uint32 itemid, uint32 itemcount ) = 0;
+        virtual uint32 RemoveItemCount( KFEntity* player, KFData* kfitem, uint32 itemcount ) = 0;
 
         // 随机删除包裹内道具
         virtual uint32 RandRemoveItem( KFEntity* player, KFData* kfitemrecord, uint32& itemcount ) = 0;
 
         // 获得背包属性
+        virtual KFData* FindItemRecord( KFEntity* player, uint32 itemid ) = 0;
         virtual KFData* FindItemRecord( KFEntity* player, KFData* kfitem ) = 0;
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 初始化数据
@@ -72,30 +72,7 @@ namespace KFrame
 #define __UN_INIT_ITEM__( itemtype )\
     _kf_item->UnRegisteInitItemFunction( itemtype )
 
-    //////////////////////////////////////////////////////////////////////////
-    class KFItemUseInterface : public KFModule
-    {
-    public:
 
-    };
-    __KF_INTERFACE__( _kf_item_use, KFItemUseInterface );
-
-    //////////////////////////////////////////////////////////////////////////
-    class KFItemWeaponInterface : public KFModule
-    {
-    public:
-    };
-    __KF_INTERFACE__( _kf_weapon, KFItemWeaponInterface );
-    //////////////////////////////////////////////////////////////////////////
-    class KFItemRuneInterface : public KFModule
-    {
-    public:
-        // 清空符石槽数据
-        virtual bool ClearRuneSlotData( KFEntity* player ) = 0;
-
-    };
-    __KF_INTERFACE__( _kf_rune, KFItemRuneInterface );
-    //////////////////////////////////////////////////////////////////////////
 }
 
 #endif

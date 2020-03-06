@@ -11,6 +11,7 @@
 
 #include "KFrameEx.h"
 #include "KFItemInterface.h"
+#include "KFItemWeaponInterface.h"
 #include "KFKernel/KFKernelInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFMessage/KFMessageInterface.h"

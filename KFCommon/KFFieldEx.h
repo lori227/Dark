@@ -227,7 +227,8 @@ namespace KFrame
         __STRING_DEFINE__( foodpercent );
         __STRING_DEFINE__( moneypercent );
         __STRING_DEFINE__( suppliespercent );
-        __STRING_DEFINE__( runeequips );
+        __STRING_DEFINE__( runeslot );
+        __STRING_DEFINE__( runecompound );
         __STRING_DEFINE__( gamble );
         __STRING_DEFINE__( pvedata );
         __STRING_DEFINE__( exchange );

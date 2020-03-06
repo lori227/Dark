@@ -7,6 +7,10 @@ namespace KFrame
         kfsetting->_cost_item_id = xmlnode.GetUInt32( "CostItemId" );
         kfsetting->_init_count = xmlnode.GetUInt32( "Price" );
         kfsetting->_max_count = xmlnode.GetUInt32( "MaxPrice" );
+        if ( kfsetting->_max_count == 0u )
+        {
+            kfsetting->_max_count = __MAX_UINT32__;
+        }
 
         auto strparams = xmlnode.GetString( "Params" );
         KFUtility::SplitList( kfsetting->_params, strparams, __SPLIT_STRING__ );

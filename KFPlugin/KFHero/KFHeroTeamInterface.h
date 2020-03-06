@@ -18,20 +18,22 @@ namespace KFrame
         virtual uint32 GetDeadHeroCount( KFEntity* player ) = 0;
 
         // 更新队伍死亡的英雄
-        virtual void UpdateTeamDeadHero( KFEntity* player ) = 0;
+        virtual void UpdateDeadHero( KFEntity* player ) = 0;
 
         // 扣除队伍每个英雄的耐久度
-        virtual void DecTeamHeroDurability( KFEntity* player, const UInt64Set& fightheros ) = 0;
+        virtual void DecHeroDurability( KFEntity* player, const UInt64Set& fightheros ) = 0;
 
         // 移除队伍中耐久度不足的英雄
-        virtual void RemoveTeamHeroDurability( KFEntity* player ) = 0;
+        virtual void RemoveDurabilityHero( KFEntity* player ) = 0;
 
         // 清空队伍英雄的ep
-        virtual void ClearTeamHeroEp( KFEntity* player ) = 0;
+        virtual void ClearHeroEp( KFEntity* player ) = 0;
 
-        // 操作队伍英雄血量
-        virtual void OperateTeamHeroHp( KFEntity* player, uint32 operate, uint32 value ) = 0;
+        // 操作队伍英雄血量数值
+        virtual void OperateHpValue( KFEntity* player, uint32 operate, uint32 value, const KeyValue* conditions = nullptr ) = 0;
 
+        // 操作队伍英雄血量百分比
+        virtual void OperateHpPercent( KFEntity* player, uint32 operate, uint32 value, const KeyValue* conditions = nullptr ) = 0;
     };
 
     //////////////////////////////////////////////////////////////////////////////////

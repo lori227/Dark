@@ -1,4 +1,4 @@
-<root platform="" version="2994">
+<root platform="" version="3097">
 	<item Id="redis" Name="redis" FileName="./setting/{}_{}_redis.xml" Reload="0" ClearData="0" ClearFile="0" ChildFile="0" />
 	<item Id="mongo" Name="mongo" FileName="./setting/{}_{}_mongo.xml" Reload="0" ClearData="0" ClearFile="0" ChildFile="0" />
 	<item Id="mysql" Name="mysql" FileName="./setting/{}_{}_mysql.xml" Reload="0" ClearData="0" ClearFile="0" ChildFile="0" />
@@ -63,6 +63,7 @@
 	<item Id="clinic" Name="clinic" FileName="./config/clinic.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="npc" Name="npcgenerate" FileName="./config/npcgenerate.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="npcgroup" Name="npcgroup" FileName="./config/npcgroup.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
+	<item Id="npcrand" Name="npcrand" FileName="./config/npcrand.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="npcskill" Name="npcskill" FileName="./config/npcskill.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="buildskin" Name="buildskin" FileName="./config/buildskin.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="herotransfer" Name="herotransfer" FileName="./config/herotransfer.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
@@ -92,7 +93,6 @@
 	<item Id="dialoguebranch" Name="dialoguebranch" FileName="./config/dialoguebranch.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="story" Name="story" FileName="./config/story.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="punish" Name="punish" FileName="./config/punish.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
-	<item Id="compoundrune" Name="compoundrune" FileName="./config/compoundrune.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="innerworld" Name="innerworld" FileName="./config/innerworld.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="gamble" Name="gamble" FileName="./config/gamble.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="exchange" Name="exchange" FileName="./config/exchange.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />

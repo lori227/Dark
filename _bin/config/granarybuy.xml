@@ -1,8 +1,12 @@
-<root platform="" version="2697">
-	<item Id="1" Consume="[[1,2,50]]" />
-	<item Id="2" Consume="[[1,2,100]]" />
-	<item Id="3" Consume="[[1,2,150]]" />
-	<item Id="4" Consume="[[1,2,200]]" />
-	<item Id="5" Consume="[[1,2,250]]" />
-	<item Id="6" Consume="[[1,2,300]]" />
+<root platform="" version="3207">
+	<item Id="1" Consume="[[1,2,20]]" />
+	<item Id="2" Consume="[[1,2,20]]" />
+	<item Id="3" Consume="[[1,2,30]]" />
+	<item Id="4" Consume="[[1,2,30]]" />
+	<item Id="5" Consume="[[1,2,50]]" />
+	<item Id="6" Consume="[[1,2,50]]" />
+	<item Id="7" Consume="[[1,2,100]]" />
+	<item Id="8" Consume="[[1,2,100]]" />
+	<item Id="9" Consume="[[1,2,200]]" />
+	<item Id="10" Consume="[[1,2,200]]" />
 </root>

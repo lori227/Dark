@@ -28,26 +28,25 @@
 // @@protoc_insertion_point(includes)
 
 namespace protobuf_DefineMessage_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PBBalanceCurrency;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PBBalanceHeroServer_BeginattributesEntry_DoNotUse;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PBBalanceHeroServer_CharacterEntry_DoNotUse;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PBBalanceHeroServer_EndattributesEntry_DoNotUse;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PBBalanceHero_AttributesEntry_DoNotUse;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PBBalanceHero_CharacterEntry_DoNotUse;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PBBalanceItem;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PBBalanceItemServer;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PBBuffData;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PBExploreNpcData;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PBExplorePlayerData;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PBNpcGroupData;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_PBBalanceHero;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_PBBuffListData;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_PBExploreData_NpcdataEntry_DoNotUse;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_PBExploreNpcData;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_PBExploreNpcData_NpcgroupdataEntry_DoNotUse;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_PBHeroBuffData;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_PBHeroBuffData_BuffEntry_DoNotUse;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_PBMatchPlayer_HeroEntry_DoNotUse;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_PBRealmData_ExploreEntry_DoNotUse;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_PBBalanceHero;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_PBBalanceHeroServer;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_PBExploreData;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<3> scc_info_PBBalanceHeroServer;
 }  // namespace protobuf_DefineMessage_2eproto
 namespace protobuf_FrameDefineMessage_2eproto {
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_FrameDefineMessage_2eproto ::google::protobuf::internal::SCCInfo<7> scc_info_PBObject;
@@ -73,21 +72,11 @@ class PBBalanceHero_AttributesEntry_DoNotUseDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<PBBalanceHero_AttributesEntry_DoNotUse>
       _instance;
 } _PBBalanceHero_AttributesEntry_DoNotUse_default_instance_;
-class PBBalanceHero_CharacterEntry_DoNotUseDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<PBBalanceHero_CharacterEntry_DoNotUse>
-      _instance;
-} _PBBalanceHero_CharacterEntry_DoNotUse_default_instance_;
 class PBBalanceHeroDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<PBBalanceHero>
       _instance;
 } _PBBalanceHero_default_instance_;
-class PBBalanceCurrencyDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<PBBalanceCurrency>
-      _instance;
-} _PBBalanceCurrency_default_instance_;
 class PBBalanceDataDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<PBBalanceData>
@@ -108,11 +97,6 @@ class PBBalanceHeroServer_EndattributesEntry_DoNotUseDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<PBBalanceHeroServer_EndattributesEntry_DoNotUse>
       _instance;
 } _PBBalanceHeroServer_EndattributesEntry_DoNotUse_default_instance_;
-class PBBalanceHeroServer_CharacterEntry_DoNotUseDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<PBBalanceHeroServer_CharacterEntry_DoNotUse>
-      _instance;
-} _PBBalanceHeroServer_CharacterEntry_DoNotUse_default_instance_;
 class PBBalanceHeroServerDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<PBBalanceHeroServer>
@@ -128,6 +112,16 @@ class PBExplorePlayerDataDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<PBExplorePlayerData>
       _instance;
 } _PBExplorePlayerData_default_instance_;
+class PBNpcGroupDataDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<PBNpcGroupData>
+      _instance;
+} _PBNpcGroupData_default_instance_;
+class PBExploreNpcData_NpcgroupdataEntry_DoNotUseDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<PBExploreNpcData_NpcgroupdataEntry_DoNotUse>
+      _instance;
+} _PBExploreNpcData_NpcgroupdataEntry_DoNotUse_default_instance_;
 class PBExploreNpcDataDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<PBExploreNpcData>
@@ -236,19 +230,6 @@ static void InitDefaultsPBBalanceHero_AttributesEntry_DoNotUse() {
 LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_PBBalanceHero_AttributesEntry_DoNotUse =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsPBBalanceHero_AttributesEntry_DoNotUse}, {}};
 
-static void InitDefaultsPBBalanceHero_CharacterEntry_DoNotUse() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::KFMsg::_PBBalanceHero_CharacterEntry_DoNotUse_default_instance_;
-    new (ptr) ::KFMsg::PBBalanceHero_CharacterEntry_DoNotUse();
-  }
-  ::KFMsg::PBBalanceHero_CharacterEntry_DoNotUse::InitAsDefaultInstance();
-}
-
-LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_PBBalanceHero_CharacterEntry_DoNotUse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsPBBalanceHero_CharacterEntry_DoNotUse}, {}};
-
 static void InitDefaultsPBBalanceHero() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -260,24 +241,9 @@ static void InitDefaultsPBBalanceHero() {
   ::KFMsg::PBBalanceHero::InitAsDefaultInstance();
 }
 
-LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<2> scc_info_PBBalanceHero =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsPBBalanceHero}, {
-      &protobuf_DefineMessage_2eproto::scc_info_PBBalanceHero_AttributesEntry_DoNotUse.base,
-      &protobuf_DefineMessage_2eproto::scc_info_PBBalanceHero_CharacterEntry_DoNotUse.base,}};
-
-static void InitDefaultsPBBalanceCurrency() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::KFMsg::_PBBalanceCurrency_default_instance_;
-    new (ptr) ::KFMsg::PBBalanceCurrency();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::KFMsg::PBBalanceCurrency::InitAsDefaultInstance();
-}
-
-LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_PBBalanceCurrency =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsPBBalanceCurrency}, {}};
+LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<1> scc_info_PBBalanceHero =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsPBBalanceHero}, {
+      &protobuf_DefineMessage_2eproto::scc_info_PBBalanceHero_AttributesEntry_DoNotUse.base,}};
 
 static void InitDefaultsPBBalanceData() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -290,11 +256,10 @@ static void InitDefaultsPBBalanceData() {
   ::KFMsg::PBBalanceData::InitAsDefaultInstance();
 }
 
-LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<3> scc_info_PBBalanceData =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 3, InitDefaultsPBBalanceData}, {
+LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<2> scc_info_PBBalanceData =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsPBBalanceData}, {
       &protobuf_DefineMessage_2eproto::scc_info_PBBalanceHero.base,
-      &protobuf_DefineMessage_2eproto::scc_info_PBBalanceItem.base,
-      &protobuf_DefineMessage_2eproto::scc_info_PBBalanceCurrency.base,}};
+      &protobuf_DefineMessage_2eproto::scc_info_PBBalanceItem.base,}};
 
 static void InitDefaultsPBBalanceItemServer() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -336,19 +301,6 @@ static void InitDefaultsPBBalanceHeroServer_EndattributesEntry_DoNotUse() {
 LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_PBBalanceHeroServer_EndattributesEntry_DoNotUse =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsPBBalanceHeroServer_EndattributesEntry_DoNotUse}, {}};
 
-static void InitDefaultsPBBalanceHeroServer_CharacterEntry_DoNotUse() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::KFMsg::_PBBalanceHeroServer_CharacterEntry_DoNotUse_default_instance_;
-    new (ptr) ::KFMsg::PBBalanceHeroServer_CharacterEntry_DoNotUse();
-  }
-  ::KFMsg::PBBalanceHeroServer_CharacterEntry_DoNotUse::InitAsDefaultInstance();
-}
-
-LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_PBBalanceHeroServer_CharacterEntry_DoNotUse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsPBBalanceHeroServer_CharacterEntry_DoNotUse}, {}};
-
 static void InitDefaultsPBBalanceHeroServer() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -360,11 +312,10 @@ static void InitDefaultsPBBalanceHeroServer() {
   ::KFMsg::PBBalanceHeroServer::InitAsDefaultInstance();
 }
 
-LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<3> scc_info_PBBalanceHeroServer =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 3, InitDefaultsPBBalanceHeroServer}, {
+LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<2> scc_info_PBBalanceHeroServer =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsPBBalanceHeroServer}, {
       &protobuf_DefineMessage_2eproto::scc_info_PBBalanceHeroServer_BeginattributesEntry_DoNotUse.base,
-      &protobuf_DefineMessage_2eproto::scc_info_PBBalanceHeroServer_EndattributesEntry_DoNotUse.base,
-      &protobuf_DefineMessage_2eproto::scc_info_PBBalanceHeroServer_CharacterEntry_DoNotUse.base,}};
+      &protobuf_DefineMessage_2eproto::scc_info_PBBalanceHeroServer_EndattributesEntry_DoNotUse.base,}};
 
 static void InitDefaultsPBFighterHeroData() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -394,6 +345,34 @@ static void InitDefaultsPBExplorePlayerData() {
 LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_PBExplorePlayerData =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsPBExplorePlayerData}, {}};
 
+static void InitDefaultsPBNpcGroupData() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::KFMsg::_PBNpcGroupData_default_instance_;
+    new (ptr) ::KFMsg::PBNpcGroupData();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::KFMsg::PBNpcGroupData::InitAsDefaultInstance();
+}
+
+LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_PBNpcGroupData =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsPBNpcGroupData}, {}};
+
+static void InitDefaultsPBExploreNpcData_NpcgroupdataEntry_DoNotUse() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::KFMsg::_PBExploreNpcData_NpcgroupdataEntry_DoNotUse_default_instance_;
+    new (ptr) ::KFMsg::PBExploreNpcData_NpcgroupdataEntry_DoNotUse();
+  }
+  ::KFMsg::PBExploreNpcData_NpcgroupdataEntry_DoNotUse::InitAsDefaultInstance();
+}
+
+LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<1> scc_info_PBExploreNpcData_NpcgroupdataEntry_DoNotUse =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsPBExploreNpcData_NpcgroupdataEntry_DoNotUse}, {
+      &protobuf_DefineMessage_2eproto::scc_info_PBNpcGroupData.base,}};
+
 static void InitDefaultsPBExploreNpcData() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -405,8 +384,9 @@ static void InitDefaultsPBExploreNpcData() {
   ::KFMsg::PBExploreNpcData::InitAsDefaultInstance();
 }
 
-LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_PBExploreNpcData =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsPBExploreNpcData}, {}};
+LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<1> scc_info_PBExploreNpcData =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsPBExploreNpcData}, {
+      &protobuf_DefineMessage_2eproto::scc_info_PBExploreNpcData_NpcgroupdataEntry_DoNotUse.base,}};
 
 static void InitDefaultsPBBuffData() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -525,7 +505,7 @@ LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<5> scc_info_PBRealmData =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 5, InitDefaultsPBRealmData}, {
       &protobuf_DefineMessage_2eproto::scc_info_PBBalanceHeroServer.base,
       &protobuf_DefineMessage_2eproto::scc_info_PBBalanceItemServer.base,
-      &protobuf_DefineMessage_2eproto::scc_info_PBBalanceCurrency.base,
+      &protobuf_DefineMessage_2eproto::scc_info_PBBalanceItem.base,
       &protobuf_DefineMessage_2eproto::scc_info_PBHeroBuffData.base,
       &protobuf_DefineMessage_2eproto::scc_info_PBRealmData_ExploreEntry_DoNotUse.base,}};
 
@@ -548,17 +528,16 @@ void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_PBMatchPlayer.base);
   ::google::protobuf::internal::InitSCC(&scc_info_PBBalanceItem.base);
   ::google::protobuf::internal::InitSCC(&scc_info_PBBalanceHero_AttributesEntry_DoNotUse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_PBBalanceHero_CharacterEntry_DoNotUse.base);
   ::google::protobuf::internal::InitSCC(&scc_info_PBBalanceHero.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_PBBalanceCurrency.base);
   ::google::protobuf::internal::InitSCC(&scc_info_PBBalanceData.base);
   ::google::protobuf::internal::InitSCC(&scc_info_PBBalanceItemServer.base);
   ::google::protobuf::internal::InitSCC(&scc_info_PBBalanceHeroServer_BeginattributesEntry_DoNotUse.base);
   ::google::protobuf::internal::InitSCC(&scc_info_PBBalanceHeroServer_EndattributesEntry_DoNotUse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_PBBalanceHeroServer_CharacterEntry_DoNotUse.base);
   ::google::protobuf::internal::InitSCC(&scc_info_PBBalanceHeroServer.base);
   ::google::protobuf::internal::InitSCC(&scc_info_PBFighterHeroData.base);
   ::google::protobuf::internal::InitSCC(&scc_info_PBExplorePlayerData.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_PBNpcGroupData.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_PBExploreNpcData_NpcgroupdataEntry_DoNotUse.base);
   ::google::protobuf::internal::InitSCC(&scc_info_PBExploreNpcData.base);
   ::google::protobuf::internal::InitSCC(&scc_info_PBBuffData.base);
   ::google::protobuf::internal::InitSCC(&scc_info_PBBuffListData.base);
@@ -571,7 +550,7 @@ void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_PBPunishData.base);
 }
 
-::google::protobuf::Metadata file_level_metadata[25];
+::google::protobuf::Metadata file_level_metadata[24];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBMatchPlayer_HeroEntry_DoNotUse, _has_bits_),
@@ -610,15 +589,6 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHero_AttributesEntry_DoNotUse, value_),
   0,
   1,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHero_CharacterEntry_DoNotUse, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHero_CharacterEntry_DoNotUse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHero_CharacterEntry_DoNotUse, key_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHero_CharacterEntry_DoNotUse, value_),
-  0,
-  1,
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHero, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -633,24 +603,16 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHero, level_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHero, death_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHero, attributes_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHero, character_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHero, deathreason_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceCurrency, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceCurrency, name_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceCurrency, beginvalue_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceCurrency, endvalue_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHero, active_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHero, innate_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceData, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceData, herodata_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceData, itemdata_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceData, currencydata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceData, gainitem_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceData, loseitem_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceItemServer, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -678,15 +640,6 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHeroServer_EndattributesEntry_DoNotUse, value_),
   0,
   1,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHeroServer_CharacterEntry_DoNotUse, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHeroServer_CharacterEntry_DoNotUse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHeroServer_CharacterEntry_DoNotUse, key_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHeroServer_CharacterEntry_DoNotUse, value_),
-  0,
-  1,
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHeroServer, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -705,8 +658,10 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHeroServer, killnpc_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHeroServer, beginattributes_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHeroServer, endattributes_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHeroServer, character_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHeroServer, deathreason_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHeroServer, beginactive_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHeroServer, endactive_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHeroServer, begininnate_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHeroServer, endinnate_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBFighterHeroData, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -728,6 +683,24 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExplorePlayerData, step_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExplorePlayerData, fovarr_),
   ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBNpcGroupData, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBNpcGroupData, npcgroupid_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBNpcGroupData, spawnrule_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBNpcGroupData, spawnmodel_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBNpcGroupData, dungeonid_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreNpcData_NpcgroupdataEntry_DoNotUse, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreNpcData_NpcgroupdataEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreNpcData_NpcgroupdataEntry_DoNotUse, key_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreNpcData_NpcgroupdataEntry_DoNotUse, value_),
+  0,
+  1,
+  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreNpcData, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -738,6 +711,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreNpcData, z_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreNpcData, yaw_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreNpcData, bkilled_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreNpcData, npcgroupdata_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBuffData, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -788,6 +762,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreData, creation_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreData, innerworld_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreData, birthplace_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreData, innerworldparameter_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreData, playerdata_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreData, npcdata_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData_ExploreEntry_DoNotUse, _has_bits_),
@@ -815,12 +790,13 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, extendlevel_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, herodata_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, itemdata_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, currencydata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, loseitem_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, killnpc_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, buffdata_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, explore_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, fleerate_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, innerworld_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, selectid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, selectcount_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBPunishData, _internal_metadata_),
@@ -836,27 +812,26 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 9, -1, sizeof(::KFMsg::PBMatchPlayer)},
   { 19, -1, sizeof(::KFMsg::PBBalanceItem)},
   { 27, 34, sizeof(::KFMsg::PBBalanceHero_AttributesEntry_DoNotUse)},
-  { 36, 43, sizeof(::KFMsg::PBBalanceHero_CharacterEntry_DoNotUse)},
-  { 45, -1, sizeof(::KFMsg::PBBalanceHero)},
-  { 61, -1, sizeof(::KFMsg::PBBalanceCurrency)},
-  { 69, -1, sizeof(::KFMsg::PBBalanceData)},
-  { 77, -1, sizeof(::KFMsg::PBBalanceItemServer)},
-  { 86, 93, sizeof(::KFMsg::PBBalanceHeroServer_BeginattributesEntry_DoNotUse)},
-  { 95, 102, sizeof(::KFMsg::PBBalanceHeroServer_EndattributesEntry_DoNotUse)},
-  { 104, 111, sizeof(::KFMsg::PBBalanceHeroServer_CharacterEntry_DoNotUse)},
-  { 113, -1, sizeof(::KFMsg::PBBalanceHeroServer)},
-  { 133, -1, sizeof(::KFMsg::PBFighterHeroData)},
-  { 142, -1, sizeof(::KFMsg::PBExplorePlayerData)},
-  { 153, -1, sizeof(::KFMsg::PBExploreNpcData)},
-  { 164, -1, sizeof(::KFMsg::PBBuffData)},
-  { 170, -1, sizeof(::KFMsg::PBBuffListData)},
-  { 176, 183, sizeof(::KFMsg::PBHeroBuffData_BuffEntry_DoNotUse)},
-  { 185, -1, sizeof(::KFMsg::PBHeroBuffData)},
-  { 191, 198, sizeof(::KFMsg::PBExploreData_NpcdataEntry_DoNotUse)},
-  { 200, -1, sizeof(::KFMsg::PBExploreData)},
-  { 216, 223, sizeof(::KFMsg::PBRealmData_ExploreEntry_DoNotUse)},
-  { 225, -1, sizeof(::KFMsg::PBRealmData)},
-  { 248, -1, sizeof(::KFMsg::PBPunishData)},
+  { 36, -1, sizeof(::KFMsg::PBBalanceHero)},
+  { 52, -1, sizeof(::KFMsg::PBBalanceData)},
+  { 60, -1, sizeof(::KFMsg::PBBalanceItemServer)},
+  { 69, 76, sizeof(::KFMsg::PBBalanceHeroServer_BeginattributesEntry_DoNotUse)},
+  { 78, 85, sizeof(::KFMsg::PBBalanceHeroServer_EndattributesEntry_DoNotUse)},
+  { 87, -1, sizeof(::KFMsg::PBBalanceHeroServer)},
+  { 109, -1, sizeof(::KFMsg::PBFighterHeroData)},
+  { 118, -1, sizeof(::KFMsg::PBExplorePlayerData)},
+  { 129, -1, sizeof(::KFMsg::PBNpcGroupData)},
+  { 138, 145, sizeof(::KFMsg::PBExploreNpcData_NpcgroupdataEntry_DoNotUse)},
+  { 147, -1, sizeof(::KFMsg::PBExploreNpcData)},
+  { 159, -1, sizeof(::KFMsg::PBBuffData)},
+  { 165, -1, sizeof(::KFMsg::PBBuffListData)},
+  { 171, 178, sizeof(::KFMsg::PBHeroBuffData_BuffEntry_DoNotUse)},
+  { 180, -1, sizeof(::KFMsg::PBHeroBuffData)},
+  { 186, 193, sizeof(::KFMsg::PBExploreData_NpcdataEntry_DoNotUse)},
+  { 195, -1, sizeof(::KFMsg::PBExploreData)},
+  { 212, 219, sizeof(::KFMsg::PBRealmData_ExploreEntry_DoNotUse)},
+  { 221, -1, sizeof(::KFMsg::PBRealmData)},
+  { 245, -1, sizeof(::KFMsg::PBPunishData)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -864,17 +839,16 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBMatchPlayer_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBBalanceItem_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBBalanceHero_AttributesEntry_DoNotUse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBBalanceHero_CharacterEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBBalanceHero_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBBalanceCurrency_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBBalanceData_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBBalanceItemServer_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBBalanceHeroServer_BeginattributesEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBBalanceHeroServer_EndattributesEntry_DoNotUse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBBalanceHeroServer_CharacterEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBBalanceHeroServer_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBFighterHeroData_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBExplorePlayerData_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBNpcGroupData_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBExploreNpcData_NpcgroupdataEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBExploreNpcData_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBBuffData_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBBuffListData_default_instance_),
@@ -902,7 +876,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 25);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 24);
 }
 
 void AddDescriptorsImpl() {
@@ -915,78 +889,79 @@ void AddDescriptorsImpl() {
       "chPlayer.HeroEntry\032<\n\tHeroEntry\022\013\n\003key\030\001"
       " \001(\004\022\036\n\005value\030\002 \001(\0132\017.KFMsg.PBObject:\0028\001"
       "\"8\n\rPBBalanceItem\022\n\n\002id\030\001 \001(\r\022\014\n\004uuid\030\002 "
-      "\001(\004\022\r\n\005count\030\003 \001(\r\"\361\002\n\rPBBalanceHero\022\014\n\004"
+      "\001(\004\022\r\n\005count\030\003 \001(\r\"\222\002\n\rPBBalanceHero\022\014\n\004"
       "uuid\030\001 \001(\004\022\014\n\004race\030\002 \001(\r\022\022\n\nprofession\030\003"
       " \001(\r\022\013\n\003sex\030\004 \001(\r\022\014\n\004name\030\005 \001(\014\022\013\n\003exp\030\006"
       " \001(\r\022\r\n\005level\030\007 \001(\r\022\r\n\005death\030\010 \001(\010\0228\n\nat"
-      "tributes\030\t \003(\0132$.KFMsg.PBBalanceHero.Att"
-      "ributesEntry\0226\n\tcharacter\030\024 \003(\0132#.KFMsg."
-      "PBBalanceHero.CharacterEntry\022\023\n\013deathrea"
-      "son\030\025 \001(\r\0321\n\017AttributesEntry\022\013\n\003key\030\001 \001("
-      "\t\022\r\n\005value\030\002 \001(\r:\0028\001\0320\n\016CharacterEntry\022\013"
-      "\n\003key\030\001 \001(\r\022\r\n\005value\030\002 \001(\r:\0028\001\"G\n\021PBBala"
-      "nceCurrency\022\014\n\004name\030\001 \001(\014\022\022\n\nbeginvalue\030"
-      "\002 \001(\r\022\020\n\010endvalue\030\003 \001(\r\"\217\001\n\rPBBalanceDat"
-      "a\022&\n\010herodata\030\001 \003(\0132\024.KFMsg.PBBalanceHer"
-      "o\022&\n\010itemdata\030\002 \003(\0132\024.KFMsg.PBBalanceIte"
-      "m\022.\n\014currencydata\030\003 \003(\0132\030.KFMsg.PBBalanc"
-      "eCurrency\"U\n\023PBBalanceItemServer\022\n\n\002id\030\001"
-      " \001(\r\022\014\n\004uuid\030\002 \001(\004\022\022\n\nbegincount\030\003 \001(\r\022\020"
-      "\n\010endcount\030\004 \001(\r\"\313\004\n\023PBBalanceHeroServer"
-      "\022\014\n\004uuid\030\001 \001(\004\022\014\n\004race\030\002 \001(\r\022\022\n\nprofessi"
-      "on\030\003 \001(\r\022\013\n\003sex\030\004 \001(\r\022\014\n\004name\030\005 \001(\014\022\020\n\010b"
-      "eginexp\030\006 \001(\r\022\016\n\006endexp\030\007 \001(\r\022\022\n\nbeginle"
-      "vel\030\010 \001(\r\022\020\n\010endlevel\030\t \001(\r\022\r\n\005death\030\n \001"
-      "(\010\022\017\n\007killnpc\030\013 \003(\004\022H\n\017beginattributes\030\014"
-      " \003(\0132/.KFMsg.PBBalanceHeroServer.Beginat"
-      "tributesEntry\022D\n\rendattributes\030\r \003(\0132-.K"
-      "FMsg.PBBalanceHeroServer.EndattributesEn"
-      "try\022<\n\tcharacter\030\024 \003(\0132).KFMsg.PBBalance"
-      "HeroServer.CharacterEntry\022\023\n\013deathreason"
-      "\030\025 \001(\r\0326\n\024BeginattributesEntry\022\013\n\003key\030\001 "
-      "\001(\t\022\r\n\005value\030\002 \001(\r:\0028\001\0324\n\022EndattributesE"
-      "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\r:\0028\001\0320\n\016"
-      "CharacterEntry\022\013\n\003key\030\001 \001(\r\022\r\n\005value\030\002 \001"
-      "(\r:\0028\001\"F\n\021PBFighterHeroData\022\014\n\004uuid\030\001 \001("
-      "\004\022\n\n\002hp\030\002 \001(\r\022\013\n\003exp\030\003 \001(\r\022\n\n\002ep\030\004 \001(\r\"a"
-      "\n\023PBExplorePlayerData\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 "
-      "\001(\005\022\t\n\001z\030\003 \001(\005\022\013\n\003yaw\030\004 \001(\005\022\014\n\004step\030\005 \001("
-      "\r\022\016\n\006fovarr\030\006 \003(\005\"^\n\020PBExploreNpcData\022\013\n"
-      "\003key\030\001 \001(\014\022\t\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\022\t\n\001z\030\004 "
-      "\001(\005\022\013\n\003yaw\030\005 \001(\005\022\017\n\007bkilled\030\006 \001(\010\"\030\n\nPBB"
-      "uffData\022\n\n\002id\030\001 \001(\r\"5\n\016PBBuffListData\022#\n"
-      "\010bufflist\030\001 \003(\0132\021.KFMsg.PBBuffData\"\203\001\n\016P"
-      "BHeroBuffData\022-\n\004buff\030\001 \003(\0132\037.KFMsg.PBHe"
-      "roBuffData.BuffEntry\032B\n\tBuffEntry\022\013\n\003key"
-      "\030\001 \001(\004\022$\n\005value\030\002 \001(\0132\025.KFMsg.PBBuffList"
-      "Data:\0028\001\"\326\002\n\rPBExploreData\022\n\n\002id\030\001 \001(\r\022\014"
-      "\n\004save\030\002 \001(\010\022\016\n\006random\030\003 \001(\r\022\r\n\005level\030\004 "
-      "\001(\r\022\022\n\ntotallevel\030\005 \001(\r\022\021\n\tlastlevel\030\006 \001"
-      "(\r\022\020\n\010creation\030\007 \001(\r\022\022\n\ninnerworld\030\010 \001(\r"
-      "\022\022\n\nbirthplace\030\t \001(\r\022.\n\nplayerdata\030\013 \001(\013"
-      "2\032.KFMsg.PBExplorePlayerData\0222\n\007npcdata\030"
-      "\014 \003(\0132!.KFMsg.PBExploreData.NpcdataEntry"
-      "\032G\n\014NpcdataEntry\022\013\n\003key\030\001 \001(\t\022&\n\005value\030\002"
-      " \001(\0132\027.KFMsg.PBExploreNpcData:\0028\001\"\237\004\n\013PB"
-      "RealmData\022\n\n\002id\030\001 \001(\r\022\r\n\005level\030\002 \001(\r\022\022\n\n"
-      "modulename\030\003 \001(\014\022\020\n\010moduleid\030\004 \001(\004\022\016\n\006st"
-      "atus\030\005 \001(\r\022\021\n\tstarttime\030\006 \001(\004\022\017\n\007usetime"
-      "\030\007 \001(\r\022\r\n\005faith\030\010 \001(\r\022\023\n\013extendlevel\030\t \001"
-      "(\r\022,\n\010herodata\030\n \003(\0132\032.KFMsg.PBBalanceHe"
-      "roServer\022,\n\010itemdata\030\013 \003(\0132\032.KFMsg.PBBal"
-      "anceItemServer\022.\n\014currencydata\030\014 \003(\0132\030.K"
-      "FMsg.PBBalanceCurrency\022\017\n\007killnpc\030\r \003(\004\022"
-      "\'\n\010buffdata\030\016 \001(\0132\025.KFMsg.PBHeroBuffData"
-      "\0220\n\007explore\030\017 \003(\0132\037.KFMsg.PBRealmData.Ex"
-      "ploreEntry\022\020\n\010fleerate\030\020 \001(\r\022\022\n\ninnerwor"
-      "ld\030\021 \001(\r\022\023\n\013selectcount\030\022 \001(\r\032D\n\014Explore"
-      "Entry\022\013\n\003key\030\001 \001(\r\022#\n\005value\030\002 \001(\0132\024.KFMs"
-      "g.PBExploreData:\0028\001\"7\n\014PBPunishData\022\014\n\004n"
-      "ame\030\001 \001(\014\022\n\n\002id\030\002 \001(\r\022\r\n\005value\030\003 \001(\rb\006pr"
-      "oto3"
+      "tributes\030\025 \003(\0132$.KFMsg.PBBalanceHero.Att"
+      "ributesEntry\022\016\n\006active\030\026 \003(\r\022\016\n\006innate\030\027"
+      " \003(\r\0321\n\017AttributesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005"
+      "value\030\002 \001(\r:\0028\001\"\207\001\n\rPBBalanceData\022&\n\010her"
+      "odata\030\001 \003(\0132\024.KFMsg.PBBalanceHero\022&\n\010gai"
+      "nitem\030\002 \003(\0132\024.KFMsg.PBBalanceItem\022&\n\010los"
+      "eitem\030\003 \003(\0132\024.KFMsg.PBBalanceItem\"U\n\023PBB"
+      "alanceItemServer\022\n\n\002id\030\001 \001(\r\022\014\n\004uuid\030\002 \001"
+      "(\004\022\022\n\nbegincount\030\003 \001(\r\022\020\n\010endcount\030\004 \001(\r"
+      "\"\226\004\n\023PBBalanceHeroServer\022\014\n\004uuid\030\001 \001(\004\022\014"
+      "\n\004race\030\002 \001(\r\022\022\n\nprofession\030\003 \001(\r\022\013\n\003sex\030"
+      "\004 \001(\r\022\014\n\004name\030\005 \001(\014\022\020\n\010beginexp\030\006 \001(\r\022\016\n"
+      "\006endexp\030\007 \001(\r\022\022\n\nbeginlevel\030\010 \001(\r\022\020\n\010end"
+      "level\030\t \001(\r\022\r\n\005death\030\n \001(\010\022\017\n\007killnpc\030\013 "
+      "\003(\004\022H\n\017beginattributes\030\014 \003(\0132/.KFMsg.PBB"
+      "alanceHeroServer.BeginattributesEntry\022D\n"
+      "\rendattributes\030\r \003(\0132-.KFMsg.PBBalanceHe"
+      "roServer.EndattributesEntry\022\023\n\013beginacti"
+      "ve\030\024 \003(\r\022\021\n\tendactive\030\025 \003(\r\022\023\n\013begininna"
+      "te\030\026 \003(\r\022\021\n\tendinnate\030\027 \003(\r\0326\n\024Beginattr"
+      "ibutesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\r:"
+      "\0028\001\0324\n\022EndattributesEntry\022\013\n\003key\030\001 \001(\t\022\r"
+      "\n\005value\030\002 \001(\r:\0028\001\"F\n\021PBFighterHeroData\022\014"
+      "\n\004uuid\030\001 \001(\004\022\n\n\002hp\030\002 \001(\r\022\013\n\003exp\030\003 \001(\r\022\n\n"
+      "\002ep\030\004 \001(\r\"a\n\023PBExplorePlayerData\022\t\n\001x\030\001 "
+      "\001(\005\022\t\n\001y\030\002 \001(\005\022\t\n\001z\030\003 \001(\005\022\013\n\003yaw\030\004 \001(\005\022\014"
+      "\n\004step\030\005 \001(\r\022\016\n\006fovarr\030\006 \003(\005\"^\n\016PBNpcGro"
+      "upData\022\022\n\nnpcgroupid\030\001 \001(\r\022\021\n\tspawnrule\030"
+      "\002 \001(\r\022\022\n\nspawnmodel\030\003 \001(\014\022\021\n\tdungeonid\030\004"
+      " \001(\r\"\353\001\n\020PBExploreNpcData\022\013\n\003key\030\001 \001(\014\022\t"
+      "\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\022\t\n\001z\030\004 \001(\005\022\013\n\003yaw\030\005"
+      " \001(\005\022\017\n\007bkilled\030\006 \001(\010\022\?\n\014npcgroupdata\030\n "
+      "\003(\0132).KFMsg.PBExploreNpcData.Npcgroupdat"
+      "aEntry\032J\n\021NpcgroupdataEntry\022\013\n\003key\030\001 \001(\r"
+      "\022$\n\005value\030\002 \001(\0132\025.KFMsg.PBNpcGroupData:\002"
+      "8\001\"\030\n\nPBBuffData\022\n\n\002id\030\001 \001(\r\"5\n\016PBBuffLi"
+      "stData\022#\n\010bufflist\030\001 \003(\0132\021.KFMsg.PBBuffD"
+      "ata\"\203\001\n\016PBHeroBuffData\022-\n\004buff\030\001 \003(\0132\037.K"
+      "FMsg.PBHeroBuffData.BuffEntry\032B\n\tBuffEnt"
+      "ry\022\013\n\003key\030\001 \001(\004\022$\n\005value\030\002 \001(\0132\025.KFMsg.P"
+      "BBuffListData:\0028\001\"\363\002\n\rPBExploreData\022\n\n\002i"
+      "d\030\001 \001(\r\022\014\n\004save\030\002 \001(\010\022\016\n\006random\030\003 \001(\r\022\r\n"
+      "\005level\030\004 \001(\r\022\022\n\ntotallevel\030\005 \001(\r\022\021\n\tlast"
+      "level\030\006 \001(\r\022\020\n\010creation\030\007 \001(\r\022\022\n\ninnerwo"
+      "rld\030\010 \001(\r\022\022\n\nbirthplace\030\t \001(\r\022\033\n\023innerwo"
+      "rldparameter\030\n \001(\r\022.\n\nplayerdata\030\013 \001(\0132\032"
+      ".KFMsg.PBExplorePlayerData\0222\n\007npcdata\030\014 "
+      "\003(\0132!.KFMsg.PBExploreData.NpcdataEntry\032G"
+      "\n\014NpcdataEntry\022\013\n\003key\030\001 \001(\t\022&\n\005value\030\002 \001"
+      "(\0132\027.KFMsg.PBExploreNpcData:\0028\001\"\251\004\n\013PBRe"
+      "almData\022\n\n\002id\030\001 \001(\r\022\r\n\005level\030\002 \001(\r\022\022\n\nmo"
+      "dulename\030\003 \001(\014\022\020\n\010moduleid\030\004 \001(\004\022\016\n\006stat"
+      "us\030\005 \001(\r\022\021\n\tstarttime\030\006 \001(\004\022\017\n\007usetime\030\007"
+      " \001(\r\022\r\n\005faith\030\010 \001(\r\022\023\n\013extendlevel\030\t \001(\r"
+      "\022,\n\010herodata\030\n \003(\0132\032.KFMsg.PBBalanceHero"
+      "Server\022,\n\010itemdata\030\013 \003(\0132\032.KFMsg.PBBalan"
+      "ceItemServer\022&\n\010loseitem\030\014 \003(\0132\024.KFMsg.P"
+      "BBalanceItem\022\017\n\007killnpc\030\r \003(\004\022\'\n\010buffdat"
+      "a\030\016 \001(\0132\025.KFMsg.PBHeroBuffData\0220\n\007explor"
+      "e\030\017 \003(\0132\037.KFMsg.PBRealmData.ExploreEntry"
+      "\022\020\n\010fleerate\030\020 \001(\r\022\022\n\ninnerworld\030\021 \001(\r\022\020"
+      "\n\010selectid\030\022 \001(\r\022\023\n\013selectcount\030\023 \001(\r\032D\n"
+      "\014ExploreEntry\022\013\n\003key\030\001 \001(\r\022#\n\005value\030\002 \001("
+      "\0132\024.KFMsg.PBExploreData:\0028\001\"7\n\014PBPunishD"
+      "ata\022\014\n\004name\030\001 \001(\014\022\n\n\002id\030\002 \001(\r\022\r\n\005value\030\003"
+      " \001(\rb\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 3004);
+      descriptor, 3052);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "DefineMessage.proto", &protobuf_RegisterTypes);
   ::protobuf_FrameDefineMessage_2eproto::AddDescriptors();
@@ -1812,23 +1787,6 @@ void PBBalanceHero_AttributesEntry_DoNotUse::MergeFrom(
 
 // ===================================================================
 
-PBBalanceHero_CharacterEntry_DoNotUse::PBBalanceHero_CharacterEntry_DoNotUse() {}
-PBBalanceHero_CharacterEntry_DoNotUse::PBBalanceHero_CharacterEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
-void PBBalanceHero_CharacterEntry_DoNotUse::MergeFrom(const PBBalanceHero_CharacterEntry_DoNotUse& other) {
-  MergeFromInternal(other);
-}
-::google::protobuf::Metadata PBBalanceHero_CharacterEntry_DoNotUse::GetMetadata() const {
-  ::protobuf_DefineMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_DefineMessage_2eproto::file_level_metadata[4];
-}
-void PBBalanceHero_CharacterEntry_DoNotUse::MergeFrom(
-    const ::google::protobuf::Message& other) {
-  ::google::protobuf::Message::MergeFrom(other);
-}
-
-
-// ===================================================================
-
 void PBBalanceHero::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -1841,8 +1799,8 @@ const int PBBalanceHero::kExpFieldNumber;
 const int PBBalanceHero::kLevelFieldNumber;
 const int PBBalanceHero::kDeathFieldNumber;
 const int PBBalanceHero::kAttributesFieldNumber;
-const int PBBalanceHero::kCharacterFieldNumber;
-const int PBBalanceHero::kDeathreasonFieldNumber;
+const int PBBalanceHero::kActiveFieldNumber;
+const int PBBalanceHero::kInnateFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 PBBalanceHero::PBBalanceHero()
@@ -1854,25 +1812,26 @@ PBBalanceHero::PBBalanceHero()
 }
 PBBalanceHero::PBBalanceHero(const PBBalanceHero& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      active_(from.active_),
+      innate_(from.innate_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   attributes_.MergeFrom(from.attributes_);
-  character_.MergeFrom(from.character_);
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.name().size() > 0) {
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
   ::memcpy(&uuid_, &from.uuid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&deathreason_) -
-    reinterpret_cast<char*>(&uuid_)) + sizeof(deathreason_));
+    static_cast<size_t>(reinterpret_cast<char*>(&death_) -
+    reinterpret_cast<char*>(&uuid_)) + sizeof(death_));
   // @@protoc_insertion_point(copy_constructor:KFMsg.PBBalanceHero)
 }
 
 void PBBalanceHero::SharedCtor() {
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&uuid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&deathreason_) -
-      reinterpret_cast<char*>(&uuid_)) + sizeof(deathreason_));
+      reinterpret_cast<char*>(&death_) -
+      reinterpret_cast<char*>(&uuid_)) + sizeof(death_));
 }
 
 PBBalanceHero::~PBBalanceHero() {
@@ -1905,11 +1864,12 @@ void PBBalanceHero::Clear() {
   (void) cached_has_bits;
 
   attributes_.Clear();
-  character_.Clear();
+  active_.Clear();
+  innate_.Clear();
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&uuid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&deathreason_) -
-      reinterpret_cast<char*>(&uuid_)) + sizeof(deathreason_));
+      reinterpret_cast<char*>(&death_) -
+      reinterpret_cast<char*>(&uuid_)) + sizeof(death_));
   _internal_metadata_.Clear();
 }
 
@@ -2033,10 +1993,10 @@ bool PBBalanceHero::MergePartialFromCodedStream(
         break;
       }
 
-      // map<string, uint32> attributes = 9;
-      case 9: {
+      // map<string, uint32> attributes = 21;
+      case 21: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(74u /* 74 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(170u /* 170 & 0xFF */)) {
           PBBalanceHero_AttributesEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
               PBBalanceHero_AttributesEntry_DoNotUse,
               ::std::string, ::google::protobuf::uint32,
@@ -2056,33 +2016,38 @@ bool PBBalanceHero::MergePartialFromCodedStream(
         break;
       }
 
-      // map<uint32, uint32> character = 20;
-      case 20: {
+      // repeated uint32 active = 22;
+      case 22: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(162u /* 162 & 0xFF */)) {
-          PBBalanceHero_CharacterEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
-              PBBalanceHero_CharacterEntry_DoNotUse,
-              ::google::protobuf::uint32, ::google::protobuf::uint32,
-              ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
-              ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
-              0 >,
-            ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 > > parser(&character_);
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-              input, &parser));
+            static_cast< ::google::protobuf::uint8>(178u /* 178 & 0xFF */)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, this->mutable_active())));
+        } else if (
+            static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(176u /* 176 & 0xFF */)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 2, 178u, input, this->mutable_active())));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // uint32 deathreason = 21;
-      case 21: {
+      // repeated uint32 innate = 23;
+      case 23: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(168u /* 168 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+            static_cast< ::google::protobuf::uint8>(186u /* 186 & 0xFF */)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &deathreason_)));
+                 input, this->mutable_innate())));
+        } else if (
+            static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(184u /* 184 & 0xFF */)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 2, 186u, input, this->mutable_innate())));
         } else {
           goto handle_unusual;
         }
@@ -2156,7 +2121,7 @@ void PBBalanceHero::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(8, this->death(), output);
   }
 
-  // map<string, uint32> attributes = 9;
+  // map<string, uint32> attributes = 21;
   if (!this->attributes().empty()) {
     typedef ::google::protobuf::Map< ::std::string, ::google::protobuf::uint32 >::const_pointer
         ConstPtr;
@@ -2188,7 +2153,7 @@ void PBBalanceHero::SerializeWithCachedSizes(
         entry.reset(attributes_.NewEntryWrapper(
             items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
         ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            9, *entry, output);
+            21, *entry, output);
         Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
       }
     } else {
@@ -2199,54 +2164,32 @@ void PBBalanceHero::SerializeWithCachedSizes(
         entry.reset(attributes_.NewEntryWrapper(
             it->first, it->second));
         ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            9, *entry, output);
+            21, *entry, output);
         Utf8Check::Check(&*it);
       }
     }
   }
 
-  // map<uint32, uint32> character = 20;
-  if (!this->character().empty()) {
-    typedef ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::const_pointer
-        ConstPtr;
-    typedef ::google::protobuf::internal::SortItem< ::google::protobuf::uint32, ConstPtr > SortItem;
-    typedef ::google::protobuf::internal::CompareByFirstField<SortItem> Less;
-
-    if (output->IsSerializationDeterministic() &&
-        this->character().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->character().size()]);
-      typedef ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::const_iterator
-          it = this->character().begin();
-          it != this->character().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<PBBalanceHero_CharacterEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(character_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            20, *entry, output);
-      }
-    } else {
-      ::std::unique_ptr<PBBalanceHero_CharacterEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::const_iterator
-          it = this->character().begin();
-          it != this->character().end(); ++it) {
-        entry.reset(character_.NewEntryWrapper(
-            it->first, it->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            20, *entry, output);
-      }
-    }
+  // repeated uint32 active = 22;
+  if (this->active_size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteTag(22, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
+    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
+        _active_cached_byte_size_));
+  }
+  for (int i = 0, n = this->active_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32NoTag(
+      this->active(i), output);
   }
 
-  // uint32 deathreason = 21;
-  if (this->deathreason() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(21, this->deathreason(), output);
+  // repeated uint32 innate = 23;
+  if (this->innate_size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteTag(23, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
+    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
+        _innate_cached_byte_size_));
+  }
+  for (int i = 0, n = this->innate_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32NoTag(
+      this->innate(i), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -2305,7 +2248,7 @@ void PBBalanceHero::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(8, this->death(), target);
   }
 
-  // map<string, uint32> attributes = 9;
+  // map<string, uint32> attributes = 21;
   if (!this->attributes().empty()) {
     typedef ::google::protobuf::Map< ::std::string, ::google::protobuf::uint32 >::const_pointer
         ConstPtr;
@@ -2338,7 +2281,7 @@ void PBBalanceHero::SerializeWithCachedSizes(
             items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
         target = ::google::protobuf::internal::WireFormatLite::
                    InternalWriteMessageNoVirtualToArray(
-                       9, *entry, deterministic, target);
+                       21, *entry, deterministic, target);
 ;
         Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
       }
@@ -2351,59 +2294,37 @@ void PBBalanceHero::SerializeWithCachedSizes(
             it->first, it->second));
         target = ::google::protobuf::internal::WireFormatLite::
                    InternalWriteMessageNoVirtualToArray(
-                       9, *entry, deterministic, target);
+                       21, *entry, deterministic, target);
 ;
         Utf8Check::Check(&*it);
       }
     }
   }
 
-  // map<uint32, uint32> character = 20;
-  if (!this->character().empty()) {
-    typedef ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::const_pointer
-        ConstPtr;
-    typedef ::google::protobuf::internal::SortItem< ::google::protobuf::uint32, ConstPtr > SortItem;
-    typedef ::google::protobuf::internal::CompareByFirstField<SortItem> Less;
-
-    if (deterministic &&
-        this->character().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->character().size()]);
-      typedef ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::const_iterator
-          it = this->character().begin();
-          it != this->character().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<PBBalanceHero_CharacterEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(character_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       20, *entry, deterministic, target);
-;
-      }
-    } else {
-      ::std::unique_ptr<PBBalanceHero_CharacterEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::const_iterator
-          it = this->character().begin();
-          it != this->character().end(); ++it) {
-        entry.reset(character_.NewEntryWrapper(
-            it->first, it->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       20, *entry, deterministic, target);
-;
-      }
-    }
+  // repeated uint32 active = 22;
+  if (this->active_size() > 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
+      22,
+      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
+      target);
+    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
+        static_cast< ::google::protobuf::int32>(
+            _active_cached_byte_size_), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteUInt32NoTagToArray(this->active_, target);
   }
 
-  // uint32 deathreason = 21;
-  if (this->deathreason() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(21, this->deathreason(), target);
+  // repeated uint32 innate = 23;
+  if (this->innate_size() > 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
+      23,
+      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
+      target);
+    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
+        static_cast< ::google::protobuf::int32>(
+            _innate_cached_byte_size_), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteUInt32NoTagToArray(this->innate_, target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -2423,8 +2344,8 @@ size_t PBBalanceHero::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // map<string, uint32> attributes = 9;
-  total_size += 1 *
+  // map<string, uint32> attributes = 21;
+  total_size += 2 *
       ::google::protobuf::internal::FromIntSize(this->attributes_size());
   {
     ::std::unique_ptr<PBBalanceHero_AttributesEntry_DoNotUse> entry;
@@ -2437,18 +2358,36 @@ size_t PBBalanceHero::ByteSizeLong() const {
     }
   }
 
-  // map<uint32, uint32> character = 20;
-  total_size += 2 *
-      ::google::protobuf::internal::FromIntSize(this->character_size());
+  // repeated uint32 active = 22;
   {
-    ::std::unique_ptr<PBBalanceHero_CharacterEntry_DoNotUse> entry;
-    for (::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::const_iterator
-        it = this->character().begin();
-        it != this->character().end(); ++it) {
-      entry.reset(character_.NewEntryWrapper(it->first, it->second));
-      total_size += ::google::protobuf::internal::WireFormatLite::
-          MessageSizeNoVirtual(*entry);
+    size_t data_size = ::google::protobuf::internal::WireFormatLite::
+      UInt32Size(this->active_);
+    if (data_size > 0) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+            static_cast< ::google::protobuf::int32>(data_size));
     }
+    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
+    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+    _active_cached_byte_size_ = cached_size;
+    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    total_size += data_size;
+  }
+
+  // repeated uint32 innate = 23;
+  {
+    size_t data_size = ::google::protobuf::internal::WireFormatLite::
+      UInt32Size(this->innate_);
+    if (data_size > 0) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+            static_cast< ::google::protobuf::int32>(data_size));
+    }
+    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
+    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+    _innate_cached_byte_size_ = cached_size;
+    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    total_size += data_size;
   }
 
   // bytes name = 5;
@@ -2505,13 +2444,6 @@ size_t PBBalanceHero::ByteSizeLong() const {
     total_size += 1 + 1;
   }
 
-  // uint32 deathreason = 21;
-  if (this->deathreason() != 0) {
-    total_size += 2 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->deathreason());
-  }
-
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -2540,7 +2472,8 @@ void PBBalanceHero::MergeFrom(const PBBalanceHero& from) {
   (void) cached_has_bits;
 
   attributes_.MergeFrom(from.attributes_);
-  character_.MergeFrom(from.character_);
+  active_.MergeFrom(from.active_);
+  innate_.MergeFrom(from.innate_);
   if (from.name().size() > 0) {
 
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
@@ -2565,9 +2498,6 @@ void PBBalanceHero::MergeFrom(const PBBalanceHero& from) {
   }
   if (from.death() != 0) {
     set_death(from.death());
-  }
-  if (from.deathreason() != 0) {
-    set_deathreason(from.deathreason());
   }
 }
 
@@ -2596,7 +2526,8 @@ void PBBalanceHero::Swap(PBBalanceHero* other) {
 void PBBalanceHero::InternalSwap(PBBalanceHero* other) {
   using std::swap;
   attributes_.Swap(&other->attributes_);
-  character_.Swap(&other->character_);
+  active_.InternalSwap(&other->active_);
+  innate_.InternalSwap(&other->innate_);
   name_.Swap(&other->name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(uuid_, other->uuid_);
@@ -2606,7 +2537,6 @@ void PBBalanceHero::InternalSwap(PBBalanceHero* other) {
   swap(exp_, other->exp_);
   swap(level_, other->level_);
   swap(death_, other->death_);
-  swap(deathreason_, other->deathreason_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
@@ -2618,323 +2548,12 @@ void PBBalanceHero::InternalSwap(PBBalanceHero* other) {
 
 // ===================================================================
 
-void PBBalanceCurrency::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int PBBalanceCurrency::kNameFieldNumber;
-const int PBBalanceCurrency::kBeginvalueFieldNumber;
-const int PBBalanceCurrency::kEndvalueFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-PBBalanceCurrency::PBBalanceCurrency()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_DefineMessage_2eproto::scc_info_PBBalanceCurrency.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:KFMsg.PBBalanceCurrency)
-}
-PBBalanceCurrency::PBBalanceCurrency(const PBBalanceCurrency& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.name().size() > 0) {
-    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
-  }
-  ::memcpy(&beginvalue_, &from.beginvalue_,
-    static_cast<size_t>(reinterpret_cast<char*>(&endvalue_) -
-    reinterpret_cast<char*>(&beginvalue_)) + sizeof(endvalue_));
-  // @@protoc_insertion_point(copy_constructor:KFMsg.PBBalanceCurrency)
-}
-
-void PBBalanceCurrency::SharedCtor() {
-  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&beginvalue_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&endvalue_) -
-      reinterpret_cast<char*>(&beginvalue_)) + sizeof(endvalue_));
-}
-
-PBBalanceCurrency::~PBBalanceCurrency() {
-  // @@protoc_insertion_point(destructor:KFMsg.PBBalanceCurrency)
-  SharedDtor();
-}
-
-void PBBalanceCurrency::SharedDtor() {
-  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-void PBBalanceCurrency::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* PBBalanceCurrency::descriptor() {
-  ::protobuf_DefineMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_DefineMessage_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const PBBalanceCurrency& PBBalanceCurrency::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_DefineMessage_2eproto::scc_info_PBBalanceCurrency.base);
-  return *internal_default_instance();
-}
-
-
-void PBBalanceCurrency::Clear() {
-// @@protoc_insertion_point(message_clear_start:KFMsg.PBBalanceCurrency)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&beginvalue_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&endvalue_) -
-      reinterpret_cast<char*>(&beginvalue_)) + sizeof(endvalue_));
-  _internal_metadata_.Clear();
-}
-
-bool PBBalanceCurrency::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:KFMsg.PBBalanceCurrency)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bytes name = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_name()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // uint32 beginvalue = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &beginvalue_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // uint32 endvalue = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &endvalue_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:KFMsg.PBBalanceCurrency)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:KFMsg.PBBalanceCurrency)
-  return false;
-#undef DO_
-}
-
-void PBBalanceCurrency::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:KFMsg.PBBalanceCurrency)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // bytes name = 1;
-  if (this->name().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      1, this->name(), output);
-  }
-
-  // uint32 beginvalue = 2;
-  if (this->beginvalue() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->beginvalue(), output);
-  }
-
-  // uint32 endvalue = 3;
-  if (this->endvalue() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->endvalue(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:KFMsg.PBBalanceCurrency)
-}
-
-::google::protobuf::uint8* PBBalanceCurrency::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:KFMsg.PBBalanceCurrency)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // bytes name = 1;
-  if (this->name().size() > 0) {
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        1, this->name(), target);
-  }
-
-  // uint32 beginvalue = 2;
-  if (this->beginvalue() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->beginvalue(), target);
-  }
-
-  // uint32 endvalue = 3;
-  if (this->endvalue() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->endvalue(), target);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:KFMsg.PBBalanceCurrency)
-  return target;
-}
-
-size_t PBBalanceCurrency::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:KFMsg.PBBalanceCurrency)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // bytes name = 1;
-  if (this->name().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->name());
-  }
-
-  // uint32 beginvalue = 2;
-  if (this->beginvalue() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->beginvalue());
-  }
-
-  // uint32 endvalue = 3;
-  if (this->endvalue() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->endvalue());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void PBBalanceCurrency::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:KFMsg.PBBalanceCurrency)
-  GOOGLE_DCHECK_NE(&from, this);
-  const PBBalanceCurrency* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const PBBalanceCurrency>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:KFMsg.PBBalanceCurrency)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:KFMsg.PBBalanceCurrency)
-    MergeFrom(*source);
-  }
-}
-
-void PBBalanceCurrency::MergeFrom(const PBBalanceCurrency& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:KFMsg.PBBalanceCurrency)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from.name().size() > 0) {
-
-    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
-  }
-  if (from.beginvalue() != 0) {
-    set_beginvalue(from.beginvalue());
-  }
-  if (from.endvalue() != 0) {
-    set_endvalue(from.endvalue());
-  }
-}
-
-void PBBalanceCurrency::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:KFMsg.PBBalanceCurrency)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void PBBalanceCurrency::CopyFrom(const PBBalanceCurrency& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:KFMsg.PBBalanceCurrency)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool PBBalanceCurrency::IsInitialized() const {
-  return true;
-}
-
-void PBBalanceCurrency::Swap(PBBalanceCurrency* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void PBBalanceCurrency::InternalSwap(PBBalanceCurrency* other) {
-  using std::swap;
-  name_.Swap(&other->name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  swap(beginvalue_, other->beginvalue_);
-  swap(endvalue_, other->endvalue_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-}
-
-::google::protobuf::Metadata PBBalanceCurrency::GetMetadata() const {
-  protobuf_DefineMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_DefineMessage_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-
-// ===================================================================
-
 void PBBalanceData::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int PBBalanceData::kHerodataFieldNumber;
-const int PBBalanceData::kItemdataFieldNumber;
-const int PBBalanceData::kCurrencydataFieldNumber;
+const int PBBalanceData::kGainitemFieldNumber;
+const int PBBalanceData::kLoseitemFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 PBBalanceData::PBBalanceData()
@@ -2948,8 +2567,8 @@ PBBalanceData::PBBalanceData(const PBBalanceData& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       herodata_(from.herodata_),
-      itemdata_(from.itemdata_),
-      currencydata_(from.currencydata_) {
+      gainitem_(from.gainitem_),
+      loseitem_(from.loseitem_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:KFMsg.PBBalanceData)
 }
@@ -2986,8 +2605,8 @@ void PBBalanceData::Clear() {
   (void) cached_has_bits;
 
   herodata_.Clear();
-  itemdata_.Clear();
-  currencydata_.Clear();
+  gainitem_.Clear();
+  loseitem_.Clear();
   _internal_metadata_.Clear();
 }
 
@@ -3013,24 +2632,24 @@ bool PBBalanceData::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .KFMsg.PBBalanceItem itemdata = 2;
+      // repeated .KFMsg.PBBalanceItem gainitem = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_itemdata()));
+                input, add_gainitem()));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // repeated .KFMsg.PBBalanceCurrency currencydata = 3;
+      // repeated .KFMsg.PBBalanceItem loseitem = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_currencydata()));
+                input, add_loseitem()));
         } else {
           goto handle_unusual;
         }
@@ -3072,21 +2691,21 @@ void PBBalanceData::SerializeWithCachedSizes(
       output);
   }
 
-  // repeated .KFMsg.PBBalanceItem itemdata = 2;
+  // repeated .KFMsg.PBBalanceItem gainitem = 2;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->itemdata_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->gainitem_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2,
-      this->itemdata(static_cast<int>(i)),
+      this->gainitem(static_cast<int>(i)),
       output);
   }
 
-  // repeated .KFMsg.PBBalanceCurrency currencydata = 3;
+  // repeated .KFMsg.PBBalanceItem loseitem = 3;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->currencydata_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->loseitem_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3,
-      this->currencydata(static_cast<int>(i)),
+      this->loseitem(static_cast<int>(i)),
       output);
   }
 
@@ -3112,20 +2731,20 @@ void PBBalanceData::SerializeWithCachedSizes(
         1, this->herodata(static_cast<int>(i)), deterministic, target);
   }
 
-  // repeated .KFMsg.PBBalanceItem itemdata = 2;
+  // repeated .KFMsg.PBBalanceItem gainitem = 2;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->itemdata_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->gainitem_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        2, this->itemdata(static_cast<int>(i)), deterministic, target);
+        2, this->gainitem(static_cast<int>(i)), deterministic, target);
   }
 
-  // repeated .KFMsg.PBBalanceCurrency currencydata = 3;
+  // repeated .KFMsg.PBBalanceItem loseitem = 3;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->currencydata_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->loseitem_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        3, this->currencydata(static_cast<int>(i)), deterministic, target);
+        3, this->loseitem(static_cast<int>(i)), deterministic, target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -3156,25 +2775,25 @@ size_t PBBalanceData::ByteSizeLong() const {
     }
   }
 
-  // repeated .KFMsg.PBBalanceItem itemdata = 2;
+  // repeated .KFMsg.PBBalanceItem gainitem = 2;
   {
-    unsigned int count = static_cast<unsigned int>(this->itemdata_size());
+    unsigned int count = static_cast<unsigned int>(this->gainitem_size());
     total_size += 1UL * count;
     for (unsigned int i = 0; i < count; i++) {
       total_size +=
         ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->itemdata(static_cast<int>(i)));
+          this->gainitem(static_cast<int>(i)));
     }
   }
 
-  // repeated .KFMsg.PBBalanceCurrency currencydata = 3;
+  // repeated .KFMsg.PBBalanceItem loseitem = 3;
   {
-    unsigned int count = static_cast<unsigned int>(this->currencydata_size());
+    unsigned int count = static_cast<unsigned int>(this->loseitem_size());
     total_size += 1UL * count;
     for (unsigned int i = 0; i < count; i++) {
       total_size +=
         ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->currencydata(static_cast<int>(i)));
+          this->loseitem(static_cast<int>(i)));
     }
   }
 
@@ -3206,8 +2825,8 @@ void PBBalanceData::MergeFrom(const PBBalanceData& from) {
   (void) cached_has_bits;
 
   herodata_.MergeFrom(from.herodata_);
-  itemdata_.MergeFrom(from.itemdata_);
-  currencydata_.MergeFrom(from.currencydata_);
+  gainitem_.MergeFrom(from.gainitem_);
+  loseitem_.MergeFrom(from.loseitem_);
 }
 
 void PBBalanceData::CopyFrom(const ::google::protobuf::Message& from) {
@@ -3235,8 +2854,8 @@ void PBBalanceData::Swap(PBBalanceData* other) {
 void PBBalanceData::InternalSwap(PBBalanceData* other) {
   using std::swap;
   CastToBase(&herodata_)->InternalSwap(CastToBase(&other->herodata_));
-  CastToBase(&itemdata_)->InternalSwap(CastToBase(&other->itemdata_));
-  CastToBase(&currencydata_)->InternalSwap(CastToBase(&other->currencydata_));
+  CastToBase(&gainitem_)->InternalSwap(CastToBase(&other->gainitem_));
+  CastToBase(&loseitem_)->InternalSwap(CastToBase(&other->loseitem_));
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
@@ -3592,7 +3211,7 @@ void PBBalanceHeroServer_BeginattributesEntry_DoNotUse::MergeFrom(const PBBalanc
 }
 ::google::protobuf::Metadata PBBalanceHeroServer_BeginattributesEntry_DoNotUse::GetMetadata() const {
   ::protobuf_DefineMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_DefineMessage_2eproto::file_level_metadata[9];
+  return ::protobuf_DefineMessage_2eproto::file_level_metadata[7];
 }
 void PBBalanceHeroServer_BeginattributesEntry_DoNotUse::MergeFrom(
     const ::google::protobuf::Message& other) {
@@ -3609,26 +3228,9 @@ void PBBalanceHeroServer_EndattributesEntry_DoNotUse::MergeFrom(const PBBalanceH
 }
 ::google::protobuf::Metadata PBBalanceHeroServer_EndattributesEntry_DoNotUse::GetMetadata() const {
   ::protobuf_DefineMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_DefineMessage_2eproto::file_level_metadata[10];
+  return ::protobuf_DefineMessage_2eproto::file_level_metadata[8];
 }
 void PBBalanceHeroServer_EndattributesEntry_DoNotUse::MergeFrom(
-    const ::google::protobuf::Message& other) {
-  ::google::protobuf::Message::MergeFrom(other);
-}
-
-
-// ===================================================================
-
-PBBalanceHeroServer_CharacterEntry_DoNotUse::PBBalanceHeroServer_CharacterEntry_DoNotUse() {}
-PBBalanceHeroServer_CharacterEntry_DoNotUse::PBBalanceHeroServer_CharacterEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
-void PBBalanceHeroServer_CharacterEntry_DoNotUse::MergeFrom(const PBBalanceHeroServer_CharacterEntry_DoNotUse& other) {
-  MergeFromInternal(other);
-}
-::google::protobuf::Metadata PBBalanceHeroServer_CharacterEntry_DoNotUse::GetMetadata() const {
-  ::protobuf_DefineMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_DefineMessage_2eproto::file_level_metadata[11];
-}
-void PBBalanceHeroServer_CharacterEntry_DoNotUse::MergeFrom(
     const ::google::protobuf::Message& other) {
   ::google::protobuf::Message::MergeFrom(other);
 }
@@ -3652,8 +3254,10 @@ const int PBBalanceHeroServer::kDeathFieldNumber;
 const int PBBalanceHeroServer::kKillnpcFieldNumber;
 const int PBBalanceHeroServer::kBeginattributesFieldNumber;
 const int PBBalanceHeroServer::kEndattributesFieldNumber;
-const int PBBalanceHeroServer::kCharacterFieldNumber;
-const int PBBalanceHeroServer::kDeathreasonFieldNumber;
+const int PBBalanceHeroServer::kBeginactiveFieldNumber;
+const int PBBalanceHeroServer::kEndactiveFieldNumber;
+const int PBBalanceHeroServer::kBegininnateFieldNumber;
+const int PBBalanceHeroServer::kEndinnateFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 PBBalanceHeroServer::PBBalanceHeroServer()
@@ -3666,26 +3270,29 @@ PBBalanceHeroServer::PBBalanceHeroServer()
 PBBalanceHeroServer::PBBalanceHeroServer(const PBBalanceHeroServer& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
-      killnpc_(from.killnpc_) {
+      killnpc_(from.killnpc_),
+      beginactive_(from.beginactive_),
+      endactive_(from.endactive_),
+      begininnate_(from.begininnate_),
+      endinnate_(from.endinnate_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   beginattributes_.MergeFrom(from.beginattributes_);
   endattributes_.MergeFrom(from.endattributes_);
-  character_.MergeFrom(from.character_);
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.name().size() > 0) {
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
   ::memcpy(&uuid_, &from.uuid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&deathreason_) -
-    reinterpret_cast<char*>(&uuid_)) + sizeof(deathreason_));
+    static_cast<size_t>(reinterpret_cast<char*>(&death_) -
+    reinterpret_cast<char*>(&uuid_)) + sizeof(death_));
   // @@protoc_insertion_point(copy_constructor:KFMsg.PBBalanceHeroServer)
 }
 
 void PBBalanceHeroServer::SharedCtor() {
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&uuid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&deathreason_) -
-      reinterpret_cast<char*>(&uuid_)) + sizeof(deathreason_));
+      reinterpret_cast<char*>(&death_) -
+      reinterpret_cast<char*>(&uuid_)) + sizeof(death_));
 }
 
 PBBalanceHeroServer::~PBBalanceHeroServer() {
@@ -3720,11 +3327,14 @@ void PBBalanceHeroServer::Clear() {
   killnpc_.Clear();
   beginattributes_.Clear();
   endattributes_.Clear();
-  character_.Clear();
+  beginactive_.Clear();
+  endactive_.Clear();
+  begininnate_.Clear();
+  endinnate_.Clear();
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&uuid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&deathreason_) -
-      reinterpret_cast<char*>(&uuid_)) + sizeof(deathreason_));
+      reinterpret_cast<char*>(&death_) -
+      reinterpret_cast<char*>(&uuid_)) + sizeof(death_));
   _internal_metadata_.Clear();
 }
 
@@ -3941,33 +3551,76 @@ bool PBBalanceHeroServer::MergePartialFromCodedStream(
         break;
       }
 
-      // map<uint32, uint32> character = 20;
+      // repeated uint32 beginactive = 20;
       case 20: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(162u /* 162 & 0xFF */)) {
-          PBBalanceHeroServer_CharacterEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
-              PBBalanceHeroServer_CharacterEntry_DoNotUse,
-              ::google::protobuf::uint32, ::google::protobuf::uint32,
-              ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
-              ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
-              0 >,
-            ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 > > parser(&character_);
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-              input, &parser));
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, this->mutable_beginactive())));
+        } else if (
+            static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(160u /* 160 & 0xFF */)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 2, 162u, input, this->mutable_beginactive())));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // uint32 deathreason = 21;
+      // repeated uint32 endactive = 21;
       case 21: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(168u /* 168 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+            static_cast< ::google::protobuf::uint8>(170u /* 170 & 0xFF */)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &deathreason_)));
+                 input, this->mutable_endactive())));
+        } else if (
+            static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(168u /* 168 & 0xFF */)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 2, 170u, input, this->mutable_endactive())));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated uint32 begininnate = 22;
+      case 22: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(178u /* 178 & 0xFF */)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, this->mutable_begininnate())));
+        } else if (
+            static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(176u /* 176 & 0xFF */)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 2, 178u, input, this->mutable_begininnate())));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated uint32 endinnate = 23;
+      case 23: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(186u /* 186 & 0xFF */)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, this->mutable_endinnate())));
+        } else if (
+            static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(184u /* 184 & 0xFF */)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 2, 186u, input, this->mutable_endinnate())));
         } else {
           goto handle_unusual;
         }
@@ -4160,48 +3813,48 @@ void PBBalanceHeroServer::SerializeWithCachedSizes(
     }
   }
 
-  // map<uint32, uint32> character = 20;
-  if (!this->character().empty()) {
-    typedef ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::const_pointer
-        ConstPtr;
-    typedef ::google::protobuf::internal::SortItem< ::google::protobuf::uint32, ConstPtr > SortItem;
-    typedef ::google::protobuf::internal::CompareByFirstField<SortItem> Less;
-
-    if (output->IsSerializationDeterministic() &&
-        this->character().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->character().size()]);
-      typedef ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::const_iterator
-          it = this->character().begin();
-          it != this->character().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<PBBalanceHeroServer_CharacterEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(character_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            20, *entry, output);
-      }
-    } else {
-      ::std::unique_ptr<PBBalanceHeroServer_CharacterEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::const_iterator
-          it = this->character().begin();
-          it != this->character().end(); ++it) {
-        entry.reset(character_.NewEntryWrapper(
-            it->first, it->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            20, *entry, output);
-      }
-    }
+  // repeated uint32 beginactive = 20;
+  if (this->beginactive_size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteTag(20, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
+    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
+        _beginactive_cached_byte_size_));
+  }
+  for (int i = 0, n = this->beginactive_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32NoTag(
+      this->beginactive(i), output);
   }
 
-  // uint32 deathreason = 21;
-  if (this->deathreason() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(21, this->deathreason(), output);
+  // repeated uint32 endactive = 21;
+  if (this->endactive_size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteTag(21, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
+    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
+        _endactive_cached_byte_size_));
+  }
+  for (int i = 0, n = this->endactive_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32NoTag(
+      this->endactive(i), output);
+  }
+
+  // repeated uint32 begininnate = 22;
+  if (this->begininnate_size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteTag(22, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
+    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
+        _begininnate_cached_byte_size_));
+  }
+  for (int i = 0, n = this->begininnate_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32NoTag(
+      this->begininnate(i), output);
+  }
+
+  // repeated uint32 endinnate = 23;
+  if (this->endinnate_size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteTag(23, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
+    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
+        _endinnate_cached_byte_size_));
+  }
+  for (int i = 0, n = this->endinnate_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32NoTag(
+      this->endinnate(i), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -4389,52 +4042,56 @@ void PBBalanceHeroServer::SerializeWithCachedSizes(
     }
   }
 
-  // map<uint32, uint32> character = 20;
-  if (!this->character().empty()) {
-    typedef ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::const_pointer
-        ConstPtr;
-    typedef ::google::protobuf::internal::SortItem< ::google::protobuf::uint32, ConstPtr > SortItem;
-    typedef ::google::protobuf::internal::CompareByFirstField<SortItem> Less;
-
-    if (deterministic &&
-        this->character().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->character().size()]);
-      typedef ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::const_iterator
-          it = this->character().begin();
-          it != this->character().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<PBBalanceHeroServer_CharacterEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(character_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       20, *entry, deterministic, target);
-;
-      }
-    } else {
-      ::std::unique_ptr<PBBalanceHeroServer_CharacterEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::const_iterator
-          it = this->character().begin();
-          it != this->character().end(); ++it) {
-        entry.reset(character_.NewEntryWrapper(
-            it->first, it->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       20, *entry, deterministic, target);
-;
-      }
-    }
+  // repeated uint32 beginactive = 20;
+  if (this->beginactive_size() > 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
+      20,
+      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
+      target);
+    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
+        static_cast< ::google::protobuf::int32>(
+            _beginactive_cached_byte_size_), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteUInt32NoTagToArray(this->beginactive_, target);
   }
 
-  // uint32 deathreason = 21;
-  if (this->deathreason() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(21, this->deathreason(), target);
+  // repeated uint32 endactive = 21;
+  if (this->endactive_size() > 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
+      21,
+      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
+      target);
+    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
+        static_cast< ::google::protobuf::int32>(
+            _endactive_cached_byte_size_), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteUInt32NoTagToArray(this->endactive_, target);
+  }
+
+  // repeated uint32 begininnate = 22;
+  if (this->begininnate_size() > 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
+      22,
+      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
+      target);
+    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
+        static_cast< ::google::protobuf::int32>(
+            _begininnate_cached_byte_size_), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteUInt32NoTagToArray(this->begininnate_, target);
+  }
+
+  // repeated uint32 endinnate = 23;
+  if (this->endinnate_size() > 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
+      23,
+      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
+      target);
+    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
+        static_cast< ::google::protobuf::int32>(
+            _endinnate_cached_byte_size_), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteUInt32NoTagToArray(this->endinnate_, target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -4498,18 +4155,68 @@ size_t PBBalanceHeroServer::ByteSizeLong() const {
     }
   }
 
-  // map<uint32, uint32> character = 20;
-  total_size += 2 *
-      ::google::protobuf::internal::FromIntSize(this->character_size());
+  // repeated uint32 beginactive = 20;
   {
-    ::std::unique_ptr<PBBalanceHeroServer_CharacterEntry_DoNotUse> entry;
-    for (::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::const_iterator
-        it = this->character().begin();
-        it != this->character().end(); ++it) {
-      entry.reset(character_.NewEntryWrapper(it->first, it->second));
-      total_size += ::google::protobuf::internal::WireFormatLite::
-          MessageSizeNoVirtual(*entry);
+    size_t data_size = ::google::protobuf::internal::WireFormatLite::
+      UInt32Size(this->beginactive_);
+    if (data_size > 0) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+            static_cast< ::google::protobuf::int32>(data_size));
     }
+    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
+    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+    _beginactive_cached_byte_size_ = cached_size;
+    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    total_size += data_size;
+  }
+
+  // repeated uint32 endactive = 21;
+  {
+    size_t data_size = ::google::protobuf::internal::WireFormatLite::
+      UInt32Size(this->endactive_);
+    if (data_size > 0) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+            static_cast< ::google::protobuf::int32>(data_size));
+    }
+    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
+    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+    _endactive_cached_byte_size_ = cached_size;
+    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    total_size += data_size;
+  }
+
+  // repeated uint32 begininnate = 22;
+  {
+    size_t data_size = ::google::protobuf::internal::WireFormatLite::
+      UInt32Size(this->begininnate_);
+    if (data_size > 0) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+            static_cast< ::google::protobuf::int32>(data_size));
+    }
+    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
+    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+    _begininnate_cached_byte_size_ = cached_size;
+    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    total_size += data_size;
+  }
+
+  // repeated uint32 endinnate = 23;
+  {
+    size_t data_size = ::google::protobuf::internal::WireFormatLite::
+      UInt32Size(this->endinnate_);
+    if (data_size > 0) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+            static_cast< ::google::protobuf::int32>(data_size));
+    }
+    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
+    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+    _endinnate_cached_byte_size_ = cached_size;
+    GOOGLE_SAFE_CONCURRENT_WRITES_END();
+    total_size += data_size;
   }
 
   // bytes name = 5;
@@ -4580,13 +4287,6 @@ size_t PBBalanceHeroServer::ByteSizeLong() const {
     total_size += 1 + 1;
   }
 
-  // uint32 deathreason = 21;
-  if (this->deathreason() != 0) {
-    total_size += 2 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->deathreason());
-  }
-
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -4617,7 +4317,10 @@ void PBBalanceHeroServer::MergeFrom(const PBBalanceHeroServer& from) {
   killnpc_.MergeFrom(from.killnpc_);
   beginattributes_.MergeFrom(from.beginattributes_);
   endattributes_.MergeFrom(from.endattributes_);
-  character_.MergeFrom(from.character_);
+  beginactive_.MergeFrom(from.beginactive_);
+  endactive_.MergeFrom(from.endactive_);
+  begininnate_.MergeFrom(from.begininnate_);
+  endinnate_.MergeFrom(from.endinnate_);
   if (from.name().size() > 0) {
 
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
@@ -4649,9 +4352,6 @@ void PBBalanceHeroServer::MergeFrom(const PBBalanceHeroServer& from) {
   if (from.death() != 0) {
     set_death(from.death());
   }
-  if (from.deathreason() != 0) {
-    set_deathreason(from.deathreason());
-  }
 }
 
 void PBBalanceHeroServer::CopyFrom(const ::google::protobuf::Message& from) {
@@ -4681,7 +4381,10 @@ void PBBalanceHeroServer::InternalSwap(PBBalanceHeroServer* other) {
   killnpc_.InternalSwap(&other->killnpc_);
   beginattributes_.Swap(&other->beginattributes_);
   endattributes_.Swap(&other->endattributes_);
-  character_.Swap(&other->character_);
+  beginactive_.InternalSwap(&other->beginactive_);
+  endactive_.InternalSwap(&other->endactive_);
+  begininnate_.InternalSwap(&other->begininnate_);
+  endinnate_.InternalSwap(&other->endinnate_);
   name_.Swap(&other->name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(uuid_, other->uuid_);
@@ -4693,7 +4396,6 @@ void PBBalanceHeroServer::InternalSwap(PBBalanceHeroServer* other) {
   swap(beginlevel_, other->beginlevel_);
   swap(endlevel_, other->endlevel_);
   swap(death_, other->death_);
-  swap(deathreason_, other->deathreason_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
@@ -5479,6 +5181,370 @@ void PBExplorePlayerData::InternalSwap(PBExplorePlayerData* other) {
 
 // ===================================================================
 
+void PBNpcGroupData::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int PBNpcGroupData::kNpcgroupidFieldNumber;
+const int PBNpcGroupData::kSpawnruleFieldNumber;
+const int PBNpcGroupData::kSpawnmodelFieldNumber;
+const int PBNpcGroupData::kDungeonidFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+PBNpcGroupData::PBNpcGroupData()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_DefineMessage_2eproto::scc_info_PBNpcGroupData.base);
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:KFMsg.PBNpcGroupData)
+}
+PBNpcGroupData::PBNpcGroupData(const PBNpcGroupData& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  spawnmodel_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.spawnmodel().size() > 0) {
+    spawnmodel_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.spawnmodel_);
+  }
+  ::memcpy(&npcgroupid_, &from.npcgroupid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&dungeonid_) -
+    reinterpret_cast<char*>(&npcgroupid_)) + sizeof(dungeonid_));
+  // @@protoc_insertion_point(copy_constructor:KFMsg.PBNpcGroupData)
+}
+
+void PBNpcGroupData::SharedCtor() {
+  spawnmodel_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&npcgroupid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&dungeonid_) -
+      reinterpret_cast<char*>(&npcgroupid_)) + sizeof(dungeonid_));
+}
+
+PBNpcGroupData::~PBNpcGroupData() {
+  // @@protoc_insertion_point(destructor:KFMsg.PBNpcGroupData)
+  SharedDtor();
+}
+
+void PBNpcGroupData::SharedDtor() {
+  spawnmodel_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void PBNpcGroupData::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ::google::protobuf::Descriptor* PBNpcGroupData::descriptor() {
+  ::protobuf_DefineMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_DefineMessage_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const PBNpcGroupData& PBNpcGroupData::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_DefineMessage_2eproto::scc_info_PBNpcGroupData.base);
+  return *internal_default_instance();
+}
+
+
+void PBNpcGroupData::Clear() {
+// @@protoc_insertion_point(message_clear_start:KFMsg.PBNpcGroupData)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  spawnmodel_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&npcgroupid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&dungeonid_) -
+      reinterpret_cast<char*>(&npcgroupid_)) + sizeof(dungeonid_));
+  _internal_metadata_.Clear();
+}
+
+bool PBNpcGroupData::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:KFMsg.PBNpcGroupData)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // uint32 npcgroupid = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &npcgroupid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 spawnrule = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &spawnrule_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // bytes spawnmodel = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_spawnmodel()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 dungeonid = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &dungeonid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:KFMsg.PBNpcGroupData)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:KFMsg.PBNpcGroupData)
+  return false;
+#undef DO_
+}
+
+void PBNpcGroupData::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:KFMsg.PBNpcGroupData)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 npcgroupid = 1;
+  if (this->npcgroupid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->npcgroupid(), output);
+  }
+
+  // uint32 spawnrule = 2;
+  if (this->spawnrule() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->spawnrule(), output);
+  }
+
+  // bytes spawnmodel = 3;
+  if (this->spawnmodel().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+      3, this->spawnmodel(), output);
+  }
+
+  // uint32 dungeonid = 4;
+  if (this->dungeonid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->dungeonid(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:KFMsg.PBNpcGroupData)
+}
+
+::google::protobuf::uint8* PBNpcGroupData::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:KFMsg.PBNpcGroupData)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 npcgroupid = 1;
+  if (this->npcgroupid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->npcgroupid(), target);
+  }
+
+  // uint32 spawnrule = 2;
+  if (this->spawnrule() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->spawnrule(), target);
+  }
+
+  // bytes spawnmodel = 3;
+  if (this->spawnmodel().size() > 0) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        3, this->spawnmodel(), target);
+  }
+
+  // uint32 dungeonid = 4;
+  if (this->dungeonid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->dungeonid(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:KFMsg.PBNpcGroupData)
+  return target;
+}
+
+size_t PBNpcGroupData::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:KFMsg.PBNpcGroupData)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // bytes spawnmodel = 3;
+  if (this->spawnmodel().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->spawnmodel());
+  }
+
+  // uint32 npcgroupid = 1;
+  if (this->npcgroupid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->npcgroupid());
+  }
+
+  // uint32 spawnrule = 2;
+  if (this->spawnrule() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->spawnrule());
+  }
+
+  // uint32 dungeonid = 4;
+  if (this->dungeonid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->dungeonid());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void PBNpcGroupData::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:KFMsg.PBNpcGroupData)
+  GOOGLE_DCHECK_NE(&from, this);
+  const PBNpcGroupData* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const PBNpcGroupData>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:KFMsg.PBNpcGroupData)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:KFMsg.PBNpcGroupData)
+    MergeFrom(*source);
+  }
+}
+
+void PBNpcGroupData::MergeFrom(const PBNpcGroupData& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:KFMsg.PBNpcGroupData)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.spawnmodel().size() > 0) {
+
+    spawnmodel_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.spawnmodel_);
+  }
+  if (from.npcgroupid() != 0) {
+    set_npcgroupid(from.npcgroupid());
+  }
+  if (from.spawnrule() != 0) {
+    set_spawnrule(from.spawnrule());
+  }
+  if (from.dungeonid() != 0) {
+    set_dungeonid(from.dungeonid());
+  }
+}
+
+void PBNpcGroupData::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:KFMsg.PBNpcGroupData)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void PBNpcGroupData::CopyFrom(const PBNpcGroupData& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:KFMsg.PBNpcGroupData)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool PBNpcGroupData::IsInitialized() const {
+  return true;
+}
+
+void PBNpcGroupData::Swap(PBNpcGroupData* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void PBNpcGroupData::InternalSwap(PBNpcGroupData* other) {
+  using std::swap;
+  spawnmodel_.Swap(&other->spawnmodel_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(npcgroupid_, other->npcgroupid_);
+  swap(spawnrule_, other->spawnrule_);
+  swap(dungeonid_, other->dungeonid_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+}
+
+::google::protobuf::Metadata PBNpcGroupData::GetMetadata() const {
+  protobuf_DefineMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_DefineMessage_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+PBExploreNpcData_NpcgroupdataEntry_DoNotUse::PBExploreNpcData_NpcgroupdataEntry_DoNotUse() {}
+PBExploreNpcData_NpcgroupdataEntry_DoNotUse::PBExploreNpcData_NpcgroupdataEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+void PBExploreNpcData_NpcgroupdataEntry_DoNotUse::MergeFrom(const PBExploreNpcData_NpcgroupdataEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::google::protobuf::Metadata PBExploreNpcData_NpcgroupdataEntry_DoNotUse::GetMetadata() const {
+  ::protobuf_DefineMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_DefineMessage_2eproto::file_level_metadata[13];
+}
+void PBExploreNpcData_NpcgroupdataEntry_DoNotUse::MergeFrom(
+    const ::google::protobuf::Message& other) {
+  ::google::protobuf::Message::MergeFrom(other);
+}
+
+
+// ===================================================================
+
 void PBExploreNpcData::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -5488,6 +5554,7 @@ const int PBExploreNpcData::kYFieldNumber;
 const int PBExploreNpcData::kZFieldNumber;
 const int PBExploreNpcData::kYawFieldNumber;
 const int PBExploreNpcData::kBkilledFieldNumber;
+const int PBExploreNpcData::kNpcgroupdataFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 PBExploreNpcData::PBExploreNpcData()
@@ -5501,6 +5568,7 @@ PBExploreNpcData::PBExploreNpcData(const PBExploreNpcData& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  npcgroupdata_.MergeFrom(from.npcgroupdata_);
   key_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.key().size() > 0) {
     key_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.key_);
@@ -5547,6 +5615,7 @@ void PBExploreNpcData::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  npcgroupdata_.Clear();
   key_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&x_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&bkilled_) -
@@ -5646,6 +5715,25 @@ bool PBExploreNpcData::MergePartialFromCodedStream(
         break;
       }
 
+      // map<uint32, .KFMsg.PBNpcGroupData> npcgroupdata = 10;
+      case 10: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(82u /* 82 & 0xFF */)) {
+          PBExploreNpcData_NpcgroupdataEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
+              PBExploreNpcData_NpcgroupdataEntry_DoNotUse,
+              ::google::protobuf::uint32, ::KFMsg::PBNpcGroupData,
+              ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+              ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
+              0 >,
+            ::google::protobuf::Map< ::google::protobuf::uint32, ::KFMsg::PBNpcGroupData > > parser(&npcgroupdata_);
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+              input, &parser));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -5703,6 +5791,45 @@ void PBExploreNpcData::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(6, this->bkilled(), output);
   }
 
+  // map<uint32, .KFMsg.PBNpcGroupData> npcgroupdata = 10;
+  if (!this->npcgroupdata().empty()) {
+    typedef ::google::protobuf::Map< ::google::protobuf::uint32, ::KFMsg::PBNpcGroupData >::const_pointer
+        ConstPtr;
+    typedef ::google::protobuf::internal::SortItem< ::google::protobuf::uint32, ConstPtr > SortItem;
+    typedef ::google::protobuf::internal::CompareByFirstField<SortItem> Less;
+
+    if (output->IsSerializationDeterministic() &&
+        this->npcgroupdata().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->npcgroupdata().size()]);
+      typedef ::google::protobuf::Map< ::google::protobuf::uint32, ::KFMsg::PBNpcGroupData >::size_type size_type;
+      size_type n = 0;
+      for (::google::protobuf::Map< ::google::protobuf::uint32, ::KFMsg::PBNpcGroupData >::const_iterator
+          it = this->npcgroupdata().begin();
+          it != this->npcgroupdata().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      ::std::unique_ptr<PBExploreNpcData_NpcgroupdataEntry_DoNotUse> entry;
+      for (size_type i = 0; i < n; i++) {
+        entry.reset(npcgroupdata_.NewEntryWrapper(
+            items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second));
+        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+            10, *entry, output);
+      }
+    } else {
+      ::std::unique_ptr<PBExploreNpcData_NpcgroupdataEntry_DoNotUse> entry;
+      for (::google::protobuf::Map< ::google::protobuf::uint32, ::KFMsg::PBNpcGroupData >::const_iterator
+          it = this->npcgroupdata().begin();
+          it != this->npcgroupdata().end(); ++it) {
+        entry.reset(npcgroupdata_.NewEntryWrapper(
+            it->first, it->second));
+        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+            10, *entry, output);
+      }
+    }
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -5749,6 +5876,49 @@ void PBExploreNpcData::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(6, this->bkilled(), target);
   }
 
+  // map<uint32, .KFMsg.PBNpcGroupData> npcgroupdata = 10;
+  if (!this->npcgroupdata().empty()) {
+    typedef ::google::protobuf::Map< ::google::protobuf::uint32, ::KFMsg::PBNpcGroupData >::const_pointer
+        ConstPtr;
+    typedef ::google::protobuf::internal::SortItem< ::google::protobuf::uint32, ConstPtr > SortItem;
+    typedef ::google::protobuf::internal::CompareByFirstField<SortItem> Less;
+
+    if (deterministic &&
+        this->npcgroupdata().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->npcgroupdata().size()]);
+      typedef ::google::protobuf::Map< ::google::protobuf::uint32, ::KFMsg::PBNpcGroupData >::size_type size_type;
+      size_type n = 0;
+      for (::google::protobuf::Map< ::google::protobuf::uint32, ::KFMsg::PBNpcGroupData >::const_iterator
+          it = this->npcgroupdata().begin();
+          it != this->npcgroupdata().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      ::std::unique_ptr<PBExploreNpcData_NpcgroupdataEntry_DoNotUse> entry;
+      for (size_type i = 0; i < n; i++) {
+        entry.reset(npcgroupdata_.NewEntryWrapper(
+            items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second));
+        target = ::google::protobuf::internal::WireFormatLite::
+                   InternalWriteMessageNoVirtualToArray(
+                       10, *entry, deterministic, target);
+;
+      }
+    } else {
+      ::std::unique_ptr<PBExploreNpcData_NpcgroupdataEntry_DoNotUse> entry;
+      for (::google::protobuf::Map< ::google::protobuf::uint32, ::KFMsg::PBNpcGroupData >::const_iterator
+          it = this->npcgroupdata().begin();
+          it != this->npcgroupdata().end(); ++it) {
+        entry.reset(npcgroupdata_.NewEntryWrapper(
+            it->first, it->second));
+        target = ::google::protobuf::internal::WireFormatLite::
+                   InternalWriteMessageNoVirtualToArray(
+                       10, *entry, deterministic, target);
+;
+      }
+    }
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
@@ -5766,6 +5936,20 @@ size_t PBExploreNpcData::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
+  // map<uint32, .KFMsg.PBNpcGroupData> npcgroupdata = 10;
+  total_size += 1 *
+      ::google::protobuf::internal::FromIntSize(this->npcgroupdata_size());
+  {
+    ::std::unique_ptr<PBExploreNpcData_NpcgroupdataEntry_DoNotUse> entry;
+    for (::google::protobuf::Map< ::google::protobuf::uint32, ::KFMsg::PBNpcGroupData >::const_iterator
+        it = this->npcgroupdata().begin();
+        it != this->npcgroupdata().end(); ++it) {
+      entry.reset(npcgroupdata_.NewEntryWrapper(it->first, it->second));
+      total_size += ::google::protobuf::internal::WireFormatLite::
+          MessageSizeNoVirtual(*entry);
+    }
+  }
+
   // bytes key = 1;
   if (this->key().size() > 0) {
     total_size += 1 +
@@ -5833,6 +6017,7 @@ void PBExploreNpcData::MergeFrom(const PBExploreNpcData& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  npcgroupdata_.MergeFrom(from.npcgroupdata_);
   if (from.key().size() > 0) {
 
     key_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.key_);
@@ -5878,6 +6063,7 @@ void PBExploreNpcData::Swap(PBExploreNpcData* other) {
 }
 void PBExploreNpcData::InternalSwap(PBExploreNpcData* other) {
   using std::swap;
+  npcgroupdata_.Swap(&other->npcgroupdata_);
   key_.Swap(&other->key_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(x_, other->x_);
@@ -6355,7 +6541,7 @@ void PBHeroBuffData_BuffEntry_DoNotUse::MergeFrom(const PBHeroBuffData_BuffEntry
 }
 ::google::protobuf::Metadata PBHeroBuffData_BuffEntry_DoNotUse::GetMetadata() const {
   ::protobuf_DefineMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_DefineMessage_2eproto::file_level_metadata[18];
+  return ::protobuf_DefineMessage_2eproto::file_level_metadata[17];
 }
 void PBHeroBuffData_BuffEntry_DoNotUse::MergeFrom(
     const ::google::protobuf::Message& other) {
@@ -6676,7 +6862,7 @@ void PBExploreData_NpcdataEntry_DoNotUse::MergeFrom(const PBExploreData_NpcdataE
 }
 ::google::protobuf::Metadata PBExploreData_NpcdataEntry_DoNotUse::GetMetadata() const {
   ::protobuf_DefineMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_DefineMessage_2eproto::file_level_metadata[20];
+  return ::protobuf_DefineMessage_2eproto::file_level_metadata[19];
 }
 void PBExploreData_NpcdataEntry_DoNotUse::MergeFrom(
     const ::google::protobuf::Message& other) {
@@ -6700,6 +6886,7 @@ const int PBExploreData::kLastlevelFieldNumber;
 const int PBExploreData::kCreationFieldNumber;
 const int PBExploreData::kInnerworldFieldNumber;
 const int PBExploreData::kBirthplaceFieldNumber;
+const int PBExploreData::kInnerworldparameterFieldNumber;
 const int PBExploreData::kPlayerdataFieldNumber;
 const int PBExploreData::kNpcdataFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -6722,15 +6909,15 @@ PBExploreData::PBExploreData(const PBExploreData& from)
     playerdata_ = NULL;
   }
   ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&birthplace_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(birthplace_));
+    static_cast<size_t>(reinterpret_cast<char*>(&innerworldparameter_) -
+    reinterpret_cast<char*>(&id_)) + sizeof(innerworldparameter_));
   // @@protoc_insertion_point(copy_constructor:KFMsg.PBExploreData)
 }
 
 void PBExploreData::SharedCtor() {
   ::memset(&playerdata_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&birthplace_) -
-      reinterpret_cast<char*>(&playerdata_)) + sizeof(birthplace_));
+      reinterpret_cast<char*>(&innerworldparameter_) -
+      reinterpret_cast<char*>(&playerdata_)) + sizeof(innerworldparameter_));
 }
 
 PBExploreData::~PBExploreData() {
@@ -6768,8 +6955,8 @@ void PBExploreData::Clear() {
   }
   playerdata_ = NULL;
   ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&birthplace_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(birthplace_));
+      reinterpret_cast<char*>(&innerworldparameter_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(innerworldparameter_));
   _internal_metadata_.Clear();
 }
 
@@ -6909,6 +7096,20 @@ bool PBExploreData::MergePartialFromCodedStream(
         break;
       }
 
+      // uint32 innerworldparameter = 10;
+      case 10: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(80u /* 80 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &innerworldparameter_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       // .KFMsg.PBExplorePlayerData playerdata = 11;
       case 11: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
@@ -7013,6 +7214,11 @@ void PBExploreData::SerializeWithCachedSizes(
   // uint32 birthplace = 9;
   if (this->birthplace() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(9, this->birthplace(), output);
+  }
+
+  // uint32 innerworldparameter = 10;
+  if (this->innerworldparameter() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(10, this->innerworldparameter(), output);
   }
 
   // .KFMsg.PBExplorePlayerData playerdata = 11;
@@ -7127,6 +7333,11 @@ void PBExploreData::SerializeWithCachedSizes(
   // uint32 birthplace = 9;
   if (this->birthplace() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(9, this->birthplace(), target);
+  }
+
+  // uint32 innerworldparameter = 10;
+  if (this->innerworldparameter() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(10, this->innerworldparameter(), target);
   }
 
   // .KFMsg.PBExplorePlayerData playerdata = 11;
@@ -7288,6 +7499,13 @@ size_t PBExploreData::ByteSizeLong() const {
         this->birthplace());
   }
 
+  // uint32 innerworldparameter = 10;
+  if (this->innerworldparameter() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->innerworldparameter());
+  }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -7346,6 +7564,9 @@ void PBExploreData::MergeFrom(const PBExploreData& from) {
   if (from.birthplace() != 0) {
     set_birthplace(from.birthplace());
   }
+  if (from.innerworldparameter() != 0) {
+    set_innerworldparameter(from.innerworldparameter());
+  }
 }
 
 void PBExploreData::CopyFrom(const ::google::protobuf::Message& from) {
@@ -7383,6 +7604,7 @@ void PBExploreData::InternalSwap(PBExploreData* other) {
   swap(creation_, other->creation_);
   swap(innerworld_, other->innerworld_);
   swap(birthplace_, other->birthplace_);
+  swap(innerworldparameter_, other->innerworldparameter_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
@@ -7401,7 +7623,7 @@ void PBRealmData_ExploreEntry_DoNotUse::MergeFrom(const PBRealmData_ExploreEntry
 }
 ::google::protobuf::Metadata PBRealmData_ExploreEntry_DoNotUse::GetMetadata() const {
   ::protobuf_DefineMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_DefineMessage_2eproto::file_level_metadata[22];
+  return ::protobuf_DefineMessage_2eproto::file_level_metadata[21];
 }
 void PBRealmData_ExploreEntry_DoNotUse::MergeFrom(
     const ::google::protobuf::Message& other) {
@@ -7427,12 +7649,13 @@ const int PBRealmData::kFaithFieldNumber;
 const int PBRealmData::kExtendlevelFieldNumber;
 const int PBRealmData::kHerodataFieldNumber;
 const int PBRealmData::kItemdataFieldNumber;
-const int PBRealmData::kCurrencydataFieldNumber;
+const int PBRealmData::kLoseitemFieldNumber;
 const int PBRealmData::kKillnpcFieldNumber;
 const int PBRealmData::kBuffdataFieldNumber;
 const int PBRealmData::kExploreFieldNumber;
 const int PBRealmData::kFleerateFieldNumber;
 const int PBRealmData::kInnerworldFieldNumber;
+const int PBRealmData::kSelectidFieldNumber;
 const int PBRealmData::kSelectcountFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -7448,7 +7671,7 @@ PBRealmData::PBRealmData(const PBRealmData& from)
       _internal_metadata_(NULL),
       herodata_(from.herodata_),
       itemdata_(from.itemdata_),
-      currencydata_(from.currencydata_),
+      loseitem_(from.loseitem_),
       killnpc_(from.killnpc_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   explore_.MergeFrom(from.explore_);
@@ -7506,7 +7729,7 @@ void PBRealmData::Clear() {
 
   herodata_.Clear();
   itemdata_.Clear();
-  currencydata_.Clear();
+  loseitem_.Clear();
   killnpc_.Clear();
   explore_.Clear();
   modulename_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -7678,12 +7901,12 @@ bool PBRealmData::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .KFMsg.PBBalanceCurrency currencydata = 12;
+      // repeated .KFMsg.PBBalanceItem loseitem = 12;
       case 12: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(98u /* 98 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_currencydata()));
+                input, add_loseitem()));
         } else {
           goto handle_unusual;
         }
@@ -7768,10 +7991,24 @@ bool PBRealmData::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 selectcount = 18;
+      // uint32 selectid = 18;
       case 18: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(144u /* 144 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &selectid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 selectcount = 19;
+      case 19: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(152u /* 152 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
@@ -7872,12 +8109,12 @@ void PBRealmData::SerializeWithCachedSizes(
       output);
   }
 
-  // repeated .KFMsg.PBBalanceCurrency currencydata = 12;
+  // repeated .KFMsg.PBBalanceItem loseitem = 12;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->currencydata_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->loseitem_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       12,
-      this->currencydata(static_cast<int>(i)),
+      this->loseitem(static_cast<int>(i)),
       output);
   }
 
@@ -7947,9 +8184,14 @@ void PBRealmData::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(17, this->innerworld(), output);
   }
 
-  // uint32 selectcount = 18;
+  // uint32 selectid = 18;
+  if (this->selectid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(18, this->selectid(), output);
+  }
+
+  // uint32 selectcount = 19;
   if (this->selectcount() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(18, this->selectcount(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(19, this->selectcount(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -8029,12 +8271,12 @@ void PBRealmData::SerializeWithCachedSizes(
         11, this->itemdata(static_cast<int>(i)), deterministic, target);
   }
 
-  // repeated .KFMsg.PBBalanceCurrency currencydata = 12;
+  // repeated .KFMsg.PBBalanceItem loseitem = 12;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->currencydata_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->loseitem_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        12, this->currencydata(static_cast<int>(i)), deterministic, target);
+        12, this->loseitem(static_cast<int>(i)), deterministic, target);
   }
 
   // repeated uint64 killnpc = 13;
@@ -8110,9 +8352,14 @@ void PBRealmData::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(17, this->innerworld(), target);
   }
 
-  // uint32 selectcount = 18;
+  // uint32 selectid = 18;
+  if (this->selectid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(18, this->selectid(), target);
+  }
+
+  // uint32 selectcount = 19;
   if (this->selectcount() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(18, this->selectcount(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(19, this->selectcount(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -8154,14 +8401,14 @@ size_t PBRealmData::ByteSizeLong() const {
     }
   }
 
-  // repeated .KFMsg.PBBalanceCurrency currencydata = 12;
+  // repeated .KFMsg.PBBalanceItem loseitem = 12;
   {
-    unsigned int count = static_cast<unsigned int>(this->currencydata_size());
+    unsigned int count = static_cast<unsigned int>(this->loseitem_size());
     total_size += 1UL * count;
     for (unsigned int i = 0; i < count; i++) {
       total_size +=
         ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->currencydata(static_cast<int>(i)));
+          this->loseitem(static_cast<int>(i)));
     }
   }
 
@@ -8279,7 +8526,14 @@ size_t PBRealmData::ByteSizeLong() const {
         this->innerworld());
   }
 
-  // uint32 selectcount = 18;
+  // uint32 selectid = 18;
+  if (this->selectid() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->selectid());
+  }
+
+  // uint32 selectcount = 19;
   if (this->selectcount() != 0) {
     total_size += 2 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
@@ -8315,7 +8569,7 @@ void PBRealmData::MergeFrom(const PBRealmData& from) {
 
   herodata_.MergeFrom(from.herodata_);
   itemdata_.MergeFrom(from.itemdata_);
-  currencydata_.MergeFrom(from.currencydata_);
+  loseitem_.MergeFrom(from.loseitem_);
   killnpc_.MergeFrom(from.killnpc_);
   explore_.MergeFrom(from.explore_);
   if (from.modulename().size() > 0) {
@@ -8355,6 +8609,9 @@ void PBRealmData::MergeFrom(const PBRealmData& from) {
   if (from.innerworld() != 0) {
     set_innerworld(from.innerworld());
   }
+  if (from.selectid() != 0) {
+    set_selectid(from.selectid());
+  }
   if (from.selectcount() != 0) {
     set_selectcount(from.selectcount());
   }
@@ -8386,7 +8643,7 @@ void PBRealmData::InternalSwap(PBRealmData* other) {
   using std::swap;
   CastToBase(&herodata_)->InternalSwap(CastToBase(&other->herodata_));
   CastToBase(&itemdata_)->InternalSwap(CastToBase(&other->itemdata_));
-  CastToBase(&currencydata_)->InternalSwap(CastToBase(&other->currencydata_));
+  CastToBase(&loseitem_)->InternalSwap(CastToBase(&other->loseitem_));
   killnpc_.InternalSwap(&other->killnpc_);
   explore_.Swap(&other->explore_);
   modulename_.Swap(&other->modulename_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
@@ -8402,6 +8659,7 @@ void PBRealmData::InternalSwap(PBRealmData* other) {
   swap(extendlevel_, other->extendlevel_);
   swap(fleerate_, other->fleerate_);
   swap(innerworld_, other->innerworld_);
+  swap(selectid_, other->selectid_);
   swap(selectcount_, other->selectcount_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
@@ -8739,14 +8997,8 @@ template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBBalanceItem* Arena::Cre
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBBalanceHero_AttributesEntry_DoNotUse* Arena::CreateMaybeMessage< ::KFMsg::PBBalanceHero_AttributesEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateInternal< ::KFMsg::PBBalanceHero_AttributesEntry_DoNotUse >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBBalanceHero_CharacterEntry_DoNotUse* Arena::CreateMaybeMessage< ::KFMsg::PBBalanceHero_CharacterEntry_DoNotUse >(Arena* arena) {
-  return Arena::CreateInternal< ::KFMsg::PBBalanceHero_CharacterEntry_DoNotUse >(arena);
-}
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBBalanceHero* Arena::CreateMaybeMessage< ::KFMsg::PBBalanceHero >(Arena* arena) {
   return Arena::CreateInternal< ::KFMsg::PBBalanceHero >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBBalanceCurrency* Arena::CreateMaybeMessage< ::KFMsg::PBBalanceCurrency >(Arena* arena) {
-  return Arena::CreateInternal< ::KFMsg::PBBalanceCurrency >(arena);
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBBalanceData* Arena::CreateMaybeMessage< ::KFMsg::PBBalanceData >(Arena* arena) {
   return Arena::CreateInternal< ::KFMsg::PBBalanceData >(arena);
@@ -8760,9 +9012,6 @@ template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBBalanceHeroServer_Begin
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBBalanceHeroServer_EndattributesEntry_DoNotUse* Arena::CreateMaybeMessage< ::KFMsg::PBBalanceHeroServer_EndattributesEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateInternal< ::KFMsg::PBBalanceHeroServer_EndattributesEntry_DoNotUse >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBBalanceHeroServer_CharacterEntry_DoNotUse* Arena::CreateMaybeMessage< ::KFMsg::PBBalanceHeroServer_CharacterEntry_DoNotUse >(Arena* arena) {
-  return Arena::CreateInternal< ::KFMsg::PBBalanceHeroServer_CharacterEntry_DoNotUse >(arena);
-}
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBBalanceHeroServer* Arena::CreateMaybeMessage< ::KFMsg::PBBalanceHeroServer >(Arena* arena) {
   return Arena::CreateInternal< ::KFMsg::PBBalanceHeroServer >(arena);
 }
@@ -8771,6 +9020,12 @@ template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBFighterHeroData* Arena:
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBExplorePlayerData* Arena::CreateMaybeMessage< ::KFMsg::PBExplorePlayerData >(Arena* arena) {
   return Arena::CreateInternal< ::KFMsg::PBExplorePlayerData >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBNpcGroupData* Arena::CreateMaybeMessage< ::KFMsg::PBNpcGroupData >(Arena* arena) {
+  return Arena::CreateInternal< ::KFMsg::PBNpcGroupData >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBExploreNpcData_NpcgroupdataEntry_DoNotUse* Arena::CreateMaybeMessage< ::KFMsg::PBExploreNpcData_NpcgroupdataEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateInternal< ::KFMsg::PBExploreNpcData_NpcgroupdataEntry_DoNotUse >(arena);
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBExploreNpcData* Arena::CreateMaybeMessage< ::KFMsg::PBExploreNpcData >(Arena* arena) {
   return Arena::CreateInternal< ::KFMsg::PBExploreNpcData >(arena);

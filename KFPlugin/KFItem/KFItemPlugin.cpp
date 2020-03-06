@@ -1,5 +1,6 @@
 ﻿#include "KFItemPlugin.hpp"
 #include "KFItemModule.hpp"
+#include "KFItemMoveModule.hpp"
 #include "KFItemUseModule.hpp"
 #include "KFItemWeaponModule.hpp"
 #include "KFItemRuneModule.hpp"
@@ -12,6 +13,7 @@ namespace KFrame
     void KFItemPlugin::Install()
     {
         __REGISTER_MODULE__( KFItem );
+        __REGISTER_MODULE__( KFItemMove );
         __REGISTER_MODULE__( KFItemUse );
         __REGISTER_MODULE__( KFItemWeapon );
         __REGISTER_MODULE__( KFItemRune );
@@ -20,6 +22,7 @@ namespace KFrame
     void KFItemPlugin::UnInstall()
     {
         __UN_MODULE__( KFItem );
+        __UN_MODULE__( KFItemMove );
         __UN_MODULE__( KFItemUse );
         __UN_MODULE__( KFItemWeapon );
         __UN_MODULE__( KFItemRune );
@@ -40,6 +43,7 @@ namespace KFrame
         __FIND_MODULE__( _kf_display, KFDisplayInterface );
         __FIND_MODULE__( _kf_execute, KFExecuteInterface );
         __FIND_MODULE__( _kf_pve, KFPVEInterface );
+        __FIND_MODULE__( _kf_item_move, KFItemMoveInterface );
     }
 
     void KFItemPlugin::AddConfig()
@@ -49,8 +53,6 @@ namespace KFrame
         __KF_ADD_CONFIG__( KFItemTypeConfig );
         __KF_ADD_CONFIG__( KFWeaponAffixConfig );
         __KF_ADD_CONFIG__( KFWeaponTypeConfig );
-        __KF_ADD_CONFIG__( KFCompoundRuneConfig );
-        __KF_ADD_CONFIG__( KFElementConfig );
     }
 
 }

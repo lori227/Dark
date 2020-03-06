@@ -37,6 +37,7 @@ namespace KFrame
 
         leveldata._createion = xmlnode.GetUInt32( "Creation" );
         leveldata._inner_world = xmlnode.GetUInt32( "InnerWorld" );
+        leveldata._inner_parameter = xmlnode.GetUInt32( "InnerParameter" );
 
         kfsetting->_levels.emplace( leveldata._level, leveldata );
     }

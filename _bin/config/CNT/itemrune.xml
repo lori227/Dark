@@ -1,58 +1,58 @@
-<root platform="" version="2853">
-	<item Id="2000001" BluePrint="Rune_SwordOnly" SkillId="190001" RewardAutoSet="1" CompoundId="1" />
-	<item Id="2000002" BluePrint="Rune_RideOnly" SkillId="190002" RewardAutoSet="1" CompoundId="2" />
-	<item Id="2000003" BluePrint="Rune_AxeOnly" SkillId="190003" RewardAutoSet="1" CompoundId="3" />
-	<item Id="2000004" BluePrint="Rune_SwordOnly" SkillId="190004" RewardAutoSet="1" CompoundId="4" />
-	<item Id="2000005" BluePrint="Rune_SpearOnly" SkillId="190005" RewardAutoSet="1" CompoundId="5" />
-	<item Id="2000006" BluePrint="Rune_ElfOnly" SkillId="190006" RewardAutoSet="1" CompoundId="6" />
-	<item Id="2000007" BluePrint="Rune_OrcOnly" SkillId="190007" RewardAutoSet="1" CompoundId="7" />
-	<item Id="2000008" BluePrint="Rune_OrcOnly" SkillId="190008" RewardAutoSet="1" CompoundId="8" />
-	<item Id="2000009" BluePrint="Rune_SwordOnly" SkillId="190009" RewardAutoSet="1" CompoundId="9" />
-	<item Id="2000010" BluePrint="Rune_HalfChance" SkillId="190010" RewardAutoSet="1" CompoundId="10" />
-	<item Id="2000011" BluePrint="Rune_HumanOnly" SkillId="190011" RewardAutoSet="1" CompoundId="11" />
-	<item Id="2000012" BluePrint="Rune_SpearOnly" SkillId="190012" RewardAutoSet="1" CompoundId="12" />
-	<item Id="2000013" BluePrint="Rune_AxeOnly" SkillId="190013" RewardAutoSet="1" CompoundId="13" />
-	<item Id="2000014" BluePrint="Rune_ElfOnly" SkillId="190014" RewardAutoSet="1" CompoundId="14" />
-	<item Id="2000015" BluePrint="Rune_Any" SkillId="190015" RewardAutoSet="1" CompoundId="15" />
-	<item Id="2000016" BluePrint="Rune_Any" SkillId="190016" RewardAutoSet="1" CompoundId="16" />
-	<item Id="2000017" BluePrint="Rune_Any" SkillId="190017" RewardAutoSet="1" CompoundId="17" />
-	<item Id="2000018" BluePrint="Rune_Any" SkillId="190018" RewardAutoSet="1" CompoundId="18" />
-	<item Id="2000019" BluePrint="Rune_Any" SkillId="190019" RewardAutoSet="1" CompoundId="19" />
-	<item Id="2000020" BluePrint="Rune_Any" SkillId="190020" RewardAutoSet="1" CompoundId="20" />
-	<item Id="2000021" BluePrint="Rune_Any" SkillId="190021" RewardAutoSet="1" CompoundId="21" />
-	<item Id="2000022" BluePrint="Rune_Any" SkillId="190022" RewardAutoSet="1" CompoundId="22" />
-	<item Id="2000023" BluePrint="Rune_Any" SkillId="190023" RewardAutoSet="1" CompoundId="23" />
-	<item Id="2000024" BluePrint="Rune_Any" SkillId="190024" RewardAutoSet="1" CompoundId="24" />
-	<item Id="2000025" BluePrint="Rune_Any" SkillId="190025" RewardAutoSet="1" CompoundId="25" />
-	<item Id="2000026" BluePrint="Rune_Any" SkillId="190026" RewardAutoSet="1" CompoundId="26" />
-	<item Id="2000027" BluePrint="Rune_Any" SkillId="190027" RewardAutoSet="1" CompoundId="27" />
-	<item Id="2000028" BluePrint="Rune_Any" SkillId="190028" RewardAutoSet="1" CompoundId="28" />
-	<item Id="2000029" BluePrint="Rune_Any" SkillId="190029" RewardAutoSet="1" CompoundId="29" />
-	<item Id="2000030" BluePrint="Rune_Any" SkillId="190030" RewardAutoSet="1" CompoundId="30" />
-	<item Id="2000031" BluePrint="Rune_Any" SkillId="190031" RewardAutoSet="1" CompoundId="31" />
-	<item Id="2000032" BluePrint="Rune_Any" SkillId="190032" RewardAutoSet="1" CompoundId="32" />
-	<item Id="2000033" BluePrint="Rune_Any" SkillId="190033" RewardAutoSet="1" CompoundId="33" />
-	<item Id="2000034" BluePrint="Rune_Any" SkillId="190034" RewardAutoSet="1" CompoundId="34" />
-	<item Id="2000035" BluePrint="Rune_Any" SkillId="190035" RewardAutoSet="1" CompoundId="35" />
-	<item Id="2000036" BluePrint="Rune_BowOnly" SkillId="190036" RewardAutoSet="1" CompoundId="36" />
-	<item Id="2000037" BluePrint="Rune_BowOnly" SkillId="190037" RewardAutoSet="1" CompoundId="37" />
-	<item Id="2000038" BluePrint="Rune_SpearOnly" SkillId="190038" RewardAutoSet="1" CompoundId="38" />
-	<item Id="2000039" BluePrint="Rune_FlyOnly" SkillId="190039" RewardAutoSet="1" CompoundId="39" />
-	<item Id="2000040" BluePrint="Rune_RideOnly" SkillId="190040" RewardAutoSet="1" CompoundId="40" />
-	<item Id="2000041" BluePrint="Rune_BowOnly" SkillId="190041" RewardAutoSet="1" CompoundId="41" />
-	<item Id="2000042" BluePrint="Rune_StaffOnly" SkillId="190042" RewardAutoSet="1" CompoundId="42" />
-	<item Id="2000043" BluePrint="Rune_StaffOnly" SkillId="190043" RewardAutoSet="1" CompoundId="43" />
-	<item Id="2000044" BluePrint="Rune_HumanOnly" SkillId="190044" RewardAutoSet="1" CompoundId="44" />
-	<item Id="2000045" BluePrint="Rune_AxeOnly" SkillId="190045" RewardAutoSet="1" CompoundId="45" />
-	<item Id="2000046" BluePrint="Rune_BowOnly" SkillId="190046" RewardAutoSet="1" CompoundId="46" />
-	<item Id="2000047" BluePrint="Rune_RideOnly" SkillId="190047" RewardAutoSet="1" CompoundId="47" />
-	<item Id="2000048" BluePrint="Rune_OrcOnly" SkillId="190048" RewardAutoSet="1" CompoundId="48" />
-	<item Id="2000049" BluePrint="Rune_ElfOnly" SkillId="190049" RewardAutoSet="1" CompoundId="49" />
-	<item Id="2000050" BluePrint="Rune_Def&gt;Atk" SkillId="190050" RewardAutoSet="1" CompoundId="50" />
-	<item Id="2000051" BluePrint="Rune_StaffOnly" SkillId="190051" RewardAutoSet="1" CompoundId="51" />
-	<item Id="2000052" BluePrint="Rune_WalkOnly" SkillId="190052" RewardAutoSet="1" CompoundId="52" />
-	<item Id="2000053" BluePrint="Rune_Tal&gt;Spd&amp;Luk" SkillId="190053" RewardAutoSet="1" CompoundId="53" />
-	<item Id="2000054" BluePrint="Rune_Luk&gt;Tal&amp;Spd" SkillId="190054" RewardAutoSet="1" CompoundId="54" />
-	<item Id="2000055" BluePrint="Rune_Spd&gt;Tal&amp;Luk" SkillId="190055" RewardAutoSet="1" CompoundId="55" />
-	<item Id="2000056" BluePrint="Rune_BowOnly" SkillId="190056" RewardAutoSet="1" CompoundId="56" />
+<root platform="" version="3101">
+	<item Id="2000001" AutoSet="1" RuneType="1" RuneLevel="1" />
+	<item Id="2000002" AutoSet="1" RuneType="1" RuneLevel="2" />
+	<item Id="2000003" AutoSet="1" RuneType="1" RuneLevel="3" />
+	<item Id="2000004" AutoSet="1" RuneType="0" RuneLevel="1" />
+	<item Id="2000005" AutoSet="1" RuneType="0" RuneLevel="1" />
+	<item Id="2000006" AutoSet="1" RuneType="0" RuneLevel="1" />
+	<item Id="2000007" AutoSet="1" RuneType="7" RuneLevel="1" />
+	<item Id="2000008" AutoSet="1" RuneType="8" RuneLevel="1" />
+	<item Id="2000009" AutoSet="1" RuneType="9" RuneLevel="1" />
+	<item Id="2000010" AutoSet="1" RuneType="10" RuneLevel="1" />
+	<item Id="2000011" AutoSet="1" RuneType="11" RuneLevel="1" />
+	<item Id="2000012" AutoSet="1" RuneType="12" RuneLevel="1" />
+	<item Id="2000013" AutoSet="1" RuneType="13" RuneLevel="1" />
+	<item Id="2000014" AutoSet="1" RuneType="14" RuneLevel="1" />
+	<item Id="2000015" AutoSet="1" RuneType="15" RuneLevel="1" />
+	<item Id="2000016" AutoSet="1" RuneType="16" RuneLevel="1" />
+	<item Id="2000017" AutoSet="1" RuneType="17" RuneLevel="1" />
+	<item Id="2000018" AutoSet="1" RuneType="18" RuneLevel="1" />
+	<item Id="2000019" AutoSet="1" RuneType="19" RuneLevel="1" />
+	<item Id="2000020" AutoSet="1" RuneType="20" RuneLevel="1" />
+	<item Id="2000021" AutoSet="1" RuneType="21" RuneLevel="1" />
+	<item Id="2000022" AutoSet="1" RuneType="22" RuneLevel="1" />
+	<item Id="2000023" AutoSet="1" RuneType="23" RuneLevel="1" />
+	<item Id="2000024" AutoSet="1" RuneType="24" RuneLevel="1" />
+	<item Id="2000025" AutoSet="1" RuneType="25" RuneLevel="1" />
+	<item Id="2000026" AutoSet="1" RuneType="26" RuneLevel="1" />
+	<item Id="2000027" AutoSet="1" RuneType="27" RuneLevel="1" />
+	<item Id="2000028" AutoSet="1" RuneType="28" RuneLevel="1" />
+	<item Id="2000029" AutoSet="1" RuneType="29" RuneLevel="1" />
+	<item Id="2000030" AutoSet="1" RuneType="30" RuneLevel="1" />
+	<item Id="2000031" AutoSet="1" RuneType="31" RuneLevel="1" />
+	<item Id="2000032" AutoSet="1" RuneType="32" RuneLevel="1" />
+	<item Id="2000033" AutoSet="1" RuneType="33" RuneLevel="1" />
+	<item Id="2000034" AutoSet="1" RuneType="34" RuneLevel="1" />
+	<item Id="2000035" AutoSet="1" RuneType="35" RuneLevel="1" />
+	<item Id="2000036" AutoSet="1" RuneType="36" RuneLevel="1" />
+	<item Id="2000037" AutoSet="1" RuneType="37" RuneLevel="1" />
+	<item Id="2000038" AutoSet="1" RuneType="38" RuneLevel="1" />
+	<item Id="2000039" AutoSet="1" RuneType="39" RuneLevel="1" />
+	<item Id="2000040" AutoSet="1" RuneType="40" RuneLevel="1" />
+	<item Id="2000041" AutoSet="1" RuneType="41" RuneLevel="1" />
+	<item Id="2000042" AutoSet="1" RuneType="42" RuneLevel="1" />
+	<item Id="2000043" AutoSet="1" RuneType="43" RuneLevel="1" />
+	<item Id="2000044" AutoSet="1" RuneType="44" RuneLevel="1" />
+	<item Id="2000045" AutoSet="1" RuneType="45" RuneLevel="1" />
+	<item Id="2000046" AutoSet="1" RuneType="46" RuneLevel="1" />
+	<item Id="2000047" AutoSet="1" RuneType="47" RuneLevel="1" />
+	<item Id="2000048" AutoSet="1" RuneType="48" RuneLevel="1" />
+	<item Id="2000049" AutoSet="1" RuneType="49" RuneLevel="1" />
+	<item Id="2000050" AutoSet="1" RuneType="50" RuneLevel="1" />
+	<item Id="2000051" AutoSet="1" RuneType="51" RuneLevel="1" />
+	<item Id="2000052" AutoSet="1" RuneType="52" RuneLevel="1" />
+	<item Id="2000053" AutoSet="1" RuneType="53" RuneLevel="1" />
+	<item Id="2000054" AutoSet="1" RuneType="54" RuneLevel="1" />
+	<item Id="2000055" AutoSet="1" RuneType="55" RuneLevel="1" />
+	<item Id="2000056" AutoSet="1" RuneType="56" RuneLevel="1" />
 </root>

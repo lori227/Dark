@@ -61,10 +61,18 @@ namespace KFrame
         __KF_MESSAGE_FUNCTION__( HandleMultiEventReq );
 
     protected:
+        // 掉落抽奖道具
         __KF_DROP_LOGIC_FUNCTION__( OnDropGambleItemLogic );
+
+        // 进入秘境回调
+        __KF_ENTER_REALM_FUNCTION__( OnEnterRealm );
+
     protected:
         // 计算花费
         uint32 CalcGambleCostItemCount( KFGambleData* kfgambledata, const KFGambleSetting* kfsetting );
+
+        // 发送显示掉落选择消息
+        void ShowDropSelectMessage( KFEntity* player, KFRealmData* kfrealmdata, uint32 delaytime );
     };
 }
 

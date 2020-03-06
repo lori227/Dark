@@ -1,5 +1,6 @@
-<root platform="" version="2994">
-	<item Id="1" Index="1" Cost="" Event="1" />
-	<item Id="1" Index="2" Cost="" Event="2" />
-	<item Id="1" Index="3" Cost="" Event="3" />
+<root platform="" version="3075">
+	<item Id="1" MultiId="1" Index="1" Cost="[[1,1,500]]" Event="1" Title="MultiOption_TYPE_KEY" Description="MultiSelection_TYPE_KEY_DES" OptionTxt="MultiSelection_OptionTxt1" />
+	<item Id="2" MultiId="1" Index="2" Cost="[[2,1000017,10]]" Event="2" Title="" Description="" OptionTxt="MultiSelection_OptionTxt2" />
+	<item Id="3" MultiId="1" Index="3" Cost="" Event="3" Title="" Description="" OptionTxt="MultiSelection_OptionTxt3" />
+	<item Id="4" MultiId="1" Index="4" Cost="" Event="4" Title="" Description="" OptionTxt="MultiSelection_OptionTxt4" />
 </root>

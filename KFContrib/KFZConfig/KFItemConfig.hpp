@@ -16,8 +16,14 @@ namespace KFrame
             _file_name = "item";
         }
     protected:
+        // 清空配置
+        virtual void ClearSetting();
+
         // 读取配置
         virtual void ReadSetting( KFNode& xmlnode, KFItemSetting* kfsetting );
+
+        // 加载完成
+        virtual void LoadAllComplete();
 
         // 读取通用道具
         void ReadCommonSetting( KFNode& xmlnode, KFItemSetting* kfsetting );
@@ -42,6 +48,17 @@ namespace KFrame
 
         // 读取符石道具
         void ReadRuneSetting( KFNode& xmlnode, KFItemSetting* kfsetting );
+
+    public:
+        // 获取合成符石id
+        uint32 GetRuneCompoundId( uint32 id );
+
+    private:
+        // 符石类型等级表(type*10000+level, itemid)
+        std::unordered_map<uint32, uint32 > _rune_type_level;
+
+        // 符石合成表(低级 高级)
+        std::unordered_map< uint32, uint32 > _rune_compound;
 
     };
 }

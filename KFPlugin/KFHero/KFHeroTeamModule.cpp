@@ -8,20 +8,29 @@ namespace KFrame
         _kf_component = _kf_kernel->FindComponent( __STRING__( player ) );
 
         __REGISTER_ENTER_PLAYER__( &KFHeroTeamModule::OnEnterHeroTeamModule );
-
         __REGISTER_REMOVE_DATA_1__( __STRING__( hero ), &KFHeroTeamModule::OnRemoveHero );
+
+        __REGISTER_DROP_LOGIC__( __STRING__( addhp ), &KFHeroTeamModule::OnDropHeroAddHp );
+        __REGISTER_DROP_LOGIC__( __STRING__( dechp ), &KFHeroTeamModule::OnDropHeroDecHp );
         //////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_HERO_TEAM_CHANGE_REQ, &KFHeroTeamModule::HandleHeroTeamChangeReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_HERO_TEAM_EXCHANGE_REQ, &KFHeroTeamModule::HandleHeroTeamExchangeReq );
+        __REGISTER_MESSAGE__( KFMsg::MSG_ADD_TEAM_HP_REQ, &KFHeroTeamModule::HandleAddTeamHpReq );
+        __REGISTER_MESSAGE__( KFMsg::MSG_DEC_TEAM_HP_REQ, &KFHeroTeamModule::HandleDecTeamHpReq );
     }
 
     void KFHeroTeamModule::BeforeShut()
     {
         __UN_ENTER_PLAYER__();
         __UN_REMOVE_DATA_1__( __STRING__( hero ) );
+
+        __UN_DROP_LOGIC__( __STRING__( addhp ) );
+        __UN_DROP_LOGIC__( __STRING__( dechp ) );
         //////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_HERO_TEAM_CHANGE_REQ );
         __UN_MESSAGE__( KFMsg::MSG_HERO_TEAM_EXCHANGE_REQ );
+        __UN_MESSAGE__( KFMsg::MSG_ADD_TEAM_HP_REQ );
+        __UN_MESSAGE__( KFMsg::MSG_DEC_TEAM_HP_REQ );
     }
 
     __KF_ENTER_PLAYER_FUNCTION__( KFHeroTeamModule::OnEnterHeroTeamModule )
@@ -29,7 +38,7 @@ namespace KFrame
         // 检查队伍里的数据, 如果英雄没在队伍里, 需要清除标记
         CheckHeroInTeam( player );
 
-        UpdateTeamDeadHero( player );
+        UpdateDeadHero( player );
 
         // 探索地图内不做处理
         auto realmid = player->Get<uint32>( __STRING__( realmid ) );
@@ -39,10 +48,10 @@ namespace KFrame
         }
 
         // 检查并移除耐久度不足的英雄
-        RemoveTeamHeroDurability( player );
+        RemoveDurabilityHero( player );
 
         // 清空队伍英雄ep
-        ClearTeamHeroEp( player );
+        ClearHeroEp( player );
     }
 
     void KFHeroTeamModule::CheckHeroInTeam( KFEntity* player )
@@ -118,7 +127,7 @@ namespace KFrame
         return herocount;
     }
 
-    void KFHeroTeamModule::UpdateTeamDeadHero( KFEntity* player )
+    void KFHeroTeamModule::UpdateDeadHero( KFEntity* player )
     {
         // 随机死亡性格池
         static auto _option = _kf_option->FindOption( "roledeath_characterpool" );
@@ -147,7 +156,7 @@ namespace KFrame
         }
     }
 
-    void KFHeroTeamModule::DecTeamHeroDurability( KFEntity* player, const UInt64Set& fightheros )
+    void KFHeroTeamModule::DecHeroDurability( KFEntity* player, const UInt64Set& fightheros )
     {
         static auto _dec_durability_count = _kf_option->FindOption( "roledurability_pveconsume" );
 
@@ -165,7 +174,7 @@ namespace KFrame
         }
     }
 
-    void KFHeroTeamModule::RemoveTeamHeroDurability( KFEntity* player )
+    void KFHeroTeamModule::RemoveDurabilityHero( KFEntity* player )
     {
         auto kfherorecord = player->Find( __STRING__( hero ) );
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
@@ -191,7 +200,7 @@ namespace KFrame
         }
     }
 
-    void KFHeroTeamModule::ClearTeamHeroEp( KFEntity* player )
+    void KFHeroTeamModule::ClearHeroEp( KFEntity* player )
     {
         auto kfherorecord = player->Find( __STRING__( hero ) );
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
@@ -308,31 +317,107 @@ namespace KFrame
         player->UpdateData( kfteamarray, kfmsg.newindex(), KFEnum::Set, oldvalue );
     }
 
-    void KFHeroTeamModule::OperateTeamHeroHp( KFEntity* player, uint32 operate, uint32 value )
+
+    __KF_DROP_LOGIC_FUNCTION__( KFHeroTeamModule::OnDropHeroAddHp )
+    {
+        auto hp = dropdata->GetValue();
+        OperateHpValue( player, KFEnum::Add, hp );
+        player->AddDataToShow( dropdata->_logic_name, hp, false );
+    }
+
+    __KF_DROP_LOGIC_FUNCTION__( KFHeroTeamModule::OnDropHeroDecHp )
+    {
+        auto hp = dropdata->GetValue();
+        OperateHpValue( player, KFEnum::Dec, hp );
+        player->AddDataToShow( dropdata->_logic_name, hp, false );
+    }
+
+    bool KFHeroTeamModule::CheckHeroConditions( KFData* kfhero, const KeyValue* conditions )
+    {
+        if ( conditions != nullptr )
+        {
+            for ( auto iter = conditions->begin(); iter != conditions->end(); ++iter )
+            {
+                auto value = kfhero->Get( iter->first );
+                if ( value != iter->second )
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    void KFHeroTeamModule::OperateHpValue( KFEntity* player, uint32 operate, uint32 value, const KeyValue* conditions /* = nullptr */ )
     {
         auto kfherorecord = player->Find( __STRING__( hero ) );
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
+
         for ( auto kfteam = kfteamarray->First(); kfteam != nullptr; kfteam = kfteamarray->Next() )
         {
             auto kfhero = _kf_hero->FindAliveHero( kfherorecord, kfteam->Get<uint64>() );
-            if ( kfhero == nullptr )
+            if ( kfhero == nullptr || !CheckHeroConditions( kfhero, conditions ) )
             {
                 continue;
             }
 
-            auto kffighter = kfhero->Find( __STRING__( fighter ) );
-            auto hp = kffighter->Get<uint32>( __STRING__( hp ) );
-            auto changehp = value;
-            if ( operate == KFEnum::Dec && hp <= value )
+            _kf_hero->OperateHp( player, kfhero, operate, value );
+        }
+    }
+
+    void KFHeroTeamModule::OperateHpPercent( KFEntity* player, uint32 operate, uint32 value, const KeyValue* conditions /* = nullptr */ )
+    {
+        auto kfherorecord = player->Find( __STRING__( hero ) );
+        auto kfteamarray = player->Find( __STRING__( heroteam ) );
+
+        for ( auto kfteam = kfteamarray->First(); kfteam != nullptr; kfteam = kfteamarray->Next() )
+        {
+            auto kfhero = _kf_hero->FindAliveHero( kfherorecord, kfteam->Get<uint64>() );
+            if ( kfhero == nullptr || !CheckHeroConditions( kfhero, conditions ) )
             {
-                // 探索减hp最小为1
-                changehp = hp - 1u;
+                continue;
             }
 
-            if ( changehp != 0u )
-            {
-                _kf_hero->OperateHp( player, kfhero, operate, changehp );
-            }
+            auto nowhp = kfhero->Get<uint32>( __STRING__( fighter ), __STRING__( hp ) );
+            value = nowhp * value / KFRandEnum::TenThousand;
+            _kf_hero->OperateHp( player, kfhero, operate, value );
+        }
+    }
+
+    __KF_MESSAGE_FUNCTION__( KFHeroTeamModule::HandleAddTeamHpReq )
+    {
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgAddTeamHpReq );
+
+        KeyValue conditions;
+        auto pbconditions = &kfmsg.conditions();
+        __PROTO_TO_MAP__( pbconditions, conditions );
+
+        if ( kfmsg.hpvalue() != 0u )
+        {
+            OperateHpValue( player, KFEnum::Add, kfmsg.hpvalue(), &conditions );
+        }
+        else if ( kfmsg.hppecent() != 0u )
+        {
+            OperateHpPercent( player, KFEnum::Add, kfmsg.hppecent(), &conditions );
+        }
+    }
+
+    __KF_MESSAGE_FUNCTION__( KFHeroTeamModule::HandleDecTeamHpReq )
+    {
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgDecTeamHpReq );
+
+        KeyValue conditions;
+        auto pbconditions = &kfmsg.conditions();
+        __PROTO_TO_MAP__( pbconditions, conditions );
+
+        if ( kfmsg.hpvalue() != 0u )
+        {
+            OperateHpValue( player, KFEnum::Dec, kfmsg.hpvalue(), &conditions );
+        }
+        else if ( kfmsg.hppecent() != 0u )
+        {
+            OperateHpPercent( player, KFEnum::Dec, kfmsg.hppecent(), &conditions );
         }
     }
 }

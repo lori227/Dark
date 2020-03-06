@@ -10,7 +10,7 @@ namespace KFrame
     {
     public:
         // 添加对话
-        virtual void AddDialogue( KFEntity* player, uint32 dialogid, uint32 type = KFMsg::UIDialogue ) = 0;
+        virtual void AddDialogue( KFEntity* player, uint32 dialogid, uint32 type = KFMsg::UIDialogue, uint32 storyid = 0u ) = 0;
     };
 
     __KF_INTERFACE__( _kf_dialogue, KFDialogueInterface );

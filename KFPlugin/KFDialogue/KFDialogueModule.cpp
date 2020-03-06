@@ -24,11 +24,12 @@ namespace KFrame
         __UN_MESSAGE__( KFMsg::MSG_SELECT_DIALOGUE_BRANCH_REQ );
     }
 
-    void KFDialogueModule::AddDialogue( KFEntity* player, uint32 dialogid, uint32 type )
+    void KFDialogueModule::AddDialogue( KFEntity* player, uint32 dialogid, uint32 type, uint32 storyid )
     {
         auto kfdialoguesetting = KFDialogueConfig::Instance()->FindSetting( dialogid );
         if ( kfdialoguesetting == nullptr )
         {
+            __LOG_ERROR__( "dialogid [{}] is not exist", dialogid );
             return;
         }
 
@@ -98,7 +99,7 @@ namespace KFrame
             player->SynAddRecordData( kfbranchrecord );
         }
 
-        SendToClientDialogueStart( player, dialogid, sequence, type );
+        SendToClientDialogueStart( player, dialogid, sequence, type, storyid );
     }
 
     __KF_ADD_ELEMENT_FUNCTION__( KFDialogueModule::AddDialogueElement )
@@ -121,12 +122,13 @@ namespace KFrame
         return true;
     }
 
-    bool KFDialogueModule::SendToClientDialogueStart( KFEntity* player, uint32 dialogid, uint32 sequence, uint32 type )
+    bool KFDialogueModule::SendToClientDialogueStart( KFEntity* player, uint32 dialogid, uint32 sequence, uint32 type, uint32 storyid )
     {
         KFMsg::MsgStartDialogueAck ack;
         ack.set_dialogid( dialogid );
         ack.set_sequenceid( sequence );
         ack.set_type( type );
+        ack.set_storyid( storyid );
         return _kf_player->SendToClient( player, KFMsg::MSG_START_DIALOGUE_ACK, &ack, 10u );
     }
 

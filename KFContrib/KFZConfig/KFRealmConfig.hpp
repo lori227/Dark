@@ -27,6 +27,9 @@ namespace KFrame
         // 里世界类型
         uint32 _inner_world = 0u;
 
+        // 里世界进度参数
+        uint32 _inner_parameter = 0.0f;
+
         // 粮食消耗
         uint32 _food_num = 0u;
 
@@ -83,6 +86,7 @@ namespace KFrame
     public:
         KFRealmConfig()
         {
+            _key_name = "RealmId";
             _file_name = "realm";
         }
 

@@ -75,6 +75,9 @@ namespace KFrame
         __KF_DROP_LOGIC_FUNCTION__( OnDropHeroExp );
 
     protected:
+        // 请求npc数据
+        __KF_MESSAGE_FUNCTION__( HandleNpcGroupDataReq );
+
         // 战斗请求(布置战斗)
         __KF_MESSAGE_FUNCTION__( HandlePVEReq );
 
@@ -95,13 +98,20 @@ namespace KFrame
 
     protected:
         // 部署战斗
-        uint32 PVEFighter( KFEntity* player, uint32 pveid, uint32 battleid, const std::string& modulename, uint64 moduleid );
+        uint32 PVEFighter( KFEntity* player, uint32 pveid, uint32 npcgrouid, uint32 spawnrule, uint32 dungeonid, const std::string& modulename, uint64 moduleid );
+
+        // 随机npc敌人组
+        const KFNpcGroupSetting* RandNpcGroupSetting( const KFPVESetting* kfpvesetting, uint32 npcgroupid, uint32& spawnrule );
+
+        // 查找探索的战斗npc信息
+        std::tuple<uint32, uint32, uint32> FindRealmNpcData( KFEntity* player, uint32 pveid, const std::string& npckey );
 
         // 结算战斗
         uint32 PVEBalance( KFEntity* player, uint32 result, uint32 truns );
         uint32 PVEBalanceVictory( KFEntity* player, KFRealmData* kfpvedata, uint32 truns );
         uint32 PVEBalanceFailed( KFEntity* player, KFRealmData* kfpvedata, uint32 truns );
         uint32 PVEBalanceFlee( KFEntity* player, KFRealmData* kfpvedata, uint32 truns );
+        uint32 PVEBalanceAce( KFEntity* player, KFRealmData* kfpvedata, uint32 truns );
 
         // 战斗结果条件结算
         void PVEBalanceResultCondition( KFEntity* player, KFRealmData* kfpvedata, uint32 result, uint32 truns );

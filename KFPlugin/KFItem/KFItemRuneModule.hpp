@@ -3,27 +3,40 @@
 
 /************************************************************************
 //    @Module			:    符石系统
-//    @Author           :    zux
-//    @QQ				:    415906519
-//    @Mail			    :    415906519@qq.com
-//    @Date             :    2020-2-13
+//    @Author           :    erlking
+//    @QQ				:    729159320
+//    @Mail			    :    729159320@qq.com
+//    @Date             :    2020-2-27
 ************************************************************************/
 
 #include "KFrameEx.h"
 #include "KFItemInterface.h"
+#include "KFItemRuneInterface.h"
 #include "KFKernel/KFKernelInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFMessage/KFMessageInterface.h"
 #include "KFOption/KFOptionInterface.h"
 #include "KFDisplay/KFDisplayInterface.h"
+#include "KFTimer/KFTimerInterface.h"
 #include "KFZConfig/KFItemConfig.hpp"
-#include "KFZConfig/KFCompoundRuneConfig.hpp"
-#include "KFZConfig/KFElementConfig.h"
+#include "KFZConfig/KFItemTypeConfig.hpp"
 
 namespace KFrame
 {
     class KFItemRuneModule : public KFItemRuneInterface
     {
+    public:
+        // 合成数据
+        class KFCompoundData
+        {
+        public:
+            uint32 runeid = 0u;			// 符石id
+            uint32 compoundid = 0u;		// 合成id
+            uint32 compoundnum = 0u;	// 合成符石数量
+            UInt64Vector removelist;	// 删除物品列表(uuid)
+            UInt32Map addlist;			// 添加符石列表(itemid itemnum)
+        };
+
     public:
         KFItemRuneModule() = default;
         ~KFItemRuneModule() = default;
@@ -33,38 +46,53 @@ namespace KFrame
 
         // 关闭
         virtual void BeforeShut();
-        ////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////
-    protected:
-        // 新增符石道具时 回调
-        __KF_ADD_DATA_FUNCTION__( OnAddRuneItemCallBack );
 
+        // 清空符石槽数据
+        virtual void ClearRuneSlotData( KFEntity* player );
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
     protected:
-        // 装备符石
-        __KF_MESSAGE_FUNCTION__( HandleRuneSlotMoveReq );
+
+        // 进入游戏
+        __KF_ENTER_PLAYER_FUNCTION__( OnEnterRuneModule );
+
+        // 穿上符石
+        __KF_MESSAGE_FUNCTION__( HandleRunePutOnReq );
 
         // 脱下符石
         __KF_MESSAGE_FUNCTION__( HandleRuneTakeOffReq );
 
-    public:
-        // 清空符石槽数据
-        bool ClearRuneSlotData( KFEntity* player );
+        // 交互符石
+        __KF_MESSAGE_FUNCTION__( HandleRuneExchangeReq );
+
+        // 添加符石回调
+        __KF_ADD_DATA_FUNCTION__( OnAddRuneItemCallBack );
+
+        // 添加符石延时处理
+        __KF_TIMER_FUNCTION__( OnDelayTimerOperate );
 
     protected:
-        // 是否已装备某合成id的符石道具
-        KFData* IsHasEquipCompoundId( KFEntity* player, uint32 compoundid );
+        // 装备符石
+        uint32 PutOnRune( KFEntity* player, uint64 itemuuid, uint32 index = 0u, bool isforce = false );
 
-        // 符石道具转移
-        uint32 MoveRuneItem( KFEntity* player, KFData* kfsourcerecord, KFData*  kfsourceitem, KFData* kftargetrecord, uint32 targetindex = 0u );
+        // 脱下符石
+        uint32 TakeOffRune( KFEntity* player, uint32 index );
 
-        // 全部符石道具合成
-        bool CompoundAllRune( KFEntity* player );
-        bool CompoundRuneByLevel( KFEntity* player, const KFCompoundRuneSetting* setting, uint32 startlevel = 1u );
-        bool CompoundRune( KFEntity* player, uint32 inputitemid, uint32 outputitemid );
+        // 延时合成符石
+        void OnDelayTimerCompoundRune( KFEntity* player, bool is_send = true );
+
+        // 合并符石
+        void CompoundRune( KFEntity* player, KFCompoundData& compounddata );
+
+        // 获取符石背包列表
+        KFData* GetRuneItemRecord( KFEntity* player );
 
     private:
         // 玩家上下文组件
         KFComponent* _kf_component = nullptr;
+
+        // 获得符石列表
+        std::unordered_map< uint64, UInt64Set > _add_rune_data;
     };
 }
 

@@ -85,8 +85,7 @@ namespace KFrame
         auto maxnum = player->Get( __STRING__( effect ), __STRING__( clinicmaxnum ) );
         if ( maxnum == 0u )
         {
-            // 未解锁时不可获得材料
-            __LOG_ERROR_FUNCTION__( function, line, "clinic is not active" );
+            // 储存数量为0时不可获得材料
             return false;
         }
 
