@@ -97,6 +97,12 @@ namespace KFrame
         __KF_MESSAGE_FUNCTION__( HandleUpdateFaithReq );
 
     protected:
+        virtual void BindPVEStartFunction( const std::string& module, KFPVEStartFunction& function );
+        virtual void UnBindPVEStartFunction( const std::string& module );
+
+        virtual void BindPVEFinishFunction( const std::string& module, KFPVEFinishFunction& function );
+        virtual void UnBindPVEFinishFunction( const std::string& module );
+        /////////////////////////////////////////////////////////////////////////////////////////////////////
         // 部署战斗
         uint32 PVEFighter( KFEntity* player, uint32 pveid, uint32 npcgrouid, uint32 spawnrule, uint32 dungeonid, const std::string& modulename, uint64 moduleid );
 
@@ -153,6 +159,11 @@ namespace KFrame
         // 玩家的战斗结算数据
         KFHashMap< uint64, uint64, KFRealmData > _pve_record;
 
+        // 开始战斗回调
+        KFBind< std::string, const std::string&, KFPVEStartFunction > _pve_start_function;
+
+        // 结束战斗回调
+        KFBind< std::string, const std::string&, KFPVEFinishFunction > _pve_finish_function;
     };
 }
 

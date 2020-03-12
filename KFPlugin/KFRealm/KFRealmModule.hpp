@@ -82,19 +82,7 @@ namespace KFrame
 
         // 物件交互请求
         __KF_MESSAGE_FUNCTION__( HandleInteractItemReq );
-
-        // 处理添加buff
-        __KF_MESSAGE_FUNCTION__( HandleHeroAddBuffReq );
-
-        // 处理删除buff
-        __KF_MESSAGE_FUNCTION__( HandleHeroRemoveBuffReq );
     protected:
-        // 掉落增加英雄buff
-        __KF_DROP_LOGIC_FUNCTION__( OnDropHeroAddBuff );
-
-        // 掉落减少英雄buff
-        __KF_DROP_LOGIC_FUNCTION__( OnDropHeroDecBuff );
-
         // 秘境逻辑事件
         __KF_EXECUTE_FUNCTION__( OnExecuteRealm );
 
@@ -149,9 +137,6 @@ namespace KFrame
         void ExploreCostFood( KFEntity* player, KFMsg::PBExploreData* pbexplore );
         //////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////
-        // 改变队伍英雄buff
-        void ChangeTeamHeroBuff( KFEntity* player, uint32 operate, uint32 value );
-
         // 获取玩家当前秘境层配置
         const KFRealmLevel* FindRealmLevelSetting( KFEntity* player );
 

@@ -1,4 +1,4 @@
-<root version="3253">
+<root version="3439">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -52,7 +52,6 @@
 	<item name="weaponaffix" version="1700" />
 	<item name="itemweightpool" version="1700" />
 	<item name="avatar" version="1711" />
-	<item name="itemgift" version="1726" />
 	<item name="element" version="1754" />
 	<item name="headportrait" version="1803" />
 	<item name="smithy" version="1935" />
@@ -75,71 +74,72 @@
 	<item name="leader" version="2801" />
 	<item name="faction" version="2801" />
 	<item name="leaderskill" version="2802" />
-	<item name="minimap" version="2804" />
-	<item name="heroattribute" version="2824" />
 	<item name="herorace" version="2825" />
 	<item name="compoundrune" version="2854" />
 	<item name="itemdrug" version="2926" />
 	<item name="punish" version="2935" />
 	<item name="runeexchange" version="2937" />
-	<item name="itemtype" version="2951" />
 	<item name="itemweapon" version="2972" />
 	<item name="herotransfer" version="2980" />
-	<item name="exchange" version="2983" />
-	<item name="tipstext" version="2987" />
 	<item name="multioption" version="2993" />
-	<item name="formula" version="2995" />
 	<item name="dialoguebranch" version="3001" />
 	<item name="conditiondefine" version="3004" />
-	<item name="herolevel" version="3017" />
-	<item name="gamble" version="3019" />
-	<item name="levelvalue" version="3038" />
-	<item name="innerworld" version="3039" />
-	<item name="select" version="3049" />
 	<item name="granary" version="3056" />
 	<item name="sequence" version="3057" />
-	<item name="npcgenerate" version="3061" />
-	<item name="multievent" version="3075" />
 	<item name="appearance" version="3087" />
-	<item name="uitext" version="3093" />
-	<item name="config" version="3097" />
 	<item name="itemrune" version="3101" />
 	<item name="player" version="3105" />
 	<item name="jumpaddress" version="3109" />
-	<item name="itemcommon" version="3115" />
-	<item name="itemtext" version="3118" />
-	<item name="rolebasetext" version="3124" />
-	<item name="class" version="3139" />
-	<item name="herogenerate" version="3168" />
-	<item name="heroweightpool" version="3173" />
-	<item name="heroprofession" version="3175" />
-	<item name="heroment" version="3200" />
-	<item name="prompttext" version="3201" />
 	<item name="granarybuy" version="3207" />
-	<item name="itemment" version="3207" />
-	<item name="npc" version="3209" />
-	<item name="unlock" version="3209" />
-	<item name="initialprocess" version="3209" />
-	<item name="unlockcondition" version="3209" />
-	<item name="task" version="3235" />
-	<item name="worldmaptext" version="3235" />
-	<item name="tasktext" version="3235" />
-	<item name="dialoguetext" version="3236" />
-	<item name="dialogue" version="3236" />
-	<item name="story" version="3237" />
-	<item name="option" version="3238" />
-	<item name="chapter" version="3239" />
-	<item name="taskchain" version="3239" />
-	<item name="status" version="3239" />
-	<item name="pve" version="3240" />
-	<item name="npcgroup" version="3243" />
-	<item name="taskcondition" version="3245" />
-	<item name="npcrand" version="3246" />
-	<item name="dropgroup" version="3248" />
-	<item name="dropdata" version="3248" />
-	<item name="gmcommand" version="3249" />
-	<item name="buildlevel" version="3250" />
-	<item name="technology" version="3251" />
-	<item name="camptext" version="3252" />
-	<item name="realm" version="3253" />
+	<item name="npcrand" version="3300" />
+	<item name="gmcommand" version="3302" />
+	<item name="npcgenerate" version="3313" />
+	<item name="option" version="3315" />
+	<item name="initialprocess" version="3320" />
+	<item name="npcgroup" version="3321" />
+	<item name="itemgift" version="3323" />
+	<item name="heroattribute" version="3330" />
+	<item name="innerworld" version="3340" />
+	<item name="npc" version="3343" />
+	<item name="minimap" version="3353" />
+	<item name="config" version="3354" />
+	<item name="prompttext" version="3368" />
+	<item name="itemtype" version="3372" />
+	<item name="heroment" version="3373" />
+	<item name="tipstext" version="3375" />
+	<item name="itemment" version="3392" />
+	<item name="worldmaptext" version="3396" />
+	<item name="class" version="3399" />
+	<item name="chapter" version="3400" />
+	<item name="status" version="3400" />
+	<item name="dialoguetext" version="3405" />
+	<item name="herolevel" version="3406" />
+	<item name="dropgroup" version="3409" />
+	<item name="dropdata" version="3409" />
+	<item name="taskchain" version="3410" />
+	<item name="taskcondition" version="3410" />
+	<item name="tasktext" version="3410" />
+	<item name="dialogue" version="3411" />
+	<item name="gamble" version="3416" />
+	<item name="select" version="3416" />
+	<item name="exchange" version="3416" />
+	<item name="realm" version="3418" />
+	<item name="task" version="3421" />
+	<item name="heroweightpool" version="3422" />
+	<item name="heroprofession" version="3422" />
+	<item name="herogenerate" version="3422" />
+	<item name="multievent" version="3424" />
+	<item name="itemcommon" version="3427" />
+	<item name="itemtext" version="3427" />
+	<item name="pve" version="3428" />
+	<item name="rolebasetext" version="3429" />
+	<item name="uitext" version="3431" />
+	<item name="formula" version="3433" />
+	<item name="levelvalue" version="3434" />
+	<item name="story" version="3436" />
+	<item name="buildlevel" version="3438" />
+	<item name="technology" version="3438" />
+	<item name="unlock" version="3439" />
+	<item name="unlockcondition" version="3439" />
+	<item name="camptext" version="3439" />
 </root>

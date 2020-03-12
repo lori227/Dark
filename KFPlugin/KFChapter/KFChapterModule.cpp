@@ -5,6 +5,8 @@ namespace KFrame
 {
     void KFChapterModule::BeforeRun()
     {
+        _kf_component = _kf_kernel->FindComponent( __STRING__( player ) );
+        __REGISTER_ADD_ELEMENT__( __STRING__( chapter ), &KFChapterModule::AddChapterElement );
         __REGISTER_FINISH_TASK_CHAIN__( __STRING__( chapter ), &KFChapterModule::OnFinishTaskChainChapterLogic );
         /////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_CHAPTER_EXECUTE_STATUS_REQ, &KFChapterModule::HandleChapterExecuteStatusReq );
@@ -12,9 +14,38 @@ namespace KFrame
 
     void KFChapterModule::BeforeShut()
     {
+        __UN_ADD_ELEMENT__( __STRING__( chapter ) );
         __UN_FINISH_TASK_CHAIN__( __STRING__( chapter ) );
         /////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_CHAPTER_EXECUTE_STATUS_REQ );
+    }
+
+    __KF_ADD_ELEMENT_FUNCTION__( KFChapterModule::AddChapterElement )
+    {
+        auto kfelement = kfresult->_element;
+        if ( !kfelement->IsObject() )
+        {
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object", kfelement->_data_name );
+            return false;
+        }
+
+        auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
+        if ( kfelementobject->_config_id == _invalid_int )
+        {
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no id", kfelement->_data_name );
+            return false;
+        }
+
+        auto kfsetting = KFChapterConfig::Instance()->FindSetting( kfelementobject->_config_id );
+        if ( kfsetting == nullptr )
+        {
+            __LOG_ERROR_FUNCTION__( function, line, "chapter=[{}] can't find setting", kfelementobject->_config_id );
+            return false;
+        }
+
+        auto status = kfelementobject->CalcValue( kfparent->_data_setting, kfparent->_data_setting->_value_key_name, 1.0f );
+        player->UpdateData( __STRING__( chapter ), kfelementobject->_config_id, kfparent->_data_setting->_value_key_name, KFEnum::Set, status );
+        return true;
     }
 
     __KF_MESSAGE_FUNCTION__( KFChapterModule::HandleChapterExecuteStatusReq )

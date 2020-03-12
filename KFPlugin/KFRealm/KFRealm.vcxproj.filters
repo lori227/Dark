@@ -2,20 +2,61 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="KFPVEModule.cpp" />
     <ClCompile Include="KFRealmData.cpp" />
-    <ClCompile Include="KFRealmModule.cpp" />
     <ClCompile Include="KFRealmPlugin.cpp" />
-    <ClCompile Include="KFGambleModule.cpp" />
+    <ClCompile Include="KFGambleModule.cpp">
+      <Filter>Gamble</Filter>
+    </ClCompile>
+    <ClCompile Include="KFPVEModule.cpp">
+      <Filter>PVE</Filter>
+    </ClCompile>
+    <ClCompile Include="KFRealmModule.cpp">
+      <Filter>Realm</Filter>
+    </ClCompile>
+    <ClCompile Include="KFBuffModule.cpp">
+      <Filter>Buff</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="KFPVEModule.hpp" />
-    <ClInclude Include="KFPVEInterface.h" />
     <ClInclude Include="KFRealmData.hpp" />
-    <ClInclude Include="KFRealmInterface.h" />
-    <ClInclude Include="KFRealmModule.hpp" />
     <ClInclude Include="KFRealmPlugin.hpp" />
-    <ClInclude Include="KFGambleInterface.h" />
-    <ClInclude Include="KFGambleModule.hpp" />
+    <ClInclude Include="KFGambleInterface.h">
+      <Filter>Gamble</Filter>
+    </ClInclude>
+    <ClInclude Include="KFGambleModule.hpp">
+      <Filter>Gamble</Filter>
+    </ClInclude>
+    <ClInclude Include="KFPVEInterface.h">
+      <Filter>PVE</Filter>
+    </ClInclude>
+    <ClInclude Include="KFPVEModule.hpp">
+      <Filter>PVE</Filter>
+    </ClInclude>
+    <ClInclude Include="KFRealmInterface.h">
+      <Filter>Realm</Filter>
+    </ClInclude>
+    <ClInclude Include="KFRealmModule.hpp">
+      <Filter>Realm</Filter>
+    </ClInclude>
+    <ClInclude Include="KFBuffInterface.h">
+      <Filter>Buff</Filter>
+    </ClInclude>
+    <ClInclude Include="KFBuffModule.hpp">
+      <Filter>Buff</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Gamble">
+      <UniqueIdentifier>{390ad957-9fb8-4d0a-9356-3fd0b7166d9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PVE">
+      <UniqueIdentifier>{91651d9c-388d-4ae7-b8cf-db9437689495}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buff">
+      <UniqueIdentifier>{82d853df-6e77-4540-a79c-6f1f02b0fb31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Realm">
+      <UniqueIdentifier>{0c8b5ce4-56d5-47af-9d0f-cdbe4742ca28}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

@@ -177,7 +177,7 @@ namespace KFrame
         }
 
         auto key = kfsetting->_rune_type * 10000u + kfsetting->_rune_level;
-        _rune_type_level[key] = kfsetting->_id;
+        _rune_type_level[key] = static_cast<uint32>( kfsetting->_id );
     }
 
     void KFItemConfig::ReadFoodSetting( KFNode& xmlnode, KFItemSetting* kfsetting )

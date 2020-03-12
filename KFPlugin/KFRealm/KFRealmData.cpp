@@ -102,47 +102,6 @@ namespace KFrame
         return &npcdata;
     }
 
-    void KFRealmData::AddBuffData( uint64 uuid, uint32 value )
-    {
-        auto buff = _data.mutable_buffdata()->mutable_buff();
-
-        KFMsg::PBBuffListData* bufflistdata = nullptr;
-        auto iter = buff->find( uuid );
-        if ( iter != buff->end() )
-        {
-            bufflistdata = &iter->second;
-        }
-        else
-        {
-            bufflistdata = &( ( *buff )[ uuid ] );
-        }
-
-        auto buffdata = bufflistdata->add_bufflist();
-        buffdata->set_id( value );
-    }
-
-    void KFRealmData::RemoveBuffData( uint64 uuid, uint32 value )
-    {
-        auto buff = _data.mutable_buffdata()->mutable_buff();
-        auto iter = buff->find( uuid );
-        if ( iter == buff->end() )
-        {
-            return;
-        }
-
-        // 删除该buff
-        auto bufflistdata = &iter->second;
-        auto buffsize = bufflistdata->bufflist_size();
-        for ( auto index = 0; index < buffsize; ++index )
-        {
-            auto buff = &bufflistdata->bufflist( index );
-            if ( buff->id() == value )
-            {
-                bufflistdata->mutable_bufflist()->DeleteSubrange( index, 1 );
-                break;
-            }
-        }
-    }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     void KFRealmData::RecordBeginHeros( KFEntity* player )
@@ -495,7 +454,7 @@ namespace KFrame
             auto activeid = pbheroserver->endactive( i );
             if ( !_check_begin_active( pbheroserver, activeid ) )
             {
-                pbheroclient->add_active( activeid );
+                ( *pbheroclient->mutable_active() )[ pbheroclient->active_size() + 1 ] = activeid;
             }
         }
     }
@@ -519,7 +478,7 @@ namespace KFrame
             auto innateid = pbheroserver->endinnate( i );
             if ( !_check_begin_innate( pbheroserver, innateid ) )
             {
-                pbheroclient->add_innate( innateid );
+                ( *pbheroclient->mutable_innate() )[ pbheroclient->innate_size() + 1 ] = innateid;
             }
         }
     }

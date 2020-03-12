@@ -1,3 +1,8 @@
-<root platform="" version="3019">
-	<item Id="1" CostItemId="1000017" Price="10" Params="2|1" MaxPrice="0" ShowCount="7" NormalDrop="5900301" InnerDrop="5900301" />
+<root platform="" version="3416">
+	<item Id="38000001" CostItemId="1900005" Price="1" Params="1|0" MaxPrice="0" ShowCount="7" NormalDrop="5500101" InnerDrop="5500101" LocalEvent="" />
+	<item Id="38000002" CostItemId="1900005" Price="1" Params="1|0" MaxPrice="0" ShowCount="7" NormalDrop="5500102" InnerDrop="5500102" LocalEvent="" />
+	<item Id="38000003" CostItemId="1900005" Price="1" Params="1|0" MaxPrice="0" ShowCount="7" NormalDrop="5500103" InnerDrop="5500103" LocalEvent="" />
+	<item Id="38000004" CostItemId="1900005" Price="1" Params="1|0" MaxPrice="0" ShowCount="7" NormalDrop="5500104" InnerDrop="5500104" LocalEvent="" />
+	<item Id="38000005" CostItemId="1900005" Price="1" Params="1|0" MaxPrice="0" ShowCount="7" NormalDrop="5500105" InnerDrop="5500105" LocalEvent="" />
+	<item Id="38000006" CostItemId="1900005" Price="1" Params="1|0" MaxPrice="0" ShowCount="7" NormalDrop="5500106" InnerDrop="5500106" LocalEvent="" />
 </root>

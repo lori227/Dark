@@ -1,7 +1,4 @@
-<root platform="" version="3207">
-	<item Name="maxitemcount" Key="" Value="12" Channel="0" Service="0" />
-	<item Name="maxstoragecount" Key="" Value="999" Channel="0" Service="0" />
-	<item Name="exploremaxcount" Key="" Value="12" Channel="0" Service="0" />
+<root platform="" version="3392">
 	<item Name="othermaxcount" Key="" Value="999" Channel="0" Service="0" />
 	<item Name="runemaxcount" Key="" Value="999" Channel="0" Service="0" />
 	<item Name="extendmaxcount" Key="" Value="100" Channel="0" Service="0" />
@@ -11,7 +8,7 @@
 	<item Name="materialmaxcount" Key="" Value="999" Channel="0" Service="0" />
 	<item Name="weaponmaxcount" Key="" Value="999" Channel="0" Service="0" />
 	<item Name="fooditemid" Key="" Value="1000017" Channel="0" Service="0" />
-	<item Name="granarycdtime" Key="" Value="600" Channel="0" Service="0" />
+	<item Name="granarycdtime" Key="" Value="60" Channel="0" Service="0" />
 	<item Name="granaryfreebuycount" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="weaponalarm" Key="" Value="0.2" Channel="0" Service="0" />
 	<item Name="smithyitemid" Key="" Value="1900004" Channel="0" Service="0" />

@@ -1,10 +1,11 @@
-<root platform="" version="3200">
+<root platform="" version="3373">
 	<item Name="defaultprofession" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="defaultbackground" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="generatedirectattribute" Key="" Value="9" Channel="0" Service="0" />
 	<item Name="generaterandattribute" Key="" Value="2" Channel="0" Service="0" />
 	<item Name="maxdip" Key="" Value="1000" Channel="0" Service="0" />
 	<item Name="maxherocount" Key="" Value="12" Channel="0" Service="0" />
+	<item Name="initherolevellimit" Key="" Value="3" Channel="0" Service="0" />
 	<item Name="maxherolevel" Key="" Value="30" Channel="0" Service="0" />
 	<item Name="maxactivecount" Key="" Value="20" Channel="0" Service="0" />
 	<item Name="maxinnatecount" Key="" Value="4" Channel="0" Service="0" />
@@ -34,8 +35,10 @@
 	<item Name="initsmithynum" Key="" Value="100" Channel="0" Service="0" />
 	<item Name="roledurability_pve" Key="" Value="50" Channel="0" Service="0" />
 	<item Name="roledurability_pveconsume" Key="" Value="1" Channel="0" Service="0" />
-	<item Name="buildupgrademaxnum" Key="" Value="2" Channel="0" Service="0" />
+	<item Name="roledurability_exploreconsume" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="roledeath_characterpool" Key="" Value="4069001" Channel="0" Service="0" />
 	<item Name="heronamelength" Key="" Value="40" Channel="0" Service="0" />
 	<item Name="exploregrainwarningcount" Key="" Value="50" Channel="0" Service="0" />
+	<item Name="contracttimefid" Key="" Value="7" Channel="0" Service="0" />
+	<item Name="contractpricefid" Key="" Value="8" Channel="0" Service="0" />
 </root>

@@ -90,6 +90,29 @@ namespace KFrame
         return kfbuild != nullptr;
     }
 
+    bool KFGranaryModule::IsGranaryCrit( KFEntity* player, uint32& itemnum )
+    {
+        // 计算暴击率
+        auto critrate = player->Get( __STRING__( effect ), __STRING__( granarycritrate ) );
+        auto critvalue = player->Get( __STRING__( effect ), __STRING__( granarycritvalue ) );
+        auto rand = KFGlobal::Instance()->RandRatio( KFRandEnum::TenThousand );
+        if ( rand < critrate )
+        {
+            itemnum += itemnum * critvalue / KFRandEnum::TenThousand;
+            return true;
+        }
+
+        return false;
+    }
+
+    void KFGranaryModule::SendGranaryCritMsg( KFEntity* player, bool result )
+    {
+        // 收取暴击协议
+        KFMsg::MsgGranaryGatherAck ack;
+        ack.set_crit( result );
+        _kf_player->SendToClient( player, KFMsg::MSG_GRANARY_GATHER_ACK, &ack );
+    }
+
     void KFGranaryModule::CheckGranaryTimer( KFEntity* player )
     {
         // 检查粮仓是否开启
@@ -236,7 +259,7 @@ namespace KFrame
         }
 
         auto kfgranary = player->Find( __STRING__( granary ) );
-        auto num = kfgranary->Get( __STRING__( num ) );
+        auto num = kfgranary->Get<uint32>( __STRING__( num ) );
         if ( num == 0u )
         {
             // 没有粮食不能收获
@@ -257,17 +280,7 @@ namespace KFrame
         }
 
         auto totalcount = num;
-
-        // 计算暴击率
-        uint32 critresult = _invalid_int;
-        auto critrate = player->Get( __STRING__( effect ), __STRING__( granarycritrate ) );
-        auto critvalue = player->Get( __STRING__( effect ), __STRING__( granarycritvalue ) );
-        auto rand = KFGlobal::Instance()->RandRatio( KFRandEnum::TenThousand );
-        if ( rand < critrate )
-        {
-            totalcount += totalcount * critvalue / KFRandEnum::TenThousand;
-            critresult = 1u;
-        }
+        auto critresult = IsGranaryCrit( player, totalcount );
 
         // 粮食放进仓库
         auto canaddcount = _kf_item->GetCanAddItemCount( player, itemid, totalcount );
@@ -283,10 +296,7 @@ namespace KFrame
             _kf_display->SendToClient( player, KFMsg::ItemBagIsFull );
         }
 
-        // 收取暴击协议
-        KFMsg::MsgGranaryGatherAck ack;
-        ack.set_crit( critresult );
-        _kf_player->SendToClient( player, KFMsg::MSG_GRANARY_GATHER_ACK, &ack );
+        SendGranaryCritMsg( player, critresult );
 
         // 添加物品进背包
         player->AddElement( &_item_element, canaddcount, __STRING__( granary ), 0u, __FUNC_LINE__ );
@@ -340,14 +350,21 @@ namespace KFrame
         auto buyfactor = player->Get<uint32>( __STRING__( effect ), __STRING__( granarybuyfactor ) );
 
         static auto _time_option = _kf_option->FindOption( __STRING__( granarycdtime ) );
-        auto cdtime = _time_option->_uint32_value / KFTimeEnum::OneMinuteSecond;
+        auto cdtime = _time_option->_uint32_value;
         if ( addnum == 0u || cdtime == 0u || buyfactor == 0u )
         {
             return _kf_display->SendToClient( player, KFMsg::GranaryBuyParamError );
         }
 
         // 判断仓库是否已满
-        auto totalcount = addnum / cdtime * buyfactor;
+        auto finalcount = static_cast<double>( addnum ) / cdtime * buyfactor * KFTimeEnum::OneMinuteSecond;
+        auto totalcount = static_cast<uint32>( finalcount + 0.5 );
+        if ( totalcount == 0u )
+        {
+            return _kf_display->SendToClient( player, KFMsg::GranaryBuyParamError );
+        }
+
+        auto critresult = IsGranaryCrit( player, totalcount );
 
         auto canaddcount = _kf_item->GetCanAddItemCount( player, itemid, totalcount );
         if ( canaddcount == 0u )
@@ -355,6 +372,8 @@ namespace KFrame
             // 仓库已满
             return _kf_display->SendToClient( player, KFMsg::ItemBagIsFull );
         }
+
+        SendGranaryCritMsg( player, critresult );
 
         if ( buycount >= freecount )
         {

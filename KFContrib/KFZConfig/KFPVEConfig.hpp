@@ -42,6 +42,9 @@ namespace KFrame
         // 逃跑失败惩罚id
         uint32 _punish_id = 0u;
 
+        // 消耗耐久度
+        uint32 _durability = 0u;
+
     public:
         // 随机地形id
         uint32 RandDungeonId() const

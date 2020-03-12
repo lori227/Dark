@@ -137,7 +137,7 @@ namespace KFrame
             dropid = kfsetting->_inner_drop_id;
         }
 
-        auto& droplist = _kf_drop->Drop( player, dropid, __STRING__( gamble ), kfsetting->_id, __FUNC_LINE__ );
+        auto& droplist = _kf_drop->Drop( player, dropid, kfsetting->_show_count, __STRING__( gamble ), kfsetting->_id, __FUNC_LINE__ );
 
         KFMsg::MsgGambleItemFinishAck ack;
         ack.set_gambleid( kfmsg.gambleid() );

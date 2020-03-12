@@ -585,6 +585,18 @@ namespace KFrame
             __LOG_ERROR__( "attribute id={} can't find", kfgeneratesetting->_attr_id );
         }
 
+        // 设置主动技能
+        if ( kfactiverecord->Size() > 0u )
+        {
+            auto activeindex = kfactiverecord->First()->Get<uint32>( __STRING__( id ) );
+            kfhero->Set( __STRING__( activeindex ), activeindex );
+        }
+
+        // 随机耐久度
+        auto durability = kfprofessionsetting->RandRoleDurability();
+        kfhero->Set( __STRING__( durability ), durability );
+        kfhero->Set( __STRING__( maxdurability ), durability );
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 捏脸数据
         GeneratePinchFace( player, kfhero );
@@ -1080,6 +1092,9 @@ namespace KFrame
         randlist = RandWeightData( player, kfhero, __STRING__( innate ), kfsetting->_innate_pool_list );
         for ( auto iter : randlist )
         {
+            // 更换同步顺序, 先删除条件，再添加条件，再更新
+            player->SyncDataSequence( KFEnum::Dec, KFEnum::Add, KFEnum::Set );
+
             // 转职获得的天赋增加标记
             auto kfinnate = kfhero->Find( __STRING__( innate ), iter );
             player->UpdateData( kfinnate, __STRING__( flag ), KFEnum::Set, 1u );

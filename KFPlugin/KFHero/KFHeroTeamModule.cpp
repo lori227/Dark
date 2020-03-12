@@ -47,9 +47,6 @@ namespace KFrame
             return;
         }
 
-        // 检查并移除耐久度不足的英雄
-        RemoveDurabilityHero( player );
-
         // 清空队伍英雄ep
         ClearHeroEp( player );
     }
@@ -156,10 +153,29 @@ namespace KFrame
         }
     }
 
-    void KFHeroTeamModule::DecHeroDurability( KFEntity* player, const UInt64Set& fightheros )
+    bool KFHeroTeamModule::IsDurabilityEnough( KFEntity* player )
     {
-        static auto _dec_durability_count = _kf_option->FindOption( "roledurability_pveconsume" );
+        auto kfherorecord = player->Find( __STRING__( hero ) );
+        auto kfteamarray = player->Find( __STRING__( heroteam ) );
+        for ( auto kfteam = kfteamarray->First(); kfteam != nullptr; kfteam = kfteamarray->Next() )
+        {
+            auto kfhero = kfherorecord->Find( kfteam->Get() );
+            if ( kfhero == nullptr )
+            {
+                continue;
+            }
 
+            if ( kfhero->Get<uint32>( __STRING__( durability ) ) == 0u )
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    void KFHeroTeamModule::DecHeroPVEDurability( KFEntity* player, const UInt64Set& fightheros, uint32 durability )
+    {
         auto kfherorecord = player->Find( __STRING__( hero ) );
         for ( auto& iter : fightheros )
         {
@@ -170,33 +186,24 @@ namespace KFrame
             }
 
             // 扣除指定耐久度
-            player->UpdateData( kfhero, __STRING__( durability ), KFEnum::Dec, _dec_durability_count->_uint32_value );
+            player->UpdateData( kfhero, __STRING__( durability ), KFEnum::Dec, durability );
         }
     }
 
-    void KFHeroTeamModule::RemoveDurabilityHero( KFEntity* player )
+    void KFHeroTeamModule::DecHeroRealmDurability( KFEntity* player, uint32 durability )
     {
         auto kfherorecord = player->Find( __STRING__( hero ) );
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
-
         for ( auto kfteam = kfteamarray->First(); kfteam != nullptr; kfteam = kfteamarray->Next() )
         {
-            auto uuid = kfteam->Get<uint64>();
-            auto kfhero = kfherorecord->Find( uuid );
+            auto kfhero = kfherorecord->Find( kfteam->Get() );
             if ( kfhero == nullptr )
             {
                 continue;
             }
 
-            // 获取指定耐久度
-            auto durability = kfhero->Get<uint32>( __STRING__( durability ) );
-            if ( durability != 0u )
-            {
-                continue;
-            }
-
-            player->RemoveData( kfherorecord, uuid );
-            __LOG_INFO__( "player=[{}] durability remove hero=[{}]", player->GetKeyID(), uuid );
+            // 扣除指定耐久度
+            player->UpdateData( kfhero, __STRING__( durability ), KFEnum::Dec, durability );
         }
     }
 
@@ -227,6 +234,12 @@ namespace KFrame
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     __KF_REMOVE_DATA_FUNCTION__( KFHeroTeamModule::OnRemoveHero )
     {
+        auto posflag = kfdata->Get<uint32>( __STRING__( posflag ) );
+        if ( posflag != KFMsg::HeroTeam )
+        {
+            return;
+        }
+
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
         auto index = kfteamarray->GetIndex( key );
         if ( index == 0u )

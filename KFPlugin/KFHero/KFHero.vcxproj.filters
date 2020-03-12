@@ -6,6 +6,7 @@
     <ClCompile Include="KFHeroPlugin.cpp" />
     <ClCompile Include="KFTransferModule.cpp" />
     <ClCompile Include="KFHeroTeamModule.cpp" />
+    <ClCompile Include="KFContractModule.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="KFHeroInterface.h" />
@@ -14,5 +15,6 @@
     <ClInclude Include="KFTransferModule.hpp" />
     <ClInclude Include="KFHeroTeamModule.hpp" />
     <ClInclude Include="KFHeroTeamInterface.h" />
+    <ClInclude Include="KFContractModule.hpp" />
   </ItemGroup>
 </Project>

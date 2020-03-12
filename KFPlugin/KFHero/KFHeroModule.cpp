@@ -389,20 +389,21 @@ namespace KFrame
 
     uint32 KFHeroModule::GetMaxLevel( KFEntity* player, KFData* kfhero )
     {
+        static auto _option = _kf_option->FindOption( "initherolevellimit" );
+        auto initlevel = _option->_uint32_value;
+
         auto profession = kfhero->Get( __STRING__( profession ) );
         auto kfsetting = KFProfessionConfig::Instance()->FindSetting( profession );
         if ( kfsetting == nullptr )
         {
-            return 0u;
+            return initlevel;
         }
 
         auto maxlevel = kfsetting->_max_level;
-
         auto limitlevel = player->Get<uint32>( __STRING__( effect ), __STRING__( camplevellimit ) );
-        if ( limitlevel > 0u && limitlevel < maxlevel )
-        {
-            maxlevel = limitlevel;
-        }
+        limitlevel += initlevel;
+
+        maxlevel = __MIN__( maxlevel, limitlevel ); ;
 
         return maxlevel;
     }

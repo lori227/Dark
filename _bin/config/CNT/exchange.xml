@@ -1,7 +1,7 @@
-<root platform="" version="2983">
-	<item Id="1" Level="1" NormalDrop="5900401" InnerDrop="5900401" />
-	<item Id="1" Level="2" NormalDrop="5900402" InnerDrop="5900402" />
-	<item Id="1" Level="3" NormalDrop="5900403" InnerDrop="5900403" />
-	<item Id="1" Level="4" NormalDrop="5900404" InnerDrop="5900404" />
-	<item Id="1" Level="5" NormalDrop="5900404" InnerDrop="5900404" />
+<root platform="" version="3416">
+	<item Id="1" ExchangeId="37000000" Level="1" NormalDrop="5802002" InnerDrop="5802002" LocalEvent="" />
+	<item Id="2" ExchangeId="37000000" Level="2" NormalDrop="5802003" InnerDrop="5802003" LocalEvent="" />
+	<item Id="3" ExchangeId="37000000" Level="3" NormalDrop="5802004" InnerDrop="5802004" LocalEvent="" />
+	<item Id="4" ExchangeId="37000000" Level="4" NormalDrop="5802005" InnerDrop="5802005" LocalEvent="" />
+	<item Id="5" ExchangeId="37000000" Level="5" NormalDrop="5802006" InnerDrop="5802006" LocalEvent="" />
 </root>

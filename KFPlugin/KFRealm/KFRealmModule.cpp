@@ -7,8 +7,6 @@ namespace KFrame
         _kf_component = _kf_kernel->FindComponent( __STRING__( player ) );
 
         __REGISTER_LEAVE_PLAYER__( &KFRealmModule::OnLeaveSaveRealmData );
-        __REGISTER_DROP_LOGIC__( __STRING__( addbuff ), &KFRealmModule::OnDropHeroAddBuff );
-        __REGISTER_DROP_LOGIC__( __STRING__( decbuff ), &KFRealmModule::OnDropHeroDecBuff );
 
         __REGISTER_EXECUTE__( __STRING__( realm ), &KFRealmModule::OnExecuteRealm );
         ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -22,8 +20,6 @@ namespace KFrame
         __REGISTER_MESSAGE__( KFMsg::MSG_UPDATE_EXPLORE_NPC_REQ, &KFRealmModule::HaneleUpdateExploreNpcReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_EXPLORE_DROP_REQ, &KFRealmModule::HandleExploreDropReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_INTERACT_ITEM_REQ, &KFRealmModule::HandleInteractItemReq );
-        __REGISTER_MESSAGE__( KFMsg::MSG_ADD_BUFF_REQ, &KFRealmModule::HandleHeroAddBuffReq );
-        __REGISTER_MESSAGE__( KFMsg::MSG_REMOVE_BUFF_REQ, &KFRealmModule::HandleHeroRemoveBuffReq );
     }
 
     void KFRealmModule::BeforeShut()
@@ -45,8 +41,6 @@ namespace KFrame
         __UN_MESSAGE__( KFMsg::MSG_UPDATE_EXPLORE_NPC_REQ );
         __UN_MESSAGE__( KFMsg::MSG_EXPLORE_DROP_REQ );
         __UN_MESSAGE__( KFMsg::MSG_INTERACT_ITEM_REQ );
-        __UN_MESSAGE__( KFMsg::MSG_ADD_BUFF_REQ );
-        __UN_MESSAGE__( KFMsg::MSG_REMOVE_BUFF_REQ );
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -172,11 +166,21 @@ namespace KFrame
             return std::make_tuple( KFMsg::RealmMapError, nullptr, nullptr );
         }
 
+        if ( !_kf_hero_team->IsDurabilityEnough( player ) )
+        {
+            return std::make_tuple( KFMsg::HeroTeamDurabilityNotEnough, nullptr, nullptr );
+        }
+
         // 判断和扣除花费
         auto& dataname = player->RemoveElement( &kfsetting->_consume, _default_multiple, __STRING__( realm ), realmid, __FUNC_LINE__ );
         if ( !dataname.empty() )
         {
             return std::make_tuple( KFMsg::DataNotEnough, nullptr, nullptr );
+        }
+
+        if ( kfexplorelevel->_durability != 0u )
+        {
+            _kf_hero_team->DecHeroRealmDurability( player, kfexplorelevel->_durability );
         }
 
         // 销毁原来的探索数据, 包括背包
@@ -199,6 +203,7 @@ namespace KFrame
         kfrealmdata->_data.set_status( player->GetStatus() );
         kfrealmdata->_data.set_extendlevel( KFMsg::ExtendLevel );
         kfrealmdata->_data.set_starttime( KFGlobal::Instance()->_real_time );
+        kfrealmdata->_data.set_totallevel( ( uint32 )kfsetting->_levels.size() );
 
         // level explore
         auto pbexplore = kfrealmdata->FindExeploreData( level );
@@ -336,6 +341,11 @@ namespace KFrame
             return std::make_tuple( KFMsg::RealmMapError, nullptr, nullptr );
         }
 
+        if ( kfexplorelevel->_durability != 0u )
+        {
+            _kf_hero_team->DecHeroRealmDurability( player, kfexplorelevel->_durability );
+        }
+
         // 清空上一次的数据
         auto lastlevel = kfrealmdata->_data.level();
         kfrealmdata->_data.set_level( level );
@@ -464,6 +474,8 @@ namespace KFrame
     {
         KFMsg::MsgRealmBalanceAck ack;
         ack.set_result( result );
+        ack.set_level( kfrealmdata->_data.level() );
+        ack.set_maxlevel( kfrealmdata->_data.totallevel() );
         kfrealmdata->BalanceRealmRecord( ack.mutable_balance() );
         _kf_player->SendToClient( player, KFMsg::MSG_REALM_BALANCE_ACK, &ack );
     }
@@ -518,11 +530,15 @@ namespace KFrame
 
     void KFRealmModule::RealmBalanceFlee( KFEntity* player, KFRealmData* kfrealmdata )
     {
+        // 纪录英雄数据
+        kfrealmdata->RecordBeginHeros( player );
+
         // 随机探索失败获得道具
         RealmRandFailedItems( player, kfrealmdata );
 
         // 纪录最终道具
         kfrealmdata->RecordEndItems( player );
+        kfrealmdata->RecordEndHeros( player );
 
         // 发送消息
         SendRealmBalanceToClient( player, kfrealmdata, KFMsg::Flee );
@@ -533,6 +549,10 @@ namespace KFrame
 
     void KFRealmModule::RealmBalanceTown( KFEntity* player, KFRealmData* kfrealmdata )
     {
+        // 纪录英雄数据
+        kfrealmdata->RecordBeginHeros( player );
+        kfrealmdata->RecordEndHeros( player );
+
         // 结算获得的道具
         kfrealmdata->RecordEndItems( player );
 
@@ -585,9 +605,6 @@ namespace KFrame
     {
         // 清除数据
         _realm_data.Remove( player->GetKeyID() );
-
-        // 探索结束后就移除寿命不足的英雄
-        _kf_hero_team->RemoveDurabilityHero( player );
 
         // 清空队伍英雄ep
         _kf_hero_team->ClearHeroEp( player );
@@ -708,87 +725,6 @@ namespace KFrame
             player->Set( __STRING__( realmdata ), strdata );
             player->Set( __STRING__( realmid ), kfrecord->_data.id() );
             _realm_data.Remove( player->GetKeyID() );
-        }
-    }
-
-    __KF_DROP_LOGIC_FUNCTION__( KFRealmModule::OnDropHeroAddBuff )
-    {
-        auto buffid = dropdata->GetValue();
-        ChangeTeamHeroBuff( player, KFEnum::Add, buffid );
-        player->AddDataToShow( dropdata->_logic_name, buffid, false );
-    }
-
-    __KF_MESSAGE_FUNCTION__( KFRealmModule::HandleHeroAddBuffReq )
-    {
-        __CLIENT_PROTO_PARSE__( KFMsg::MsgAddBuffReq );
-
-        for ( auto i = 0; i < kfmsg.buffid_size(); ++i )
-        {
-            auto buffid = kfmsg.buffid( i );
-            ChangeTeamHeroBuff( player, KFEnum::Add, buffid );
-            player->AddDataToShow( __STRING__( addbuff ), buffid, false );
-        }
-    }
-
-    __KF_DROP_LOGIC_FUNCTION__( KFRealmModule::OnDropHeroDecBuff )
-    {
-        auto buffid = dropdata->GetValue();
-        ChangeTeamHeroBuff( player, KFEnum::Dec, buffid );
-        player->AddDataToShow( dropdata->_logic_name, buffid, false );
-    }
-
-    __KF_MESSAGE_FUNCTION__( KFRealmModule::HandleHeroRemoveBuffReq )
-    {
-        __CLIENT_PROTO_PARSE__( KFMsg::MsgRemoveBuffReq );
-
-        for ( auto i = 0; i < kfmsg.buffid_size(); ++i )
-        {
-            auto buffid = kfmsg.buffid( i );
-            ChangeTeamHeroBuff( player, KFEnum::Dec, buffid );
-            player->AddDataToShow( __STRING__( decbuff ), buffid, false );
-        }
-    }
-
-    void KFRealmModule::ChangeTeamHeroBuff( KFEntity* player, uint32 operate, uint32 value )
-    {
-        auto kfrealmdata = _realm_data.Find( player->GetKeyID() );
-        if ( kfrealmdata == nullptr )
-        {
-            return;
-        }
-
-        KFMsg::MsgUpdateExploreBuffAck ack;
-
-        auto kfherorecord = player->Find( __STRING__( hero ) );
-        auto kfteamarray = player->Find( __STRING__( heroteam ) );
-        for ( auto kfteam = kfteamarray->First(); kfteam != nullptr; kfteam = kfteamarray->Next() )
-        {
-            auto uuid = kfteam->Get<uint64>();
-            auto kfhero = _kf_hero->FindAliveHero( kfherorecord, uuid );
-            if ( kfhero == nullptr )
-            {
-                continue;
-            }
-
-            auto buff = ack.add_bufflist();
-            buff->set_uuid( uuid );
-            buff->set_operate( operate );
-            buff->set_buffid( value );
-
-            switch ( operate )
-            {
-            case KFEnum::Add:
-                kfrealmdata->AddBuffData( uuid, value );
-                break;
-            case KFEnum::Dec:
-                kfrealmdata->RemoveBuffData( uuid, value );
-                break;
-            }
-        }
-
-        if ( ack.bufflist_size() > 0 )
-        {
-            _kf_player->SendToClient( player, KFMsg::MSG_UPDATE_EXPLORE_BUFF_ACK, &ack );
         }
     }
 

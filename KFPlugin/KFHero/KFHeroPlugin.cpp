@@ -2,6 +2,7 @@
 #include "KFHeroModule.hpp"
 #include "KFHeroTeamModule.hpp"
 #include "KFTransferModule.hpp"
+#include "KFContractModule.hpp"
 #include "KFConfig/KFConfigInterface.h"
 //////////////////////////////////////////////////////////////////////////
 
@@ -47,5 +48,6 @@ namespace KFrame
         __KF_ADD_CONFIG__( KFCharacterConfig );
         __KF_ADD_CONFIG__( KFRaceConfig );
         __KF_ADD_CONFIG__( KFElementConfig );
+        __KF_ADD_CONFIG__( KFFormulaConfig );
     }
 }

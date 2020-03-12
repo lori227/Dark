@@ -41,6 +41,7 @@ namespace KFrame
         __REGISTER_ENTER_PLAYER__( &KFTrainModule::OnEnterTrainModule );
         __REGISTER_LEAVE_PLAYER__( &KFTrainModule::OnLeaveTrainModule );
 
+        __REGISTER_REMOVE_DATA_1__( __STRING__( hero ), &KFTrainModule::OnRemoveHero );
         __REGISTER_REMOVE_DATA_1__( __STRING__( train ), &KFTrainModule::OnRemoveTrainHero );
         __REGISTER_UPDATE_DATA_2__( __STRING__( train ), __STRING__( calctime ), &KFTrainModule::OnUpdateCalcTime );
 
@@ -64,6 +65,7 @@ namespace KFrame
         __UN_ENTER_PLAYER__();
         __UN_LEAVE_PLAYER__();
 
+        __UN_REMOVE_DATA_1__( __STRING__( hero ) );
         __UN_REMOVE_DATA_1__( __STRING__( train ) );
         __UN_UPDATE_DATA_2__( __STRING__( train ), __STRING__( calctime ) );
 
@@ -87,6 +89,25 @@ namespace KFrame
             // 训练完成增加条件次数
             AddTrainCondition( player, kftrain );
         }
+    }
+
+    __KF_REMOVE_DATA_FUNCTION__( KFTrainModule::OnRemoveHero )
+    {
+        auto posflag = kfdata->Get<uint32>( __STRING__( posflag ) );
+        if ( posflag != KFMsg::TrainBuild )
+        {
+            return;
+        }
+
+        auto kftrainrecord = player->Find( __STRING__( train ) );
+        auto kftrain = GetTrainById( player, key );
+        if ( kftrain == nullptr )
+        {
+            return;
+        }
+
+        // 删除训练英雄
+        player->RemoveData( kftrainrecord, kftrain->GetKeyID() );
     }
 
     __KF_REMOVE_DATA_FUNCTION__( KFTrainModule::OnRemoveTrainHero )

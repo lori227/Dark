@@ -12,12 +12,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="KFContractModule.cpp" />
     <ClCompile Include="KFHeroModule.cpp" />
     <ClCompile Include="KFHeroPlugin.cpp" />
     <ClCompile Include="KFHeroTeamModule.cpp" />
     <ClCompile Include="KFTransferModule.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="KFContractModule.hpp" />
     <ClInclude Include="KFHeroInterface.h" />
     <ClInclude Include="KFHeroModule.hpp" />
     <ClInclude Include="KFHeroPlugin.hpp" />

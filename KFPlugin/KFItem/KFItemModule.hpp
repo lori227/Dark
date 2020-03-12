@@ -48,9 +48,6 @@ namespace KFrame
         // 获取能添加物品数量
         virtual uint32 GetCanAddItemCount( KFEntity* player, uint32 itemid, uint32 num );
 
-        // 获取物品自动操作类型
-        virtual uint32 GetItemAutoType( uint32 itemid );
-
         // 查找道具
         virtual std::tuple<KFData*, KFData*> FindItem( KFEntity* player, uint64 itemuuid );
 

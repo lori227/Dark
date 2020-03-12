@@ -31,6 +31,24 @@ namespace KFrame
                 kfsetting->_attribute[ attrname ] = value;
             }
         }
+
+        auto strdurability = xmlnode.GetString( "RoleDurability" );
+        UInt32Vector durabilitylist;
+        KFUtility::ParseArrayList( durabilitylist, strdurability );
+        if ( durabilitylist.size() == 2u )
+        {
+            if ( durabilitylist[0] == 0u || durabilitylist[1] == 0u || durabilitylist[0] > durabilitylist[1] )
+            {
+                return __LOG_ERROR__( "Profession = [{}] RoleDurability is error", kfsetting->_id );
+            }
+
+            kfsetting->_min_durability = durabilitylist[0];
+            kfsetting->_max_durability = durabilitylist[1];
+        }
+        else
+        {
+            return __LOG_ERROR__( "Profession = [{}] RoleDurability is error", kfsetting->_id );
+        }
     }
     /////////////////////////////////////////////////////////////////////////////////
     bool KFProfessionSetting::IsValid( uint32 race, uint32 sex, uint32 movetype, uint32 weapontype ) const
@@ -114,5 +132,10 @@ namespace KFrame
         std::advance( iter, index );
 
         return *iter;
+    }
+
+    uint32 KFProfessionSetting::RandRoleDurability() const
+    {
+        return KFGlobal::Instance()->RandRange( _min_durability, _max_durability, 1u );
     }
 }

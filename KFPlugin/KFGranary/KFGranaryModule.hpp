@@ -73,6 +73,12 @@ namespace KFrame
         // 粮仓是否激活
         bool IsGranaryActive( KFEntity* player );
 
+        // 粮仓是否暴击
+        bool IsGranaryCrit( KFEntity* player, uint32& itemnum );
+
+        // 发送粮仓暴击消息
+        void SendGranaryCritMsg( KFEntity* player, bool result );
+
         // 检查定时器
         void CheckGranaryTimer( KFEntity* player );
 

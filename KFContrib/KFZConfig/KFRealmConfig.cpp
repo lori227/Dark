@@ -28,6 +28,7 @@ namespace KFrame
         leveldata._food_step = xmlnode.GetUInt32( "FoodStep", true );
         leveldata._hp_num = xmlnode.GetUInt32( "HpNum", true );
         leveldata._hp_step = xmlnode.GetUInt32( "HpStep", true );
+        leveldata._durability = xmlnode.GetUInt32( "Durability", true );
 
         auto strdropvictory = xmlnode.GetString( "DropVictory", true );
         KFReadSetting::ParseConditionList( strdropvictory, leveldata._victory_drop_list );

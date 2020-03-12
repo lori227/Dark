@@ -45,11 +45,14 @@ namespace KFrame
         // 更新队伍死亡的英雄
         virtual void UpdateDeadHero( KFEntity* player );
 
-        // 扣除队伍每个英雄的耐久度
-        virtual void DecHeroDurability( KFEntity* player, const UInt64Set& fightheros );
+        // 队伍英雄的耐久度足够
+        virtual bool IsDurabilityEnough( KFEntity* player );
 
-        // 移除队伍中耐久度不足的英雄
-        virtual void RemoveDurabilityHero( KFEntity* player );
+        // 战斗扣除队伍英雄耐久度
+        virtual void DecHeroPVEDurability( KFEntity* player, const UInt64Set& fightheros, uint32 durability );
+
+        // 秘境扣除队伍英雄耐久度
+        virtual void DecHeroRealmDurability( KFEntity* player, uint32 durability );
 
         // 清空队伍英雄ep
         virtual void ClearHeroEp( KFEntity* player );
@@ -66,7 +69,6 @@ namespace KFrame
 
         // 删除英雄
         __KF_REMOVE_DATA_FUNCTION__( OnRemoveHero );
-
 
         // 掉落增加英雄血量
         __KF_DROP_LOGIC_FUNCTION__( OnDropHeroAddHp );

@@ -27,6 +27,7 @@ namespace KFrame
     public:
         KFExchangeConfig()
         {
+            _key_name = "ExchangeId";
             _file_name = "exchange";
         }
 

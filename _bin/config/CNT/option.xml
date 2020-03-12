@@ -1,4 +1,4 @@
-<root platform="" version="3238">
+<root platform="" version="3315">
 	<item Name="disconnettime" Key="" Value="1000" Channel="0" Service="0" />
 	<item Name="playernamelength" Key="" Value="15" Channel="0" Service="0" />
 	<item Name="recruitrefreshtime" Key="" Value="0.4" Channel="0" Service="0" />
@@ -17,5 +17,5 @@
 	<item Name="playerfirstfight" Key="" Value="11001" Channel="0" Service="0" />
 	<item Name="enterfaith" Key="" Value="100" Channel="0" Service="0" />
 	<item Name="leavefaith" Key="" Value="0" Channel="0" Service="0" />
-	<item Name="granarybuytime" Key="" Value="0.4" Channel="0" Service="0" />
+	<item Name="granarybuytime" Key="" Value="0" Channel="0" Service="0" />
 </root>

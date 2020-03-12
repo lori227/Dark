@@ -499,7 +499,7 @@ namespace KFrame
         }
 
         auto kfformulasetting = KFFormulaConfig::Instance()->FindSetting( kfgeneratesetting->_cost_formula_id );
-        if ( kfformulasetting == nullptr || kfformulasetting->_type.empty() || kfformulasetting->_params.size() < 5u )
+        if ( kfformulasetting == nullptr || kfformulasetting->_type.empty() || kfformulasetting->_params.size() < 7u )
         {
             return;
         }
@@ -514,35 +514,37 @@ namespace KFrame
         auto averagegrowth = static_cast<double>( totalgrowth ) / kfgrowth->Size();
 
         auto price = 0.0;
-        auto param1 = kfformulasetting->_params[ 0 ]->_double_value;
-        auto param2 = kfformulasetting->_params[ 1 ]->_double_value;
-        auto param3 = kfformulasetting->_params[ 2 ]->_double_value;
-        auto param4 = kfformulasetting->_params[ 3 ]->_double_value;
-        auto param5 = kfformulasetting->_params[ 4 ]->_double_value;
+        auto basicprice = 0.0;
+        auto levelprice = 0.0;
+        auto param1 = kfformulasetting->_params[0]->_double_value;
+        auto param2 = kfformulasetting->_params[1]->_double_value;
+        auto param3 = kfformulasetting->_params[2]->_double_value;
+        auto param4 = kfformulasetting->_params[3]->_double_value;
+        auto param5 = kfformulasetting->_params[4]->_double_value;
+        auto param6 = kfformulasetting->_params[5]->_double_value;
+        auto param7 = kfformulasetting->_params[6]->_double_value;
+
         if ( param5 != 0u )
         {
-            if ( averagegrowth >= param2 )
-            {
-                price = param1 + ( averagegrowth - param2 ) * param3 / param5;
-            }
-            else
-            {
-                auto value = ( param2 - averagegrowth ) * param3 / param5;
-                if ( value >= param1 )
-                {
-                    price = value - param1;
-                }
-                else
-                {
-                    price = param1 - value;
-                }
-            }
+            // 基础价格
+            basicprice = param1 + ( averagegrowth - param2 ) * param3 / param5;
+            basicprice = __MAX__( basicprice, param4 );
         }
 
-        price = __MAX__( price, param4 );
+        if ( param6 != 0u )
+        {
+            // 等级价格
+            auto level = kfhero->Get<uint32>( __STRING__( level ) );
+            levelprice = level * param7 / param6;
+        }
+
+        auto maxdurability = kfhero->Get<uint32>( __STRING__( maxdurability ) );
+        price = basicprice * maxdurability + levelprice;
+
+        auto finalprice = static_cast<uint32>( price + 0.5 );
 
         // 种族亲和, 费用减低
-        auto finalprice = CalcRecruitHeroDiscount( kfeffect, kfhero, price );
+        finalprice = CalcRecruitHeroDiscount( kfeffect, kfhero, finalprice );
 
         // 格式化费用数据
         auto& strcost = KFElementConfig::Instance()->StringElemnt( kfformulasetting->_type, finalprice, 0u );

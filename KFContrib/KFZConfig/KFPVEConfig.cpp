@@ -28,6 +28,7 @@ namespace KFrame
         kfsetting->_inner_flee_rate = xmlnode.GetUInt32( "InnerFlee" );
         kfsetting->_level_coefficient = xmlnode.GetUInt32( "LevelCoefficient" );
         kfsetting->_punish_id = xmlnode.GetUInt32( "PunishId" );
+        kfsetting->_durability = xmlnode.GetUInt32( "Durability", true );
     }
 
     void KFPVEConfig::LoadAllComplete()

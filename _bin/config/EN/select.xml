@@ -1,4 +1,4 @@
-<root platform="" version="3049">
-	<item Id="1" Count="2" NormalDrop="5900405" InnerDrop="5900405" />
-	<item Id="2" Count="2" NormalDrop="5900406" InnerDrop="5900406" />
+<root platform="" version="3416">
+	<item Id="1" Count="2" NormalDrop="5900405" InnerDrop="5900405" LocalEvent="" />
+	<item Id="2" Count="2" NormalDrop="5900406" InnerDrop="5900406" LocalEvent="" />
 </root>

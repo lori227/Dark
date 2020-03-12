@@ -37,7 +37,7 @@ namespace KFrame
         virtual void BeforeShut();
 
         // 添加剧情
-        virtual void AddStory( KFEntity* player, uint32 storyid );
+        virtual void AddStory( KFEntity* player, uint32 storyid, uint32 childid = 0u );
         ////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
     protected:

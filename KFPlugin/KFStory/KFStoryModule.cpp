@@ -296,7 +296,7 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::StoryTriggerTypeLimit );
         }
 
-        AddStory( player, kfmsg.storyid() );
+        AddStory( player, kfmsg.storyid(), kfmsg.childid() );
     }
 
     __KF_MESSAGE_FUNCTION__( KFStoryModule::HandleUpdateStoryReq )
@@ -347,7 +347,7 @@ namespace KFrame
         player->UpdateData( kfstory, __STRING__( sequence ), KFEnum::Add, 1u );
     }
 
-    void KFStoryModule::AddStory( KFEntity* player, uint32 storyid )
+    void KFStoryModule::AddStory( KFEntity* player, uint32 storyid, uint32 childid )
     {
         auto kfstorysetting = KFStoryConfig::Instance()->FindSetting( storyid );
         if ( kfstorysetting == nullptr )
@@ -366,6 +366,20 @@ namespace KFrame
         {
             kfstory = player->CreateData( kfstoryrecord );
             kfstory->Set( __STRING__( sequence ), 1u );
+
+            if ( childid != 0u )
+            {
+                auto kfchildstory = kfstoryrecord->Find( childid );
+                if ( kfchildstory == nullptr )
+                {
+                    childid = 0u;
+                }
+                else
+                {
+                    player->UpdateData( kfchildstory, __STRING__( parentid ), KFEnum::Set, storyid );
+                }
+            }
+            kfstory->Set( __STRING__( childid ), childid );
 
             player->AddData( kfstoryrecord, storyid, kfstory );
         }

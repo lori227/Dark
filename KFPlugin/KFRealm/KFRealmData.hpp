@@ -52,10 +52,6 @@ namespace KFrame
         // 查找探索数据
         KFMsg::PBExploreData* FindExeploreData( uint32 level );
         void RemoveExeploreData( uint32 level );
-
-        // 添加buff
-        void AddBuffData( uint64 uuid, uint32 value );
-        void RemoveBuffData( uint64 uuid, uint32 value );
         ////////////////////////////////////////////////////////////////////////////////////////////////
         // 初始化道具数据
         void RecordBeginItems( KFEntity* player );

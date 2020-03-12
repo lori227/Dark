@@ -105,6 +105,9 @@ namespace KFrame
         // 更新计算经验时间
         __KF_UPDATE_DATA_FUNCTION__( OnUpdateCalcTime );
 
+        // 删除英雄
+        __KF_REMOVE_DATA_FUNCTION__( OnRemoveHero );
+
         // 删除训练所英雄
         __KF_REMOVE_DATA_FUNCTION__( OnRemoveTrainHero );
 

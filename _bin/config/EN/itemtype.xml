@@ -1,4 +1,4 @@
-<root platform="" version="2951">
+<root platform="" version="3372">
 	<item Id="1" Store="normal" Explore="other" Move="normal|extend" Extend="extend" Auto="1" UseLimit="" Sort="1" />
 	<item Id="2" Store="gift" Explore="other" Move="gift|extend" Extend="extend" Auto="1" UseLimit="" Sort="2" />
 	<item Id="3" Store="drug" Explore="explore" Move="explore|drug|extend" Extend="extend" Auto="1" UseLimit="" Sort="3" />
@@ -7,4 +7,5 @@
 	<item Id="6" Store="" Explore="explore" Move="extend" Extend="extend" Auto="2" UseLimit="" Sort="6" />
 	<item Id="7" Store="" Explore="other" Move="extend" Extend="extend" Auto="0" UseLimit="" Sort="7" />
 	<item Id="8" Store="drug" Explore="explore" Move="explore|drug|extend" Extend="extend" Auto="0" UseLimit="" Sort="4" />
+	<item Id="9" Store="" Explore="explore" Move="extend" Extend="extend" Auto="2" UseLimit="" Sort="1" />
 </root>

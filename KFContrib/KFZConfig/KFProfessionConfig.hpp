@@ -29,6 +29,14 @@ namespace KFrame
 
         // 职业等级
         uint32 _class_lv = 0u;
+
+        // 最小耐久度
+        uint32 _min_durability = 0u;
+
+        // 最大耐久度
+        uint32 _max_durability = 0u;
+
+
     public:
         // 是否有效( 被限制 )
         bool IsValid( uint32 race, uint32 sex, uint32 movetype, uint32 weapontype ) const;
@@ -41,6 +49,9 @@ namespace KFrame
 
         // 随机武器类型
         uint32 RandWeapontype() const;
+
+        // 随机耐久度
+        uint32 RandRoleDurability() const;
     };
     ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////

@@ -212,10 +212,15 @@ namespace KFrame
         auto kfsetting = KFItemConfig::Instance()->FindSetting( itemid );
         if ( kfsetting == nullptr )
         {
+            __LOG_ERROR__( "item=[{}] no setting", kfsetting->_id );
             return 0u;
         }
 
-        auto kfitemrecord = player->Find( _item_data_list.front() );
+        auto kfitemrecord = FindItemRecord( player, itemid );
+        if ( kfitemrecord == nullptr )
+        {
+            return 0u;
+        }
 
         auto maxsize = GetItemRecordMaxCount( player, kfitemrecord );
         auto maxoverlaycount = kfsetting->GetOverlayCount( kfitemrecord->_data_setting->_name );
@@ -254,23 +259,6 @@ namespace KFrame
         }
 
         return canaddcount;
-    }
-
-    uint32 KFItemModule::GetItemAutoType( uint32 itemid )
-    {
-        auto kfitemsetting = KFItemConfig::Instance()->FindSetting( itemid );
-        if ( kfitemsetting == nullptr )
-        {
-            return KFMsg::AutoInvalid;
-        }
-
-        auto kftypesetting = KFItemTypeConfig::Instance()->FindSetting( kfitemsetting->_type );
-        if ( kftypesetting == nullptr )
-        {
-            return KFMsg::AutoInvalid;
-        }
-
-        return kftypesetting->_is_auto;
     }
 
     uint32 KFItemModule::GetItemRecordMaxCount( KFEntity* player, KFData* kfitemrecord )

@@ -90,7 +90,7 @@ namespace KFrame
         void AddItemEmptyIndex( KFEntity* player, KFData* kfitemrecord, uint32 index );
 
         // 查找索引的道具
-        KFData* FindIndexItem( KFEntity* player, KFData* kfitemrecord, uint32 index );
+        KFData* FindIndexItem( KFEntity* player, KFData* kfitemrecord, uint32 index, const KFItemSetting* kfsetting );
 
         // 最大索引
         uint32 GetItemMaxIndex( KFEntity* player, KFData* kfitemrecord );
@@ -110,8 +110,11 @@ namespace KFrame
         // 判断是否能移动道具
         bool CheckItemCanMove( const KFItemSetting* kfsetting, const std::string& sourcename, const std::string& targetname );
 
-        // 判断是否能交换
-        bool CheckItemCanExchange( const KFItemSetting* kfsourcesetting, KFData* kfsourceitem, const KFItemSetting* kftargetsetting, KFData* kftargetitem );
+        // 找到可以移动的背包
+        KFData* FindItemMoveRecord( KFEntity* player, const KFItemSetting* kfsetting, const std::string& excludename );
+
+        // 判断是否能合并
+        bool CheckItemCanMerge( const KFItemSetting* kfsourcesetting, KFData* kfsourceitem, const KFItemSetting* kftargetsetting, KFData* kftargetitem );
 
         // 拆分道具
         uint32 SplitItem( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, uint32 splitcount, KFData* kftargetrecord, uint32 splitindex );
@@ -122,7 +125,7 @@ namespace KFrame
         void MoveItemCount( KFEntity* player, KFData* kfitem, uint32 operate, uint32 count );
 
         // 交换道具
-        uint32 ExchangeItem( KFEntity* player, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord, KFData* kftargetitem );
+        uint32 ExchangeItem( KFEntity* player, KFData* kfsourcerecord, KFData* kfsourceitem, const KFItemSetting* kfsourcesetting, KFData* kftargetrecord, KFData* kftargetitem, const KFItemSetting* kftargetsetting );
 
         // 合并道具
         uint32 MergeItem( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, uint32 mergecount, KFData* kftargetrecord, KFData* kftargetitem );

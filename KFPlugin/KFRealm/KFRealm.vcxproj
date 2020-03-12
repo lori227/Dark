@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="KFBuffModule.cpp" />
     <ClCompile Include="KFGambleModule.cpp" />
     <ClCompile Include="KFRealmData.cpp" />
     <ClCompile Include="KFPVEModule.cpp" />
@@ -19,6 +20,8 @@
     <ClCompile Include="KFRealmPlugin.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="KFBuffInterface.h" />
+    <ClInclude Include="KFBuffModule.hpp" />
     <ClInclude Include="KFGambleInterface.h" />
     <ClInclude Include="KFGambleModule.hpp" />
     <ClInclude Include="KFRealmData.hpp" />

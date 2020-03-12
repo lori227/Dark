@@ -1,4 +1,4 @@
-<root version="1726">
+<root platform="" version="3323">
 	<item Id="1900000" DropId="0" AutoUse="1" Reward="[{&quot;money&quot;:&quot;1&quot;}]" />
 	<item Id="1900001" DropId="0" AutoUse="1" Reward="[{&quot;diamond&quot;:&quot;1&quot;}]" />
 	<item Id="1900002" DropId="0" AutoUse="1" Reward="[{&quot;supplies&quot;:&quot;1&quot;}]" />
@@ -13,4 +13,5 @@
 	<item Id="1800002" DropId="0" AutoUse="1" Reward="" />
 	<item Id="1800003" DropId="0" AutoUse="1" Reward="" />
 	<item Id="1800004" DropId="0" AutoUse="1" Reward="" />
+	<item Id="1999999" DropId="5999999" AutoUse="0" Reward="" />
 </root>

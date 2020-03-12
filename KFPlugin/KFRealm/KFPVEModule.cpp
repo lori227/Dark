@@ -36,6 +36,29 @@ namespace KFrame
         __UN_MESSAGE__( KFMsg::MSG_FIGHT_HERO_LIST_REQ );
         __UN_MESSAGE__( KFMsg::MSG_UPDATE_FAITH_REQ );
     }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    void KFPVEModule::BindPVEStartFunction( const std::string& module, KFPVEStartFunction& function )
+    {
+        auto kffunction = _pve_start_function.Create( module );
+        kffunction->_function = function;
+    }
+
+    void KFPVEModule::UnBindPVEStartFunction( const std::string& module )
+    {
+        _pve_start_function.Remove( module );
+    }
+
+    void KFPVEModule::BindPVEFinishFunction( const std::string& module, KFPVEFinishFunction& function )
+    {
+        auto kffunction = _pve_finish_function.Create( module );
+        kffunction->_function = function;
+    }
+
+    void KFPVEModule::UnBindPVEFinishFunction( const std::string& module )
+    {
+        _pve_finish_function.Remove( module );
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     __KF_ENTER_PLAYER_FUNCTION__( KFPVEModule::OnPlayerPVEEnter )
     {
@@ -214,6 +237,16 @@ namespace KFrame
             return KFMsg::NpcGroupError;
         }
 
+        auto kfrealmdata = _kf_realm->GetRealmData( player );
+        if ( kfrealmdata == nullptr )
+        {
+            // 不在探索中的战斗需要消耗耐久度
+            if ( !_kf_hero_team->IsDurabilityEnough( player ) )
+            {
+                return KFMsg::HeroTeamDurabilityNotEnough;
+            }
+        }
+
         if ( dungeonid == 0u )
         {
             dungeonid = kfsetting->RandDungeonId();
@@ -243,7 +276,6 @@ namespace KFrame
         ack.set_npcgroupid( kfnpcgroupsetting->_id );
 
         // buff (探索特有)
-        auto kfrealmdata = _kf_realm->GetRealmData( player );
         if ( kfrealmdata != nullptr )
         {
             // 信仰值
@@ -312,6 +344,14 @@ namespace KFrame
         /////////////////////////////////////////////////////////////////////////////////////////////
         player->SetStatus( KFMsg::PVEStatus );
         player->UpdateData( __STRING__( pveid ), KFEnum::Set, pveid );
+
+        // 开始战斗回调
+        for ( auto& iter : _pve_start_function._objects )
+        {
+            auto kffunction = iter.second;
+            kffunction->_function( player, kfrecord );
+        }
+
         return KFMsg::Ok;
     }
 
@@ -401,6 +441,13 @@ namespace KFrame
         {
             // 清除战斗数据
             PVEBalanceClearData( player );
+
+            // 结束战斗回调
+            for ( auto& iter : _pve_finish_function._objects )
+            {
+                auto kffunction = iter.second;
+                kffunction->_function( player, kfpvedata, result );
+            }
         }
 
         return errorcode;
@@ -476,9 +523,6 @@ namespace KFrame
         auto kfrealmdata = static_cast< KFRealmModule* >( _kf_realm )->GetRealmData( player );
         if ( kfrealmdata == nullptr )
         {
-            // 不在探索里面 战斗后就移除寿命不足
-            _kf_hero_team->RemoveDurabilityHero( player );
-
             // 清空队伍英雄ep
             _kf_hero_team->ClearHeroEp( player );
         }
@@ -495,16 +539,20 @@ namespace KFrame
         ack.set_modulename( kfpvedata->_data.modulename() );
         ack.set_realmid( player->Get<uint32>( __STRING__( realmid ) ) );
         kfpvedata->BalanceRealmRecord( ack.mutable_balance() );
-        _kf_player->SendToClient( player, KFMsg::MSG_PVE_BALANCE_ACK, &ack );
+        _kf_player->SendToClient( player, KFMsg::MSG_PVE_BALANCE_ACK, &ack, 10u );
     }
 
     void KFPVEModule::PVEBalanceRecord( KFEntity* player, KFRealmData* kfpvedata, uint32 result )
     {
+        kfpvedata->RecordBeginHeros( player );
+
         // 更新死亡英雄(死亡英雄可获得结算经验)
         _kf_hero_team->UpdateDeadHero( player );
 
         // 战斗结算
         PVEBalanceDrop( player, kfpvedata, result );
+
+        kfpvedata->RecordEndHeros( player );
     }
 
     uint32 KFPVEModule::PVEBalanceVictory( KFEntity* player, KFRealmData* kfpvedata, uint32 truns )
@@ -729,11 +777,11 @@ namespace KFrame
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
 
         auto kfblancerecord = _pve_record.Find( player->GetKeyID() );
-        if ( kfblancerecord != nullptr )
+        if ( kfblancerecord != nullptr && !kfblancerecord->_fight_hero.empty() )
         {
-            for ( auto& iter : kfblancerecord->_fight_hero )
+            for ( auto uuid : kfblancerecord->_fight_hero )
             {
-                auto kfhero = _kf_hero->FindAliveHero( kfherorecord, iter );
+                auto kfhero = _kf_hero->FindAliveHero( kfherorecord, uuid );
                 if ( kfhero == nullptr )
                 {
                     continue;
@@ -815,6 +863,13 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::PVEHeroTeamExist );
         }
 
+        auto kfpvesetting = KFPVEConfig::Instance()->FindSetting( kfrecord->_data.id() );
+        if ( kfpvesetting == nullptr )
+        {
+            __LOG_ERROR__( "pveid=[{}] can't find setting", kfrecord->_data.id() );
+            return _kf_display->SendToClient( player, KFMsg::PVEIdError );
+        }
+
         auto kfherorecord = player->Find( __STRING__( hero ) );
         for ( auto i = 0; i < kfmsg.herolist_size(); i++ )
         {
@@ -840,13 +895,37 @@ namespace KFrame
             kfrecord->_fight_hero.emplace( herouuid );
         }
 
-        // 扣除指定耐久度
-        _kf_hero_team->DecHeroDurability( player, kfrecord->_fight_hero );
+        auto kfrealmdata = _kf_realm->GetRealmData( player );
+        if ( kfrealmdata == nullptr && kfpvesetting->_durability != 0u )
+        {
+            // 不在探索中的战斗需要消耗耐久度
+            _kf_hero_team->DecHeroPVEDurability( player, kfrecord->_fight_hero, kfpvesetting->_durability );
+        }
     }
 
     __KF_MESSAGE_FUNCTION__( KFPVEModule::HandleUpdateFaithReq )
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgUpdateFaithReq );
+
+        auto kfrealmdata = _kf_realm->GetRealmData( player );
+        if ( kfrealmdata == nullptr )
+        {
+            kfrealmdata = _pve_record.Find( player->GetKeyID() );
+        }
+
+        if ( kfrealmdata == nullptr )
+        {
+            return;
+        }
+
+        if ( kfrealmdata->IsInnerWorld() )
+        {
+            if ( kfmsg.faith() >= kfrealmdata->_data.faith() )
+            {
+                // 已经在里世界不能增加信仰
+                return;
+            }
+        }
 
         OperateFaith( player, KFEnum::Set, kfmsg.faith() );
     }

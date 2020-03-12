@@ -28,7 +28,7 @@ namespace KFrame
         uint32 _inner_world = 0u;
 
         // 里世界进度参数
-        uint32 _inner_parameter = 0.0f;
+        uint32 _inner_parameter = 0u;
 
         // 粮食消耗
         uint32 _food_num = 0u;
@@ -41,6 +41,9 @@ namespace KFrame
 
         // 生命消耗步数
         uint32 _hp_step = 0u;
+
+        // 消耗耐久度
+        uint32 _durability = 0u;
     };
 
     class KFRealmSeting : public KFIntSetting

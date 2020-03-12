@@ -1,6 +1,19 @@
-<root platform="" version="3075">
-	<item Id="1" MultiId="1" Index="1" Cost="[[1,1,500]]" Event="1" Title="MultiOption_TYPE_KEY" Description="MultiSelection_TYPE_KEY_DES" OptionTxt="MultiSelection_OptionTxt1" />
-	<item Id="2" MultiId="1" Index="2" Cost="[[2,1000017,10]]" Event="2" Title="" Description="" OptionTxt="MultiSelection_OptionTxt2" />
-	<item Id="3" MultiId="1" Index="3" Cost="" Event="3" Title="" Description="" OptionTxt="MultiSelection_OptionTxt3" />
-	<item Id="4" MultiId="1" Index="4" Cost="" Event="4" Title="" Description="" OptionTxt="MultiSelection_OptionTxt4" />
+<root platform="" version="3424">
+	<item Id="1" MultiId="39000000" Index="1" Cost="" Event="30000104" Title="MultiOption_Campfire_Title" Description="MultiOption_Campfire_Des" OptionTxt="MultiOption_Campfire_Option1" LocalEvent="30000023" />
+	<item Id="2" MultiId="39000000" Index="2" Cost="" Event="30000101" Title="MultiOption_Campfire_Title" Description="MultiOption_Campfire_Des" OptionTxt="MultiOption_Campfire_Option2" LocalEvent="30000023" />
+	<item Id="3" MultiId="39000000" Index="3" Cost="" Event="30000102" Title="MultiOption_Campfire_Title" Description="MultiOption_Campfire_Des" OptionTxt="MultiOption_Campfire_Option3" LocalEvent="30000023" />
+	<item Id="4" MultiId="39000000" Index="4" Cost="" Event="30000103" Title="MultiOption_Campfire_Title" Description="MultiOption_Campfire_Des" OptionTxt="MultiOption_Campfire_Option4" LocalEvent="30000023" />
+	<item Id="5" MultiId="39000001" Index="1" Cost="" Event="30000017" Title="MultiOption_Altar_Title" Description="MultiOption_Altar_Des" OptionTxt="MultiOption_Altar_Option1" LocalEvent="30000023" />
+	<item Id="6" MultiId="39000002" Index="1" Cost="" Event="0" Title="MultiOption_Vine_Title" Description="MultiOption_Vine_Des" OptionTxt="MultiOption_Vine_Option1" LocalEvent="30000023" />
+	<item Id="7" MultiId="39000002" Index="2" Cost="" Event="0" Title="MultiOption_Vine_Title" Description="MultiOption_Vine_Des" OptionTxt="MultiOption_Vine_Option2" LocalEvent="30000023" />
+	<item Id="8" MultiId="39000002" Index="3" Cost="" Event="0" Title="MultiOption_Vine_Title" Description="MultiOption_Vine_Des" OptionTxt="MultiOption_Vine_Option3" LocalEvent="30000023" />
+	<item Id="9" MultiId="39000002" Index="4" Cost="" Event="0" Title="MultiOption_Vine_Title" Description="MultiOption_Vine_Des" OptionTxt="MultiOption_Vine_Option4" LocalEvent="30000023" />
+	<item Id="10" MultiId="39000003" Index="1" Cost="" Event="0" Title="MultiOption_Vine_Title" Description="MultiOption_Vine_Des" OptionTxt="MultiOption_Vine_Option1" LocalEvent="30000023" />
+	<item Id="11" MultiId="39000003" Index="2" Cost="" Event="0" Title="MultiOption_Vine_Title" Description="MultiOption_Vine_Des" OptionTxt="MultiOption_Vine_Option2" LocalEvent="30000023" />
+	<item Id="12" MultiId="39000004" Index="1" Cost="" Event="0" Title="MultiOption_Vine_Title" Description="MultiOption_Vine_Des" OptionTxt="MultiOption_Vine_Option3" LocalEvent="30000023" />
+	<item Id="13" MultiId="39000004" Index="2" Cost="" Event="0" Title="MultiOption_Vine_Title" Description="MultiOption_Vine_Des" OptionTxt="MultiOption_Vine_Option4" LocalEvent="30000023" />
+	<item Id="14" MultiId="39000004" Index="3" Cost="" Event="0" Title="MultiOption_Vine_Title" Description="MultiOption_Vine_Des" OptionTxt="MultiOption_Vine_Option4" LocalEvent="30000023" />
+	<item Id="15" MultiId="39000005" Index="1" Cost="" Event="0" Title="MultiOption_Vine_Title" Description="MultiOption_Vine_Des" OptionTxt="MultiOption_Vine_Option3" LocalEvent="30000023" />
+	<item Id="16" MultiId="39000005" Index="2" Cost="" Event="0" Title="MultiOption_Vine_Title" Description="MultiOption_Vine_Des" OptionTxt="MultiOption_Vine_Option3" LocalEvent="30000023" />
+	<item Id="17" MultiId="39000005" Index="3" Cost="" Event="0" Title="MultiOption_Vine_Title" Description="MultiOption_Vine_Des" OptionTxt="MultiOption_Vine_Option3" LocalEvent="30000023" />
 </root>

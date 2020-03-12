@@ -100,6 +100,8 @@ namespace KFrame
         __STRING_DEFINE__( group );
         __STRING_DEFINE__( eventgroup );
         __STRING_DEFINE__( durability );
+        __STRING_DEFINE__( maxdurability );
+        __STRING_DEFINE__( adddurability );
         __STRING_DEFINE__( affix );
         __STRING_DEFINE__( granary );
         __STRING_DEFINE__( granarynum );
@@ -234,6 +236,9 @@ namespace KFrame
         __STRING_DEFINE__( exchange );
         __STRING_DEFINE__( select );
         __STRING_DEFINE__( jump );
+        __STRING_DEFINE__( contracttimefid );
+        __STRING_DEFINE__( contractpricefid );
+        __STRING_DEFINE__( contracthero );
     }
 }
 

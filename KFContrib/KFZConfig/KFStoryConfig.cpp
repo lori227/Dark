@@ -27,7 +27,7 @@ namespace KFrame
             // 将章节点类型转化为PVE或realm类型
             for ( auto& it : iter.second->_sequences )
             {
-                if ( it.second._type == KFMsg::ProcessChapter )
+                if ( it.second._type == KFMsg::ProcessChapter || it.second._type == KFMsg::ChapterAndStory )
                 {
                     auto kfchaptersetting = KFChapterConfig::Instance()->FindSetting( it.second._parameter1 );
                     if ( kfchaptersetting == nullptr )
