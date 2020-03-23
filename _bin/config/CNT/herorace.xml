@@ -1,5 +1,5 @@
-<root platform="" version="2825">
-	<item Id="1602" Sex="0" SurName="11" FirstName="101|101" Attr_maxhp="120" Attr_atk="39" Attr_def="40" Attr_res="35" Attr_tal="12" Attr_spd="12" Attr_luk="12" />
-	<item Id="1603" Sex="0" SurName="11" FirstName="101|101" Attr_maxhp="113" Attr_atk="43" Attr_def="33" Attr_res="43" Attr_tal="14" Attr_spd="14" Attr_luk="5" />
-	<item Id="1601" Sex="1" SurName="11" FirstName="101|101" Attr_maxhp="139" Attr_atk="39" Attr_def="50" Attr_res="12" Attr_tal="9" Attr_spd="14" Attr_luk="14" />
+<root platform="" version="3604">
+	<item Id="1602" Sex="0" SurName="11" FirstName="101,101" Attr_maxhp="122" Attr_atk="40" Attr_def="41" Attr_res="36" Attr_tal="12" Attr_spd="12" Attr_luk="12" />
+	<item Id="1603" Sex="0" SurName="11" FirstName="101,101" Attr_maxhp="116" Attr_atk="44" Attr_def="34" Attr_res="43" Attr_tal="14" Attr_spd="14" Attr_luk="5" />
+	<item Id="1601" Sex="1" SurName="11" FirstName="101,101" Attr_maxhp="141" Attr_atk="38" Attr_def="51" Attr_res="14" Attr_tal="10" Attr_spd="12" Attr_luk="17" />
 </root>

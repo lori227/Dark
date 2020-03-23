@@ -1,7 +1,7 @@
-<root platform="" version="3416">
-	<item Id="1" ExchangeId="37000000" Level="1" NormalDrop="5802002" InnerDrop="5802002" LocalEvent="" />
-	<item Id="2" ExchangeId="37000000" Level="2" NormalDrop="5802003" InnerDrop="5802003" LocalEvent="" />
-	<item Id="3" ExchangeId="37000000" Level="3" NormalDrop="5802004" InnerDrop="5802004" LocalEvent="" />
-	<item Id="4" ExchangeId="37000000" Level="4" NormalDrop="5802005" InnerDrop="5802005" LocalEvent="" />
-	<item Id="5" ExchangeId="37000000" Level="5" NormalDrop="5802006" InnerDrop="5802006" LocalEvent="" />
+<root platform="" version="3445">
+	<item Id="1" ExchangeId="37000000" Level="1" NormalDrop="5802002" InnerDrop="5802002" LocalEvent="30000023" />
+	<item Id="2" ExchangeId="37000000" Level="2" NormalDrop="5802003" InnerDrop="5802003" LocalEvent="30000023" />
+	<item Id="3" ExchangeId="37000000" Level="3" NormalDrop="5802004" InnerDrop="5802004" LocalEvent="30000023" />
+	<item Id="4" ExchangeId="37000000" Level="4" NormalDrop="5802005" InnerDrop="5802005" LocalEvent="30000023" />
+	<item Id="5" ExchangeId="37000000" Level="5" NormalDrop="5802006" InnerDrop="5802006" LocalEvent="30000023" />
 </root>

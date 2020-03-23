@@ -20,6 +20,7 @@
 #include "KFKernel/KFKernelInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFMessage/KFMessageInterface.h"
+#include "KFZConfig/KFLevelValueConfig.hpp"
 
 namespace KFrame
 {
@@ -46,10 +47,10 @@ namespace KFrame
         __KF_MESSAGE_FUNCTION__( HandleRemoveTeamBuffReq );
     protected:
         // 掉落增加英雄buff
-        __KF_DROP_LOGIC_FUNCTION__( OnDropHeroAddBuff );
+        __KF_DROP_LOGIC_FUNCTION__( OnDropAddTeamBuff );
 
         // 掉落减少英雄buff
-        __KF_DROP_LOGIC_FUNCTION__( OnDropHeroDecBuff );
+        __KF_DROP_LOGIC_FUNCTION__( OnDropDecTeamBuff );
 
         // pve战斗开始结算
         __KF_PVE_START_FUNCTION__( OnPVEStartBuffModule );

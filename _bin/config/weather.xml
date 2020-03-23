@@ -1,0 +1,11 @@
+<root platform="" version="3699">
+	<item Id="100101" Weather="1" InitWeight="100" ExploreDurationn="10-40" PveDurationn="2-3" />
+	<item Id="100101" Weather="2" InitWeight="100" ExploreDurationn="10-40" PveDurationn="2-3" />
+	<item Id="100101" Weather="3" InitWeight="100" ExploreDurationn="10-40" PveDurationn="2-3" />
+	<item Id="100102" Weather="1" InitWeight="100" ExploreDurationn="10" PveDurationn="1" />
+	<item Id="100102" Weather="2" InitWeight="100" ExploreDurationn="10" PveDurationn="1" />
+	<item Id="100102" Weather="3" InitWeight="100" ExploreDurationn="10" PveDurationn="1" />
+	<item Id="100103" Weather="1" InitWeight="0" ExploreDurationn="5" PveDurationn="1" />
+	<item Id="100103" Weather="2" InitWeight="0" ExploreDurationn="5" PveDurationn="1" />
+	<item Id="100103" Weather="3" InitWeight="100" ExploreDurationn="5" PveDurationn="1" />
+</root>

@@ -7,12 +7,14 @@ namespace KFrame
     {
         __REGISTER_MESSAGE__( KFMsg::MSG_CONTRACT_DATA_REQ, &KFContractModule::HandleContractDataReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_CONTRACT_HERO_REQ, &KFContractModule::HandleContractHeroReq );
+        __REGISTER_MESSAGE__( KFMsg::MSG_RETIRE_HERO_REQ, &KFContractModule::HandleRetireHeroReq );
     }
 
     void KFContractModule::BeforeShut()
     {
         __UN_MESSAGE__( KFMsg::MSG_CONTRACT_DATA_REQ );
         __UN_MESSAGE__( KFMsg::MSG_CONTRACT_HERO_REQ );
+        __UN_MESSAGE__( KFMsg::MSG_RETIRE_HERO_REQ );
     }
 
     __KF_MESSAGE_FUNCTION__( KFContractModule::HandleContractDataReq )
@@ -32,9 +34,9 @@ namespace KFrame
         }
 
         // 获取续签数据
-        uint32 nextdurability;
-        std::string cost;
-        uint32 errnum;
+        uint32 nextdurability = _invalid_int;
+        std::string cost = _invalid_string;
+        uint32 errnum = _invalid_int;
         if ( !GetContractData( kfhero, nextdurability, cost, errnum ) )
         {
             return _kf_display->SendToClient( player, errnum );
@@ -66,19 +68,10 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::HeroDurabilityNotZero );
         }
 
-        if ( kfmsg.choice() == _invalid_int )
-        {
-            // 退役
-            player->RemoveData( kfherorecord, kfmsg.uuid() );
-            __LOG_INFO__( "player=[{}] retire hero=[{}]", player->GetKeyID(), kfmsg.uuid() );
-
-            return;
-        }
-
         // 获取续签数据
-        uint32 nextdurability;
-        std::string cost;
-        uint32 errnum;
+        uint32 nextdurability = _invalid_int;
+        std::string cost = _invalid_string;
+        uint32 errnum = _invalid_int;
         if ( !GetContractData( kfhero, nextdurability, cost, errnum ) )
         {
             return _kf_display->SendToClient( player, errnum );
@@ -102,10 +95,43 @@ namespace KFrame
         player->UpdateData( kfhero, __STRING__( maxdurability ), KFEnum::Set, nextdurability );
         player->UpdateData( kfhero, __STRING__( durability ), KFEnum::Set, nextdurability );
         player->UpdateData( kfhero, __STRING__( adddurability ), KFEnum::Add, 1u );
+
+        _kf_display->SendToClient( player, KFMsg::HeroContractSuc );
+    }
+
+    __KF_MESSAGE_FUNCTION__( KFContractModule::HandleRetireHeroReq )
+    {
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgRetireHeroReq );
+
+        auto kfherorecord = player->Find( __STRING__( hero ) );
+        auto kfhero = kfherorecord->Find( kfmsg.uuid() );
+        if ( kfhero == nullptr )
+        {
+            return _kf_display->SendToClient( player, KFMsg::HeroNotExist );
+        }
+
+        auto durability = kfhero->Get<uint32>( __STRING__( durability ) );
+        if ( durability > 0u )
+        {
+            return _kf_display->SendToClient( player, KFMsg::HeroDurabilityNotZero );
+        }
+
+        // 设置退役标记
+        kfhero->Set<uint32>( __STRING__( lock ), KFMsg::Retirement );
+        player->RemoveData( kfherorecord, kfmsg.uuid() );
+        __LOG_INFO__( "player=[{}] retire hero=[{}]", player->GetKeyID(), kfmsg.uuid() );
+
+        return _kf_display->SendToClient( player, KFMsg::HeroRetireSuc );
     }
 
     bool KFContractModule::GetContractData( KFData* kfhero, uint32& durability, std::string& cost, uint32& errnum )
     {
+        auto exprate = kfhero->Get<uint32>( __STRING__( exprate ) );
+        if ( exprate == 0u )
+        {
+            return true;
+        }
+
         // 续签时间公式id
         static auto _timefid_option = _kf_option->FindOption( __STRING__( contracttimefid ) );
         auto kftimesetting = KFFormulaConfig::Instance()->FindSetting( _timefid_option->_uint32_value );
@@ -120,7 +146,11 @@ namespace KFrame
 
         // 计算续签年限
         auto maxdurability = kfhero->Get<uint32>( __STRING__( maxdurability ) );
-        auto nowdurability = static_cast<uint32>( __MAX__( maxdurability * param1, param2 ) );
+        durability = static_cast<uint32>( __MAX__( maxdurability * param1, param2 ) );
+        if ( durability == 0u )
+        {
+            return true;
+        }
 
         // 续签价格公式id
         static auto _pricefid_option = _kf_option->FindOption( __STRING__( contractpricefid ) );
@@ -166,8 +196,8 @@ namespace KFrame
             levelprice = level * param7 / param6;
         }
 
-        auto adddurability = kfhero->Get<uint32>( __STRING__( adddurability ) );
-        price = ( basicprice * nowdurability + levelprice ) * ( 1 + adddurability * adddurability * param8 );
+        auto adddurability = kfhero->Get<uint32>( __STRING__( adddurability ) ) + 1u;
+        price = ( basicprice * durability + levelprice ) * ( 1 + adddurability * adddurability * param8 );
 
         auto finalprice = static_cast<uint32>( price + 0.5 );
 

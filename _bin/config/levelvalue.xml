@@ -1,2 +1,11 @@
-<root platform="" version="2953">
+<root platform="" version="3545">
+	<item Id="2100031" Skillid="210003" Level="1" />
+	<item Id="1610161" Skillid="161016" Level="1" />
+	<item Id="1201001" Skillid="120100" Level="1" />
+	<item Id="1201011" Skillid="120101" Level="1" />
+	<item Id="1201021" Skillid="120102" Level="1" />
+	<item Id="1201031" Skillid="120103" Level="1" />
+	<item Id="1201041" Skillid="120104" Level="1" />
+	<item Id="1201051" Skillid="120105" Level="1" />
+	<item Id="1201061" Skillid="120106" Level="1" />
 </root>

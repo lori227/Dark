@@ -67,8 +67,8 @@ namespace KFrame
         // 获得武器探索
         KFData* FindWeaponRecord( KFEntity* player );
 
-        // 移除英雄武器到仓库
-        bool MoveHeroWeapon( KFEntity* player, KFData* kfhero, KFData* kfitemrecord, bool removehero = false );
+        // 判断武器是否能状态
+        uint32 CheckHeroWeapon( KFEntity* player, KFData* kfhero, KFData* kfweapon );
 
     private:
         // 玩家上下文组件

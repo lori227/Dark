@@ -45,17 +45,16 @@ namespace KFrame
         __STRING_DEFINE__( posflag )
         __STRING_DEFINE__( traincamplevel );
         __STRING_DEFINE__( train );
-        __STRING_DEFINE__( uuid );
         __STRING_DEFINE__( endtime );
         __STRING_DEFINE__( calctime );
         __STRING_DEFINE__( exp );
+        __STRING_DEFINE__( exprate );
         __STRING_DEFINE__( lock );
         __STRING_DEFINE__( clinic );
         __STRING_DEFINE__( daytime );
         __STRING_DEFINE__( dip );
         __STRING_DEFINE__( npc );
         __STRING_DEFINE__( explore );
-        //__STRING_DEFINE__( exploreid );
         __STRING_DEFINE__( random );
         __STRING_DEFINE__( realm );
         __STRING_DEFINE__( realmid );
@@ -216,7 +215,8 @@ namespace KFrame
         __STRING_DEFINE__( granaryfreebuycount );
         __STRING_DEFINE__( buycount );
         __STRING_DEFINE__( granarybuy );
-        __STRING_DEFINE__( camplevellimit );
+        __STRING_DEFINE__( herolevel );
+        __STRING_DEFINE__( maxlevel );
         __STRING_DEFINE__( campupgradelist );
         __STRING_DEFINE__( campdectime );
         __STRING_DEFINE__( campdecconsume );
@@ -239,6 +239,10 @@ namespace KFrame
         __STRING_DEFINE__( contracttimefid );
         __STRING_DEFINE__( contractpricefid );
         __STRING_DEFINE__( contracthero );
+        __STRING_DEFINE__( technologycount );
+        __STRING_DEFINE__( logicevent );
+        __STRING_DEFINE__( remove );
+        __STRING_DEFINE__( voice );
     }
 }
 

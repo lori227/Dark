@@ -65,7 +65,7 @@ namespace KFrame
         __KF_DROP_LOGIC_FUNCTION__( OnDropGambleItemLogic );
 
         // 进入秘境回调
-        __KF_ENTER_REALM_FUNCTION__( OnEnterRealm );
+        __KF_REALM_ENTER_FUNCTION__( OnEnterRealm );
 
     protected:
         // 计算花费

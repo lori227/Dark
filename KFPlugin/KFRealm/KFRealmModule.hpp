@@ -86,14 +86,21 @@ namespace KFrame
         // 秘境逻辑事件
         __KF_EXECUTE_FUNCTION__( OnExecuteRealm );
 
-    protected:
-        virtual void BindEnterRealmFunction( const std::string& module, KFEnterRealmFunction& function );
-        virtual void UnBindEnterRealmFunction( const std::string& module );
-        //////////////////////////////////////////////////////////////////////////////////////
+        // 进入游戏
+        __KF_ENTER_PLAYER_FUNCTION__( OnEnterInitRealmData );
+
         // 离开游戏
         __KF_LEAVE_PLAYER_FUNCTION__( OnLeaveSaveRealmData );
-        //////////////////////////////////////////////////////////////////////////////////////
 
+        // 移动步数扣除粮食
+        __KF_REALM_MOVE_FUNCTION__( OnReamlMoveCostFood );
+    protected:
+        virtual void BindRealmEnterFunction( const std::string& module, KFRealmEnterFunction& function );
+        virtual void UnBindRealmEnterFunction( const std::string& module );
+
+        virtual void BindRealmMoveFunction( const std::string& module, KFRealmMoveFunction& function );
+        virtual void UnBindRealmMoveFunction( const std::string& module );
+        //////////////////////////////////////////////////////////////////////////////////////
         // 进入探索
         bool RealmEnter( KFEntity* player, uint32 realmid, uint32 level, uint32 entertype, const std::string& modulename, uint64 moduleid );
         std::tuple<uint32, KFRealmData*, KFMsg::PBExploreData*> RealmChapterEnter( KFEntity* player, uint32 realmid, uint32 level, const std::string& modulename, uint64 moduleid );
@@ -132,14 +139,10 @@ namespace KFrame
         //////////////////////////////////////////////////////////////////////////////////////
         // 初始化探索数据
         void ExploreInitData( KFMsg::PBExploreData* pbexplore, uint32 exploreid, uint32 maxlevel, uint32 level, uint32 lastlevel );
-
-        // 探索扣除粮食
-        void ExploreCostFood( KFEntity* player, KFMsg::PBExploreData* pbexplore );
         //////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////
         // 获取玩家当前秘境层配置
         const KFRealmLevel* FindRealmLevelSetting( KFEntity* player );
-
     protected:
         // 玩家组件上下文
         KFComponent* _kf_component = nullptr;
@@ -147,8 +150,11 @@ namespace KFrame
         // 玩家的探索结算数据
         KFHashMap< uint64, uint64, KFRealmData > _realm_data;
 
-        // 进入秘境回调
-        KFBind< std::string, const std::string&, KFEnterRealmFunction > _enter_realm_function;
+        // 秘境进入回调
+        KFBind< std::string, const std::string&, KFRealmEnterFunction > _realm_enter_function;
+
+        // 秘境移动回调
+        KFBind< std::string, const std::string&, KFRealmMoveFunction > _realm_move_function;
     };
 }
 

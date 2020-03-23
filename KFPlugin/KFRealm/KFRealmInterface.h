@@ -6,7 +6,8 @@
 namespace KFrame
 {
     class KFRealmData;
-    typedef std::function< void( KFEntity*, KFRealmData*, uint32 ) > KFEnterRealmFunction;
+    typedef std::function< void( KFEntity*, KFRealmData*, uint32 ) > KFRealmEnterFunction;
+    typedef std::function< void( KFEntity*, KFRealmData*, uint32 ) > KFRealmMoveFunction;
 
     class KFRealmInterface : public KFModule
     {
@@ -20,30 +21,51 @@ namespace KFrame
         // 获取生命回复比列
         virtual double GetAddHpRate( KFEntity* player ) = 0;
         ////////////////////////////////////////////////////////////////////////////////////
+        // 进入秘境
         template< class T >
-        void RegisterEnterRealmFunction( T* object, void ( T::*handle )( KFEntity*, KFRealmData*, uint32 ) )
+        void RegisterRealmEnterFunction( T* object, void ( T::*handle )( KFEntity*, KFRealmData*, uint32 ) )
         {
-            KFEnterRealmFunction function = std::bind( handle, object, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3 );
-            BindEnterRealmFunction( typeid( T ).name(), function );
+            KFRealmEnterFunction function = std::bind( handle, object, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3 );
+            BindRealmEnterFunction( typeid( T ).name(), function );
         }
 
         template< class T >
-        void UnRegisterEnterRealmFunction( T* object )
+        void UnRegisterRealmEnterFunction( T* object )
         {
-            UnBindEnterRealmFunction( typeid( T ).name() );
+            UnBindRealmEnterFunction( typeid( T ).name() );
+        }
+        ////////////////////////////////////////////////////////////////////////////////////
+        // 玩家移动
+        template< class T >
+        void RegisterRealmMoveFunction( T* object, void ( T::*handle )( KFEntity*, KFRealmData*, uint32 ) )
+        {
+            KFRealmMoveFunction function = std::bind( handle, object, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3 );
+            BindRealmMoveFunction( typeid( T ).name(), function );
         }
 
+        template< class T >
+        void UnRegisterRealmMoveFunction( T* object )
+        {
+            UnBindRealmMoveFunction( typeid( T ).name() );
+        }
     protected:
-        virtual void BindEnterRealmFunction( const std::string& module, KFEnterRealmFunction& function ) = 0;
-        virtual void UnBindEnterRealmFunction( const std::string& module ) = 0;
+        virtual void BindRealmEnterFunction( const std::string& module, KFRealmEnterFunction& function ) = 0;
+        virtual void UnBindRealmEnterFunction( const std::string& module ) = 0;
+
+        virtual void BindRealmMoveFunction( const std::string& module, KFRealmMoveFunction& function ) = 0;
+        virtual void UnBindRealmMoveFunction( const std::string& module ) = 0;
     };
 
     //////////////////////////////////////////////////////////////////////////
     __KF_INTERFACE__( _kf_realm, KFRealmInterface );
     //////////////////////////////////////////////////////////////////////////
-#define __KF_ENTER_REALM_FUNCTION__( function ) void function( KFEntity* player, KFRealmData* kfrealmdata, uint32 entertype )
-#define __REGISTER_ENTER_REALM__( function ) _kf_realm->RegisterEnterRealmFunction( this, function )
-#define __UN_ENTER_REALM__() _kf_realm->UnRegisterEnterRealmFunction( this )
+#define __KF_REALM_ENTER_FUNCTION__( function ) void function( KFEntity* player, KFRealmData* kfrealmdata, uint32 entertype )
+#define __REGISTER_REALM_ENTER__( function ) _kf_realm->RegisterRealmEnterFunction( this, function )
+#define __UN_REALM_ENTER__() _kf_realm->UnRegisterRealmEnterFunction( this )
+
+#define __KF_REALM_MOVE_FUNCTION__( function ) void function( KFEntity* player, KFRealmData* kfrealmdata, uint32 movestep )
+#define __REGISTER_REALM_MOVE__( function ) _kf_realm->RegisterRealmMoveFunction( this, function )
+#define __UN_REALM_MOVE__() _kf_realm->UnRegisterRealmMoveFunction( this )
 
 }
 

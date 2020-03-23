@@ -17,6 +17,7 @@ namespace KFrame
         __REGISTER_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( exp ), &KFHeroModule::OnHeroExpUpdate );
         __REGISTER_ADD_DATA_1__( __STRING__( active ), &KFHeroModule::OnHeroActiveUpdate );
 
+        __REGISTER_EXECUTE__( __STRING__( herolevel ), &KFHeroModule::OnExecuteTechnologyHeroLevel );
         __REGISTER_EXECUTE__( __STRING__( maxherocount ), &KFHeroModule::OnExecuteTechnologyMaxHeroCount );
         ////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_LOCK_HERO_REQ, &KFHeroModule::HandleLockHeroReq );
@@ -36,6 +37,7 @@ namespace KFrame
         __UN_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( exp ) );
         __UN_UPDATE_DATA_1__( __STRING__( active ) );
 
+        __UN_EXECUTE__( __STRING__( herolevel ) );
         __UN_EXECUTE__( __STRING__( maxherocount ) );
         /////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_LOCK_HERO_REQ );
@@ -173,6 +175,39 @@ namespace KFrame
         }
     }
 
+    void KFHeroModule::UpdateAllHeroMaxLevel( KFEntity* player )
+    {
+        // 更新英雄列表最大等级
+        auto kfherorecord = player->Find( __STRING__( hero ) );
+        for ( auto kfhero = kfherorecord->First(); kfhero != nullptr; kfhero = kfherorecord->Next() )
+        {
+            auto maxlevel = CalcMaxLevel( player, kfhero );
+            auto curmaxlevel = kfhero->Get<uint32>( __STRING__( maxlevel ) );
+            if ( curmaxlevel != maxlevel )
+            {
+                player->UpdateData( kfhero, __STRING__( maxlevel ), KFEnum::Set, maxlevel );
+            }
+        }
+
+        // 更新招募列表最大等级
+        auto kfrecruitrecord = player->Find( __STRING__( recruit ) );
+        for ( auto kfrecruit = kfrecruitrecord->First(); kfrecruit != nullptr; kfrecruit = kfrecruitrecord->Next() )
+        {
+            auto kfhero = kfrecruit->Find( __STRING__( hero ) );
+            if ( kfhero == nullptr )
+            {
+                continue;
+            }
+
+            auto maxlevel = CalcMaxLevel( player, kfhero );
+            auto curmaxlevel = kfhero->Get<uint32>( __STRING__( maxlevel ) );
+            if ( curmaxlevel != maxlevel )
+            {
+                player->UpdateData( kfhero, __STRING__( maxlevel ), KFEnum::Set, maxlevel );
+            }
+        }
+    }
+
     __KF_ADD_DATA_FUNCTION__( KFHeroModule::OnHeroActiveUpdate )
     {
         auto kfhero = kfdata->GetParent()->GetParent();
@@ -229,12 +264,20 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::HeroIsLocked );
         }
 
+        auto exprate = kfhero->Get<uint32>( __STRING__( exprate ) );
+        if ( exprate == 0u )
+        {
+            return _kf_display->SendToClient( player, KFMsg::SpecialHeroCanNotRemove );
+        }
+
         auto posflag = kfhero->Get<uint32>( __STRING__( posflag ) );
         if ( posflag != KFMsg::HeroList )
         {
             return _kf_display->SendToClient( player, KFMsg::HeroNotInHeroList );
         }
 
+        // 设置解雇标记
+        kfhero->Set<uint32>( __STRING__( lock ), KFMsg::Dismissal );
         player->RemoveData( kfherorecord, kfmsg.uuid() );
         __LOG_INFO__( "player=[{}] remove hero=[{}]", player->GetKeyID(), kfmsg.uuid() );
     }
@@ -301,6 +344,21 @@ namespace KFrame
 
     //////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////
+    __KF_EXECUTE_FUNCTION__( KFHeroModule::OnExecuteTechnologyHeroLevel )
+    {
+        if ( executedata->_param_list._params.size() < 1u )
+        {
+            return false;
+        }
+
+        auto level = executedata->_param_list._params[0]->_int_value;
+        player->UpdateData( __STRING__( effect ), __STRING__( herolevel ), KFEnum::Add, level );
+
+        UpdateAllHeroMaxLevel( player );
+
+        return true;
+    }
+
     __KF_EXECUTE_FUNCTION__( KFHeroModule::OnExecuteTechnologyMaxHeroCount )
     {
         if ( executedata->_param_list._params.size() < 1u )
@@ -352,7 +410,14 @@ namespace KFrame
 
     uint32 KFHeroModule::AddExp( KFEntity* player, KFData* kfhero, uint32 exp )
     {
-        auto maxlevel = GetMaxLevel( player, kfhero );
+        auto exprate = kfhero->Get<uint32>( __STRING__( exprate ) );
+        if ( exprate == 0u )
+        {
+            // 该英雄不能升级
+            return 0u;
+        }
+
+        auto maxlevel = kfhero->Get( __STRING__( maxlevel ) );
         auto level = kfhero->Get( __STRING__( level ) );
         if ( level >= maxlevel )
         {
@@ -366,6 +431,9 @@ namespace KFrame
             // 英雄已经死亡
             return 0u;
         }
+
+        auto addexp = static_cast<double>( exprate ) / KFRandEnum::TenThousand * exp;
+        exp = static_cast<uint32>( addexp + 0.5 );
 
         auto curexp = kfhero->Get( __STRING__( exp ) );
         auto maxexp = KFLevelConfig::Instance()->FindSetting( maxlevel )->_exp;
@@ -382,28 +450,39 @@ namespace KFrame
 
     bool KFHeroModule::IsMaxLevel( KFEntity* player, KFData* kfhero )
     {
-        auto maxlevel = GetMaxLevel( player, kfhero );
+        auto maxlevel = kfhero->Get( __STRING__( maxlevel ) );
         auto level = kfhero->Get( __STRING__( level ) );
         return level >= maxlevel;
     }
 
-    uint32 KFHeroModule::GetMaxLevel( KFEntity* player, KFData* kfhero )
+    uint32 KFHeroModule::GetPlayerMaxLevel( KFEntity* player )
     {
         static auto _option = _kf_option->FindOption( "initherolevellimit" );
         auto initlevel = _option->_uint32_value;
 
-        auto profession = kfhero->Get( __STRING__( profession ) );
+        auto herolevel = player->Get<uint32>( __STRING__( effect ), __STRING__( herolevel ) );
+
+        return initlevel + herolevel;
+    }
+
+    uint32 KFHeroModule::CalcMaxLevel( KFEntity* player, KFData* kfhero )
+    {
+        auto level = kfhero->Get<uint32>( __STRING__( level ) );
+        auto exprate = kfhero->Get<uint32>( __STRING__( exprate ) );
+        if ( exprate == 0u )
+        {
+            return level;
+        }
+
+        auto profession = kfhero->Get<uint32>( __STRING__( profession ) );
         auto kfsetting = KFProfessionConfig::Instance()->FindSetting( profession );
         if ( kfsetting == nullptr )
         {
-            return initlevel;
+            return level;
         }
 
-        auto maxlevel = kfsetting->_max_level;
-        auto limitlevel = player->Get<uint32>( __STRING__( effect ), __STRING__( camplevellimit ) );
-        limitlevel += initlevel;
-
-        maxlevel = __MIN__( maxlevel, limitlevel ); ;
+        auto maxlevel = GetPlayerMaxLevel( player );
+        maxlevel = __MIN__( maxlevel, kfsetting->_max_level );
 
         return maxlevel;
     }
@@ -444,11 +523,11 @@ namespace KFrame
             return nullptr;
         }
 
-        auto durability = kfhero->Get<uint32>( __STRING__( durability ) );
+        /*auto durability = kfhero->Get<uint32>( __STRING__( durability ) );
         if ( durability == 0u )
         {
             return nullptr;
-        }
+        }*/
 
         return kfhero;
     }

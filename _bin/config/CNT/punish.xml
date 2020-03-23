@@ -1,4 +1,4 @@
-<root platform="" version="2935">
+<root platform="" version="3465">
 	<item Id="101" MinCount="7" MaxCount="7" MinWeight="1" MaxWeight="100" Name="rune" Key="0" MinValue="1" MaxValue="1" />
 	<item Id="101" MinCount="7" MaxCount="7" MinWeight="1" MaxWeight="100" Name="dechp" Key="0" MinValue="1" MaxValue="1" />
 	<item Id="101" MinCount="7" MaxCount="7" MinWeight="1" MaxWeight="100" Name="faith" Key="0" MinValue="1" MaxValue="1" />

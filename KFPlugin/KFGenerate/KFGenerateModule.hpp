@@ -13,6 +13,7 @@
 #include "KFItem/KFItemInterface.h"
 #include "KFOption/KFOptionInterface.h"
 #include "KFKernel/KFKernelInterface.h"
+#include "KFHero/KFHeroInterface.h"
 #include "KFZConfig/KFRaceConfig.hpp"
 #include "KFZConfig/KFNpcConfig.hpp"
 #include "KFZConfig/KFNpcSkillConfig.hpp"
@@ -29,11 +30,23 @@
 #include "KFZConfig/KFItemConfig.hpp"
 #include "KFZConfig/KFTransferConfig.hpp"
 #include "KFZConfig/KFWeaponTypeConfig.hpp"
+#include "KFZConfig/KFQualityConfig.hpp"
 
 namespace KFrame
 {
     class KFGenerateModule : public KFGenerateInterface
     {
+    public:
+        class KFGenerateData
+        {
+        public:
+            uint32 type = 0u;		// 0:升级 1:转职
+            uint32 beginpro = 0u;	// 开始职业
+            uint32 endpro = 0u;		// 最终职业
+            uint32 beginlevel = 0u;	// 开始等级
+            uint32 endlevel = 0u;	// 最终等级
+        };
+
     public:
         KFGenerateModule() = default;
         ~KFGenerateModule() = default;
@@ -55,10 +68,10 @@ namespace KFrame
         virtual UInt32Vector& RandWeightData( KFEntity* player, KFData* kfhero, const std::string& str, const UInt32Vector& slist, bool update = true );
     protected:
         // 英雄等级更新
-        __KF_UPDATE_DATA_FUNCTION__( OnHeroLevelUpdate );
+        __KF_UPDATE_DATA_FUNCTION__( OnHeroLevelUpdateCallBack );
 
         // 英雄职业更新
-        __KF_UPDATE_DATA_FUNCTION__( OnHeroProfessionUpdate );
+        __KF_UPDATE_DATA_FUNCTION__( OnHeroProUpdateCallBack );
         ///////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////
         KFData* GenerateHero( KFEntity* player, KFData* kfhero, uint32 generateid,
@@ -84,16 +97,25 @@ namespace KFrame
         // 捏脸数据
         void GeneratePinchFace( KFEntity* player, KFData* kfhero );
 
+        // 音色类型
+        void GenerateVoice( KFEntity* player, KFData* kfhero, const KFProfessionSetting* kfsetting );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 计算最终属性偏好率
         uint64 CalcFinalPreference( uint32 racevalue, uint32 professionvalue, uint32 growthvalue );
 
         // 计算初始属性
-        uint32 CalcHeroInitAttribute( KFData* kffighter, uint32 initvalue, uint32 racevalue, uint32 professionvalue, uint32 growthvalue, uint32 level );
+        uint32 CalcHeroInitAttribute( KFData* kffighter, uint32 racevalue, uint32 professionvalue, uint32 growthvalue, uint32 level );
 
-        // 添加默认转职数据
-        void AddTransferData( KFEntity* player, KFData* kfhero, uint32 profession, uint32 classlv );
+        // 英雄自动升级转职流程
+        void HeroAutoUpgradeAndTransfer( KFEntity* player, KFData* kfhero, uint32 herolevel, uint32 classlv, uint32& professionid, std::vector<KFGenerateData>& data );
+
+        // 英雄等级更新
+        void OnHeroLevelUpdate( KFEntity* player, KFData* kfhero, uint32 oldvalue, uint32 newvalue, bool update = true );
+
+        // 英雄职业更新
+        void OnHeroProUpdate( KFEntity* player, KFData* kfhero, uint32 oldvalue, uint32 newvalue, bool update = true );
+
     private:
         // 玩家组件上下文
         KFComponent* _kf_component = nullptr;

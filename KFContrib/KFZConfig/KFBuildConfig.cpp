@@ -29,7 +29,7 @@ namespace KFrame
         kfsetting->_condition_type = KFReadSetting::ParseConditionList( strcondition, kfsetting->_condition );
 
         auto strtechnology = xmlnode.GetString( "Technology" );
-        KFUtility::SplitList( kfsetting->_technology, strtechnology, __AND_STRING__ );
+        KFUtility::SplitList( kfsetting->_technology, strtechnology, __SPLIT_STRING__ );
 
         kfsetting->_upgrade_time = xmlnode.GetUInt32( "UpgradeTime", true );
         kfsetting->_unit_time = xmlnode.GetUInt32( "UnitTime", true );

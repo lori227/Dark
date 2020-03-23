@@ -36,6 +36,8 @@ namespace KFrame
         // 最大耐久度
         uint32 _max_durability = 0u;
 
+        // 音色类型
+        UInt32Vector _voice_list;
 
     public:
         // 是否有效( 被限制 )

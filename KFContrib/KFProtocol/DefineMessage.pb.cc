@@ -801,6 +801,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBuffData, id_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBuffData, count_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBuffData, level_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBuffListData, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -892,6 +893,18 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, selectid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, selectcount_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, totallevel_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, foodstep_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, weather_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, weathertotalstep_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, weathercurrentstep_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, weathertotalturn_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, weathercurrentturn_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, nextweather_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, timetype_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, timetotalstep_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, timecurrentstep_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, timetotalturn_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, timecurrentturn_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBPunishData, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -920,15 +933,15 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 156, 163, sizeof(::KFMsg::PBExploreNpcData_NpcgroupdataEntry_DoNotUse)},
   { 165, -1, sizeof(::KFMsg::PBExploreNpcData)},
   { 177, -1, sizeof(::KFMsg::PBBuffData)},
-  { 184, -1, sizeof(::KFMsg::PBBuffListData)},
-  { 190, 197, sizeof(::KFMsg::PBHeroBuffData_HerobuffEntry_DoNotUse)},
-  { 199, 206, sizeof(::KFMsg::PBHeroBuffData_TeambuffEntry_DoNotUse)},
-  { 208, -1, sizeof(::KFMsg::PBHeroBuffData)},
-  { 215, 222, sizeof(::KFMsg::PBExploreData_NpcdataEntry_DoNotUse)},
-  { 224, -1, sizeof(::KFMsg::PBExploreData)},
-  { 241, 248, sizeof(::KFMsg::PBRealmData_ExploreEntry_DoNotUse)},
-  { 250, -1, sizeof(::KFMsg::PBRealmData)},
-  { 275, -1, sizeof(::KFMsg::PBPunishData)},
+  { 185, -1, sizeof(::KFMsg::PBBuffListData)},
+  { 191, 198, sizeof(::KFMsg::PBHeroBuffData_HerobuffEntry_DoNotUse)},
+  { 200, 207, sizeof(::KFMsg::PBHeroBuffData_TeambuffEntry_DoNotUse)},
+  { 209, -1, sizeof(::KFMsg::PBHeroBuffData)},
+  { 216, 223, sizeof(::KFMsg::PBExploreData_NpcdataEntry_DoNotUse)},
+  { 225, -1, sizeof(::KFMsg::PBExploreData)},
+  { 242, 249, sizeof(::KFMsg::PBRealmData_ExploreEntry_DoNotUse)},
+  { 251, -1, sizeof(::KFMsg::PBRealmData)},
+  { 288, -1, sizeof(::KFMsg::PBPunishData)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -1032,44 +1045,51 @@ void AddDescriptorsImpl() {
       "\n \003(\0132).KFMsg.PBExploreNpcData.Npcgroupd"
       "ataEntry\032J\n\021NpcgroupdataEntry\022\013\n\003key\030\001 \001"
       "(\r\022$\n\005value\030\002 \001(\0132\025.KFMsg.PBNpcGroupData"
-      ":\0028\001\"\'\n\nPBBuffData\022\n\n\002id\030\001 \001(\r\022\r\n\005count\030"
-      "\002 \001(\r\"5\n\016PBBuffListData\022#\n\010bufflist\030\001 \003("
-      "\0132\021.KFMsg.PBBuffData\"\212\002\n\016PBHeroBuffData\022"
-      "5\n\010herobuff\030\001 \003(\0132#.KFMsg.PBHeroBuffData"
-      ".HerobuffEntry\0225\n\010teambuff\030\002 \003(\0132#.KFMsg"
-      ".PBHeroBuffData.TeambuffEntry\032F\n\rHerobuf"
-      "fEntry\022\013\n\003key\030\001 \001(\004\022$\n\005value\030\002 \001(\0132\025.KFM"
-      "sg.PBBuffListData:\0028\001\032B\n\rTeambuffEntry\022\013"
-      "\n\003key\030\001 \001(\r\022 \n\005value\030\002 \001(\0132\021.KFMsg.PBBuf"
-      "fData:\0028\001\"\363\002\n\rPBExploreData\022\n\n\002id\030\001 \001(\r\022"
-      "\014\n\004save\030\002 \001(\010\022\016\n\006random\030\003 \001(\r\022\r\n\005level\030\004"
-      " \001(\r\022\022\n\ntotallevel\030\005 \001(\r\022\021\n\tlastlevel\030\006 "
-      "\001(\r\022\020\n\010creation\030\007 \001(\r\022\022\n\ninnerworld\030\010 \001("
-      "\r\022\022\n\nbirthplace\030\t \001(\r\022\033\n\023innerworldparam"
-      "eter\030\n \001(\r\022.\n\nplayerdata\030\013 \001(\0132\032.KFMsg.P"
-      "BExplorePlayerData\0222\n\007npcdata\030\014 \003(\0132!.KF"
-      "Msg.PBExploreData.NpcdataEntry\032G\n\014Npcdat"
-      "aEntry\022\013\n\003key\030\001 \001(\t\022&\n\005value\030\002 \001(\0132\027.KFM"
-      "sg.PBExploreNpcData:\0028\001\"\275\004\n\013PBRealmData\022"
-      "\n\n\002id\030\001 \001(\r\022\r\n\005level\030\002 \001(\r\022\022\n\nmodulename"
-      "\030\003 \001(\014\022\020\n\010moduleid\030\004 \001(\004\022\016\n\006status\030\005 \001(\r"
-      "\022\021\n\tstarttime\030\006 \001(\004\022\017\n\007usetime\030\007 \001(\r\022\r\n\005"
-      "faith\030\010 \001(\r\022\023\n\013extendlevel\030\t \001(\r\022,\n\010hero"
-      "data\030\n \003(\0132\032.KFMsg.PBBalanceHeroServer\022,"
-      "\n\010itemdata\030\013 \003(\0132\032.KFMsg.PBBalanceItemSe"
-      "rver\022&\n\010loseitem\030\014 \003(\0132\024.KFMsg.PBBalance"
-      "Item\022\017\n\007killnpc\030\r \003(\004\022\'\n\010buffdata\030\016 \001(\0132"
-      "\025.KFMsg.PBHeroBuffData\0220\n\007explore\030\017 \003(\0132"
-      "\037.KFMsg.PBRealmData.ExploreEntry\022\020\n\010flee"
-      "rate\030\020 \001(\r\022\022\n\ninnerworld\030\021 \001(\r\022\020\n\010select"
-      "id\030\022 \001(\r\022\023\n\013selectcount\030\023 \001(\r\022\022\n\ntotalle"
-      "vel\030\024 \001(\r\032D\n\014ExploreEntry\022\013\n\003key\030\001 \001(\r\022#"
-      "\n\005value\030\002 \001(\0132\024.KFMsg.PBExploreData:\0028\001\""
-      "7\n\014PBPunishData\022\014\n\004name\030\001 \001(\014\022\n\n\002id\030\002 \001("
-      "\r\022\r\n\005value\030\003 \001(\rb\006proto3"
+      ":\0028\001\"6\n\nPBBuffData\022\n\n\002id\030\001 \001(\r\022\r\n\005count\030"
+      "\002 \001(\r\022\r\n\005level\030\003 \001(\r\"5\n\016PBBuffListData\022#"
+      "\n\010bufflist\030\001 \003(\0132\021.KFMsg.PBBuffData\"\212\002\n\016"
+      "PBHeroBuffData\0225\n\010herobuff\030\001 \003(\0132#.KFMsg"
+      ".PBHeroBuffData.HerobuffEntry\0225\n\010teambuf"
+      "f\030\002 \003(\0132#.KFMsg.PBHeroBuffData.TeambuffE"
+      "ntry\032F\n\rHerobuffEntry\022\013\n\003key\030\001 \001(\004\022$\n\005va"
+      "lue\030\002 \001(\0132\025.KFMsg.PBBuffListData:\0028\001\032B\n\r"
+      "TeambuffEntry\022\013\n\003key\030\001 \001(\r\022 \n\005value\030\002 \001("
+      "\0132\021.KFMsg.PBBuffData:\0028\001\"\363\002\n\rPBExploreDa"
+      "ta\022\n\n\002id\030\001 \001(\r\022\014\n\004save\030\002 \001(\010\022\016\n\006random\030\003"
+      " \001(\r\022\r\n\005level\030\004 \001(\r\022\022\n\ntotallevel\030\005 \001(\r\022"
+      "\021\n\tlastlevel\030\006 \001(\r\022\020\n\010creation\030\007 \001(\r\022\022\n\n"
+      "innerworld\030\010 \001(\r\022\022\n\nbirthplace\030\t \001(\r\022\033\n\023"
+      "innerworldparameter\030\n \001(\r\022.\n\nplayerdata\030"
+      "\013 \001(\0132\032.KFMsg.PBExplorePlayerData\0222\n\007npc"
+      "data\030\014 \003(\0132!.KFMsg.PBExploreData.Npcdata"
+      "Entry\032G\n\014NpcdataEntry\022\013\n\003key\030\001 \001(\t\022&\n\005va"
+      "lue\030\002 \001(\0132\027.KFMsg.PBExploreNpcData:\0028\001\"\323"
+      "\006\n\013PBRealmData\022\n\n\002id\030\001 \001(\r\022\r\n\005level\030\002 \001("
+      "\r\022\022\n\nmodulename\030\003 \001(\014\022\020\n\010moduleid\030\004 \001(\004\022"
+      "\016\n\006status\030\005 \001(\r\022\021\n\tstarttime\030\006 \001(\004\022\017\n\007us"
+      "etime\030\007 \001(\r\022\r\n\005faith\030\010 \001(\r\022\023\n\013extendleve"
+      "l\030\t \001(\r\022,\n\010herodata\030\n \003(\0132\032.KFMsg.PBBala"
+      "nceHeroServer\022,\n\010itemdata\030\013 \003(\0132\032.KFMsg."
+      "PBBalanceItemServer\022&\n\010loseitem\030\014 \003(\0132\024."
+      "KFMsg.PBBalanceItem\022\017\n\007killnpc\030\r \003(\004\022\'\n\010"
+      "buffdata\030\016 \001(\0132\025.KFMsg.PBHeroBuffData\0220\n"
+      "\007explore\030\017 \003(\0132\037.KFMsg.PBRealmData.Explo"
+      "reEntry\022\020\n\010fleerate\030\020 \001(\r\022\022\n\ninnerworld\030"
+      "\021 \001(\r\022\020\n\010selectid\030\022 \001(\r\022\023\n\013selectcount\030\023"
+      " \001(\r\022\022\n\ntotallevel\030\024 \001(\r\022\020\n\010foodstep\030\025 \001"
+      "(\r\022\017\n\007weather\030\037 \001(\r\022\030\n\020weathertotalstep\030"
+      "  \001(\r\022\032\n\022weathercurrentstep\030! \001(\r\022\030\n\020wea"
+      "thertotalturn\030\" \001(\r\022\032\n\022weathercurrenttur"
+      "n\030# \001(\r\022\023\n\013nextweather\030$ \001(\r\022\020\n\010timetype"
+      "\030) \001(\r\022\025\n\rtimetotalstep\030* \001(\r\022\027\n\017timecur"
+      "rentstep\030+ \001(\r\022\025\n\rtimetotalturn\030, \001(\r\022\027\n"
+      "\017timecurrentturn\030- \001(\r\032D\n\014ExploreEntry\022\013"
+      "\n\003key\030\001 \001(\r\022#\n\005value\030\002 \001(\0132\024.KFMsg.PBExp"
+      "loreData:\0028\001\"7\n\014PBPunishData\022\014\n\004name\030\001 \001"
+      "(\014\022\n\n\002id\030\002 \001(\r\022\r\n\005value\030\003 \001(\rb\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 3384);
+      descriptor, 3677);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "DefineMessage.proto", &protobuf_RegisterTypes);
   ::protobuf_FrameDefineMessage_2eproto::AddDescriptors();
@@ -6341,6 +6361,7 @@ void PBBuffData::InitAsDefaultInstance() {
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int PBBuffData::kIdFieldNumber;
 const int PBBuffData::kCountFieldNumber;
+const int PBBuffData::kLevelFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 PBBuffData::PBBuffData()
@@ -6355,15 +6376,15 @@ PBBuffData::PBBuffData(const PBBuffData& from)
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&count_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(count_));
+    static_cast<size_t>(reinterpret_cast<char*>(&level_) -
+    reinterpret_cast<char*>(&id_)) + sizeof(level_));
   // @@protoc_insertion_point(copy_constructor:KFMsg.PBBuffData)
 }
 
 void PBBuffData::SharedCtor() {
   ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&count_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(count_));
+      reinterpret_cast<char*>(&level_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(level_));
 }
 
 PBBuffData::~PBBuffData() {
@@ -6395,8 +6416,8 @@ void PBBuffData::Clear() {
   (void) cached_has_bits;
 
   ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&count_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(count_));
+      reinterpret_cast<char*>(&level_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(level_));
   _internal_metadata_.Clear();
 }
 
@@ -6432,6 +6453,20 @@ bool PBBuffData::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &count_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 level = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &level_)));
         } else {
           goto handle_unusual;
         }
@@ -6474,6 +6509,11 @@ void PBBuffData::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->count(), output);
   }
 
+  // uint32 level = 3;
+  if (this->level() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->level(), output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -6496,6 +6536,11 @@ void PBBuffData::SerializeWithCachedSizes(
   // uint32 count = 2;
   if (this->count() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->count(), target);
+  }
+
+  // uint32 level = 3;
+  if (this->level() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->level(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -6527,6 +6572,13 @@ size_t PBBuffData::ByteSizeLong() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->count());
+  }
+
+  // uint32 level = 3;
+  if (this->level() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->level());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -6562,6 +6614,9 @@ void PBBuffData::MergeFrom(const PBBuffData& from) {
   if (from.count() != 0) {
     set_count(from.count());
   }
+  if (from.level() != 0) {
+    set_level(from.level());
+  }
 }
 
 void PBBuffData::CopyFrom(const ::google::protobuf::Message& from) {
@@ -6590,6 +6645,7 @@ void PBBuffData::InternalSwap(PBBuffData* other) {
   using std::swap;
   swap(id_, other->id_);
   swap(count_, other->count_);
+  swap(level_, other->level_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
@@ -8091,6 +8147,18 @@ const int PBRealmData::kInnerworldFieldNumber;
 const int PBRealmData::kSelectidFieldNumber;
 const int PBRealmData::kSelectcountFieldNumber;
 const int PBRealmData::kTotallevelFieldNumber;
+const int PBRealmData::kFoodstepFieldNumber;
+const int PBRealmData::kWeatherFieldNumber;
+const int PBRealmData::kWeathertotalstepFieldNumber;
+const int PBRealmData::kWeathercurrentstepFieldNumber;
+const int PBRealmData::kWeathertotalturnFieldNumber;
+const int PBRealmData::kWeathercurrentturnFieldNumber;
+const int PBRealmData::kNextweatherFieldNumber;
+const int PBRealmData::kTimetypeFieldNumber;
+const int PBRealmData::kTimetotalstepFieldNumber;
+const int PBRealmData::kTimecurrentstepFieldNumber;
+const int PBRealmData::kTimetotalturnFieldNumber;
+const int PBRealmData::kTimecurrentturnFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 PBRealmData::PBRealmData()
@@ -8119,16 +8187,16 @@ PBRealmData::PBRealmData(const PBRealmData& from)
     buffdata_ = NULL;
   }
   ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&totallevel_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(totallevel_));
+    static_cast<size_t>(reinterpret_cast<char*>(&timetotalturn_) -
+    reinterpret_cast<char*>(&id_)) + sizeof(timetotalturn_));
   // @@protoc_insertion_point(copy_constructor:KFMsg.PBRealmData)
 }
 
 void PBRealmData::SharedCtor() {
   modulename_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&buffdata_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&totallevel_) -
-      reinterpret_cast<char*>(&buffdata_)) + sizeof(totallevel_));
+      reinterpret_cast<char*>(&timetotalturn_) -
+      reinterpret_cast<char*>(&buffdata_)) + sizeof(timetotalturn_));
 }
 
 PBRealmData::~PBRealmData() {
@@ -8172,8 +8240,8 @@ void PBRealmData::Clear() {
   }
   buffdata_ = NULL;
   ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&totallevel_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(totallevel_));
+      reinterpret_cast<char*>(&timetotalturn_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(timetotalturn_));
   _internal_metadata_.Clear();
 }
 
@@ -8467,6 +8535,174 @@ bool PBRealmData::MergePartialFromCodedStream(
         break;
       }
 
+      // uint32 foodstep = 21;
+      case 21: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(168u /* 168 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &foodstep_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 weather = 31;
+      case 31: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(248u /* 248 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &weather_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 weathertotalstep = 32;
+      case 32: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(0u /* 256 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &weathertotalstep_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 weathercurrentstep = 33;
+      case 33: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(8u /* 264 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &weathercurrentstep_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 weathertotalturn = 34;
+      case 34: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(16u /* 272 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &weathertotalturn_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 weathercurrentturn = 35;
+      case 35: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(24u /* 280 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &weathercurrentturn_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 nextweather = 36;
+      case 36: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(32u /* 288 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &nextweather_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 timetype = 41;
+      case 41: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(72u /* 328 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &timetype_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 timetotalstep = 42;
+      case 42: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(80u /* 336 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &timetotalstep_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 timecurrentstep = 43;
+      case 43: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(88u /* 344 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &timecurrentstep_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 timetotalturn = 44;
+      case 44: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(96u /* 352 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &timetotalturn_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 timecurrentturn = 45;
+      case 45: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(104u /* 360 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &timecurrentturn_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -8647,6 +8883,66 @@ void PBRealmData::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(20, this->totallevel(), output);
   }
 
+  // uint32 foodstep = 21;
+  if (this->foodstep() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(21, this->foodstep(), output);
+  }
+
+  // uint32 weather = 31;
+  if (this->weather() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(31, this->weather(), output);
+  }
+
+  // uint32 weathertotalstep = 32;
+  if (this->weathertotalstep() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(32, this->weathertotalstep(), output);
+  }
+
+  // uint32 weathercurrentstep = 33;
+  if (this->weathercurrentstep() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(33, this->weathercurrentstep(), output);
+  }
+
+  // uint32 weathertotalturn = 34;
+  if (this->weathertotalturn() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(34, this->weathertotalturn(), output);
+  }
+
+  // uint32 weathercurrentturn = 35;
+  if (this->weathercurrentturn() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(35, this->weathercurrentturn(), output);
+  }
+
+  // uint32 nextweather = 36;
+  if (this->nextweather() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(36, this->nextweather(), output);
+  }
+
+  // uint32 timetype = 41;
+  if (this->timetype() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(41, this->timetype(), output);
+  }
+
+  // uint32 timetotalstep = 42;
+  if (this->timetotalstep() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(42, this->timetotalstep(), output);
+  }
+
+  // uint32 timecurrentstep = 43;
+  if (this->timecurrentstep() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(43, this->timecurrentstep(), output);
+  }
+
+  // uint32 timetotalturn = 44;
+  if (this->timetotalturn() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(44, this->timetotalturn(), output);
+  }
+
+  // uint32 timecurrentturn = 45;
+  if (this->timecurrentturn() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(45, this->timecurrentturn(), output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -8818,6 +9114,66 @@ void PBRealmData::SerializeWithCachedSizes(
   // uint32 totallevel = 20;
   if (this->totallevel() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(20, this->totallevel(), target);
+  }
+
+  // uint32 foodstep = 21;
+  if (this->foodstep() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(21, this->foodstep(), target);
+  }
+
+  // uint32 weather = 31;
+  if (this->weather() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(31, this->weather(), target);
+  }
+
+  // uint32 weathertotalstep = 32;
+  if (this->weathertotalstep() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(32, this->weathertotalstep(), target);
+  }
+
+  // uint32 weathercurrentstep = 33;
+  if (this->weathercurrentstep() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(33, this->weathercurrentstep(), target);
+  }
+
+  // uint32 weathertotalturn = 34;
+  if (this->weathertotalturn() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(34, this->weathertotalturn(), target);
+  }
+
+  // uint32 weathercurrentturn = 35;
+  if (this->weathercurrentturn() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(35, this->weathercurrentturn(), target);
+  }
+
+  // uint32 nextweather = 36;
+  if (this->nextweather() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(36, this->nextweather(), target);
+  }
+
+  // uint32 timetype = 41;
+  if (this->timetype() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(41, this->timetype(), target);
+  }
+
+  // uint32 timetotalstep = 42;
+  if (this->timetotalstep() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(42, this->timetotalstep(), target);
+  }
+
+  // uint32 timecurrentstep = 43;
+  if (this->timecurrentstep() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(43, this->timecurrentstep(), target);
+  }
+
+  // uint32 timetotalturn = 44;
+  if (this->timetotalturn() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(44, this->timetotalturn(), target);
+  }
+
+  // uint32 timecurrentturn = 45;
+  if (this->timecurrentturn() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(45, this->timecurrentturn(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -9005,6 +9361,90 @@ size_t PBRealmData::ByteSizeLong() const {
         this->totallevel());
   }
 
+  // uint32 foodstep = 21;
+  if (this->foodstep() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->foodstep());
+  }
+
+  // uint32 weather = 31;
+  if (this->weather() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->weather());
+  }
+
+  // uint32 weathertotalstep = 32;
+  if (this->weathertotalstep() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->weathertotalstep());
+  }
+
+  // uint32 timecurrentturn = 45;
+  if (this->timecurrentturn() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->timecurrentturn());
+  }
+
+  // uint32 weathercurrentstep = 33;
+  if (this->weathercurrentstep() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->weathercurrentstep());
+  }
+
+  // uint32 weathertotalturn = 34;
+  if (this->weathertotalturn() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->weathertotalturn());
+  }
+
+  // uint32 weathercurrentturn = 35;
+  if (this->weathercurrentturn() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->weathercurrentturn());
+  }
+
+  // uint32 nextweather = 36;
+  if (this->nextweather() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->nextweather());
+  }
+
+  // uint32 timetype = 41;
+  if (this->timetype() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->timetype());
+  }
+
+  // uint32 timetotalstep = 42;
+  if (this->timetotalstep() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->timetotalstep());
+  }
+
+  // uint32 timecurrentstep = 43;
+  if (this->timecurrentstep() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->timecurrentstep());
+  }
+
+  // uint32 timetotalturn = 44;
+  if (this->timetotalturn() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->timetotalturn());
+  }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -9083,6 +9523,42 @@ void PBRealmData::MergeFrom(const PBRealmData& from) {
   if (from.totallevel() != 0) {
     set_totallevel(from.totallevel());
   }
+  if (from.foodstep() != 0) {
+    set_foodstep(from.foodstep());
+  }
+  if (from.weather() != 0) {
+    set_weather(from.weather());
+  }
+  if (from.weathertotalstep() != 0) {
+    set_weathertotalstep(from.weathertotalstep());
+  }
+  if (from.timecurrentturn() != 0) {
+    set_timecurrentturn(from.timecurrentturn());
+  }
+  if (from.weathercurrentstep() != 0) {
+    set_weathercurrentstep(from.weathercurrentstep());
+  }
+  if (from.weathertotalturn() != 0) {
+    set_weathertotalturn(from.weathertotalturn());
+  }
+  if (from.weathercurrentturn() != 0) {
+    set_weathercurrentturn(from.weathercurrentturn());
+  }
+  if (from.nextweather() != 0) {
+    set_nextweather(from.nextweather());
+  }
+  if (from.timetype() != 0) {
+    set_timetype(from.timetype());
+  }
+  if (from.timetotalstep() != 0) {
+    set_timetotalstep(from.timetotalstep());
+  }
+  if (from.timecurrentstep() != 0) {
+    set_timecurrentstep(from.timecurrentstep());
+  }
+  if (from.timetotalturn() != 0) {
+    set_timetotalturn(from.timetotalturn());
+  }
 }
 
 void PBRealmData::CopyFrom(const ::google::protobuf::Message& from) {
@@ -9130,6 +9606,18 @@ void PBRealmData::InternalSwap(PBRealmData* other) {
   swap(selectid_, other->selectid_);
   swap(selectcount_, other->selectcount_);
   swap(totallevel_, other->totallevel_);
+  swap(foodstep_, other->foodstep_);
+  swap(weather_, other->weather_);
+  swap(weathertotalstep_, other->weathertotalstep_);
+  swap(timecurrentturn_, other->timecurrentturn_);
+  swap(weathercurrentstep_, other->weathercurrentstep_);
+  swap(weathertotalturn_, other->weathertotalturn_);
+  swap(weathercurrentturn_, other->weathercurrentturn_);
+  swap(nextweather_, other->nextweather_);
+  swap(timetype_, other->timetype_);
+  swap(timetotalstep_, other->timetotalstep_);
+  swap(timecurrentstep_, other->timecurrentstep_);
+  swap(timetotalturn_, other->timetotalturn_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 

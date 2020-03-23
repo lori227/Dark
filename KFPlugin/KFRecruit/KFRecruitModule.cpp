@@ -292,7 +292,7 @@ namespace KFrame
 
         // 计算招募的数量
         auto kfeffect = player->Find( __STRING__( effect ) );
-        auto recruitcount = CalcRecruitHeroCount( kfeffect, kfrecruitsetting );
+        auto recruitcount = CalcRecruitHeroCount( kfeffect );
         if ( recruitcount == 0u )
         {
             return KFMsg::HeroRecruitRefreshCount;
@@ -347,7 +347,7 @@ namespace KFrame
         return KFMsg::Ok;
     }
 
-    uint32 KFRecruitModule::CalcRecruitHeroCount( KFData* kfeffect, const KFRecruitSetting* kfrecruitsetting )
+    uint32 KFRecruitModule::CalcRecruitHeroCount( KFData* kfeffect )
     {
         // 科技效果添加数量
         return kfeffect->Get<uint32>( __STRING__( recruitcount ) );

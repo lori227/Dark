@@ -38,6 +38,8 @@ namespace KFrame
         // 清空包裹
         virtual void CleanItem( KFEntity* player, const std::string& name, bool isauto = false );
 
+        // 移动道具
+        virtual uint32 MoveItem( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord, uint32 targetindex );
     protected:
         // 拆分道具
         __KF_MESSAGE_FUNCTION__( HandleSplitItemReq );
@@ -111,7 +113,7 @@ namespace KFrame
         bool CheckItemCanMove( const KFItemSetting* kfsetting, const std::string& sourcename, const std::string& targetname );
 
         // 找到可以移动的背包
-        KFData* FindItemMoveRecord( KFEntity* player, const KFItemSetting* kfsetting, const std::string& excludename );
+        KFData* FindItemMoveRecord( KFEntity* player, const KFItemSetting* kfsetting, const std::string& sourcename, const std::string& excludename );
 
         // 判断是否能合并
         bool CheckItemCanMerge( const KFItemSetting* kfsourcesetting, KFData* kfsourceitem, const KFItemSetting* kftargetsetting, KFData* kftargetitem );
@@ -120,8 +122,7 @@ namespace KFrame
         uint32 SplitItem( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, uint32 splitcount, KFData* kftargetrecord, uint32 splitindex );
 
         // 移动道具
-        uint32 MoveItem( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord, uint32 targetindex );
-        void MoveItemDataToRecord( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord );
+        bool MoveItemDataToRecord( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord );
         void MoveItemCount( KFEntity* player, KFData* kfitem, uint32 operate, uint32 count );
 
         // 交换道具

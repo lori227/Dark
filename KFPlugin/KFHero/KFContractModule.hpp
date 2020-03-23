@@ -41,13 +41,13 @@ namespace KFrame
         // 签约英雄数据请求
         __KF_MESSAGE_FUNCTION__( HandleContractDataReq );
 
-        // 签约英雄抉择
+        // 签约英雄请求
         __KF_MESSAGE_FUNCTION__( HandleContractHeroReq );
 
-    public:
-        // 删除英雄天赋
-        // bool RemoveInnateId( KFEntity* player, KFData* kfhero, uint32 id );
+        // 退役英雄请求
+        __KF_MESSAGE_FUNCTION__( HandleRetireHeroReq );
 
+    public:
         // 获取续签数据
         bool GetContractData( KFData* kfhero, uint32& durability, std::string& cost, uint32& errnum );
 

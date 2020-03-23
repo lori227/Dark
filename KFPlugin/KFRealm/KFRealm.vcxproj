@@ -18,6 +18,8 @@
     <ClCompile Include="KFPVEModule.cpp" />
     <ClCompile Include="KFRealmModule.cpp" />
     <ClCompile Include="KFRealmPlugin.cpp" />
+    <ClCompile Include="KFRealmTimeModule.cpp" />
+    <ClCompile Include="KFWeatherModule.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="KFBuffInterface.h" />
@@ -30,6 +32,10 @@
     <ClInclude Include="KFRealmInterface.h" />
     <ClInclude Include="KFRealmModule.hpp" />
     <ClInclude Include="KFRealmPlugin.hpp" />
+    <ClInclude Include="KFRealmTimeInterface.h" />
+    <ClInclude Include="KFRealmTimeModule.hpp" />
+    <ClInclude Include="KFWeatherInterface.h" />
+    <ClInclude Include="KFWeatherModule.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DF015D52-0B86-4AEF-852C-DF57B281B364}</ProjectGuid>

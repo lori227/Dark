@@ -290,7 +290,7 @@ namespace KFrame
         }
 
         // 找到可以移动到的背包
-        auto kffindrecord = FindItemMoveRecord( player, kftargetsetting, kftargetrecord->_data_setting->_name );
+        auto kffindrecord = FindItemMoveRecord( player, kftargetsetting, kfsourceitem->_data_setting->_name, kftargetrecord->_data_setting->_name );
         if ( kffindrecord == nullptr )
         {
             return KFMsg::ItemCanNotStore;
@@ -460,12 +460,17 @@ namespace KFrame
         return kftypesetting->_move_name_list.find( targetname ) != kftypesetting->_move_name_list.end();
     }
 
-    KFData* KFItemMoveModule::FindItemMoveRecord( KFEntity* player, const KFItemSetting* kfsetting, const std::string& excludename )
+    KFData* KFItemMoveModule::FindItemMoveRecord( KFEntity* player, const KFItemSetting* kfsetting, const std::string& sourcename, const std::string& excludename )
     {
         auto kftypesetting = KFItemTypeConfig::Instance()->FindSetting( kfsetting->_type );
         if ( kftypesetting == nullptr )
         {
             return nullptr;
+        }
+
+        if ( kftypesetting->_move_name_list.find( sourcename ) != kftypesetting->_move_name_list.end() )
+        {
+            return player->Find( sourcename );
         }
 
         for ( auto& name : kftypesetting->_move_name_list )
@@ -634,16 +639,22 @@ namespace KFrame
             movelist.push_back( std::make_tuple( kfitem, kfsetting ) );
         }
 
+        auto isfull = false;
         for ( auto& tupledata : movelist )
         {
             KFData* kfsourceitem = nullptr;
             const KFItemSetting* kfsetting = nullptr;
             std::tie( kfsourceitem, kfsetting ) = tupledata;
-            MoveItemDataToRecord( player, kfsetting, kfsourcerecord, kfsourceitem, kftargetrecord );
+            isfull |= MoveItemDataToRecord( player, kfsetting, kfsourcerecord, kfsourceitem, kftargetrecord );
+        }
+
+        if ( isfull )
+        {
+            _kf_display->SendToClient( player, KFMsg::ItemBagIsFull );
         }
     }
 
-    void KFItemMoveModule::MoveItemDataToRecord( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord )
+    bool KFItemMoveModule::MoveItemDataToRecord( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord )
     {
         // 判断是否能堆叠
         if ( kfsetting->IsOverlay() )
@@ -677,20 +688,31 @@ namespace KFrame
                 sourcecount -= movecount;
                 if ( sourcecount == 0u )
                 {
-                    return;
+                    return false;
                 }
             }
 
             // 剩下的道具数量
             while ( sourcecount > maxoverlaycount )
             {
+                if ( _kf_item->IsItemRecordFull( player, kftargetrecord ) )
+                {
+                    break;
+                }
+
                 SplitItem( player, kfsetting, kfsourcerecord, kfsourceitem, maxoverlaycount, kftargetrecord, 0u );
                 sourcecount -= maxoverlaycount;
             }
         }
 
         // 不能堆叠或者剩下没有堆叠完的
-        MoveItem( player, kfsetting, kfsourcerecord, kfsourceitem, kftargetrecord, 0u );
+        auto isfull = _kf_item->IsItemRecordFull( player, kftargetrecord );
+        if ( !isfull )
+        {
+            MoveItem( player, kfsetting, kfsourcerecord, kfsourceitem, kftargetrecord, 0u );
+        }
+
+        return isfull;
     }
 
     __KF_MESSAGE_FUNCTION__( KFItemMoveModule::HandleSplitItemReq )

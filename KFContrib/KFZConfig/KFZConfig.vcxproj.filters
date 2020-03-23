@@ -133,6 +133,18 @@
     <ClInclude Include="KFNpcRandConfig.hpp">
       <Filter>Realm</Filter>
     </ClInclude>
+    <ClInclude Include="KFLevelValueConfig.hpp">
+      <Filter>Hero</Filter>
+    </ClInclude>
+    <ClInclude Include="KFQualityConfig.hpp">
+      <Filter>Hero</Filter>
+    </ClInclude>
+    <ClInclude Include="KFRealmTimeConfig.hpp">
+      <Filter>Realm</Filter>
+    </ClInclude>
+    <ClInclude Include="KFWeatherConfig.hpp">
+      <Filter>Realm</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Option">
@@ -285,6 +297,18 @@
       <Filter>Realm</Filter>
     </ClCompile>
     <ClCompile Include="KFNpcRandConfig.cpp">
+      <Filter>Realm</Filter>
+    </ClCompile>
+    <ClCompile Include="KFLevelValueConfig.cpp">
+      <Filter>Hero</Filter>
+    </ClCompile>
+    <ClCompile Include="KFQualityConfig.cpp">
+      <Filter>Hero</Filter>
+    </ClCompile>
+    <ClCompile Include="KFRealmTimeConfig.cpp">
+      <Filter>Realm</Filter>
+    </ClCompile>
+    <ClCompile Include="KFWeatherConfig.cpp">
       <Filter>Realm</Filter>
     </ClCompile>
   </ItemGroup>

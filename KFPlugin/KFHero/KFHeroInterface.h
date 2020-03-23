@@ -17,6 +17,12 @@ namespace KFrame
         // 判断英雄是否达到最大等级
         virtual bool IsMaxLevel( KFEntity* player, KFData* kfhero ) = 0;
 
+        // 获取玩家最大等级
+        virtual uint32 GetPlayerMaxLevel( KFEntity* player ) = 0;
+
+        // 计算英雄的最大等级
+        virtual uint32 CalcMaxLevel( KFEntity* player, KFData* kfhero ) = 0;
+
         // 改变hp
         virtual uint32 OperateHp( KFEntity* player, KFData* kfhero, uint32 operate, uint32 hp ) = 0;
 

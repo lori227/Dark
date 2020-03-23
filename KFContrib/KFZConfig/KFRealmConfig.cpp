@@ -14,9 +14,12 @@ namespace KFrame
             auto strdata = KFUtility::SplitString( strpunish, __SPLIT_STRING__ );
             if ( !strdata.empty() )
             {
-                auto itemid = KFUtility::SplitValue<uint32>( strdata, "," );
-                auto weight = KFUtility::SplitValue<uint32>( strdata, "," );
-                kfsetting->_punish_list[ itemid ] = __MIN__( weight, KFRandEnum::TenThousand );
+                auto itemid = KFUtility::SplitValue<uint32>( strdata, __DOMAIN_STRING__ );
+                auto weight = KFUtility::SplitValue<uint32>( strdata, __DOMAIN_STRING__ );
+                if ( itemid != 0u && weight != 0u )
+                {
+                    kfsetting->_punish_list[ itemid ] = __MIN__( weight, KFRandEnum::TenThousand );
+                }
             }
         }
 
@@ -29,6 +32,8 @@ namespace KFrame
         leveldata._hp_num = xmlnode.GetUInt32( "HpNum", true );
         leveldata._hp_step = xmlnode.GetUInt32( "HpStep", true );
         leveldata._durability = xmlnode.GetUInt32( "Durability", true );
+        leveldata._time_id = xmlnode.GetUInt32( "RealmTime", true );
+        leveldata._weather_id = xmlnode.GetUInt32( "Weather", true );
 
         auto strdropvictory = xmlnode.GetString( "DropVictory", true );
         KFReadSetting::ParseConditionList( strdropvictory, leveldata._victory_drop_list );

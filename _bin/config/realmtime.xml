@@ -1,0 +1,11 @@
+<root platform="" version="3667">
+	<item Id="2000101" Time="1" InitWeight="100" ExploreDurationn="50" PveDurationn="3" />
+	<item Id="2000101" Time="2" InitWeight="100" ExploreDurationn="50" PveDurationn="3" />
+	<item Id="2000101" Time="3" InitWeight="100" ExploreDurationn="50" PveDurationn="3" />
+	<item Id="2000102" Time="1" InitWeight="100" ExploreDurationn="10" PveDurationn="1" />
+	<item Id="2000102" Time="2" InitWeight="100" ExploreDurationn="10" PveDurationn="1" />
+	<item Id="2000102" Time="3" InitWeight="100" ExploreDurationn="10" PveDurationn="1" />
+	<item Id="2000103" Time="1" InitWeight="100" ExploreDurationn="1" PveDurationn="1" />
+	<item Id="2000103" Time="2" InitWeight="0" ExploreDurationn="1" PveDurationn="1" />
+	<item Id="2000103" Time="3" InitWeight="0" ExploreDurationn="1" PveDurationn="1" />
+</root>

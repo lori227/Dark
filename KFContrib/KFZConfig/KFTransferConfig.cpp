@@ -2,6 +2,14 @@
 
 namespace KFrame
 {
+    void KFTransferConfig::ClearSetting()
+    {
+        _parent_child_map.clear();
+        _child_parent_map.clear();
+        _transfer_level_map.clear();
+        KFConfigT< KFTransferSetting >::ClearSetting();
+    }
+
     void KFTransferConfig::ReadSetting( KFNode& xmlnode, KFTransferSetting* kfsetting )
     {
         kfsetting->_child_id = xmlnode.GetUInt32( "ChildId", true );
@@ -24,6 +32,10 @@ namespace KFrame
         KFUtility::SplitList( kfsetting->_innate_pool_list, strinnatepool, __SPLIT_STRING__ );
 
         kfsetting->_str_cost = xmlnode.GetString( "Cost", true );
+
+        _parent_child_map[kfsetting->_parent_id].push_back( kfsetting->_child_id );
+        _child_parent_map[kfsetting->_child_id].push_back( kfsetting->_parent_id );
+        _transfer_level_map[kfsetting->_parent_id] = kfsetting->_level;
     }
 
     void KFTransferConfig::LoadAllComplete()
@@ -35,20 +47,59 @@ namespace KFrame
         }
     }
 
+    const KFTransferSetting* KFTransferConfig::FindTransferSetting( uint32 childid, uint32 parentid )
+    {
+        auto id = GetTransferId( childid, parentid );
+        return FindSetting( id );
+    }
+
     uint32 KFTransferConfig::GetTransferId( uint32 childid, uint32 parentid )
     {
         return childid * 10000u + parentid;
     }
 
-    uint32 KFTransferConfig::GetParentPro( uint32 childpro )
+    uint32 KFTransferConfig::GetRandChildId( uint32 parentid )
     {
-        for ( auto& iter : _settings._objects )
+        auto iter = _parent_child_map.find( parentid );
+        if ( iter == _parent_child_map.end() )
         {
-            auto kfsetting = iter.second;
-            if ( kfsetting->_child_id == childpro )
-            {
-                return kfsetting->_parent_id;
-            }
+            return _invalid_int;
+        }
+
+        auto count = static_cast<uint32>( iter->second.size() );
+        if ( count == 0u )
+        {
+            return _invalid_int;
+        }
+
+        auto randcount = KFGlobal::Instance()->RandRatio( count );
+        return iter->second[randcount];
+    }
+
+    uint32 KFTransferConfig::GetRandParentId( uint32 childid )
+    {
+        auto iter = _child_parent_map.find( childid );
+        if ( iter == _child_parent_map.end() )
+        {
+            return _invalid_int;
+        }
+
+        auto count = static_cast<uint32>( iter->second.size() );
+        if ( count == 0u )
+        {
+            return _invalid_int;
+        }
+
+        auto randcount = KFGlobal::Instance()->RandRatio( count );
+        return iter->second[randcount];
+    }
+
+    uint32 KFTransferConfig::GetProTransferLevel( uint32 profession )
+    {
+        auto iter = _transfer_level_map.find( profession );
+        if ( iter != _transfer_level_map.end() )
+        {
+            return iter->second;
         }
 
         return _invalid_int;

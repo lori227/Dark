@@ -13,7 +13,7 @@ namespace KFrame
         kfsetting->_pre_condition_type = KFReadSetting::ParseConditionList( strprecondition, kfsetting->_pre_condition );
 
         auto strplacecondition = xmlnode.GetString( "PlaceCondition" );
-        kfsetting->_place_condition.Parse( strplacecondition, 0, __FUNC_LINE__ );
+        kfsetting->_place_condition.Parse( strplacecondition, 0, __FILE__, __LINE__ );
 
         auto strcompletecondition = xmlnode.GetString( "CompleteCondition" );
         kfsetting->_complete_condition_type = KFReadSetting::ParseConditionList( strcompletecondition, kfsetting->_complete_condition );

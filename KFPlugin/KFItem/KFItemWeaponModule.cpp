@@ -50,34 +50,6 @@ namespace KFrame
         return kfitemrecord;
     }
 
-    bool KFItemWeaponModule::MoveHeroWeapon( KFEntity* player, KFData* kfhero, KFData* kfitemrecord, bool removehero /* = false */ )
-    {
-        KFData* kfweapon = nullptr;
-        if ( removehero )
-        {
-            kfweapon = kfhero->Move( __STRING__( weapon ), true );
-        }
-        else
-        {
-            kfweapon = kfhero->Find( __STRING__( weapon ) );
-        }
-        if ( kfweapon == nullptr || kfweapon->GetKeyID() == 0u )
-        {
-            return false;
-        }
-
-        if ( removehero )
-        {
-            player->AddData( kfitemrecord, kfweapon->GetKeyID(), kfweapon, false );
-        }
-        else
-        {
-            player->MoveData( kfhero, __STRING__( weapon ), kfitemrecord );
-        }
-
-        return true;
-    }
-
     __KF_INIT_ITEM_FUNCTION__( KFItemWeaponModule::InitWeaponData )
     {
         // 耐久
@@ -108,6 +80,50 @@ namespace KFrame
         }
     }
 
+    uint32 KFItemWeaponModule::CheckHeroWeapon( KFEntity* player, KFData* kfhero, KFData* kfweapon )
+    {
+        auto itemid = kfweapon->Get<uint32>( kfweapon->_data_setting->_config_key_name );
+        auto kfsettting = KFItemConfig::Instance()->FindSetting( itemid );
+        if ( kfsettting == nullptr )
+        {
+            return KFMsg::ItemSettingNotExist;
+        }
+
+        if ( kfsettting->_type != KFItemEnum::Weapon )
+        {
+            return KFMsg::ItemWeaponOnly;
+        }
+
+        // 种族限制
+        if ( !kfsettting->_race_limit_list.empty() )
+        {
+            auto race = kfhero->Get<uint32>( __STRING__( race ) );
+            if ( kfsettting->_race_limit_list.find( race ) == kfsettting->_race_limit_list.end() )
+            {
+                return KFMsg::ItemWeaponRaceLimit;
+            }
+        }
+
+        // 英雄武器限制
+        auto weapontype = kfhero->Get<uint32>( __STRING__( weapontype ) );
+        if ( kfsettting->_weapon_type != weapontype )
+        {
+            return KFMsg::ItemWeaponHeroLimit;
+        }
+
+        // 等级限制
+        if ( kfsettting->_level_limit != 0u )
+        {
+            auto level = kfhero->Get<uint32>( __STRING__( level ) );
+            if ( level < kfsettting->_level_limit )
+            {
+                return KFMsg::ItemWeaponLevelLimit;
+            }
+        }
+
+        return KFMsg::Ok;
+    }
+
     __KF_MESSAGE_FUNCTION__( KFItemWeaponModule::HandleHeroWeaponReq )
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgHeroWeaponReq );
@@ -118,64 +134,34 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::HeroNotExist );
         }
 
-        KFData* kfitem = nullptr;
+        KFData* kfweapon = nullptr;
         KFData* kfitemrecord = nullptr;
-        std::tie( kfitemrecord, kfitem ) = _kf_item->FindItem( player, kfmsg.itemuuid() );
-        if ( kfitem == nullptr )
+        std::tie( kfitemrecord, kfweapon ) = _kf_item->FindItem( player, kfmsg.itemuuid() );
+        if ( kfweapon == nullptr )
         {
             return _kf_display->SendToClient( player, KFMsg::ItemDataNotExist );
         }
 
-        auto itemid = kfitem->Get<uint32>( kfitem->_data_setting->_config_key_name );
-        auto kfsettting = KFItemConfig::Instance()->FindSetting( itemid );
-        if ( kfsettting == nullptr )
+        // 判断是否能装备
+        auto checkresult = CheckHeroWeapon( player, kfhero, kfweapon );
+        if ( checkresult != KFMsg::Ok )
         {
-            return _kf_display->SendToClient( player, KFMsg::ItemSettingNotExist );
-        }
-
-        if ( kfsettting->_type != KFItemEnum::Weapon )
-        {
-            return _kf_display->SendToClient( player, KFMsg::ItemWeaponOnly );
-        }
-
-        // 种族限制
-        if ( !kfsettting->_race_limit_list.empty() )
-        {
-            auto race = kfhero->Get<uint32>( __STRING__( race ) );
-            if ( kfsettting->_race_limit_list.find( race ) == kfsettting->_race_limit_list.end() )
-            {
-                return _kf_display->SendToClient( player, KFMsg::ItemWeaponRaceLimit );
-            }
-        }
-
-        // 英雄武器限制
-        auto weapontype = kfhero->Get<uint32>( __STRING__( weapontype ) );
-        if ( kfsettting->_weapon_type != weapontype )
-        {
-            return _kf_display->SendToClient( player, KFMsg::ItemWeaponHeroLimit );
-        }
-
-        // 等级限制
-        if ( kfsettting->_level_limit != 0u )
-        {
-            auto level = kfhero->Get<uint32>( __STRING__( level ) );
-            if ( level < kfsettting->_level_limit )
-            {
-                return _kf_display->SendToClient( player, KFMsg::ItemWeaponLevelLimit );
-            }
+            return _kf_display->SendToClient( player, checkresult );
         }
 
         // 更换同步顺序, 武器是先移除, 然后会update到英雄身上
         player->SyncDataSequence( KFEnum::Dec, KFEnum::Set, KFEnum::Add );
 
-        // 卸载武器
-        MoveHeroWeapon( player, kfhero, kfitemrecord, false );
+        // 先卸下英雄身上的装备
+        auto kfheroweapon = kfhero->Move( __STRING__( weapon ), true );
 
         // 装备武器
-        auto kfweapon = player->MoveData( kfitemrecord, kfmsg.itemuuid(), kfhero, __STRING__( weapon ) );
-        if ( kfweapon == nullptr )
+        player->MoveData( kfitemrecord, kfmsg.itemuuid(), kfhero, __STRING__( weapon ) );
+
+        // 如果原来有武器, 把他放回背包
+        if ( kfheroweapon != nullptr )
         {
-            return _kf_display->SendToClient( player, KFMsg::ItemWeaponFailed );
+            player->AddData( kfitemrecord, kfheroweapon->GetKeyID(), kfheroweapon, false );
         }
 
         // 通知装备成功
@@ -194,15 +180,24 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::HeroNotExist );
         }
 
-        auto kfweapon = kfsourcehero->Find( __STRING__( weapon ) );
-        if ( kfweapon == nullptr || kfweapon->GetKeyID() == 0u )
+        auto kfsourceweapon = kfsourcehero->Find( __STRING__( weapon ) );
+        if ( kfsourceweapon == nullptr || kfsourceweapon->GetKeyID() == 0u )
         {
             return _kf_display->SendToClient( player, KFMsg::ItemWeaponNotExist );
         }
 
+        // 判断源英雄武器是否能装备到目标英雄
+        auto checkresult = CheckHeroWeapon( player, kftargethero, kfsourceweapon );
+        if ( checkresult != KFMsg::Ok )
+        {
+            return _kf_display->SendToClient( player, checkresult );
+        }
+
+        // 更换同步顺序, 武器是先移除, 然后会update到英雄身上
+        player->SyncDataSequence( KFEnum::Dec, KFEnum::Set, KFEnum::Add );
+
         // 判断包裹是否满子
         auto kfitemrecord = FindWeaponRecord( player );
-
         auto kftargetweapon = kftargethero->Find( __STRING__( weapon ) );
         if ( kftargetweapon != nullptr && kftargetweapon->GetKeyID() != 0u )
         {
@@ -211,17 +206,14 @@ namespace KFrame
             {
                 return _kf_display->SendToClient( player, KFMsg::ItemBagFull );
             }
+
+            // 先卸下目标英雄身上的武器
+            player->MoveData( kftargethero, __STRING__( weapon ), kfitemrecord );
         }
 
-        // 更换同步顺序, 武器是先移除, 然后会update到英雄身上
-        player->SyncDataSequence( KFEnum::Dec, KFEnum::Set, KFEnum::Add );
-
-        // 卸载武器
-        MoveHeroWeapon( player, kftargethero, kfitemrecord, false );
-
         // 装备武器
-        kfweapon = player->MoveData( kfsourcehero, __STRING__( weapon ), kftargethero, __STRING__( weapon ) );
-        if ( kfweapon == nullptr )
+        kfsourceweapon = player->MoveData( kfsourcehero, __STRING__( weapon ), kftargethero, __STRING__( weapon ) );
+        if ( kfsourceweapon == nullptr )
         {
             return _kf_display->SendToClient( player, KFMsg::ItemWeaponFailed );
         }
@@ -234,18 +226,6 @@ namespace KFrame
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgHeroUnWeaponReq );
 
-        auto kfhero = player->Find( __STRING__( hero ), kfmsg.herouuid() );
-        if ( kfhero == nullptr )
-        {
-            return _kf_display->SendToClient( player, KFMsg::HeroNotExist );
-        }
-
-        auto weaponid = kfhero->Get( __STRING__( weapon ), __STRING__( uuid ) );
-        if ( weaponid == 0u )
-        {
-            return _kf_display->SendToClient( player, KFMsg::ItemWeaponNotExist );
-        }
-
         // 判断武器背包是否满了
         auto kfitemrecord = FindWeaponRecord( player );
         if ( _kf_item->IsItemRecordFull( player, kfitemrecord ) )
@@ -253,10 +233,17 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::ItemBagFull );
         }
 
-        auto ok = MoveHeroWeapon( player, kfhero, kfitemrecord, false );
-        if ( !ok )
+        auto kfhero = player->Find( __STRING__( hero ), kfmsg.herouuid() );
+        if ( kfhero == nullptr )
         {
-            return _kf_display->SendToClient( player, KFMsg::ItemUnWeaponFailed );
+            return _kf_display->SendToClient( player, KFMsg::HeroNotExist );
+        }
+
+        // 卸下武器
+        auto kfweapon = player->MoveData( kfhero, __STRING__( weapon ), kfitemrecord );
+        if ( kfweapon == nullptr || kfweapon->GetKeyID() == 0u )
+        {
+            return _kf_display->SendToClient( player, KFMsg::ItemWeaponNotExist );
         }
 
         _kf_display->SendToClient( player, KFMsg::ItemUnWeaponOk );
@@ -298,13 +285,35 @@ namespace KFrame
 
     __KF_UPDATE_DATA_FUNCTION__( KFItemWeaponModule::OnWeaponTypeUpdate )
     {
+        // 判断是否可以装备
+        auto kfhero = kfdata->GetParent();
+        auto kfweapon = kfhero->Find( __STRING__( weapon ) );
+        if ( kfweapon == nullptr || kfweapon->GetKeyID() == 0u )
+        {
+            return;
+        }
+
+        // 判断是否能装备
+        auto checkresult = CheckHeroWeapon( player, kfhero, kfweapon );
+        if ( checkresult == KFMsg::Ok )
+        {
+            return;
+        }
+
+        // 不能装备卸下来
         auto kfitemrecord = FindWeaponRecord( player );
-        MoveHeroWeapon( player, kfdata->GetParent(), kfitemrecord, false );
+        player->MoveData( kfhero, __STRING__( weapon ), kfitemrecord );
     }
 
     __KF_REMOVE_DATA_FUNCTION__( KFItemWeaponModule::OnRemoveHero )
     {
+        auto kfweapon = kfdata->Move( __STRING__( weapon ), true );
+        if ( kfweapon == nullptr || kfweapon->GetKeyID() == 0u )
+        {
+            return;
+        }
+
         auto kfitemrecord = FindWeaponRecord( player );
-        MoveHeroWeapon( player, kfdata, kfitemrecord, true );
+        player->AddData( kfitemrecord, kfweapon->GetKeyID(), kfweapon, false );
     }
 }

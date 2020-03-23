@@ -1,11 +1,11 @@
-<root platform="" version="3373">
+<root platform="" version="3716">
 	<item Name="defaultprofession" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="defaultbackground" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="generatedirectattribute" Key="" Value="9" Channel="0" Service="0" />
 	<item Name="generaterandattribute" Key="" Value="2" Channel="0" Service="0" />
 	<item Name="maxdip" Key="" Value="1000" Channel="0" Service="0" />
-	<item Name="maxherocount" Key="" Value="12" Channel="0" Service="0" />
-	<item Name="initherolevellimit" Key="" Value="3" Channel="0" Service="0" />
+	<item Name="maxherocount" Key="" Value="6" Channel="0" Service="0" />
+	<item Name="initherolevellimit" Key="" Value="2" Channel="0" Service="0" />
 	<item Name="maxherolevel" Key="" Value="30" Channel="0" Service="0" />
 	<item Name="maxactivecount" Key="" Value="20" Channel="0" Service="0" />
 	<item Name="maxinnatecount" Key="" Value="4" Channel="0" Service="0" />
@@ -30,15 +30,14 @@
 	<item Name="herolistbuildid" Key="" Value="200" Channel="0" Service="0" />
 	<item Name="transferleveloffest" Key="" Value="4" Channel="0" Service="0" />
 	<item Name="Powercoefficient_B" Key="" Value="0" Channel="0" Service="0" />
-	<item Name="initclinicnum" Key="" Value="5000" Channel="0" Service="0" />
-	<item Name="initgranarynum" Key="" Value="2400" Channel="0" Service="0" />
+	<item Name="initclinicnum" Key="" Value="4000" Channel="0" Service="0" />
+	<item Name="initgranarynum" Key="" Value="1800" Channel="0" Service="0" />
 	<item Name="initsmithynum" Key="" Value="100" Channel="0" Service="0" />
-	<item Name="roledurability_pve" Key="" Value="50" Channel="0" Service="0" />
-	<item Name="roledurability_pveconsume" Key="" Value="1" Channel="0" Service="0" />
-	<item Name="roledurability_exploreconsume" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="roledeath_characterpool" Key="" Value="4069001" Channel="0" Service="0" />
 	<item Name="heronamelength" Key="" Value="40" Channel="0" Service="0" />
 	<item Name="exploregrainwarningcount" Key="" Value="50" Channel="0" Service="0" />
 	<item Name="contracttimefid" Key="" Value="7" Channel="0" Service="0" />
 	<item Name="contractpricefid" Key="" Value="8" Channel="0" Service="0" />
+	<item Name="role_retirenum" Key="" Value="100" Channel="0" Service="0" />
+	<item Name="roledurability_promtrate" Key="" Value="0.2" Channel="0" Service="0" />
 </root>

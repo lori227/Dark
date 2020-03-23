@@ -1,6 +1,7 @@
 ﻿#ifndef __KF_ITEM_SETTING_H__
 #define __KF_ITEM_SETTING_H__
 
+#include "KFrameEx.h"
 #include "KFCore/KFElement.h"
 #include "KFZConfig/KFSetting.h"
 

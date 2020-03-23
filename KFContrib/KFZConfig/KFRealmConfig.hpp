@@ -44,6 +44,12 @@ namespace KFrame
 
         // 消耗耐久度
         uint32 _durability = 0u;
+
+        // 探索时间配置id
+        uint32 _time_id = 0u;
+
+        // 探索天气配置id
+        uint32 _weather_id = 0u;
     };
 
     class KFRealmSeting : public KFIntSetting

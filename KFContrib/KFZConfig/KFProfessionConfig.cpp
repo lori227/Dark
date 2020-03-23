@@ -18,6 +18,10 @@ namespace KFrame
         auto strweapon = xmlnode.GetString( "WeaponType" );
         KFUtility::SplitSet( kfsetting->_weapon_type_list, strweapon, __SPLIT_STRING__ );
 
+        // 音色类型
+        auto strvoice = xmlnode.GetString( "VoiceType" );
+        KFUtility::SplitList( kfsetting->_voice_list, strvoice, __SPLIT_STRING__ );
+
         // 属性偏好率
         std::list< std::string > keylist;
         xmlnode.GetKeyList( keylist );

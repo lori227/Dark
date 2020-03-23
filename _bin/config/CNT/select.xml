@@ -1,4 +1,8 @@
-<root platform="" version="3416">
-	<item Id="1" Count="2" NormalDrop="5900405" InnerDrop="5900405" LocalEvent="" />
-	<item Id="2" Count="2" NormalDrop="5900406" InnerDrop="5900406" LocalEvent="" />
+<root platform="" version="3468">
+	<item Id="36000001" Count="2" NormalDrop="5500201" InnerDrop="5500201" Title="MultiOption_OilBegging_MultiSelect_Title" Description="MultiOption_OilBegging_MultiSelect_Des" LocalEvent="" />
+	<item Id="36000002" Count="2" NormalDrop="5500202" InnerDrop="5500202" Title="MultiOption_OilBegging_MultiSelect_Title" Description="MultiOption_OilBegging_MultiSelect_Des" LocalEvent="" />
+	<item Id="36000003" Count="2" NormalDrop="5500203" InnerDrop="5500203" Title="MultiOption_OilBegging_MultiSelect_Title" Description="MultiOption_OilBegging_MultiSelect_Des" LocalEvent="" />
+	<item Id="36000004" Count="2" NormalDrop="5500204" InnerDrop="5500204" Title="MultiOption_OilBegging_MultiSelect_Title" Description="MultiOption_OilBegging_MultiSelect_Des" LocalEvent="" />
+	<item Id="36000005" Count="2" NormalDrop="5500205" InnerDrop="5500205" Title="MultiOption_OilBegging_MultiSelect_Title" Description="MultiOption_OilBegging_MultiSelect_Des" LocalEvent="" />
+	<item Id="36000006" Count="2" NormalDrop="5500206" InnerDrop="5500206" Title="MultiOption_OilBegging_MultiSelect_Title" Description="MultiOption_OilBegging_MultiSelect_Des" LocalEvent="" />
 </root>

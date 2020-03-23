@@ -50,6 +50,10 @@ namespace KFrame
             auto strdata = __FORMAT__( kfsetting->_element_template, datavalue, dataid );
             _str_element = __FORMAT__( "[{}]", strdata );
         }
+        else
+        {
+            __LOG_ERROR__( "dataname=[{}] no template", dataname );
+        }
 
         return _str_element;
     }
@@ -59,6 +63,7 @@ namespace KFrame
         auto kfsetting = FindSetting( dataname );
         if ( kfsetting == nullptr )
         {
+            __LOG_ERROR__( "dataname=[{}] no template", dataname );
             return false;
         }
 
@@ -135,6 +140,10 @@ namespace KFrame
         if ( kfsetting != nullptr )
         {
             _str_element = __FORMAT__( kfsetting->_element_template, num, code );
+        }
+        else
+        {
+            __LOG_ERROR__( "dataname=[{}] no template", iter->second );
         }
 
         return _str_element;

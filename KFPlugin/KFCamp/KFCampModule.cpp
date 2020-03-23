@@ -6,7 +6,6 @@ namespace KFrame
     void KFCampModule::BeforeRun()
     {
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        __REGISTER_EXECUTE__( __STRING__( camplevellimit ), &KFCampModule::OnExecuteCampAddData );
         __REGISTER_EXECUTE__( __STRING__( campupgradelist ), &KFCampModule::OnExecuteCampAddData );
         __REGISTER_EXECUTE__( __STRING__( campdectime ), &KFCampModule::OnExecuteCampAddData );
         __REGISTER_EXECUTE__( __STRING__( campdecconsume ), &KFCampModule::OnExecuteCampAddData );
@@ -17,7 +16,6 @@ namespace KFrame
     void KFCampModule::BeforeShut()
     {
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        __UN_EXECUTE__( __STRING__( camplevellimit ) );
         __UN_EXECUTE__( __STRING__( campupgradelist ) );
         __UN_EXECUTE__( __STRING__( campdectime ) );
         __UN_EXECUTE__( __STRING__( campdecconsume ) );

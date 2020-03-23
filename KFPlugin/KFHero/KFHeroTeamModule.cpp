@@ -392,8 +392,8 @@ namespace KFrame
                 continue;
             }
 
-            auto nowhp = kfhero->Get<uint32>( __STRING__( fighter ), __STRING__( hp ) );
-            value = nowhp * value / KFRandEnum::TenThousand;
+            auto maxhp = kfhero->Get<uint32>( __STRING__( fighter ), __STRING__( maxhp ) );
+            value = maxhp * value / KFRandEnum::TenThousand;
             _kf_hero->OperateHp( player, kfhero, operate, value );
         }
     }

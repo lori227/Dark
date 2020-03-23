@@ -11,6 +11,9 @@ namespace KFrame
         kfsetting->_attr_id = xmlnode.GetUInt32( "AttrId" );
         kfsetting->_growth_id = xmlnode.GetUInt32( "GrowthId" );
         kfsetting->_cost_formula_id = xmlnode.GetUInt32( "FormulaId" );
+        kfsetting->_durability = xmlnode.GetUInt32( "RoleDurability" );
+        kfsetting->_level = xmlnode.GetUInt32( "Level" );
+        kfsetting->_exp_rate = xmlnode.GetUInt32( "ExpRate" );
 
         auto strcharacter = xmlnode.GetString( "CharacterPool", true );
         KFUtility::SplitList( kfsetting->_character_pool_list, strcharacter, __SPLIT_STRING__ );

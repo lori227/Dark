@@ -106,6 +106,8 @@ namespace KFrame
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     void KFRealmData::RecordBeginHeros( KFEntity* player )
     {
+        _data.clear_herodata();
+
         auto kfherorecord = player->Find( __STRING__( hero ) );
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
         for ( auto kfteam = kfteamarray->First(); kfteam != nullptr; kfteam = kfteamarray->Next() )
@@ -276,6 +278,13 @@ namespace KFrame
             return;
         }
 
+        // 自动销毁的道具不纪录
+        auto kftypesetting = KFItemTypeConfig::Instance()->FindSetting( kfsetting->_type );
+        if ( kftypesetting == nullptr || kftypesetting->_is_auto == KFMsg::AutoDestory )
+        {
+            return;
+        }
+
         KFMsg::PBBalanceItemServer* pbitem = nullptr;
         if ( kfsetting->IsOverlay() )
         {
@@ -307,7 +316,7 @@ namespace KFrame
         BalanceItemRecord( pbdata );
 
         // 失去的道具
-        pbdata->mutable_loseitem()->Swap( _data.mutable_loseitem() );
+        pbdata->mutable_loseitem()->CopyFrom( _data.loseitem() );
     }
 
     void KFRealmData::BalanceDropData( KFEntity* player )

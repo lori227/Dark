@@ -84,7 +84,7 @@ namespace KFrame
         auto kfbuild = player->Find( __STRING__( build ), kfsetting->_build_id );
         if ( kfbuild != nullptr )
         {
-            player->UpdateData( kfbuild, __STRING__( technology ), KFEnum::Add, 1u );
+            player->UpdateData( kfbuild, __STRING__( technologycount ), KFEnum::Add, 1u );
         }
 
         // 解锁后置科技
@@ -153,7 +153,7 @@ namespace KFrame
         {
             for ( auto kfbuild = kfbuildrecord->First(); kfbuild != nullptr; kfbuild = kfbuildrecord->Next() )
             {
-                kfbuild->Set( __STRING__( technology ), 0u );
+                kfbuild->Set( __STRING__( technologycount ), 0u );
             }
         }
 
@@ -178,7 +178,7 @@ namespace KFrame
             auto kfbuild = kfbuildrecord->Find( kfsetting->_build_id );
             if ( kfbuild != nullptr )
             {
-                kfbuild->Operate( __STRING__( technology ), KFEnum::Add, 1u );
+                kfbuild->Operate( __STRING__( technologycount ), KFEnum::Add, 1u );
             }
         }
     }

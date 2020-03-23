@@ -53,6 +53,28 @@ namespace KFMsg {
 }  // namespace KFMsg
 namespace KFMsg {
 
+enum ConstDefineEnum {
+  UnknowConse = 0,
+  InfiniteStep = 99999,
+  InfiniteTurn = 99999,
+  ConstDefineEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  ConstDefineEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+LIBPROTOC_EXPORT bool ConstDefineEnum_IsValid(int value);
+const ConstDefineEnum ConstDefineEnum_MIN = UnknowConse;
+const ConstDefineEnum ConstDefineEnum_MAX = InfiniteStep;
+const int ConstDefineEnum_ARRAYSIZE = ConstDefineEnum_MAX + 1;
+
+LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* ConstDefineEnum_descriptor();
+inline const ::std::string& ConstDefineEnum_Name(ConstDefineEnum value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ConstDefineEnum_descriptor(), value);
+}
+inline bool ConstDefineEnum_Parse(
+    const ::std::string& name, ConstDefineEnum* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ConstDefineEnum>(
+    ConstDefineEnum_descriptor(), name, value);
+}
 enum CampEnum {
   UnknowCamp = 0,
   RedCamp = 1,
@@ -142,6 +164,28 @@ inline bool HeroLockEnum_Parse(
     const ::std::string& name, HeroLockEnum* value) {
   return ::google::protobuf::internal::ParseNamedEnum<HeroLockEnum>(
     HeroLockEnum_descriptor(), name, value);
+}
+enum HeroRemoveEnum {
+  RemoveUnknown = 0,
+  Dismissal = 101,
+  Retirement = 102,
+  HeroRemoveEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  HeroRemoveEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+LIBPROTOC_EXPORT bool HeroRemoveEnum_IsValid(int value);
+const HeroRemoveEnum HeroRemoveEnum_MIN = RemoveUnknown;
+const HeroRemoveEnum HeroRemoveEnum_MAX = Retirement;
+const int HeroRemoveEnum_ARRAYSIZE = HeroRemoveEnum_MAX + 1;
+
+LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* HeroRemoveEnum_descriptor();
+inline const ::std::string& HeroRemoveEnum_Name(HeroRemoveEnum value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    HeroRemoveEnum_descriptor(), value);
+}
+inline bool HeroRemoveEnum_Parse(
+    const ::std::string& name, HeroRemoveEnum* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<HeroRemoveEnum>(
+    HeroRemoveEnum_descriptor(), name, value);
 }
 enum BuildEnum {
   InvalidBuild = 0,
@@ -462,6 +506,29 @@ inline bool JumpEnum_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<JumpEnum>(
     JumpEnum_descriptor(), name, value);
 }
+enum RealmTimeEnum {
+  TimeInvalid = 0,
+  Morning = 1,
+  Afternoon = 2,
+  Night = 3,
+  RealmTimeEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  RealmTimeEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+LIBPROTOC_EXPORT bool RealmTimeEnum_IsValid(int value);
+const RealmTimeEnum RealmTimeEnum_MIN = TimeInvalid;
+const RealmTimeEnum RealmTimeEnum_MAX = Night;
+const int RealmTimeEnum_ARRAYSIZE = RealmTimeEnum_MAX + 1;
+
+LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* RealmTimeEnum_descriptor();
+inline const ::std::string& RealmTimeEnum_Name(RealmTimeEnum value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    RealmTimeEnum_descriptor(), value);
+}
+inline bool RealmTimeEnum_Parse(
+    const ::std::string& name, RealmTimeEnum* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<RealmTimeEnum>(
+    RealmTimeEnum_descriptor(), name, value);
+}
 // ===================================================================
 
 
@@ -485,6 +552,11 @@ inline bool JumpEnum_Parse(
 namespace google {
 namespace protobuf {
 
+template <> struct is_proto_enum< ::KFMsg::ConstDefineEnum> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::ConstDefineEnum>() {
+  return ::KFMsg::ConstDefineEnum_descriptor();
+}
 template <> struct is_proto_enum< ::KFMsg::CampEnum> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::CampEnum>() {
@@ -504,6 +576,11 @@ template <> struct is_proto_enum< ::KFMsg::HeroLockEnum> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::HeroLockEnum>() {
   return ::KFMsg::HeroLockEnum_descriptor();
+}
+template <> struct is_proto_enum< ::KFMsg::HeroRemoveEnum> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::HeroRemoveEnum>() {
+  return ::KFMsg::HeroRemoveEnum_descriptor();
 }
 template <> struct is_proto_enum< ::KFMsg::BuildEnum> : ::std::true_type {};
 template <>
@@ -569,6 +646,11 @@ template <> struct is_proto_enum< ::KFMsg::JumpEnum> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::JumpEnum>() {
   return ::KFMsg::JumpEnum_descriptor();
+}
+template <> struct is_proto_enum< ::KFMsg::RealmTimeEnum> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::RealmTimeEnum>() {
+  return ::KFMsg::RealmTimeEnum_descriptor();
 }
 
 }  // namespace protobuf

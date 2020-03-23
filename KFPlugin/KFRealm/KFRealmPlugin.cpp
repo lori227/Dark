@@ -3,6 +3,8 @@
 #include "KFRealmModule.hpp"
 #include "KFGambleModule.hpp"
 #include "KFBuffModule.hpp"
+#include "KFRealmTimeModule.hpp"
+#include "KFWeatherModule.hpp"
 #include "KFConfig/KFConfigInterface.h"
 //////////////////////////////////////////////////////////////////////////
 
@@ -14,6 +16,8 @@ namespace KFrame
         __REGISTER_MODULE__( KFBuff );
         __REGISTER_MODULE__( KFRealm );
         __REGISTER_MODULE__( KFGamble );
+        __REGISTER_MODULE__( KFWeather );
+        __REGISTER_MODULE__( KFRealmTime );
     }
 
     void KFRealmPlugin::UnInstall()
@@ -22,6 +26,8 @@ namespace KFrame
         __UN_MODULE__( KFBuff );
         __UN_MODULE__( KFRealm );
         __UN_MODULE__( KFGamble );
+        __UN_MODULE__( KFWeather );
+        __UN_MODULE__( KFRealmTime );
     }
 
     void KFRealmPlugin::LoadModule()
@@ -51,6 +57,7 @@ namespace KFrame
         __KF_ADD_CONFIG__( KFElementConfig );
         __KF_ADD_CONFIG__( KFCurrencyConfig );
         __KF_ADD_CONFIG__( KFItemConfig );
+        __KF_ADD_CONFIG__( KFItemTypeConfig );
         __KF_ADD_CONFIG__( KFElementConfig );
         __KF_ADD_CONFIG__( KFPunishConfig );
         __KF_ADD_CONFIG__( KFNpcGroupConfig );
@@ -60,5 +67,8 @@ namespace KFrame
         __KF_ADD_CONFIG__( KFExchangeConfig );
         __KF_ADD_CONFIG__( KFSelectConfig );
         __KF_ADD_CONFIG__( KFMultiEventConfig );
+        __KF_ADD_CONFIG__( KFLevelValueConfig );
+        __KF_ADD_CONFIG__( KFRealmTimeConfig );
+        __KF_ADD_CONFIG__( KFWeatherConfig );
     }
 }

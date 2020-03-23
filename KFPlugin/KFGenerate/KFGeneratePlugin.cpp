@@ -21,6 +21,7 @@ namespace KFrame
         __FIND_MODULE__( _kf_config, KFConfigInterface );
         __FIND_MODULE__( _kf_kernel, KFKernelInterface );
         __FIND_MODULE__( _kf_option, KFOptionInterface );
+        __FIND_MODULE__( _kf_hero, KFHeroInterface );
     }
 
     void KFGeneratePlugin::AddConfig()
@@ -41,6 +42,7 @@ namespace KFrame
         __KF_ADD_CONFIG__( KFItemConfig );
         __KF_ADD_CONFIG__( KFTransferConfig );
         __KF_ADD_CONFIG__( KFWeaponTypeConfig );
+        __KF_ADD_CONFIG__( KFQualityConfig );
     }
 
 }

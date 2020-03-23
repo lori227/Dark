@@ -13,6 +13,7 @@ namespace KFrame
         __REGISTER_MODULE__( KFHero );
         __REGISTER_MODULE__( KFHeroTeam );
         __REGISTER_MODULE__( KFTransfer );
+        __REGISTER_MODULE__( KFContract );
     }
 
     void KFHeroPlugin::UnInstall()
@@ -20,6 +21,7 @@ namespace KFrame
         __UN_MODULE__( KFHero );
         __UN_MODULE__( KFHeroTeam );
         __UN_MODULE__( KFTransfer );
+        __UN_MODULE__( KFContract );
     }
 
     void KFHeroPlugin::LoadModule()

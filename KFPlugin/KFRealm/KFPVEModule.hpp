@@ -96,12 +96,23 @@ namespace KFrame
         // 更新信仰值
         __KF_MESSAGE_FUNCTION__( HandleUpdateFaithReq );
 
+        // 回合结束
+        __KF_MESSAGE_FUNCTION__( HandleTurnStartReq );
+
+        // 回合结束
+        __KF_MESSAGE_FUNCTION__( HandleTurnFinishReq );
     protected:
         virtual void BindPVEStartFunction( const std::string& module, KFPVEStartFunction& function );
         virtual void UnBindPVEStartFunction( const std::string& module );
 
         virtual void BindPVEFinishFunction( const std::string& module, KFPVEFinishFunction& function );
         virtual void UnBindPVEFinishFunction( const std::string& module );
+
+        virtual void BindTurnStartFunction( const std::string& module, KFTurnStartFunction& function );
+        virtual void UnBindTurnStartFunction( const std::string& module );
+
+        virtual void BindTurnFinishFunction( const std::string& module, KFTurnFinishFunction& function );
+        virtual void UnBindTurnFinishFunction( const std::string& module );
         /////////////////////////////////////////////////////////////////////////////////////////////////////
         // 部署战斗
         uint32 PVEFighter( KFEntity* player, uint32 pveid, uint32 npcgrouid, uint32 spawnrule, uint32 dungeonid, const std::string& modulename, uint64 moduleid );
@@ -140,7 +151,7 @@ namespace KFrame
         void StatisticsHeroKillNpc( KFEntity* player, KFData* kfnpcrecord, KFRealmData* kfrecord, uint32 pveresult, uint64 herouuid, uint64 npcid );
 
         // 计算逃跑成功率
-        uint32 CalcFleeSuccessRate( KFEntity* player, const KFPVESetting* kfsetting, double herolevel, double npclevel );
+        uint32 CalcFleeSuccessRate( KFEntity* player, const KFPVESetting* kfsetting, double herolevel, double npclevel, bool isinrealm );
 
         // 逃跑惩罚
         PunishDataList& PVEFleePunish( KFEntity* player, KFRealmData* kfpvedata );
@@ -164,6 +175,12 @@ namespace KFrame
 
         // 结束战斗回调
         KFBind< std::string, const std::string&, KFPVEFinishFunction > _pve_finish_function;
+
+        // 开始回合回调
+        KFBind< std::string, const std::string&, KFTurnFinishFunction > _turn_start_function;
+
+        // 结束回合回调
+        KFBind< std::string, const std::string&, KFTurnFinishFunction > _turn_finish_function;
     };
 }
 

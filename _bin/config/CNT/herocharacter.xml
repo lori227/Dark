@@ -1,4 +1,4 @@
-<root version="1993">
+<root platform="" version="3606">
 	<item Id="120000" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="208000" />
 	<item Id="120001" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="208001" />
 	<item Id="120002" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="208002" />
@@ -32,4 +32,5 @@
 	<item Id="120104" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="207004" />
 	<item Id="120105" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="207005" />
 	<item Id="120106" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="207006" />
+	<item Id="120107" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="208026" />
 </root>

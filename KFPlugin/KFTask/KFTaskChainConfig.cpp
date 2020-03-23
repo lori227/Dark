@@ -69,7 +69,7 @@ namespace KFrame
         kfsetting->_str_cost = xmlnode.GetString( "PickupCost" );
 
         auto strcondition = xmlnode.GetString( "Condition" );
-        kfsetting->_conditions.Parse( strcondition, kfsetting->_id, __FUNC_LINE__ );
+        kfsetting->_conditions.Parse( strcondition, kfsetting->_id, __FILE__, __LINE__ );
 
         auto resettimeid = xmlnode.GetUInt32( "ResetTime" );
         if ( resettimeid != 0 )

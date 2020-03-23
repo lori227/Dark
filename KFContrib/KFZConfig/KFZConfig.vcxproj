@@ -27,6 +27,7 @@
     <ClInclude Include="KFGenerateConfig.hpp" />
     <ClInclude Include="KFInitialProcessConfig.hpp" />
     <ClInclude Include="KFInnerWorldConfig.hpp" />
+    <ClInclude Include="KFLevelValueConfig.hpp" />
     <ClInclude Include="KFMultiEventConfig.hpp" />
     <ClInclude Include="KFNpcConfig.hpp" />
     <ClInclude Include="KFNpcGroupConfig.hpp" />
@@ -34,6 +35,8 @@
     <ClInclude Include="KFNpcSkillConfig.hpp" />
     <ClInclude Include="KFPinchFaceConfig.hpp" />
     <ClInclude Include="KFPunishConfig.hpp" />
+    <ClInclude Include="KFQualityConfig.hpp" />
+    <ClInclude Include="KFRealmTimeConfig.hpp" />
     <ClInclude Include="KFSelectConfig.hpp" />
     <ClInclude Include="KFStoryConfig.hpp" />
     <ClInclude Include="KFTechnologyConfig.hpp" />
@@ -58,6 +61,7 @@
     <ClInclude Include="KFSkillConfig.hpp" />
     <ClInclude Include="KFTransferConfig.hpp" />
     <ClInclude Include="KFWeaponTypeConfig.hpp" />
+    <ClInclude Include="KFWeatherConfig.hpp" />
     <ClInclude Include="KFWeightConfig.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +79,7 @@
     <ClCompile Include="KFGenerateConfig.cpp" />
     <ClCompile Include="KFInitialProcessConfig.cpp" />
     <ClCompile Include="KFInnerWorldConfig.cpp" />
+    <ClCompile Include="KFLevelValueConfig.cpp" />
     <ClCompile Include="KFMultiEventConfig.cpp" />
     <ClCompile Include="KFNpcConfig.cpp" />
     <ClCompile Include="KFNpcGroupConfig.cpp" />
@@ -82,6 +87,8 @@
     <ClCompile Include="KFNpcSkillConfig.cpp" />
     <ClCompile Include="KFPinchFaceConfig.cpp" />
     <ClCompile Include="KFPunishConfig.cpp" />
+    <ClCompile Include="KFQualityConfig.cpp" />
+    <ClCompile Include="KFRealmTimeConfig.cpp" />
     <ClCompile Include="KFSelectConfig.cpp" />
     <ClCompile Include="KFStoryConfig.cpp" />
     <ClCompile Include="KFTechnologyConfig.cpp" />
@@ -101,6 +108,7 @@
     <ClCompile Include="KFSkillConfig.cpp" />
     <ClCompile Include="KFTransferConfig.cpp" />
     <ClCompile Include="KFWeaponTypeConfig.cpp" />
+    <ClCompile Include="KFWeatherConfig.cpp" />
     <ClCompile Include="KFWeightConfig.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

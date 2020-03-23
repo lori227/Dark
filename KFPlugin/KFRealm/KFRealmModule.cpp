@@ -6,8 +6,9 @@ namespace KFrame
     {
         _kf_component = _kf_kernel->FindComponent( __STRING__( player ) );
 
+        __REGISTER_ENTER_PLAYER__( &KFRealmModule::OnEnterInitRealmData );
         __REGISTER_LEAVE_PLAYER__( &KFRealmModule::OnLeaveSaveRealmData );
-
+        __REGISTER_REALM_MOVE__( &KFRealmModule::OnReamlMoveCostFood );
         __REGISTER_EXECUTE__( __STRING__( realm ), &KFRealmModule::OnExecuteRealm );
         ///////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_REALM_ENTER_REQ, &KFRealmModule::HandleRealmEnterReq );
@@ -24,11 +25,9 @@ namespace KFrame
 
     void KFRealmModule::BeforeShut()
     {
+        __UN_ENTER_PLAYER__();
         __UN_LEAVE_PLAYER__();
-
-        __UN_DROP_LOGIC__( __STRING__( addbuff ) );
-        __UN_DROP_LOGIC__( __STRING__( decbuff ) );
-
+        __UN_REALM_MOVE__();
         __UN_EXECUTE__( __STRING__( realm ) );
         //////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_REALM_ENTER_REQ );
@@ -44,15 +43,26 @@ namespace KFrame
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////
-    void KFRealmModule::BindEnterRealmFunction( const std::string& module, KFEnterRealmFunction& function )
+    void KFRealmModule::BindRealmEnterFunction( const std::string& module, KFRealmEnterFunction& function )
     {
-        auto kffunction = _enter_realm_function.Create( module );
+        auto kffunction = _realm_enter_function.Create( module );
         kffunction->_function = function;
     }
 
-    void KFRealmModule::UnBindEnterRealmFunction( const std::string& module )
+    void KFRealmModule::UnBindRealmEnterFunction( const std::string& module )
     {
-        _enter_realm_function.Remove( module );
+        _realm_enter_function.Remove( module );
+    }
+
+    void KFRealmModule::BindRealmMoveFunction( const std::string& module, KFRealmMoveFunction& function )
+    {
+        auto kffunction = _realm_move_function.Create( module );
+        kffunction->_function = function;
+    }
+
+    void KFRealmModule::UnBindRealmMoveFunction( const std::string& module )
+    {
+        _realm_move_function.Remove( module );
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -143,7 +153,7 @@ namespace KFrame
         _kf_player->SendToClient( player, KFMsg::MSG_REALM_ENTER_ACK, &ack );
 
         // 进入秘境回调
-        for ( auto& iter : _enter_realm_function._objects )
+        for ( auto& iter : _realm_enter_function._objects )
         {
             auto kffunction = iter.second;
             kffunction->_function( player, kfrealmdata, entertype );
@@ -191,6 +201,7 @@ namespace KFrame
         }
 
         // 保存地图
+        player->Set( __STRING__( realmdata ), _invalid_string );
         player->UpdateData( __STRING__( realmid ), KFEnum::Set, realmid );
         player->UpdateData( __STRING__( realmtown ), KFEnum::Set, _invalid_int );
         //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -238,27 +249,10 @@ namespace KFrame
 
     std::tuple<uint32, KFRealmData*, KFMsg::PBExploreData*> KFRealmModule::RealmLoginEnter( KFEntity* player, uint32 realmid )
     {
-        auto count = _kf_hero_team->GetAliveHeroCount( player );
-        if ( count == 0u )
+        auto kfrealmdata = _realm_data.Find( player->GetKeyID() );
+        if ( kfrealmdata == nullptr )
         {
-            player->UpdateData( __STRING__( realmid ), KFEnum::Set, 0u );
-            return std::make_tuple( KFMsg::RealmHeroTeamEmpty, nullptr, nullptr );
-        }
-
-        auto strdata = player->Get<std::string>( __STRING__( realmdata ) );
-        if ( strdata.empty() )
-        {
-            player->UpdateData( __STRING__( realmid ), KFEnum::Set, 0u );
-            return std::make_tuple( KFMsg::RealmNotInExplore, nullptr, nullptr );
-        }
-
-        player->Set( __STRING__( realmdata ), _invalid_string );
-        auto kfrealmdata = _realm_data.Create( player->GetKeyID() );
-        auto ok = kfrealmdata->_data.ParseFromString( strdata );
-        if ( !ok )
-        {
-            player->UpdateData( __STRING__( realmid ), KFEnum::Set, 0u );
-            return std::make_tuple( KFMsg::RealmDataError, nullptr, nullptr );
+            return std::make_tuple( KFMsg::RealmNotInStatus, nullptr, nullptr );
         }
 
         if ( realmid != kfrealmdata->_data.id() )
@@ -282,6 +276,12 @@ namespace KFrame
 
     std::tuple<uint32, KFRealmData*, KFMsg::PBExploreData*> KFRealmModule::RealmTownEnter( KFEntity* player, uint32 realmid )
     {
+        auto kfrealmdata = _realm_data.Find( player->GetKeyID() );
+        if ( kfrealmdata == nullptr )
+        {
+            return std::make_tuple( KFMsg::RealmNotInExplore, nullptr, nullptr );
+        }
+
         auto realmtown = player->Get<uint32>( __STRING__( realmtown ) );
         if ( realmtown == 0u )
         {
@@ -291,28 +291,8 @@ namespace KFrame
         // 设置探索不在回城状态
         player->UpdateData( __STRING__( realmtown ), KFEnum::Set, 0u );
 
-        auto kfrealmdata = _realm_data.Find( player->GetKeyID() );
-        if ( kfrealmdata == nullptr )
-        {
-            auto strdata = player->Get<std::string>( __STRING__( realmdata ) );
-            if ( strdata.empty() )
-            {
-                player->UpdateData( __STRING__( realmid ), KFEnum::Set, 0u );
-                return std::make_tuple( KFMsg::RealmNotInExplore, nullptr, nullptr );
-            }
-
-            player->Set( __STRING__( realmdata ), _invalid_string );
-            kfrealmdata = _realm_data.Create( player->GetKeyID() );
-            auto ok = kfrealmdata->_data.ParseFromString( strdata );
-            if ( !ok )
-            {
-                player->UpdateData( __STRING__( realmid ), KFEnum::Set, 0u );
-                return std::make_tuple( KFMsg::RealmDataError, nullptr, nullptr );
-            }
-
-            // 设置开始时间
-            kfrealmdata->_data.set_starttime( KFGlobal::Instance()->_real_time );
-        }
+        // 设置开始时间
+        kfrealmdata->_data.set_starttime( KFGlobal::Instance()->_real_time );
 
         // 纪录初始道具信息
         kfrealmdata->RecordBeginItems( player );
@@ -424,7 +404,7 @@ namespace KFrame
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgRealmTownReq );
 
-        // 逃跑结算
+        // 回城结算
         RealmBalance( player, KFMsg::Town );
     }
 
@@ -588,6 +568,9 @@ namespace KFrame
 
             // 掉落显示
             kfrealmdata->BalanceDropData( player );
+
+            // 同步属性
+            player->SyncDataSequence( KFEnum::Set, KFEnum::Dec, KFEnum::Add );
         }
     }
 
@@ -682,11 +665,12 @@ namespace KFrame
 
         for ( auto& iter : destoryitemlist )
         {
-            player->MoveData( iter.first, __STRING__( count ), KFEnum::Dec, iter.second );
-
             // 纪录失去的道具
             auto pbitem = kfrealmdata->FindLose( iter.first->Get<uint32>( __STRING__( id ) ) );
             pbitem->set_count( pbitem->count() + iter.second );
+
+            // 删除道具
+            player->MoveData( iter.first, __STRING__( count ), KFEnum::Dec, iter.second );
         }
     }
 
@@ -708,15 +692,28 @@ namespace KFrame
         return kfrealmdata->IsInnerWorld();
     }
 
+    __KF_ENTER_PLAYER_FUNCTION__( KFRealmModule::OnEnterInitRealmData )
+    {
+        auto strdata = player->Get<std::string>( __STRING__( realmdata ) );
+        if ( strdata.empty() )
+        {
+            return;
+        }
+
+        player->Set( __STRING__( realmdata ), _invalid_string );
+        auto kfrealmdata = _realm_data.Create( player->GetKeyID() );
+        auto ok = kfrealmdata->_data.ParseFromString( strdata );
+        if ( !ok )
+        {
+            player->Set( __STRING__( realmid ), 0u );
+            player->Set( __STRING__( realmtown ), 0u );
+        }
+    }
+
     __KF_LEAVE_PLAYER_FUNCTION__( KFRealmModule::OnLeaveSaveRealmData )
     {
         auto kfrecord = _realm_data.Find( player->GetKeyID() );
-        if ( kfrecord == nullptr )
-        {
-            player->Set( __STRING__( realmid ), 0u );
-            player->Set( __STRING__( realmdata ), _invalid_string );
-        }
-        else
+        if ( kfrecord != nullptr )
         {
             auto usetime = KFGlobal::Instance()->_real_time - kfrecord->_data.starttime();
             kfrecord->_data.set_usetime( kfrecord->_data.usetime() + usetime );
@@ -742,58 +739,23 @@ namespace KFrame
         pbexplore->set_save( true );
 
         auto playerdata = pbexplore->mutable_playerdata();
-
         playerdata->set_x( kfmsg.playerdata().x() );
         playerdata->set_y( kfmsg.playerdata().y() );
         playerdata->set_z( kfmsg.playerdata().z() );
         playerdata->set_yaw( kfmsg.playerdata().yaw() );
-        playerdata->set_step( playerdata->step() + kfmsg.playerdata().step() );
-
         for ( auto i = 0; i < kfmsg.playerdata().fovarr_size(); ++i )
         {
             auto fov = kfmsg.playerdata().fovarr( i );
             playerdata->add_fovarr( fov );
         }
 
-        // 计算移动步数, 扣除粮食
-        ExploreCostFood( player, pbexplore );
-    }
-
-    void KFRealmModule::ExploreCostFood( KFEntity* player, KFMsg::PBExploreData* pbexplore )
-    {
-        auto kfsetting = FindRealmLevelSetting( player );
-        if ( kfsetting == nullptr || kfsetting->_food_step == 0u || kfsetting->_hp_step == 0u )
+        // 秘境移动逻辑回调
+        if ( kfmsg.playerdata().step() > 0u )
         {
-            return;
-        }
-
-        auto playerdata = pbexplore->mutable_playerdata();
-        auto kfitemrecord = player->Find( __STRING__( explore ) );
-
-        // 拥有粮食数量
-        static auto _food_option = _kf_option->FindOption( __STRING__( fooditemid ) );
-        auto havenum = _kf_item->GetItemCount( player, kfitemrecord, _food_option->_uint32_value, 1u );
-        if ( havenum > 0u )
-        {
-            auto count = playerdata->step() / kfsetting->_food_step;
-            if ( count != 0u )
+            for ( auto& iter : _realm_move_function._objects )
             {
-                playerdata->set_step( playerdata->step() - count * kfsetting->_food_step );
-
-                // 需要粮食数量
-                auto neednum = kfsetting->_food_num * count;
-                _kf_item->RemoveItem( player, kfitemrecord, _food_option->_uint32_value, neednum );
-            }
-        }
-        else
-        {
-            auto count = playerdata->step() / kfsetting->_hp_step;
-            if ( count != 0u )
-            {
-                playerdata->set_step( playerdata->step() - count * kfsetting->_hp_step );
-
-                auto dechp = kfsetting->_hp_num * count;
-                _kf_hero_team->OperateHpValue( player, KFEnum::Dec, dechp );
+                auto kffunction = iter.second;
+                kffunction->_function( player, kfrealmdata, kfmsg.playerdata().step() );
             }
         }
     }
@@ -893,4 +855,42 @@ namespace KFrame
         return kfsetting;
     }
 
+    __KF_REALM_MOVE_FUNCTION__( KFRealmModule::OnReamlMoveCostFood )
+    {
+        static auto _food_option = _kf_option->FindOption( __STRING__( fooditemid ) );
+
+        kfrealmdata->_data.set_foodstep( kfrealmdata->_data.foodstep() + movestep );
+        auto kfsetting = FindRealmLevelSetting( player );
+        if ( kfsetting == nullptr || kfsetting->_food_step == 0u || kfsetting->_hp_step == 0u )
+        {
+            return;
+        }
+
+        // 拥有粮食数量
+        auto kfitemrecord = player->Find( __STRING__( explore ) );
+        auto havenum = _kf_item->GetItemCount( player, kfitemrecord, _food_option->_uint32_value, 1u );
+        if ( havenum > 0u )
+        {
+            auto count = kfrealmdata->_data.foodstep() / kfsetting->_food_step;
+            if ( count != 0u )
+            {
+                kfrealmdata->_data.set_foodstep( kfrealmdata->_data.foodstep() - count * kfsetting->_food_step );
+
+                // 需要粮食数量
+                auto neednum = kfsetting->_food_num * count;
+                _kf_item->RemoveItem( player, kfitemrecord, _food_option->_uint32_value, neednum );
+            }
+        }
+        else
+        {
+            auto count = kfrealmdata->_data.foodstep() / kfsetting->_hp_step;
+            if ( count != 0u )
+            {
+                kfrealmdata->_data.set_foodstep( kfrealmdata->_data.foodstep() - count * kfsetting->_hp_step );
+
+                auto dechp = kfsetting->_hp_num * count;
+                _kf_hero_team->OperateHpValue( player, KFEnum::Dec, dechp );
+            }
+        }
+    }
 }

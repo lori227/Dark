@@ -263,7 +263,9 @@ namespace KFrame
     {
         // 设置成已经领取状态, 防止删除失败后还能领取
         kftask->Set<uint32>( __STRING__( type ), kfsetting->_type );
-        kftask->Set<uint32>( __STRING__( status ), KFMsg::ReceiveStatus );
+
+        // 更新状态
+        player->UpdateData( kftask, __STRING__( status ), KFEnum::Set, KFMsg::ReceiveStatus );
 
         // 任务输出执行
         TaskExecute( player, kftask, kfsetting );

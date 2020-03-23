@@ -1,4 +1,4 @@
-<root platform="" version="3411">
+<root platform="" version="3600">
 	<item Id="1" DialogueId="8000001" Sequence="1" Branch="" />
 	<item Id="2" DialogueId="8000001" Sequence="2" Branch="" />
 	<item Id="3" DialogueId="8000001" Sequence="3" Branch="" />
@@ -97,42 +97,43 @@
 	<item Id="96" DialogueId="9000002" Sequence="2" Branch="" />
 	<item Id="97" DialogueId="9000002" Sequence="3" Branch="" />
 	<item Id="98" DialogueId="9000002" Sequence="4" Branch="" />
-	<item Id="99" DialogueId="9000002" Sequence="5" Branch="10001&amp;10002&amp;10005&amp;10000" />
+	<item Id="99" DialogueId="9000002" Sequence="5" Branch="10001,10002,10005,10000" />
 	<item Id="100" DialogueId="9000003" Sequence="1" Branch="" />
 	<item Id="101" DialogueId="9000003" Sequence="2" Branch="" />
 	<item Id="102" DialogueId="9000003" Sequence="3" Branch="" />
 	<item Id="103" DialogueId="9000004" Sequence="1" Branch="" />
 	<item Id="104" DialogueId="9000004" Sequence="2" Branch="" />
 	<item Id="105" DialogueId="9000004" Sequence="3" Branch="" />
-	<item Id="106" DialogueId="9000004" Sequence="4" Branch="10003&amp;10004" />
+	<item Id="106" DialogueId="9000004" Sequence="4" Branch="10003,10004" />
 	<item Id="107" DialogueId="9000005" Sequence="1" Branch="" />
 	<item Id="108" DialogueId="9000006" Sequence="1" Branch="" />
 	<item Id="109" DialogueId="9000006" Sequence="2" Branch="" />
-	<item Id="110" DialogueId="9000006" Sequence="3" Branch="10001&amp;10002&amp;10005&amp;10000" />
-	<item Id="111" DialogueId="8100001" Sequence="1" Branch="" />
-	<item Id="112" DialogueId="8100002" Sequence="1" Branch="" />
-	<item Id="113" DialogueId="8100003" Sequence="1" Branch="" />
-	<item Id="114" DialogueId="8100004" Sequence="1" Branch="" />
-	<item Id="115" DialogueId="8100005" Sequence="1" Branch="" />
-	<item Id="116" DialogueId="8100006" Sequence="1" Branch="" />
-	<item Id="117" DialogueId="8100007" Sequence="1" Branch="" />
-	<item Id="118" DialogueId="8100008" Sequence="1" Branch="" />
-	<item Id="119" DialogueId="8100009" Sequence="1" Branch="" />
-	<item Id="120" DialogueId="8100010" Sequence="1" Branch="" />
-	<item Id="121" DialogueId="8100011" Sequence="1" Branch="" />
-	<item Id="122" DialogueId="8100012" Sequence="1" Branch="" />
-	<item Id="123" DialogueId="8100013" Sequence="1" Branch="" />
-	<item Id="124" DialogueId="8100014" Sequence="1" Branch="" />
-	<item Id="125" DialogueId="8100015" Sequence="1" Branch="" />
-	<item Id="126" DialogueId="8100016" Sequence="1" Branch="" />
-	<item Id="127" DialogueId="8100017" Sequence="1" Branch="" />
-	<item Id="128" DialogueId="8100018" Sequence="1" Branch="" />
-	<item Id="129" DialogueId="8100019" Sequence="1" Branch="" />
-	<item Id="130" DialogueId="8100020" Sequence="1" Branch="" />
-	<item Id="131" DialogueId="8100021" Sequence="1" Branch="" />
-	<item Id="132" DialogueId="8100022" Sequence="1" Branch="" />
-	<item Id="133" DialogueId="8100023" Sequence="1" Branch="" />
-	<item Id="134" DialogueId="8100024" Sequence="1" Branch="" />
-	<item Id="135" DialogueId="8100025" Sequence="1" Branch="" />
-	<item Id="136" DialogueId="8110001" Sequence="1" Branch="" />
+	<item Id="110" DialogueId="9000006" Sequence="3" Branch="10001,10002,10005,10000" />
+	<item Id="111" DialogueId="9000007" Sequence="1" Branch="10010,10005" />
+	<item Id="112" DialogueId="8100001" Sequence="1" Branch="" />
+	<item Id="113" DialogueId="8100002" Sequence="1" Branch="" />
+	<item Id="114" DialogueId="8100003" Sequence="1" Branch="" />
+	<item Id="115" DialogueId="8100004" Sequence="1" Branch="" />
+	<item Id="116" DialogueId="8100005" Sequence="1" Branch="" />
+	<item Id="117" DialogueId="8100006" Sequence="1" Branch="" />
+	<item Id="118" DialogueId="8100007" Sequence="1" Branch="" />
+	<item Id="119" DialogueId="8100008" Sequence="1" Branch="" />
+	<item Id="120" DialogueId="8100009" Sequence="1" Branch="" />
+	<item Id="121" DialogueId="8100010" Sequence="1" Branch="" />
+	<item Id="122" DialogueId="8100011" Sequence="1" Branch="" />
+	<item Id="123" DialogueId="8100012" Sequence="1" Branch="" />
+	<item Id="124" DialogueId="8100013" Sequence="1" Branch="" />
+	<item Id="125" DialogueId="8100014" Sequence="1" Branch="" />
+	<item Id="126" DialogueId="8100015" Sequence="1" Branch="" />
+	<item Id="127" DialogueId="8100016" Sequence="1" Branch="" />
+	<item Id="128" DialogueId="8100017" Sequence="1" Branch="" />
+	<item Id="129" DialogueId="8100018" Sequence="1" Branch="" />
+	<item Id="130" DialogueId="8100019" Sequence="1" Branch="" />
+	<item Id="131" DialogueId="8100020" Sequence="1" Branch="" />
+	<item Id="132" DialogueId="8100021" Sequence="1" Branch="" />
+	<item Id="133" DialogueId="8100022" Sequence="1" Branch="" />
+	<item Id="134" DialogueId="8100023" Sequence="1" Branch="" />
+	<item Id="135" DialogueId="8100024" Sequence="1" Branch="" />
+	<item Id="136" DialogueId="8100025" Sequence="1" Branch="" />
+	<item Id="137" DialogueId="8110001" Sequence="1" Branch="" />
 </root>

@@ -5,7 +5,7 @@ namespace KFrame
 {
     void KFGambleModule::BeforeRun()
     {
-        __REGISTER_ENTER_REALM__( &KFGambleModule::OnEnterRealm );
+        __REGISTER_REALM_ENTER__( &KFGambleModule::OnEnterRealm );
         __REGISTER_DROP_LOGIC__( __STRING__( gamble ), &KFGambleModule::OnDropGambleItemLogic );
         //////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_GAMBLE_ITEM_SHOW_REQ, &KFGambleModule::HandleGambleItemShowReq );
@@ -34,7 +34,7 @@ namespace KFrame
         // do nothing
     }
 
-    __KF_ENTER_REALM_FUNCTION__( KFGambleModule::OnEnterRealm )
+    __KF_REALM_ENTER_FUNCTION__( KFGambleModule::OnEnterRealm )
     {
         if ( entertype == KFMsg::EnterLogin )
         {

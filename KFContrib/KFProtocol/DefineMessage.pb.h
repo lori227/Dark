@@ -1986,12 +1986,19 @@ class LIBPROTOC_EXPORT PBBuffData : public ::google::protobuf::Message /* @@prot
   ::google::protobuf::uint32 count() const;
   void set_count(::google::protobuf::uint32 value);
 
+  // uint32 level = 3;
+  void clear_level();
+  static const int kLevelFieldNumber = 3;
+  ::google::protobuf::uint32 level() const;
+  void set_level(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:KFMsg.PBBuffData)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 id_;
   ::google::protobuf::uint32 count_;
+  ::google::protobuf::uint32 level_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_DefineMessage_2eproto::TableStruct;
 };
@@ -2761,6 +2768,78 @@ class LIBPROTOC_EXPORT PBRealmData : public ::google::protobuf::Message /* @@pro
   ::google::protobuf::uint32 totallevel() const;
   void set_totallevel(::google::protobuf::uint32 value);
 
+  // uint32 foodstep = 21;
+  void clear_foodstep();
+  static const int kFoodstepFieldNumber = 21;
+  ::google::protobuf::uint32 foodstep() const;
+  void set_foodstep(::google::protobuf::uint32 value);
+
+  // uint32 weather = 31;
+  void clear_weather();
+  static const int kWeatherFieldNumber = 31;
+  ::google::protobuf::uint32 weather() const;
+  void set_weather(::google::protobuf::uint32 value);
+
+  // uint32 weathertotalstep = 32;
+  void clear_weathertotalstep();
+  static const int kWeathertotalstepFieldNumber = 32;
+  ::google::protobuf::uint32 weathertotalstep() const;
+  void set_weathertotalstep(::google::protobuf::uint32 value);
+
+  // uint32 timecurrentturn = 45;
+  void clear_timecurrentturn();
+  static const int kTimecurrentturnFieldNumber = 45;
+  ::google::protobuf::uint32 timecurrentturn() const;
+  void set_timecurrentturn(::google::protobuf::uint32 value);
+
+  // uint32 weathercurrentstep = 33;
+  void clear_weathercurrentstep();
+  static const int kWeathercurrentstepFieldNumber = 33;
+  ::google::protobuf::uint32 weathercurrentstep() const;
+  void set_weathercurrentstep(::google::protobuf::uint32 value);
+
+  // uint32 weathertotalturn = 34;
+  void clear_weathertotalturn();
+  static const int kWeathertotalturnFieldNumber = 34;
+  ::google::protobuf::uint32 weathertotalturn() const;
+  void set_weathertotalturn(::google::protobuf::uint32 value);
+
+  // uint32 weathercurrentturn = 35;
+  void clear_weathercurrentturn();
+  static const int kWeathercurrentturnFieldNumber = 35;
+  ::google::protobuf::uint32 weathercurrentturn() const;
+  void set_weathercurrentturn(::google::protobuf::uint32 value);
+
+  // uint32 nextweather = 36;
+  void clear_nextweather();
+  static const int kNextweatherFieldNumber = 36;
+  ::google::protobuf::uint32 nextweather() const;
+  void set_nextweather(::google::protobuf::uint32 value);
+
+  // uint32 timetype = 41;
+  void clear_timetype();
+  static const int kTimetypeFieldNumber = 41;
+  ::google::protobuf::uint32 timetype() const;
+  void set_timetype(::google::protobuf::uint32 value);
+
+  // uint32 timetotalstep = 42;
+  void clear_timetotalstep();
+  static const int kTimetotalstepFieldNumber = 42;
+  ::google::protobuf::uint32 timetotalstep() const;
+  void set_timetotalstep(::google::protobuf::uint32 value);
+
+  // uint32 timecurrentstep = 43;
+  void clear_timecurrentstep();
+  static const int kTimecurrentstepFieldNumber = 43;
+  ::google::protobuf::uint32 timecurrentstep() const;
+  void set_timecurrentstep(::google::protobuf::uint32 value);
+
+  // uint32 timetotalturn = 44;
+  void clear_timetotalturn();
+  static const int kTimetotalturnFieldNumber = 44;
+  ::google::protobuf::uint32 timetotalturn() const;
+  void set_timetotalturn(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:KFMsg.PBRealmData)
  private:
 
@@ -2791,6 +2870,18 @@ class LIBPROTOC_EXPORT PBRealmData : public ::google::protobuf::Message /* @@pro
   ::google::protobuf::uint32 selectid_;
   ::google::protobuf::uint32 selectcount_;
   ::google::protobuf::uint32 totallevel_;
+  ::google::protobuf::uint32 foodstep_;
+  ::google::protobuf::uint32 weather_;
+  ::google::protobuf::uint32 weathertotalstep_;
+  ::google::protobuf::uint32 timecurrentturn_;
+  ::google::protobuf::uint32 weathercurrentstep_;
+  ::google::protobuf::uint32 weathertotalturn_;
+  ::google::protobuf::uint32 weathercurrentturn_;
+  ::google::protobuf::uint32 nextweather_;
+  ::google::protobuf::uint32 timetype_;
+  ::google::protobuf::uint32 timetotalstep_;
+  ::google::protobuf::uint32 timecurrentstep_;
+  ::google::protobuf::uint32 timetotalturn_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_DefineMessage_2eproto::TableStruct;
 };
@@ -4272,6 +4363,20 @@ inline void PBBuffData::set_count(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:KFMsg.PBBuffData.count)
 }
 
+// uint32 level = 3;
+inline void PBBuffData::clear_level() {
+  level_ = 0u;
+}
+inline ::google::protobuf::uint32 PBBuffData::level() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBuffData.level)
+  return level_;
+}
+inline void PBBuffData::set_level(::google::protobuf::uint32 value) {
+  
+  level_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBuffData.level)
+}
+
 // -------------------------------------------------------------------
 
 // PBBuffListData
@@ -4999,6 +5104,174 @@ inline void PBRealmData::set_totallevel(::google::protobuf::uint32 value) {
   
   totallevel_ = value;
   // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.totallevel)
+}
+
+// uint32 foodstep = 21;
+inline void PBRealmData::clear_foodstep() {
+  foodstep_ = 0u;
+}
+inline ::google::protobuf::uint32 PBRealmData::foodstep() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.foodstep)
+  return foodstep_;
+}
+inline void PBRealmData::set_foodstep(::google::protobuf::uint32 value) {
+  
+  foodstep_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.foodstep)
+}
+
+// uint32 weather = 31;
+inline void PBRealmData::clear_weather() {
+  weather_ = 0u;
+}
+inline ::google::protobuf::uint32 PBRealmData::weather() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.weather)
+  return weather_;
+}
+inline void PBRealmData::set_weather(::google::protobuf::uint32 value) {
+  
+  weather_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.weather)
+}
+
+// uint32 weathertotalstep = 32;
+inline void PBRealmData::clear_weathertotalstep() {
+  weathertotalstep_ = 0u;
+}
+inline ::google::protobuf::uint32 PBRealmData::weathertotalstep() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.weathertotalstep)
+  return weathertotalstep_;
+}
+inline void PBRealmData::set_weathertotalstep(::google::protobuf::uint32 value) {
+  
+  weathertotalstep_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.weathertotalstep)
+}
+
+// uint32 weathercurrentstep = 33;
+inline void PBRealmData::clear_weathercurrentstep() {
+  weathercurrentstep_ = 0u;
+}
+inline ::google::protobuf::uint32 PBRealmData::weathercurrentstep() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.weathercurrentstep)
+  return weathercurrentstep_;
+}
+inline void PBRealmData::set_weathercurrentstep(::google::protobuf::uint32 value) {
+  
+  weathercurrentstep_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.weathercurrentstep)
+}
+
+// uint32 weathertotalturn = 34;
+inline void PBRealmData::clear_weathertotalturn() {
+  weathertotalturn_ = 0u;
+}
+inline ::google::protobuf::uint32 PBRealmData::weathertotalturn() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.weathertotalturn)
+  return weathertotalturn_;
+}
+inline void PBRealmData::set_weathertotalturn(::google::protobuf::uint32 value) {
+  
+  weathertotalturn_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.weathertotalturn)
+}
+
+// uint32 weathercurrentturn = 35;
+inline void PBRealmData::clear_weathercurrentturn() {
+  weathercurrentturn_ = 0u;
+}
+inline ::google::protobuf::uint32 PBRealmData::weathercurrentturn() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.weathercurrentturn)
+  return weathercurrentturn_;
+}
+inline void PBRealmData::set_weathercurrentturn(::google::protobuf::uint32 value) {
+  
+  weathercurrentturn_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.weathercurrentturn)
+}
+
+// uint32 nextweather = 36;
+inline void PBRealmData::clear_nextweather() {
+  nextweather_ = 0u;
+}
+inline ::google::protobuf::uint32 PBRealmData::nextweather() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.nextweather)
+  return nextweather_;
+}
+inline void PBRealmData::set_nextweather(::google::protobuf::uint32 value) {
+  
+  nextweather_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.nextweather)
+}
+
+// uint32 timetype = 41;
+inline void PBRealmData::clear_timetype() {
+  timetype_ = 0u;
+}
+inline ::google::protobuf::uint32 PBRealmData::timetype() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.timetype)
+  return timetype_;
+}
+inline void PBRealmData::set_timetype(::google::protobuf::uint32 value) {
+  
+  timetype_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.timetype)
+}
+
+// uint32 timetotalstep = 42;
+inline void PBRealmData::clear_timetotalstep() {
+  timetotalstep_ = 0u;
+}
+inline ::google::protobuf::uint32 PBRealmData::timetotalstep() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.timetotalstep)
+  return timetotalstep_;
+}
+inline void PBRealmData::set_timetotalstep(::google::protobuf::uint32 value) {
+  
+  timetotalstep_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.timetotalstep)
+}
+
+// uint32 timecurrentstep = 43;
+inline void PBRealmData::clear_timecurrentstep() {
+  timecurrentstep_ = 0u;
+}
+inline ::google::protobuf::uint32 PBRealmData::timecurrentstep() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.timecurrentstep)
+  return timecurrentstep_;
+}
+inline void PBRealmData::set_timecurrentstep(::google::protobuf::uint32 value) {
+  
+  timecurrentstep_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.timecurrentstep)
+}
+
+// uint32 timetotalturn = 44;
+inline void PBRealmData::clear_timetotalturn() {
+  timetotalturn_ = 0u;
+}
+inline ::google::protobuf::uint32 PBRealmData::timetotalturn() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.timetotalturn)
+  return timetotalturn_;
+}
+inline void PBRealmData::set_timetotalturn(::google::protobuf::uint32 value) {
+  
+  timetotalturn_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.timetotalturn)
+}
+
+// uint32 timecurrentturn = 45;
+inline void PBRealmData::clear_timecurrentturn() {
+  timecurrentturn_ = 0u;
+}
+inline ::google::protobuf::uint32 PBRealmData::timecurrentturn() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.timecurrentturn)
+  return timecurrentturn_;
+}
+inline void PBRealmData::set_timecurrentturn(::google::protobuf::uint32 value) {
+  
+  timecurrentturn_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.timecurrentturn)
 }
 
 // -------------------------------------------------------------------

@@ -7,8 +7,8 @@ namespace KFrame
     void KFGenerateModule::BeforeRun()
     {
         _kf_component = _kf_kernel->FindComponent( __STRING__( player ) );
-        __REGISTER_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( level ), &KFGenerateModule::OnHeroLevelUpdate );
-        __REGISTER_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( profession ), &KFGenerateModule::OnHeroProfessionUpdate );
+        __REGISTER_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( level ), &KFGenerateModule::OnHeroLevelUpdateCallBack );
+        __REGISTER_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( profession ), &KFGenerateModule::OnHeroProUpdateCallBack );
     }
 
     void KFGenerateModule::BeforeShut()
@@ -405,13 +405,6 @@ namespace KFrame
         }
         kfprofession->Set( professionid );
 
-        // 职业等级
-        kfhero->Set( __STRING__( classlv ), kfprofessionsetting->_class_lv );
-        if ( kfprofessionsetting->_class_lv > 1u )
-        {
-            // 高阶职业添加转职信息
-            AddTransferData( player, kfhero, professionid, kfprofessionsetting->_class_lv );
-        }
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         if ( sex == KFMsg::UnknowSex )
@@ -434,12 +427,7 @@ namespace KFrame
             weapontype = kfprofessionsetting->RandWeapontype();
         }
         kfhero->Set( __STRING__( weapontype ), weapontype );
-        auto kfweapontypesetting = KFWeaponTypeConfig::Instance()->FindSetting( weapontype );
-        if ( kfweapontypesetting != nullptr )
-        {
-            auto kfweapon = kfhero->Find( __STRING__( weapon ) );
-            _kf_item->CreateItem( player, kfweapontypesetting->_default_weapon_id, kfweapon, __FUNC_LINE__ );
-        }
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 随机背景
@@ -495,49 +483,17 @@ namespace KFrame
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // 生成等级
-        if ( generatelevel > 0u )
+
+        auto kflevelsetting = KFLevelConfig::Instance()->FindSetting( 1u );
+        if ( kflevelsetting != nullptr )
         {
-            generatelevel += kfhero->Get<uint32>( __STRING__( level ) );
+            // 随机1级主动技能
+            RandWeightData( player, kfhero, __STRING__( active ), kflevelsetting->_active_pool_list, false );
 
-            // 英雄职业上限修正
-            if ( generatelevel > kfprofessionsetting->_max_level )
-            {
-                generatelevel = kfprofessionsetting->_max_level;
-            }
-
-            auto kflevelsetting = KFLevelConfig::Instance()->FindSetting( generatelevel );
-            if ( kflevelsetting != nullptr )
-            {
-                kfhero->Set( __STRING__( level ), generatelevel );
-                kfhero->Set( __STRING__( exp ), kflevelsetting->_exp );
-            }
+            // 随机1级天赋
+            RandWeightData( player, kfhero, __STRING__( innate ), kflevelsetting->_innate_pool_list, false );
         }
 
-        auto herolevel = kfhero->Get<uint32>( __STRING__( level ) );
-        {
-            // 添加生成技能和天赋后 再添加等级技能和天赋
-            UInt32Vector active_pool_list;
-            UInt32Vector innate_pool_list;
-
-            for ( uint32 i = 1u; i <= herolevel; i++ )
-            {
-                auto kflevelsetting = KFLevelConfig::Instance()->FindSetting( i );
-                if ( kflevelsetting == nullptr )
-                {
-                    continue;
-                }
-
-                active_pool_list.insert( active_pool_list.end(), kflevelsetting->_active_pool_list.begin(), kflevelsetting->_active_pool_list.end() );
-                innate_pool_list.insert( innate_pool_list.end(), kflevelsetting->_innate_pool_list.begin(), kflevelsetting->_innate_pool_list.end() );
-            }
-
-            // 随机主动技能
-            RandWeightData( player, kfhero, __STRING__( active ), active_pool_list, false );
-
-            // 随机天赋
-            RandWeightData( player, kfhero, __STRING__( innate ), innate_pool_list, false );
-        }
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 随机成长率
@@ -545,6 +501,7 @@ namespace KFrame
         auto kfgrowthsetting = KFHeroAttributeConfig::Instance()->FindSetting( kfgeneratesetting->_growth_id );
         if ( kfgrowthsetting != nullptr )
         {
+            auto totalgrowth = 0u;
             for ( auto iter : kfgrowthsetting->_datas._objects )
             {
                 auto& name = iter.first;
@@ -552,11 +509,50 @@ namespace KFrame
                 auto maxvalue = iter.second->_max_value + maxgrowth;
                 auto value = KFGlobal::Instance()->RandRange( minvalue, maxvalue, 1u );
                 kfgrowth->Set( name, value );
+
+                totalgrowth += value;
             }
+
+            // 根据平均成长率求品质
+            auto averagegrowth = totalgrowth / kfgrowth->Size();
+            auto quality = KFQualityConfig::Instance()->GetQualityByGrowth( averagegrowth );
+            kfhero->Set( __STRING__( quality ), quality );
         }
         else
         {
             __LOG_ERROR__( "attribute id={} can't find", kfgeneratesetting->_growth_id );
+        }
+
+        // 获取英雄等级
+        auto herolevel = kfhero->Get<uint32>( __STRING__( level ) );
+        if ( kfgeneratesetting->_level > 0u )
+        {
+            // 生成池固定等级
+            herolevel = kfgeneratesetting->_level;
+            herolevel = __MIN__( herolevel, kfprofessionsetting->_max_level );
+        }
+        else
+        {
+            if ( generatelevel > 0u )
+            {
+                herolevel += generatelevel;
+            }
+
+            auto maxlevel = _kf_hero->GetPlayerMaxLevel( player );
+            herolevel = __MIN__( herolevel, maxlevel );
+        }
+
+        // 英雄自动升级转职流程
+        std::vector<KFGenerateData> generatelist;
+        HeroAutoUpgradeAndTransfer( player, kfhero, herolevel, kfprofessionsetting->_class_lv, professionid, generatelist );
+        kfprofession->Set( professionid );
+
+        // 获取最初始的职业配置
+        auto kfinitprofsetting = KFProfessionConfig::Instance()->FindSetting( professionid );
+        if ( kfinitprofsetting == nullptr )
+        {
+            __LOG_ERROR__( "profession setting=[{}] can't find", professionid );
+            return nullptr;
         }
 
         // 初始属性
@@ -567,13 +563,12 @@ namespace KFrame
             for ( auto iter : kfattributesetting->_datas._objects )
             {
                 auto& name = iter.first;
-                auto initvalue = iter.second->GetValue();
 
                 auto growthvalue = kfgrowth->Get< uint32 >( name );
                 auto racevalue = kfracesetting->GetAttributeValue( name );
-                auto professionvalue = kfprofessionsetting->GetAttributeValue( name );
+                auto professionvalue = kfinitprofsetting->GetAttributeValue( name );
 
-                auto value = CalcHeroInitAttribute( kffighter, initvalue, racevalue, professionvalue, growthvalue, generatelevel );
+                auto value = CalcHeroInitAttribute( kffighter, racevalue, professionvalue, growthvalue, 1u );
                 kffighter->Set( name, value );
             }
 
@@ -585,6 +580,70 @@ namespace KFrame
             __LOG_ERROR__( "attribute id={} can't find", kfgeneratesetting->_attr_id );
         }
 
+        // 执行升级和转职流程
+        for ( auto iter : generatelist )
+        {
+            if ( iter.type == 0u )
+            {
+                // 英雄升级
+                kfhero->Set( __STRING__( level ), iter.endlevel );
+                OnHeroLevelUpdate( player, kfhero, iter.beginlevel, iter.endlevel, false );
+            }
+            else
+            {
+                // 正常英雄转职
+                kfhero->Set( __STRING__( profession ), iter.endpro );
+                OnHeroProUpdate( player, kfhero, iter.beginpro, iter.endpro, false );
+            }
+        }
+
+        professionid = kfhero->Get<uint32>( __STRING__( profession ) );
+        kfprofessionsetting = KFProfessionConfig::Instance()->FindSetting( professionid );
+        if ( kfprofessionsetting == nullptr )
+        {
+            __LOG_ERROR__( "profession setting=[{}] can't find", professionid );
+            return nullptr;
+        }
+
+        // 设置英雄耐久度
+        auto durability = _invalid_int;
+        if ( kfgeneratesetting->_durability > 0u )
+        {
+            durability = kfgeneratesetting->_durability;
+        }
+        else
+        {
+            durability = kfprofessionsetting->RandRoleDurability();
+        }
+
+        kfhero->Set( __STRING__( durability ), durability );
+        kfhero->Set( __STRING__( maxdurability ), durability );
+
+        // 职业等级
+        kfhero->Set( __STRING__( classlv ), kfprofessionsetting->_class_lv );
+
+        // 设置武器
+        weapontype = kfhero->Get( __STRING__( weapontype ) );
+        auto kfweapontypesetting = KFWeaponTypeConfig::Instance()->FindSetting( weapontype );
+        if ( kfweapontypesetting != nullptr )
+        {
+            auto kfweapon = kfhero->Find( __STRING__( weapon ) );
+            _kf_item->CreateItem( player, kfweapontypesetting->_default_weapon_id, kfweapon, __FUNC_LINE__ );
+        }
+
+        // 设置经验
+        herolevel = kfhero->Get<uint32>( __STRING__( level ) );
+        kflevelsetting = KFLevelConfig::Instance()->FindSetting( herolevel );
+        if ( kflevelsetting != nullptr )
+        {
+            kfhero->Set( __STRING__( exp ), kflevelsetting->_exp );
+        }
+        kfhero->Set( __STRING__( exprate ), kfgeneratesetting->_exp_rate );
+
+        // 设置英雄的最大等级
+        auto maxlevel = _kf_hero->CalcMaxLevel( player, kfhero );
+        kfhero->Set( __STRING__( maxlevel ), maxlevel );
+
         // 设置主动技能
         if ( kfactiverecord->Size() > 0u )
         {
@@ -592,14 +651,12 @@ namespace KFrame
             kfhero->Set( __STRING__( activeindex ), activeindex );
         }
 
-        // 随机耐久度
-        auto durability = kfprofessionsetting->RandRoleDurability();
-        kfhero->Set( __STRING__( durability ), durability );
-        kfhero->Set( __STRING__( maxdurability ), durability );
-
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 捏脸数据
         GeneratePinchFace( player, kfhero );
+
+        // 音色类型
+        GenerateVoice( player, kfhero, kfprofessionsetting );
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         return kfhero;
     }
@@ -622,41 +679,28 @@ namespace KFrame
         }
     }
 
-    void KFGenerateModule::AddTransferData( KFEntity* player, KFData* kfhero, uint32 profession, uint32 classlv )
+    void KFGenerateModule::GenerateVoice( KFEntity* player, KFData* kfhero, const KFProfessionSetting* kfsetting )
     {
-        UInt32Vector prolist;
+        auto kfherorecord = player->Find( __STRING__( hero ) );
 
-        for ( uint32 i = 1u; i < classlv; i++ )
+        UInt32Set excludes;
+        for ( auto kfchild = kfherorecord->First(); kfchild != nullptr; kfchild = kfherorecord->Next() )
         {
-            profession = KFTransferConfig::Instance()->GetParentPro( profession );
-            if ( profession == _invalid_int )
-            {
-                break;
-            }
-
-            prolist.emplace( prolist.begin(), profession );
-        }
-
-        auto kftransferrecord = kfhero->Find( __STRING__( transfer ) );
-
-        for ( auto iter : prolist )
-        {
-            auto weapontypelist = KFProfessionConfig::Instance()->FindSetting( iter )->_weapon_type_list;
-            if ( weapontypelist.size() == 0 )
+            auto professionid = kfchild->Get( __STRING__( profession ) );
+            if ( professionid != kfsetting->_id )
             {
                 continue;
             }
 
-            uint32 weapontype = *( weapontypelist.begin() );
-
-            auto kftransfer = player->CreateData( kftransferrecord );
-            auto index = kftransferrecord->Size() + 1;
-            kftransfer->Set( __STRING__( index ), index );
-            kftransfer->Set( __STRING__( profession ), iter );
-            kftransfer->Set( __STRING__( weapontype ), weapontype );
-
-            kftransferrecord->Add( index, kftransfer );
+            auto voice = kfchild->Get<uint32>( __STRING__( voice ) );
+            if ( voice != 0u )
+            {
+                excludes.insert( voice );
+            }
         }
+
+        auto voice = KFUtility::RandVectorValue( kfsetting->_voice_list, excludes );
+        kfhero->Set( __STRING__( voice ), voice );
     }
 
     KFData* KFGenerateModule::GenerateNpcHero( KFEntity* player, KFData* kfnpcrecord, uint32 generateid, uint32 level )
@@ -824,14 +868,13 @@ namespace KFrame
                 for ( auto iter : kfattributesetting->_datas._objects )
                 {
                     auto& name = iter.first;
-                    auto initvalue = iter.second->GetValue();
 
                     // 种族和职业
                     auto racevalue = kfracesetting->GetAttributeValue( name );
                     auto professionvalue = kfprofessionsetting->GetAttributeValue( name );
 
                     // 初始属性
-                    auto value = CalcHeroInitAttribute( kffighter, initvalue, racevalue, professionvalue, 100u, level );
+                    auto value = CalcHeroInitAttribute( kffighter, racevalue, professionvalue, 100u, level );
 
                     // 保存属性
                     kffighter->Set( name, value );
@@ -848,6 +891,10 @@ namespace KFrame
 
         // 捏脸数据
         GeneratePinchFace( player, kfnpc );
+
+        // 音色数据
+        GenerateVoice( player, kfnpc, kfprofessionsetting );
+
         return kfnpc;
     }
 
@@ -858,7 +905,7 @@ namespace KFrame
         return value;
     }
 
-    uint32 KFGenerateModule::CalcHeroInitAttribute( KFData* kffighter, uint32 initvalue, uint32 racevalue, uint32 professionvalue, uint32 growthvalue, uint32 level )
+    uint32 KFGenerateModule::CalcHeroInitAttribute( KFData* kffighter, uint32 racevalue, uint32 professionvalue, uint32 growthvalue, uint32 level )
     {
         // 直接计算 成长率 x count(9)
         auto finalpreference = CalcFinalPreference( racevalue, professionvalue, growthvalue );
@@ -881,11 +928,133 @@ namespace KFrame
             }
         }
 
-        auto finalvalue = totalvalue * initvalue / KFRandEnum::Hundred;
-        return finalvalue;
+        return totalvalue;
     }
 
-    __KF_UPDATE_DATA_FUNCTION__( KFGenerateModule::OnHeroLevelUpdate )
+    void KFGenerateModule::HeroAutoUpgradeAndTransfer( KFEntity* player, KFData* kfhero, uint32 herolevel, uint32 classlv, uint32& professionid, std::vector<KFGenerateData>& generatelist )
+    {
+        if ( classlv > 1u )
+        {
+            // 高阶职业英雄倒推升级转职流程
+            KFGenerateData generatedata;
+
+            auto endpro = professionid;
+            for ( uint32 i = 1u; i < classlv; i++ )
+            {
+                auto beginpro = KFTransferConfig::Instance()->GetRandParentId( endpro );
+                if ( beginpro == _invalid_int )
+                {
+                    break;
+                }
+
+                auto kfprofessionsetting = KFProfessionConfig::Instance()->FindSetting( beginpro );
+                if ( herolevel > kfprofessionsetting->_max_level )
+                {
+                    // 升级
+                    generatedata.type = 0u;
+                    generatedata.beginpro = endpro;
+                    generatedata.endpro = endpro;
+                    generatedata.beginlevel = kfprofessionsetting->_max_level;
+                    generatedata.endlevel = herolevel;
+
+                    generatelist.emplace( generatelist.begin(), generatedata );
+                    herolevel = kfprofessionsetting->_max_level;
+                }
+
+                // 转职
+                generatedata.type = 1u;
+                generatedata.beginpro = beginpro;
+                generatedata.endpro = endpro;
+                generatedata.beginlevel = herolevel;
+                generatedata.endlevel = herolevel;
+
+                generatelist.emplace( generatelist.begin(), generatedata );
+                endpro = beginpro;
+
+                professionid = beginpro;
+            }
+
+            if ( herolevel > 1u )
+            {
+                generatedata.type = 0u;
+                generatedata.beginpro = professionid;
+                generatedata.endpro = professionid;
+                generatedata.beginlevel = 1u;
+                generatedata.endlevel = herolevel;
+
+                generatelist.emplace( generatelist.begin(), generatedata );
+            }
+        }
+        else if ( herolevel > 1u )
+        {
+            // 高等级英雄顺推升级转职流程
+            KFGenerateData generatedata;
+
+            auto beginpro = professionid;
+            auto beginlevel = 1u;
+
+            auto transferlevel = KFTransferConfig::Instance()->GetProTransferLevel( professionid );
+            while ( herolevel > transferlevel )
+            {
+
+                generatedata.type = 0u;
+                generatedata.beginpro = beginpro;
+                generatedata.endpro = beginpro;
+                generatedata.beginlevel = beginlevel;
+                generatedata.endlevel = transferlevel;
+
+                generatelist.emplace_back( generatedata );
+                beginlevel = transferlevel;
+
+                // 再进行转职
+                auto transferpro = KFTransferConfig::Instance()->GetRandChildId( beginpro );
+                if ( transferpro == _invalid_int )
+                {
+                    break;
+                }
+
+                generatedata.type = 1u;
+                generatedata.beginpro = beginpro;
+                generatedata.endpro = transferpro;
+                generatedata.beginlevel = beginlevel;
+                generatedata.endlevel = beginlevel;
+
+                generatelist.emplace_back( generatedata );
+                beginpro = transferpro;
+
+                transferlevel = KFTransferConfig::Instance()->GetProTransferLevel( beginpro );
+                if ( transferlevel == _invalid_int )
+                {
+                    break;
+                }
+            }
+
+            auto kfprosetting = KFProfessionConfig::Instance()->FindSetting( beginpro );
+            if ( kfprosetting != nullptr && herolevel > kfprosetting->_max_level )
+            {
+                // 英雄等级不超过职业最大等级
+                herolevel = kfprosetting->_max_level;
+            }
+
+            if ( herolevel > beginlevel )
+            {
+                generatedata.type = 0u;
+                generatedata.beginpro = beginpro;
+                generatedata.endpro = beginpro;
+                generatedata.beginlevel = beginlevel;
+                generatedata.endlevel = herolevel;
+
+                generatelist.emplace_back( generatedata );
+            }
+        }
+    }
+
+    __KF_UPDATE_DATA_FUNCTION__( KFGenerateModule::OnHeroLevelUpdateCallBack )
+    {
+        OnHeroLevelUpdate( player, kfdata->GetParent(), oldvalue, newvalue );
+    }
+
+    void KFGenerateModule::OnHeroLevelUpdate( KFEntity* player, KFData* kfhero, uint32 oldvalue, uint32 newvalue, bool update )
     {
         // 只有升级才改变经验
         if ( newvalue <= oldvalue )
@@ -893,7 +1062,6 @@ namespace KFrame
             return;
         }
 
-        auto kfhero = kfdata->GetParent();
         auto race = kfhero->Get<uint32>( __STRING__( race ) );
         auto kfracesetting = KFRaceConfig::Instance()->FindSetting( race );
         if ( kfracesetting == nullptr )
@@ -914,6 +1082,10 @@ namespace KFrame
         // 战斗属性
         auto kffighter = kfhero->Find( __STRING__( fighter ) );
 
+        // 添加等级技能和天赋
+        UInt32Vector active_pool_list;
+        UInt32Vector innate_pool_list;
+
         for ( auto level = oldvalue + 1u; level <= newvalue; ++level )
         {
             // 获得升级后的配置
@@ -924,22 +1096,20 @@ namespace KFrame
                 continue;
             }
 
-            // 随机主动技能
-            RandWeightData( player, kfhero, __STRING__( active ), kflevelsetting->_active_pool_list );
-
-            // 随机天赋
-            RandWeightData( player, kfhero, __STRING__( innate ), kflevelsetting->_innate_pool_list );
+            active_pool_list.insert( active_pool_list.end(), kflevelsetting->_active_pool_list.begin(), kflevelsetting->_active_pool_list.end() );
+            innate_pool_list.insert( innate_pool_list.end(), kflevelsetting->_innate_pool_list.begin(), kflevelsetting->_innate_pool_list.end() );
 
             for ( auto kfchild = kffighter->First(); kfchild != nullptr; kfchild = kffighter->Next() )
             {
-                if ( kfchild->_data_setting->_name == __STRING__( hp ) || kfchild->_data_setting->_name == __STRING__( ep ) )
+                auto& attrname = kfchild->_data_setting->_name;
+                if ( attrname == __STRING__( hp ) || attrname == __STRING__( ep ) )
                 {
                     continue;
                 }
 
-                auto growthvalue = kfgrowth->Get<uint32>( kfchild->_data_setting->_name );
-                auto racevalue = kfracesetting->GetAttributeValue( kfchild->_data_setting->_name );
-                auto professionvalue = kfprofessionsetting->GetAttributeValue( kfchild->_data_setting->_name );
+                auto growthvalue = kfgrowth->Get<uint32>( attrname );
+                auto racevalue = kfracesetting->GetAttributeValue( attrname );
+                auto professionvalue = kfprofessionsetting->GetAttributeValue( attrname );
 
                 // 最终成长率
                 auto finalpreference = CalcFinalPreference( racevalue, professionvalue, growthvalue );
@@ -975,24 +1145,50 @@ namespace KFrame
                 }
 
                 // 更新属性
-                player->UpdateData( kfchild, KFEnum::Add, addvalue );
+                if ( update )
+                {
+                    player->UpdateData( kfchild, KFEnum::Add, addvalue );
+                }
+                else
+                {
+                    kfchild->Operate( KFEnum::Add, addvalue );
+                }
 
-                if ( kfchild->_data_setting->_name == __STRING__( maxhp ) )
+                if ( attrname == __STRING__( maxhp ) )
                 {
                     // 升级当前hp增加为maxhp增加数量
-                    player->UpdateData( kffighter, __STRING__( hp ), KFEnum::Add, addvalue );
+                    if ( update )
+                    {
+                        player->UpdateData( kffighter, __STRING__( hp ), KFEnum::Add, addvalue );
+
+                    }
+                    else
+                    {
+                        auto kfhp = kffighter->Find( __STRING__( hp ) );
+                        kfhp->Operate( KFEnum::Add, addvalue );
+                    }
                 }
             }
         }
+
+        // 随机主动技能
+        RandWeightData( player, kfhero, __STRING__( active ), active_pool_list, update );
+
+        // 随机天赋
+        RandWeightData( player, kfhero, __STRING__( innate ), innate_pool_list, update );
     }
 
-    __KF_UPDATE_DATA_FUNCTION__( KFGenerateModule::OnHeroProfessionUpdate )
+    __KF_UPDATE_DATA_FUNCTION__( KFGenerateModule::OnHeroProUpdateCallBack )
     {
-        auto transferid = KFTransferConfig::Instance()->GetTransferId( newvalue, oldvalue );
-        auto kfsetting = KFTransferConfig::Instance()->FindSetting( transferid );
+        OnHeroProUpdate( player, kfdata->GetParent(), oldvalue, newvalue );
+    }
+
+    void KFGenerateModule::OnHeroProUpdate( KFEntity* player, KFData* kfhero, uint32 oldvalue, uint32 newvalue, bool update )
+    {
+        auto kfsetting = KFTransferConfig::Instance()->FindTransferSetting( newvalue, oldvalue );
         if ( kfsetting == nullptr )
         {
-            return __LOG_ERROR__( "transfer setting=[{}] can't find", transferid );
+            return __LOG_ERROR__( "transfer setting can't find, childid=[{}], parentid=[{}] ", newvalue, oldvalue );
         }
 
         auto oldprosetting = KFProfessionConfig::Instance()->FindSetting( oldvalue );
@@ -1007,26 +1203,26 @@ namespace KFrame
             return __LOG_ERROR__( "transfer profession setting=[{}] can't find", newvalue );
         }
 
-        auto kfhero = kfdata->GetParent();
         auto race = kfhero->Get( __STRING__( race ) );
-        auto racesetting = KFRaceConfig::Instance()->FindSetting( race );
-        if ( racesetting == nullptr )
+        auto kfracesetting = KFRaceConfig::Instance()->FindSetting( race );
+        if ( kfracesetting == nullptr )
         {
             return __LOG_ERROR__( "transfer profession setting=[{}] can't find", newvalue );
         }
 
-        auto weapontype = kfhero->Get( __STRING__( weapontype ) );
-        if ( !newprosetting->IsWeaponTypeValid( weapontype ) )
-        {
-            // 随机新的武器类型
-            weapontype = newprosetting->RandWeapontype();
-            player->UpdateData( kfhero, __STRING__( weapontype ), KFEnum::Set, weapontype );
-        }
+        static auto _transfer_option = _kf_option->FindOption( "transferleveloffest" );
+        static auto _direct_option = _kf_option->FindOption( "generatedirectattribute" );
+        static auto _random_option = _kf_option->FindOption( "generaterandattribute" );
 
         // 更新属性fighter
-        auto kfgrowth = kfhero->Find( __STRING__( growth ) );
         auto kffighter = kfhero->Find( __STRING__( fighter ) );
+        auto kfgrowth = kfhero->Find( __STRING__( growth ) );
         auto level = kfhero->Get<uint32>( __STRING__( level ) );
+
+        auto reallevel = level + _direct_option->_uint32_value + _random_option->_uint32_value - 1u;
+        auto oldreallevel = reallevel + _transfer_option->_uint32_value * ( oldprosetting->_class_lv - 1u );
+        auto newreallevel = reallevel + _transfer_option->_uint32_value * ( newprosetting->_class_lv - 1u );
+
         for ( auto kfchild = kffighter->First(); kfchild != nullptr; kfchild = kffighter->Next() )
         {
             auto& attrname = kfchild->_data_setting->_name;
@@ -1035,69 +1231,129 @@ namespace KFrame
                 continue;
             }
 
+            auto growthvalue = kfgrowth->Get<uint32>( attrname );
+            auto racevalue = kfracesetting->GetAttributeValue( attrname );
+
             // 新旧职业的基础偏好率
             auto oldprovalue = oldprosetting->GetAttributeValue( attrname );
             auto newprovalue = newprosetting->GetAttributeValue( attrname );
 
+            // 最终成长率
+            auto oldfinalpreference = CalcFinalPreference( racevalue, oldprovalue, growthvalue ) / KFRandEnum::Hundred;
+            auto newfinalpreference = CalcFinalPreference( racevalue, newprovalue, growthvalue ) / KFRandEnum::Hundred;
+
             // 计算属性修正值
-            auto value = ( newprovalue > oldprovalue ) ? ( newprovalue - oldprovalue ) : 0u;
-            auto growthvalue = kfgrowth->Get<uint32>( attrname );
-            value = value * level * growthvalue;
+            auto oldattrvalue = oldfinalpreference * oldreallevel;
+            auto newattrvalue = newfinalpreference * newreallevel;
+            auto value = ( newattrvalue > oldattrvalue ) ? ( newattrvalue - oldattrvalue ) : 0u;
 
-            auto dvalue = static_cast<double>( value ) / KFRandEnum::TenThousand;
-            auto addvalue = static_cast<int>( round( dvalue ) );
-
-            // 计算等级偏差属性
-            auto racevalue = racesetting->GetAttributeValue( attrname );
-            auto finalvalue = CalcFinalPreference( racevalue, newprovalue, growthvalue ) / KFRandEnum::Hundred;
-
-            auto offestvalue = finalvalue / KFRandEnum::Hundred;
-            auto randvalue = finalvalue % KFRandEnum::Hundred;
-
-            static auto _option = _kf_option->FindOption( "transferleveloffest" );
-            offestvalue = offestvalue * _option->_uint32_value;
-            for ( uint32 i = 0u; i < _option->_uint32_value; i++ )
-            {
-                // 随机是否添加属性
-                auto rand = KFGlobal::Instance()->RandRatio( KFRandEnum::Hundred );
-                if ( rand < randvalue )
-                {
-                    offestvalue += 1;
-                }
-            }
+            auto dvalue = static_cast<double>( value ) / KFRandEnum::Hundred;
+            auto addvalue = static_cast<int>( dvalue );
 
             // 增加最终属性
-            player->UpdateData( kfchild, KFEnum::Add, addvalue + offestvalue );
+            if ( update )
+            {
+                player->UpdateData( kfchild, KFEnum::Add, addvalue );
+            }
+            else
+            {
+                kfchild->Operate( KFEnum::Add, addvalue );
+            }
         }
 
-        // 将血量回满
-        auto maxhp = kffighter->Get<uint32>( __STRING__( maxhp ) );
-        player->UpdateData( kffighter, __STRING__( hp ), KFEnum::Set, maxhp );
+        auto oldweapontype = kfhero->Get( __STRING__( weapontype ) );
+        auto newweapontype = oldweapontype;
+        if ( !newprosetting->IsWeaponTypeValid( newweapontype ) )
+        {
+            // 随机新的武器类型
+            newweapontype = newprosetting->RandWeapontype();
+        }
 
-        // 更新职业等级
-        player->UpdateData( kfhero, __STRING__( classlv ), KFEnum::Set, newprosetting->_class_lv );
+        auto kftransferrecord = kfhero->Find( __STRING__( transfer ) );
+        auto kftransfer = player->CreateData( kftransferrecord );
+        auto index = kftransferrecord->Size() + 1;
+        kftransfer->Set( __STRING__( index ), index );
+        kftransfer->Set( __STRING__( profession ), oldvalue );
+        kftransfer->Set( __STRING__( weapontype ), oldweapontype );
+
+        auto maxhp = kffighter->Get<uint32>( __STRING__( maxhp ) );
+        auto maxlevel = _kf_hero->CalcMaxLevel( player, kfhero );
+        if ( update )
+        {
+            // 保存之前的职业信息
+            player->AddData( kftransferrecord, index, kftransfer );
+
+            // 更新武器类型
+            if ( newweapontype != oldweapontype )
+            {
+                player->UpdateData( kfhero, __STRING__( weapontype ), KFEnum::Set, newweapontype );
+            }
+
+            // 将血量回满
+            player->UpdateData( kffighter, __STRING__( hp ), KFEnum::Set, maxhp );
+
+            // 更新职业等级
+            player->UpdateData( kfhero, __STRING__( classlv ), KFEnum::Set, newprosetting->_class_lv );
+
+            // 更新最大等级
+            player->UpdateData( kfhero, __STRING__( maxlevel ), KFEnum::Set, maxlevel );
+        }
+        else
+        {
+            kftransferrecord->Add( index, kftransfer );
+            kfhero->Set( __STRING__( weapontype ), newweapontype );
+            kffighter->Set( __STRING__( hp ), maxhp );
+            kfhero->Set( __STRING__( classlv ), newprosetting->_class_lv );
+            kfhero->Set( __STRING__( maxlevel ), maxlevel );
+        }
 
         // 随机主动技能
-        auto randlist = RandWeightData( player, kfhero, __STRING__( active ), kfsetting->_active_pool_list );
-        if ( !randlist.empty() )
+        auto randlist = RandWeightData( player, kfhero, __STRING__( active ), kfsetting->_active_pool_list, update );
+        if ( update && !randlist.empty() )
         {
             // 转职主动技能更新为最新的技能
             player->UpdateData( kfhero, __STRING__( activeindex ), KFEnum::Set, *randlist.rbegin() );
         }
 
         // 随机性格
-        RandWeightData( player, kfhero, __STRING__( character ), kfsetting->_character_pool_list );
+        RandWeightData( player, kfhero, __STRING__( character ), kfsetting->_character_pool_list, update );
 
         // 随机天赋
-        randlist = RandWeightData( player, kfhero, __STRING__( innate ), kfsetting->_innate_pool_list );
-        for ( auto iter : randlist )
+        randlist = RandWeightData( player, kfhero, __STRING__( innate ), kfsetting->_innate_pool_list, update );
+        if ( update )
         {
-            // 更换同步顺序, 先删除条件，再添加条件，再更新
-            player->SyncDataSequence( KFEnum::Dec, KFEnum::Add, KFEnum::Set );
+            for ( auto iter : randlist )
+            {
+                // 更换同步顺序, 先删除条件，再添加条件，再更新
+                player->SyncDataSequence( KFEnum::Dec, KFEnum::Add, KFEnum::Set );
 
-            // 转职获得的天赋增加标记
-            auto kfinnate = kfhero->Find( __STRING__( innate ), iter );
-            player->UpdateData( kfinnate, __STRING__( flag ), KFEnum::Set, 1u );
+                // 转职获得的天赋增加标记
+                auto kfinnate = kfhero->Find( __STRING__( innate ), iter );
+                player->UpdateData( kfinnate, __STRING__( flag ), KFEnum::Set, 1u );
+            }
+        }
+        else
+        {
+            // 随机删除获得天赋
+            static auto _option = _kf_option->FindOption( "useinnatecount" );
+            auto kfinnaterecord = kfhero->Find( __STRING__( innate ) );
+            if ( kfinnaterecord->Size() <= _option->_uint32_value )
+            {
+                return;
+            }
+
+            UInt32Vector innatelist;
+            for ( auto kfdata = kfinnaterecord->First(); kfdata != nullptr; kfdata = kfinnaterecord->Next() )
+            {
+                innatelist.push_back( kfdata->Get<uint32>( kfinnaterecord->_data_setting->_config_key_name ) );
+            }
+
+            auto removecount = innatelist.size() - _option->_uint32_value;
+            std::random_shuffle( innatelist.begin(), innatelist.end() );
+            for ( auto i = 0u; i < removecount; i++ )
+            {
+                kfinnaterecord->Remove( innatelist[i] );
+            }
         }
     }
 

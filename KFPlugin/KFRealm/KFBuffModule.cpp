@@ -5,8 +5,8 @@ namespace KFrame
     void KFBuffModule::BeforeRun()
     {
         __REGISTER_PVE_START__( &KFBuffModule::OnPVEStartBuffModule );
-        __REGISTER_DROP_LOGIC__( __STRING__( addbuff ), &KFBuffModule::OnDropHeroAddBuff );
-        __REGISTER_DROP_LOGIC__( __STRING__( decbuff ), &KFBuffModule::OnDropHeroDecBuff );
+        __REGISTER_DROP_LOGIC__( __STRING__( addbuff ), &KFBuffModule::OnDropAddTeamBuff );
+        __REGISTER_DROP_LOGIC__( __STRING__( decbuff ), &KFBuffModule::OnDropDecTeamBuff );
         ///////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_ADD_TEAM_BUFF_REQ, &KFBuffModule::HandleAddTeamBuffReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_REMOVE_TEAM_BUFF_REQ, &KFBuffModule::HandleRemoveTeamBuffReq );
@@ -23,11 +23,11 @@ namespace KFrame
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////
-#define __MAX_BUFF_COUNT__ 100000
+#define __MAX_BUFF_COUNT__ 10000
 
     __KF_PVE_START_FUNCTION__( KFBuffModule::OnPVEStartBuffModule )
     {
-        auto kfrealmdata = _kf_realm->GetRealmData( player );
+        // 不在探索中
         if ( kfrealmdata == nullptr )
         {
             return;
@@ -39,17 +39,23 @@ namespace KFrame
         auto pbteambuff = &pbbuffdata->teambuff();
         for ( auto iter = pbteambuff->begin(); iter != pbteambuff->end(); ++iter )
         {
-            bufflist.insert( iter->first );
+            if ( iter->second.count() < __MAX_BUFF_COUNT__ )
+            {
+                bufflist.insert( iter->first );
+            }
         }
 
-        for ( auto buffid : bufflist )
+        if ( !bufflist.empty() )
         {
-            RemoveTeamBuff( kfrealmdata, buffid, 1u );
+            for ( auto buffid : bufflist )
+            {
+                RemoveTeamBuff( kfrealmdata, buffid, 1u );
+            }
+            SendBuffMessage( player, kfrealmdata );
         }
-        SendBuffMessage( player, kfrealmdata );
     }
 
-    __KF_DROP_LOGIC_FUNCTION__( KFBuffModule::OnDropHeroAddBuff )
+    __KF_DROP_LOGIC_FUNCTION__( KFBuffModule::OnDropAddTeamBuff )
     {
         auto kfrealmdata = _kf_realm->GetRealmData( player );
         if ( kfrealmdata == nullptr )
@@ -65,7 +71,7 @@ namespace KFrame
         AddBuffToShow( player, dropdata->_logic_name, buffid, count );
     }
 
-    __KF_DROP_LOGIC_FUNCTION__( KFBuffModule::OnDropHeroDecBuff )
+    __KF_DROP_LOGIC_FUNCTION__( KFBuffModule::OnDropDecTeamBuff )
     {
         auto kfrealmdata = _kf_realm->GetRealmData( player );
         if ( kfrealmdata == nullptr )
@@ -126,7 +132,18 @@ namespace KFrame
         auto pbbuffdata = kfrealmdata->_data.mutable_buffdata();
         auto& pbbuff = ( *pbbuffdata->mutable_teambuff() )[ buffid ];
         pbbuff.set_id( buffid );
-        pbbuff.set_count( pbbuff.count() + count );
+        pbbuff.set_count( count );
+        pbbuff.set_level( pbbuff.level() + 1u );
+
+        // 判断最大等级
+        auto kfsetting = KFLevelValueConfig::Instance()->FindSetting( buffid );
+        if ( kfsetting != nullptr )
+        {
+            if ( pbbuff.level() > kfsetting->_max_level )
+            {
+                pbbuff.set_level( kfsetting->_max_level );
+            }
+        }
     }
 
     void KFBuffModule::RemoveTeamBuff( KFRealmData* kfrealmdata, uint32 buffid, uint32 count )

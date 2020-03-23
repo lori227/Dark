@@ -6,6 +6,7 @@
 #include "KFKernel/KFEntity.h"
 #include "KFProtocol/KFProtocol.h"
 #include "KFZConfig/KFItemConfig.hpp"
+#include "KFZConfig/KFItemTypeConfig.hpp"
 #include "KFZConfig/KFCurrencyConfig.hpp"
 
 namespace KFrame

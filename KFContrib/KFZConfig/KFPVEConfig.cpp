@@ -29,6 +29,8 @@ namespace KFrame
         kfsetting->_level_coefficient = xmlnode.GetUInt32( "LevelCoefficient" );
         kfsetting->_punish_id = xmlnode.GetUInt32( "PunishId" );
         kfsetting->_durability = xmlnode.GetUInt32( "Durability", true );
+        kfsetting->_time_id = xmlnode.GetUInt32( "PveTime", true );
+        kfsetting->_weather_id = xmlnode.GetUInt32( "Weather", true );
     }
 
     void KFPVEConfig::LoadAllComplete()

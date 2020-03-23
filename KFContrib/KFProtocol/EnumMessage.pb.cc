@@ -33,7 +33,7 @@ namespace protobuf_EnumMessage_2eproto {
 void InitDefaults() {
 }
 
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[17];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[20];
 const ::google::protobuf::uint32 TableStruct::offsets[1] = {};
 static const ::google::protobuf::internal::MigrationSchema* schemas = NULL;
 static const ::google::protobuf::Message* const* file_default_instances = NULL;
@@ -58,7 +58,9 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\021EnumMessage.proto\022\005KFMsg*5\n\010CampEnum\022\016"
+      "\n\021EnumMessage.proto\022\005KFMsg*N\n\017ConstDefin"
+      "eEnum\022\017\n\013UnknowConse\020\000\022\022\n\014InfiniteStep\020\237"
+      "\215\006\022\022\n\014InfiniteTurn\020\237\215\006\032\002\020\001*5\n\010CampEnum\022\016"
       "\n\nUnknowCamp\020\000\022\013\n\007RedCamp\020\001\022\014\n\010BlueCamp\020"
       "\002*Z\n\013RefreshEnum\022\021\n\rUnknowRefresh\020\000\022\021\n\rR"
       "efreshByFree\020\001\022\022\n\016RefreshByCount\020\002\022\021\n\rRe"
@@ -66,46 +68,49 @@ void AddDescriptorsImpl() {
       "visor\020\000\022\021\n\rDivisorOfRace\020\001\022\021\n\rDivisorOfM"
       "ove\020\002\022\023\n\017DivisorOfWeapon\020\003*;\n\014HeroLockEn"
       "um\022\n\n\006NoLock\020\000\022\020\n\014HeroListLock\020\001\022\r\n\tCoun"
-      "tLock\020\002*\224\002\n\tBuildEnum\022\020\n\014InvalidBuild\020\000\022"
-      "\r\n\010HeroList\020\310\001\022\r\n\010HeroTeam\020\311\001\022\016\n\tMainBui"
-      "ld\020\312\001\022\021\n\014RecruitBuild\020\313\001\022\020\n\013ClinicBuild\020"
-      "\314\001\022\017\n\nTrainBuild\020\315\001\022\017\n\nOperaBuild\020\316\001\022\020\n\013"
-      "SmithyBuild\020\317\001\022\016\n\tShopBuild\020\320\001\022\021\n\014Inheri"
-      "tBuild\020\321\001\022\022\n\rCemeteryBuild\020\322\001\022\017\n\nOuterBu"
-      "ild\020\323\001\022\023\n\016WarehouseBuild\020\324\001\022\021\n\014GranaryBu"
-      "ild\020\325\001*`\n\nRecordEnum\022\021\n\rInvalidRecord\020\000\022"
-      "\016\n\nCampRecord\020\001\022\017\n\013DailyRecord\020\002\022\016\n\nDead"
-      "Record\020\003\022\016\n\nLifeRecord\020\004*+\n\rLifeEventEnu"
-      "m\022\014\n\010HeroBorn\020\000\022\014\n\010HeroDead\020\001*\222\001\n\022Player"
-      "StatusEnumEx\022\020\n\014UnknowStatus\020\000\022\020\n\014Online"
-      "Status\020\001\022\021\n\rOfflineStatus\020\002\022\021\n\rExploreSt"
-      "atus\020\003\022\r\n\tPVEStatus\020\004\022\r\n\tPVPStatus\020\005\022\024\n\020"
-      "DropSelectStatus\020\006*c\n\014NoticeEnumEx\022\020\n\014Un"
-      "knowNotice\020\000\022\024\n\020NoticeCampRecord\020d\022\025\n\021No"
-      "ticeDailyRecord\020e\022\024\n\020NoticeDeadRecord\020f*"
-      ">\n\nExpireEnum\022\021\n\rInvalidExpire\020\000\022\016\n\nTime"
-      "Expire\020\001\022\r\n\tNumExpire\020\002*;\n\017BalanceShowEn"
-      "um\022\016\n\nUnknowShow\020\000\022\013\n\007Explore\020\001\022\013\n\007Balan"
-      "ce\020\002*\?\n\014ItemAutoEnum\022\017\n\013AutoInvalid\020\000\022\r\n"
-      "\tAutoStore\020\001\022\017\n\013AutoDestory\020\002*\362\001\n\022Initia"
-      "lProcessEnum\022\022\n\016ProcessInvalid\020\000\022\r\n\tProc"
-      "essCG\020\001\022\016\n\nProcessPVE\020\002\022\022\n\016ProcessExplor"
-      "e\020\003\022\022\n\016ProcessChapter\020\004\022\017\n\013ProcessTask\020\005"
-      "\022\020\n\014ProcessScene\020\006\022\016\n\nUIDialogue\020\007\022\022\n\016Bu"
-      "bbleDialogue\020\010\022\023\n\017ProcessSequence\020\t\022\023\n\017C"
-      "hapterAndStory\020\n\022\020\n\014ProcessStory\020\013*s\n\016Re"
-      "almEnterEnum\022\020\n\014EnterInvalid\020\000\022\020\n\014EnterC"
-      "hapter\020\001\022\016\n\nEnterLogin\020\002\022\r\n\tEnterTown\020\003\022"
-      "\r\n\tEnterJump\020\004\022\017\n\013EnterExtend\020\005*;\n\017Exten"
-      "dLevelEnum\022\026\n\022ExtendLevelInvalid\020\000\022\020\n\013Ex"
-      "tendLevel\020\220N*c\n\013BalanceEnum\022\021\n\rUnknowBal"
-      "ance\020\000\022\013\n\007Victory\020\001\022\n\n\006Failed\020\002\022\010\n\004Flee\020"
-      "\003\022\010\n\004Town\020\004\022\007\n\003Ace\020\005\022\013\n\007Chapter\020d*1\n\010Jum"
-      "pEnum\022\017\n\013JumpInvalid\020\000\022\t\n\005Leave\020\001\022\t\n\005Ent"
-      "er\020\002b\006proto3"
+      "tLock\020\002*B\n\016HeroRemoveEnum\022\021\n\rRemoveUnkno"
+      "wn\020\000\022\r\n\tDismissal\020e\022\016\n\nRetirement\020f*\224\002\n\t"
+      "BuildEnum\022\020\n\014InvalidBuild\020\000\022\r\n\010HeroList\020"
+      "\310\001\022\r\n\010HeroTeam\020\311\001\022\016\n\tMainBuild\020\312\001\022\021\n\014Rec"
+      "ruitBuild\020\313\001\022\020\n\013ClinicBuild\020\314\001\022\017\n\nTrainB"
+      "uild\020\315\001\022\017\n\nOperaBuild\020\316\001\022\020\n\013SmithyBuild\020"
+      "\317\001\022\016\n\tShopBuild\020\320\001\022\021\n\014InheritBuild\020\321\001\022\022\n"
+      "\rCemeteryBuild\020\322\001\022\017\n\nOuterBuild\020\323\001\022\023\n\016Wa"
+      "rehouseBuild\020\324\001\022\021\n\014GranaryBuild\020\325\001*`\n\nRe"
+      "cordEnum\022\021\n\rInvalidRecord\020\000\022\016\n\nCampRecor"
+      "d\020\001\022\017\n\013DailyRecord\020\002\022\016\n\nDeadRecord\020\003\022\016\n\n"
+      "LifeRecord\020\004*+\n\rLifeEventEnum\022\014\n\010HeroBor"
+      "n\020\000\022\014\n\010HeroDead\020\001*\222\001\n\022PlayerStatusEnumEx"
+      "\022\020\n\014UnknowStatus\020\000\022\020\n\014OnlineStatus\020\001\022\021\n\r"
+      "OfflineStatus\020\002\022\021\n\rExploreStatus\020\003\022\r\n\tPV"
+      "EStatus\020\004\022\r\n\tPVPStatus\020\005\022\024\n\020DropSelectSt"
+      "atus\020\006*c\n\014NoticeEnumEx\022\020\n\014UnknowNotice\020\000"
+      "\022\024\n\020NoticeCampRecord\020d\022\025\n\021NoticeDailyRec"
+      "ord\020e\022\024\n\020NoticeDeadRecord\020f*>\n\nExpireEnu"
+      "m\022\021\n\rInvalidExpire\020\000\022\016\n\nTimeExpire\020\001\022\r\n\t"
+      "NumExpire\020\002*;\n\017BalanceShowEnum\022\016\n\nUnknow"
+      "Show\020\000\022\013\n\007Explore\020\001\022\013\n\007Balance\020\002*\?\n\014Item"
+      "AutoEnum\022\017\n\013AutoInvalid\020\000\022\r\n\tAutoStore\020\001"
+      "\022\017\n\013AutoDestory\020\002*\362\001\n\022InitialProcessEnum"
+      "\022\022\n\016ProcessInvalid\020\000\022\r\n\tProcessCG\020\001\022\016\n\nP"
+      "rocessPVE\020\002\022\022\n\016ProcessExplore\020\003\022\022\n\016Proce"
+      "ssChapter\020\004\022\017\n\013ProcessTask\020\005\022\020\n\014ProcessS"
+      "cene\020\006\022\016\n\nUIDialogue\020\007\022\022\n\016BubbleDialogue"
+      "\020\010\022\023\n\017ProcessSequence\020\t\022\023\n\017ChapterAndSto"
+      "ry\020\n\022\020\n\014ProcessStory\020\013*s\n\016RealmEnterEnum"
+      "\022\020\n\014EnterInvalid\020\000\022\020\n\014EnterChapter\020\001\022\016\n\n"
+      "EnterLogin\020\002\022\r\n\tEnterTown\020\003\022\r\n\tEnterJump"
+      "\020\004\022\017\n\013EnterExtend\020\005*;\n\017ExtendLevelEnum\022\026"
+      "\n\022ExtendLevelInvalid\020\000\022\020\n\013ExtendLevel\020\220N"
+      "*c\n\013BalanceEnum\022\021\n\rUnknowBalance\020\000\022\013\n\007Vi"
+      "ctory\020\001\022\n\n\006Failed\020\002\022\010\n\004Flee\020\003\022\010\n\004Town\020\004\022"
+      "\007\n\003Ace\020\005\022\013\n\007Chapter\020d*1\n\010JumpEnum\022\017\n\013Jum"
+      "pInvalid\020\000\022\t\n\005Leave\020\001\022\t\n\005Enter\020\002*G\n\rReal"
+      "mTimeEnum\022\017\n\013TimeInvalid\020\000\022\013\n\007Morning\020\001\022"
+      "\r\n\tAfternoon\020\002\022\t\n\005Night\020\003b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1772);
+      descriptor, 1993);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "EnumMessage.proto", &protobuf_RegisterTypes);
 }
@@ -122,9 +127,23 @@ struct StaticDescriptorInitializer {
 } static_descriptor_initializer;
 }  // namespace protobuf_EnumMessage_2eproto
 namespace KFMsg {
-const ::google::protobuf::EnumDescriptor* CampEnum_descriptor() {
+const ::google::protobuf::EnumDescriptor* ConstDefineEnum_descriptor() {
   protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[0];
+}
+bool ConstDefineEnum_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 99999:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::google::protobuf::EnumDescriptor* CampEnum_descriptor() {
+  protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[1];
 }
 bool CampEnum_IsValid(int value) {
   switch (value) {
@@ -139,7 +158,7 @@ bool CampEnum_IsValid(int value) {
 
 const ::google::protobuf::EnumDescriptor* RefreshEnum_descriptor() {
   protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[1];
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[2];
 }
 bool RefreshEnum_IsValid(int value) {
   switch (value) {
@@ -155,7 +174,7 @@ bool RefreshEnum_IsValid(int value) {
 
 const ::google::protobuf::EnumDescriptor* DivisorEnum_descriptor() {
   protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[2];
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[3];
 }
 bool DivisorEnum_IsValid(int value) {
   switch (value) {
@@ -171,7 +190,7 @@ bool DivisorEnum_IsValid(int value) {
 
 const ::google::protobuf::EnumDescriptor* HeroLockEnum_descriptor() {
   protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[3];
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[4];
 }
 bool HeroLockEnum_IsValid(int value) {
   switch (value) {
@@ -184,9 +203,24 @@ bool HeroLockEnum_IsValid(int value) {
   }
 }
 
+const ::google::protobuf::EnumDescriptor* HeroRemoveEnum_descriptor() {
+  protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[5];
+}
+bool HeroRemoveEnum_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 101:
+    case 102:
+      return true;
+    default:
+      return false;
+  }
+}
+
 const ::google::protobuf::EnumDescriptor* BuildEnum_descriptor() {
   protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[4];
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[6];
 }
 bool BuildEnum_IsValid(int value) {
   switch (value) {
@@ -213,7 +247,7 @@ bool BuildEnum_IsValid(int value) {
 
 const ::google::protobuf::EnumDescriptor* RecordEnum_descriptor() {
   protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[5];
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[7];
 }
 bool RecordEnum_IsValid(int value) {
   switch (value) {
@@ -230,7 +264,7 @@ bool RecordEnum_IsValid(int value) {
 
 const ::google::protobuf::EnumDescriptor* LifeEventEnum_descriptor() {
   protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[6];
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[8];
 }
 bool LifeEventEnum_IsValid(int value) {
   switch (value) {
@@ -244,7 +278,7 @@ bool LifeEventEnum_IsValid(int value) {
 
 const ::google::protobuf::EnumDescriptor* PlayerStatusEnumEx_descriptor() {
   protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[7];
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[9];
 }
 bool PlayerStatusEnumEx_IsValid(int value) {
   switch (value) {
@@ -263,7 +297,7 @@ bool PlayerStatusEnumEx_IsValid(int value) {
 
 const ::google::protobuf::EnumDescriptor* NoticeEnumEx_descriptor() {
   protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[8];
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[10];
 }
 bool NoticeEnumEx_IsValid(int value) {
   switch (value) {
@@ -279,7 +313,7 @@ bool NoticeEnumEx_IsValid(int value) {
 
 const ::google::protobuf::EnumDescriptor* ExpireEnum_descriptor() {
   protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[9];
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[11];
 }
 bool ExpireEnum_IsValid(int value) {
   switch (value) {
@@ -294,7 +328,7 @@ bool ExpireEnum_IsValid(int value) {
 
 const ::google::protobuf::EnumDescriptor* BalanceShowEnum_descriptor() {
   protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[10];
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[12];
 }
 bool BalanceShowEnum_IsValid(int value) {
   switch (value) {
@@ -309,7 +343,7 @@ bool BalanceShowEnum_IsValid(int value) {
 
 const ::google::protobuf::EnumDescriptor* ItemAutoEnum_descriptor() {
   protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[11];
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[13];
 }
 bool ItemAutoEnum_IsValid(int value) {
   switch (value) {
@@ -324,7 +358,7 @@ bool ItemAutoEnum_IsValid(int value) {
 
 const ::google::protobuf::EnumDescriptor* InitialProcessEnum_descriptor() {
   protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[12];
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[14];
 }
 bool InitialProcessEnum_IsValid(int value) {
   switch (value) {
@@ -348,7 +382,7 @@ bool InitialProcessEnum_IsValid(int value) {
 
 const ::google::protobuf::EnumDescriptor* RealmEnterEnum_descriptor() {
   protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[13];
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[15];
 }
 bool RealmEnterEnum_IsValid(int value) {
   switch (value) {
@@ -366,7 +400,7 @@ bool RealmEnterEnum_IsValid(int value) {
 
 const ::google::protobuf::EnumDescriptor* ExtendLevelEnum_descriptor() {
   protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[14];
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[16];
 }
 bool ExtendLevelEnum_IsValid(int value) {
   switch (value) {
@@ -380,7 +414,7 @@ bool ExtendLevelEnum_IsValid(int value) {
 
 const ::google::protobuf::EnumDescriptor* BalanceEnum_descriptor() {
   protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[15];
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[17];
 }
 bool BalanceEnum_IsValid(int value) {
   switch (value) {
@@ -399,13 +433,29 @@ bool BalanceEnum_IsValid(int value) {
 
 const ::google::protobuf::EnumDescriptor* JumpEnum_descriptor() {
   protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[16];
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[18];
 }
 bool JumpEnum_IsValid(int value) {
   switch (value) {
     case 0:
     case 1:
     case 2:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::google::protobuf::EnumDescriptor* RealmTimeEnum_descriptor() {
+  protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[19];
+}
+bool RealmTimeEnum_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
       return true;
     default:
       return false;

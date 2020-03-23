@@ -41,17 +41,43 @@ namespace KFrame
             _file_name = "herotransfer";
         }
 
-        virtual void LoadAllComplete();
+        // 获取转职配置
+        const KFTransferSetting* FindTransferSetting( uint32 childid, uint32 parentid );
 
         // 获取转职ID
         uint32 GetTransferId( uint32 childid, uint32 parentid );
 
+        // 通过父职业获取子职业
+        uint32 GetRandChildId( uint32 parentid );
+
         // 通过子职业获取父职业
-        uint32 GetParentPro( uint32 childpro );
+        uint32 GetRandParentId( uint32 childid );
+
+        // 获得职业的转职等级
+        uint32 GetProTransferLevel( uint32 profession );
 
     protected:
+        // 清空配置
+        virtual void ClearSetting();
+
         // 读取配置
         virtual void ReadSetting( KFNode& xmlnode, KFTransferSetting* kfsetting );
+
+        // 加载完成
+        virtual void LoadAllComplete();
+
+    private:
+        // 职业对应表
+        typedef std::unordered_map<uint32, UInt32Vector> TransferMap;
+
+        // 父子表
+        TransferMap _parent_child_map;
+
+        // 子父表
+        TransferMap _child_parent_map;
+
+        // 职业转职等级
+        UInt32Map _transfer_level_map;
     };
 }
 

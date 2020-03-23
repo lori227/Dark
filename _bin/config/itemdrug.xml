@@ -1,4 +1,4 @@
-<root platform="" version="2926">
+<root platform="" version="3521">
 	<item Id="1000301" DrugType="2" BuffId="0" Restore="{&quot;hp&quot;:10}" UseTarget="1" />
 	<item Id="1000302" DrugType="2" BuffId="0" Restore="{&quot;hp&quot;:15}" UseTarget="1" />
 	<item Id="1000303" DrugType="2" BuffId="0" Restore="{&quot;hp&quot;:20}" UseTarget="1" />
@@ -8,4 +8,7 @@
 	<item Id="1000321" DrugType="2" BuffId="0" Restore="{&quot;hp&quot;:10,&quot;dip&quot;:-1}" UseTarget="1" />
 	<item Id="1000322" DrugType="2" BuffId="0" Restore="{&quot;hp&quot;:15,&quot;dip&quot;:-2}" UseTarget="1" />
 	<item Id="1000323" DrugType="2" BuffId="0" Restore="{&quot;hp&quot;:20,&quot;dip&quot;:-3}" UseTarget="1" />
+	<item Id="1000331" DrugType="2" BuffId="0" Restore="{&quot;faith&quot;:-20}" UseTarget="0" />
+	<item Id="1000332" DrugType="2" BuffId="0" Restore="{&quot;faith&quot;:-40}" UseTarget="0" />
+	<item Id="1000333" DrugType="2" BuffId="0" Restore="{&quot;faith&quot;:-60}" UseTarget="0" />
 </root>

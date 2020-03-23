@@ -46,6 +46,12 @@ namespace KFrame
         // 判断英雄是否达到最大等级
         virtual bool IsMaxLevel( KFEntity* player, KFData* kfhero );
 
+        // 获取玩家最大等级
+        virtual uint32 GetPlayerMaxLevel( KFEntity* player );
+
+        // 计算英雄的最大等级
+        virtual uint32 CalcMaxLevel( KFEntity* player, KFData* kfhero );
+
         // 添加hp
         virtual uint32 OperateHp( KFEntity* player, KFData* kfhero, uint32 operate, uint32 hp );
 
@@ -92,14 +98,16 @@ namespace KFrame
         // 英雄主动技能更新
         __KF_ADD_DATA_FUNCTION__( OnHeroActiveUpdate );
 
+        // 添加英雄等级
+        __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyHeroLevel );
+
         // 最大英雄数量
         __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyMaxHeroCount );
 
-    public:
-        // 获取英雄最大等级
-        uint32 GetMaxLevel( KFEntity* player, KFData* kfhero );
-
     protected:
+        // 更新所有英雄的最大等级
+        void UpdateAllHeroMaxLevel( KFEntity* player );
+
         // 玩家上下文组件
         KFComponent* _kf_component = nullptr;
     };

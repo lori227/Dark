@@ -41,14 +41,17 @@ namespace KFrame
         ////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
     protected:
-        // 添加对话id
-        __KF_ADD_ELEMENT_FUNCTION__( AddDialogueElement );
+        // 执行逻辑事件
+        __KF_EXECUTE_FUNCTION__( OnExecuteLogicEvent );
+
+        // 执行对话
+        __KF_EXECUTE_FUNCTION__( OnExecuteDialogue );
 
         // 掉落对话段落回调
         __KF_DROP_LOGIC_FUNCTION__( OnDropDialogue );
 
-        // 进入世界地图点
-        __KF_EXECUTE_FUNCTION__( OnExecuteDialogue );
+        // 添加对话id
+        __KF_ADD_ELEMENT_FUNCTION__( AddDialogueElement );
 
         // 更新对话请求
         __KF_MESSAGE_FUNCTION__( HandleUpdateDialogueReq );

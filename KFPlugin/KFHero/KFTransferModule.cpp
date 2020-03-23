@@ -27,8 +27,7 @@ namespace KFrame
         }
 
         auto profession = kfhero->Get( __STRING__( profession ) );
-        auto transferid = KFTransferConfig::Instance()->GetTransferId( kfmsg.profession(), profession );
-        auto kfsetting = KFTransferConfig::Instance()->FindSetting( transferid );
+        auto kfsetting = KFTransferConfig::Instance()->FindTransferSetting( kfmsg.profession(), profession );
         if ( kfsetting == nullptr )
         {
             return _kf_display->SendToClient( player, KFMsg::HeroTransferDataError );
@@ -55,7 +54,7 @@ namespace KFrame
         }
 
         // 扣除消耗
-        auto& dataname = player->RemoveElement( &kfsetting->_cost, _default_multiple, __STRING__( transfer ), transferid, __FUNC_LINE__ );
+        auto& dataname = player->RemoveElement( &kfsetting->_cost, _default_multiple, __STRING__( transfer ), kfmsg.profession(), __FUNC_LINE__ );
         if ( !dataname.empty() )
         {
             return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
@@ -70,18 +69,6 @@ namespace KFrame
                 player->UpdateData( kfinnate, __STRING__( flag ), KFEnum::Set, 0u );
             }
         }
-
-        auto weapontype = kfhero->Get( __STRING__( weapontype ) );
-
-        // 保存之前的职业信息
-        auto kftransferrecord = kfhero->Find( __STRING__( transfer ) );
-        auto kftransfer = player->CreateData( kftransferrecord );
-        auto index = kftransferrecord->Size() + 1;
-        kftransfer->Set( __STRING__( index ), index );
-        kftransfer->Set( __STRING__( profession ), profession );
-        kftransfer->Set( __STRING__( weapontype ), weapontype );
-
-        player->AddData( kftransferrecord, index, kftransfer );
 
         // 开始转职
         player->UpdateData( kfhero, __STRING__( profession ), KFEnum::Set, kfmsg.profession() );

@@ -1,4 +1,4 @@
-<root platform="" version="3097">
+<root platform="" version="3647">
 	<item Id="redis" Name="redis" FileName="./setting/{}_{}_redis.xml" Reload="0" ClearData="0" ClearFile="0" ChildFile="0" />
 	<item Id="mongo" Name="mongo" FileName="./setting/{}_{}_mongo.xml" Reload="0" ClearData="0" ClearFile="0" ChildFile="0" />
 	<item Id="mysql" Name="mysql" FileName="./setting/{}_{}_mysql.xml" Reload="0" ClearData="0" ClearFile="0" ChildFile="0" />
@@ -59,8 +59,6 @@
 	<item Id="herolevel" Name="herolevel" FileName="./config/herolevel.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="recruit" Name="recruitrefresh" FileName="./config/recruitrefresh.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="divisor" Name="recruitdivisor" FileName="./config/recruitdivisor.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
-	<item Id="train" Name="train" FileName="./config/train.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
-	<item Id="clinic" Name="clinic" FileName="./config/clinic.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="npc" Name="npcgenerate" FileName="./config/npcgenerate.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="npcgroup" Name="npcgroup" FileName="./config/npcgroup.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="npcrand" Name="npcrand" FileName="./config/npcrand.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
@@ -73,7 +71,6 @@
 	<item Id="pve" Name="pve" FileName="./config/pve.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="shopgeneral" Name="shopgeneral" FileName="./config/shopgeneral.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="shopgoods" Name="shopgoods" FileName="./config/shopgoods.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
-	<item Id="granary" Name="granary" FileName="./config/granary.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="granarybuy" Name="granarybuy" FileName="./config/granarybuy.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="smithyweapon" Name="smithyweapon" FileName="./config/smithyweapon.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="chapter" Name="chapter" FileName="./config/chapter.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
@@ -98,4 +95,8 @@
 	<item Id="exchange" Name="exchange" FileName="./config/exchange.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="select" Name="select" FileName="./config/select.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="multievent" Name="multievent" FileName="./config/multievent.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
+	<item Id="levelvalue" Name="levelvalue" FileName="./config/levelvalue.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
+	<item Id="heroquality" Name="heroquality" FileName="./config/heroquality.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
+	<item Id="realmtime" Name="realmtime" FileName="./config/realmtime.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
+	<item Id="weather" Name="weather" FileName="./config/weather.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 </root>

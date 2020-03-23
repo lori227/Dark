@@ -102,7 +102,7 @@ namespace KFrame
         uint32 RefreshRecruitLists( KFEntity* player, uint32 type );
 
         // 计算招募英雄的数量
-        uint32 CalcRecruitHeroCount( KFData* kfeffect, const KFRecruitSetting* kfrecruitsetting );
+        uint32 CalcRecruitHeroCount( KFData* kfeffect );
 
         // 默认的招募英雄池子和权重
         uint32 CalcRecruitGenerateWeight( KFData* kfeffect, const KFRecruitSetting* kfrecruitsetting, UInt32Map& generateweight, uint32 type );

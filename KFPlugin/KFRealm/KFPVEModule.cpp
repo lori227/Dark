@@ -20,6 +20,8 @@ namespace KFrame
         __REGISTER_MESSAGE__( KFMsg::MSG_KILL_NPC_REQ, &KFPVEModule::HandleKillNpcReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_FIGHT_HERO_LIST_REQ, &KFPVEModule::HandleFightHeroListReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_UPDATE_FAITH_REQ, &KFPVEModule::HandleUpdateFaithReq );
+        __REGISTER_MESSAGE__( KFMsg::MSG_PVE_TURN_START_REQ, &KFPVEModule::HandleTurnStartReq );
+        __REGISTER_MESSAGE__( KFMsg::MSG_PVE_TURN_FINISH_REQ, &KFPVEModule::HandleTurnFinishReq );
     }
 
     void KFPVEModule::BeforeShut()
@@ -35,6 +37,8 @@ namespace KFrame
         __UN_MESSAGE__( KFMsg::MSG_KILL_NPC_REQ );
         __UN_MESSAGE__( KFMsg::MSG_FIGHT_HERO_LIST_REQ );
         __UN_MESSAGE__( KFMsg::MSG_UPDATE_FAITH_REQ );
+        __UN_MESSAGE__( KFMsg::MSG_PVE_TURN_START_REQ );
+        __UN_MESSAGE__( KFMsg::MSG_PVE_TURN_FINISH_REQ );
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     void KFPVEModule::BindPVEStartFunction( const std::string& module, KFPVEStartFunction& function )
@@ -58,8 +62,29 @@ namespace KFrame
     {
         _pve_finish_function.Remove( module );
     }
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    void KFPVEModule::BindTurnStartFunction( const std::string& module, KFTurnStartFunction& function )
+    {
+        auto kffunction = _turn_start_function.Create( module );
+        kffunction->_function = function;
+    }
+
+    void KFPVEModule::UnBindTurnStartFunction( const std::string& module )
+    {
+        _turn_start_function.Remove( module );
+    }
+
+    void KFPVEModule::BindTurnFinishFunction( const std::string& module, KFTurnFinishFunction& function )
+    {
+        auto kffunction = _turn_finish_function.Create( module );
+        kffunction->_function = function;
+    }
+
+    void KFPVEModule::UnBindTurnFinishFunction( const std::string& module )
+    {
+        _turn_finish_function.Remove( module );
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
     __KF_ENTER_PLAYER_FUNCTION__( KFPVEModule::OnPlayerPVEEnter )
     {
         auto strdata = player->Get<std::string>( __STRING__( pvedata ) );
@@ -86,7 +111,6 @@ namespace KFrame
             _pve_record.Remove( player->GetKeyID() );
         }
     }
-
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     __KF_EXECUTE_FUNCTION__( KFPVEModule::OnExecutePVEFighter )
@@ -260,13 +284,13 @@ namespace KFrame
         }
 
         // 初始化纪录
-        auto kfrecord = _pve_record.Create( player->GetKeyID() );
-        kfrecord->Reset();
+        auto kfpvedata = _pve_record.Create( player->GetKeyID() );
+        kfpvedata->Reset();
 
-        kfrecord->_data.set_status( status );
-        kfrecord->_data.set_id( pveid );
-        kfrecord->_data.set_moduleid( moduleid );
-        kfrecord->_data.set_modulename( modulename );
+        kfpvedata->_data.set_status( status );
+        kfpvedata->_data.set_id( pveid );
+        kfpvedata->_data.set_moduleid( moduleid );
+        kfpvedata->_data.set_modulename( modulename );
 
         /////////////////////////////////////////////////////////////////////////////////////////////
         KFMsg::MsgPVEAck ack;
@@ -274,15 +298,6 @@ namespace KFrame
         ack.set_spawnrule( spawnrule );
         ack.set_dungeonid( dungeonid );
         ack.set_npcgroupid( kfnpcgroupsetting->_id );
-
-        // buff (探索特有)
-        if ( kfrealmdata != nullptr )
-        {
-            // 信仰值
-            ack.set_faith( kfrealmdata->_data.faith() );
-            ack.set_worldflag( kfrealmdata->_data.innerworld() );
-            ack.mutable_buffdata()->CopyFrom( kfrealmdata->_data.buffdata() );
-        }
 
         // team
         auto herocount = 0u;
@@ -336,11 +351,22 @@ namespace KFrame
             npclevel = npclevel / static_cast< double >( npccount );
         }
 
+        // buff (探索特有)
+        if ( kfrealmdata != nullptr )
+        {
+            // 信仰值
+            ack.set_realmid( kfrealmdata->_data.id() );
+            ack.set_faith( kfrealmdata->_data.faith() );
+            ack.set_worldflag( kfrealmdata->_data.innerworld() );
+            ack.mutable_buffdata()->CopyFrom( kfrealmdata->_data.buffdata() );
+        }
+
         // 逃跑成功率
-        auto fleerate = CalcFleeSuccessRate( player, kfsetting, herolevel, npclevel );
+        auto fleerate = CalcFleeSuccessRate( player, kfsetting, herolevel, npclevel, kfrealmdata != nullptr );
         ack.set_fleerate( fleerate );
-        kfrecord->_data.set_fleerate( fleerate );
-        _kf_player->SendToClient( player, KFMsg::MSG_PVE_ACK, &ack, 10u );
+        kfpvedata->_data.set_fleerate( fleerate );
+
+        _kf_player->SendToClient( player, KFMsg::MSG_PVE_ACK, &ack );
         /////////////////////////////////////////////////////////////////////////////////////////////
         player->SetStatus( KFMsg::PVEStatus );
         player->UpdateData( __STRING__( pveid ), KFEnum::Set, pveid );
@@ -349,7 +375,7 @@ namespace KFrame
         for ( auto& iter : _pve_start_function._objects )
         {
             auto kffunction = iter.second;
-            kffunction->_function( player, kfrecord );
+            kffunction->_function( player, kfrealmdata, kfpvedata );
         }
 
         return KFMsg::Ok;
@@ -373,13 +399,13 @@ namespace KFrame
         auto kfgroupsetting = KFNpcGroupConfig::Instance()->FindSetting( npcgroupid );
         if ( kfgroupsetting == nullptr )
         {
-            __LOG_ERROR__( "pve=[{}] npcgroup=[{}] can't find setting", npcgroupid );
+            __LOG_ERROR__( "pve=[{}] npcgroup=[{}] can't find setting", kfpvesetting->_id, npcgroupid );
         }
 
         return kfgroupsetting;
     }
 
-    uint32 KFPVEModule::CalcFleeSuccessRate( KFEntity* player, const KFPVESetting* kfsetting, double herolevel, double npclevel )
+    uint32 KFPVEModule::CalcFleeSuccessRate( KFEntity* player, const KFPVESetting* kfsetting, double herolevel, double npclevel, bool isinrealm )
     {
         auto fleerate = kfsetting->_normal_flee_rate;
         if ( IsInnerWorld( player ) )
@@ -391,10 +417,19 @@ namespace KFrame
             return 0u;
         }
 
-        fleerate += ( herolevel - npclevel ) * kfsetting->_level_coefficient;
+        // 在探索中计算逃跑率
+        if ( isinrealm )
+        {
+            fleerate += ( herolevel - npclevel ) * kfsetting->_level_coefficient;
 
-        // 团长逃跑成功率属性
-        fleerate += player->Get<uint32>( __STRING__( flee ) );
+            // 团长逃跑成功率属性
+            fleerate += player->Get<uint32>( __STRING__( flee ) );
+        }
+        else
+        {
+            fleerate = KFRandEnum::TenThousand;
+        }
+
         return fleerate;
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -443,10 +478,11 @@ namespace KFrame
             PVEBalanceClearData( player );
 
             // 结束战斗回调
+            auto kfrealmdata = _kf_realm->GetRealmData( player );
             for ( auto& iter : _pve_finish_function._objects )
             {
                 auto kffunction = iter.second;
-                kffunction->_function( player, kfpvedata, result );
+                kffunction->_function( player, kfrealmdata, kfpvedata, result, truns );
             }
         }
 
@@ -491,6 +527,9 @@ namespace KFrame
 
             // 掉落显示
             kfpvedata->BalanceDropData( player );
+
+            // 同步属性
+            player->SyncDataSequence( KFEnum::Set, KFEnum::Dec, KFEnum::Add );
         }
     }
 
@@ -539,7 +578,7 @@ namespace KFrame
         ack.set_modulename( kfpvedata->_data.modulename() );
         ack.set_realmid( player->Get<uint32>( __STRING__( realmid ) ) );
         kfpvedata->BalanceRealmRecord( ack.mutable_balance() );
-        _kf_player->SendToClient( player, KFMsg::MSG_PVE_BALANCE_ACK, &ack, 10u );
+        _kf_player->SendToClient( player, KFMsg::MSG_PVE_BALANCE_ACK, &ack );
     }
 
     void KFPVEModule::PVEBalanceRecord( KFEntity* player, KFRealmData* kfpvedata, uint32 result )
@@ -911,11 +950,10 @@ namespace KFrame
         if ( kfrealmdata == nullptr )
         {
             kfrealmdata = _pve_record.Find( player->GetKeyID() );
-        }
-
-        if ( kfrealmdata == nullptr )
-        {
-            return;
+            if ( kfrealmdata == nullptr )
+            {
+                return;
+            }
         }
 
         if ( kfrealmdata->IsInnerWorld() )
@@ -936,11 +974,10 @@ namespace KFrame
         if ( kfrealmdata == nullptr )
         {
             kfrealmdata = _pve_record.Find( player->GetKeyID() );
-        }
-
-        if ( kfrealmdata == nullptr )
-        {
-            return;
+            if ( kfrealmdata == nullptr )
+            {
+                return;
+            }
         }
 
         switch ( operate )
@@ -1069,12 +1106,48 @@ namespace KFrame
             return true;
         }
 
-        auto kfrealmdata = _pve_record.Find( player->GetKeyID() );
-        if ( kfrealmdata == nullptr )
+        auto kfpvedata = _pve_record.Find( player->GetKeyID() );
+        if ( kfpvedata == nullptr )
         {
             return false;
         }
 
-        return kfrealmdata->IsInnerWorld();
+        return kfpvedata->IsInnerWorld();
+    }
+
+    __KF_MESSAGE_FUNCTION__( KFPVEModule::HandleTurnStartReq )
+    {
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgPVETurnStartReq );
+
+        auto kfpvedata = _pve_record.Find( player->GetKeyID() );
+        if ( kfpvedata == nullptr )
+        {
+            return;
+        }
+
+        auto kfrealmdata = _kf_realm->GetRealmData( player );
+        for ( auto& iter : _turn_start_function._objects )
+        {
+            auto kffunction = iter.second;
+            kffunction->_function( player, kfrealmdata, kfpvedata, kfmsg.turn() );
+        }
+    }
+
+    __KF_MESSAGE_FUNCTION__( KFPVEModule::HandleTurnFinishReq )
+    {
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgPVETurnFinsihReq );
+
+        auto kfpvedata = _pve_record.Find( player->GetKeyID() );
+        if ( kfpvedata == nullptr )
+        {
+            return;
+        }
+
+        auto kfrealmdata = _kf_realm->GetRealmData( player );
+        for ( auto& iter : _turn_finish_function._objects )
+        {
+            auto kffunction = iter.second;
+            kffunction->_function( player, kfrealmdata, kfpvedata, kfmsg.turn() );
+        }
     }
 }

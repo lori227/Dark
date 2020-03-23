@@ -77,6 +77,7 @@ namespace KFrame
         if ( exploreoverlaycount != 0u )
         {
             kfsetting->_overlay_count_list[ __STRING__( explore ) ] = exploreoverlaycount;
+            kfsetting->_overlay_count_list[ __STRING__( extend ) ] = exploreoverlaycount;
         }
         /////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////

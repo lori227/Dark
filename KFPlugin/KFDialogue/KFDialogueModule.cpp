@@ -1,4 +1,5 @@
 ﻿#include "KFDialogueModule.hpp"
+#include "KFProtocol/KFProtocol.h"
 
 namespace KFrame
 {
@@ -6,6 +7,7 @@ namespace KFrame
     {
         _kf_component = _kf_kernel->FindComponent( __STRING__( player ) );
 
+        __REGISTER_EXECUTE__( __STRING__( logicevent ), &KFDialogueModule::OnExecuteLogicEvent );
         __REGISTER_EXECUTE__( __STRING__( dialogue ), &KFDialogueModule::OnExecuteDialogue );
         __REGISTER_DROP_LOGIC__( __STRING__( dialogue ), &KFDialogueModule::OnDropDialogue );
         __REGISTER_ADD_ELEMENT__( __STRING__( dialogue ), &KFDialogueModule::AddDialogueElement );
@@ -16,6 +18,7 @@ namespace KFrame
 
     void KFDialogueModule::BeforeShut()
     {
+        __UN_EXECUTE__( __STRING__( logicevent ) );
         __UN_EXECUTE__( __STRING__( dialogue ) );
         __UN_DROP_LOGIC__( __STRING__( dialogue ) );
         __UN_ADD_ELEMENT__( __STRING__( dialogue ) );
@@ -29,8 +32,7 @@ namespace KFrame
         auto kfdialoguesetting = KFDialogueConfig::Instance()->FindSetting( dialogid );
         if ( kfdialoguesetting == nullptr )
         {
-            __LOG_ERROR__( "dialogid [{}] is not exist", dialogid );
-            return;
+            return __LOG_ERROR__( "dialogid [{}] is not exist", dialogid );
         }
 
         auto kfdialoguerecord = player->Find( __STRING__( dialogue ) );
@@ -130,6 +132,23 @@ namespace KFrame
         ack.set_type( type );
         ack.set_storyid( storyid );
         return _kf_player->SendToClient( player, KFMsg::MSG_START_DIALOGUE_ACK, &ack, 10u );
+    }
+
+    __KF_EXECUTE_FUNCTION__( KFDialogueModule::OnExecuteLogicEvent )
+    {
+        if ( executedata->_param_list._params.size() < 1u )
+        {
+            __LOG_ERROR_FUNCTION__( function, line, "logicevent execute param size<1" );
+            return false;
+        }
+
+        auto eventid = executedata->_param_list._params[0]->_int_value;
+
+        KFMsg::MsgLogicEventAck ack;
+        ack.set_id( eventid );
+        _kf_player->SendToClient( player, KFMsg::MSG_LOGIC_EVENT_ACK, &ack );
+
+        return true;
     }
 
     __KF_EXECUTE_FUNCTION__( KFDialogueModule::OnExecuteDialogue )
