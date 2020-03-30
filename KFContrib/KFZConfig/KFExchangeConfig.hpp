@@ -8,6 +8,9 @@ namespace KFrame
     class KFExchangeData
     {
     public:
+        // 掉落类型
+        uint32 _drop_type = 0u;
+
         // 掉落
         uint32 _normal_drop_id = 0u;
         uint32 _inner_drop_id = 0u;

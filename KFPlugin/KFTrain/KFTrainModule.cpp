@@ -4,7 +4,7 @@ namespace KFrame
 {
 #define __KF_SET_STATIC_OPTION_TRAIN__( optionname, optionvalue, classvar)  \
     {   \
-        static auto _static_var = _kf_option->FindOption( optionname ); \
+        static auto _static_var = KFGlobal::Instance()->FindConstant( optionname ); \
         if ( _static_var->optionvalue != classvar )  \
         {   \
             classvar = _static_var->optionvalue;   \

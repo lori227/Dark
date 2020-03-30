@@ -1,4 +1,4 @@
-<root platform="" version="3593">
+<root platform="" version="3929">
 	<item Id="1" NpcGroup="5" Weight="100" SpawnRule="0" />
 	<item Id="2" NpcGroup="2" Weight="100" SpawnRule="0" />
 	<item Id="3" NpcGroup="3" Weight="100" SpawnRule="0" />
@@ -44,8 +44,6 @@
 	<item Id="506003" NpcGroup="460003" Weight="100" SpawnRule="0" />
 	<item Id="506004" NpcGroup="460004" Weight="100" SpawnRule="0" />
 	<item Id="506005" NpcGroup="460005" Weight="100" SpawnRule="0" />
-	<item Id="500991" NpcGroup="420589" Weight="100" SpawnRule="1" />
-	<item Id="500993" NpcGroup="400018" Weight="100" SpawnRule="0" />
 	<item Id="502001" NpcGroup="7" Weight="100" SpawnRule="0" />
 	<item Id="505006" NpcGroup="450006" Weight="100" SpawnRule="0" />
 	<item Id="505007" NpcGroup="450007" Weight="100" SpawnRule="0" />
@@ -2540,9 +2538,9 @@
 	<item Id="550103" NpcGroup="91001005" Weight="100" SpawnRule="0" />
 	<item Id="550103" NpcGroup="91001006" Weight="100" SpawnRule="0" />
 	<item Id="550103" NpcGroup="91001007" Weight="100" SpawnRule="0" />
-	<item Id="550104" NpcGroup="91001008" Weight="100" SpawnRule="0" />
+	<item Id="550104" NpcGroup="91001008" Weight="0" SpawnRule="0" />
 	<item Id="550104" NpcGroup="91001009" Weight="100" SpawnRule="0" />
-	<item Id="550104" NpcGroup="91001010" Weight="100" SpawnRule="0" />
+	<item Id="550104" NpcGroup="91001010" Weight="0" SpawnRule="0" />
 	<item Id="550105" NpcGroup="91001011" Weight="100" SpawnRule="0" />
 	<item Id="550106" NpcGroup="91001012" Weight="100" SpawnRule="0" />
 	<item Id="550106" NpcGroup="91001013" Weight="100" SpawnRule="0" />
@@ -2550,9 +2548,9 @@
 	<item Id="550107" NpcGroup="91001015" Weight="100" SpawnRule="0" />
 	<item Id="550107" NpcGroup="91001016" Weight="100" SpawnRule="0" />
 	<item Id="550107" NpcGroup="91001017" Weight="100" SpawnRule="0" />
-	<item Id="550108" NpcGroup="91001018" Weight="100" SpawnRule="0" />
+	<item Id="550108" NpcGroup="91001018" Weight="0" SpawnRule="0" />
 	<item Id="550108" NpcGroup="91001019" Weight="100" SpawnRule="0" />
-	<item Id="550108" NpcGroup="91001020" Weight="100" SpawnRule="0" />
+	<item Id="550108" NpcGroup="91001020" Weight="0" SpawnRule="0" />
 	<item Id="550109" NpcGroup="91001021" Weight="100" SpawnRule="0" />
 	<item Id="550109" NpcGroup="91001022" Weight="100" SpawnRule="0" />
 	<item Id="550109" NpcGroup="91001023" Weight="100" SpawnRule="0" />
@@ -2571,12 +2569,12 @@
 	<item Id="550111" NpcGroup="91001036" Weight="100" SpawnRule="0" />
 	<item Id="550111" NpcGroup="91001037" Weight="100" SpawnRule="0" />
 	<item Id="550111" NpcGroup="91001038" Weight="100" SpawnRule="0" />
-	<item Id="550112" NpcGroup="91001039" Weight="100" SpawnRule="0" />
-	<item Id="550112" NpcGroup="91001040" Weight="100" SpawnRule="0" />
-	<item Id="550112" NpcGroup="91001041" Weight="100" SpawnRule="0" />
+	<item Id="550112" NpcGroup="91001039" Weight="0" SpawnRule="0" />
+	<item Id="550112" NpcGroup="91001040" Weight="0" SpawnRule="0" />
+	<item Id="550112" NpcGroup="91001041" Weight="0" SpawnRule="0" />
 	<item Id="550112" NpcGroup="91001042" Weight="100" SpawnRule="0" />
-	<item Id="550112" NpcGroup="91001043" Weight="100" SpawnRule="0" />
-	<item Id="550112" NpcGroup="91001044" Weight="100" SpawnRule="0" />
+	<item Id="550112" NpcGroup="91001043" Weight="0" SpawnRule="0" />
+	<item Id="550112" NpcGroup="91001044" Weight="0" SpawnRule="0" />
 	<item Id="550201" NpcGroup="91002001" Weight="100" SpawnRule="0" />
 	<item Id="550201" NpcGroup="91002002" Weight="100" SpawnRule="0" />
 	<item Id="550201" NpcGroup="91002003" Weight="100" SpawnRule="0" />

@@ -23,7 +23,6 @@ namespace KFrame
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////
-#define __MAX_BUFF_COUNT__ 10000
 
     __KF_PVE_START_FUNCTION__( KFBuffModule::OnPVEStartBuffModule )
     {
@@ -39,7 +38,7 @@ namespace KFrame
         auto pbteambuff = &pbbuffdata->teambuff();
         for ( auto iter = pbteambuff->begin(); iter != pbteambuff->end(); ++iter )
         {
-            if ( iter->second.count() < __MAX_BUFF_COUNT__ )
+            if ( iter->second.count() < KFMsg::InfiniteBuff )
             {
                 bufflist.insert( iter->first );
             }
@@ -127,7 +126,7 @@ namespace KFrame
 
     void KFBuffModule::AddTeamBuff( KFRealmData* kfrealmdata, uint32 buffid, uint32 count )
     {
-        count = ( count == 0u ? __MAX_BUFF_COUNT__ : count );
+        count = ( count == 0u ? KFMsg::InfiniteBuff : count );
 
         auto pbbuffdata = kfrealmdata->_data.mutable_buffdata();
         auto& pbbuff = ( *pbbuffdata->mutable_teambuff() )[ buffid ];
@@ -148,7 +147,7 @@ namespace KFrame
 
     void KFBuffModule::RemoveTeamBuff( KFRealmData* kfrealmdata, uint32 buffid, uint32 count )
     {
-        count = ( count == 0u ? __MAX_BUFF_COUNT__ : count );
+        count = ( count == 0u ? KFMsg::InfiniteBuff : count );
 
         auto pbbuffdata = kfrealmdata->_data.mutable_buffdata();
         auto pbteambuff = pbbuffdata->mutable_teambuff();

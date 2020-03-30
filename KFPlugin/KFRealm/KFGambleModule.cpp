@@ -98,7 +98,7 @@ namespace KFrame
 
     __KF_MESSAGE_FUNCTION__( KFGambleModule::HandleGambleItemStartReq )
     {
-        __CLIENT_PROTO_PARSE__( KFMsg::MsgGambleItemShowReq );
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgGambleItemStartReq );
 
         auto kfrealmdata = _kf_realm->GetRealmData( player );
         if ( kfrealmdata == nullptr )
@@ -137,19 +137,34 @@ namespace KFrame
             dropid = kfsetting->_inner_drop_id;
         }
 
+        if ( kfsetting->_drop_type == 0u )
+        {
+            // 秘境抽奖
+            OnGambleItemStart( player, kfsetting, dropid, kfgambledata->_gamble_count, costcount );
+        }
+        else
+        {
+            // 掉落选择
+            OnDropSelect( player, dropid );
+        }
+    }
+
+    void KFGambleModule::OnGambleItemStart( KFEntity* player, const KFGambleSetting* kfsetting, uint32 dropid, uint32 gamblecount, uint32 costcount )
+    {
         auto& droplist = _kf_drop->Drop( player, dropid, kfsetting->_show_count, __STRING__( gamble ), kfsetting->_id, __FUNC_LINE__ );
 
         KFMsg::MsgGambleItemFinishAck ack;
-        ack.set_gambleid( kfmsg.gambleid() );
-        ack.set_gamblecount( kfgambledata->_gamble_count );
+        ack.set_gambleid( kfsetting->_id );
+        ack.set_gamblecount( gamblecount );
         ack.set_costitemid( kfsetting->_cost_item_id );
         ack.set_costitemcount( costcount );
 
         if ( !droplist.empty() )
         {
+            auto pbshow = ack.mutable_showitemid();
             for ( auto dropdata : droplist )
             {
-                ack.add_showitemid( dropdata->_data_key );
+                ( *pbshow )[pbshow->size() + 1] = dropdata->_data_key;
             }
 
             auto index = KFGlobal::Instance()->RandRatio( droplist.size() );
@@ -207,10 +222,25 @@ namespace KFrame
         {
             dropid = kfexchangedata->_inner_drop_id;
         }
-        _kf_drop->Drop( player, dropid, __STRING__( exchange ), kfexchangesetting->_id, __FUNC_LINE__ );
+
+        if ( kfexchangedata->_drop_type == 0u )
+        {
+            // 交换符石
+            OnRuneExchangeStart( player, dropid, kfexchangesetting->_id );
+        }
+        else
+        {
+            // 多选掉落
+            OnDropSelect( player, dropid );
+        }
+    }
+
+    void KFGambleModule::OnRuneExchangeStart( KFEntity* player, uint32 dropid, uint32 exchangeid )
+    {
+        _kf_drop->Drop( player, dropid, __STRING__( exchange ), exchangeid, __FUNC_LINE__ );
 
         KFMsg::MsgRuneExchangeFinishAck ack;
-        ack.set_exchangeid( kfexchangesetting->_id );
+        ack.set_exchangeid( exchangeid );
         _kf_player->SendToClient( player, KFMsg::MSG_RUNE_EXCHANGE_FINISH_ACK, &ack );
     }
 
@@ -218,13 +248,18 @@ namespace KFrame
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgDropSelectReq );
 
+        OnDropSelect( player, kfmsg.selectid() );
+    }
+
+    void KFGambleModule::OnDropSelect( KFEntity* player, uint32 selectid )
+    {
         auto kfrealmdata = _kf_realm->GetRealmData( player );
         if ( kfrealmdata == nullptr )
         {
             return _kf_display->SendToClient( player, KFMsg::RealmNotInStatus );
         }
 
-        auto kfsetting = KFSelectConfig::Instance()->FindSetting( kfmsg.selectid() );
+        auto kfsetting = KFSelectConfig::Instance()->FindSetting( selectid );
         if ( kfsetting == nullptr )
         {
             return _kf_display->SendToClient( player, KFMsg::SelectIdError );
@@ -246,13 +281,14 @@ namespace KFrame
         _kf_drop->Drop( player, dropid, _invalid_string, 0u, __FUNC_LINE__ );
 
         // 还原状态
-        kfrealmdata->_data.set_selectid( kfmsg.selectid() );
+        kfrealmdata->_data.set_selectid( selectid );
         kfrealmdata->_data.set_selectcount( kfsetting->_count );
         player->Set( __STRING__( basic ), __STRING__( status ), status );
 
         // 通知客户端显示
         ShowDropSelectMessage( player, kfrealmdata, 300u );
     }
+
     void KFGambleModule::ShowDropSelectMessage( KFEntity* player, KFRealmData* kfrealmdata, uint32 delaytime )
     {
         KFMsg::MsgDropSelectAck ack;
@@ -316,8 +352,11 @@ namespace KFrame
         kfrealmdata->_data.set_selectcount( 0u );
         player->CleanData( kfselectrecord, false );
 
-        KFMsg::MsgSelectItemAck ack;
-        _kf_player->SendToClient( player, KFMsg::MSG_SELECT_ITEM_ACK, &ack );
+        if ( kfmsg.itemuuid_size() > 0 )
+        {
+            KFMsg::MsgSelectItemAck ack;
+            _kf_player->SendToClient( player, KFMsg::MSG_SELECT_ITEM_ACK, &ack );
+        }
     }
 
     __KF_MESSAGE_FUNCTION__( KFGambleModule::HandleMultiEventReq )

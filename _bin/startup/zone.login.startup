@@ -9,8 +9,6 @@
 	</Includes>
 
 	<Plugins>
-		<Plugin Name="KFProject" Config=""/>	
-		<Plugin Name="KFRedis" Config=""/>
 		<Plugin Name="KFLogin" Config=""/>	
 	</Plugins>
 </Setting>

@@ -1,4 +1,4 @@
-<root platform="" version="3699">
+<root platform="" version="3940">
 	<item Id="100101" Weather="1" InitWeight="100" ExploreDurationn="10-40" PveDurationn="2-3" />
 	<item Id="100101" Weather="2" InitWeight="100" ExploreDurationn="10-40" PveDurationn="2-3" />
 	<item Id="100101" Weather="3" InitWeight="100" ExploreDurationn="10-40" PveDurationn="2-3" />
@@ -8,4 +8,19 @@
 	<item Id="100103" Weather="1" InitWeight="0" ExploreDurationn="5" PveDurationn="1" />
 	<item Id="100103" Weather="2" InitWeight="0" ExploreDurationn="5" PveDurationn="1" />
 	<item Id="100103" Weather="3" InitWeight="100" ExploreDurationn="5" PveDurationn="1" />
+	<item Id="1" Weather="1" InitWeight="0" ExploreDurationn="10" PveDurationn="2" />
+	<item Id="1" Weather="2" InitWeight="100" ExploreDurationn="10" PveDurationn="2" />
+	<item Id="1" Weather="3" InitWeight="0" ExploreDurationn="10" PveDurationn="2" />
+	<item Id="1001" Weather="1" InitWeight="100" ExploreDurationn="99999" PveDurationn="99999" />
+	<item Id="1001" Weather="2" InitWeight="0" ExploreDurationn="0" PveDurationn="0" />
+	<item Id="1001" Weather="3" InitWeight="0" ExploreDurationn="0" PveDurationn="0" />
+	<item Id="1002" Weather="1" InitWeight="0" ExploreDurationn="0" PveDurationn="0" />
+	<item Id="1002" Weather="2" InitWeight="100" ExploreDurationn="99999" PveDurationn="99999" />
+	<item Id="1002" Weather="3" InitWeight="0" ExploreDurationn="0" PveDurationn="0" />
+	<item Id="1003" Weather="1" InitWeight="0" ExploreDurationn="0" PveDurationn="0" />
+	<item Id="1003" Weather="2" InitWeight="0" ExploreDurationn="0" PveDurationn="0" />
+	<item Id="1003" Weather="3" InitWeight="100" ExploreDurationn="99999" PveDurationn="99999" />
+	<item Id="1004" Weather="1" InitWeight="100" ExploreDurationn="100" PveDurationn="4" />
+	<item Id="1004" Weather="2" InitWeight="30" ExploreDurationn="100" PveDurationn="4" />
+	<item Id="1004" Weather="3" InitWeight="30" ExploreDurationn="100" PveDurationn="4" />
 </root>

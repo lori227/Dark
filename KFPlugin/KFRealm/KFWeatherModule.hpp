@@ -46,8 +46,15 @@ namespace KFrame
         // 战斗开始
         __KF_PVE_START_FUNCTION__( OnPVEStartWeatherModule );
 
+        // 战斗结束
+        __KF_PVE_FINISH_FUNCTION__( OnPVEFinishWeatherModule );
+
         // 回合开始
         __KF_TURN_START_FUNCTION__( OnPVETurnStartWeatherModule );
+
+    protected:
+        // 请求更新天气
+        __KF_MESSAGE_FUNCTION__( HandleUpdateWeatherReq );
 
     protected:
         // 获得天气配置

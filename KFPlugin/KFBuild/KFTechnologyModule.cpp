@@ -5,7 +5,7 @@ namespace KFrame
     void KFTechnologyModule::BeforeRun()
     {
         _kf_component = _kf_kernel->FindComponent( __STRING__( player ) );
-        __REGISTER_ENTER_PLAYER__( &KFTechnologyModule::OnEnterTechnologyModule );
+        __REGISTER_BEFORE_ENTER_PLAYER__( &KFTechnologyModule::OnEnterTechnologyModule );
         __REGISTER_ADD_ELEMENT__( __STRING__( technology ), &KFTechnologyModule::AddTechnologyElement );
 
         __REGISTER_ADD_DATA_1__( __STRING__( technology ), &KFTechnologyModule::OnAddUnlockTechnology );
@@ -17,7 +17,7 @@ namespace KFrame
 
     void KFTechnologyModule::BeforeShut()
     {
-        __UN_ENTER_PLAYER__();
+        __UN_BEFORE_ENTER_PLAYER__();
         __UN_ADD_ELEMENT__( __STRING__( technology ) );
         __UN_ADD_DATA_1__( __STRING__( technology ) );
         __UN_UPDATE_DATA_2__( __STRING__( technology ), __STRING__( status ) );
@@ -121,7 +121,7 @@ namespace KFrame
         }
     }
 
-    __KF_ENTER_PLAYER_FUNCTION__( KFTechnologyModule::OnEnterTechnologyModule )
+    __KF_BEFORE_ENTER_PLAYER_FUNCTION__( KFTechnologyModule::OnEnterTechnologyModule )
     {
         // 设置科技类型
         auto kftechnologyrecord = player->Find( __STRING__( technology ) );

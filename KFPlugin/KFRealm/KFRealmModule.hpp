@@ -23,11 +23,9 @@
 #include "KFMessage/KFMessageInterface.h"
 #include "KFDisplay/KFDisplayInterface.h"
 #include "KFGenerate/KFGenerateInterface.h"
-#include "KFOption/KFOptionInterface.h"
 #include "KFZConfig/KFItemConfig.hpp"
 #include "KFZConfig/KFRealmConfig.hpp"
 #include "KFZConfig/KFInnerWorldConfig.hpp"
-#include "KFItem/KFItemRuneInterface.h"
 
 namespace KFrame
 {
@@ -82,6 +80,10 @@ namespace KFrame
 
         // 物件交互请求
         __KF_MESSAGE_FUNCTION__( HandleInteractItemReq );
+
+        // 更新探索事件数据
+        __KF_MESSAGE_FUNCTION__( HandleUpdateExploreEventReq );
+
     protected:
         // 秘境逻辑事件
         __KF_EXECUTE_FUNCTION__( OnExecuteRealm );

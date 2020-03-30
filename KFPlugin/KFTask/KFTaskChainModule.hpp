@@ -42,6 +42,9 @@ namespace KFrame
         // 添加任务链
         __KF_ADD_ELEMENT_FUNCTION__( AddTaskChainElement );
 
+        // 添加刷新任务链
+        __KF_ADD_ELEMENT_FUNCTION__( AddTaskChainrefreshElement );
+
         // 刷新时间组
         __KF_RESET_FUNCTION__( OnResetRefreshTaskChain );
 

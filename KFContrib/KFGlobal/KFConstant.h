@@ -1,11 +1,11 @@
-﻿#ifndef __KF_OPTION_SETTING_H__
-#define __KF_OPTION_SETTING_H__
+﻿#ifndef __KF_CONSTANT_H__
+#define __KF_CONSTANT_H__
 
-#include "KFSetting.h"
+#include "KFInclude.h"
 
 namespace KFrame
 {
-    class KFOptionSetting : public KFIntSetting
+    class KFConstant
     {
     public:
         // 整型数值

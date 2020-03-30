@@ -54,7 +54,7 @@ namespace KFrame
             {
                 allotid = serverid;
                 ip = mapresult->_value[ __STRING__( ip ) ];
-                port = KFUtility::ToValue< uint32 >( mapresult->_value[ __STRING__( port ) ] );
+                port = __TO_UINT32__( mapresult->_value[ __STRING__( port ) ] );
                 if ( ip.empty() || port == _invalid_int )
                 {
                     isempty = true;

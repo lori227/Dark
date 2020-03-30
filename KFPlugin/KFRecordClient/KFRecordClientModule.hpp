@@ -12,7 +12,6 @@
 #include "KFrameEx.h"
 #include "KFRecordClientInterface.h"
 #include "KFReset/KFResetInterface.h"
-#include "KFOption/KFOptionInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFKernel/KFKernelInterface.h"
 #include "KFDisplay/KFNoticeInterface.h"

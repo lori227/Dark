@@ -22,7 +22,7 @@ namespace KFrame
         timedata._max_pve_duration = KFUtility::SplitValue<uint32>( strpveduration, __RANGE_STRING__ );
         if ( timedata._max_pve_duration == 0u )
         {
-            timedata._min_pve_duration = timedata._max_pve_duration;
+            timedata._max_pve_duration = timedata._min_pve_duration;
         }
 
         kfsetting->_total_rand_weight += timedata._rand_weight;

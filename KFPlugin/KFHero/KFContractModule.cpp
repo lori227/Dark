@@ -126,14 +126,14 @@ namespace KFrame
 
     bool KFContractModule::GetContractData( KFData* kfhero, uint32& durability, std::string& cost, uint32& errnum )
     {
-        auto exprate = kfhero->Get<uint32>( __STRING__( exprate ) );
-        if ( exprate == 0u )
+        auto custom = kfhero->Get<uint32>( __STRING__( custom ) );
+        if ( custom > 0u )
         {
             return true;
         }
 
         // 续签时间公式id
-        static auto _timefid_option = _kf_option->FindOption( __STRING__( contracttimefid ) );
+        static auto _timefid_option = KFGlobal::Instance()->FindConstant( __STRING__( contracttimefid ) );
         auto kftimesetting = KFFormulaConfig::Instance()->FindSetting( _timefid_option->_uint32_value );
         if ( kftimesetting == nullptr || kftimesetting->_params.size() < 2u )
         {
@@ -153,7 +153,7 @@ namespace KFrame
         }
 
         // 续签价格公式id
-        static auto _pricefid_option = _kf_option->FindOption( __STRING__( contractpricefid ) );
+        static auto _pricefid_option = KFGlobal::Instance()->FindConstant( __STRING__( contractpricefid ) );
         auto kfpricesetting = KFFormulaConfig::Instance()->FindSetting( _pricefid_option->_uint32_value );
         if ( kfpricesetting == nullptr || kfpricesetting->_type.empty() || kfpricesetting->_params.size() < 8u )
         {

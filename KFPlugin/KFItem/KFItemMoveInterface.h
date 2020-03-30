@@ -10,11 +10,14 @@ namespace KFrame
     class KFItemMoveInterface : public KFModule
     {
     public:
-        // 清空移动包裹
-        virtual void CleanItem( KFEntity* player, const std::string& name, bool isauto = false ) = 0;
-
         // 移动道具
-        virtual uint32 MoveItem( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord, uint32 targetindex ) = 0;
+        virtual uint32 MoveItem( KFEntity* player, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord, uint32 targetindex ) = 0;
+
+        // 查找索引的道具
+        virtual KFData* FindIndexItem( KFEntity* player, KFData* kfitemrecord, uint32 index ) = 0;
+
+        // 结算背包
+        virtual void BalanceItem( KFEntity* player, const std::string& name ) = 0;
     };
 
     ///////////////////////////////////////////////////////////////////////////

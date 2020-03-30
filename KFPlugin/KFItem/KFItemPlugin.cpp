@@ -36,7 +36,6 @@ namespace KFrame
         __FIND_MODULE__( _kf_item, KFItemInterface );
         __FIND_MODULE__( _kf_timer, KFTimerInterface );
         __FIND_MODULE__( _kf_config, KFConfigInterface );
-        __FIND_MODULE__( _kf_option, KFOptionInterface );
         __FIND_MODULE__( _kf_kernel, KFKernelInterface );
         __FIND_MODULE__( _kf_player, KFPlayerInterface );
         __FIND_MODULE__( _kf_message, KFMessageInterface );
@@ -44,6 +43,7 @@ namespace KFrame
         __FIND_MODULE__( _kf_execute, KFExecuteInterface );
         __FIND_MODULE__( _kf_pve, KFPVEInterface );
         __FIND_MODULE__( _kf_item_move, KFItemMoveInterface );
+        __FIND_MODULE__( _kf_realm, KFRealmInterface );
     }
 
     void KFItemPlugin::AddConfig()

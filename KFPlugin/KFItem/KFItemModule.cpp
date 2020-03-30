@@ -482,7 +482,7 @@ namespace KFrame
         }
 
         // uuid
-        auto uuid = KFGlobal::Instance()->STMakeUUID( __STRING__( item ) );
+        auto uuid = KFGlobal::Instance()->STMakeUuid( __STRING__( item ) );
 
         // 添加新的物品
         count -= addcount;
@@ -515,7 +515,7 @@ namespace KFrame
         kfitem->Set( kfitem->_data_setting->_config_key_name, kfsetting->_id );
 
         // uuid
-        kfitem->SetKeyID( KFGlobal::Instance()->STMakeUUID( __STRING__( item ) ) );
+        kfitem->SetKeyID( KFGlobal::Instance()->STMakeUuid( __STRING__( item ) ) );
 
         // 初始化数据
         auto kffunction = _init_item_function.Find( kfsetting->_type );
@@ -800,7 +800,7 @@ namespace KFrame
         return itemcount;
     }
 
-    void KFItemModule::AddItem( KFEntity* player, KFData* kfitemrecord, uint32 itemid, uint32 itemcount, bool callback )
+    void KFItemModule::AddItem( KFEntity* player, KFData* kfitemrecord, uint32 itemid, uint32 itemcount, uint32 itemindex, bool callback )
     {
         if ( IsItemRecordFull( player, kfitemrecord ) )
         {
@@ -815,7 +815,7 @@ namespace KFrame
 
         while ( itemcount > kfitemsetting->_overlay_count )
         {
-            AddItem( player, kfitemrecord, itemid, kfitemsetting->_overlay_count, callback );
+            AddItem( player, kfitemrecord, itemid, kfitemsetting->_overlay_count, 0u, callback );
 
             itemcount -= kfitemsetting->_overlay_count;
         }
@@ -824,6 +824,10 @@ namespace KFrame
 
         kfitem->Set( kfitemrecord->_data_setting->_config_key_name, itemid );
         kfitem->Set( __STRING__( count ), itemcount );
+        if ( itemindex > 0u )
+        {
+            kfitem->Set( __STRING__( index ), itemindex );
+        }
 
         // 初始化数据
         auto kffunction = _init_item_function.Find( kfitemsetting->_type );
@@ -832,7 +836,7 @@ namespace KFrame
             kffunction->_function( player, kfitem, kfitemsetting );
         }
 
-        auto uuid = KFGlobal::Instance()->STMakeUUID( __STRING__( item ) );
+        auto uuid = KFGlobal::Instance()->STMakeUuid( __STRING__( item ) );
 
         player->AddData( kfitemrecord, uuid, kfitem, callback );
     }

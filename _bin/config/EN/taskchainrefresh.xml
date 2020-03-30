@@ -1,7 +1,11 @@
-<root version="2531">
-	<item Id="20001" ResetTime="0" TimerTime="28800" Rate="10000" Condition="" ChainId="2001" PickupTime="28800" CompleteTime="28800" PickupCost="" />
-	<item Id="20002" ResetTime="0" TimerTime="28800" Rate="10000" Condition="" ChainId="2002" PickupTime="28800" CompleteTime="28800" PickupCost="" />
-	<item Id="20003" ResetTime="0" TimerTime="28800" Rate="10000" Condition="" ChainId="2003" PickupTime="28800" CompleteTime="28800" PickupCost="" />
-	<item Id="20004" ResetTime="0" TimerTime="28800" Rate="10000" Condition="" ChainId="2004" PickupTime="28800" CompleteTime="28800" PickupCost="" />
-	<item Id="20005" ResetTime="0" TimerTime="28800" Rate="10000" Condition="" ChainId="2005" PickupTime="28800" CompleteTime="28800" PickupCost="" />
+<root platform="" version="3908">
+	<item Id="20001" ResetTime="0" TimerTime="28800" Rate="10000" Condition="" ChainId="2101" PickupTime="28800" CompleteTime="28800" PickupCost="[[1,1,500]]" />
+	<item Id="20002" ResetTime="0" TimerTime="28800" Rate="10000" Condition="" ChainId="2102" PickupTime="28800" CompleteTime="28800" PickupCost="[[1,2,1500]]" />
+	<item Id="20003" ResetTime="0" TimerTime="28800" Rate="10000" Condition="" ChainId="2103" PickupTime="28800" CompleteTime="28800" PickupCost="[[1,3,22500]]" />
+	<item Id="20004" ResetTime="0" TimerTime="28800" Rate="10000" Condition="" ChainId="2104" PickupTime="28800" CompleteTime="28800" PickupCost="" />
+	<item Id="20005" ResetTime="0" TimerTime="28800" Rate="10000" Condition="" ChainId="2105" PickupTime="28800" CompleteTime="28800" PickupCost="" />
+	<item Id="9000001" ResetTime="0" TimerTime="3600" Rate="10000" Condition="" ChainId="900001" PickupTime="3600" CompleteTime="3600" PickupCost="[[1,1,500]]" />
+	<item Id="9000002" ResetTime="0" TimerTime="3600" Rate="10000" Condition="" ChainId="900002" PickupTime="3600" CompleteTime="3600" PickupCost="[[1,2,1500]]" />
+	<item Id="9000003" ResetTime="0" TimerTime="3600" Rate="10000" Condition="" ChainId="900003" PickupTime="3600" CompleteTime="3600" PickupCost="[[1,3,22500]]" />
+	<item Id="9000004" ResetTime="0" TimerTime="3600" Rate="10000" Condition="" ChainId="900004" PickupTime="3600" CompleteTime="3600" PickupCost="" />
 </root>

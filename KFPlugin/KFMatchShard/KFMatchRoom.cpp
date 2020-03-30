@@ -9,7 +9,7 @@ namespace KFrame
         _version = version;
         _match_queue = kfqueue;
         _battle_server_id = battleserverid;
-        _id = KFGlobal::Instance()->STMakeUUID();
+        _id = KFGlobal::Instance()->STMakeUuid();
 
         ChangeState( InitState, 1000 );
     }

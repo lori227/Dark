@@ -9,11 +9,8 @@ namespace KFrame
     //////////////////////////////////////////////////////////////////////////
     class KFItemRuneInterface : public KFModule
     {
-    public:
-        // 清空符石槽数据
-        virtual void ClearRuneSlotData( KFEntity* player ) = 0;
-
     };
+
     __KF_INTERFACE__( _kf_rune, KFItemRuneInterface );
 }
 

@@ -13,6 +13,7 @@ namespace KFrame
         kfsetting->_cost_formula_id = xmlnode.GetUInt32( "FormulaId" );
         kfsetting->_durability = xmlnode.GetUInt32( "RoleDurability" );
         kfsetting->_level = xmlnode.GetUInt32( "Level" );
+        kfsetting->_custom = xmlnode.GetUInt32( "Custom" );
         kfsetting->_exp_rate = xmlnode.GetUInt32( "ExpRate" );
 
         auto strcharacter = xmlnode.GetString( "CharacterPool", true );

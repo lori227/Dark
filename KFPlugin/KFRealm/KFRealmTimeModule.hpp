@@ -47,7 +47,13 @@ namespace KFrame
         __KF_PVE_START_FUNCTION__( OnPVEStartTimeModule );
 
         // 战斗结束
+        __KF_PVE_FINISH_FUNCTION__( OnPVEFinishTimeModule );
+
+        // 回合结束
         __KF_TURN_START_FUNCTION__( OnPVETurnStartTimeModule );
+    protected:
+        // 请求天气更新
+        __KF_MESSAGE_FUNCTION__( HandleUpdateTimeReq );
 
     protected:
         // 获得时间配置

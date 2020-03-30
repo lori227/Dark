@@ -6,7 +6,7 @@ namespace KFrame
     void KFRecordClientModule::BeforeRun()
     {
         // 注册日报函数
-        auto timeid = _kf_option->GetUInt32( "dailyresettime" );
+        auto timeid = KFGlobal::Instance()->GetUInt32( "dailyresettime" );
         auto daynum = KFRecordConfig::Instance()->GetExpireNum( KFMsg::DailyRecord );
         __REGISTER_RESET_COUNT__( timeid, daynum, &KFRecordClientModule::OnResetRecord );
 

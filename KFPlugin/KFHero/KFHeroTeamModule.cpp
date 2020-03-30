@@ -10,6 +10,8 @@ namespace KFrame
         __REGISTER_ENTER_PLAYER__( &KFHeroTeamModule::OnEnterHeroTeamModule );
         __REGISTER_REMOVE_DATA_1__( __STRING__( hero ), &KFHeroTeamModule::OnRemoveHero );
 
+        __REGISTER_EXECUTE__( __STRING__( heroteamcount ), &KFHeroTeamModule::OnExecuteTechnologyHeroTeamCount );
+
         __REGISTER_DROP_LOGIC__( __STRING__( addhp ), &KFHeroTeamModule::OnDropHeroAddHp );
         __REGISTER_DROP_LOGIC__( __STRING__( dechp ), &KFHeroTeamModule::OnDropHeroDecHp );
         //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -24,6 +26,8 @@ namespace KFrame
         __UN_ENTER_PLAYER__();
         __UN_REMOVE_DATA_1__( __STRING__( hero ) );
 
+        __UN_EXECUTE__( __STRING__( heroteamcount ) );
+
         __UN_DROP_LOGIC__( __STRING__( addhp ) );
         __UN_DROP_LOGIC__( __STRING__( dechp ) );
         //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -35,6 +39,9 @@ namespace KFrame
 
     __KF_ENTER_PLAYER_FUNCTION__( KFHeroTeamModule::OnEnterHeroTeamModule )
     {
+        // 检查英雄队伍数量
+        CheckHeroTeamCount( player );
+
         // 检查队伍里的数据, 如果英雄没在队伍里, 需要清除标记
         CheckHeroInTeam( player );
 
@@ -49,6 +56,23 @@ namespace KFrame
 
         // 清空队伍英雄ep
         ClearHeroEp( player );
+    }
+
+    void KFHeroTeamModule::CheckHeroTeamCount( KFEntity* player )
+    {
+        static auto _option = KFGlobal::Instance()->FindConstant( "maxheroteamcount" );
+        auto heroteamcount = player->Get<uint32>( __STRING__( effect ), __STRING__( heroteamcount ) );
+        auto maxteamcount = _option->_uint32_value + heroteamcount;
+
+        // 扩展队伍数量大小
+        auto kfteamarray = player->Find( __STRING__( heroteam ) );
+        if ( maxteamcount >= kfteamarray->MaxSize() - 1u )
+        {
+            for ( auto i = kfteamarray->MaxSize() - 1u; i <= maxteamcount; ++i )
+            {
+                player->AddArray( kfteamarray, 0u );
+            }
+        }
     }
 
     void KFHeroTeamModule::CheckHeroInTeam( KFEntity* player )
@@ -127,7 +151,7 @@ namespace KFrame
     void KFHeroTeamModule::UpdateDeadHero( KFEntity* player )
     {
         // 随机死亡性格池
-        static auto _option = _kf_option->FindOption( "roledeath_characterpool" );
+        static auto _option = KFGlobal::Instance()->FindConstant( "roledeath_characterpool" );
 
         auto kfherorecord = player->Find( __STRING__( hero ) );
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
@@ -190,13 +214,19 @@ namespace KFrame
         }
     }
 
-    void KFHeroTeamModule::DecHeroRealmDurability( KFEntity* player, uint32 durability )
+    void KFHeroTeamModule::DecHeroRealmDurability( KFEntity* player, uint32 durability, const UInt64Set& excludelist )
     {
         auto kfherorecord = player->Find( __STRING__( hero ) );
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
         for ( auto kfteam = kfteamarray->First(); kfteam != nullptr; kfteam = kfteamarray->Next() )
         {
-            auto kfhero = kfherorecord->Find( kfteam->Get() );
+            auto uuid = kfteam->Get();
+            if ( uuid == 0u || excludelist.find( uuid ) != excludelist.end() )
+            {
+                continue;
+            }
+
+            auto kfhero = kfherorecord->Find( uuid );
             if ( kfhero == nullptr )
             {
                 continue;
@@ -251,6 +281,21 @@ namespace KFrame
         player->UpdateData( __STRING__( heroteamcount ), KFEnum::Dec, 1u );
     }
 
+    __KF_EXECUTE_FUNCTION__( KFHeroTeamModule::OnExecuteTechnologyHeroTeamCount )
+    {
+        if ( executedata->_param_list._params.size() < 1u )
+        {
+            return false;
+        }
+
+        auto count = executedata->_param_list._params[0]->_int_value;
+        player->UpdateData( __STRING__( effect ), __STRING__( heroteamcount ), KFEnum::Add, count );
+
+        CheckHeroTeamCount( player );
+
+        return true;
+    }
+
     __KF_MESSAGE_FUNCTION__( KFHeroTeamModule::HandleHeroTeamChangeReq )
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgHeroTeamChangeReq );
@@ -262,7 +307,7 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::HeroTeamIndexError );
         }
 
-        auto old_uuid = kfteam->Get<uint64>();
+        auto old_uuid = kfteam->Get();
         if ( old_uuid == kfmsg.uuid() )
         {
             return _kf_display->SendToClient( player, KFMsg::HeroTeamDataInvalid );
@@ -310,21 +355,16 @@ namespace KFrame
         __CLIENT_PROTO_PARSE__( KFMsg::MsgHeroTeamExchangeReq );
 
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
+        auto kfoldteam = kfteamarray->Find( kfmsg.oldindex() );
+        auto kfnewteam = kfteamarray->Find( kfmsg.newindex() );
         if ( kfmsg.oldindex() == kfmsg.newindex() ||
-                kfmsg.oldindex() == 0u ||
-                kfmsg.newindex() == 0u ||
-                kfmsg.oldindex() >= kfteamarray->MaxSize() ||
-                kfmsg.newindex() >= kfteamarray->MaxSize() )
+                kfoldteam == nullptr || kfnewteam == nullptr )
         {
             return _kf_display->SendToClient( player, KFMsg::HeroTeamIndexError );
         }
 
-        auto oldvalue = kfteamarray->Get( kfmsg.oldindex() );
-        auto newvalue = kfteamarray->Get( kfmsg.newindex() );
-        if ( oldvalue == newvalue )
-        {
-            return _kf_display->SendToClient( player, KFMsg::HeroTeamDataInvalid );
-        }
+        auto oldvalue = kfoldteam->Get();
+        auto newvalue = kfnewteam->Get();
 
         player->UpdateData( kfteamarray, kfmsg.oldindex(), KFEnum::Set, newvalue );
         player->UpdateData( kfteamarray, kfmsg.newindex(), KFEnum::Set, oldvalue );

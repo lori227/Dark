@@ -1,4 +1,4 @@
-<root platform="" version="3439">
+<root platform="" version="3801">
 	<item Id="39000000" Condition="totalsignin" DoneType=">=" DoneValue="1" Limits="" Limits1="" Limits2="" />
 	<item Id="39000001" Condition="buildlevel" DoneType=">=" DoneValue="99" Limits="202" Limits1="" Limits2="" />
 	<item Id="40004001" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="21000001" Limits1="" Limits2="" />
@@ -56,15 +56,20 @@
 	<item Id="39001050" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="21101019" Limits1="" Limits2="" />
 	<item Id="39001051" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="21101020" Limits1="" Limits2="" />
 	<item Id="39001052" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="21101021" Limits1="" Limits2="" />
-	<item Id="39001053" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="22000001" Limits1="" Limits2="" />
-	<item Id="39001054" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="22000002" Limits1="" Limits2="" />
-	<item Id="39001055" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="22000003" Limits1="" Limits2="" />
-	<item Id="39001056" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="22000004" Limits1="" Limits2="" />
-	<item Id="39001057" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="22000005" Limits1="" Limits2="" />
-	<item Id="39001058" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="22000006" Limits1="" Limits2="" />
-	<item Id="39001059" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="22001001" Limits1="" Limits2="" />
-	<item Id="39001060" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="22001002" Limits1="" Limits2="" />
-	<item Id="39001061" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="22001003" Limits1="" Limits2="" />
+	<item Id="39001053" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="21101022" Limits1="" Limits2="" />
+	<item Id="39001054" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="21101023" Limits1="" Limits2="" />
+	<item Id="39001055" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="21101024" Limits1="" Limits2="" />
+	<item Id="39001056" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="21101025" Limits1="" Limits2="" />
+	<item Id="39001057" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="21101026" Limits1="" Limits2="" />
+	<item Id="39001058" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="22000001" Limits1="" Limits2="" />
+	<item Id="39001059" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="22000002" Limits1="" Limits2="" />
+	<item Id="39001060" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="22000003" Limits1="" Limits2="" />
+	<item Id="39001061" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="22000004" Limits1="" Limits2="" />
+	<item Id="39001062" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="22000005" Limits1="" Limits2="" />
+	<item Id="39001063" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="22000006" Limits1="" Limits2="" />
+	<item Id="39001064" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="22001001" Limits1="" Limits2="" />
+	<item Id="39001065" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="22001002" Limits1="" Limits2="" />
+	<item Id="39001066" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="22001003" Limits1="" Limits2="" />
 	<item Id="39000200" Condition="unlockbuild" DoneType=">=" DoneValue="1" Limits="200" Limits1="" Limits2="" />
 	<item Id="39000201" Condition="unlockbuild" DoneType=">=" DoneValue="1" Limits="201" Limits1="" Limits2="" />
 	<item Id="39000202" Condition="unlockbuild" DoneType=">=" DoneValue="1" Limits="202" Limits1="" Limits2="" />

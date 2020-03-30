@@ -43,9 +43,13 @@ namespace KFrame
         }
     }
 
-    void KFItemConfig::LoadAllComplete()
+    void KFItemConfig::LoadComplete()
     {
-        _rune_compound.clear();
+        if ( _rune_type_level.size() > 0u )
+        {
+            _rune_compound.clear();
+        }
+
         for ( auto iter : _rune_type_level )
         {
             auto nextkey = iter.first + 1u;
@@ -164,18 +168,8 @@ namespace KFrame
 
     void KFItemConfig::ReadRuneSetting( KFNode& xmlnode, KFItemSetting* kfsetting )
     {
-        if ( xmlnode.GetUInt32( "AutoSet", true ) == 1u )
-        {
-            kfsetting->_auto_set = true;
-        }
-
-        kfsetting->_rune_type = xmlnode.GetUInt32( "RuneType", true );
+        kfsetting->_rune_type = xmlnode.GetUInt32( "RuneType" );
         kfsetting->_rune_level = xmlnode.GetUInt32( "RuneLevel" );
-
-        if ( kfsetting->_rune_type == 0u )
-        {
-            return;
-        }
 
         auto key = kfsetting->_rune_type * 10000u + kfsetting->_rune_level;
         _rune_type_level[key] = static_cast<uint32>( kfsetting->_id );

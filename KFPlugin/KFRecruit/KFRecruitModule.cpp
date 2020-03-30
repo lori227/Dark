@@ -86,7 +86,7 @@ namespace KFrame
         }
 
         // 添加到招募列表
-        auto uuid = KFGlobal::Instance()->STMakeUUID( __STRING__( hero ) );
+        auto uuid = KFGlobal::Instance()->STMakeUuid( __STRING__( hero ) );
         player->AddData( kfparent, uuid, kfrecruit );
         return true;
     }
@@ -486,7 +486,7 @@ namespace KFrame
         CalcRecruitCostData( player, kfeffect, kfrecruit, kfhero, generateid, false );
 
         // 添加到招募列表
-        auto uuid = KFGlobal::Instance()->STMakeUUID( __STRING__( hero ) );
+        auto uuid = KFGlobal::Instance()->STMakeUuid( __STRING__( hero ) );
         player->AddData( kfrecruitrecord, uuid, kfrecruit );
     }
 

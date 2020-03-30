@@ -10,7 +10,6 @@
 ************************************************************************/
 
 #include "KFrameEx.h"
-#include "KFOption/KFOptionInterface.h"
 #include "KFKernel/KFKernelInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFDisplay/KFDisplayInterface.h"

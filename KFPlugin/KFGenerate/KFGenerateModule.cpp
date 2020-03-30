@@ -639,6 +639,7 @@ namespace KFrame
             kfhero->Set( __STRING__( exp ), kflevelsetting->_exp );
         }
         kfhero->Set( __STRING__( exprate ), kfgeneratesetting->_exp_rate );
+        kfhero->Set( __STRING__( custom ), kfgeneratesetting->_custom );
 
         // 设置英雄的最大等级
         auto maxlevel = _kf_hero->CalcMaxLevel( player, kfhero );
@@ -733,7 +734,7 @@ namespace KFrame
 
         auto kfnpc = player->CreateData( kfnpcrecord );
         kfnpc->Set( __STRING__( id ), generateid );
-        kfnpc->SetKeyID( KFGlobal::Instance()->STMakeUUID() );
+        kfnpc->SetKeyID( KFGlobal::Instance()->STMakeUuid() );
         kfnpc->Set( __STRING__( race ), kfnpcsetting->_race_id );
         kfnpc->Set( __STRING__( profession ), kfnpcsetting->_profession_id );
         kfnpc->Set( __STRING__( movetype ), kfprofessionsetting->_move_type );
@@ -1210,9 +1211,9 @@ namespace KFrame
             return __LOG_ERROR__( "transfer profession setting=[{}] can't find", newvalue );
         }
 
-        static auto _transfer_option = _kf_option->FindOption( "transferleveloffest" );
-        static auto _direct_option = _kf_option->FindOption( "generatedirectattribute" );
-        static auto _random_option = _kf_option->FindOption( "generaterandattribute" );
+        static auto _transfer_option = KFGlobal::Instance()->FindConstant( "transferleveloffest" );
+        static auto _direct_option = KFGlobal::Instance()->FindConstant( "generatedirectattribute" );
+        static auto _random_option = KFGlobal::Instance()->FindConstant( "generaterandattribute" );
 
         // 更新属性fighter
         auto kffighter = kfhero->Find( __STRING__( fighter ) );
@@ -1335,7 +1336,7 @@ namespace KFrame
         else
         {
             // 随机删除获得天赋
-            static auto _option = _kf_option->FindOption( "useinnatecount" );
+            static auto _option = KFGlobal::Instance()->FindConstant( "useinnatecount" );
             auto kfinnaterecord = kfhero->Find( __STRING__( innate ) );
             if ( kfinnaterecord->Size() <= _option->_uint32_value )
             {

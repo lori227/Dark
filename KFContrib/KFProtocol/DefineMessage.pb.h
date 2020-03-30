@@ -47,7 +47,7 @@ namespace protobuf_DefineMessage_2eproto {
 struct LIBPROTOC_EXPORT TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[27];
+  static const ::google::protobuf::internal::ParseTable schema[30];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -133,9 +133,18 @@ LIBPROTOC_EXPORT extern PBPunishDataDefaultTypeInternal _PBPunishData_default_in
 class PBRealmData;
 class PBRealmDataDefaultTypeInternal;
 LIBPROTOC_EXPORT extern PBRealmDataDefaultTypeInternal _PBRealmData_default_instance_;
+class PBRealmData_EventdataEntry_DoNotUse;
+class PBRealmData_EventdataEntry_DoNotUseDefaultTypeInternal;
+LIBPROTOC_EXPORT extern PBRealmData_EventdataEntry_DoNotUseDefaultTypeInternal _PBRealmData_EventdataEntry_DoNotUse_default_instance_;
 class PBRealmData_ExploreEntry_DoNotUse;
 class PBRealmData_ExploreEntry_DoNotUseDefaultTypeInternal;
 LIBPROTOC_EXPORT extern PBRealmData_ExploreEntry_DoNotUseDefaultTypeInternal _PBRealmData_ExploreEntry_DoNotUse_default_instance_;
+class PBRealmData_RunedataEntry_DoNotUse;
+class PBRealmData_RunedataEntry_DoNotUseDefaultTypeInternal;
+LIBPROTOC_EXPORT extern PBRealmData_RunedataEntry_DoNotUseDefaultTypeInternal _PBRealmData_RunedataEntry_DoNotUse_default_instance_;
+class PBRealmData_TownheroEntry_DoNotUse;
+class PBRealmData_TownheroEntry_DoNotUseDefaultTypeInternal;
+LIBPROTOC_EXPORT extern PBRealmData_TownheroEntry_DoNotUseDefaultTypeInternal _PBRealmData_TownheroEntry_DoNotUse_default_instance_;
 }  // namespace KFMsg
 namespace google {
 namespace protobuf {
@@ -165,7 +174,10 @@ template<> LIBPROTOC_EXPORT ::KFMsg::PBMatchPlayer_HeroEntry_DoNotUse* Arena::Cr
 template<> LIBPROTOC_EXPORT ::KFMsg::PBNpcGroupData* Arena::CreateMaybeMessage<::KFMsg::PBNpcGroupData>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBPunishData* Arena::CreateMaybeMessage<::KFMsg::PBPunishData>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBRealmData* Arena::CreateMaybeMessage<::KFMsg::PBRealmData>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::PBRealmData_EventdataEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBRealmData_EventdataEntry_DoNotUse>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBRealmData_ExploreEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBRealmData_ExploreEntry_DoNotUse>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::PBRealmData_RunedataEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBRealmData_RunedataEntry_DoNotUse>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::PBRealmData_TownheroEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBRealmData_TownheroEntry_DoNotUse>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 namespace KFMsg {
@@ -2519,6 +2531,69 @@ public:
 
 // -------------------------------------------------------------------
 
+class PBRealmData_TownheroEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<PBRealmData_TownheroEntry_DoNotUse, 
+    ::google::protobuf::uint64, ::google::protobuf::uint32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT64,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<PBRealmData_TownheroEntry_DoNotUse, 
+    ::google::protobuf::uint64, ::google::protobuf::uint32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT64,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    0 > SuperType;
+  PBRealmData_TownheroEntry_DoNotUse();
+  PBRealmData_TownheroEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const PBRealmData_TownheroEntry_DoNotUse& other);
+  static const PBRealmData_TownheroEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const PBRealmData_TownheroEntry_DoNotUse*>(&_PBRealmData_TownheroEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
+// -------------------------------------------------------------------
+
+class PBRealmData_RunedataEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<PBRealmData_RunedataEntry_DoNotUse, 
+    ::google::protobuf::uint32, ::google::protobuf::uint32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<PBRealmData_RunedataEntry_DoNotUse, 
+    ::google::protobuf::uint32, ::google::protobuf::uint32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    0 > SuperType;
+  PBRealmData_RunedataEntry_DoNotUse();
+  PBRealmData_RunedataEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const PBRealmData_RunedataEntry_DoNotUse& other);
+  static const PBRealmData_RunedataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const PBRealmData_RunedataEntry_DoNotUse*>(&_PBRealmData_RunedataEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
+// -------------------------------------------------------------------
+
+class PBRealmData_EventdataEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<PBRealmData_EventdataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<PBRealmData_EventdataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > SuperType;
+  PBRealmData_EventdataEntry_DoNotUse();
+  PBRealmData_EventdataEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const PBRealmData_EventdataEntry_DoNotUse& other);
+  static const PBRealmData_EventdataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const PBRealmData_EventdataEntry_DoNotUse*>(&_PBRealmData_EventdataEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
+// -------------------------------------------------------------------
+
 class LIBPROTOC_EXPORT PBRealmData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.PBRealmData) */ {
  public:
   PBRealmData();
@@ -2554,7 +2629,7 @@ class LIBPROTOC_EXPORT PBRealmData : public ::google::protobuf::Message /* @@pro
                &_PBRealmData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    25;
+    28;
 
   void Swap(PBRealmData* other);
   friend void swap(PBRealmData& a, PBRealmData& b) {
@@ -2663,6 +2738,33 @@ class LIBPROTOC_EXPORT PBRealmData : public ::google::protobuf::Message /* @@pro
       explore() const;
   ::google::protobuf::Map< ::google::protobuf::uint32, ::KFMsg::PBExploreData >*
       mutable_explore();
+
+  // map<uint64, uint32> townhero = 22;
+  int townhero_size() const;
+  void clear_townhero();
+  static const int kTownheroFieldNumber = 22;
+  const ::google::protobuf::Map< ::google::protobuf::uint64, ::google::protobuf::uint32 >&
+      townhero() const;
+  ::google::protobuf::Map< ::google::protobuf::uint64, ::google::protobuf::uint32 >*
+      mutable_townhero();
+
+  // map<uint32, uint32> runedata = 23;
+  int runedata_size() const;
+  void clear_runedata();
+  static const int kRunedataFieldNumber = 23;
+  const ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >&
+      runedata() const;
+  ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >*
+      mutable_runedata();
+
+  // map<string, string> eventdata = 24;
+  int eventdata_size() const;
+  void clear_eventdata();
+  static const int kEventdataFieldNumber = 24;
+  const ::google::protobuf::Map< ::std::string, ::std::string >&
+      eventdata() const;
+  ::google::protobuf::Map< ::std::string, ::std::string >*
+      mutable_eventdata();
 
   // bytes modulename = 3;
   void clear_modulename();
@@ -2786,12 +2888,6 @@ class LIBPROTOC_EXPORT PBRealmData : public ::google::protobuf::Message /* @@pro
   ::google::protobuf::uint32 weathertotalstep() const;
   void set_weathertotalstep(::google::protobuf::uint32 value);
 
-  // uint32 timecurrentturn = 45;
-  void clear_timecurrentturn();
-  static const int kTimecurrentturnFieldNumber = 45;
-  ::google::protobuf::uint32 timecurrentturn() const;
-  void set_timecurrentturn(::google::protobuf::uint32 value);
-
   // uint32 weathercurrentstep = 33;
   void clear_weathercurrentstep();
   static const int kWeathercurrentstepFieldNumber = 33;
@@ -2815,6 +2911,12 @@ class LIBPROTOC_EXPORT PBRealmData : public ::google::protobuf::Message /* @@pro
   static const int kNextweatherFieldNumber = 36;
   ::google::protobuf::uint32 nextweather() const;
   void set_nextweather(::google::protobuf::uint32 value);
+
+  // uint32 timecurrentturn = 45;
+  void clear_timecurrentturn();
+  static const int kTimecurrentturnFieldNumber = 45;
+  ::google::protobuf::uint32 timecurrentturn() const;
+  void set_timecurrentturn(::google::protobuf::uint32 value);
 
   // uint32 timetype = 41;
   void clear_timetype();
@@ -2855,6 +2957,24 @@ class LIBPROTOC_EXPORT PBRealmData : public ::google::protobuf::Message /* @@pro
       ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
       ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
       0 > explore_;
+  ::google::protobuf::internal::MapField<
+      PBRealmData_TownheroEntry_DoNotUse,
+      ::google::protobuf::uint64, ::google::protobuf::uint32,
+      ::google::protobuf::internal::WireFormatLite::TYPE_UINT64,
+      ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+      0 > townhero_;
+  ::google::protobuf::internal::MapField<
+      PBRealmData_RunedataEntry_DoNotUse,
+      ::google::protobuf::uint32, ::google::protobuf::uint32,
+      ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+      ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+      0 > runedata_;
+  ::google::protobuf::internal::MapField<
+      PBRealmData_EventdataEntry_DoNotUse,
+      ::std::string, ::std::string,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      0 > eventdata_;
   ::google::protobuf::internal::ArenaStringPtr modulename_;
   ::KFMsg::PBHeroBuffData* buffdata_;
   ::google::protobuf::uint32 id_;
@@ -2873,11 +2993,11 @@ class LIBPROTOC_EXPORT PBRealmData : public ::google::protobuf::Message /* @@pro
   ::google::protobuf::uint32 foodstep_;
   ::google::protobuf::uint32 weather_;
   ::google::protobuf::uint32 weathertotalstep_;
-  ::google::protobuf::uint32 timecurrentturn_;
   ::google::protobuf::uint32 weathercurrentstep_;
   ::google::protobuf::uint32 weathertotalturn_;
   ::google::protobuf::uint32 weathercurrentturn_;
   ::google::protobuf::uint32 nextweather_;
+  ::google::protobuf::uint32 timecurrentturn_;
   ::google::protobuf::uint32 timetype_;
   ::google::protobuf::uint32 timetotalstep_;
   ::google::protobuf::uint32 timecurrentstep_;
@@ -2922,7 +3042,7 @@ class LIBPROTOC_EXPORT PBPunishData : public ::google::protobuf::Message /* @@pr
                &_PBPunishData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    26;
+    29;
 
   void Swap(PBPunishData* other);
   friend void swap(PBPunishData& a, PBPunishData& b) {
@@ -4677,6 +4797,12 @@ PBExploreData::mutable_npcdata() {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // PBRealmData
 
 // uint32 id = 1;
@@ -5120,6 +5246,60 @@ inline void PBRealmData::set_foodstep(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.foodstep)
 }
 
+// map<uint64, uint32> townhero = 22;
+inline int PBRealmData::townhero_size() const {
+  return townhero_.size();
+}
+inline void PBRealmData::clear_townhero() {
+  townhero_.Clear();
+}
+inline const ::google::protobuf::Map< ::google::protobuf::uint64, ::google::protobuf::uint32 >&
+PBRealmData::townhero() const {
+  // @@protoc_insertion_point(field_map:KFMsg.PBRealmData.townhero)
+  return townhero_.GetMap();
+}
+inline ::google::protobuf::Map< ::google::protobuf::uint64, ::google::protobuf::uint32 >*
+PBRealmData::mutable_townhero() {
+  // @@protoc_insertion_point(field_mutable_map:KFMsg.PBRealmData.townhero)
+  return townhero_.MutableMap();
+}
+
+// map<uint32, uint32> runedata = 23;
+inline int PBRealmData::runedata_size() const {
+  return runedata_.size();
+}
+inline void PBRealmData::clear_runedata() {
+  runedata_.Clear();
+}
+inline const ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >&
+PBRealmData::runedata() const {
+  // @@protoc_insertion_point(field_map:KFMsg.PBRealmData.runedata)
+  return runedata_.GetMap();
+}
+inline ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >*
+PBRealmData::mutable_runedata() {
+  // @@protoc_insertion_point(field_mutable_map:KFMsg.PBRealmData.runedata)
+  return runedata_.MutableMap();
+}
+
+// map<string, string> eventdata = 24;
+inline int PBRealmData::eventdata_size() const {
+  return eventdata_.size();
+}
+inline void PBRealmData::clear_eventdata() {
+  eventdata_.Clear();
+}
+inline const ::google::protobuf::Map< ::std::string, ::std::string >&
+PBRealmData::eventdata() const {
+  // @@protoc_insertion_point(field_map:KFMsg.PBRealmData.eventdata)
+  return eventdata_.GetMap();
+}
+inline ::google::protobuf::Map< ::std::string, ::std::string >*
+PBRealmData::mutable_eventdata() {
+  // @@protoc_insertion_point(field_mutable_map:KFMsg.PBRealmData.eventdata)
+  return eventdata_.MutableMap();
+}
+
 // uint32 weather = 31;
 inline void PBRealmData::clear_weather() {
   weather_ = 0u;
@@ -5362,6 +5542,12 @@ inline void PBPunishData::set_value(::google::protobuf::uint32 value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

@@ -11,7 +11,6 @@
 
 #include "KFrameEx.h"
 #include "KFGranaryInterface.h"
-#include "KFOption/KFOptionInterface.h"
 #include "KFTimer/KFTimerInterface.h"
 #include "KFKernel/KFKernelInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"

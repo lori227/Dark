@@ -23,7 +23,7 @@ namespace KFrame
         virtual void ReadSetting( KFNode& xmlnode, KFItemSetting* kfsetting );
 
         // 加载完成
-        virtual void LoadAllComplete();
+        virtual void LoadComplete();
 
         // 读取通用道具
         void ReadCommonSetting( KFNode& xmlnode, KFItemSetting* kfsetting );

@@ -1,4 +1,4 @@
-<root platform="" version="3480">
+<root platform="" version="3973">
 	<item Name="othermaxcount" Key="" Value="999" Channel="0" Service="0" />
 	<item Name="runemaxcount" Key="" Value="999" Channel="0" Service="0" />
 	<item Name="extendmaxcount" Key="" Value="100" Channel="0" Service="0" />
@@ -26,6 +26,7 @@
 	<item Name="clinicconsumefid" Key="" Value="3" Channel="0" Service="0" />
 	<item Name="clinicconsumenum" Key="" Value="10" Channel="0" Service="0" />
 	<item Name="runecompoundnum" Key="" Value="3" Channel="0" Service="0" />
-	<item Name="maxruneslot" Key="" Value="8" Channel="0" Service="0" />
+	<item Name="maxruneslot" Key="" Value="6" Channel="0" Service="0" />
 	<item Name="selectmaxcount" Key="" Value="10" Channel="0" Service="0" />
+	<item Name="autoequiprune" Key="" Value="1" Channel="0" Service="0" />
 </root>

@@ -136,7 +136,7 @@ namespace KFrame
             return;
         }
 
-        static auto _option = _kf_option->FindOption( __STRING__( smithycdtime ) );
+        static auto _option = KFGlobal::Instance()->FindConstant( __STRING__( smithycdtime ) );
         auto cdtime = _option->_uint32_value;
         if ( cdtime == 0u )
         {
@@ -221,7 +221,7 @@ namespace KFrame
         if ( storemax == 0u )
         {
             // 未解锁时可获得材料数量
-            static auto _option = _kf_option->FindOption( __STRING__( smithystorenum ) );
+            static auto _option = KFGlobal::Instance()->FindConstant( __STRING__( smithystorenum ) );
             storemax = _option->_uint32_value;
         }
 
@@ -249,7 +249,7 @@ namespace KFrame
 
     __KF_UPDATE_DATA_FUNCTION__( KFSmithyModule::OnItemNumUpdate )
     {
-        static auto _option = _kf_option->FindOption( __STRING__( smithycdtime ) );
+        static auto _option = KFGlobal::Instance()->FindConstant( __STRING__( smithycdtime ) );
         auto cdtime = _option->_uint32_value;
         if ( cdtime == 0u )
         {
@@ -343,7 +343,7 @@ namespace KFrame
         ack.set_crit( critresult );
         _kf_player->SendToClient( player, KFMsg::MSG_SMITHY_GATHER_ACK, &ack );
 
-        static auto _option = _kf_option->FindOption( __STRING__( smithyitemid ) );
+        static auto _option = KFGlobal::Instance()->FindConstant( __STRING__( smithyitemid ) );
 
         // 获得道具飘字
         {

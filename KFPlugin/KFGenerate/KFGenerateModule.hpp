@@ -11,7 +11,6 @@
 #include "KFrameEx.h"
 #include "KFGenerateInterface.h"
 #include "KFItem/KFItemInterface.h"
-#include "KFOption/KFOptionInterface.h"
 #include "KFKernel/KFKernelInterface.h"
 #include "KFHero/KFHeroInterface.h"
 #include "KFZConfig/KFRaceConfig.hpp"

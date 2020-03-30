@@ -22,7 +22,7 @@ namespace KFrame
         weatherdata._max_pve_duration = KFUtility::SplitValue<uint32>( strpveduration, __RANGE_STRING__ );
         if ( weatherdata._max_pve_duration == 0u )
         {
-            weatherdata._min_pve_duration = weatherdata._max_pve_duration;
+            weatherdata._max_pve_duration = weatherdata._min_pve_duration;
         }
 
         kfsetting->_total_rand_weight += weatherdata._rand_weight;

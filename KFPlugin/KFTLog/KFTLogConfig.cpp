@@ -5,7 +5,7 @@ namespace KFrame
     void KFTLogConfig::ReadSetting( KFNode& xmlnode, KFTLogSetting* kfsetting )
     {
         kfsetting->_str_value = xmlnode.GetString( "Value" );
-        kfsetting->_uint64_value = KFUtility::ToValue<uint64>( kfsetting->_str_value );
+        kfsetting->_uint64_value = __TO_UINT64__( kfsetting->_str_value );
     }
     ////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////

@@ -1,8 +1,15 @@
-<root platform="" version="3468">
+<root platform="" version="3957">
 	<item Id="36000001" Count="2" NormalDrop="5500201" InnerDrop="5500201" Title="MultiOption_OilBegging_MultiSelect_Title" Description="MultiOption_OilBegging_MultiSelect_Des" LocalEvent="" />
 	<item Id="36000002" Count="2" NormalDrop="5500202" InnerDrop="5500202" Title="MultiOption_OilBegging_MultiSelect_Title" Description="MultiOption_OilBegging_MultiSelect_Des" LocalEvent="" />
 	<item Id="36000003" Count="2" NormalDrop="5500203" InnerDrop="5500203" Title="MultiOption_OilBegging_MultiSelect_Title" Description="MultiOption_OilBegging_MultiSelect_Des" LocalEvent="" />
 	<item Id="36000004" Count="2" NormalDrop="5500204" InnerDrop="5500204" Title="MultiOption_OilBegging_MultiSelect_Title" Description="MultiOption_OilBegging_MultiSelect_Des" LocalEvent="" />
 	<item Id="36000005" Count="2" NormalDrop="5500205" InnerDrop="5500205" Title="MultiOption_OilBegging_MultiSelect_Title" Description="MultiOption_OilBegging_MultiSelect_Des" LocalEvent="" />
 	<item Id="36000006" Count="2" NormalDrop="5500206" InnerDrop="5500206" Title="MultiOption_OilBegging_MultiSelect_Title" Description="MultiOption_OilBegging_MultiSelect_Des" LocalEvent="" />
+	<item Id="36000007" Count="1" NormalDrop="5500301" InnerDrop="5500301" Title="MultiSelection_TYPE_KEY" Description="MultiSelection_TYPE_KEY_DES" LocalEvent="" />
+	<item Id="36000008" Count="1" NormalDrop="5500302" InnerDrop="5500302" Title="MultiSelection_TYPE_KEY" Description="MultiSelection_TYPE_KEY_DES" LocalEvent="" />
+	<item Id="36000009" Count="1" NormalDrop="5500303" InnerDrop="5500303" Title="MultiSelection_TYPE_KEY" Description="MultiSelection_TYPE_KEY_DES" LocalEvent="" />
+	<item Id="36000010" Count="1" NormalDrop="5500304" InnerDrop="5500304" Title="MultiSelection_TYPE_KEY" Description="MultiSelection_TYPE_KEY_DES" LocalEvent="" />
+	<item Id="36000011" Count="1" NormalDrop="5500305" InnerDrop="5500305" Title="MultiSelection_TYPE_KEY" Description="MultiSelection_TYPE_KEY_DES" LocalEvent="" />
+	<item Id="36000012" Count="1" NormalDrop="5500306" InnerDrop="5500306" Title="MultiSelection_TYPE_KEY" Description="MultiSelection_TYPE_KEY_DES" LocalEvent="" />
+	<item Id="36000013" Count="1" NormalDrop="5900408" InnerDrop="5900408" Title="MultiSelection_TYPE_KEY" Description="MultiSelection_TYPE_KEY_DES" LocalEvent="" />
 </root>

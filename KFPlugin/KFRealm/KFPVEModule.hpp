@@ -21,7 +21,6 @@
 #include "KFMessage/KFMessageInterface.h"
 #include "KFDisplay/KFDisplayInterface.h"
 #include "KFGenerate/KFGenerateInterface.h"
-#include "KFOption/KFOptionInterface.h"
 #include "KFZConfig/KFPVEConfig.hpp"
 #include "KFZConfig/KFPunishConfig.hpp"
 #include "KFItem/KFItemRuneModule.hpp"
@@ -56,10 +55,13 @@ namespace KFrame
         // 关闭
         virtual void BeforeShut();
 
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////
+        // 获得pve数据
+        virtual KFRealmData* GetPVEData( KFEntity* player );
+
         // 操作(里世界)信仰值
         virtual void OperateFaith( KFEntity* player, uint32 operate, uint32 value );
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
     protected:
         // 进入游戏

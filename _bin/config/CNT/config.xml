@@ -1,4 +1,4 @@
-<root platform="" version="3647">
+<root platform="" version="3973">
 	<item Id="redis" Name="redis" FileName="./setting/{}_{}_redis.xml" Reload="0" ClearData="0" ClearFile="0" ChildFile="0" />
 	<item Id="mongo" Name="mongo" FileName="./setting/{}_{}_mongo.xml" Reload="0" ClearData="0" ClearFile="0" ChildFile="0" />
 	<item Id="mysql" Name="mysql" FileName="./setting/{}_{}_mysql.xml" Reload="0" ClearData="0" ClearFile="0" ChildFile="0" />
@@ -25,7 +25,7 @@
 	<item Id="signin" Name="signin" FileName="./config/signin.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="store" Name="store" FileName="./config/store.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="achieve" Name="achieve" FileName="./config/achieve.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
-	<item Id="option" Name="option" FileName="./config/option.xml" Reload="1" ClearData="0" ClearFile="0" ChildFile="0" />
+	<item Id="constant" Name="constant" FileName="./config/constant.xml" Reload="1" ClearData="0" ClearFile="0" ChildFile="0" />
 	<item Id="dropdata" Name="dropdata" FileName="./config/dropdata.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="dropgroup" Name="dropgroup" FileName="./config/dropgroup.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="conditiondefine" Name="conditiondefine" FileName="./config/conditiondefine.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
@@ -35,8 +35,8 @@
 	<item Id="project" Name="project" FileName="./setting/project.xml" Reload="0" ClearData="0" ClearFile="0" ChildFile="0" />
 	<item Id="reward" Name="reward" FileName="./config/reward.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="match" Name="match" FileName="./config/match.xml" Reload="1" ClearData="0" ClearFile="0" ChildFile="0" />
-	<item Id="option" Name="heroment" FileName="./config/heroment.xml" Reload="1" ClearData="0" ClearFile="0" ChildFile="0" />
-	<item Id="option" Name="itemment" FileName="./config/itemment.xml" Reload="1" ClearData="0" ClearFile="0" ChildFile="0" />
+	<item Id="constant" Name="heroconstant" FileName="./config/heroconstant.xml" Reload="1" ClearData="0" ClearFile="0" ChildFile="0" />
+	<item Id="constant" Name="itemconstant" FileName="./config/itemconstant.xml" Reload="1" ClearData="0" ClearFile="0" ChildFile="0" />
 	<item Id="itemtype" Name="itemtype" FileName="./config/itemtype.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="item" Name="itemcommon" FileName="./config/itemcommon.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="1" />
 	<item Id="item" Name="itemgift" FileName="./config/itemgift.xml" Reload="1" ClearData="0" ClearFile="0" ChildFile="0" />

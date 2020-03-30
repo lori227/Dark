@@ -1,15 +1,10 @@
-<root platform="" version="3702">
-	<item Id="1" GrowthMax="90" HeadFrame="HeroQuality01" />
-	<item Id="2" GrowthMax="100" HeadFrame="HeroQuality01" />
-	<item Id="3" GrowthMax="110" HeadFrame="HeroQuality02" />
-	<item Id="4" GrowthMax="120" HeadFrame="HeroQuality02" />
-	<item Id="5" GrowthMax="130" HeadFrame="HeroQuality03" />
-	<item Id="6" GrowthMax="140" HeadFrame="HeroQuality03" />
-	<item Id="7" GrowthMax="150" HeadFrame="HeroQuality04" />
-	<item Id="8" GrowthMax="160" HeadFrame="HeroQuality04" />
-	<item Id="9" GrowthMax="170" HeadFrame="HeroQuality05" />
-	<item Id="10" GrowthMax="180" HeadFrame="HeroQuality05" />
-	<item Id="11" GrowthMax="190" HeadFrame="HeroQuality06" />
-	<item Id="12" GrowthMax="200" HeadFrame="HeroQuality06" />
-	<item Id="13" GrowthMax="210" HeadFrame="HeroQuality07" />
+<root platform="" version="3749">
+	<item Id="1" GrowthMax="90" HeadFrame="HeroQuality03" />
+	<item Id="2" GrowthMax="100" HeadFrame="HeroQuality04" />
+	<item Id="3" GrowthMax="110" HeadFrame="HeroQuality05" />
+	<item Id="4" GrowthMax="120" HeadFrame="HeroQuality05" />
+	<item Id="5" GrowthMax="130" HeadFrame="HeroQuality06" />
+	<item Id="6" GrowthMax="140" HeadFrame="HeroQuality06" />
+	<item Id="7" GrowthMax="150" HeadFrame="HeroQuality07" />
+	<item Id="8" GrowthMax="99999" HeadFrame="HeroQuality07" />
 </root>

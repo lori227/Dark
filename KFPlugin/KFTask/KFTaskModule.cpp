@@ -239,7 +239,7 @@ namespace KFrame
     void KFTaskModule::AddFinishTask( KFEntity* player, uint32 taskid )
     {
         // 启动一个定时器
-        __LIMIT_TIMER_2__( player->GetKeyID(), taskid, 1000u, 1, &KFTaskModule::OnTimerTaskFinish );
+        __LIMIT_TIMER_2__( player->GetKeyID(), taskid, 10u, 1, &KFTaskModule::OnTimerTaskFinish );
     }
 
     void KFTaskModule::FinishTask( KFEntity* player, uint32 taskid )

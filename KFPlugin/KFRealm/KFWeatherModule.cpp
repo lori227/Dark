@@ -7,7 +7,10 @@ namespace KFrame
         __REGISTER_REALM_ENTER__( &KFWeatherModule::OnReamlEnterWeatherModule );
         __REGISTER_REALM_MOVE__( &KFWeatherModule::OnRealmMoveWeatherModule );
         __REGISTER_PVE_START__( &KFWeatherModule::OnPVEStartWeatherModule );
+        __REGISTER_PVE_FINISH__( &KFWeatherModule::OnPVEFinishWeatherModule );
         __REGISTER_TURN_START__( &KFWeatherModule::OnPVETurnStartWeatherModule );
+        //////////////////////////////////////////////////////////////////////////////////////////////////
+        __REGISTER_MESSAGE__( KFMsg::MSG_UDPATE_WEATHER_REQ, &KFWeatherModule::HandleUpdateWeatherReq );
     }
 
     void KFWeatherModule::BeforeShut()
@@ -15,10 +18,30 @@ namespace KFrame
         __UN_REALM_ENTER__();
         __UN_REALM_MOVE__();
         __UN_PVE_START__();
+        __UN_PVE_FINISH__();
         __UN_TURN_START__();
+        //////////////////////////////////////////////////////////////////////////////////////////////////
+        __UN_MESSAGE__( KFMsg::MSG_UDPATE_WEATHER_REQ );
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////
+    __KF_MESSAGE_FUNCTION__( KFWeatherModule::HandleUpdateWeatherReq )
+    {
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgUpdateWeatherReq );
+
+        auto kfrealmdata = _kf_pve->GetPVEData( player );
+        if ( kfrealmdata == nullptr )
+        {
+            kfrealmdata = _kf_realm->GetRealmData( player );
+            if ( kfrealmdata == nullptr )
+            {
+                return;
+            }
+        }
+
+        SendUpdateWeatherToClient( player, kfrealmdata );
+    }
+
     void KFWeatherModule::SendUpdateWeatherToClient( KFEntity* player, KFRealmData* kfrealmdata )
     {
         KFMsg::MsgUpdateWeatherAck ack;
@@ -94,9 +117,16 @@ namespace KFrame
             }
         }
 
-        kfrealmdata->_data.set_weathercurrentstep( 0 );
-        kfrealmdata->_data.set_weather( kfweatherdata->_weahter_id );
-        kfrealmdata->_data.set_weathertotalstep( KFGlobal::Instance()->RandRange( kfweatherdata->_min_realm_duration, kfweatherdata->_max_realm_duration, 1u ) );
+        // 回城回归不能重启设置
+        if ( kfrealmdata->_data.weather() == 0u ||
+                entertype == KFMsg::EnterJump ||
+                entertype == KFMsg::EnterChapter )
+        {
+            kfrealmdata->_data.set_weathercurrentstep( 0 );
+            kfrealmdata->_data.set_weather( kfweatherdata->_weahter_id );
+            kfrealmdata->_data.set_weathertotalstep( KFGlobal::Instance()->RandRange( kfweatherdata->_min_realm_duration, kfweatherdata->_max_realm_duration, 1u ) );
+        }
+
         SendUpdateWeatherToClient( player, kfrealmdata );
     }
 
@@ -177,6 +207,16 @@ namespace KFrame
         SendUpdateWeatherToClient( player, kfpvedata );
     }
 
+    __KF_PVE_FINISH_FUNCTION__( KFWeatherModule::OnPVEFinishWeatherModule )
+    {
+        if ( kfrealmdata == nullptr || kfrealmdata->IsInnerWorld() )
+        {
+            return;
+        }
+
+        SendUpdateWeatherToClient( player, kfrealmdata );
+    }
+
     void KFWeatherModule::RandNextWeatherData( KFRealmData* kfpvedata, const KFWeatherSetting* kfweathersetting )
     {
         auto kfnextweatherdata = kfweathersetting->RandWeatherData();
@@ -205,37 +245,36 @@ namespace KFrame
 
         // 更新回合数
         pbpvedata->set_weathercurrentturn( pbpvedata->weathercurrentturn() + 1u );
-        if ( pbpvedata->weathercurrentturn() < pbpvedata->weathertotalturn() )
+        if ( pbpvedata->weathercurrentturn() >= pbpvedata->weathertotalturn() )
         {
-            return;
+            auto kfweathersetting = FindWeatherSetting( kfrealmdata, kfpvedata );
+            if ( kfweathersetting == nullptr )
+            {
+                return;
+            }
+
+            auto kfweatherdata = kfweathersetting->GetCurrentWeatherData( pbpvedata->nextweather() );
+            if ( kfweatherdata == nullptr )
+            {
+                return __LOG_ERROR__( "realm timeid=[{}] type=[{}] can't find next setting", kfweathersetting->_id, pbpvedata->timetype() );
+            }
+
+            // 随机下次天气
+            RandNextWeatherData( kfpvedata, kfweathersetting );
+
+            pbpvedata->set_weather( kfweatherdata->_weahter_id );
+            pbpvedata->set_weathercurrentturn( pbpvedata->weathercurrentturn() - pbpvedata->weathertotalturn() );
+            pbpvedata->set_weathertotalturn( KFGlobal::Instance()->RandRange( kfweatherdata->_min_pve_duration, kfweatherdata->_max_pve_duration, 1u ) );
+
+            // 如果在探索中, 更新时间
+            if ( kfrealmdata != nullptr )
+            {
+                kfrealmdata->_data.set_weathercurrentstep( 0 );
+                kfrealmdata->_data.set_weather( kfweatherdata->_weahter_id );
+                kfrealmdata->_data.set_weathertotalstep( KFGlobal::Instance()->RandRange( kfweatherdata->_min_realm_duration, kfweatherdata->_max_realm_duration, 1u ) );
+            }
         }
 
-        auto kfweathersetting = FindWeatherSetting( kfrealmdata, kfpvedata );
-        if ( kfweathersetting == nullptr )
-        {
-            return;
-        }
-
-        auto kfweatherdata = kfweathersetting->GetCurrentWeatherData( pbpvedata->nextweather() );
-        if ( kfweatherdata == nullptr )
-        {
-            return __LOG_ERROR__( "realm timeid=[{}] type=[{}] can't find next setting", kfweathersetting->_id, pbpvedata->timetype() );
-        }
-
-        // 随机下次天气
-        RandNextWeatherData( kfpvedata, kfweathersetting );
-
-        pbpvedata->set_weather( kfweatherdata->_weahter_id );
-        pbpvedata->set_weathercurrentturn( pbpvedata->timecurrentturn() - pbpvedata->timetotalturn() );
-        pbpvedata->set_weathertotalturn( KFGlobal::Instance()->RandRange( kfweatherdata->_min_pve_duration, kfweatherdata->_max_pve_duration, 1u ) );
         SendUpdateWeatherToClient( player, kfpvedata );
-
-        // 如果在探索中, 更新时间
-        if ( kfrealmdata != nullptr )
-        {
-            kfrealmdata->_data.set_weathercurrentstep( 0 );
-            kfrealmdata->_data.set_weather( kfweatherdata->_weahter_id );
-            kfrealmdata->_data.set_weathertotalstep( KFGlobal::Instance()->RandRange( kfweatherdata->_min_realm_duration, kfweatherdata->_max_realm_duration, 1u ) );
-        }
     }
 }

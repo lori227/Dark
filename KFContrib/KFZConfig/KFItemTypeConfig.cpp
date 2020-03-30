@@ -27,4 +27,15 @@ namespace KFrame
             KFUtility::AddBitMask( kfsetting->_use_limit, usemask );
         }
     }
+
+    bool KFItemTypeSeting::CheckCanMove( const std::string& sourcename, const std::string& targetname ) const
+    {
+        // 额外的背包, 并且是探索背包
+        if ( sourcename == _extend_name && targetname == _bag_name )
+        {
+            return true;
+        }
+
+        return _move_name_list.find( targetname ) != _move_name_list.end();
+    }
 }

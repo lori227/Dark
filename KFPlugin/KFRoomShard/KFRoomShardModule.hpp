@@ -13,7 +13,6 @@
 #include "KFRoomShardInterface.h"
 #include "KFProtocol/KFProtocol.h"
 #include "KFRedis/KFRedisInterface.h"
-#include "KFOption/KFOptionInterface.h"
 #include "KFMessage/KFMessageInterface.h"
 #include "KFDisplay/KFDisplayInterface.h"
 #include "KFRouteClient/KFRouteClientInterface.h"

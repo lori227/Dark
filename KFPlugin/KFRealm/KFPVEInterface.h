@@ -14,6 +14,9 @@ namespace KFrame
     class KFPVEInterface : public KFModule
     {
     public:
+        // 获得pve数据
+        virtual KFRealmData* GetPVEData( KFEntity* player ) = 0;
+
         // 操作(里世界)信仰值
         virtual void OperateFaith( KFEntity* player, uint32 operate, uint32 value ) = 0;
         //////////////////////////////////////////////////////////////////////////////////////

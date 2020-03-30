@@ -1,4 +1,4 @@
-<root platform="" version="3716">
+<root platform="" version="4002">
 	<item Name="defaultprofession" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="defaultbackground" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="generatedirectattribute" Key="" Value="9" Channel="0" Service="0" />
@@ -11,7 +11,7 @@
 	<item Name="maxinnatecount" Key="" Value="4" Channel="0" Service="0" />
 	<item Name="useinnatecount" Key="" Value="2" Channel="0" Service="0" />
 	<item Name="maxcharactercount" Key="" Value="20" Channel="0" Service="0" />
-	<item Name="maxheroteamcount" Key="" Value="8" Channel="0" Service="0" />
+	<item Name="maxheroteamcount" Key="" Value="4" Channel="0" Service="0" />
 	<item Name="recruitinitcount" Key="" Value="2" Channel="0" Service="0" />
 	<item Name="recruitmaxcount" Key="" Value="10" Channel="0" Service="0" />
 	<item Name="recruitrefresh" Key="" Value="21600" Channel="0" Service="0" />
@@ -30,9 +30,9 @@
 	<item Name="herolistbuildid" Key="" Value="200" Channel="0" Service="0" />
 	<item Name="transferleveloffest" Key="" Value="4" Channel="0" Service="0" />
 	<item Name="Powercoefficient_B" Key="" Value="0" Channel="0" Service="0" />
-	<item Name="initclinicnum" Key="" Value="4000" Channel="0" Service="0" />
-	<item Name="initgranarynum" Key="" Value="1800" Channel="0" Service="0" />
-	<item Name="initsmithynum" Key="" Value="100" Channel="0" Service="0" />
+	<item Name="initclinicnum" Key="" Value="2000" Channel="0" Service="0" />
+	<item Name="initgranarynum" Key="" Value="1200" Channel="0" Service="0" />
+	<item Name="initsmithynum" Key="" Value="1000" Channel="0" Service="0" />
 	<item Name="roledeath_characterpool" Key="" Value="4069001" Channel="0" Service="0" />
 	<item Name="heronamelength" Key="" Value="40" Channel="0" Service="0" />
 	<item Name="exploregrainwarningcount" Key="" Value="50" Channel="0" Service="0" />

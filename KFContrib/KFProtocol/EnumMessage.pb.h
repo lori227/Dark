@@ -57,6 +57,7 @@ enum ConstDefineEnum {
   UnknowConse = 0,
   InfiniteStep = 99999,
   InfiniteTurn = 99999,
+  InfiniteBuff = 10000,
   ConstDefineEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   ConstDefineEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };

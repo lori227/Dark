@@ -121,7 +121,7 @@ namespace KFrame
             return;
         }
 
-        static auto _option = _kf_option->FindOption( __STRING__( granarycdtime ) );
+        static auto _option = KFGlobal::Instance()->FindConstant( __STRING__( granarycdtime ) );
         auto cdtime = _option->_uint32_value;
         if ( cdtime == 0u )
         {
@@ -211,7 +211,7 @@ namespace KFrame
 
     __KF_UPDATE_DATA_FUNCTION__( KFGranaryModule::OnItemNumUpdate )
     {
-        static auto _option = _kf_option->FindOption( __STRING__( granarycdtime ) );
+        static auto _option = KFGlobal::Instance()->FindConstant( __STRING__( granarycdtime ) );
         auto cdtime = _option->_uint32_value;
         if ( cdtime == 0u )
         {
@@ -266,7 +266,7 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::GranaryHaveNotItem );
         }
 
-        static auto _option = _kf_option->FindOption( __STRING__( fooditemid ) );
+        static auto _option = KFGlobal::Instance()->FindConstant( __STRING__( fooditemid ) );
         auto itemid = _option->_uint32_value;
 
         static KFElements _item_element;
@@ -322,7 +322,7 @@ namespace KFrame
 
         // 已购买次数
         auto buycount = player->Get<uint32>( __STRING__( granary ), __STRING__( buycount ) );
-        static auto _buy_option = _kf_option->FindOption( __STRING__( granaryfreebuycount ) );
+        static auto _buy_option = KFGlobal::Instance()->FindConstant( __STRING__( granaryfreebuycount ) );
         auto freecount = _buy_option->_uint32_value;
 
         // 付费购买次数
@@ -333,7 +333,7 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::GranaryBuyCountLimit );
         }
 
-        static auto _item_option = _kf_option->FindOption( __STRING__( fooditemid ) );
+        static auto _item_option = KFGlobal::Instance()->FindConstant( __STRING__( fooditemid ) );
         auto itemid = _item_option->_uint32_value;
 
         static KFElements _item_element;
@@ -349,7 +349,7 @@ namespace KFrame
         auto addnum = player->Get<uint32>( __STRING__( effect ), __STRING__( granaryaddnum ) );
         auto buyfactor = player->Get<uint32>( __STRING__( effect ), __STRING__( granarybuyfactor ) );
 
-        static auto _time_option = _kf_option->FindOption( __STRING__( granarycdtime ) );
+        static auto _time_option = KFGlobal::Instance()->FindConstant( __STRING__( granarycdtime ) );
         auto cdtime = _time_option->_uint32_value;
         if ( addnum == 0u || cdtime == 0u || buyfactor == 0u )
         {

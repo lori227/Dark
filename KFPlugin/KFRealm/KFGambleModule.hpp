@@ -73,6 +73,15 @@ namespace KFrame
 
         // 发送显示掉落选择消息
         void ShowDropSelectMessage( KFEntity* player, KFRealmData* kfrealmdata, uint32 delaytime );
+
+        // 秘境抽奖
+        void OnGambleItemStart( KFEntity* player, const KFGambleSetting* kfsetting, uint32 dropid, uint32 gamblecount, uint32 costcount );
+
+        // 符石交换
+        void OnRuneExchangeStart( KFEntity* player, uint32 dropid, uint32 exchangeid );
+
+        // 掉落选择
+        void OnDropSelect( KFEntity* player, uint32 selectid );
     };
 }
 

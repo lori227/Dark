@@ -1,4 +1,4 @@
-<root platform="" version="3330">
+<root platform="" version="3869">
 	<item Id="4080001" Attr_maxhp="100-100" Attr_atk="100-100" Attr_def="100-100" Attr_res="100-100" Attr_tal="100-100" Attr_spd="100-100" Attr_luk="100-100" />
 	<item Id="4080002" Attr_maxhp="100-150" Attr_atk="100-150" Attr_def="100-150" Attr_res="100-150" Attr_tal="100-150" Attr_spd="100-150" Attr_luk="100-150" />
 	<item Id="4080003" Attr_maxhp="90-90" Attr_atk="90-90" Attr_def="90-90" Attr_res="90-90" Attr_tal="90-90" Attr_spd="90-90" Attr_luk="90-90" />
@@ -23,4 +23,5 @@
 	<item Id="4090301" Attr_maxhp="100-100" Attr_atk="100-100" Attr_def="100-100" Attr_res="100-100" Attr_tal="100-100" Attr_spd="100-100" Attr_luk="100-100" />
 	<item Id="4090302" Attr_maxhp="120-120" Attr_atk="120-120" Attr_def="120-120" Attr_res="120-120" Attr_tal="120-120" Attr_spd="120-120" Attr_luk="120-120" />
 	<item Id="4090303" Attr_maxhp="110-110" Attr_atk="110-110" Attr_def="110-110" Attr_res="110-110" Attr_tal="110-110" Attr_spd="110-110" Attr_luk="110-110" />
+	<item Id="4090304" Attr_maxhp="121-121" Attr_atk="121-121" Attr_def="120-120" Attr_res="121-121" Attr_tal="121-121" Attr_spd="121-121" Attr_luk="121-121" />
 </root>

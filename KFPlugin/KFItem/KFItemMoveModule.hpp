@@ -35,11 +35,14 @@ namespace KFrame
         virtual void BeforeShut();
         ////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
-        // 清空包裹
-        virtual void CleanItem( KFEntity* player, const std::string& name, bool isauto = false );
-
         // 移动道具
-        virtual uint32 MoveItem( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord, uint32 targetindex );
+        virtual uint32 MoveItem( KFEntity* player, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord, uint32 targetindex );
+
+        // 查找索引的道具
+        virtual KFData* FindIndexItem( KFEntity* player, KFData* kfitemrecord, uint32 index );
+
+        // 清空包裹
+        virtual void BalanceItem( KFEntity* player, const std::string& name );
     protected:
         // 拆分道具
         __KF_MESSAGE_FUNCTION__( HandleSplitItemReq );
@@ -91,9 +94,6 @@ namespace KFrame
         // 清空格子信息
         void AddItemEmptyIndex( KFEntity* player, KFData* kfitemrecord, uint32 index );
 
-        // 查找索引的道具
-        KFData* FindIndexItem( KFEntity* player, KFData* kfitemrecord, uint32 index, const KFItemSetting* kfsetting );
-
         // 最大索引
         uint32 GetItemMaxIndex( KFEntity* player, KFData* kfitemrecord );
 
@@ -121,9 +121,15 @@ namespace KFrame
         // 拆分道具
         uint32 SplitItem( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, uint32 splitcount, KFData* kftargetrecord, uint32 splitindex );
 
+        // 添加道具
+        void AddItemData( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord );
+
         // 移动道具
-        bool MoveItemDataToRecord( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord );
+        bool MoveItemData( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord );
         void MoveItemCount( KFEntity* player, KFData* kfitem, uint32 operate, uint32 count );
+
+        // 移动道具
+        uint32 MoveItem( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord, uint32 targetindex );
 
         // 交换道具
         uint32 ExchangeItem( KFEntity* player, KFData* kfsourcerecord, KFData* kfsourceitem, const KFItemSetting* kfsourcesetting, KFData* kftargetrecord, KFData* kftargetitem, const KFItemSetting* kftargetsetting );

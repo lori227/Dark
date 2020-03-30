@@ -99,7 +99,7 @@ namespace KFrame
 
     bool KFTransferModule::RemoveInnateId( KFEntity* player, KFData* kfhero, uint32 id )
     {
-        static auto _option = _kf_option->FindOption( "useinnatecount" );
+        static auto _option = KFGlobal::Instance()->FindConstant( "useinnatecount" );
         auto kfinnaterecord = kfhero->Find( __STRING__( innate ) );
         if ( kfinnaterecord->Size() <= _option->_uint32_value )
         {

@@ -139,6 +139,24 @@ namespace KFrame
         }
     }
 
+    void KFRealmData::RecordTownHeros( KFEntity* player )
+    {
+        auto kfherorecord = player->Find( __STRING__( hero ) );
+        auto kfteamarray = player->Find( __STRING__( heroteam ) );
+        for ( auto kfteam = kfteamarray->First(); kfteam != nullptr; kfteam = kfteamarray->Next() )
+        {
+            auto uuid = kfteam->Get<uint64>();
+            auto kfhero = _kf_hero->FindAliveHero( kfherorecord, uuid );
+            if ( kfhero == nullptr )
+            {
+                continue;
+            }
+
+            auto& townhero = *_data.mutable_townhero();
+            townhero[uuid] = _data.level();
+        }
+    }
+
     void KFRealmData::RecordHeroBeginData( KFData* kfhero, KFMsg::PBBalanceHeroServer* pbhero )
     {
         pbhero->set_death( true );

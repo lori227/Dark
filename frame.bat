@@ -310,7 +310,6 @@ call :CopyInterface KFTcpServer
 call :CopyInterface KFTcpClient
 call :CopyInterface KFTcpDiscover
 call :CopyInterface KFIpAddress
-call :CopyInterface KFOption 1002-常量-全局常量.xlsx
 call :CopyInterface KFRouteClient
 call :CopyInterface KFRouteProxy
 call :CopyInterface KFRouteShard
@@ -320,6 +319,9 @@ call :CopyInterface KFTimer
 rem auth
 call :CopyInterface KFAuth
 call :CopyInterface KFChannel 1000-框架-渠道配置.xlsx
+call :CopyInterface KFAccount
+call :CopyInterface KFDirClient
+call :CopyInterface KFDirShard
 
 rem data
 call :CopyInterface KFDataClient

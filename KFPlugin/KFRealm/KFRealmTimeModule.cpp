@@ -7,7 +7,10 @@ namespace KFrame
         __REGISTER_REALM_ENTER__( &KFRealmTimeModule::OnReamlEnterTimeModule );
         __REGISTER_REALM_MOVE__( &KFRealmTimeModule::OnRealmMoveTimeModule );
         __REGISTER_PVE_START__( &KFRealmTimeModule::OnPVEStartTimeModule );
+        __REGISTER_PVE_FINISH__( &KFRealmTimeModule::OnPVEFinishTimeModule );
         __REGISTER_TURN_START__( &KFRealmTimeModule::OnPVETurnStartTimeModule );
+        //////////////////////////////////////////////////////////////////////////////////////////////////
+        __REGISTER_MESSAGE__( KFMsg::MSG_UPDATE_TIME_REQ, &KFRealmTimeModule::HandleUpdateTimeReq );
     }
 
     void KFRealmTimeModule::BeforeShut()
@@ -15,10 +18,39 @@ namespace KFrame
         __UN_REALM_ENTER__();
         __UN_REALM_MOVE__();
         __UN_PVE_START__();
+        __UN_PVE_FINISH__();
         __UN_TURN_FINISH__();
+        //////////////////////////////////////////////////////////////////////////////////////////////////
+        __UN_MESSAGE__( KFMsg::MSG_UPDATE_TIME_REQ );
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////
+    __KF_MESSAGE_FUNCTION__( KFRealmTimeModule::HandleUpdateTimeReq )
+    {
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgUpdateTimeReq );
+
+        auto kfrealmdata = _kf_pve->GetPVEData( player );
+        if ( kfrealmdata == nullptr )
+        {
+            kfrealmdata = _kf_realm->GetRealmData( player );
+            if ( kfrealmdata == nullptr )
+            {
+                return;
+            }
+        }
+
+        SendUpdateRealmTimeToClient( player, kfrealmdata );
+    }
+
+    void KFRealmTimeModule::SendUpdateRealmTimeToClient( KFEntity* player, KFRealmData* kfrealmdata )
+    {
+        KFMsg::MsgUpdateTimeAck ack;
+        ack.set_timetype( kfrealmdata->_data.timetype() );
+        ack.set_realmduration( kfrealmdata->_data.timetotalstep() );
+        ack.set_pveduration( kfrealmdata->_data.timetotalturn() );
+        _kf_player->SendToClient( player, KFMsg::MSG_UPDATE_TIME_ACK, &ack );
+    }
+
     const KFRealmTimeSetting* KFRealmTimeModule::FindRealmTimeSetting( KFRealmData* kfrealmdata, KFRealmData* kfpvedata )
     {
         auto timeid = 0u;
@@ -54,15 +86,6 @@ namespace KFrame
         return kftimesetting;
     }
 
-    void KFRealmTimeModule::SendUpdateRealmTimeToClient( KFEntity* player, KFRealmData* kfrealmdata )
-    {
-        KFMsg::MsgUpdateTimeAck ack;
-        ack.set_timetype( kfrealmdata->_data.timetype() );
-        ack.set_realmduration( kfrealmdata->_data.timetotalstep() );
-        ack.set_pveduration( kfrealmdata->_data.timetotalturn() );
-        _kf_player->SendToClient( player, KFMsg::MSG_UPDATE_TIME_ACK, &ack );
-    }
-
     __KF_REALM_ENTER_FUNCTION__( KFRealmTimeModule::OnReamlEnterTimeModule )
     {
         auto kftimesetting = FindRealmTimeSetting( kfrealmdata, nullptr );
@@ -91,9 +114,15 @@ namespace KFrame
             }
         }
 
-        kfrealmdata->_data.set_timecurrentstep( 0 );
-        kfrealmdata->_data.set_timetype( kftimedata->_time_type );
-        kfrealmdata->_data.set_timetotalstep( KFGlobal::Instance()->RandRange( kftimedata->_min_realm_duration, kftimedata->_max_realm_duration, 1u ) );
+        if ( kfrealmdata->_data.timetype() == 0u ||
+                entertype == KFMsg::EnterJump ||
+                entertype == KFMsg::EnterChapter )
+        {
+            kfrealmdata->_data.set_timecurrentstep( 0 );
+            kfrealmdata->_data.set_timetype( kftimedata->_time_type );
+            kfrealmdata->_data.set_timetotalstep( KFGlobal::Instance()->RandRange( kftimedata->_min_realm_duration, kftimedata->_max_realm_duration, 1u ) );
+        }
+
         SendUpdateRealmTimeToClient( player, kfrealmdata );
     }
 
@@ -169,6 +198,16 @@ namespace KFrame
         kfpvedata->_data.set_timetype( kftimedata->_time_type );
         kfpvedata->_data.set_timetotalturn( KFGlobal::Instance()->RandRange( kftimedata->_min_pve_duration, kftimedata->_max_pve_duration, 1u ) );
         SendUpdateRealmTimeToClient( player, kfpvedata );
+    }
+
+    __KF_PVE_FINISH_FUNCTION__( KFRealmTimeModule::OnPVEFinishTimeModule )
+    {
+        if ( kfrealmdata == nullptr || kfrealmdata->IsInnerWorld() )
+        {
+            return;
+        }
+
+        SendUpdateRealmTimeToClient( player, kfrealmdata );
     }
 
     __KF_TURN_START_FUNCTION__( KFRealmTimeModule::OnPVETurnStartTimeModule )

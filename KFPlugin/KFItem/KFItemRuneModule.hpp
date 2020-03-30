@@ -12,12 +12,14 @@
 #include "KFrameEx.h"
 #include "KFItemInterface.h"
 #include "KFItemRuneInterface.h"
+#include "KFItemMoveInterface.h"
 #include "KFKernel/KFKernelInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFMessage/KFMessageInterface.h"
-#include "KFOption/KFOptionInterface.h"
 #include "KFDisplay/KFDisplayInterface.h"
 #include "KFTimer/KFTimerInterface.h"
+#include "KFRealm/KFRealmData.hpp"
+#include "KFRealm/KFRealmInterface.h"
 #include "KFZConfig/KFItemConfig.hpp"
 #include "KFZConfig/KFItemTypeConfig.hpp"
 
@@ -35,6 +37,8 @@ namespace KFrame
             uint32 compoundnum = 0u;	// 合成符石数量
             UInt64Vector removelist;	// 删除物品列表(uuid)
             UInt32Map addlist;			// 添加符石列表(itemid itemnum)
+            uint64 replaceuuid = 0u;	// 符石槽替换uuid
+            uint32 replaceid = 0u;		// 符石槽替换itemid
         };
 
     public:
@@ -47,8 +51,6 @@ namespace KFrame
         // 关闭
         virtual void BeforeShut();
 
-        // 清空符石槽数据
-        virtual void ClearRuneSlotData( KFEntity* player );
         ////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
     protected:
@@ -56,14 +58,9 @@ namespace KFrame
         // 进入游戏
         __KF_ENTER_PLAYER_FUNCTION__( OnEnterRuneModule );
 
-        // 穿上符石
-        __KF_MESSAGE_FUNCTION__( HandleRunePutOnReq );
+        // 移动符石
+        __KF_MESSAGE_FUNCTION__( HandleMoveRuneReq );
 
-        // 脱下符石
-        __KF_MESSAGE_FUNCTION__( HandleRuneTakeOffReq );
-
-        // 交互符石
-        __KF_MESSAGE_FUNCTION__( HandleRuneExchangeReq );
 
         // 添加符石回调
         __KF_ADD_DATA_FUNCTION__( OnAddRuneItemCallBack );
@@ -72,20 +69,23 @@ namespace KFrame
         __KF_TIMER_FUNCTION__( OnDelayTimerOperate );
 
     protected:
-        // 装备符石
-        uint32 PutOnRune( KFEntity* player, uint64 itemuuid, uint32 index = 0u, bool isforce = false );
+        // 符石槽中是否有相同类型的符石
+        uint32 CheckSameRuneType( KFEntity* player, KFData* kfitem, KFData* kftargetrecord, uint32 excludeindex = 0u );
 
-        // 脱下符石
-        uint32 TakeOffRune( KFEntity* player, uint32 index );
+        // 装备符石
+        void PutOnRune( KFEntity* player, const UInt64Set& uuidlist );
+
+        // 延时装备合成符石
+        void OnDelayPutOnAndCompoundRune( KFEntity* player, bool is_send = true );
 
         // 延时合成符石
-        void OnDelayTimerCompoundRune( KFEntity* player, bool is_send = true );
+        void OnDelayCompoundRune( KFEntity* player, const UInt32Set& runeset, bool is_send );
 
         // 合并符石
         void CompoundRune( KFEntity* player, KFCompoundData& compounddata );
 
-        // 获取符石背包列表
-        KFData* GetRuneItemRecord( KFEntity* player );
+        // 添加秘境符石数据
+        bool AddRealmRuneData( KFEntity* player, uint32 runeid );
 
     private:
         // 玩家上下文组件

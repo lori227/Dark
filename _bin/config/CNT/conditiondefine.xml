@@ -1,10 +1,11 @@
-<root platform="" version="3721">
+<root platform="" version="3868">
 	<item Id="pveclean" ParentName="player" DataName="pveid" CallType="3" InitCalc="" SaveUUid="0" TriggerType="3" TriggerCheck="16" TriggerUse="2" TriggerValue="0" UseOperate="3" UseType="0" UseValue="0" />
 	<item Id="exploreclean" ParentName="player" DataName="realmid" CallType="3" InitCalc="" SaveUUid="0" TriggerType="3" TriggerCheck="16" TriggerUse="2" TriggerValue="0" UseOperate="3" UseType="0" UseValue="0" />
 	<item Id="explore" ParentName="balance" DataName="realmresult" CallType="3" InitCalc="" SaveUUid="0" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="explorevictory" ParentName="balance" DataName="realmresult" CallType="3" InitCalc="" SaveUUid="0" TriggerType="3" TriggerCheck="13" TriggerUse="2" TriggerValue="1" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="exploreleave" ParentName="balance" DataName="jump" CallType="3" InitCalc="" SaveUUid="0" TriggerType="3" TriggerCheck="13" TriggerUse="2" TriggerValue="1" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="exploreenter" ParentName="balance" DataName="jump" CallType="3" InitCalc="" SaveUUid="0" TriggerType="3" TriggerCheck="13" TriggerUse="2" TriggerValue="2" UseOperate="1" UseType="0" UseValue="1" />
+	<item Id="exploretown" ParentName="balance" DataName="realmresult" CallType="3" InitCalc="" SaveUUid="0" TriggerType="3" TriggerCheck="13" TriggerUse="2" TriggerValue="4" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="pve" ParentName="balance" DataName="pveresult" CallType="3" InitCalc="" SaveUUid="0" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="pvevictory" ParentName="balance" DataName="pveresult" CallType="3" InitCalc="" SaveUUid="0" TriggerType="3" TriggerCheck="13" TriggerUse="2" TriggerValue="1" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="onceexplorepve" ParentName="balance" DataName="pveresult" CallType="3" InitCalc="" SaveUUid="0" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
@@ -28,7 +29,7 @@
 	<item Id="finishtask" ParentName="task" DataName="status" CallType="3" InitCalc="" SaveUUid="0" TriggerType="0" TriggerCheck="13" TriggerUse="1" TriggerValue="4" UseOperate="3" UseType="0" UseValue="1" />
 	<item Id="finishtaskcount" ParentName="task" DataName="status" CallType="3" InitCalc="" SaveUUid="0" TriggerType="0" TriggerCheck="13" TriggerUse="1" TriggerValue="4" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="additem" ParentName="item" DataName="count" CallType="1" InitCalc="" SaveUUid="0" TriggerType="0" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="2" UseValue="0" />
-	<item Id="additem" ParentName="item" DataName="count" CallType="3" InitCalc="" SaveUUid="0" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="1" UseValue="0" />
+	<item Id="additem" ParentName="item" DataName="count" CallType="3" InitCalc="" SaveUUid="0" TriggerType="1" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="1" UseValue="0" />
 	<item Id="useitem" ParentName="item" DataName="count" CallType="3" InitCalc="" SaveUUid="0" TriggerType="2" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="1" UseValue="0" />
 	<item Id="totalsignin" ParentName="player" DataName="totalsignin" CallType="3" InitCalc="2" SaveUUid="0" TriggerType="0" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="3" UseType="2" UseValue="0" />
 	<item Id="continuoussignin" ParentName="player" DataName="continuoussignin" CallType="3" InitCalc="2" SaveUUid="0" TriggerType="0" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="3" UseType="2" UseValue="0" />

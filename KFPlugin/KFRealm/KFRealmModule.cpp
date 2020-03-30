@@ -21,6 +21,7 @@ namespace KFrame
         __REGISTER_MESSAGE__( KFMsg::MSG_UPDATE_EXPLORE_NPC_REQ, &KFRealmModule::HaneleUpdateExploreNpcReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_EXPLORE_DROP_REQ, &KFRealmModule::HandleExploreDropReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_INTERACT_ITEM_REQ, &KFRealmModule::HandleInteractItemReq );
+        __REGISTER_MESSAGE__( KFMsg::MSG_UPDATE_EXPLORE_EVENT_REQ, &KFRealmModule::HandleUpdateExploreEventReq );
     }
 
     void KFRealmModule::BeforeShut()
@@ -40,6 +41,7 @@ namespace KFrame
         __UN_MESSAGE__( KFMsg::MSG_UPDATE_EXPLORE_NPC_REQ );
         __UN_MESSAGE__( KFMsg::MSG_EXPLORE_DROP_REQ );
         __UN_MESSAGE__( KFMsg::MSG_INTERACT_ITEM_REQ );
+        __UN_MESSAGE__( KFMsg::MSG_UPDATE_EXPLORE_EVENT_REQ );
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -150,6 +152,8 @@ namespace KFrame
         ack.set_worldflag( kfrealmdata->_data.innerworld() );
         ack.mutable_exploredata()->CopyFrom( *pbexplore );
         ack.mutable_buffdata()->CopyFrom( kfrealmdata->_data.buffdata() );
+        *ack.mutable_eventdata() = kfrealmdata->_data.eventdata();
+
         _kf_player->SendToClient( player, KFMsg::MSG_REALM_ENTER_ACK, &ack );
 
         // 进入秘境回调
@@ -190,7 +194,8 @@ namespace KFrame
 
         if ( kfexplorelevel->_durability != 0u )
         {
-            _kf_hero_team->DecHeroRealmDurability( player, kfexplorelevel->_durability );
+            UInt64Set excludelist;
+            _kf_hero_team->DecHeroRealmDurability( player, kfexplorelevel->_durability, excludelist );
         }
 
         // 销毁原来的探索数据, 包括背包
@@ -288,6 +293,39 @@ namespace KFrame
             return std::make_tuple( KFMsg::RealmNotTown, nullptr, nullptr );
         }
 
+        auto kfsetting = KFRealmConfig::Instance()->FindSetting( realmid );
+        if ( kfsetting == nullptr )
+        {
+            return std::make_tuple( KFMsg::RealmMapError, nullptr, nullptr );
+        }
+
+        auto kfexplorelevel = kfsetting->FindRealmLevel( kfrealmdata->_data.level() );
+        if ( kfexplorelevel == nullptr )
+        {
+            return std::make_tuple( KFMsg::RealmMapError, nullptr, nullptr );
+        }
+
+        if ( !_kf_hero_team->IsDurabilityEnough( player ) )
+        {
+            return std::make_tuple( KFMsg::HeroTeamDurabilityNotEnough, nullptr, nullptr );
+        }
+
+        if ( kfexplorelevel->_durability != 0u )
+        {
+            // 回城的英雄不需要扣耐久
+            UInt64Set excludelist;
+            auto townhero = kfrealmdata->_data.townhero();
+            for ( auto iter : townhero )
+            {
+                if ( iter.second == kfrealmdata->_data.level() )
+                {
+                    excludelist.insert( iter.first );
+                }
+            }
+
+            _kf_hero_team->DecHeroRealmDurability( player, kfexplorelevel->_durability, excludelist );
+        }
+
         // 设置探索不在回城状态
         player->UpdateData( __STRING__( realmtown ), KFEnum::Set, 0u );
 
@@ -323,7 +361,8 @@ namespace KFrame
 
         if ( kfexplorelevel->_durability != 0u )
         {
-            _kf_hero_team->DecHeroRealmDurability( player, kfexplorelevel->_durability );
+            UInt64Set excludelist;
+            _kf_hero_team->DecHeroRealmDurability( player, kfexplorelevel->_durability, excludelist );
         }
 
         // 清空上一次的数据
@@ -433,6 +472,10 @@ namespace KFrame
         }
 
         player->SetStatus( kfrealmdata->_data.status() );
+
+        // 结果条件
+        RealmBalanceResultCondition( player, kfrealmdata, result );
+
         switch ( result )
         {
         case KFMsg::Victory:
@@ -476,7 +519,6 @@ namespace KFrame
         SendRealmBalanceToClient( player, kfrealmdata, KFMsg::Victory );
 
         // 设置回调属性
-        RealmBalanceResultCondition( player, kfrealmdata, KFMsg::Victory );
         RealmJumpCondition( player, kfrealmdata->_data.id(), kfrealmdata->_data.level(), 0u );
 
         // 清空探索数据
@@ -500,9 +542,6 @@ namespace KFrame
 
         // 发送消息
         SendRealmBalanceToClient( player, kfrealmdata, KFMsg::Failed );
-
-        // 设置回调属性
-        RealmBalanceResultCondition( player, kfrealmdata, KFMsg::Failed );
 
         // 清空探索数据
         RealmBalanceClearData( player, KFMsg::Failed );
@@ -547,6 +586,9 @@ namespace KFrame
 
         // 重新纪录玩家道具信息
         kfrealmdata->RecordBeginItems( player );
+
+        // 记录回城英雄
+        kfrealmdata->RecordTownHeros( player );
     }
 
     void KFRealmModule::RealmBalanceDrop( KFEntity* player, KFRealmData* kfrealmdata, uint32 result )
@@ -595,9 +637,6 @@ namespace KFrame
         // 清除探索内道具背包
         RealmBalanceItem( player, result );
 
-        // 清除符石装备列表
-        _kf_rune->ClearRuneSlotData( player );
-
         // 探索纪录id
         player->Set( __STRING__( random ), KFEnum::Set, 0 );
         player->Set( __STRING__( realmdata ), _invalid_string );
@@ -612,15 +651,18 @@ namespace KFrame
         case KFMsg::Victory:
         case KFMsg::Failed:
         case KFMsg::Flee:
-            _kf_item_move->CleanItem( player, __STRING__( other ), true );
-            _kf_item_move->CleanItem( player, __STRING__( explore ), true );
-            _kf_item_move->CleanItem( player, __STRING__( rune ), true );
+            player->CleanData( __STRING__( rune ) );
+            player->CleanData( __STRING__( runeslot ) );
+            _kf_item_move->BalanceItem( player, __STRING__( explore ) );
+            _kf_item_move->BalanceItem( player, __STRING__( other ) );
             break;
         case KFMsg::Chapter:
             player->CleanData( __STRING__( other ) );
+            player->CleanData( __STRING__( rune ) );
+            player->CleanData( __STRING__( runeslot ) );
             break;
         case KFMsg::Town:
-            _kf_item_move->CleanItem( player, __STRING__( other ), true );
+            _kf_item_move->BalanceItem( player, __STRING__( other ) );
             break;
         }
     }
@@ -629,6 +671,7 @@ namespace KFrame
     {
         auto kfbalance = player->Find( __STRING__( balance ) );
         kfbalance->Set( __STRING__( id ), kfrealmdata->_data.id() );
+        kfbalance->Set( __STRING__( level ), kfrealmdata->_data.level() );
 
         auto teamheronum = _kf_hero_team->GetHeroCount( player );
         player->UpdateData( kfbalance, __STRING__( team ), KFEnum::Set, teamheronum );
@@ -697,16 +740,19 @@ namespace KFrame
         auto strdata = player->Get<std::string>( __STRING__( realmdata ) );
         if ( strdata.empty() )
         {
-            return;
-        }
-
-        player->Set( __STRING__( realmdata ), _invalid_string );
-        auto kfrealmdata = _realm_data.Create( player->GetKeyID() );
-        auto ok = kfrealmdata->_data.ParseFromString( strdata );
-        if ( !ok )
-        {
             player->Set( __STRING__( realmid ), 0u );
             player->Set( __STRING__( realmtown ), 0u );
+        }
+        else
+        {
+            player->Set( __STRING__( realmdata ), _invalid_string );
+            auto kfrealmdata = _realm_data.Create( player->GetKeyID() );
+            auto ok = kfrealmdata->_data.ParseFromString( strdata );
+            if ( !ok )
+            {
+                player->Set( __STRING__( realmid ), 0u );
+                player->Set( __STRING__( realmtown ), 0u );
+            }
         }
     }
 
@@ -835,6 +881,23 @@ namespace KFrame
         player->UpdateData( kfinteraction, __STRING__( id ), KFEnum::Set, kfmsg.itemid() );
     }
 
+    __KF_MESSAGE_FUNCTION__( KFRealmModule::HandleUpdateExploreEventReq )
+    {
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgUpdateExploreEventReq );
+
+        auto kfrealmdata = _realm_data.Find( playerid );
+        if ( kfrealmdata == nullptr )
+        {
+            return _kf_display->SendToClient( player, KFMsg::RealmNotInStatus );
+        }
+
+        auto& eventdata = *kfrealmdata->_data.mutable_eventdata();
+        for ( auto iter : kfmsg.eventdata() )
+        {
+            eventdata[iter.first] = iter.second;
+        }
+    }
+
     const KFRealmLevel* KFRealmModule::FindRealmLevelSetting( KFEntity* player )
     {
         auto kfrealmdata = _realm_data.Find( player->GetKeyID() );
@@ -857,7 +920,7 @@ namespace KFrame
 
     __KF_REALM_MOVE_FUNCTION__( KFRealmModule::OnReamlMoveCostFood )
     {
-        static auto _food_option = _kf_option->FindOption( __STRING__( fooditemid ) );
+        static auto _food_option = KFGlobal::Instance()->FindConstant( __STRING__( fooditemid ) );
 
         kfrealmdata->_data.set_foodstep( kfrealmdata->_data.foodstep() + movestep );
         auto kfsetting = FindRealmLevelSetting( player );

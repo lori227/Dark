@@ -13,7 +13,6 @@
 #include "KFMatchShardInterface.h"
 #include "KFProtocol/KFProtocol.h"
 #include "KFZConfig/KFMatchConfig.hpp"
-#include "KFOption/KFOptionInterface.h"
 #include "KFMessage/KFMessageInterface.h"
 #include "KFRouteClient/KFRouteClientInterface.h"
 

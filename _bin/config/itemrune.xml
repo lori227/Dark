@@ -1,58 +1,58 @@
-<root platform="" version="3101">
-	<item Id="2000001" AutoSet="1" RuneType="1" RuneLevel="1" />
-	<item Id="2000002" AutoSet="1" RuneType="1" RuneLevel="2" />
-	<item Id="2000003" AutoSet="1" RuneType="1" RuneLevel="3" />
-	<item Id="2000004" AutoSet="1" RuneType="0" RuneLevel="1" />
-	<item Id="2000005" AutoSet="1" RuneType="0" RuneLevel="1" />
-	<item Id="2000006" AutoSet="1" RuneType="0" RuneLevel="1" />
-	<item Id="2000007" AutoSet="1" RuneType="7" RuneLevel="1" />
-	<item Id="2000008" AutoSet="1" RuneType="8" RuneLevel="1" />
-	<item Id="2000009" AutoSet="1" RuneType="9" RuneLevel="1" />
-	<item Id="2000010" AutoSet="1" RuneType="10" RuneLevel="1" />
-	<item Id="2000011" AutoSet="1" RuneType="11" RuneLevel="1" />
-	<item Id="2000012" AutoSet="1" RuneType="12" RuneLevel="1" />
-	<item Id="2000013" AutoSet="1" RuneType="13" RuneLevel="1" />
-	<item Id="2000014" AutoSet="1" RuneType="14" RuneLevel="1" />
-	<item Id="2000015" AutoSet="1" RuneType="15" RuneLevel="1" />
-	<item Id="2000016" AutoSet="1" RuneType="16" RuneLevel="1" />
-	<item Id="2000017" AutoSet="1" RuneType="17" RuneLevel="1" />
-	<item Id="2000018" AutoSet="1" RuneType="18" RuneLevel="1" />
-	<item Id="2000019" AutoSet="1" RuneType="19" RuneLevel="1" />
-	<item Id="2000020" AutoSet="1" RuneType="20" RuneLevel="1" />
-	<item Id="2000021" AutoSet="1" RuneType="21" RuneLevel="1" />
-	<item Id="2000022" AutoSet="1" RuneType="22" RuneLevel="1" />
-	<item Id="2000023" AutoSet="1" RuneType="23" RuneLevel="1" />
-	<item Id="2000024" AutoSet="1" RuneType="24" RuneLevel="1" />
-	<item Id="2000025" AutoSet="1" RuneType="25" RuneLevel="1" />
-	<item Id="2000026" AutoSet="1" RuneType="26" RuneLevel="1" />
-	<item Id="2000027" AutoSet="1" RuneType="27" RuneLevel="1" />
-	<item Id="2000028" AutoSet="1" RuneType="28" RuneLevel="1" />
-	<item Id="2000029" AutoSet="1" RuneType="29" RuneLevel="1" />
-	<item Id="2000030" AutoSet="1" RuneType="30" RuneLevel="1" />
-	<item Id="2000031" AutoSet="1" RuneType="31" RuneLevel="1" />
-	<item Id="2000032" AutoSet="1" RuneType="32" RuneLevel="1" />
-	<item Id="2000033" AutoSet="1" RuneType="33" RuneLevel="1" />
-	<item Id="2000034" AutoSet="1" RuneType="34" RuneLevel="1" />
-	<item Id="2000035" AutoSet="1" RuneType="35" RuneLevel="1" />
-	<item Id="2000036" AutoSet="1" RuneType="36" RuneLevel="1" />
-	<item Id="2000037" AutoSet="1" RuneType="37" RuneLevel="1" />
-	<item Id="2000038" AutoSet="1" RuneType="38" RuneLevel="1" />
-	<item Id="2000039" AutoSet="1" RuneType="39" RuneLevel="1" />
-	<item Id="2000040" AutoSet="1" RuneType="40" RuneLevel="1" />
-	<item Id="2000041" AutoSet="1" RuneType="41" RuneLevel="1" />
-	<item Id="2000042" AutoSet="1" RuneType="42" RuneLevel="1" />
-	<item Id="2000043" AutoSet="1" RuneType="43" RuneLevel="1" />
-	<item Id="2000044" AutoSet="1" RuneType="44" RuneLevel="1" />
-	<item Id="2000045" AutoSet="1" RuneType="45" RuneLevel="1" />
-	<item Id="2000046" AutoSet="1" RuneType="46" RuneLevel="1" />
-	<item Id="2000047" AutoSet="1" RuneType="47" RuneLevel="1" />
-	<item Id="2000048" AutoSet="1" RuneType="48" RuneLevel="1" />
-	<item Id="2000049" AutoSet="1" RuneType="49" RuneLevel="1" />
-	<item Id="2000050" AutoSet="1" RuneType="50" RuneLevel="1" />
-	<item Id="2000051" AutoSet="1" RuneType="51" RuneLevel="1" />
-	<item Id="2000052" AutoSet="1" RuneType="52" RuneLevel="1" />
-	<item Id="2000053" AutoSet="1" RuneType="53" RuneLevel="1" />
-	<item Id="2000054" AutoSet="1" RuneType="54" RuneLevel="1" />
-	<item Id="2000055" AutoSet="1" RuneType="55" RuneLevel="1" />
-	<item Id="2000056" AutoSet="1" RuneType="56" RuneLevel="1" />
+<root platform="" version="3963">
+	<item Id="2000001" RuneType="1" RuneLevel="1" />
+	<item Id="2000002" RuneType="2" RuneLevel="1" />
+	<item Id="2000003" RuneType="3" RuneLevel="1" />
+	<item Id="2000004" RuneType="4" RuneLevel="1" />
+	<item Id="2000005" RuneType="5" RuneLevel="1" />
+	<item Id="2000006" RuneType="6" RuneLevel="1" />
+	<item Id="2000007" RuneType="7" RuneLevel="1" />
+	<item Id="2000008" RuneType="8" RuneLevel="1" />
+	<item Id="2000009" RuneType="9" RuneLevel="1" />
+	<item Id="2000010" RuneType="10" RuneLevel="1" />
+	<item Id="2000011" RuneType="11" RuneLevel="1" />
+	<item Id="2000012" RuneType="12" RuneLevel="1" />
+	<item Id="2000013" RuneType="13" RuneLevel="1" />
+	<item Id="2000014" RuneType="14" RuneLevel="1" />
+	<item Id="2000015" RuneType="15" RuneLevel="1" />
+	<item Id="2000016" RuneType="16" RuneLevel="1" />
+	<item Id="2000017" RuneType="17" RuneLevel="1" />
+	<item Id="2000018" RuneType="18" RuneLevel="1" />
+	<item Id="2000019" RuneType="19" RuneLevel="1" />
+	<item Id="2000020" RuneType="20" RuneLevel="1" />
+	<item Id="2000021" RuneType="21" RuneLevel="1" />
+	<item Id="2000022" RuneType="22" RuneLevel="1" />
+	<item Id="2000023" RuneType="23" RuneLevel="1" />
+	<item Id="2000024" RuneType="24" RuneLevel="1" />
+	<item Id="2000025" RuneType="25" RuneLevel="1" />
+	<item Id="2000026" RuneType="26" RuneLevel="1" />
+	<item Id="2000027" RuneType="27" RuneLevel="1" />
+	<item Id="2000028" RuneType="28" RuneLevel="1" />
+	<item Id="2000029" RuneType="29" RuneLevel="1" />
+	<item Id="2000030" RuneType="30" RuneLevel="1" />
+	<item Id="2000031" RuneType="31" RuneLevel="1" />
+	<item Id="2000032" RuneType="32" RuneLevel="1" />
+	<item Id="2000033" RuneType="33" RuneLevel="1" />
+	<item Id="2000034" RuneType="34" RuneLevel="1" />
+	<item Id="2000035" RuneType="35" RuneLevel="1" />
+	<item Id="2000036" RuneType="36" RuneLevel="1" />
+	<item Id="2000037" RuneType="37" RuneLevel="1" />
+	<item Id="2000038" RuneType="38" RuneLevel="1" />
+	<item Id="2000039" RuneType="39" RuneLevel="1" />
+	<item Id="2000040" RuneType="40" RuneLevel="1" />
+	<item Id="2000041" RuneType="41" RuneLevel="1" />
+	<item Id="2000042" RuneType="42" RuneLevel="1" />
+	<item Id="2000043" RuneType="43" RuneLevel="1" />
+	<item Id="2000044" RuneType="44" RuneLevel="1" />
+	<item Id="2000045" RuneType="45" RuneLevel="1" />
+	<item Id="2000046" RuneType="46" RuneLevel="1" />
+	<item Id="2000047" RuneType="47" RuneLevel="1" />
+	<item Id="2000048" RuneType="48" RuneLevel="1" />
+	<item Id="2000049" RuneType="49" RuneLevel="1" />
+	<item Id="2000050" RuneType="50" RuneLevel="1" />
+	<item Id="2000051" RuneType="51" RuneLevel="1" />
+	<item Id="2000052" RuneType="52" RuneLevel="1" />
+	<item Id="2000053" RuneType="53" RuneLevel="1" />
+	<item Id="2000054" RuneType="54" RuneLevel="1" />
+	<item Id="2000055" RuneType="55" RuneLevel="1" />
+	<item Id="2000056" RuneType="56" RuneLevel="1" />
 </root>

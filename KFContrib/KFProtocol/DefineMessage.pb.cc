@@ -38,6 +38,9 @@ extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobu
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PBBuffData;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PBExplorePlayerData;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PBNpcGroupData;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PBRealmData_EventdataEntry_DoNotUse;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PBRealmData_RunedataEntry_DoNotUse;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PBRealmData_TownheroEntry_DoNotUse;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_PBBuffListData;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_PBExploreData_NpcdataEntry_DoNotUse;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_DefineMessage_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_PBExploreNpcData;
@@ -180,6 +183,21 @@ class PBRealmData_ExploreEntry_DoNotUseDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<PBRealmData_ExploreEntry_DoNotUse>
       _instance;
 } _PBRealmData_ExploreEntry_DoNotUse_default_instance_;
+class PBRealmData_TownheroEntry_DoNotUseDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<PBRealmData_TownheroEntry_DoNotUse>
+      _instance;
+} _PBRealmData_TownheroEntry_DoNotUse_default_instance_;
+class PBRealmData_RunedataEntry_DoNotUseDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<PBRealmData_RunedataEntry_DoNotUse>
+      _instance;
+} _PBRealmData_RunedataEntry_DoNotUse_default_instance_;
+class PBRealmData_EventdataEntry_DoNotUseDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<PBRealmData_EventdataEntry_DoNotUse>
+      _instance;
+} _PBRealmData_EventdataEntry_DoNotUse_default_instance_;
 class PBRealmDataDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<PBRealmData>
@@ -551,6 +569,45 @@ LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<1> scc_info_PBRealmData_E
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsPBRealmData_ExploreEntry_DoNotUse}, {
       &protobuf_DefineMessage_2eproto::scc_info_PBExploreData.base,}};
 
+static void InitDefaultsPBRealmData_TownheroEntry_DoNotUse() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::KFMsg::_PBRealmData_TownheroEntry_DoNotUse_default_instance_;
+    new (ptr) ::KFMsg::PBRealmData_TownheroEntry_DoNotUse();
+  }
+  ::KFMsg::PBRealmData_TownheroEntry_DoNotUse::InitAsDefaultInstance();
+}
+
+LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_PBRealmData_TownheroEntry_DoNotUse =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsPBRealmData_TownheroEntry_DoNotUse}, {}};
+
+static void InitDefaultsPBRealmData_RunedataEntry_DoNotUse() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::KFMsg::_PBRealmData_RunedataEntry_DoNotUse_default_instance_;
+    new (ptr) ::KFMsg::PBRealmData_RunedataEntry_DoNotUse();
+  }
+  ::KFMsg::PBRealmData_RunedataEntry_DoNotUse::InitAsDefaultInstance();
+}
+
+LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_PBRealmData_RunedataEntry_DoNotUse =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsPBRealmData_RunedataEntry_DoNotUse}, {}};
+
+static void InitDefaultsPBRealmData_EventdataEntry_DoNotUse() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::KFMsg::_PBRealmData_EventdataEntry_DoNotUse_default_instance_;
+    new (ptr) ::KFMsg::PBRealmData_EventdataEntry_DoNotUse();
+  }
+  ::KFMsg::PBRealmData_EventdataEntry_DoNotUse::InitAsDefaultInstance();
+}
+
+LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_PBRealmData_EventdataEntry_DoNotUse =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsPBRealmData_EventdataEntry_DoNotUse}, {}};
+
 static void InitDefaultsPBRealmData() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -562,13 +619,16 @@ static void InitDefaultsPBRealmData() {
   ::KFMsg::PBRealmData::InitAsDefaultInstance();
 }
 
-LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<5> scc_info_PBRealmData =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 5, InitDefaultsPBRealmData}, {
+LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<8> scc_info_PBRealmData =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 8, InitDefaultsPBRealmData}, {
       &protobuf_DefineMessage_2eproto::scc_info_PBBalanceHeroServer.base,
       &protobuf_DefineMessage_2eproto::scc_info_PBBalanceItemServer.base,
       &protobuf_DefineMessage_2eproto::scc_info_PBBalanceItem.base,
       &protobuf_DefineMessage_2eproto::scc_info_PBHeroBuffData.base,
-      &protobuf_DefineMessage_2eproto::scc_info_PBRealmData_ExploreEntry_DoNotUse.base,}};
+      &protobuf_DefineMessage_2eproto::scc_info_PBRealmData_ExploreEntry_DoNotUse.base,
+      &protobuf_DefineMessage_2eproto::scc_info_PBRealmData_TownheroEntry_DoNotUse.base,
+      &protobuf_DefineMessage_2eproto::scc_info_PBRealmData_RunedataEntry_DoNotUse.base,
+      &protobuf_DefineMessage_2eproto::scc_info_PBRealmData_EventdataEntry_DoNotUse.base,}};
 
 static void InitDefaultsPBPunishData() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -610,11 +670,14 @@ void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_PBExploreData_NpcdataEntry_DoNotUse.base);
   ::google::protobuf::internal::InitSCC(&scc_info_PBExploreData.base);
   ::google::protobuf::internal::InitSCC(&scc_info_PBRealmData_ExploreEntry_DoNotUse.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_PBRealmData_TownheroEntry_DoNotUse.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_PBRealmData_RunedataEntry_DoNotUse.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_PBRealmData_EventdataEntry_DoNotUse.base);
   ::google::protobuf::internal::InitSCC(&scc_info_PBRealmData.base);
   ::google::protobuf::internal::InitSCC(&scc_info_PBPunishData.base);
 }
 
-::google::protobuf::Metadata file_level_metadata[27];
+::google::protobuf::Metadata file_level_metadata[30];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBMatchPlayer_HeroEntry_DoNotUse, _has_bits_),
@@ -868,6 +931,33 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData_ExploreEntry_DoNotUse, value_),
   0,
   1,
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData_TownheroEntry_DoNotUse, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData_TownheroEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData_TownheroEntry_DoNotUse, key_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData_TownheroEntry_DoNotUse, value_),
+  0,
+  1,
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData_RunedataEntry_DoNotUse, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData_RunedataEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData_RunedataEntry_DoNotUse, key_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData_RunedataEntry_DoNotUse, value_),
+  0,
+  1,
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData_EventdataEntry_DoNotUse, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData_EventdataEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData_EventdataEntry_DoNotUse, key_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData_EventdataEntry_DoNotUse, value_),
+  0,
+  1,
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -894,6 +984,9 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, selectcount_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, totallevel_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, foodstep_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, townhero_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, runedata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, eventdata_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, weather_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, weathertotalstep_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData, weathercurrentstep_),
@@ -940,8 +1033,11 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 216, 223, sizeof(::KFMsg::PBExploreData_NpcdataEntry_DoNotUse)},
   { 225, -1, sizeof(::KFMsg::PBExploreData)},
   { 242, 249, sizeof(::KFMsg::PBRealmData_ExploreEntry_DoNotUse)},
-  { 251, -1, sizeof(::KFMsg::PBRealmData)},
-  { 288, -1, sizeof(::KFMsg::PBPunishData)},
+  { 251, 258, sizeof(::KFMsg::PBRealmData_TownheroEntry_DoNotUse)},
+  { 260, 267, sizeof(::KFMsg::PBRealmData_RunedataEntry_DoNotUse)},
+  { 269, 276, sizeof(::KFMsg::PBRealmData_EventdataEntry_DoNotUse)},
+  { 278, -1, sizeof(::KFMsg::PBRealmData)},
+  { 318, -1, sizeof(::KFMsg::PBPunishData)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -970,6 +1066,9 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBExploreData_NpcdataEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBExploreData_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBRealmData_ExploreEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBRealmData_TownheroEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBRealmData_RunedataEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBRealmData_EventdataEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBRealmData_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBPunishData_default_instance_),
 };
@@ -989,7 +1088,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 27);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 30);
 }
 
 void AddDescriptorsImpl() {
@@ -1063,8 +1162,8 @@ void AddDescriptorsImpl() {
       "\013 \001(\0132\032.KFMsg.PBExplorePlayerData\0222\n\007npc"
       "data\030\014 \003(\0132!.KFMsg.PBExploreData.Npcdata"
       "Entry\032G\n\014NpcdataEntry\022\013\n\003key\030\001 \001(\t\022&\n\005va"
-      "lue\030\002 \001(\0132\027.KFMsg.PBExploreNpcData:\0028\001\"\323"
-      "\006\n\013PBRealmData\022\n\n\002id\030\001 \001(\r\022\r\n\005level\030\002 \001("
+      "lue\030\002 \001(\0132\027.KFMsg.PBExploreNpcData:\0028\001\"\205"
+      "\t\n\013PBRealmData\022\n\n\002id\030\001 \001(\r\022\r\n\005level\030\002 \001("
       "\r\022\022\n\nmodulename\030\003 \001(\014\022\020\n\010moduleid\030\004 \001(\004\022"
       "\016\n\006status\030\005 \001(\r\022\021\n\tstarttime\030\006 \001(\004\022\017\n\007us"
       "etime\030\007 \001(\r\022\r\n\005faith\030\010 \001(\r\022\023\n\013extendleve"
@@ -1077,19 +1176,27 @@ void AddDescriptorsImpl() {
       "reEntry\022\020\n\010fleerate\030\020 \001(\r\022\022\n\ninnerworld\030"
       "\021 \001(\r\022\020\n\010selectid\030\022 \001(\r\022\023\n\013selectcount\030\023"
       " \001(\r\022\022\n\ntotallevel\030\024 \001(\r\022\020\n\010foodstep\030\025 \001"
-      "(\r\022\017\n\007weather\030\037 \001(\r\022\030\n\020weathertotalstep\030"
-      "  \001(\r\022\032\n\022weathercurrentstep\030! \001(\r\022\030\n\020wea"
-      "thertotalturn\030\" \001(\r\022\032\n\022weathercurrenttur"
-      "n\030# \001(\r\022\023\n\013nextweather\030$ \001(\r\022\020\n\010timetype"
-      "\030) \001(\r\022\025\n\rtimetotalstep\030* \001(\r\022\027\n\017timecur"
-      "rentstep\030+ \001(\r\022\025\n\rtimetotalturn\030, \001(\r\022\027\n"
-      "\017timecurrentturn\030- \001(\r\032D\n\014ExploreEntry\022\013"
-      "\n\003key\030\001 \001(\r\022#\n\005value\030\002 \001(\0132\024.KFMsg.PBExp"
-      "loreData:\0028\001\"7\n\014PBPunishData\022\014\n\004name\030\001 \001"
-      "(\014\022\n\n\002id\030\002 \001(\r\022\r\n\005value\030\003 \001(\rb\006proto3"
+      "(\r\0222\n\010townhero\030\026 \003(\0132 .KFMsg.PBRealmData"
+      ".TownheroEntry\0222\n\010runedata\030\027 \003(\0132 .KFMsg"
+      ".PBRealmData.RunedataEntry\0224\n\teventdata\030"
+      "\030 \003(\0132!.KFMsg.PBRealmData.EventdataEntry"
+      "\022\017\n\007weather\030\037 \001(\r\022\030\n\020weathertotalstep\030  "
+      "\001(\r\022\032\n\022weathercurrentstep\030! \001(\r\022\030\n\020weath"
+      "ertotalturn\030\" \001(\r\022\032\n\022weathercurrentturn\030"
+      "# \001(\r\022\023\n\013nextweather\030$ \001(\r\022\020\n\010timetype\030)"
+      " \001(\r\022\025\n\rtimetotalstep\030* \001(\r\022\027\n\017timecurre"
+      "ntstep\030+ \001(\r\022\025\n\rtimetotalturn\030, \001(\r\022\027\n\017t"
+      "imecurrentturn\030- \001(\r\032D\n\014ExploreEntry\022\013\n\003"
+      "key\030\001 \001(\r\022#\n\005value\030\002 \001(\0132\024.KFMsg.PBExplo"
+      "reData:\0028\001\032/\n\rTownheroEntry\022\013\n\003key\030\001 \001(\004"
+      "\022\r\n\005value\030\002 \001(\r:\0028\001\032/\n\rRunedataEntry\022\013\n\003"
+      "key\030\001 \001(\r\022\r\n\005value\030\002 \001(\r:\0028\001\0320\n\016Eventdat"
+      "aEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"7"
+      "\n\014PBPunishData\022\014\n\004name\030\001 \001(\014\022\n\n\002id\030\002 \001(\r"
+      "\022\r\n\005value\030\003 \001(\rb\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 3677);
+      descriptor, 3983);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "DefineMessage.proto", &protobuf_RegisterTypes);
   ::protobuf_FrameDefineMessage_2eproto::AddDescriptors();
@@ -8122,6 +8229,57 @@ void PBRealmData_ExploreEntry_DoNotUse::MergeFrom(
 
 // ===================================================================
 
+PBRealmData_TownheroEntry_DoNotUse::PBRealmData_TownheroEntry_DoNotUse() {}
+PBRealmData_TownheroEntry_DoNotUse::PBRealmData_TownheroEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+void PBRealmData_TownheroEntry_DoNotUse::MergeFrom(const PBRealmData_TownheroEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::google::protobuf::Metadata PBRealmData_TownheroEntry_DoNotUse::GetMetadata() const {
+  ::protobuf_DefineMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_DefineMessage_2eproto::file_level_metadata[25];
+}
+void PBRealmData_TownheroEntry_DoNotUse::MergeFrom(
+    const ::google::protobuf::Message& other) {
+  ::google::protobuf::Message::MergeFrom(other);
+}
+
+
+// ===================================================================
+
+PBRealmData_RunedataEntry_DoNotUse::PBRealmData_RunedataEntry_DoNotUse() {}
+PBRealmData_RunedataEntry_DoNotUse::PBRealmData_RunedataEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+void PBRealmData_RunedataEntry_DoNotUse::MergeFrom(const PBRealmData_RunedataEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::google::protobuf::Metadata PBRealmData_RunedataEntry_DoNotUse::GetMetadata() const {
+  ::protobuf_DefineMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_DefineMessage_2eproto::file_level_metadata[26];
+}
+void PBRealmData_RunedataEntry_DoNotUse::MergeFrom(
+    const ::google::protobuf::Message& other) {
+  ::google::protobuf::Message::MergeFrom(other);
+}
+
+
+// ===================================================================
+
+PBRealmData_EventdataEntry_DoNotUse::PBRealmData_EventdataEntry_DoNotUse() {}
+PBRealmData_EventdataEntry_DoNotUse::PBRealmData_EventdataEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+void PBRealmData_EventdataEntry_DoNotUse::MergeFrom(const PBRealmData_EventdataEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::google::protobuf::Metadata PBRealmData_EventdataEntry_DoNotUse::GetMetadata() const {
+  ::protobuf_DefineMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_DefineMessage_2eproto::file_level_metadata[27];
+}
+void PBRealmData_EventdataEntry_DoNotUse::MergeFrom(
+    const ::google::protobuf::Message& other) {
+  ::google::protobuf::Message::MergeFrom(other);
+}
+
+
+// ===================================================================
+
 void PBRealmData::InitAsDefaultInstance() {
   ::KFMsg::_PBRealmData_default_instance_._instance.get_mutable()->buffdata_ = const_cast< ::KFMsg::PBHeroBuffData*>(
       ::KFMsg::PBHeroBuffData::internal_default_instance());
@@ -8148,6 +8306,9 @@ const int PBRealmData::kSelectidFieldNumber;
 const int PBRealmData::kSelectcountFieldNumber;
 const int PBRealmData::kTotallevelFieldNumber;
 const int PBRealmData::kFoodstepFieldNumber;
+const int PBRealmData::kTownheroFieldNumber;
+const int PBRealmData::kRunedataFieldNumber;
+const int PBRealmData::kEventdataFieldNumber;
 const int PBRealmData::kWeatherFieldNumber;
 const int PBRealmData::kWeathertotalstepFieldNumber;
 const int PBRealmData::kWeathercurrentstepFieldNumber;
@@ -8177,6 +8338,9 @@ PBRealmData::PBRealmData(const PBRealmData& from)
       killnpc_(from.killnpc_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   explore_.MergeFrom(from.explore_);
+  townhero_.MergeFrom(from.townhero_);
+  runedata_.MergeFrom(from.runedata_);
+  eventdata_.MergeFrom(from.eventdata_);
   modulename_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.modulename().size() > 0) {
     modulename_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.modulename_);
@@ -8234,6 +8398,9 @@ void PBRealmData::Clear() {
   loseitem_.Clear();
   killnpc_.Clear();
   explore_.Clear();
+  townhero_.Clear();
+  runedata_.Clear();
+  eventdata_.Clear();
   modulename_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (GetArenaNoVirtual() == NULL && buffdata_ != NULL) {
     delete buffdata_;
@@ -8543,6 +8710,71 @@ bool PBRealmData::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &foodstep_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // map<uint64, uint32> townhero = 22;
+      case 22: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(178u /* 178 & 0xFF */)) {
+          PBRealmData_TownheroEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
+              PBRealmData_TownheroEntry_DoNotUse,
+              ::google::protobuf::uint64, ::google::protobuf::uint32,
+              ::google::protobuf::internal::WireFormatLite::TYPE_UINT64,
+              ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+              0 >,
+            ::google::protobuf::Map< ::google::protobuf::uint64, ::google::protobuf::uint32 > > parser(&townhero_);
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+              input, &parser));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // map<uint32, uint32> runedata = 23;
+      case 23: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(186u /* 186 & 0xFF */)) {
+          PBRealmData_RunedataEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
+              PBRealmData_RunedataEntry_DoNotUse,
+              ::google::protobuf::uint32, ::google::protobuf::uint32,
+              ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+              ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+              0 >,
+            ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 > > parser(&runedata_);
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+              input, &parser));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // map<string, string> eventdata = 24;
+      case 24: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(194u /* 194 & 0xFF */)) {
+          PBRealmData_EventdataEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
+              PBRealmData_EventdataEntry_DoNotUse,
+              ::std::string, ::std::string,
+              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+              0 >,
+            ::google::protobuf::Map< ::std::string, ::std::string > > parser(&eventdata_);
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+              input, &parser));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            parser.key().data(), static_cast<int>(parser.key().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "KFMsg.PBRealmData.EventdataEntry.key"));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            parser.value().data(), static_cast<int>(parser.value().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "KFMsg.PBRealmData.EventdataEntry.value"));
         } else {
           goto handle_unusual;
         }
@@ -8888,6 +9120,137 @@ void PBRealmData::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(21, this->foodstep(), output);
   }
 
+  // map<uint64, uint32> townhero = 22;
+  if (!this->townhero().empty()) {
+    typedef ::google::protobuf::Map< ::google::protobuf::uint64, ::google::protobuf::uint32 >::const_pointer
+        ConstPtr;
+    typedef ::google::protobuf::internal::SortItem< ::google::protobuf::uint64, ConstPtr > SortItem;
+    typedef ::google::protobuf::internal::CompareByFirstField<SortItem> Less;
+
+    if (output->IsSerializationDeterministic() &&
+        this->townhero().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->townhero().size()]);
+      typedef ::google::protobuf::Map< ::google::protobuf::uint64, ::google::protobuf::uint32 >::size_type size_type;
+      size_type n = 0;
+      for (::google::protobuf::Map< ::google::protobuf::uint64, ::google::protobuf::uint32 >::const_iterator
+          it = this->townhero().begin();
+          it != this->townhero().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      ::std::unique_ptr<PBRealmData_TownheroEntry_DoNotUse> entry;
+      for (size_type i = 0; i < n; i++) {
+        entry.reset(townhero_.NewEntryWrapper(
+            items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second));
+        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+            22, *entry, output);
+      }
+    } else {
+      ::std::unique_ptr<PBRealmData_TownheroEntry_DoNotUse> entry;
+      for (::google::protobuf::Map< ::google::protobuf::uint64, ::google::protobuf::uint32 >::const_iterator
+          it = this->townhero().begin();
+          it != this->townhero().end(); ++it) {
+        entry.reset(townhero_.NewEntryWrapper(
+            it->first, it->second));
+        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+            22, *entry, output);
+      }
+    }
+  }
+
+  // map<uint32, uint32> runedata = 23;
+  if (!this->runedata().empty()) {
+    typedef ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::const_pointer
+        ConstPtr;
+    typedef ::google::protobuf::internal::SortItem< ::google::protobuf::uint32, ConstPtr > SortItem;
+    typedef ::google::protobuf::internal::CompareByFirstField<SortItem> Less;
+
+    if (output->IsSerializationDeterministic() &&
+        this->runedata().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->runedata().size()]);
+      typedef ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::size_type size_type;
+      size_type n = 0;
+      for (::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::const_iterator
+          it = this->runedata().begin();
+          it != this->runedata().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      ::std::unique_ptr<PBRealmData_RunedataEntry_DoNotUse> entry;
+      for (size_type i = 0; i < n; i++) {
+        entry.reset(runedata_.NewEntryWrapper(
+            items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second));
+        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+            23, *entry, output);
+      }
+    } else {
+      ::std::unique_ptr<PBRealmData_RunedataEntry_DoNotUse> entry;
+      for (::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::const_iterator
+          it = this->runedata().begin();
+          it != this->runedata().end(); ++it) {
+        entry.reset(runedata_.NewEntryWrapper(
+            it->first, it->second));
+        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+            23, *entry, output);
+      }
+    }
+  }
+
+  // map<string, string> eventdata = 24;
+  if (!this->eventdata().empty()) {
+    typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
+        ConstPtr;
+    typedef ConstPtr SortItem;
+    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
+    struct Utf8Check {
+      static void Check(ConstPtr p) {
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          p->first.data(), static_cast<int>(p->first.length()),
+          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          "KFMsg.PBRealmData.EventdataEntry.key");
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          p->second.data(), static_cast<int>(p->second.length()),
+          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          "KFMsg.PBRealmData.EventdataEntry.value");
+      }
+    };
+
+    if (output->IsSerializationDeterministic() &&
+        this->eventdata().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->eventdata().size()]);
+      typedef ::google::protobuf::Map< ::std::string, ::std::string >::size_type size_type;
+      size_type n = 0;
+      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
+          it = this->eventdata().begin();
+          it != this->eventdata().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      ::std::unique_ptr<PBRealmData_EventdataEntry_DoNotUse> entry;
+      for (size_type i = 0; i < n; i++) {
+        entry.reset(eventdata_.NewEntryWrapper(
+            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
+        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+            24, *entry, output);
+        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
+      }
+    } else {
+      ::std::unique_ptr<PBRealmData_EventdataEntry_DoNotUse> entry;
+      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
+          it = this->eventdata().begin();
+          it != this->eventdata().end(); ++it) {
+        entry.reset(eventdata_.NewEntryWrapper(
+            it->first, it->second));
+        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+            24, *entry, output);
+        Utf8Check::Check(&*it);
+      }
+    }
+  }
+
   // uint32 weather = 31;
   if (this->weather() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(31, this->weather(), output);
@@ -9121,6 +9484,149 @@ void PBRealmData::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(21, this->foodstep(), target);
   }
 
+  // map<uint64, uint32> townhero = 22;
+  if (!this->townhero().empty()) {
+    typedef ::google::protobuf::Map< ::google::protobuf::uint64, ::google::protobuf::uint32 >::const_pointer
+        ConstPtr;
+    typedef ::google::protobuf::internal::SortItem< ::google::protobuf::uint64, ConstPtr > SortItem;
+    typedef ::google::protobuf::internal::CompareByFirstField<SortItem> Less;
+
+    if (deterministic &&
+        this->townhero().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->townhero().size()]);
+      typedef ::google::protobuf::Map< ::google::protobuf::uint64, ::google::protobuf::uint32 >::size_type size_type;
+      size_type n = 0;
+      for (::google::protobuf::Map< ::google::protobuf::uint64, ::google::protobuf::uint32 >::const_iterator
+          it = this->townhero().begin();
+          it != this->townhero().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      ::std::unique_ptr<PBRealmData_TownheroEntry_DoNotUse> entry;
+      for (size_type i = 0; i < n; i++) {
+        entry.reset(townhero_.NewEntryWrapper(
+            items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second));
+        target = ::google::protobuf::internal::WireFormatLite::
+                   InternalWriteMessageNoVirtualToArray(
+                       22, *entry, deterministic, target);
+;
+      }
+    } else {
+      ::std::unique_ptr<PBRealmData_TownheroEntry_DoNotUse> entry;
+      for (::google::protobuf::Map< ::google::protobuf::uint64, ::google::protobuf::uint32 >::const_iterator
+          it = this->townhero().begin();
+          it != this->townhero().end(); ++it) {
+        entry.reset(townhero_.NewEntryWrapper(
+            it->first, it->second));
+        target = ::google::protobuf::internal::WireFormatLite::
+                   InternalWriteMessageNoVirtualToArray(
+                       22, *entry, deterministic, target);
+;
+      }
+    }
+  }
+
+  // map<uint32, uint32> runedata = 23;
+  if (!this->runedata().empty()) {
+    typedef ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::const_pointer
+        ConstPtr;
+    typedef ::google::protobuf::internal::SortItem< ::google::protobuf::uint32, ConstPtr > SortItem;
+    typedef ::google::protobuf::internal::CompareByFirstField<SortItem> Less;
+
+    if (deterministic &&
+        this->runedata().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->runedata().size()]);
+      typedef ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::size_type size_type;
+      size_type n = 0;
+      for (::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::const_iterator
+          it = this->runedata().begin();
+          it != this->runedata().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      ::std::unique_ptr<PBRealmData_RunedataEntry_DoNotUse> entry;
+      for (size_type i = 0; i < n; i++) {
+        entry.reset(runedata_.NewEntryWrapper(
+            items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second));
+        target = ::google::protobuf::internal::WireFormatLite::
+                   InternalWriteMessageNoVirtualToArray(
+                       23, *entry, deterministic, target);
+;
+      }
+    } else {
+      ::std::unique_ptr<PBRealmData_RunedataEntry_DoNotUse> entry;
+      for (::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::const_iterator
+          it = this->runedata().begin();
+          it != this->runedata().end(); ++it) {
+        entry.reset(runedata_.NewEntryWrapper(
+            it->first, it->second));
+        target = ::google::protobuf::internal::WireFormatLite::
+                   InternalWriteMessageNoVirtualToArray(
+                       23, *entry, deterministic, target);
+;
+      }
+    }
+  }
+
+  // map<string, string> eventdata = 24;
+  if (!this->eventdata().empty()) {
+    typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
+        ConstPtr;
+    typedef ConstPtr SortItem;
+    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
+    struct Utf8Check {
+      static void Check(ConstPtr p) {
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          p->first.data(), static_cast<int>(p->first.length()),
+          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          "KFMsg.PBRealmData.EventdataEntry.key");
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          p->second.data(), static_cast<int>(p->second.length()),
+          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          "KFMsg.PBRealmData.EventdataEntry.value");
+      }
+    };
+
+    if (deterministic &&
+        this->eventdata().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->eventdata().size()]);
+      typedef ::google::protobuf::Map< ::std::string, ::std::string >::size_type size_type;
+      size_type n = 0;
+      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
+          it = this->eventdata().begin();
+          it != this->eventdata().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      ::std::unique_ptr<PBRealmData_EventdataEntry_DoNotUse> entry;
+      for (size_type i = 0; i < n; i++) {
+        entry.reset(eventdata_.NewEntryWrapper(
+            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
+        target = ::google::protobuf::internal::WireFormatLite::
+                   InternalWriteMessageNoVirtualToArray(
+                       24, *entry, deterministic, target);
+;
+        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
+      }
+    } else {
+      ::std::unique_ptr<PBRealmData_EventdataEntry_DoNotUse> entry;
+      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
+          it = this->eventdata().begin();
+          it != this->eventdata().end(); ++it) {
+        entry.reset(eventdata_.NewEntryWrapper(
+            it->first, it->second));
+        target = ::google::protobuf::internal::WireFormatLite::
+                   InternalWriteMessageNoVirtualToArray(
+                       24, *entry, deterministic, target);
+;
+        Utf8Check::Check(&*it);
+      }
+    }
+  }
+
   // uint32 weather = 31;
   if (this->weather() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(31, this->weather(), target);
@@ -9256,6 +9762,48 @@ size_t PBRealmData::ByteSizeLong() const {
     }
   }
 
+  // map<uint64, uint32> townhero = 22;
+  total_size += 2 *
+      ::google::protobuf::internal::FromIntSize(this->townhero_size());
+  {
+    ::std::unique_ptr<PBRealmData_TownheroEntry_DoNotUse> entry;
+    for (::google::protobuf::Map< ::google::protobuf::uint64, ::google::protobuf::uint32 >::const_iterator
+        it = this->townhero().begin();
+        it != this->townhero().end(); ++it) {
+      entry.reset(townhero_.NewEntryWrapper(it->first, it->second));
+      total_size += ::google::protobuf::internal::WireFormatLite::
+          MessageSizeNoVirtual(*entry);
+    }
+  }
+
+  // map<uint32, uint32> runedata = 23;
+  total_size += 2 *
+      ::google::protobuf::internal::FromIntSize(this->runedata_size());
+  {
+    ::std::unique_ptr<PBRealmData_RunedataEntry_DoNotUse> entry;
+    for (::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >::const_iterator
+        it = this->runedata().begin();
+        it != this->runedata().end(); ++it) {
+      entry.reset(runedata_.NewEntryWrapper(it->first, it->second));
+      total_size += ::google::protobuf::internal::WireFormatLite::
+          MessageSizeNoVirtual(*entry);
+    }
+  }
+
+  // map<string, string> eventdata = 24;
+  total_size += 2 *
+      ::google::protobuf::internal::FromIntSize(this->eventdata_size());
+  {
+    ::std::unique_ptr<PBRealmData_EventdataEntry_DoNotUse> entry;
+    for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
+        it = this->eventdata().begin();
+        it != this->eventdata().end(); ++it) {
+      entry.reset(eventdata_.NewEntryWrapper(it->first, it->second));
+      total_size += ::google::protobuf::internal::WireFormatLite::
+          MessageSizeNoVirtual(*entry);
+    }
+  }
+
   // bytes modulename = 3;
   if (this->modulename().size() > 0) {
     total_size += 1 +
@@ -9382,13 +9930,6 @@ size_t PBRealmData::ByteSizeLong() const {
         this->weathertotalstep());
   }
 
-  // uint32 timecurrentturn = 45;
-  if (this->timecurrentturn() != 0) {
-    total_size += 2 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->timecurrentturn());
-  }
-
   // uint32 weathercurrentstep = 33;
   if (this->weathercurrentstep() != 0) {
     total_size += 2 +
@@ -9415,6 +9956,13 @@ size_t PBRealmData::ByteSizeLong() const {
     total_size += 2 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->nextweather());
+  }
+
+  // uint32 timecurrentturn = 45;
+  if (this->timecurrentturn() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->timecurrentturn());
   }
 
   // uint32 timetype = 41;
@@ -9477,6 +10025,9 @@ void PBRealmData::MergeFrom(const PBRealmData& from) {
   loseitem_.MergeFrom(from.loseitem_);
   killnpc_.MergeFrom(from.killnpc_);
   explore_.MergeFrom(from.explore_);
+  townhero_.MergeFrom(from.townhero_);
+  runedata_.MergeFrom(from.runedata_);
+  eventdata_.MergeFrom(from.eventdata_);
   if (from.modulename().size() > 0) {
 
     modulename_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.modulename_);
@@ -9532,9 +10083,6 @@ void PBRealmData::MergeFrom(const PBRealmData& from) {
   if (from.weathertotalstep() != 0) {
     set_weathertotalstep(from.weathertotalstep());
   }
-  if (from.timecurrentturn() != 0) {
-    set_timecurrentturn(from.timecurrentturn());
-  }
   if (from.weathercurrentstep() != 0) {
     set_weathercurrentstep(from.weathercurrentstep());
   }
@@ -9546,6 +10094,9 @@ void PBRealmData::MergeFrom(const PBRealmData& from) {
   }
   if (from.nextweather() != 0) {
     set_nextweather(from.nextweather());
+  }
+  if (from.timecurrentturn() != 0) {
+    set_timecurrentturn(from.timecurrentturn());
   }
   if (from.timetype() != 0) {
     set_timetype(from.timetype());
@@ -9590,6 +10141,9 @@ void PBRealmData::InternalSwap(PBRealmData* other) {
   CastToBase(&loseitem_)->InternalSwap(CastToBase(&other->loseitem_));
   killnpc_.InternalSwap(&other->killnpc_);
   explore_.Swap(&other->explore_);
+  townhero_.Swap(&other->townhero_);
+  runedata_.Swap(&other->runedata_);
+  eventdata_.Swap(&other->eventdata_);
   modulename_.Swap(&other->modulename_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(buffdata_, other->buffdata_);
@@ -9609,11 +10163,11 @@ void PBRealmData::InternalSwap(PBRealmData* other) {
   swap(foodstep_, other->foodstep_);
   swap(weather_, other->weather_);
   swap(weathertotalstep_, other->weathertotalstep_);
-  swap(timecurrentturn_, other->timecurrentturn_);
   swap(weathercurrentstep_, other->weathercurrentstep_);
   swap(weathertotalturn_, other->weathertotalturn_);
   swap(weathercurrentturn_, other->weathercurrentturn_);
   swap(nextweather_, other->nextweather_);
+  swap(timecurrentturn_, other->timecurrentturn_);
   swap(timetype_, other->timetype_);
   swap(timetotalstep_, other->timetotalstep_);
   swap(timecurrentstep_, other->timecurrentstep_);
@@ -10016,6 +10570,15 @@ template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBExploreData* Arena::Cre
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBRealmData_ExploreEntry_DoNotUse* Arena::CreateMaybeMessage< ::KFMsg::PBRealmData_ExploreEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateInternal< ::KFMsg::PBRealmData_ExploreEntry_DoNotUse >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBRealmData_TownheroEntry_DoNotUse* Arena::CreateMaybeMessage< ::KFMsg::PBRealmData_TownheroEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateInternal< ::KFMsg::PBRealmData_TownheroEntry_DoNotUse >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBRealmData_RunedataEntry_DoNotUse* Arena::CreateMaybeMessage< ::KFMsg::PBRealmData_RunedataEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateInternal< ::KFMsg::PBRealmData_RunedataEntry_DoNotUse >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBRealmData_EventdataEntry_DoNotUse* Arena::CreateMaybeMessage< ::KFMsg::PBRealmData_EventdataEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateInternal< ::KFMsg::PBRealmData_EventdataEntry_DoNotUse >(arena);
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBRealmData* Arena::CreateMaybeMessage< ::KFMsg::PBRealmData >(Arena* arena) {
   return Arena::CreateInternal< ::KFMsg::PBRealmData >(arena);

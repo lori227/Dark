@@ -46,6 +46,9 @@ namespace KFrame
         // 生成等级
         uint32 _level = 0u;
 
+        // 订制英雄
+        uint32 _custom = 0u;
+
         // 经验倍率(万分比)
         uint32 _exp_rate = 0u;
     };

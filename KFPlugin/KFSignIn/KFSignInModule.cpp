@@ -5,7 +5,7 @@ namespace KFrame
 {
     void KFSignInModule::BeforeRun()
     {
-        auto timeid = _kf_option->GetUInt32( "signinresettime" );
+        auto timeid = KFGlobal::Instance()->GetUInt32( "signinresettime" );
         __REGISTER_RESET__( timeid, &KFSignInModule::OnResetSigninData );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_SEVEN_SIGNIN_REWARD_REQ, &KFSignInModule::HandleReceiveSevenRewardReq );

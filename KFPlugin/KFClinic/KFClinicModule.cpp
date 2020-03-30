@@ -5,7 +5,7 @@ namespace KFrame
 {
 #define __KF_SET_STATIC_OPTION_CLINIC__( optionname, optionvalue, classvar)  \
     {   \
-        static auto _static_var = _kf_option->FindOption( optionname ); \
+        static auto _static_var = KFGlobal::Instance()->FindConstant( optionname ); \
         if ( _static_var->optionvalue != classvar )  \
         {   \
             classvar = _static_var->optionvalue;   \
@@ -342,7 +342,7 @@ namespace KFrame
 
     __KF_UPDATE_DATA_FUNCTION__( KFClinicModule::OnItemNumUpdate )
     {
-        static auto _option = _kf_option->FindOption( __STRING__( cliniccdtime ) );
+        static auto _option = KFGlobal::Instance()->FindConstant( __STRING__( cliniccdtime ) );
         auto cdtime = _option->_uint32_value;
         if ( cdtime == 0u )
         {

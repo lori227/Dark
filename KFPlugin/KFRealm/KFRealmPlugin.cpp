@@ -35,7 +35,6 @@ namespace KFrame
         __FIND_MODULE__( _kf_drop, KFDropInterface );
         __FIND_MODULE__( _kf_hero, KFHeroInterface );
         __FIND_MODULE__( _kf_item, KFItemInterface );
-        __FIND_MODULE__( _kf_option, KFOptionInterface );
         __FIND_MODULE__( _kf_config, KFConfigInterface );
         __FIND_MODULE__( _kf_kernel, KFKernelInterface );
         __FIND_MODULE__( _kf_player, KFPlayerInterface );
@@ -45,7 +44,6 @@ namespace KFrame
         __FIND_MODULE__( _kf_generate, KFGenerateInterface );
         __FIND_MODULE__( _kf_hero_team, KFHeroTeamInterface );
         __FIND_MODULE__( _kf_realm, KFRealmInterface );
-        __FIND_MODULE__( _kf_rune, KFItemRuneInterface );
         __FIND_MODULE__( _kf_item_move, KFItemMoveInterface );
         __FIND_MODULE__( _kf_pve, KFPVEInterface );
     }

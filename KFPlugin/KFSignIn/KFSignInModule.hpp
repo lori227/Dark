@@ -12,7 +12,6 @@
 #include "KFrameEx.h"
 #include "KFSignInInterface.h"
 #include "KFGame/KFGameInterface.h"
-#include "KFOption/KFOptionInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFDisplay/KFDisplayInterface.h"
 #include "KFMessage/KFMessageInterface.h"

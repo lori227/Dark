@@ -9,7 +9,6 @@
 	</Includes>
 
 	<Plugins>
-		<Plugin Name="KFProject" Config=""/>	
 		<Plugin Name="KFTcpDiscover" Config=""/>	
 	</Plugins>
 </Setting>

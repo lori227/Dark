@@ -5,7 +5,6 @@
 	</Includes>
 
 	<Plugins>
-		<Plugin Name="KFProject" Config=""/>	
 		<Plugin Name="KFHttpClient" Config=""/>	
 		<Plugin Name="KFTcpClient" Config=""/>	
 		<Plugin Name="KFMessage" Config=""/>	

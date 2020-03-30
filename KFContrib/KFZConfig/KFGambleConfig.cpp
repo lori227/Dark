@@ -17,6 +17,7 @@ namespace KFrame
 
         kfsetting->_show_count = xmlnode.GetUInt32( "ShowCount" );
 
+        kfsetting->_drop_type = xmlnode.GetUInt32( "DropType", true );
         kfsetting->_normal_drop_id = xmlnode.GetUInt32( "NormalDrop" );
         kfsetting->_inner_drop_id = xmlnode.GetUInt32( "InnerDrop" );
     }

@@ -8,6 +8,7 @@ namespace KFrame
 
         _kf_component = _kf_kernel->FindComponent( __STRING__( player ) );
         __REGISTER_ADD_ELEMENT__( __STRING__( taskchain ), &KFTaskChainModule::AddTaskChainElement );
+        __REGISTER_ADD_ELEMENT__( __STRING__( retaskchain ), &KFTaskChainModule::AddTaskChainrefreshElement );
 
         __REGISTER_ENTER_PLAYER__( &KFTaskChainModule::OnEnterTaskChainModule );
         __REGISTER_LEAVE_PLAYER__( &KFTaskChainModule::OnLeaveTaskChainModule );
@@ -21,6 +22,7 @@ namespace KFrame
         __UN_LEAVE_PLAYER__();
 
         __UN_ADD_ELEMENT__( __STRING__( taskchain ) );
+        __UN_ADD_ELEMENT__( __STRING__( retaskchain ) );
     }
 
     __KF_ENTER_PLAYER_FUNCTION__( KFTaskChainModule::OnEnterTaskChainModule )
@@ -237,6 +239,28 @@ namespace KFrame
 
             OpenTaskChain( player, iter.first, 1u, 0u, 0u, function, line );
         }
+    }
+
+    __KF_ADD_ELEMENT_FUNCTION__( KFTaskChainModule::AddTaskChainrefreshElement )
+    {
+        auto kfelement = kfresult->_element;
+        if ( !kfelement->IsObject() )
+        {
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object", kfelement->_data_name );
+            return false;
+        }
+
+        auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
+        if ( kfelementobject->_config_id == _invalid_int )
+        {
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no id", kfelement->_data_name );
+            return false;
+        }
+
+        UInt32Map idlist;
+        idlist[ kfelementobject->_config_id ] = KFRandEnum::TenThousand;
+        OpenRefreshIdToLoop( player, idlist, __FUNC_LINE__ );
+        return true;
     }
 
     void KFTaskChainModule::OpenRefreshIdToLoop( KFEntity* player, const UInt32Map& idlist, const char* function, uint32 line )

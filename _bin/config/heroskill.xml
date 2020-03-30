@@ -1,4 +1,4 @@
-<root platform="" version="3600">
+<root platform="" version="3891">
 	<item Id="161000" RaceLimit="" ProfessionLimit="1100" WeaponLimit="1801" BackGroundLimit="" />
 	<item Id="161001" RaceLimit="" ProfessionLimit="1101" WeaponLimit="1801" BackGroundLimit="" />
 	<item Id="161002" RaceLimit="" ProfessionLimit="1102" WeaponLimit="1801" BackGroundLimit="" />
@@ -138,4 +138,5 @@
 	<item Id="208024" RaceLimit="" ProfessionLimit="" WeaponLimit="" BackGroundLimit="" />
 	<item Id="208025" RaceLimit="" ProfessionLimit="" WeaponLimit="" BackGroundLimit="" />
 	<item Id="208026" RaceLimit="" ProfessionLimit="" WeaponLimit="" BackGroundLimit="" />
+	<item Id="161103" RaceLimit="" ProfessionLimit="1105,1999" WeaponLimit="" BackGroundLimit="" />
 </root>

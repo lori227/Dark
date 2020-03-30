@@ -10,7 +10,6 @@
 	</Includes>
 
 	<Plugins>
-		<Plugin Name="KFProject" Config=""/>	
 		<Plugin Name="KFReward" Config=""/>	
 		<Plugin Name="KFKernel" Config=""/>	
 		<Plugin Name="KFCondition" Config=""/>	

@@ -85,6 +85,11 @@ namespace KFrame
         _turn_finish_function.Remove( module );
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    KFRealmData* KFPVEModule::GetPVEData( KFEntity* player )
+    {
+        return _pve_record.Find( player->GetKeyID() );
+    }
+
     __KF_ENTER_PLAYER_FUNCTION__( KFPVEModule::OnPlayerPVEEnter )
     {
         auto strdata = player->Get<std::string>( __STRING__( pvedata ) );
@@ -737,7 +742,7 @@ namespace KFrame
             auto& droplist = _kf_drop->Drop( player, punishdata->_value, __STRING__( pve ), punishdata->_id, __FUNC_LINE__ );
             for ( auto dropdata : droplist )
             {
-                __ADD_PUNISH_DATA__( punishdata->_name, punishdata->_key, dropdata->GetValue() );
+                __ADD_PUNISH_DATA__( punishdata->_name, punishdata->_key, dropdata->_data_key );
             }
         }
         else if ( punishdata->_name == __STRING__( faith ) )
@@ -915,9 +920,7 @@ namespace KFrame
             auto herouuid = kfmsg.herolist( i );
 
             auto kfhero = kfherorecord->Find( herouuid );
-            if ( kfhero == nullptr ||
-                    kfhero->Get( __STRING__( durability ) ) == 0u ||
-                    kfhero->Get( __STRING__( fighter ), __STRING__( hp ) ) == 0u )
+            if ( kfhero == nullptr || kfhero->Get( __STRING__( fighter ), __STRING__( hp ) ) == 0u )
             {
                 __LOG_ERROR__( "player=[{}] herouuid=[{}] fighthero is invalid", player->GetKeyID(), herouuid );
                 continue;
@@ -998,8 +1001,8 @@ namespace KFrame
             break;
         }
 
-        static auto _enteroption = _kf_option->FindOption( __STRING__( enterfaith ) );
-        static auto _leaveoption = _kf_option->FindOption( __STRING__( leavefaith ) );
+        static auto _enteroption = KFGlobal::Instance()->FindConstant( __STRING__( enterfaith ) );
+        static auto _leaveoption = KFGlobal::Instance()->FindConstant( __STRING__( leavefaith ) );
 
         if ( kfrealmdata->_data.faith() >= _enteroption->_uint32_value )
         {

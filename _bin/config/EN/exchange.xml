@@ -1,7 +1,20 @@
-<root platform="" version="3445">
-	<item Id="1" ExchangeId="37000000" Level="1" NormalDrop="5802002" InnerDrop="5802002" LocalEvent="30000023" />
-	<item Id="2" ExchangeId="37000000" Level="2" NormalDrop="5802003" InnerDrop="5802003" LocalEvent="30000023" />
-	<item Id="3" ExchangeId="37000000" Level="3" NormalDrop="5802004" InnerDrop="5802004" LocalEvent="30000023" />
-	<item Id="4" ExchangeId="37000000" Level="4" NormalDrop="5802005" InnerDrop="5802005" LocalEvent="30000023" />
-	<item Id="5" ExchangeId="37000000" Level="5" NormalDrop="5802006" InnerDrop="5802006" LocalEvent="30000023" />
+<root platform="" version="3978">
+	<item Id="1" ExchangeId="37000000" Level="1" DropType="0" NormalDrop="5802002" InnerDrop="5802002" LocalEvent="30000023" />
+	<item Id="2" ExchangeId="37000000" Level="2" DropType="0" NormalDrop="5802003" InnerDrop="5802003" LocalEvent="30000023" />
+	<item Id="3" ExchangeId="37000000" Level="3" DropType="0" NormalDrop="5802004" InnerDrop="5802004" LocalEvent="30000023" />
+	<item Id="4" ExchangeId="37000000" Level="4" DropType="0" NormalDrop="5802005" InnerDrop="5802005" LocalEvent="30000023" />
+	<item Id="5" ExchangeId="37000000" Level="5" DropType="0" NormalDrop="5802006" InnerDrop="5802006" LocalEvent="30000023" />
+	<item Id="6" ExchangeId="37999998" Level="1" DropType="1" NormalDrop="36000007" InnerDrop="36000007" LocalEvent="" />
+	<item Id="7" ExchangeId="37999998" Level="2" DropType="1" NormalDrop="36000007" InnerDrop="36000007" LocalEvent="" />
+	<item Id="8" ExchangeId="37999998" Level="3" DropType="1" NormalDrop="36000007" InnerDrop="36000007" LocalEvent="" />
+	<item Id="9" ExchangeId="37999998" Level="4" DropType="1" NormalDrop="36000007" InnerDrop="36000007" LocalEvent="" />
+	<item Id="10" ExchangeId="37999998" Level="5" DropType="1" NormalDrop="36000007" InnerDrop="36000007" LocalEvent="" />
+	<item Id="11" ExchangeId="37999999" Level="1" DropType="1" NormalDrop="36000007" InnerDrop="36000007" LocalEvent="" />
+	<item Id="12" ExchangeId="37999999" Level="2" DropType="1" NormalDrop="36000007" InnerDrop="36000007" LocalEvent="" />
+	<item Id="13" ExchangeId="37999999" Level="3" DropType="1" NormalDrop="36000007" InnerDrop="36000007" LocalEvent="" />
+	<item Id="14" ExchangeId="37999999" Level="4" DropType="1" NormalDrop="36000007" InnerDrop="36000007" LocalEvent="" />
+	<item Id="15" ExchangeId="37999999" Level="5" DropType="1" NormalDrop="36000007" InnerDrop="36000007" LocalEvent="" />
+	<item Id="16" ExchangeId="37999997" Level="1" DropType="1" NormalDrop="36000013" InnerDrop="36000013" LocalEvent="30000023" />
+	<item Id="17" ExchangeId="37999997" Level="2" DropType="1" NormalDrop="36000013" InnerDrop="36000013" LocalEvent="30000023" />
+	<item Id="18" ExchangeId="37999997" Level="3" DropType="1" NormalDrop="36000013" InnerDrop="36000013" LocalEvent="30000023" />
 </root>

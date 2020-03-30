@@ -10,7 +10,6 @@
 ************************************************************************/
 
 #include "KFHeroTeamInterface.h"
-#include "KFOption/KFOptionInterface.h"
 #include "KFKernel/KFKernelInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFDisplay/KFDisplayInterface.h"
@@ -18,6 +17,7 @@
 #include "KFGenerate/KFGenerateInterface.h"
 #include "KFHero/KFHeroInterface.h"
 #include "KFDrop/KFDropInterface.h"
+#include "KFExecute/KFExecuteInterface.h"
 
 namespace KFrame
 {
@@ -52,7 +52,7 @@ namespace KFrame
         virtual void DecHeroPVEDurability( KFEntity* player, const UInt64Set& fightheros, uint32 durability );
 
         // 秘境扣除队伍英雄耐久度
-        virtual void DecHeroRealmDurability( KFEntity* player, uint32 durability );
+        virtual void DecHeroRealmDurability( KFEntity* player, uint32 durability, const UInt64Set& excludelist );
 
         // 清空队伍英雄ep
         virtual void ClearHeroEp( KFEntity* player );
@@ -76,6 +76,9 @@ namespace KFrame
         // 掉落减少英雄血量
         __KF_DROP_LOGIC_FUNCTION__( OnDropHeroDecHp );
 
+        // 添加英雄队伍数量
+        __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyHeroTeamCount );
+
     private:
         // 队伍改变请求(英雄不在队伍中)
         __KF_MESSAGE_FUNCTION__( HandleHeroTeamChangeReq );
@@ -88,7 +91,11 @@ namespace KFrame
 
         // 减少队伍hp
         __KF_MESSAGE_FUNCTION__( HandleDecTeamHpReq );
+
     protected:
+        // 检查英雄队伍数量
+        void CheckHeroTeamCount( KFEntity* player );
+
         // 检查队伍英雄
         void CheckHeroInTeam( KFEntity* player );
 

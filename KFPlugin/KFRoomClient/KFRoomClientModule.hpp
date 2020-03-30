@@ -11,7 +11,6 @@
 #include "KFrameEx.h"
 #include "KFProtocol/KFProtocol.h"
 #include "KFRoomClientInterface.h"
-#include "KFOption/KFOptionInterface.h"
 #include "KFKernel/KFKernelInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFMessage/KFMessageInterface.h"

@@ -1,4 +1,4 @@
-<root platform="" version="3667">
+<root platform="" version="3940">
 	<item Id="2000101" Time="1" InitWeight="100" ExploreDurationn="50" PveDurationn="3" />
 	<item Id="2000101" Time="2" InitWeight="100" ExploreDurationn="50" PveDurationn="3" />
 	<item Id="2000101" Time="3" InitWeight="100" ExploreDurationn="50" PveDurationn="3" />
@@ -8,4 +8,16 @@
 	<item Id="2000103" Time="1" InitWeight="100" ExploreDurationn="1" PveDurationn="1" />
 	<item Id="2000103" Time="2" InitWeight="0" ExploreDurationn="1" PveDurationn="1" />
 	<item Id="2000103" Time="3" InitWeight="0" ExploreDurationn="1" PveDurationn="1" />
+	<item Id="1" Time="1" InitWeight="0" ExploreDurationn="10" PveDurationn="2" />
+	<item Id="1" Time="2" InitWeight="0" ExploreDurationn="10" PveDurationn="2" />
+	<item Id="1" Time="3" InitWeight="100" ExploreDurationn="10" PveDurationn="2" />
+	<item Id="1001" Time="1" InitWeight="0" ExploreDurationn="0" PveDurationn="0" />
+	<item Id="1001" Time="2" InitWeight="0" ExploreDurationn="0" PveDurationn="0" />
+	<item Id="1001" Time="3" InitWeight="100" ExploreDurationn="99999" PveDurationn="99999" />
+	<item Id="1002" Time="1" InitWeight="100" ExploreDurationn="99999" PveDurationn="99999" />
+	<item Id="1002" Time="2" InitWeight="0" ExploreDurationn="0" PveDurationn="0" />
+	<item Id="1002" Time="3" InitWeight="0" ExploreDurationn="0" PveDurationn="0" />
+	<item Id="1003" Time="1" InitWeight="100" ExploreDurationn="100" PveDurationn="4" />
+	<item Id="1003" Time="2" InitWeight="100" ExploreDurationn="100" PveDurationn="4" />
+	<item Id="1003" Time="3" InitWeight="100" ExploreDurationn="100" PveDurationn="4" />
 </root>

@@ -12,7 +12,6 @@
 #include "KFItemInterface.h"
 #include "KFLua/KFLuaInterface.h"
 #include "KFTimer/KFTimerInterface.h"
-#include "KFOption/KFOptionInterface.h"
 #include "KFKernel/KFKernelInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFMessage/KFMessageInterface.h"
@@ -61,7 +60,7 @@ namespace KFrame
         virtual uint32 GetItemCount( KFEntity* player, KFData* kfitemrecord, uint32 itemid, uint32 maxcount = __MAX_UINT32__ );
 
         // 添加物品
-        virtual void AddItem( KFEntity* player, KFData* kfitemrecord, uint32 itemid, uint32 itemcount, bool callback = true );
+        virtual void AddItem( KFEntity* player, KFData* kfitemrecord, uint32 itemid, uint32 itemcount, uint32 itemindex, bool callback );
 
         // 删除包裹内道具
         virtual void RemoveItem( KFEntity* player, KFData* kfitemrecord, uint32 itemid, uint32 itemcount );

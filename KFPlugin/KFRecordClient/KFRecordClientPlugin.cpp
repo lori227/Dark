@@ -18,7 +18,6 @@ namespace KFrame
     {
         __FIND_MODULE__( _kf_reset, KFResetInterface );
         __FIND_MODULE__( _kf_config, KFConfigInterface );
-        __FIND_MODULE__( _kf_option, KFOptionInterface );
         __FIND_MODULE__( _kf_notice, KFNoticeInterface );
         __FIND_MODULE__( _kf_player, KFPlayerInterface );
         __FIND_MODULE__( _kf_kernel, KFKernelInterface );

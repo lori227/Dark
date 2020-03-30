@@ -36,7 +36,7 @@ namespace KFrame
         virtual uint32 GetItemCount( KFEntity* player, KFData* kfitemrecord, uint32 itemid, uint32 maxcount = __MAX_UINT32__ ) = 0;
 
         // 添加物品
-        virtual void AddItem( KFEntity* player, KFData* kfitemrecord, uint32 itemid, uint32 itemcount, bool callback = true ) = 0;
+        virtual void AddItem( KFEntity* player, KFData* kfitemrecord, uint32 itemid, uint32 itemcount, uint32 itemindex = 0u, bool callback = false ) = 0;
 
         // 删除包裹内道具
         virtual void RemoveItem( KFEntity* player, KFData* kfitemrecord, uint32 itemid, uint32 itemcount ) = 0;

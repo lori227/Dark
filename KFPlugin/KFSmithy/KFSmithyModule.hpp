@@ -16,7 +16,6 @@
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFDisplay/KFDisplayInterface.h"
 #include "KFMessage/KFMessageInterface.h"
-#include "KFOption/KFOptionInterface.h"
 #include "KFRecordClient/KFRecordClientInterface.h"
 #include "KFExecute/KFExecuteInterface.h"
 #include "KFSmithyWeaponConfig.hpp"

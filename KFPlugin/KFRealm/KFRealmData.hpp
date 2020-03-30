@@ -65,6 +65,9 @@ namespace KFrame
 
         // 英雄最终数据
         void RecordEndHeros( KFEntity* player );
+
+        // 记录回城英雄数据
+        void RecordTownHeros( KFEntity* player );
         ////////////////////////////////////////////////////////////////////////////////////////////////
         // 结算掉落
         void BalanceDropData( KFEntity* player );

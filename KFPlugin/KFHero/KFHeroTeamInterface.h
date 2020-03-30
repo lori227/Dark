@@ -27,7 +27,7 @@ namespace KFrame
         virtual void DecHeroPVEDurability( KFEntity* player, const UInt64Set& fightheros, uint32 durability ) = 0;
 
         // 秘境扣除队伍英雄耐久度
-        virtual void DecHeroRealmDurability( KFEntity* player, uint32 durability ) = 0;
+        virtual void DecHeroRealmDurability( KFEntity* player, uint32 durability, const UInt64Set& excludelist ) = 0;
 
         // 清空队伍英雄的ep
         virtual void ClearHeroEp( KFEntity* player ) = 0;

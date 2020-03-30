@@ -108,7 +108,7 @@ namespace KFrame
         auto rethero = _kf_generate->GeneratePlayerHero( player, kfhero, kfelementobject->_config_id );
         if ( rethero == nullptr )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "generate hero=[{}] failed!=[{}] id", kfelementobject->_config_id );
+            __LOG_ERROR_FUNCTION__( function, line, "generate hero failed, id = [{}] ", kfelementobject->_config_id );
             return false;
         }
 
@@ -116,7 +116,7 @@ namespace KFrame
         player->SetElementToData( kfhero, kfelementobject, kfresult->_multiple );
 
         // 创建guid
-        auto uuid = KFGlobal::Instance()->STMakeUUID( __STRING__( hero ) );
+        auto uuid = KFGlobal::Instance()->STMakeUuid( __STRING__( hero ) );
         player->AddData( kfparent, uuid, kfhero );
 
         // 添加结果
@@ -264,8 +264,8 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::HeroIsLocked );
         }
 
-        auto exprate = kfhero->Get<uint32>( __STRING__( exprate ) );
-        if ( exprate == 0u )
+        auto custom = kfhero->Get<uint32>( __STRING__( custom ) );
+        if ( custom > 0u )
         {
             return _kf_display->SendToClient( player, KFMsg::SpecialHeroCanNotRemove );
         }
@@ -457,19 +457,17 @@ namespace KFrame
 
     uint32 KFHeroModule::GetPlayerMaxLevel( KFEntity* player )
     {
-        static auto _option = _kf_option->FindOption( "initherolevellimit" );
-        auto initlevel = _option->_uint32_value;
-
+        static auto _option = KFGlobal::Instance()->FindConstant( "initherolevellimit" );
         auto herolevel = player->Get<uint32>( __STRING__( effect ), __STRING__( herolevel ) );
 
-        return initlevel + herolevel;
+        return _option->_uint32_value + herolevel;
     }
 
     uint32 KFHeroModule::CalcMaxLevel( KFEntity* player, KFData* kfhero )
     {
         auto level = kfhero->Get<uint32>( __STRING__( level ) );
-        auto exprate = kfhero->Get<uint32>( __STRING__( exprate ) );
-        if ( exprate == 0u )
+        auto custom = kfhero->Get<uint32>( __STRING__( custom ) );
+        if ( custom > 0u )
         {
             return level;
         }
