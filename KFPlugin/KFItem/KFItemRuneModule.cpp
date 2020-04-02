@@ -399,9 +399,6 @@ namespace KFrame
         // 先穿戴符石
         PutOnRune( player, iterator->second );
 
-        // 更换同步顺序, 先删除条件，再添加条件，再更新
-        player->SyncDataSequence( KFEnum::Dec, KFEnum::Add, KFEnum::Set );
-
         // 再合成符石
         OnDelayCompoundRune( player, runeset, is_send );
     }

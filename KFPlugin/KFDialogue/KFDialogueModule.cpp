@@ -58,9 +58,6 @@ namespace KFrame
 
         if ( kfdialogue != nullptr )
         {
-            // 更换同步顺序, 先删除条件，再添加条件，再更新
-            player->SyncDataSequence( KFEnum::Dec, KFEnum::Add, KFEnum::Set );
-
             // 清空当前的条件
             auto kfbranchrecord = kfdialogue->Find( __STRING__( dialoguebranch ) );
             player->CleanData( kfbranchrecord, false );

@@ -1,4 +1,4 @@
-<root platform="" version="3914">
+<root platform="" version="4030">
 	<item Id="1" StoryId="3000" Array="1" TriggerType="0" Type="1" Parameter1="10086" Parameter2="0" />
 	<item Id="2" StoryId="3000" Array="2" TriggerType="0" Type="9" Parameter1="200001" Parameter2="0" />
 	<item Id="3" StoryId="3000" Array="3" TriggerType="0" Type="9" Parameter1="200002" Parameter2="0" />
@@ -205,27 +205,28 @@
 	<item Id="204" StoryId="40023" Array="1" TriggerType="1" Type="8" Parameter1="8100023" Parameter2="0" />
 	<item Id="205" StoryId="40024" Array="1" TriggerType="1" Type="8" Parameter1="8100024" Parameter2="0" />
 	<item Id="206" StoryId="40025" Array="1" TriggerType="1" Type="8" Parameter1="8100025" Parameter2="0" />
-	<item Id="207" StoryId="41100" Array="1" TriggerType="1" Type="8" Parameter1="8110001" Parameter2="0" />
-	<item Id="208" StoryId="41101" Array="1" TriggerType="1" Type="8" Parameter1="8110002" Parameter2="0" />
-	<item Id="209" StoryId="41102" Array="1" TriggerType="1" Type="8" Parameter1="8110003" Parameter2="0" />
-	<item Id="210" StoryId="41103" Array="1" TriggerType="1" Type="7" Parameter1="8110004" Parameter2="0" />
-	<item Id="211" StoryId="41104" Array="1" TriggerType="1" Type="7" Parameter1="8110005" Parameter2="0" />
-	<item Id="212" StoryId="41104" Array="2" TriggerType="1" Type="5" Parameter1="25100002" Parameter2="0" />
-	<item Id="213" StoryId="41105" Array="1" TriggerType="1" Type="8" Parameter1="8110006" Parameter2="0" />
-	<item Id="214" StoryId="41106" Array="1" TriggerType="1" Type="8" Parameter1="8110007" Parameter2="0" />
-	<item Id="215" StoryId="41107" Array="1" TriggerType="1" Type="7" Parameter1="8110008" Parameter2="0" />
-	<item Id="216" StoryId="41108" Array="1" TriggerType="1" Type="7" Parameter1="8110009" Parameter2="0" />
-	<item Id="217" StoryId="41108" Array="2" TriggerType="1" Type="5" Parameter1="25100002" Parameter2="0" />
-	<item Id="218" StoryId="41109" Array="1" TriggerType="1" Type="8" Parameter1="8110010" Parameter2="0" />
-	<item Id="219" StoryId="41110" Array="1" TriggerType="1" Type="8" Parameter1="8110011" Parameter2="0" />
-	<item Id="220" StoryId="41111" Array="1" TriggerType="1" Type="7" Parameter1="8110012" Parameter2="0" />
-	<item Id="221" StoryId="41111" Array="2" TriggerType="1" Type="5" Parameter1="25100006" Parameter2="0" />
-	<item Id="222" StoryId="41112" Array="1" TriggerType="1" Type="8" Parameter1="8110013" Parameter2="0" />
-	<item Id="223" StoryId="41113" Array="1" TriggerType="1" Type="8" Parameter1="8110014" Parameter2="0" />
-	<item Id="224" StoryId="41114" Array="1" TriggerType="1" Type="7" Parameter1="8110015" Parameter2="0" />
-	<item Id="225" StoryId="41115" Array="1" TriggerType="1" Type="8" Parameter1="8110016" Parameter2="0" />
-	<item Id="226" StoryId="41116" Array="1" TriggerType="1" Type="8" Parameter1="8110017" Parameter2="0" />
-	<item Id="227" StoryId="41117" Array="1" TriggerType="1" Type="7" Parameter1="8110018" Parameter2="0" />
-	<item Id="228" StoryId="41118" Array="1" TriggerType="1" Type="7" Parameter1="8110019" Parameter2="0" />
-	<item Id="229" StoryId="41118" Array="2" TriggerType="1" Type="5" Parameter1="25100002" Parameter2="0" />
+	<item Id="207" StoryId="41025" Array="1" TriggerType="1" Type="7" Parameter1="8110001" Parameter2="0" />
+	<item Id="208" StoryId="41100" Array="1" TriggerType="1" Type="8" Parameter1="8110001" Parameter2="0" />
+	<item Id="209" StoryId="41101" Array="1" TriggerType="1" Type="8" Parameter1="8110002" Parameter2="0" />
+	<item Id="210" StoryId="41102" Array="1" TriggerType="1" Type="8" Parameter1="8110003" Parameter2="0" />
+	<item Id="211" StoryId="41103" Array="1" TriggerType="1" Type="7" Parameter1="8110004" Parameter2="0" />
+	<item Id="212" StoryId="41104" Array="1" TriggerType="1" Type="7" Parameter1="8110005" Parameter2="0" />
+	<item Id="213" StoryId="41104" Array="2" TriggerType="1" Type="5" Parameter1="25100002" Parameter2="0" />
+	<item Id="214" StoryId="41105" Array="1" TriggerType="1" Type="8" Parameter1="8110006" Parameter2="0" />
+	<item Id="215" StoryId="41106" Array="1" TriggerType="1" Type="8" Parameter1="8110007" Parameter2="0" />
+	<item Id="216" StoryId="41107" Array="1" TriggerType="1" Type="7" Parameter1="8110008" Parameter2="0" />
+	<item Id="217" StoryId="41108" Array="1" TriggerType="1" Type="7" Parameter1="8110009" Parameter2="0" />
+	<item Id="218" StoryId="41108" Array="2" TriggerType="1" Type="5" Parameter1="25100002" Parameter2="0" />
+	<item Id="219" StoryId="41109" Array="1" TriggerType="1" Type="8" Parameter1="8110010" Parameter2="0" />
+	<item Id="220" StoryId="41110" Array="1" TriggerType="1" Type="8" Parameter1="8110011" Parameter2="0" />
+	<item Id="221" StoryId="41111" Array="1" TriggerType="1" Type="7" Parameter1="8110012" Parameter2="0" />
+	<item Id="222" StoryId="41111" Array="2" TriggerType="1" Type="5" Parameter1="25100006" Parameter2="0" />
+	<item Id="223" StoryId="41112" Array="1" TriggerType="1" Type="8" Parameter1="8110013" Parameter2="0" />
+	<item Id="224" StoryId="41113" Array="1" TriggerType="1" Type="8" Parameter1="8110014" Parameter2="0" />
+	<item Id="225" StoryId="41114" Array="1" TriggerType="1" Type="7" Parameter1="8110015" Parameter2="0" />
+	<item Id="226" StoryId="41115" Array="1" TriggerType="1" Type="8" Parameter1="8110016" Parameter2="0" />
+	<item Id="227" StoryId="41116" Array="1" TriggerType="1" Type="8" Parameter1="8110017" Parameter2="0" />
+	<item Id="228" StoryId="41117" Array="1" TriggerType="1" Type="7" Parameter1="8110018" Parameter2="0" />
+	<item Id="229" StoryId="41118" Array="1" TriggerType="1" Type="7" Parameter1="8110019" Parameter2="0" />
+	<item Id="230" StoryId="41118" Array="2" TriggerType="1" Type="5" Parameter1="25100002" Parameter2="0" />
 </root>

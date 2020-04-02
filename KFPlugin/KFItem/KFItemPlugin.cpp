@@ -53,6 +53,7 @@ namespace KFrame
         __KF_ADD_CONFIG__( KFItemTypeConfig );
         __KF_ADD_CONFIG__( KFWeaponAffixConfig );
         __KF_ADD_CONFIG__( KFWeaponTypeConfig );
+        __KF_ADD_CONFIG__( KFItemBagConfig );
     }
 
 }

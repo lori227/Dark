@@ -8,6 +8,7 @@ namespace KFrame
         kfsetting->_type = xmlnode.GetUInt32( "Type" );
         kfsetting->_active_status = xmlnode.GetUInt32( "Active" );
         kfsetting->_complete_type = xmlnode.GetUInt32( "CompleteMode" );
+        kfsetting->_area = xmlnode.GetUInt32( "Area" );
 
         auto strprecondition = xmlnode.GetString( "PreCondition" );
         kfsetting->_pre_condition_type = KFReadSetting::ParseConditionList( strprecondition, kfsetting->_pre_condition );

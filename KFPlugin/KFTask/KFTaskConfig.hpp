@@ -20,6 +20,10 @@ namespace KFrame
     public:
         // 任务类型
         uint32 _type = 0u;
+
+        // 任务区域
+        uint32 _area = 1u;
+
         // 激活状态
         uint32 _active_status = 0u;
 

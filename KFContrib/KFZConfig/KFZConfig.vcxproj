@@ -27,6 +27,7 @@
     <ClInclude Include="KFGenerateConfig.hpp" />
     <ClInclude Include="KFInitialProcessConfig.hpp" />
     <ClInclude Include="KFInnerWorldConfig.hpp" />
+    <ClInclude Include="KFItemBagConfig.hpp" />
     <ClInclude Include="KFLevelValueConfig.hpp" />
     <ClInclude Include="KFMultiEventConfig.hpp" />
     <ClInclude Include="KFNpcConfig.hpp" />
@@ -79,6 +80,7 @@
     <ClCompile Include="KFGenerateConfig.cpp" />
     <ClCompile Include="KFInitialProcessConfig.cpp" />
     <ClCompile Include="KFInnerWorldConfig.cpp" />
+    <ClCompile Include="KFItemBagConfig.cpp" />
     <ClCompile Include="KFLevelValueConfig.cpp" />
     <ClCompile Include="KFMultiEventConfig.cpp" />
     <ClCompile Include="KFNpcConfig.cpp" />

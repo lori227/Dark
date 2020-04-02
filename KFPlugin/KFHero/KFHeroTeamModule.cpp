@@ -66,9 +66,9 @@ namespace KFrame
 
         // 扩展队伍数量大小
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
-        if ( maxteamcount >= kfteamarray->MaxSize() - 1u )
+        if ( maxteamcount >= kfteamarray->MaxSize() )
         {
-            for ( auto i = kfteamarray->MaxSize() - 1u; i <= maxteamcount; ++i )
+            for ( auto i = kfteamarray->MaxSize(); i <= maxteamcount; ++i )
             {
                 player->AddArray( kfteamarray, 0u );
             }

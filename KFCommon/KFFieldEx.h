@@ -244,6 +244,7 @@ namespace KFrame
         __STRING_DEFINE__( remove );
         __STRING_DEFINE__( voice );
         __STRING_DEFINE__( custom );
+        __STRING_DEFINE__( itemmove );
     }
 }
 

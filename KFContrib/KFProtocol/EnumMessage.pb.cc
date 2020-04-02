@@ -58,60 +58,61 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\021EnumMessage.proto\022\005KFMsg*a\n\017ConstDefin"
-      "eEnum\022\017\n\013UnknowConse\020\000\022\022\n\014InfiniteStep\020\237"
+      "\n\021EnumMessage.proto\022\005KFMsg*~\n\017ConstDefin"
+      "eEnum\022\017\n\013UnknowConst\020\000\022\022\n\014InfiniteStep\020\237"
       "\215\006\022\022\n\014InfiniteTurn\020\237\215\006\022\021\n\014InfiniteBuff\020\220"
-      "N\032\002\020\001*5\n\010CampEnum\022\016\n\nUnknowCamp\020\000\022\013\n\007Red"
-      "Camp\020\001\022\014\n\010BlueCamp\020\002*Z\n\013RefreshEnum\022\021\n\rU"
-      "nknowRefresh\020\000\022\021\n\rRefreshByFree\020\001\022\022\n\016Ref"
-      "reshByCount\020\002\022\021\n\rRefreshByCost\020\003*[\n\013Divi"
-      "sorEnum\022\021\n\rUnknowDivisor\020\000\022\021\n\rDivisorOfR"
-      "ace\020\001\022\021\n\rDivisorOfMove\020\002\022\023\n\017DivisorOfWea"
-      "pon\020\003*;\n\014HeroLockEnum\022\n\n\006NoLock\020\000\022\020\n\014Her"
-      "oListLock\020\001\022\r\n\tCountLock\020\002*B\n\016HeroRemove"
-      "Enum\022\021\n\rRemoveUnknown\020\000\022\r\n\tDismissal\020e\022\016"
-      "\n\nRetirement\020f*\224\002\n\tBuildEnum\022\020\n\014InvalidB"
-      "uild\020\000\022\r\n\010HeroList\020\310\001\022\r\n\010HeroTeam\020\311\001\022\016\n\t"
-      "MainBuild\020\312\001\022\021\n\014RecruitBuild\020\313\001\022\020\n\013Clini"
-      "cBuild\020\314\001\022\017\n\nTrainBuild\020\315\001\022\017\n\nOperaBuild"
-      "\020\316\001\022\020\n\013SmithyBuild\020\317\001\022\016\n\tShopBuild\020\320\001\022\021\n"
-      "\014InheritBuild\020\321\001\022\022\n\rCemeteryBuild\020\322\001\022\017\n\n"
-      "OuterBuild\020\323\001\022\023\n\016WarehouseBuild\020\324\001\022\021\n\014Gr"
-      "anaryBuild\020\325\001*`\n\nRecordEnum\022\021\n\rInvalidRe"
-      "cord\020\000\022\016\n\nCampRecord\020\001\022\017\n\013DailyRecord\020\002\022"
-      "\016\n\nDeadRecord\020\003\022\016\n\nLifeRecord\020\004*+\n\rLifeE"
-      "ventEnum\022\014\n\010HeroBorn\020\000\022\014\n\010HeroDead\020\001*\222\001\n"
-      "\022PlayerStatusEnumEx\022\020\n\014UnknowStatus\020\000\022\020\n"
-      "\014OnlineStatus\020\001\022\021\n\rOfflineStatus\020\002\022\021\n\rEx"
-      "ploreStatus\020\003\022\r\n\tPVEStatus\020\004\022\r\n\tPVPStatu"
-      "s\020\005\022\024\n\020DropSelectStatus\020\006*c\n\014NoticeEnumE"
-      "x\022\020\n\014UnknowNotice\020\000\022\024\n\020NoticeCampRecord\020"
-      "d\022\025\n\021NoticeDailyRecord\020e\022\024\n\020NoticeDeadRe"
-      "cord\020f*>\n\nExpireEnum\022\021\n\rInvalidExpire\020\000\022"
-      "\016\n\nTimeExpire\020\001\022\r\n\tNumExpire\020\002*;\n\017Balanc"
-      "eShowEnum\022\016\n\nUnknowShow\020\000\022\013\n\007Explore\020\001\022\013"
-      "\n\007Balance\020\002*\?\n\014ItemAutoEnum\022\017\n\013AutoInval"
-      "id\020\000\022\r\n\tAutoStore\020\001\022\017\n\013AutoDestory\020\002*\362\001\n"
-      "\022InitialProcessEnum\022\022\n\016ProcessInvalid\020\000\022"
-      "\r\n\tProcessCG\020\001\022\016\n\nProcessPVE\020\002\022\022\n\016Proces"
-      "sExplore\020\003\022\022\n\016ProcessChapter\020\004\022\017\n\013Proces"
-      "sTask\020\005\022\020\n\014ProcessScene\020\006\022\016\n\nUIDialogue\020"
-      "\007\022\022\n\016BubbleDialogue\020\010\022\023\n\017ProcessSequence"
-      "\020\t\022\023\n\017ChapterAndStory\020\n\022\020\n\014ProcessStory\020"
-      "\013*s\n\016RealmEnterEnum\022\020\n\014EnterInvalid\020\000\022\020\n"
-      "\014EnterChapter\020\001\022\016\n\nEnterLogin\020\002\022\r\n\tEnter"
-      "Town\020\003\022\r\n\tEnterJump\020\004\022\017\n\013EnterExtend\020\005*;"
-      "\n\017ExtendLevelEnum\022\026\n\022ExtendLevelInvalid\020"
-      "\000\022\020\n\013ExtendLevel\020\220N*c\n\013BalanceEnum\022\021\n\rUn"
-      "knowBalance\020\000\022\013\n\007Victory\020\001\022\n\n\006Failed\020\002\022\010"
-      "\n\004Flee\020\003\022\010\n\004Town\020\004\022\007\n\003Ace\020\005\022\013\n\007Chapter\020d"
-      "*1\n\010JumpEnum\022\017\n\013JumpInvalid\020\000\022\t\n\005Leave\020\001"
-      "\022\t\n\005Enter\020\002*G\n\rRealmTimeEnum\022\017\n\013TimeInva"
-      "lid\020\000\022\013\n\007Morning\020\001\022\r\n\tAfternoon\020\002\022\t\n\005Nig"
-      "ht\020\003b\006proto3"
+      "N\022\014\n\010AreaCamp\020\001\022\r\n\tAreaRealm\020\002\032\002\020\001*5\n\010Ca"
+      "mpEnum\022\016\n\nUnknowCamp\020\000\022\013\n\007RedCamp\020\001\022\014\n\010B"
+      "lueCamp\020\002*Z\n\013RefreshEnum\022\021\n\rUnknowRefres"
+      "h\020\000\022\021\n\rRefreshByFree\020\001\022\022\n\016RefreshByCount"
+      "\020\002\022\021\n\rRefreshByCost\020\003*[\n\013DivisorEnum\022\021\n\r"
+      "UnknowDivisor\020\000\022\021\n\rDivisorOfRace\020\001\022\021\n\rDi"
+      "visorOfMove\020\002\022\023\n\017DivisorOfWeapon\020\003*;\n\014He"
+      "roLockEnum\022\n\n\006NoLock\020\000\022\020\n\014HeroListLock\020\001"
+      "\022\r\n\tCountLock\020\002*B\n\016HeroRemoveEnum\022\021\n\rRem"
+      "oveUnknown\020\000\022\r\n\tDismissal\020e\022\016\n\nRetiremen"
+      "t\020f*\224\002\n\tBuildEnum\022\020\n\014InvalidBuild\020\000\022\r\n\010H"
+      "eroList\020\310\001\022\r\n\010HeroTeam\020\311\001\022\016\n\tMainBuild\020\312"
+      "\001\022\021\n\014RecruitBuild\020\313\001\022\020\n\013ClinicBuild\020\314\001\022\017"
+      "\n\nTrainBuild\020\315\001\022\017\n\nOperaBuild\020\316\001\022\020\n\013Smit"
+      "hyBuild\020\317\001\022\016\n\tShopBuild\020\320\001\022\021\n\014InheritBui"
+      "ld\020\321\001\022\022\n\rCemeteryBuild\020\322\001\022\017\n\nOuterBuild\020"
+      "\323\001\022\023\n\016WarehouseBuild\020\324\001\022\021\n\014GranaryBuild\020"
+      "\325\001*`\n\nRecordEnum\022\021\n\rInvalidRecord\020\000\022\016\n\nC"
+      "ampRecord\020\001\022\017\n\013DailyRecord\020\002\022\016\n\nDeadReco"
+      "rd\020\003\022\016\n\nLifeRecord\020\004*+\n\rLifeEventEnum\022\014\n"
+      "\010HeroBorn\020\000\022\014\n\010HeroDead\020\001*\242\001\n\022PlayerStat"
+      "usEnumEx\022\020\n\014UnknowStatus\020\000\022\020\n\014OnlineStat"
+      "us\020\001\022\021\n\rOfflineStatus\020\002\022\021\n\rExploreStatus"
+      "\020\003\022\r\n\tPVEStatus\020\004\022\r\n\tPVPStatus\020\005\022\016\n\nTown"
+      "Status\020\006\022\024\n\020DropSelectStatus\020d*c\n\014Notice"
+      "EnumEx\022\020\n\014UnknowNotice\020\000\022\024\n\020NoticeCampRe"
+      "cord\020d\022\025\n\021NoticeDailyRecord\020e\022\024\n\020NoticeD"
+      "eadRecord\020f*>\n\nExpireEnum\022\021\n\rInvalidExpi"
+      "re\020\000\022\016\n\nTimeExpire\020\001\022\r\n\tNumExpire\020\002*;\n\017B"
+      "alanceShowEnum\022\016\n\nUnknowShow\020\000\022\013\n\007Explor"
+      "e\020\001\022\013\n\007Balance\020\002*\?\n\014ItemAutoEnum\022\017\n\013Auto"
+      "Invalid\020\000\022\r\n\tAutoStore\020\001\022\017\n\013AutoDestory\020"
+      "\002*\362\001\n\022InitialProcessEnum\022\022\n\016ProcessInval"
+      "id\020\000\022\r\n\tProcessCG\020\001\022\016\n\nProcessPVE\020\002\022\022\n\016P"
+      "rocessExplore\020\003\022\022\n\016ProcessChapter\020\004\022\017\n\013P"
+      "rocessTask\020\005\022\020\n\014ProcessScene\020\006\022\016\n\nUIDial"
+      "ogue\020\007\022\022\n\016BubbleDialogue\020\010\022\023\n\017ProcessSeq"
+      "uence\020\t\022\023\n\017ChapterAndStory\020\n\022\020\n\014ProcessS"
+      "tory\020\013*s\n\016RealmEnterEnum\022\020\n\014EnterInvalid"
+      "\020\000\022\020\n\014EnterChapter\020\001\022\016\n\nEnterLogin\020\002\022\r\n\t"
+      "EnterTown\020\003\022\r\n\tEnterJump\020\004\022\017\n\013EnterExten"
+      "d\020\005*;\n\017ExtendLevelEnum\022\026\n\022ExtendLevelInv"
+      "alid\020\000\022\020\n\013ExtendLevel\020\220N*c\n\013BalanceEnum\022"
+      "\021\n\rUnknowBalance\020\000\022\013\n\007Victory\020\001\022\n\n\006Faile"
+      "d\020\002\022\010\n\004Flee\020\003\022\010\n\004Town\020\004\022\007\n\003Ace\020\005\022\013\n\007Chap"
+      "ter\020d*1\n\010JumpEnum\022\017\n\013JumpInvalid\020\000\022\t\n\005Le"
+      "ave\020\001\022\t\n\005Enter\020\002*G\n\rRealmTimeEnum\022\017\n\013Tim"
+      "eInvalid\020\000\022\013\n\007Morning\020\001\022\r\n\tAfternoon\020\002\022\t"
+      "\n\005Night\020\003b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2012);
+      descriptor, 2057);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "EnumMessage.proto", &protobuf_RegisterTypes);
 }
@@ -135,6 +136,8 @@ const ::google::protobuf::EnumDescriptor* ConstDefineEnum_descriptor() {
 bool ConstDefineEnum_IsValid(int value) {
   switch (value) {
     case 0:
+    case 1:
+    case 2:
     case 10000:
     case 99999:
       return true;
@@ -291,6 +294,7 @@ bool PlayerStatusEnumEx_IsValid(int value) {
     case 4:
     case 5:
     case 6:
+    case 100:
       return true;
     default:
       return false;

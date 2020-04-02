@@ -77,7 +77,7 @@ namespace KFrame
         void DoneTask( KFEntity* player, KFData* kftask, const KFTaskSetting* kfsetting, bool update );
 
         // 添加到完成任务列表
-        void AddFinishTask( KFEntity* player, uint32 taskid );
+        void AddFinishTask( KFEntity* player, const KFTaskSetting* kfsetting );
         __KF_TIMER_FUNCTION__( OnTimerTaskFinish );
 
         // 任务交付完成
@@ -106,6 +106,15 @@ namespace KFrame
         __KF_EXECUTE_FUNCTION__( OnExecuteUpdateTaskStatus );
         // 执行更新任务条件
         __KF_EXECUTE_FUNCTION__( OnExecuteUpdateTaskCondition );
+
+        // 判断是否在秘境探索中
+        bool IsPlayerInRealm( KFEntity* player );
+
+        // 判断任务区域
+        bool CheckTaskArea( KFEntity* player, const KFTaskSetting* kfsetting );
+
+        // 秘境状态改变任务提交完成
+        __KF_UPDATE_DATA_FUNCTION__( OnRealmTaskFinish );
     protected:
         // 玩家组件上下文
         KFComponent* _kf_component = nullptr;

@@ -334,17 +334,7 @@ namespace KFrame
                 kfitemrecord = player->Find( __STRING__( extend ) );
             }
 
-            // 先移除
-            player->MoveData( kfselectrecord, kfitem->GetKeyID() );
-
-            // 添加
-            player->AddData( kfitemrecord, kfitem );
-
-            // 显示逻辑
-            if ( kfitemrecord->_data_setting->_name != __STRING__( extend ) )
-            {
-                player->AddDataToShow( __STRING__( select ), kfitem );
-            }
+            _kf_item_move->MoveItem( player, kfselectrecord, kfitem, kfitemrecord, 0 );
         }
 
         // 清空数据

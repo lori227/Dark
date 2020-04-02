@@ -324,7 +324,7 @@ namespace KFrame
         // 自动打开的礼包
         if ( kfsetting->_type == KFItemEnum::Gift && kfparent->_data_setting->_name == __STRING__( gift ) && kfsetting->_auto_use != 0u )
         {
-            kfresult->AddResult( kfsetting->_id, kfparent->_data_setting->_name, __STRING__( count ), itemcount );
+            AddItemResult( kfresult, kfparent->_data_setting->_name, kfsetting->_id, itemcount );
 
             // 礼包道具 进入仓库自动使用
             if ( !kfsetting->_reward.IsEmpty() )
@@ -383,7 +383,7 @@ namespace KFrame
             kfitem = AddNewItemData( player, kfparent, kfsetting, count, time );
         }
 
-        kfresult->AddResult( kfsetting->_id, kfitem );
+        AddItemResult( kfresult, kfsetting->_id, kfitem );
     }
 
     void KFItemModule::AddOverlayCountItem( KFEntity* player, KFData* kfparent, KFElementResult* kfresult, const KFItemSetting* kfsetting, uint32 count )
@@ -420,7 +420,7 @@ namespace KFrame
         // 显示添加数量
         if ( totaladdcount != 0u )
         {
-            kfresult->AddResult( kfsetting->_id, kfparent->_data_setting->_name, __STRING__( count ), totaladdcount );
+            AddItemResult( kfresult, kfparent->_data_setting->_name, kfsetting->_id, totaladdcount );
         }
 
         // 添加完成, 直接返回
@@ -433,7 +433,7 @@ namespace KFrame
         do
         {
             auto kfitem = AddNewItemData( player, kfparent, kfsetting, count, 0u );
-            kfresult->AddResult( kfsetting->_id, kfitem->_data_setting->_name, __STRING__( count ), kfitem->Get<uint32>( __STRING__( count ) ) );
+            AddItemResult( kfresult, kfitem->_data_setting->_name, kfsetting->_id, kfitem->Get<uint32>( __STRING__( count ) ) );
         } while ( count > 0u );
     }
 
@@ -443,7 +443,7 @@ namespace KFrame
         do
         {
             auto kfitem = AddNewItemData( player, kfparent, kfsetting, count, 0u );
-            kfresult->AddResult( kfsetting->_id, kfitem );
+            AddItemResult( kfresult, kfsetting->_id, kfitem );
         } while ( count > 0u );
     }
 
@@ -1006,5 +1006,29 @@ namespace KFrame
         }
 
         return std::make_tuple( nullptr, nullptr );
+    }
+
+    void KFItemModule::AddItemResult( KFElementResult* kfresult, uint32 itemid, KFData* kfitem )
+    {
+        kfresult->AddResult( itemid, kfitem );
+
+        // 判断是否需要显示
+        auto kfsetting = KFItemBagConfig::Instance()->FindSetting( kfitem->_data_setting->_name );
+        if ( kfsetting != nullptr && !kfsetting->_is_add_show )
+        {
+            kfresult->_is_need_show = false;
+        }
+    }
+
+    void KFItemModule::AddItemResult( KFElementResult* kfresult, const std::string& itemname, uint32 itemid, uint32 count )
+    {
+        kfresult->AddResult( itemid, itemname, __STRING__( count ), count );
+
+        // 判断是否需要显示
+        auto kfsetting = KFItemBagConfig::Instance()->FindSetting( itemname );
+        if ( kfsetting != nullptr && !kfsetting->_is_add_show )
+        {
+            kfresult->_is_need_show = false;
+        }
     }
 }

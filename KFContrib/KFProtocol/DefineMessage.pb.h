@@ -985,6 +985,12 @@ class LIBPROTOC_EXPORT PBBalanceItemServer : public ::google::protobuf::Message 
   ::google::protobuf::uint32 endcount() const;
   void set_endcount(::google::protobuf::uint32 value);
 
+  // uint32 usecount = 5;
+  void clear_usecount();
+  static const int kUsecountFieldNumber = 5;
+  ::google::protobuf::uint32 usecount() const;
+  void set_usecount(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:KFMsg.PBBalanceItemServer)
  private:
 
@@ -993,6 +999,7 @@ class LIBPROTOC_EXPORT PBBalanceItemServer : public ::google::protobuf::Message 
   ::google::protobuf::uint32 id_;
   ::google::protobuf::uint32 begincount_;
   ::google::protobuf::uint32 endcount_;
+  ::google::protobuf::uint32 usecount_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_DefineMessage_2eproto::TableStruct;
 };
@@ -3666,6 +3673,20 @@ inline void PBBalanceItemServer::set_endcount(::google::protobuf::uint32 value) 
   
   endcount_ = value;
   // @@protoc_insertion_point(field_set:KFMsg.PBBalanceItemServer.endcount)
+}
+
+// uint32 usecount = 5;
+inline void PBBalanceItemServer::clear_usecount() {
+  usecount_ = 0u;
+}
+inline ::google::protobuf::uint32 PBBalanceItemServer::usecount() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceItemServer.usecount)
+  return usecount_;
+}
+inline void PBBalanceItemServer::set_usecount(::google::protobuf::uint32 value) {
+  
+  usecount_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceItemServer.usecount)
 }
 
 // -------------------------------------------------------------------

@@ -1,12 +1,13 @@
-<root platform="" version="3686">
+<root platform="" version="4009">
 	<item Id="1" MultiId="39000000" Index="1" Cost="" Event="30000005" Title="MultiOption_Campfire_Title" Description="MultiOption_Campfire_Des" OptionTxt="MultiOption_Campfire_Option1" LocalEvent="30000023" />
 	<item Id="2" MultiId="39000001" Index="1" Cost="" Event="30000017" Title="MultiOption_Altar_Title" Description="MultiOption_Altar_Des" OptionTxt="MultiOption_Altar_Option1" LocalEvent="30000023" />
-	<item Id="3" MultiId="39000002" Index="1" Cost="[[2,1900101,1]]" Event="30000001" Title="MultiOption_Vine_Title" Description="MultiOption_Vine_Des" OptionTxt="MultiOption_Vine_Option2" LocalEvent="30000023" />
-	<item Id="4" MultiId="39000003" Index="1" Cost="" Event="30000027" Title="MultiOption_OilBegging_Title" Description="MultiOption_OilBegging_Des" OptionTxt="MultiOption_OilBegging_Option1" LocalEvent="" />
-	<item Id="5" MultiId="39000003" Index="2" Cost="[[2,1900102,1]]" Event="30000021" Title="MultiOption_OilBegging_Title" Description="MultiOption_OilBegging_Des" OptionTxt="MultiOption_OilBegging_Option2" LocalEvent="" />
-	<item Id="6" MultiId="39000004" Index="1" Cost="" Event="30000015" Title="MultiOption_LockedChest_Title" Description="MultiOption_LockedChest_Des" OptionTxt="MultiOption_LockedChest_Option1" LocalEvent="30000023" />
-	<item Id="7" MultiId="39000004" Index="2" Cost="[[2,1900103,1]]" Event="30000016" Title="MultiOption_LockedChest_Title" Description="MultiOption_LockedChest_Des" OptionTxt="MultiOption_LockedChest_Option2" LocalEvent="30000023" />
-	<item Id="8" MultiId="39000005" Index="1" Cost="" Event="30000003" Title="MultiOption_NextLevelGate_Title" Description="MultiOption_NextLevelGate_Des" OptionTxt="MultiOption_NextLevelGate_Option1" LocalEvent="" />
-	<item Id="9" MultiId="39000006" Index="1" Cost="" Event="30000006" Title="MultiOption_SuccesGate_Title" Description="MultiOption_SuccesGate_Des" OptionTxt="MultiOption_SuccesGate_Option1" LocalEvent="" />
-	<item Id="10" MultiId="39000007" Index="1" Cost="" Event="30000030" Title="MultiOption_Torch_Title" Description="MultiOption_Torch_Des" OptionTxt="MultiOption_Torch_Option1" LocalEvent="30000023" />
+	<item Id="3" MultiId="39000001" Index="2" Cost="[[2,1900005,1]]" Event="30000044" Title="MultiOption_Altar_Title" Description="MultiOption_Altar_Des" OptionTxt="MultiOption_Altar_Option2" LocalEvent="30000023" />
+	<item Id="4" MultiId="39000002" Index="1" Cost="[[2,1900101,1]]" Event="30000001" Title="MultiOption_Vine_Title" Description="MultiOption_Vine_Des" OptionTxt="MultiOption_Vine_Option2" LocalEvent="30000023" />
+	<item Id="5" MultiId="39000003" Index="1" Cost="" Event="30000027" Title="MultiOption_OilBegging_Title" Description="MultiOption_OilBegging_Des" OptionTxt="MultiOption_OilBegging_Option1" LocalEvent="" />
+	<item Id="6" MultiId="39000003" Index="2" Cost="[[2,1900102,1]]" Event="30000021" Title="MultiOption_OilBegging_Title" Description="MultiOption_OilBegging_Des" OptionTxt="MultiOption_OilBegging_Option2" LocalEvent="" />
+	<item Id="7" MultiId="39000004" Index="1" Cost="" Event="30000015" Title="MultiOption_LockedChest_Title" Description="MultiOption_LockedChest_Des" OptionTxt="MultiOption_LockedChest_Option1" LocalEvent="30000023" />
+	<item Id="8" MultiId="39000004" Index="2" Cost="[[2,1900103,1]]" Event="30000016" Title="MultiOption_LockedChest_Title" Description="MultiOption_LockedChest_Des" OptionTxt="MultiOption_LockedChest_Option2" LocalEvent="30000023" />
+	<item Id="9" MultiId="39000005" Index="1" Cost="" Event="30000003" Title="MultiOption_NextLevelGate_Title" Description="MultiOption_NextLevelGate_Des" OptionTxt="MultiOption_NextLevelGate_Option1" LocalEvent="" />
+	<item Id="10" MultiId="39000006" Index="1" Cost="" Event="30000006" Title="MultiOption_SuccesGate_Title" Description="MultiOption_SuccesGate_Des" OptionTxt="MultiOption_SuccesGate_Option1" LocalEvent="" />
+	<item Id="11" MultiId="39000007" Index="1" Cost="" Event="30000030" Title="MultiOption_Torch_Title" Description="MultiOption_Torch_Des" OptionTxt="MultiOption_Torch_Option1" LocalEvent="30000023" />
 </root>

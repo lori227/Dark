@@ -1325,9 +1325,6 @@ namespace KFrame
         {
             for ( auto iter : randlist )
             {
-                // 更换同步顺序, 先删除条件，再添加条件，再更新
-                player->SyncDataSequence( KFEnum::Dec, KFEnum::Add, KFEnum::Set );
-
                 // 转职获得的天赋增加标记
                 auto kfinnate = kfhero->Find( __STRING__( innate ), iter );
                 player->UpdateData( kfinnate, __STRING__( flag ), KFEnum::Set, 1u );

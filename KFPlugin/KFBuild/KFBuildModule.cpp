@@ -295,9 +295,6 @@ namespace KFrame
             return;
         }
 
-        // 更换同步顺序, 先删除条件，再添加条件，再更新
-        player->SyncDataSequence( KFEnum::Dec, KFEnum::Add, KFEnum::Set );
-
         // 添加下一级的升级条件
         _kf_condition->AddCondition( player, kfconditionobject, kfsetting->_condition, kfsetting->_condition_type );
 

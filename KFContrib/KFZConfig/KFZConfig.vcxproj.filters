@@ -145,6 +145,9 @@
     <ClInclude Include="KFWeatherConfig.hpp">
       <Filter>Realm</Filter>
     </ClInclude>
+    <ClInclude Include="KFItemBagConfig.hpp">
+      <Filter>Item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Option">
@@ -310,6 +313,9 @@
     </ClCompile>
     <ClCompile Include="KFWeatherConfig.cpp">
       <Filter>Realm</Filter>
+    </ClCompile>
+    <ClCompile Include="KFItemBagConfig.cpp">
+      <Filter>Item</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

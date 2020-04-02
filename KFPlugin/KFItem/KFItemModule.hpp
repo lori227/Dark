@@ -18,6 +18,7 @@
 #include "KFDisplay/KFDisplayInterface.h"
 #include "KFZConfig/KFItemConfig.hpp"
 #include "KFZConfig/KFItemTypeConfig.hpp"
+#include "KFZConfig/KFItemBagConfig.hpp"
 
 namespace KFrame
 {
@@ -122,7 +123,6 @@ namespace KFrame
         virtual void UnRegisteInitItemFunction( uint32 itemtype );
 
     protected:
-
         //背包是否满了
         bool CheckItemRecordFull( KFEntity* player, KFData* kfitemrecord, const KFItemSetting* kfsetting, uint32 itemcount );
 
@@ -151,6 +151,12 @@ namespace KFrame
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 计算道具添加数量
         uint32 CalcItemAddCount( uint32 sourcecount, uint32 targetcount, uint32 maxcount );
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // 添加道具结果
+        void AddItemResult( KFElementResult* kfresult, uint32 itemid, KFData* kfitem );
+        void AddItemResult( KFElementResult* kfresult, const std::string& itemname, uint32 itemid, uint32 count );
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     protected:
         // 玩家组件上下文
         KFComponent* _kf_component = nullptr;
@@ -159,7 +165,7 @@ namespace KFrame
         StringVector _item_data_list;
 
         // 初始化
-        KFBind<uint32, uint32, KFItemFunction > _init_item_function;
+        KFBind< uint32, uint32, KFItemFunction > _init_item_function;
     };
 }
 

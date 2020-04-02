@@ -8,6 +8,7 @@
 #include "KFZConfig/KFItemConfig.hpp"
 #include "KFZConfig/KFItemTypeConfig.hpp"
 #include "KFZConfig/KFCurrencyConfig.hpp"
+#include "KFZConfig/KFItemBagConfig.hpp"
 
 namespace KFrame
 {
@@ -45,7 +46,7 @@ namespace KFrame
         KFMsg::PBBalanceItemServer* FindItem( uint32 id, uint64 uuid );
 
         // 丢失的道具
-        KFMsg::PBBalanceItem* FindLose( uint32 id );
+        KFMsg::PBBalanceItem* FindLose( uint32 id, uint64 uuid );
 
         // 查找npc数据
         KFMsg::PBExploreNpcData* FindNpcData( const std::string& key );
@@ -77,6 +78,12 @@ namespace KFrame
         ////////////////////////////////////////////////////////////////////////////////////////////////
         // 是否在里世界
         bool IsInnerWorld() const;
+
+        // 计算探索内获得的道具数量
+        uint32 CalcRealmItemCount( const KFMsg::PBBalanceItemServer* pbitem );
+
+        // 添加使用的道具数量
+        void AddRealmUseItemCount( uint32 id, uint64 uuid, uint32 count );
     protected:
         // 计算英雄数据
         void RecordHeroBeginData( KFData* kfhero, KFMsg::PBBalanceHeroServer* pbhero );
@@ -106,6 +113,9 @@ namespace KFrame
         void BalanceHeroInnates( const KFMsg::PBBalanceHeroServer* pbheroserver, KFMsg::PBBalanceHero* pbheroclient );
 
     public:
+        // 是否在结算中
+        bool _is_in_balance = false;
+
         // 秘境数据
         KFMsg::PBRealmData _data;
 

@@ -16,6 +16,7 @@ namespace KFrame
         __REGISTER_REMOVE_DATA__( &KFTaskModule::OnRemoveDataTaskModule );
         __REGISTER_UPDATE_DATA__( &KFTaskModule::OnUpdateDataTaskModule );
         __REGISTER_REMOVE_DATA_1__( __STRING__( task ), &KFTaskModule::OnRemoveTask );
+        __REGISTER_UPDATE_DATA_1__( __STRING__( realmid ), &KFTaskModule::OnRealmTaskFinish );
 
         __REGISTER_EXECUTE__( __STRING__( taskstatus ), &KFTaskModule::OnExecuteUpdateTaskStatus );
         __REGISTER_EXECUTE__( __STRING__( taskcondition ), &KFTaskModule::OnExecuteUpdateTaskCondition );
@@ -36,6 +37,7 @@ namespace KFrame
         __UN_REMOVE_DATA__();
         __UN_UPDATE_DATA__();
         __UN_REMOVE_DATA_1__( __STRING__( task ) );
+        __UN_UPDATE_DATA_1__( __STRING__( realmid ) );
 
         __UN_ADD_ELEMENT__( __STRING__( task ) );
         __UN_EXECUTE__( __STRING__( taskstatus ) );
@@ -115,9 +117,9 @@ namespace KFrame
             }
 
             auto status = kftask->Get<uint32>( __STRING__( status ) );
-            if ( status == KFMsg::DoneStatus && kfsetting->IsAutoTask() )
+            if ( status == KFMsg::DoneStatus )
             {
-                AddFinishTask( player, kfsetting->_id );
+                AddFinishTask( player, kfsetting );
                 continue;
             }
 
@@ -236,10 +238,43 @@ namespace KFrame
         StartTaskTimeoutTimer( player, kfsetting->_id, time );
     }
 
-    void KFTaskModule::AddFinishTask( KFEntity* player, uint32 taskid )
+    bool KFTaskModule::CheckTaskArea( KFEntity* player, const KFTaskSetting* kfsetting )
     {
+        if ( kfsetting->_area == 0u )
+        {
+            return true;
+        }
+
+        auto isinrealm = IsPlayerInRealm( player );
+        if ( isinrealm && kfsetting->_area == KFMsg::AreaCamp )
+        {
+            return false;
+        }
+
+        if ( !isinrealm && kfsetting->_area == KFMsg::AreaRealm )
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    void KFTaskModule::AddFinishTask( KFEntity* player, const KFTaskSetting* kfsetting )
+    {
+        // 不是自动提交
+        if ( !kfsetting->IsAutoTask() )
+        {
+            return;
+        }
+
+        // 判断任务区域
+        if ( !CheckTaskArea( player, kfsetting ) )
+        {
+            return;
+        }
+
         // 启动一个定时器
-        __LIMIT_TIMER_2__( player->GetKeyID(), taskid, 10u, 1, &KFTaskModule::OnTimerTaskFinish );
+        __LIMIT_TIMER_2__( player->GetKeyID(), kfsetting->_id, 10u, 1, &KFTaskModule::OnTimerTaskFinish );
     }
 
     void KFTaskModule::FinishTask( KFEntity* player, uint32 taskid )
@@ -380,11 +415,7 @@ namespace KFrame
         }
 
         // 刚创建的任务, 如果是完成状态, 又是自动交付, 延迟删除
-        if ( kfsetting->IsAutoTask() )
-        {
-            // 启动一个定时器
-            AddFinishTask( player, kfsetting->_id );
-        }
+        AddFinishTask( player, kfsetting );
     }
 
     __KF_TIMER_FUNCTION__( KFTaskModule::OnTimerTaskFinish )
@@ -587,6 +618,12 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::TaskAlreadyReceive );
         }
 
+        // 任务区域
+        if ( !CheckTaskArea( player, kfsetting ) )
+        {
+            return _kf_display->SendToClient( player, KFMsg::TaskAreaError );
+        }
+
         // 判断前置条件
         auto kfconditionobject = kftask->Find( __STRING__( preconditions ) );
         auto ok = _kf_condition->CheckCondition( player, kfconditionobject );
@@ -645,6 +682,11 @@ namespace KFrame
             {
                 return _kf_display->SendToClient( player, KFMsg::TaskNotDone );
             }
+        }
+
+        if ( !CheckTaskArea( player, kfsetting ) )
+        {
+            return _kf_display->SendToClient( player, KFMsg::TaskAreaError );
         }
 
         // 交付完成任务
@@ -779,5 +821,39 @@ namespace KFrame
         }
 
         return true;
+    }
+
+    bool KFTaskModule::IsPlayerInRealm( KFEntity* player )
+    {
+        auto realmid = player->Get<uint32>( __STRING__( realmid ) );
+        if ( realmid == 0u )
+        {
+            return false;
+        }
+
+        auto reamltown = player->Get<uint32>( __STRING__( realmtown ) );
+        return reamltown != 1u;
+    }
+
+    __KF_UPDATE_DATA_FUNCTION__( KFTaskModule::OnRealmTaskFinish )
+    {
+        auto kftaskrecord = player->Find( __STRING__( task ) );
+        for ( auto kftask = kftaskrecord->First(); kftask != nullptr; kftask = kftaskrecord->Next() )
+        {
+            auto taskid = kftask->Get<uint32>( __STRING__( id ) );
+            auto kfsetting = KFTaskConfig::Instance()->FindSetting( taskid );
+            if ( kfsetting == nullptr )
+            {
+                continue;
+            }
+
+            auto status = kftask->Get<uint32>( __STRING__( status ) );
+            if ( status != KFMsg::DoneStatus )
+            {
+                continue;
+            }
+
+            AddFinishTask( player, kfsetting );
+        }
     }
 }

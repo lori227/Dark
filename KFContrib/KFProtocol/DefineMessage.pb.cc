@@ -767,6 +767,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceItemServer, uuid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceItemServer, begincount_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceItemServer, endcount_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceItemServer, usecount_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHeroServer_BeginattributesEntry_DoNotUse, _has_bits_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBBalanceHeroServer_BeginattributesEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1017,27 +1018,27 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 54, -1, sizeof(::KFMsg::PBBalanceHero)},
   { 70, -1, sizeof(::KFMsg::PBBalanceData)},
   { 78, -1, sizeof(::KFMsg::PBBalanceItemServer)},
-  { 87, 94, sizeof(::KFMsg::PBBalanceHeroServer_BeginattributesEntry_DoNotUse)},
-  { 96, 103, sizeof(::KFMsg::PBBalanceHeroServer_EndattributesEntry_DoNotUse)},
-  { 105, -1, sizeof(::KFMsg::PBBalanceHeroServer)},
-  { 127, -1, sizeof(::KFMsg::PBFighterHeroData)},
-  { 136, -1, sizeof(::KFMsg::PBExplorePlayerData)},
-  { 147, -1, sizeof(::KFMsg::PBNpcGroupData)},
-  { 156, 163, sizeof(::KFMsg::PBExploreNpcData_NpcgroupdataEntry_DoNotUse)},
-  { 165, -1, sizeof(::KFMsg::PBExploreNpcData)},
-  { 177, -1, sizeof(::KFMsg::PBBuffData)},
-  { 185, -1, sizeof(::KFMsg::PBBuffListData)},
-  { 191, 198, sizeof(::KFMsg::PBHeroBuffData_HerobuffEntry_DoNotUse)},
-  { 200, 207, sizeof(::KFMsg::PBHeroBuffData_TeambuffEntry_DoNotUse)},
-  { 209, -1, sizeof(::KFMsg::PBHeroBuffData)},
-  { 216, 223, sizeof(::KFMsg::PBExploreData_NpcdataEntry_DoNotUse)},
-  { 225, -1, sizeof(::KFMsg::PBExploreData)},
-  { 242, 249, sizeof(::KFMsg::PBRealmData_ExploreEntry_DoNotUse)},
-  { 251, 258, sizeof(::KFMsg::PBRealmData_TownheroEntry_DoNotUse)},
-  { 260, 267, sizeof(::KFMsg::PBRealmData_RunedataEntry_DoNotUse)},
-  { 269, 276, sizeof(::KFMsg::PBRealmData_EventdataEntry_DoNotUse)},
-  { 278, -1, sizeof(::KFMsg::PBRealmData)},
-  { 318, -1, sizeof(::KFMsg::PBPunishData)},
+  { 88, 95, sizeof(::KFMsg::PBBalanceHeroServer_BeginattributesEntry_DoNotUse)},
+  { 97, 104, sizeof(::KFMsg::PBBalanceHeroServer_EndattributesEntry_DoNotUse)},
+  { 106, -1, sizeof(::KFMsg::PBBalanceHeroServer)},
+  { 128, -1, sizeof(::KFMsg::PBFighterHeroData)},
+  { 137, -1, sizeof(::KFMsg::PBExplorePlayerData)},
+  { 148, -1, sizeof(::KFMsg::PBNpcGroupData)},
+  { 157, 164, sizeof(::KFMsg::PBExploreNpcData_NpcgroupdataEntry_DoNotUse)},
+  { 166, -1, sizeof(::KFMsg::PBExploreNpcData)},
+  { 178, -1, sizeof(::KFMsg::PBBuffData)},
+  { 186, -1, sizeof(::KFMsg::PBBuffListData)},
+  { 192, 199, sizeof(::KFMsg::PBHeroBuffData_HerobuffEntry_DoNotUse)},
+  { 201, 208, sizeof(::KFMsg::PBHeroBuffData_TeambuffEntry_DoNotUse)},
+  { 210, -1, sizeof(::KFMsg::PBHeroBuffData)},
+  { 217, 224, sizeof(::KFMsg::PBExploreData_NpcdataEntry_DoNotUse)},
+  { 226, -1, sizeof(::KFMsg::PBExploreData)},
+  { 243, 250, sizeof(::KFMsg::PBRealmData_ExploreEntry_DoNotUse)},
+  { 252, 259, sizeof(::KFMsg::PBRealmData_TownheroEntry_DoNotUse)},
+  { 261, 268, sizeof(::KFMsg::PBRealmData_RunedataEntry_DoNotUse)},
+  { 270, 277, sizeof(::KFMsg::PBRealmData_EventdataEntry_DoNotUse)},
+  { 279, -1, sizeof(::KFMsg::PBRealmData)},
+  { 319, -1, sizeof(::KFMsg::PBPunishData)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -1115,88 +1116,89 @@ void AddDescriptorsImpl() {
       "\n\005value\030\002 \001(\r:\0028\001\"\207\001\n\rPBBalanceData\022&\n\010h"
       "erodata\030\001 \003(\0132\024.KFMsg.PBBalanceHero\022&\n\010g"
       "ainitem\030\002 \003(\0132\024.KFMsg.PBBalanceItem\022&\n\010l"
-      "oseitem\030\003 \003(\0132\024.KFMsg.PBBalanceItem\"U\n\023P"
+      "oseitem\030\003 \003(\0132\024.KFMsg.PBBalanceItem\"g\n\023P"
       "BBalanceItemServer\022\n\n\002id\030\001 \001(\r\022\014\n\004uuid\030\002"
       " \001(\004\022\022\n\nbegincount\030\003 \001(\r\022\020\n\010endcount\030\004 \001"
-      "(\r\"\226\004\n\023PBBalanceHeroServer\022\014\n\004uuid\030\001 \001(\004"
-      "\022\014\n\004race\030\002 \001(\r\022\022\n\nprofession\030\003 \001(\r\022\013\n\003se"
-      "x\030\004 \001(\r\022\014\n\004name\030\005 \001(\014\022\020\n\010beginexp\030\006 \001(\r\022"
-      "\016\n\006endexp\030\007 \001(\r\022\022\n\nbeginlevel\030\010 \001(\r\022\020\n\010e"
-      "ndlevel\030\t \001(\r\022\r\n\005death\030\n \001(\010\022\017\n\007killnpc\030"
-      "\013 \003(\004\022H\n\017beginattributes\030\014 \003(\0132/.KFMsg.P"
-      "BBalanceHeroServer.BeginattributesEntry\022"
-      "D\n\rendattributes\030\r \003(\0132-.KFMsg.PBBalance"
-      "HeroServer.EndattributesEntry\022\023\n\013beginac"
-      "tive\030\024 \003(\r\022\021\n\tendactive\030\025 \003(\r\022\023\n\013beginin"
-      "nate\030\026 \003(\r\022\021\n\tendinnate\030\027 \003(\r\0326\n\024Beginat"
-      "tributesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001("
-      "\r:\0028\001\0324\n\022EndattributesEntry\022\013\n\003key\030\001 \001(\t"
-      "\022\r\n\005value\030\002 \001(\r:\0028\001\"F\n\021PBFighterHeroData"
-      "\022\014\n\004uuid\030\001 \001(\004\022\n\n\002hp\030\002 \001(\r\022\013\n\003exp\030\003 \001(\r\022"
-      "\n\n\002ep\030\004 \001(\r\"a\n\023PBExplorePlayerData\022\t\n\001x\030"
-      "\001 \001(\005\022\t\n\001y\030\002 \001(\005\022\t\n\001z\030\003 \001(\005\022\013\n\003yaw\030\004 \001(\005"
-      "\022\014\n\004step\030\005 \001(\r\022\016\n\006fovarr\030\006 \003(\005\"^\n\016PBNpcG"
-      "roupData\022\022\n\nnpcgroupid\030\001 \001(\r\022\021\n\tspawnrul"
-      "e\030\002 \001(\r\022\022\n\nspawnmodel\030\003 \001(\014\022\021\n\tdungeonid"
-      "\030\004 \001(\r\"\353\001\n\020PBExploreNpcData\022\013\n\003key\030\001 \001(\014"
-      "\022\t\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\022\t\n\001z\030\004 \001(\005\022\013\n\003yaw"
-      "\030\005 \001(\005\022\017\n\007bkilled\030\006 \001(\010\022\?\n\014npcgroupdata\030"
-      "\n \003(\0132).KFMsg.PBExploreNpcData.Npcgroupd"
-      "ataEntry\032J\n\021NpcgroupdataEntry\022\013\n\003key\030\001 \001"
-      "(\r\022$\n\005value\030\002 \001(\0132\025.KFMsg.PBNpcGroupData"
-      ":\0028\001\"6\n\nPBBuffData\022\n\n\002id\030\001 \001(\r\022\r\n\005count\030"
-      "\002 \001(\r\022\r\n\005level\030\003 \001(\r\"5\n\016PBBuffListData\022#"
-      "\n\010bufflist\030\001 \003(\0132\021.KFMsg.PBBuffData\"\212\002\n\016"
-      "PBHeroBuffData\0225\n\010herobuff\030\001 \003(\0132#.KFMsg"
-      ".PBHeroBuffData.HerobuffEntry\0225\n\010teambuf"
-      "f\030\002 \003(\0132#.KFMsg.PBHeroBuffData.TeambuffE"
-      "ntry\032F\n\rHerobuffEntry\022\013\n\003key\030\001 \001(\004\022$\n\005va"
-      "lue\030\002 \001(\0132\025.KFMsg.PBBuffListData:\0028\001\032B\n\r"
-      "TeambuffEntry\022\013\n\003key\030\001 \001(\r\022 \n\005value\030\002 \001("
-      "\0132\021.KFMsg.PBBuffData:\0028\001\"\363\002\n\rPBExploreDa"
-      "ta\022\n\n\002id\030\001 \001(\r\022\014\n\004save\030\002 \001(\010\022\016\n\006random\030\003"
-      " \001(\r\022\r\n\005level\030\004 \001(\r\022\022\n\ntotallevel\030\005 \001(\r\022"
-      "\021\n\tlastlevel\030\006 \001(\r\022\020\n\010creation\030\007 \001(\r\022\022\n\n"
-      "innerworld\030\010 \001(\r\022\022\n\nbirthplace\030\t \001(\r\022\033\n\023"
-      "innerworldparameter\030\n \001(\r\022.\n\nplayerdata\030"
-      "\013 \001(\0132\032.KFMsg.PBExplorePlayerData\0222\n\007npc"
-      "data\030\014 \003(\0132!.KFMsg.PBExploreData.Npcdata"
-      "Entry\032G\n\014NpcdataEntry\022\013\n\003key\030\001 \001(\t\022&\n\005va"
-      "lue\030\002 \001(\0132\027.KFMsg.PBExploreNpcData:\0028\001\"\205"
-      "\t\n\013PBRealmData\022\n\n\002id\030\001 \001(\r\022\r\n\005level\030\002 \001("
-      "\r\022\022\n\nmodulename\030\003 \001(\014\022\020\n\010moduleid\030\004 \001(\004\022"
-      "\016\n\006status\030\005 \001(\r\022\021\n\tstarttime\030\006 \001(\004\022\017\n\007us"
-      "etime\030\007 \001(\r\022\r\n\005faith\030\010 \001(\r\022\023\n\013extendleve"
-      "l\030\t \001(\r\022,\n\010herodata\030\n \003(\0132\032.KFMsg.PBBala"
-      "nceHeroServer\022,\n\010itemdata\030\013 \003(\0132\032.KFMsg."
-      "PBBalanceItemServer\022&\n\010loseitem\030\014 \003(\0132\024."
-      "KFMsg.PBBalanceItem\022\017\n\007killnpc\030\r \003(\004\022\'\n\010"
-      "buffdata\030\016 \001(\0132\025.KFMsg.PBHeroBuffData\0220\n"
-      "\007explore\030\017 \003(\0132\037.KFMsg.PBRealmData.Explo"
-      "reEntry\022\020\n\010fleerate\030\020 \001(\r\022\022\n\ninnerworld\030"
-      "\021 \001(\r\022\020\n\010selectid\030\022 \001(\r\022\023\n\013selectcount\030\023"
-      " \001(\r\022\022\n\ntotallevel\030\024 \001(\r\022\020\n\010foodstep\030\025 \001"
-      "(\r\0222\n\010townhero\030\026 \003(\0132 .KFMsg.PBRealmData"
-      ".TownheroEntry\0222\n\010runedata\030\027 \003(\0132 .KFMsg"
-      ".PBRealmData.RunedataEntry\0224\n\teventdata\030"
-      "\030 \003(\0132!.KFMsg.PBRealmData.EventdataEntry"
-      "\022\017\n\007weather\030\037 \001(\r\022\030\n\020weathertotalstep\030  "
-      "\001(\r\022\032\n\022weathercurrentstep\030! \001(\r\022\030\n\020weath"
-      "ertotalturn\030\" \001(\r\022\032\n\022weathercurrentturn\030"
-      "# \001(\r\022\023\n\013nextweather\030$ \001(\r\022\020\n\010timetype\030)"
-      " \001(\r\022\025\n\rtimetotalstep\030* \001(\r\022\027\n\017timecurre"
-      "ntstep\030+ \001(\r\022\025\n\rtimetotalturn\030, \001(\r\022\027\n\017t"
-      "imecurrentturn\030- \001(\r\032D\n\014ExploreEntry\022\013\n\003"
-      "key\030\001 \001(\r\022#\n\005value\030\002 \001(\0132\024.KFMsg.PBExplo"
-      "reData:\0028\001\032/\n\rTownheroEntry\022\013\n\003key\030\001 \001(\004"
-      "\022\r\n\005value\030\002 \001(\r:\0028\001\032/\n\rRunedataEntry\022\013\n\003"
-      "key\030\001 \001(\r\022\r\n\005value\030\002 \001(\r:\0028\001\0320\n\016Eventdat"
-      "aEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"7"
-      "\n\014PBPunishData\022\014\n\004name\030\001 \001(\014\022\n\n\002id\030\002 \001(\r"
-      "\022\r\n\005value\030\003 \001(\rb\006proto3"
+      "(\r\022\020\n\010usecount\030\005 \001(\r\"\226\004\n\023PBBalanceHeroSe"
+      "rver\022\014\n\004uuid\030\001 \001(\004\022\014\n\004race\030\002 \001(\r\022\022\n\nprof"
+      "ession\030\003 \001(\r\022\013\n\003sex\030\004 \001(\r\022\014\n\004name\030\005 \001(\014\022"
+      "\020\n\010beginexp\030\006 \001(\r\022\016\n\006endexp\030\007 \001(\r\022\022\n\nbeg"
+      "inlevel\030\010 \001(\r\022\020\n\010endlevel\030\t \001(\r\022\r\n\005death"
+      "\030\n \001(\010\022\017\n\007killnpc\030\013 \003(\004\022H\n\017beginattribut"
+      "es\030\014 \003(\0132/.KFMsg.PBBalanceHeroServer.Beg"
+      "inattributesEntry\022D\n\rendattributes\030\r \003(\013"
+      "2-.KFMsg.PBBalanceHeroServer.Endattribut"
+      "esEntry\022\023\n\013beginactive\030\024 \003(\r\022\021\n\tendactiv"
+      "e\030\025 \003(\r\022\023\n\013begininnate\030\026 \003(\r\022\021\n\tendinnat"
+      "e\030\027 \003(\r\0326\n\024BeginattributesEntry\022\013\n\003key\030\001"
+      " \001(\t\022\r\n\005value\030\002 \001(\r:\0028\001\0324\n\022Endattributes"
+      "Entry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\r:\0028\001\"F\n"
+      "\021PBFighterHeroData\022\014\n\004uuid\030\001 \001(\004\022\n\n\002hp\030\002"
+      " \001(\r\022\013\n\003exp\030\003 \001(\r\022\n\n\002ep\030\004 \001(\r\"a\n\023PBExplo"
+      "rePlayerData\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001(\005\022\t\n\001z\030"
+      "\003 \001(\005\022\013\n\003yaw\030\004 \001(\005\022\014\n\004step\030\005 \001(\r\022\016\n\006fova"
+      "rr\030\006 \003(\005\"^\n\016PBNpcGroupData\022\022\n\nnpcgroupid"
+      "\030\001 \001(\r\022\021\n\tspawnrule\030\002 \001(\r\022\022\n\nspawnmodel\030"
+      "\003 \001(\014\022\021\n\tdungeonid\030\004 \001(\r\"\353\001\n\020PBExploreNp"
+      "cData\022\013\n\003key\030\001 \001(\014\022\t\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005"
+      "\022\t\n\001z\030\004 \001(\005\022\013\n\003yaw\030\005 \001(\005\022\017\n\007bkilled\030\006 \001("
+      "\010\022\?\n\014npcgroupdata\030\n \003(\0132).KFMsg.PBExplor"
+      "eNpcData.NpcgroupdataEntry\032J\n\021Npcgroupda"
+      "taEntry\022\013\n\003key\030\001 \001(\r\022$\n\005value\030\002 \001(\0132\025.KF"
+      "Msg.PBNpcGroupData:\0028\001\"6\n\nPBBuffData\022\n\n\002"
+      "id\030\001 \001(\r\022\r\n\005count\030\002 \001(\r\022\r\n\005level\030\003 \001(\r\"5"
+      "\n\016PBBuffListData\022#\n\010bufflist\030\001 \003(\0132\021.KFM"
+      "sg.PBBuffData\"\212\002\n\016PBHeroBuffData\0225\n\010hero"
+      "buff\030\001 \003(\0132#.KFMsg.PBHeroBuffData.Herobu"
+      "ffEntry\0225\n\010teambuff\030\002 \003(\0132#.KFMsg.PBHero"
+      "BuffData.TeambuffEntry\032F\n\rHerobuffEntry\022"
+      "\013\n\003key\030\001 \001(\004\022$\n\005value\030\002 \001(\0132\025.KFMsg.PBBu"
+      "ffListData:\0028\001\032B\n\rTeambuffEntry\022\013\n\003key\030\001"
+      " \001(\r\022 \n\005value\030\002 \001(\0132\021.KFMsg.PBBuffData:\002"
+      "8\001\"\363\002\n\rPBExploreData\022\n\n\002id\030\001 \001(\r\022\014\n\004save"
+      "\030\002 \001(\010\022\016\n\006random\030\003 \001(\r\022\r\n\005level\030\004 \001(\r\022\022\n"
+      "\ntotallevel\030\005 \001(\r\022\021\n\tlastlevel\030\006 \001(\r\022\020\n\010"
+      "creation\030\007 \001(\r\022\022\n\ninnerworld\030\010 \001(\r\022\022\n\nbi"
+      "rthplace\030\t \001(\r\022\033\n\023innerworldparameter\030\n "
+      "\001(\r\022.\n\nplayerdata\030\013 \001(\0132\032.KFMsg.PBExplor"
+      "ePlayerData\0222\n\007npcdata\030\014 \003(\0132!.KFMsg.PBE"
+      "xploreData.NpcdataEntry\032G\n\014NpcdataEntry\022"
+      "\013\n\003key\030\001 \001(\t\022&\n\005value\030\002 \001(\0132\027.KFMsg.PBEx"
+      "ploreNpcData:\0028\001\"\205\t\n\013PBRealmData\022\n\n\002id\030\001"
+      " \001(\r\022\r\n\005level\030\002 \001(\r\022\022\n\nmodulename\030\003 \001(\014\022"
+      "\020\n\010moduleid\030\004 \001(\004\022\016\n\006status\030\005 \001(\r\022\021\n\tsta"
+      "rttime\030\006 \001(\004\022\017\n\007usetime\030\007 \001(\r\022\r\n\005faith\030\010"
+      " \001(\r\022\023\n\013extendlevel\030\t \001(\r\022,\n\010herodata\030\n "
+      "\003(\0132\032.KFMsg.PBBalanceHeroServer\022,\n\010itemd"
+      "ata\030\013 \003(\0132\032.KFMsg.PBBalanceItemServer\022&\n"
+      "\010loseitem\030\014 \003(\0132\024.KFMsg.PBBalanceItem\022\017\n"
+      "\007killnpc\030\r \003(\004\022\'\n\010buffdata\030\016 \001(\0132\025.KFMsg"
+      ".PBHeroBuffData\0220\n\007explore\030\017 \003(\0132\037.KFMsg"
+      ".PBRealmData.ExploreEntry\022\020\n\010fleerate\030\020 "
+      "\001(\r\022\022\n\ninnerworld\030\021 \001(\r\022\020\n\010selectid\030\022 \001("
+      "\r\022\023\n\013selectcount\030\023 \001(\r\022\022\n\ntotallevel\030\024 \001"
+      "(\r\022\020\n\010foodstep\030\025 \001(\r\0222\n\010townhero\030\026 \003(\0132 "
+      ".KFMsg.PBRealmData.TownheroEntry\0222\n\010rune"
+      "data\030\027 \003(\0132 .KFMsg.PBRealmData.RunedataE"
+      "ntry\0224\n\teventdata\030\030 \003(\0132!.KFMsg.PBRealmD"
+      "ata.EventdataEntry\022\017\n\007weather\030\037 \001(\r\022\030\n\020w"
+      "eathertotalstep\030  \001(\r\022\032\n\022weathercurrents"
+      "tep\030! \001(\r\022\030\n\020weathertotalturn\030\" \001(\r\022\032\n\022w"
+      "eathercurrentturn\030# \001(\r\022\023\n\013nextweather\030$"
+      " \001(\r\022\020\n\010timetype\030) \001(\r\022\025\n\rtimetotalstep\030"
+      "* \001(\r\022\027\n\017timecurrentstep\030+ \001(\r\022\025\n\rtimeto"
+      "talturn\030, \001(\r\022\027\n\017timecurrentturn\030- \001(\r\032D"
+      "\n\014ExploreEntry\022\013\n\003key\030\001 \001(\r\022#\n\005value\030\002 \001"
+      "(\0132\024.KFMsg.PBExploreData:\0028\001\032/\n\rTownhero"
+      "Entry\022\013\n\003key\030\001 \001(\004\022\r\n\005value\030\002 \001(\r:\0028\001\032/\n"
+      "\rRunedataEntry\022\013\n\003key\030\001 \001(\r\022\r\n\005value\030\002 \001"
+      "(\r:\0028\001\0320\n\016EventdataEntry\022\013\n\003key\030\001 \001(\t\022\r\n"
+      "\005value\030\002 \001(\t:\0028\001\"7\n\014PBPunishData\022\014\n\004name"
+      "\030\001 \001(\014\022\n\n\002id\030\002 \001(\r\022\r\n\005value\030\003 \001(\rb\006proto"
+      "3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 3983);
+      descriptor, 4001);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "DefineMessage.proto", &protobuf_RegisterTypes);
   ::protobuf_FrameDefineMessage_2eproto::AddDescriptors();
@@ -3255,6 +3257,7 @@ const int PBBalanceItemServer::kIdFieldNumber;
 const int PBBalanceItemServer::kUuidFieldNumber;
 const int PBBalanceItemServer::kBegincountFieldNumber;
 const int PBBalanceItemServer::kEndcountFieldNumber;
+const int PBBalanceItemServer::kUsecountFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 PBBalanceItemServer::PBBalanceItemServer()
@@ -3269,15 +3272,15 @@ PBBalanceItemServer::PBBalanceItemServer(const PBBalanceItemServer& from)
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&uuid_, &from.uuid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&endcount_) -
-    reinterpret_cast<char*>(&uuid_)) + sizeof(endcount_));
+    static_cast<size_t>(reinterpret_cast<char*>(&usecount_) -
+    reinterpret_cast<char*>(&uuid_)) + sizeof(usecount_));
   // @@protoc_insertion_point(copy_constructor:KFMsg.PBBalanceItemServer)
 }
 
 void PBBalanceItemServer::SharedCtor() {
   ::memset(&uuid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&endcount_) -
-      reinterpret_cast<char*>(&uuid_)) + sizeof(endcount_));
+      reinterpret_cast<char*>(&usecount_) -
+      reinterpret_cast<char*>(&uuid_)) + sizeof(usecount_));
 }
 
 PBBalanceItemServer::~PBBalanceItemServer() {
@@ -3309,8 +3312,8 @@ void PBBalanceItemServer::Clear() {
   (void) cached_has_bits;
 
   ::memset(&uuid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&endcount_) -
-      reinterpret_cast<char*>(&uuid_)) + sizeof(endcount_));
+      reinterpret_cast<char*>(&usecount_) -
+      reinterpret_cast<char*>(&uuid_)) + sizeof(usecount_));
   _internal_metadata_.Clear();
 }
 
@@ -3380,6 +3383,20 @@ bool PBBalanceItemServer::MergePartialFromCodedStream(
         break;
       }
 
+      // uint32 usecount = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(40u /* 40 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &usecount_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -3426,6 +3443,11 @@ void PBBalanceItemServer::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->endcount(), output);
   }
 
+  // uint32 usecount = 5;
+  if (this->usecount() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->usecount(), output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -3458,6 +3480,11 @@ void PBBalanceItemServer::SerializeWithCachedSizes(
   // uint32 endcount = 4;
   if (this->endcount() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->endcount(), target);
+  }
+
+  // uint32 usecount = 5;
+  if (this->usecount() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->usecount(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -3505,6 +3532,13 @@ size_t PBBalanceItemServer::ByteSizeLong() const {
         this->endcount());
   }
 
+  // uint32 usecount = 5;
+  if (this->usecount() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->usecount());
+  }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -3544,6 +3578,9 @@ void PBBalanceItemServer::MergeFrom(const PBBalanceItemServer& from) {
   if (from.endcount() != 0) {
     set_endcount(from.endcount());
   }
+  if (from.usecount() != 0) {
+    set_usecount(from.usecount());
+  }
 }
 
 void PBBalanceItemServer::CopyFrom(const ::google::protobuf::Message& from) {
@@ -3574,6 +3611,7 @@ void PBBalanceItemServer::InternalSwap(PBBalanceItemServer* other) {
   swap(id_, other->id_);
   swap(begincount_, other->begincount_);
   swap(endcount_, other->endcount_);
+  swap(usecount_, other->usecount_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 

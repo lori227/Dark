@@ -89,13 +89,19 @@ namespace KFrame
         __KF_EXECUTE_FUNCTION__( OnExecuteRealm );
 
         // 进入游戏
-        __KF_ENTER_PLAYER_FUNCTION__( OnEnterInitRealmData );
+        __KF_BEFORE_ENTER_PLAYER_FUNCTION__( OnEnterInitRealmData );
 
         // 离开游戏
         __KF_LEAVE_PLAYER_FUNCTION__( OnLeaveSaveRealmData );
 
         // 移动步数扣除粮食
         __KF_REALM_MOVE_FUNCTION__( OnReamlMoveCostFood );
+
+        // 消耗道具
+        __KF_UPDATE_DATA_FUNCTION__( OnRealmUseItem );
+        // 删除道具
+        __KF_REMOVE_DATA_FUNCTION__( OnRealmRemoveItem );
+
     protected:
         virtual void BindRealmEnterFunction( const std::string& module, KFRealmEnterFunction& function );
         virtual void UnBindRealmEnterFunction( const std::string& module );
@@ -130,6 +136,7 @@ namespace KFrame
 
         // 结算道具
         void RealmBalanceItem( KFEntity* player, uint32 result );
+        uint32 GetItemBagRealmBalanceType( const KFItemBagSetting* kfsetting, uint32 result );
 
         // 结算结果
         void RealmBalanceResultCondition( KFEntity* player, KFRealmData* kfrealmdata, uint32 result );
@@ -137,6 +144,9 @@ namespace KFrame
 
         // 随机探索失败获得道具
         void RealmRandFailedItems( KFEntity* player, KFRealmData* kfrealmdata );
+
+        // 添加探索内使用道具数量
+        void AddRealmUseItemCount( KFEntity* player, const std::string& bagname, uint32 itemid, uint64 uuid, uint32 count );
         //////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////
         // 初始化探索数据

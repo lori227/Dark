@@ -161,7 +161,7 @@ namespace KFrame
         void PVEFleePunishData( KFEntity* player, const DynamicPunishData* punishdata, PunishDataList& punishlist );
 
         // 逃跑扣除道具
-        uint32 PVEFleePunishItem( KFEntity* player, const std::string& dataname, const DynamicPunishData* punishdata, bool percent );
+        uint32 PVEFleePunishItem( KFEntity* player, const DynamicPunishData* punishdata, bool percent );
 
         // 判断PVE是否在里世界
         bool IsInnerWorld( KFEntity* player );

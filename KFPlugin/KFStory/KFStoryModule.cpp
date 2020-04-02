@@ -243,9 +243,6 @@ namespace KFrame
             }
             else
             {
-                // 更换同步顺序, 先删除条件，再添加条件，再更新
-                player->SyncDataSequence( KFEnum::Dec, KFEnum::Add, KFEnum::Set );
-
                 // 有子剧情，则继续执行子剧情
                 player->UpdateData( kfstory, __STRING__( sequence ), KFEnum::Set, 0u );
 
@@ -358,9 +355,6 @@ namespace KFrame
 
         auto kfstoryrecord = player->Find( __STRING__( story ) );
         auto kfstory = kfstoryrecord->Find( storyid );
-
-        // 更换同步顺序, 先删除条件，再添加条件，再更新
-        player->SyncDataSequence( KFEnum::Dec, KFEnum::Add, KFEnum::Set );
 
         if ( kfstory == nullptr )
         {

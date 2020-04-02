@@ -19,6 +19,7 @@
 #include "KFMessage/KFMessageInterface.h"
 #include "KFDrop/KFDropInterface.h"
 #include "KFItem/KFItemInterface.h"
+#include "KFItem/KFItemMoveInterface.h"
 #include "KFZConfig/KFGambleConfig.hpp"
 #include "KFZConfig/KFExchangeConfig.hpp"
 #include "KFZConfig/KFItemConfig.hpp"

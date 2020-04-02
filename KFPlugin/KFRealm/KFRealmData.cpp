@@ -37,12 +37,12 @@ namespace KFrame
         return pbitem;
     }
 
-    KFMsg::PBBalanceItem* KFRealmData::FindLose( uint32 id )
+    KFMsg::PBBalanceItem* KFRealmData::FindLose( uint32 id, uint64 uuid )
     {
         for ( auto i = 0; i < _data.loseitem_size(); ++i )
         {
             auto pbitem = _data.mutable_loseitem( i );
-            if ( pbitem->id() == id )
+            if ( pbitem->id() == id && pbitem->uuid() == uuid )
             {
                 return pbitem;
             }
@@ -50,6 +50,7 @@ namespace KFrame
 
         auto pbitem = _data.add_loseitem();
         pbitem->set_id( id );
+        pbitem->set_uuid( uuid );
         return pbitem;
     }
 
@@ -231,13 +232,17 @@ namespace KFrame
     {
         _data.clear_itemdata();
 
-        // 探索背包
-        auto kfitemrecord = player->Find( __STRING__( explore ) );
-        RecordItemRecordData( kfitemrecord, StartType );
+        for ( auto& iter : KFItemBagConfig::Instance()->_settings._objects )
+        {
+            auto kfsetting = iter.second;
+            if ( !kfsetting->_is_realm_record )
+            {
+                continue;
+            }
 
-        // 奖励背包
-        auto kfotherrecord = player->Find( __STRING__( other ) );
-        RecordItemRecordData( kfotherrecord, StartType );
+            auto kfitemrecord = player->Find( kfsetting->_id );
+            RecordItemRecordData( kfitemrecord, StartType );
+        }
 
         // 英雄装备
         RecordHeroWeapon( player, StartType );
@@ -245,13 +250,24 @@ namespace KFrame
 
     void KFRealmData::RecordEndItems( KFEntity* player )
     {
-        // 探索背包
-        auto kfitemrecord = player->Find( __STRING__( explore ) );
-        RecordItemRecordData( kfitemrecord, EndType );
+        // 先清除结束数量
+        for ( auto i = 0; i < _data.itemdata_size(); ++i )
+        {
+            auto pbitem = _data.mutable_itemdata( i );
+            pbitem->set_endcount( 0u );
+        }
 
-        // 奖励背包
-        auto kfotherrecord = player->Find( __STRING__( other ) );
-        RecordItemRecordData( kfotherrecord, EndType );
+        for ( auto& iter : KFItemBagConfig::Instance()->_settings._objects )
+        {
+            auto kfsetting = iter.second;
+            if ( !kfsetting->_is_realm_record )
+            {
+                continue;
+            }
+
+            auto kfitemrecord = player->Find( kfsetting->_id );
+            RecordItemRecordData( kfitemrecord, EndType );
+        }
 
         // 英雄装备
         RecordHeroWeapon( player, EndType );
@@ -381,7 +397,8 @@ namespace KFrame
         for ( auto i = 0; i < _data.itemdata_size(); ++i )
         {
             auto pbitemserver = &_data.itemdata( i );
-            if ( pbitemserver->endcount() <= pbitemserver->begincount() )
+            auto itemcount = CalcRealmItemCount( pbitemserver );
+            if ( itemcount == 0u )
             {
                 continue;
             }
@@ -389,7 +406,7 @@ namespace KFrame
             auto pbitemclient = pbdata->add_gainitem();
             pbitemclient->set_id( pbitemserver->id() );
             pbitemclient->set_uuid( pbitemserver->uuid() );
-            pbitemclient->set_count( pbitemserver->endcount() - pbitemserver->begincount() );
+            pbitemclient->set_count( itemcount );
         }
     }
 
@@ -507,6 +524,43 @@ namespace KFrame
             {
                 ( *pbheroclient->mutable_innate() )[ pbheroclient->innate_size() + 1 ] = innateid;
             }
+        }
+    }
+
+    uint32 KFRealmData::CalcRealmItemCount( const KFMsg::PBBalanceItemServer* pbitem )
+    {
+        auto newaddcount = 0u;
+        if ( pbitem->begincount() >= pbitem->usecount() )
+        {
+            auto leftcount = pbitem->begincount() - pbitem->usecount();
+            newaddcount = pbitem->endcount() - __MIN__( leftcount, pbitem->endcount() );
+        }
+        else
+        {
+            // 使用数量超过带进来的数量, 则按最终数量计算
+            newaddcount = pbitem->endcount();
+        }
+
+        return newaddcount;
+    }
+
+    void KFRealmData::AddRealmUseItemCount( uint32 id, uint64 uuid, uint32 count )
+    {
+        for ( auto i = 0; i < _data.itemdata_size(); ++i )
+        {
+            auto pbitem = _data.mutable_itemdata( i );
+            if ( pbitem->id() != id )
+            {
+                continue;
+            }
+
+            if ( pbitem->uuid() != 0 && pbitem->uuid() != uuid )
+            {
+                continue;
+            }
+
+            pbitem->set_usecount( pbitem->usecount() + count );
+            break;
         }
     }
 }

@@ -528,13 +528,11 @@ namespace KFrame
             // 把原来的显示同步到客户端
             player->ShowElementToClient();
 
+            // 同步属性
             _kf_drop->Drop( player, droplist, __STRING__( realm ), kfpvedata->_data.id(), __FUNC_LINE__ );
 
             // 掉落显示
             kfpvedata->BalanceDropData( player );
-
-            // 同步属性
-            player->SyncDataSequence( KFEnum::Set, KFEnum::Dec, KFEnum::Add );
         }
     }
 
@@ -764,42 +762,43 @@ namespace KFrame
         }
         else if ( punishdata->_name == __STRING__( money ) )
         {
-            auto itemcount = PVEFleePunishItem( player, __STRING__( other ), punishdata, false );
+            auto itemcount = PVEFleePunishItem( player, punishdata, false );
             __ADD_PUNISH_DATA__( punishdata->_name, punishdata->_key, itemcount );
         }
         else if ( punishdata->_name == __STRING__( moneypercent ) )
         {
-            auto itemcount = PVEFleePunishItem( player, __STRING__( other ), punishdata, true );
+            auto itemcount = PVEFleePunishItem( player, punishdata, true );
             __ADD_PUNISH_DATA__( punishdata->_name, punishdata->_key, itemcount );
         }
         else if ( punishdata->_name == __STRING__( supplies ) )
         {
-            auto itemcount = PVEFleePunishItem( player, __STRING__( other ), punishdata, false );
+            auto itemcount = PVEFleePunishItem( player, punishdata, false );
             __ADD_PUNISH_DATA__( punishdata->_name, punishdata->_key, itemcount );
         }
         else if ( punishdata->_name == __STRING__( suppliespercent ) )
         {
-            auto itemcount = PVEFleePunishItem( player, __STRING__( other ), punishdata, true );
+            auto itemcount = PVEFleePunishItem( player, punishdata, true );
             __ADD_PUNISH_DATA__( punishdata->_name, punishdata->_key, itemcount );
         }
         else if ( punishdata->_name == __STRING__( food ) )
         {
             // 扣除粮食
-            auto itemcount = PVEFleePunishItem( player, __STRING__( explore ), punishdata, false );
+            auto itemcount = PVEFleePunishItem( player, punishdata, false );
             __ADD_PUNISH_DATA__( punishdata->_name, punishdata->_key, itemcount );
         }
         else if ( punishdata->_name == __STRING__( foodpercent ) )
         {
             // 扣除粮食百分比
-            auto itemcount = PVEFleePunishItem( player, __STRING__( explore ), punishdata, true );
+            auto itemcount = PVEFleePunishItem( player, punishdata, true );
             __ADD_PUNISH_DATA__( punishdata->_name, punishdata->_key, itemcount );
         }
     }
 
-    uint32 KFPVEModule::PVEFleePunishItem( KFEntity* player, const std::string& dataname, const DynamicPunishData* punishdata, bool percent )
+    uint32 KFPVEModule::PVEFleePunishItem( KFEntity* player, const DynamicPunishData* punishdata, bool percent )
     {
+        auto kfitemrecord = _kf_item->FindItemRecord( player, punishdata->_key );
+
         auto itemcount = 0u;
-        auto kfitemrecord = player->Find( dataname );
         if ( !percent )
         {
             itemcount = _kf_item->GetItemCount( player, kfitemrecord, punishdata->_key, punishdata->_value );

@@ -19,6 +19,7 @@
 #include "KFExecute/KFExecuteInterface.h"
 #include "KFZConfig/KFItemConfig.hpp"
 #include "KFZConfig/KFItemTypeConfig.hpp"
+#include "KFZConfig/KFItemBagConfig.hpp"
 
 namespace KFrame
 {
@@ -42,7 +43,7 @@ namespace KFrame
         virtual KFData* FindIndexItem( KFEntity* player, KFData* kfitemrecord, uint32 index );
 
         // 清空包裹
-        virtual void BalanceItem( KFEntity* player, const std::string& name );
+        virtual void BalanceItem( KFEntity* player, const std::string& name, bool autodestory );
     protected:
         // 拆分道具
         __KF_MESSAGE_FUNCTION__( HandleSplitItemReq );
@@ -119,35 +120,42 @@ namespace KFrame
         bool CheckItemCanMerge( const KFItemSetting* kfsourcesetting, KFData* kfsourceitem, const KFItemSetting* kftargetsetting, KFData* kftargetitem );
 
         // 拆分道具
-        uint32 SplitItem( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, uint32 splitcount, KFData* kftargetrecord, uint32 splitindex );
+        uint32 SplitItemLogic( KFEntity* player, const KFItemSetting* kfitemsetting,
+                               const KFItemBagSetting* kfsourcebagsetting, KFData* kfsourcerecord, KFData* kfsourceitem, uint32 splitcount,
+                               const KFItemBagSetting* kftargetbagsetting, KFData* kftargetrecord, uint32 splitindex );
 
-        // 添加道具
-        void AddItemData( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord );
+        // 移动道具逻辑
+        uint32 MoveItemDataLogic( KFEntity* player, const KFItemSetting* kfitemsetting,
+                                  const KFItemBagSetting* kfsourcebagsetting, KFData* kfsourcerecord, KFData* kfsourceitem,
+                                  const KFItemBagSetting* kftargetbagsetting, KFData* kftargetrecord );
+        // 移动堆叠道具数量
+        void MoveItemCountLogic( KFEntity* player,  const KFItemSetting* kfitemsetting,
+                                 const KFItemBagSetting* kfsourcebagsetting, KFData* kfsourceitem, uint32 movecount,
+                                 const KFItemBagSetting* kftargetbagsetting, KFData* kftargetitem );
 
         // 移动道具
-        bool MoveItemData( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord );
-        void MoveItemCount( KFEntity* player, KFData* kfitem, uint32 operate, uint32 count );
-
-        // 移动道具
-        uint32 MoveItem( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, KFData* kftargetrecord, uint32 targetindex );
+        uint32 MoveItemLogic( KFEntity* player, const KFItemSetting* kfitemsetting,
+                              const KFItemBagSetting* kfsourcebagsetting, KFData* kfsourcerecord, KFData* kfsourceitem,
+                              const KFItemBagSetting* kftargetbagsetting, KFData* kftargetrecord, uint32 targetindex );
 
         // 交换道具
-        uint32 ExchangeItem( KFEntity* player, KFData* kfsourcerecord, KFData* kfsourceitem, const KFItemSetting* kfsourcesetting, KFData* kftargetrecord, KFData* kftargetitem, const KFItemSetting* kftargetsetting );
+        uint32 ExchangeItemLogic( KFEntity* player,
+                                  const KFItemSetting* kfsourcesetting, const KFItemBagSetting* kfsourcebagsetting, KFData* kfsourcerecord, KFData* kfsourceitem,
+                                  const KFItemSetting* kftargetsetting, const KFItemBagSetting* kftargetbagsetting, KFData* kftargetrecord, KFData* kftargetitem );
 
         // 合并道具
-        uint32 MergeItem( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kfsourceitem, uint32 mergecount, KFData* kftargetrecord, KFData* kftargetitem );
+        uint32 MergeItemLogic( KFEntity* player, const KFItemSetting* kfitemsetting,
+                               const KFItemBagSetting* kfsourcebagsetting, KFData* kfsourceitem, uint32 mergecount,
+                               const KFItemBagSetting* kftargetbagsetting, KFData* kftargetitem );
 
         // 排序道具
         void SortItem( KFEntity* player, const std::string& name );
-        void SortItem( KFEntity* player, KFData* kfitemrecord, KFItemIndex* kfindex, const KFItemSetting* kfsetting, std::set<KFData*>& itemlist );
+        void SortItem( KFEntity* player, const KFItemSetting* kfitemsetting, const KFItemBagSetting* kfbagsetting, KFItemIndex* kfindex, KFData* kfitemrecord, std::set<KFData*>& itemlist );
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // 添加物品显示
-        bool IsExtendItem( const std::string& name );
-
         // 移动物品显示
-        void MoveItemDataToShow( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kftargetrecord, uint64 count );
-        void MoveItemDataToShow( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kftargetrecord, KFData* kfsourceitem );
+        void MoveItemDataToShow( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kftargetrecord, KFData* kfitem );
+        void MoveItemDataToShow( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kftargetrecord, uint32 count );
     protected:
         // 玩家组件上下文
         KFComponent* _kf_component = nullptr;

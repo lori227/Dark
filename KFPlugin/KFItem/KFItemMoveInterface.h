@@ -17,7 +17,7 @@ namespace KFrame
         virtual KFData* FindIndexItem( KFEntity* player, KFData* kfitemrecord, uint32 index ) = 0;
 
         // 结算背包
-        virtual void BalanceItem( KFEntity* player, const std::string& name ) = 0;
+        virtual void BalanceItem( KFEntity* player, const std::string& name, bool autodestory ) = 0;
     };
 
     ///////////////////////////////////////////////////////////////////////////

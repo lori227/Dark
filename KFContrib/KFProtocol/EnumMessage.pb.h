@@ -54,15 +54,17 @@ namespace KFMsg {
 namespace KFMsg {
 
 enum ConstDefineEnum {
-  UnknowConse = 0,
+  UnknowConst = 0,
   InfiniteStep = 99999,
   InfiniteTurn = 99999,
   InfiniteBuff = 10000,
+  AreaCamp = 1,
+  AreaRealm = 2,
   ConstDefineEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   ConstDefineEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 LIBPROTOC_EXPORT bool ConstDefineEnum_IsValid(int value);
-const ConstDefineEnum ConstDefineEnum_MIN = UnknowConse;
+const ConstDefineEnum ConstDefineEnum_MIN = UnknowConst;
 const ConstDefineEnum ConstDefineEnum_MAX = InfiniteStep;
 const int ConstDefineEnum_ARRAYSIZE = ConstDefineEnum_MAX + 1;
 
@@ -274,7 +276,8 @@ enum PlayerStatusEnumEx {
   ExploreStatus = 3,
   PVEStatus = 4,
   PVPStatus = 5,
-  DropSelectStatus = 6,
+  TownStatus = 6,
+  DropSelectStatus = 100,
   PlayerStatusEnumEx_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   PlayerStatusEnumEx_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
