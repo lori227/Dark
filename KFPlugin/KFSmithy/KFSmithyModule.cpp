@@ -350,7 +350,7 @@ namespace KFrame
             KeyValue values;
             values[ __STRING__( id ) ] = _option->_uint32_value;
             values[ __STRING__( count ) ] = addnum;
-            player->AddDataToShow( __STRING__( smithy ), __STRING__( item ), _option->_uint32_value, values, false );
+            player->AddDataToShow( __STRING__( smithy ), 0u, __STRING__( item ), _option->_uint32_value, values, false );
         }
 
         // 条件更新

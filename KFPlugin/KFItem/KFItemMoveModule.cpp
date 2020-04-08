@@ -1228,14 +1228,14 @@ namespace KFrame
         KeyValue values;
         values[ __STRING__( count ) ] = count;
         values[ __STRING__( id ) ] = kfsetting->_id;
-        player->AddDataToShow( kfsourcerecord->_data_setting->_name, __STRING__( item ), kfsetting->_id, values, true, kftargetrecord->_data_setting->_name );
+        player->AddDataToShow( kfsourcerecord->_data_setting->_name, 0u, __STRING__( item ), kfsetting->_id, values, true, kftargetrecord->_data_setting->_name );
     }
 
     void KFItemMoveModule::MoveItemDataToShow( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kftargetrecord, KFData* kfitem )
     {
         if ( kfsetting->IsOverlay() )
         {
-            player->AddDataToShow( kfsourcerecord->_data_setting->_name, kfitem );
+            player->AddDataToShow( kfsourcerecord->_data_setting->_name, 0u, kfitem );
         }
         else
         {

@@ -150,7 +150,7 @@ namespace KFrame
         }
 
         // 更换同步顺序, 武器是先移除, 然后会update到英雄身上
-        player->SyncDataSequence( KFEnum::Dec, KFEnum::Set, KFEnum::Add );
+        player->SyncDataToClient( KFEnum::Dec, KFEnum::Set, KFEnum::Add );
 
         // 先卸下英雄身上的装备
         auto kfheroweapon = kfhero->Move( __STRING__( weapon ), true );
@@ -194,7 +194,7 @@ namespace KFrame
         }
 
         // 更换同步顺序, 武器是先移除, 然后会update到英雄身上
-        player->SyncDataSequence( KFEnum::Dec, KFEnum::Set, KFEnum::Add );
+        player->SyncDataToClient( KFEnum::Dec, KFEnum::Set, KFEnum::Add );
 
         // 判断包裹是否满子
         auto kfitemrecord = FindWeaponRecord( player );

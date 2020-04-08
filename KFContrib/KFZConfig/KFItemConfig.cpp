@@ -7,6 +7,7 @@ namespace KFrame
     {
         _rune_type_level.clear();
         _rune_compound.clear();
+
         KFConfigT< KFItemSetting >::ClearSetting();
     }
 
@@ -128,16 +129,23 @@ namespace KFrame
 
         auto strrestore = xmlnode.GetString( "Restore" );
         __JSON_PARSE_STRING__( kfjson, strrestore );
+
+        for ( auto execute : kfsetting->_execute_list )
+        {
+            __KF_DELETE__( KFExecuteData, execute );
+        }
+        kfsetting->_execute_list.clear();
+
         for ( auto iter = kfjson.MemberBegin(); iter != kfjson.MemberEnd(); ++iter )
         {
-            if ( iter->value.IsNumber() )
-            {
-                kfsetting->_drug_values[ iter->name.GetString() ] = iter->value.GetInt();
-            }
-            else
-            {
-                __LOG_ERROR__( "drug=[{}] values=[{}] not int", kfsetting->_id, iter->name.GetString() );
-            }
+            auto executedata = __KF_NEW__( KFExecuteData );
+            executedata->Reset();
+            executedata->_name = iter->name.GetString();
+
+            auto param = executedata->_param_list.AddParam();
+            param->_int_value = iter->value.GetUint();
+
+            kfsetting->_execute_list.emplace_back( executedata );
         }
     }
 

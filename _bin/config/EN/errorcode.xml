@@ -1,21 +1,4 @@
-<root platform="" version="4080">
-	<item Id="1" FloatWord="0" Popup="0" ConsolePrinting="1" Description="错误码显示" />
-	<item Id="2" FloatWord="0" Popup="0" ConsolePrinting="1" Description="客户端发送GM指令请求" />
-	<item Id="3" FloatWord="0" Popup="0" ConsolePrinting="1" Description="小红点提示" />
-	<item Id="99" FloatWord="0" Popup="0" ConsolePrinting="1" Description="显示掉落数据" />
-	<item Id="10000" FloatWord="0" Popup="0" ConsolePrinting="1" Description="http数据错误" />
-	<item Id="10001" FloatWord="0" Popup="0" ConsolePrinting="1" Description="认证数据库出错了" />
-	<item Id="10002" FloatWord="0" Popup="0" ConsolePrinting="1" Description="认证服务器繁忙" />
-	<item Id="10003" FloatWord="0" Popup="0" ConsolePrinting="1" Description="小区服务器繁忙" />
-	<item Id="10004" FloatWord="0" Popup="0" ConsolePrinting="1" Description="小区数据库错误" />
-	<item Id="10005" FloatWord="0" Popup="0" ConsolePrinting="1" Description="名字数据库错误" />
-	<item Id="10006" FloatWord="0" Popup="0" ConsolePrinting="1" Description="数据服务器繁忙" />
-	<item Id="10007" FloatWord="0" Popup="0" ConsolePrinting="1" Description="邮件服务器繁忙" />
-	<item Id="10008" FloatWord="0" Popup="0" ConsolePrinting="1" Description="排行服务器繁忙" />
-	<item Id="10009" FloatWord="0" Popup="0" ConsolePrinting="1" Description="公共数据库错误" />
-	<item Id="10010" FloatWord="0" Popup="0" ConsolePrinting="1" Description="关系服务器繁忙" />
-	<item Id="10011" FloatWord="0" Popup="0" ConsolePrinting="1" Description="匹配服务器繁忙" />
-	<item Id="10012" FloatWord="0" Popup="0" ConsolePrinting="1" Description="登录数据库繁忙" />
-	<item Id="10013" FloatWord="0" Popup="0" ConsolePrinting="1" Description="公共数据服务器繁忙" />
-	<item Id="10014" FloatWord="0" Popup="0" ConsolePrinting="1" Description="逻辑服务器繁忙" />
+<root platform="" version="4153">
+	<item Description="道具背包已经满了" />
+	<item Description="符石穿上成功" />
 </root>

@@ -36,6 +36,8 @@ namespace KFrame
         ////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
     protected:
+        __KF_ADD_ELEMENT_FUNCTION__( AddBuildElement );
+
         // 属性添加回调
         __KF_ADD_DATA_FUNCTION__( OnAddDataBuildModule );
         __KF_REMOVE_DATA_FUNCTION__( OnRemoveDataBuildModule );

@@ -35,9 +35,6 @@
     <ClInclude Include="KFPVEInterface.h">
       <Filter>PVE</Filter>
     </ClInclude>
-    <ClInclude Include="KFPVEModule.hpp">
-      <Filter>PVE</Filter>
-    </ClInclude>
     <ClInclude Include="KFRealmInterface.h">
       <Filter>Realm</Filter>
     </ClInclude>
@@ -61,6 +58,9 @@
     </ClInclude>
     <ClInclude Include="KFWeatherModule.hpp">
       <Filter>Weather</Filter>
+    </ClInclude>
+    <ClInclude Include="KFPVEModule.hpp">
+      <Filter>PVE</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

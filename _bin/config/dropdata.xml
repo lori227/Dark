@@ -1,4 +1,4 @@
-<root platform="" version="4093">
+<root platform="" version="4233">
 	<item Id="6000001" LogicName="exp" DataName="" DropValue="50" DropKey="0" Weight="100" />
 	<item Id="6001001" LogicName="data" DataName="item" DropValue="1000" DropKey="1900000" Weight="100" />
 	<item Id="6002001" LogicName="data" DataName="item" DropValue="1000" DropKey="1900002" Weight="100" />
@@ -58,37 +58,37 @@
 	<item Id="6002019" LogicName="data" DataName="item" DropValue="1000" DropKey="1900002" Weight="100" />
 	<item Id="6100001" LogicName="exp" DataName="" DropValue="100" DropKey="0" Weight="100" />
 	<item Id="6101001" LogicName="data" DataName="item" DropValue="3000" DropKey="1900000" Weight="100" />
-	<item Id="6102001" LogicName="data" DataName="item" DropValue="800" DropKey="1900002" Weight="100" />
-	<item Id="6104001" LogicName="data" DataName="item" DropValue="400" DropKey="1900201" Weight="100" />
-	<item Id="6105001" LogicName="data" DataName="item" DropValue="400" DropKey="1900301" Weight="100" />
+	<item Id="6102001" LogicName="data" DataName="item" DropValue="3000" DropKey="1900002" Weight="100" />
+	<item Id="6104001" LogicName="data" DataName="item" DropValue="0" DropKey="1900201" Weight="100" />
+	<item Id="6105001" LogicName="data" DataName="item" DropValue="0" DropKey="1900301" Weight="100" />
 	<item Id="6106001" LogicName="data" DataName="item" DropValue="3" DropKey="1000101" Weight="100" />
 	<item Id="6100002" LogicName="exp" DataName="" DropValue="200" DropKey="0" Weight="100" />
-	<item Id="6101002" LogicName="data" DataName="item" DropValue="800" DropKey="1900000" Weight="100" />
-	<item Id="6102002" LogicName="data" DataName="item" DropValue="3000" DropKey="1900002" Weight="100" />
-	<item Id="6104002" LogicName="data" DataName="item" DropValue="2000" DropKey="1900201" Weight="100" />
-	<item Id="6105002" LogicName="data" DataName="item" DropValue="2000" DropKey="1900301" Weight="100" />
+	<item Id="6101002" LogicName="data" DataName="item" DropValue="0" DropKey="1900000" Weight="100" />
+	<item Id="6102002" LogicName="data" DataName="item" DropValue="0" DropKey="1900002" Weight="100" />
+	<item Id="6104002" LogicName="data" DataName="item" DropValue="3000" DropKey="1900201" Weight="100" />
+	<item Id="6105002" LogicName="data" DataName="item" DropValue="3000" DropKey="1900301" Weight="100" />
 	<item Id="6106002" LogicName="data" DataName="item" DropValue="3" DropKey="1000101" Weight="100" />
 	<item Id="6100003" LogicName="exp" DataName="" DropValue="300" DropKey="0" Weight="100" />
-	<item Id="6101003" LogicName="data" DataName="item" DropValue="1000" DropKey="1900000" Weight="100" />
-	<item Id="6102003" LogicName="data" DataName="item" DropValue="1000" DropKey="1900002" Weight="100" />
-	<item Id="6104003" LogicName="data" DataName="item" DropValue="5000" DropKey="1900201" Weight="100" />
-	<item Id="6105003" LogicName="data" DataName="item" DropValue="2000" DropKey="1900301" Weight="100" />
+	<item Id="6101003" LogicName="data" DataName="item" DropValue="5000" DropKey="1900000" Weight="100" />
+	<item Id="6102003" LogicName="data" DataName="item" DropValue="5000" DropKey="1900002" Weight="100" />
+	<item Id="6104003" LogicName="data" DataName="item" DropValue="0" DropKey="1900201" Weight="100" />
+	<item Id="6105003" LogicName="data" DataName="item" DropValue="0" DropKey="1900301" Weight="100" />
 	<item Id="6106003" LogicName="data" DataName="item" DropValue="3" DropKey="1000101" Weight="100" />
 	<item Id="6100004" LogicName="exp" DataName="" DropValue="400" DropKey="0" Weight="100" />
-	<item Id="6101004" LogicName="data" DataName="item" DropValue="1000" DropKey="1900000" Weight="100" />
-	<item Id="6102004" LogicName="data" DataName="item" DropValue="1000" DropKey="1900002" Weight="100" />
-	<item Id="6104004" LogicName="data" DataName="item" DropValue="2000" DropKey="1900201" Weight="100" />
+	<item Id="6101004" LogicName="data" DataName="item" DropValue="0" DropKey="1900000" Weight="100" />
+	<item Id="6102004" LogicName="data" DataName="item" DropValue="0" DropKey="1900002" Weight="100" />
+	<item Id="6104004" LogicName="data" DataName="item" DropValue="5000" DropKey="1900201" Weight="100" />
 	<item Id="6105004" LogicName="data" DataName="item" DropValue="5000" DropKey="1900301" Weight="100" />
 	<item Id="6106004" LogicName="data" DataName="item" DropValue="5" DropKey="1000101" Weight="100" />
 	<item Id="6100005" LogicName="exp" DataName="" DropValue="500" DropKey="0" Weight="100" />
-	<item Id="6101005" LogicName="data" DataName="item" DropValue="5000" DropKey="1900000" Weight="100" />
-	<item Id="6102005" LogicName="data" DataName="item" DropValue="5000" DropKey="1900002" Weight="100" />
-	<item Id="6104005" LogicName="data" DataName="item" DropValue="2000" DropKey="1900201" Weight="100" />
-	<item Id="6105005" LogicName="data" DataName="item" DropValue="2000" DropKey="1900301" Weight="100" />
+	<item Id="6101005" LogicName="data" DataName="item" DropValue="8000" DropKey="1900000" Weight="100" />
+	<item Id="6102005" LogicName="data" DataName="item" DropValue="8000" DropKey="1900002" Weight="100" />
+	<item Id="6104005" LogicName="data" DataName="item" DropValue="0" DropKey="1900201" Weight="100" />
+	<item Id="6105005" LogicName="data" DataName="item" DropValue="0" DropKey="1900301" Weight="100" />
 	<item Id="6106005" LogicName="data" DataName="item" DropValue="5" DropKey="1000101" Weight="100" />
 	<item Id="6100006" LogicName="exp" DataName="" DropValue="600" DropKey="0" Weight="100" />
-	<item Id="6101006" LogicName="data" DataName="item" DropValue="1000" DropKey="1900000" Weight="100" />
-	<item Id="6102006" LogicName="data" DataName="item" DropValue="1000" DropKey="1900002" Weight="100" />
+	<item Id="6101006" LogicName="data" DataName="item" DropValue="0" DropKey="1900000" Weight="100" />
+	<item Id="6102006" LogicName="data" DataName="item" DropValue="0" DropKey="1900002" Weight="100" />
 	<item Id="6104006" LogicName="data" DataName="item" DropValue="10000" DropKey="1900201" Weight="100" />
 	<item Id="6105006" LogicName="data" DataName="item" DropValue="10000" DropKey="1900301" Weight="100" />
 	<item Id="6106006" LogicName="data" DataName="item" DropValue="5" DropKey="1000101" Weight="100" />
@@ -97,9 +97,10 @@
 	<item Id="6110221" LogicName="data" DataName="item" DropValue="500" DropKey="1900301" Weight="100" />
 	<item Id="6110231" LogicName="data" DataName="item" DropValue="500" DropKey="1900301" Weight="100" />
 	<item Id="6110241" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
-	<item Id="6110242" LogicName="data" DataName="item" DropValue="2000" DropKey="1900201" Weight="100" />
+	<item Id="6110242" LogicName="data" DataName="item" DropValue="1450" DropKey="1000017" Weight="100" />
 	<item Id="6110251" LogicName="data" DataName="item" DropValue="500" DropKey="1000017" Weight="100" />
 	<item Id="6110261" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6110262" LogicName="data" DataName="item" DropValue="2000" DropKey="1900201" Weight="100" />
 	<item Id="6110271" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
 	<item Id="6110281" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
 	<item Id="6110282" LogicName="data" DataName="item" DropValue="200" DropKey="1000017" Weight="100" />
@@ -110,11 +111,12 @@
 	<item Id="6110302" LogicName="data" DataName="item" DropValue="2000" DropKey="1900002" Weight="100" />
 	<item Id="6110303" LogicName="data" DataName="item" DropValue="2000" DropKey="1900201" Weight="100" />
 	<item Id="6110304" LogicName="data" DataName="item" DropValue="2000" DropKey="1900301" Weight="100" />
+	<item Id="6110305" LogicName="data" DataName="hero" DropValue="4100108" DropKey="0" Weight="100" />
 	<item Id="6110311" LogicName="data" DataName="item" DropValue="1000" DropKey="1900000" Weight="100" />
 	<item Id="6110312" LogicName="data" DataName="item" DropValue="1000" DropKey="1900002" Weight="100" />
 	<item Id="6110313" LogicName="data" DataName="item" DropValue="1000" DropKey="1900201" Weight="100" />
 	<item Id="6110314" LogicName="data" DataName="item" DropValue="1000" DropKey="1900301" Weight="100" />
-	<item Id="6110321" LogicName="data" DataName="hero" DropValue="4100108" DropKey="0" Weight="100" />
+	<item Id="6110321" LogicName="data" DataName="item" DropValue="1000" DropKey="1000017" Weight="100" />
 	<item Id="6110331" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
 	<item Id="6110332" LogicName="data" DataName="item" DropValue="200" DropKey="1000017" Weight="100" />
 	<item Id="6110333" LogicName="data" DataName="item" DropValue="500" DropKey="1900003" Weight="100" />
@@ -420,41 +422,41 @@
 	<item Id="6124507" LogicName="data" DataName="item" DropValue="1000" DropKey="1900201" Weight="100" />
 	<item Id="6124508" LogicName="data" DataName="item" DropValue="1000" DropKey="1900301" Weight="100" />
 	<item Id="6124509" LogicName="data" DataName="item" DropValue="200" DropKey="1900003" Weight="100" />
-	<item Id="6140101" LogicName="data" DataName="item" DropValue="5" DropKey="1900001" Weight="100" />
-	<item Id="6140111" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
-	<item Id="6140121" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
-	<item Id="6140131" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
-	<item Id="6140141" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
-	<item Id="6140201" LogicName="data" DataName="item" DropValue="5" DropKey="1900001" Weight="100" />
-	<item Id="6140211" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
-	<item Id="6140221" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
-	<item Id="6140231" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
-	<item Id="6140241" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
-	<item Id="6140301" LogicName="data" DataName="item" DropValue="5" DropKey="1900001" Weight="100" />
-	<item Id="6140311" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
-	<item Id="6140321" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
-	<item Id="6140331" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
-	<item Id="6140341" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
+	<item Id="6140101" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140111" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140121" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140131" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140141" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140201" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140211" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140221" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140231" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140241" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140301" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140311" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140321" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140331" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140341" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
 	<item Id="6140401" LogicName="data" DataName="item" DropValue="5" DropKey="1900001" Weight="100" />
-	<item Id="6140411" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
-	<item Id="6140421" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
-	<item Id="6140431" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
-	<item Id="6140441" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
+	<item Id="6140411" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140421" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140431" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140441" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
 	<item Id="6140501" LogicName="data" DataName="item" DropValue="5" DropKey="1900001" Weight="100" />
-	<item Id="6140511" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
-	<item Id="6140521" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
-	<item Id="6140531" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
-	<item Id="6140541" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
+	<item Id="6140511" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140521" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140531" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140541" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
 	<item Id="6140601" LogicName="data" DataName="item" DropValue="5" DropKey="1900001" Weight="100" />
-	<item Id="6140611" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
-	<item Id="6140621" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
-	<item Id="6140631" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
-	<item Id="6140641" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
+	<item Id="6140611" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140621" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140631" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140641" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
 	<item Id="6140701" LogicName="data" DataName="item" DropValue="5" DropKey="1900001" Weight="100" />
-	<item Id="6140711" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
+	<item Id="6140711" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
 	<item Id="6140721" LogicName="data" DataName="item" DropValue="1000" DropKey="1900004" Weight="100" />
-	<item Id="6140731" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
-	<item Id="6140741" LogicName="data" DataName="item" DropValue="2" DropKey="1900000" Weight="100" />
+	<item Id="6140731" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
+	<item Id="6140741" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
 	<item Id="6190101" LogicName="drop" DataName="" DropValue="5230101" DropKey="0" Weight="10000" />
 	<item Id="6190101" LogicName="drop" DataName="" DropValue="5800004" DropKey="0" Weight="0" />
 	<item Id="6190102" LogicName="drop" DataName="" DropValue="5230102" DropKey="0" Weight="10000" />
@@ -817,36 +819,38 @@
 	<item Id="6270006" LogicName="data" DataName="item" DropValue="1" DropKey="3180505" Weight="1600" />
 	<item Id="6270006" LogicName="data" DataName="item" DropValue="1" DropKey="3180506" Weight="1600" />
 	<item Id="6270006" LogicName="data" DataName="item" DropValue="1" DropKey="3180605" Weight="0" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000015" Weight="142" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000018" Weight="142" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000021" Weight="142" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000024" Weight="142" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000027" Weight="142" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000030" Weight="142" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000033" Weight="142" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000016" Weight="0" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000019" Weight="0" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000022" Weight="0" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000025" Weight="0" />
+	<item Id="6280000" LogicName="data" DataName="item" DropValue="1" DropKey="2000048" Weight="500" />
+	<item Id="6280000" LogicName="data" DataName="item" DropValue="1" DropKey="2000044" Weight="500" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000015" Weight="166" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000018" Weight="166" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000021" Weight="166" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000024" Weight="166" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000027" Weight="0" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000030" Weight="166" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000033" Weight="166" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000016" Weight="114" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000019" Weight="114" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000022" Weight="114" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000025" Weight="114" />
 	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000028" Weight="0" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000031" Weight="0" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000034" Weight="0" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000031" Weight="114" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000034" Weight="114" />
 	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000036" Weight="0" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000002" Weight="0" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000005" Weight="0" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000002" Weight="114" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000005" Weight="41" />
 	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000006" Weight="0" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000007" Weight="0" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000008" Weight="0" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000009" Weight="0" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000052" Weight="0" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000011" Weight="0" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000053" Weight="0" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000054" Weight="0" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000055" Weight="0" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000045" Weight="0" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000007" Weight="41" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000008" Weight="41" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000009" Weight="41" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000052" Weight="41" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000011" Weight="41" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000053" Weight="41" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000054" Weight="41" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000055" Weight="41" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000045" Weight="41" />
 	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000014" Weight="0" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000042" Weight="0" />
-	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000037" Weight="0" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000042" Weight="41" />
+	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000037" Weight="41" />
 	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000017" Weight="0" />
 	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000020" Weight="0" />
 	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000023" Weight="0" />
@@ -873,36 +877,36 @@
 	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000044" Weight="0" />
 	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000041" Weight="0" />
 	<item Id="6280001" LogicName="data" DataName="item" DropValue="1" DropKey="2000012" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000015" Weight="142" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000018" Weight="142" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000021" Weight="142" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000024" Weight="142" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000027" Weight="142" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000030" Weight="142" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000033" Weight="142" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000016" Weight="62" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000019" Weight="62" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000022" Weight="62" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000025" Weight="62" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000028" Weight="62" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000031" Weight="62" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000034" Weight="62" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000015" Weight="166" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000018" Weight="166" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000021" Weight="166" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000024" Weight="166" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000027" Weight="0" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000030" Weight="166" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000033" Weight="166" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000016" Weight="142" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000019" Weight="142" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000022" Weight="142" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000025" Weight="142" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000028" Weight="0" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000031" Weight="142" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000034" Weight="142" />
 	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000036" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000002" Weight="62" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000005" Weight="0" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000002" Weight="142" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000005" Weight="83" />
 	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000006" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000007" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000008" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000009" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000052" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000011" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000053" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000054" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000055" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000045" Weight="0" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000007" Weight="83" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000008" Weight="83" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000009" Weight="83" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000052" Weight="83" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000011" Weight="83" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000053" Weight="83" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000054" Weight="83" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000055" Weight="83" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000045" Weight="83" />
 	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000014" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000042" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000037" Weight="0" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000042" Weight="83" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000037" Weight="83" />
 	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000017" Weight="0" />
 	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000020" Weight="0" />
 	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000023" Weight="0" />
@@ -910,18 +914,18 @@
 	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000029" Weight="0" />
 	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000032" Weight="0" />
 	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000035" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000001" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000038" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000046" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000003" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000043" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000010" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000049" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000047" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000040" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000050" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000051" Weight="0" />
-	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000013" Weight="0" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000001" Weight="16" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000038" Weight="16" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000046" Weight="16" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000003" Weight="16" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000043" Weight="16" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000010" Weight="16" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000049" Weight="16" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000047" Weight="16" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000040" Weight="16" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000050" Weight="16" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000051" Weight="16" />
+	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000013" Weight="16" />
 	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000004" Weight="0" />
 	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000039" Weight="0" />
 	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000048" Weight="0" />
@@ -929,13 +933,13 @@
 	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000044" Weight="0" />
 	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000041" Weight="0" />
 	<item Id="6280002" LogicName="data" DataName="item" DropValue="1" DropKey="2000012" Weight="0" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000015" Weight="142" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000018" Weight="142" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000021" Weight="142" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000024" Weight="142" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000027" Weight="142" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000030" Weight="142" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000033" Weight="142" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000015" Weight="114" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000018" Weight="114" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000021" Weight="114" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000024" Weight="114" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000027" Weight="114" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000030" Weight="114" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000033" Weight="114" />
 	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000016" Weight="125" />
 	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000019" Weight="125" />
 	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000022" Weight="125" />
@@ -945,39 +949,39 @@
 	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000034" Weight="125" />
 	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000036" Weight="0" />
 	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000002" Weight="125" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000005" Weight="26" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000005" Weight="52" />
 	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000006" Weight="0" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000007" Weight="26" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000008" Weight="26" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000009" Weight="26" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000052" Weight="26" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000011" Weight="26" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000053" Weight="26" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000054" Weight="26" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000055" Weight="26" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000045" Weight="26" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000007" Weight="52" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000008" Weight="52" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000009" Weight="52" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000052" Weight="52" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000011" Weight="52" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000053" Weight="52" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000054" Weight="52" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000055" Weight="52" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000045" Weight="52" />
 	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000014" Weight="0" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000042" Weight="26" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000037" Weight="26" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000017" Weight="26" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000020" Weight="26" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000023" Weight="26" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000026" Weight="26" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000029" Weight="26" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000032" Weight="26" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000035" Weight="26" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000001" Weight="0" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000038" Weight="0" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000046" Weight="0" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000003" Weight="0" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000043" Weight="0" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000010" Weight="0" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000049" Weight="0" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000047" Weight="0" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000040" Weight="0" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000050" Weight="0" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000051" Weight="0" />
-	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000013" Weight="0" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000042" Weight="52" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000037" Weight="52" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000017" Weight="52" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000020" Weight="52" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000023" Weight="52" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000026" Weight="52" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000029" Weight="52" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000032" Weight="52" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000035" Weight="52" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000001" Weight="25" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000038" Weight="25" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000046" Weight="25" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000003" Weight="25" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000043" Weight="25" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000010" Weight="25" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000049" Weight="25" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000047" Weight="25" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000040" Weight="25" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000050" Weight="25" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000051" Weight="25" />
+	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000013" Weight="25" />
 	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000004" Weight="0" />
 	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000039" Weight="0" />
 	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000048" Weight="0" />
@@ -985,13 +989,13 @@
 	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000044" Weight="0" />
 	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000041" Weight="0" />
 	<item Id="6280003" LogicName="data" DataName="item" DropValue="1" DropKey="2000012" Weight="0" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000015" Weight="71" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000018" Weight="71" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000021" Weight="71" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000024" Weight="71" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000027" Weight="71" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000030" Weight="71" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000033" Weight="71" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000015" Weight="114" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000018" Weight="114" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000021" Weight="114" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000024" Weight="114" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000027" Weight="114" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000030" Weight="114" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000033" Weight="114" />
 	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000016" Weight="111" />
 	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000019" Weight="111" />
 	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000022" Weight="111" />
@@ -1001,39 +1005,39 @@
 	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000034" Weight="111" />
 	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000036" Weight="111" />
 	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000002" Weight="111" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000005" Weight="47" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000006" Weight="47" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000007" Weight="47" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000008" Weight="47" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000009" Weight="47" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000052" Weight="47" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000011" Weight="47" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000053" Weight="47" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000054" Weight="47" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000055" Weight="47" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000045" Weight="47" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000014" Weight="47" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000042" Weight="47" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000037" Weight="47" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000017" Weight="47" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000020" Weight="47" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000023" Weight="47" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000026" Weight="47" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000029" Weight="47" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000032" Weight="47" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000035" Weight="47" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000001" Weight="16" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000038" Weight="16" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000046" Weight="16" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000003" Weight="16" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000043" Weight="16" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000010" Weight="16" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000049" Weight="16" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000047" Weight="16" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000040" Weight="16" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000050" Weight="16" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000051" Weight="16" />
-	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000013" Weight="16" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000005" Weight="71" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000006" Weight="71" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000007" Weight="71" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000008" Weight="71" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000009" Weight="71" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000052" Weight="71" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000011" Weight="71" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000053" Weight="71" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000054" Weight="71" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000055" Weight="71" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000045" Weight="71" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000014" Weight="71" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000042" Weight="71" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000037" Weight="71" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000017" Weight="71" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000020" Weight="71" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000023" Weight="71" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000026" Weight="71" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000029" Weight="71" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000032" Weight="71" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000035" Weight="71" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000001" Weight="33" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000038" Weight="33" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000046" Weight="33" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000003" Weight="33" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000043" Weight="33" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000010" Weight="33" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000049" Weight="33" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000047" Weight="33" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000040" Weight="33" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000050" Weight="33" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000051" Weight="33" />
+	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000013" Weight="33" />
 	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000004" Weight="0" />
 	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000039" Weight="0" />
 	<item Id="6280004" LogicName="data" DataName="item" DropValue="1" DropKey="2000048" Weight="0" />
@@ -1153,36 +1157,36 @@
 	<item Id="6280006" LogicName="data" DataName="item" DropValue="1" DropKey="2000044" Weight="71" />
 	<item Id="6280006" LogicName="data" DataName="item" DropValue="1" DropKey="2000041" Weight="71" />
 	<item Id="6280006" LogicName="data" DataName="item" DropValue="1" DropKey="2000012" Weight="71" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000015" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000018" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000021" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000024" Weight="0" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000015" Weight="166" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000018" Weight="166" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000021" Weight="166" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000024" Weight="166" />
 	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000027" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000030" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000033" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000016" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000019" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000022" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000025" Weight="0" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000030" Weight="166" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000033" Weight="166" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000016" Weight="114" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000019" Weight="114" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000022" Weight="114" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000025" Weight="114" />
 	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000028" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000031" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000034" Weight="0" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000031" Weight="114" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000034" Weight="114" />
 	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000036" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000002" Weight="125" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000005" Weight="0" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000002" Weight="114" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000005" Weight="41" />
 	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000006" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000007" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000008" Weight="125" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000009" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000052" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000011" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000053" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000054" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000055" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000045" Weight="125" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000007" Weight="41" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000008" Weight="41" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000009" Weight="41" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000052" Weight="41" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000011" Weight="41" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000053" Weight="41" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000054" Weight="41" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000055" Weight="41" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000045" Weight="41" />
 	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000014" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000042" Weight="125" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000037" Weight="0" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000042" Weight="41" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000037" Weight="41" />
 	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000017" Weight="0" />
 	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000020" Weight="0" />
 	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000023" Weight="0" />
@@ -1190,18 +1194,18 @@
 	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000029" Weight="0" />
 	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000032" Weight="0" />
 	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000035" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000001" Weight="125" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000038" Weight="125" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000001" Weight="0" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000038" Weight="0" />
 	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000046" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000003" Weight="125" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000043" Weight="125" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000010" Weight="125" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000003" Weight="0" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000043" Weight="0" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000010" Weight="0" />
 	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000049" Weight="0" />
 	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000047" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000040" Weight="125" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000040" Weight="0" />
 	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000050" Weight="0" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000051" Weight="125" />
-	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000013" Weight="125" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000051" Weight="0" />
+	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000013" Weight="0" />
 	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000004" Weight="0" />
 	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000039" Weight="0" />
 	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000048" Weight="0" />
@@ -1209,36 +1213,36 @@
 	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000044" Weight="0" />
 	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000041" Weight="0" />
 	<item Id="6280101" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000012" Weight="0" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000015" Weight="0" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000018" Weight="0" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000021" Weight="0" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000024" Weight="0" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000015" Weight="166" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000018" Weight="166" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000021" Weight="166" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000024" Weight="166" />
 	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000027" Weight="0" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000030" Weight="0" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000033" Weight="0" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000016" Weight="0" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000019" Weight="0" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000022" Weight="0" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000025" Weight="0" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000030" Weight="166" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000033" Weight="166" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000016" Weight="142" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000019" Weight="142" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000022" Weight="142" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000025" Weight="142" />
 	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000028" Weight="0" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000031" Weight="0" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000034" Weight="0" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000036" Weight="100" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000002" Weight="100" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000005" Weight="166" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000031" Weight="142" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000034" Weight="142" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000036" Weight="0" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000002" Weight="142" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000005" Weight="83" />
 	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000006" Weight="0" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000007" Weight="166" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000008" Weight="166" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000009" Weight="166" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000052" Weight="166" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000011" Weight="166" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000053" Weight="166" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000054" Weight="166" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000055" Weight="166" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000045" Weight="166" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000007" Weight="83" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000008" Weight="83" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000009" Weight="83" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000052" Weight="83" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000011" Weight="83" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000053" Weight="83" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000054" Weight="83" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000055" Weight="83" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000045" Weight="83" />
 	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000014" Weight="0" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000042" Weight="166" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000037" Weight="166" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000042" Weight="83" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000037" Weight="83" />
 	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000017" Weight="0" />
 	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000020" Weight="0" />
 	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000023" Weight="0" />
@@ -1246,18 +1250,18 @@
 	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000029" Weight="0" />
 	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000032" Weight="0" />
 	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000035" Weight="0" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000001" Weight="181" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000038" Weight="181" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000046" Weight="181" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000003" Weight="181" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000043" Weight="181" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000010" Weight="181" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000049" Weight="0" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000047" Weight="181" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000040" Weight="181" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000050" Weight="181" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000051" Weight="181" />
-	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000013" Weight="181" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000001" Weight="16" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000038" Weight="16" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000046" Weight="16" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000003" Weight="16" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000043" Weight="16" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000010" Weight="16" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000049" Weight="16" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000047" Weight="16" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000040" Weight="16" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000050" Weight="16" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000051" Weight="16" />
+	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000013" Weight="16" />
 	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000004" Weight="0" />
 	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000039" Weight="0" />
 	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000048" Weight="0" />
@@ -1265,230 +1269,230 @@
 	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000044" Weight="0" />
 	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000041" Weight="0" />
 	<item Id="6280102" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000012" Weight="0" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000015" Weight="0" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000018" Weight="0" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000021" Weight="0" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000024" Weight="0" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000027" Weight="0" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000030" Weight="0" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000033" Weight="0" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000016" Weight="0" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000019" Weight="0" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000022" Weight="0" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000025" Weight="0" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000028" Weight="0" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000031" Weight="0" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000034" Weight="0" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000036" Weight="100" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000002" Weight="100" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000005" Weight="250" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000006" Weight="250" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000007" Weight="250" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000008" Weight="250" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000009" Weight="250" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000052" Weight="250" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000011" Weight="250" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000053" Weight="250" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000054" Weight="250" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000055" Weight="250" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000045" Weight="250" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000014" Weight="250" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000042" Weight="250" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000037" Weight="250" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000017" Weight="0" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000020" Weight="0" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000023" Weight="0" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000026" Weight="0" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000029" Weight="0" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000032" Weight="0" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000035" Weight="0" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000001" Weight="166" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000038" Weight="166" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000046" Weight="166" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000003" Weight="166" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000043" Weight="166" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000010" Weight="166" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000049" Weight="166" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000047" Weight="166" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000040" Weight="166" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000050" Weight="166" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000051" Weight="166" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000013" Weight="166" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000004" Weight="142" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000039" Weight="142" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000048" Weight="142" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000056" Weight="142" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000044" Weight="142" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000041" Weight="142" />
-	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000012" Weight="142" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000015" Weight="0" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000018" Weight="0" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000021" Weight="0" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000024" Weight="0" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000027" Weight="0" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000030" Weight="0" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000033" Weight="0" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000016" Weight="0" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000019" Weight="0" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000022" Weight="0" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000025" Weight="0" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000028" Weight="0" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000031" Weight="0" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000034" Weight="0" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000036" Weight="75" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000002" Weight="75" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000005" Weight="250" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000006" Weight="250" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000007" Weight="250" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000008" Weight="250" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000009" Weight="250" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000052" Weight="250" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000011" Weight="250" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000053" Weight="250" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000054" Weight="250" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000055" Weight="250" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000045" Weight="250" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000014" Weight="250" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000042" Weight="250" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000037" Weight="250" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000017" Weight="0" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000020" Weight="0" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000023" Weight="0" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000026" Weight="0" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000029" Weight="0" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000032" Weight="0" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000035" Weight="0" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000001" Weight="208" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000038" Weight="208" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000046" Weight="208" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000003" Weight="208" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000043" Weight="208" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000010" Weight="208" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000049" Weight="208" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000047" Weight="208" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000040" Weight="208" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000050" Weight="208" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000051" Weight="208" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000013" Weight="208" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000004" Weight="142" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000039" Weight="142" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000048" Weight="142" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000056" Weight="142" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000044" Weight="142" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000041" Weight="142" />
-	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000012" Weight="142" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000015" Weight="0" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000018" Weight="0" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000021" Weight="0" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000024" Weight="0" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000027" Weight="0" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000030" Weight="0" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000033" Weight="0" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000016" Weight="0" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000019" Weight="0" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000022" Weight="0" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000025" Weight="0" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000028" Weight="0" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000031" Weight="0" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000034" Weight="0" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000036" Weight="75" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000002" Weight="75" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000005" Weight="214" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000006" Weight="214" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000007" Weight="214" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000008" Weight="214" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000009" Weight="214" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000052" Weight="214" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000011" Weight="214" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000053" Weight="214" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000054" Weight="214" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000055" Weight="214" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000045" Weight="214" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000014" Weight="214" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000042" Weight="214" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000037" Weight="214" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000017" Weight="0" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000020" Weight="0" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000023" Weight="0" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000026" Weight="0" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000029" Weight="0" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000032" Weight="0" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000035" Weight="0" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000001" Weight="250" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000038" Weight="250" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000046" Weight="250" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000003" Weight="250" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000043" Weight="250" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000010" Weight="250" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000049" Weight="250" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000047" Weight="250" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000040" Weight="250" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000050" Weight="250" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000051" Weight="250" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000013" Weight="250" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000004" Weight="214" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000039" Weight="214" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000048" Weight="214" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000056" Weight="214" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000044" Weight="214" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000041" Weight="214" />
-	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000012" Weight="214" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000015" Weight="0" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000018" Weight="0" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000021" Weight="0" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000024" Weight="0" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000027" Weight="0" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000030" Weight="0" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000033" Weight="0" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000016" Weight="0" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000019" Weight="0" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000022" Weight="0" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000025" Weight="0" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000028" Weight="0" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000031" Weight="0" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000034" Weight="0" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000036" Weight="75" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000002" Weight="75" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000005" Weight="214" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000006" Weight="214" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000007" Weight="214" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000008" Weight="214" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000009" Weight="214" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000052" Weight="214" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000011" Weight="214" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000053" Weight="214" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000054" Weight="214" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000055" Weight="214" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000045" Weight="214" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000014" Weight="214" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000042" Weight="214" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000037" Weight="214" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000017" Weight="0" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000020" Weight="0" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000023" Weight="0" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000026" Weight="0" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000029" Weight="0" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000032" Weight="0" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000035" Weight="0" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000001" Weight="250" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000038" Weight="250" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000046" Weight="250" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000003" Weight="250" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000043" Weight="250" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000010" Weight="250" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000049" Weight="250" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000047" Weight="250" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000040" Weight="250" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000050" Weight="250" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000051" Weight="250" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000013" Weight="250" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000004" Weight="214" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000039" Weight="214" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000048" Weight="214" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000056" Weight="214" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000044" Weight="214" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000041" Weight="214" />
-	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000012" Weight="214" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000015" Weight="114" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000018" Weight="114" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000021" Weight="114" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000024" Weight="114" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000027" Weight="114" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000030" Weight="114" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000033" Weight="114" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000016" Weight="125" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000019" Weight="125" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000022" Weight="125" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000025" Weight="125" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000028" Weight="125" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000031" Weight="125" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000034" Weight="125" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000036" Weight="0" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000002" Weight="125" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000005" Weight="52" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000006" Weight="0" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000007" Weight="52" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000008" Weight="52" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000009" Weight="52" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000052" Weight="52" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000011" Weight="52" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000053" Weight="52" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000054" Weight="52" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000055" Weight="52" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000045" Weight="52" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000014" Weight="0" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000042" Weight="52" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000037" Weight="52" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000017" Weight="52" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000020" Weight="52" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000023" Weight="52" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000026" Weight="52" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000029" Weight="52" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000032" Weight="52" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000035" Weight="52" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000001" Weight="25" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000038" Weight="25" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000046" Weight="25" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000003" Weight="25" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000043" Weight="25" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000010" Weight="25" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000049" Weight="25" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000047" Weight="25" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000040" Weight="25" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000050" Weight="25" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000051" Weight="25" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000013" Weight="25" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000004" Weight="0" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000039" Weight="0" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000048" Weight="0" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000056" Weight="0" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000044" Weight="0" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000041" Weight="0" />
+	<item Id="6280103" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000012" Weight="0" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000015" Weight="114" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000018" Weight="114" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000021" Weight="114" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000024" Weight="114" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000027" Weight="114" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000030" Weight="114" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000033" Weight="114" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000016" Weight="111" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000019" Weight="111" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000022" Weight="111" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000025" Weight="111" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000028" Weight="111" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000031" Weight="111" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000034" Weight="111" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000036" Weight="111" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000002" Weight="111" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000005" Weight="71" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000006" Weight="71" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000007" Weight="71" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000008" Weight="71" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000009" Weight="71" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000052" Weight="71" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000011" Weight="71" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000053" Weight="71" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000054" Weight="71" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000055" Weight="71" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000045" Weight="71" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000014" Weight="71" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000042" Weight="71" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000037" Weight="71" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000017" Weight="71" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000020" Weight="71" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000023" Weight="71" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000026" Weight="71" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000029" Weight="71" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000032" Weight="71" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000035" Weight="71" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000001" Weight="33" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000038" Weight="33" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000046" Weight="33" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000003" Weight="33" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000043" Weight="33" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000010" Weight="33" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000049" Weight="33" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000047" Weight="33" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000040" Weight="33" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000050" Weight="33" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000051" Weight="33" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000013" Weight="33" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000004" Weight="0" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000039" Weight="0" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000048" Weight="0" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000056" Weight="0" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000044" Weight="0" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000041" Weight="0" />
+	<item Id="6280104" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000012" Weight="0" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000015" Weight="28" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000018" Weight="28" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000021" Weight="28" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000024" Weight="28" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000027" Weight="28" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000030" Weight="28" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000033" Weight="28" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000016" Weight="111" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000019" Weight="111" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000022" Weight="111" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000025" Weight="111" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000028" Weight="111" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000031" Weight="111" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000034" Weight="111" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000036" Weight="111" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000002" Weight="111" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000005" Weight="47" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000006" Weight="47" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000007" Weight="47" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000008" Weight="47" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000009" Weight="47" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000052" Weight="47" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000011" Weight="47" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000053" Weight="47" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000054" Weight="47" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000055" Weight="47" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000045" Weight="47" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000014" Weight="47" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000042" Weight="47" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000037" Weight="47" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000017" Weight="47" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000020" Weight="47" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000023" Weight="47" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000026" Weight="47" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000029" Weight="47" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000032" Weight="47" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000035" Weight="47" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000001" Weight="41" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000038" Weight="41" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000046" Weight="41" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000003" Weight="41" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000043" Weight="41" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000010" Weight="41" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000049" Weight="41" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000047" Weight="41" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000040" Weight="41" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000050" Weight="41" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000051" Weight="41" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000013" Weight="41" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000004" Weight="28" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000039" Weight="28" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000048" Weight="28" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000056" Weight="28" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000044" Weight="28" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000041" Weight="28" />
+	<item Id="6280105" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000012" Weight="28" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000015" Weight="28" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000018" Weight="28" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000021" Weight="28" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000024" Weight="28" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000027" Weight="28" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000030" Weight="28" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000033" Weight="28" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000016" Weight="88" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000019" Weight="88" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000022" Weight="88" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000025" Weight="88" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000028" Weight="88" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000031" Weight="88" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000034" Weight="88" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000036" Weight="88" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000002" Weight="88" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000005" Weight="47" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000006" Weight="47" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000007" Weight="47" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000008" Weight="47" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000009" Weight="47" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000052" Weight="47" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000011" Weight="47" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000053" Weight="47" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000054" Weight="47" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000055" Weight="47" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000045" Weight="47" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000014" Weight="47" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000042" Weight="47" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000037" Weight="47" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000017" Weight="47" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000020" Weight="47" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000023" Weight="47" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000026" Weight="47" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000029" Weight="47" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000032" Weight="47" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000035" Weight="47" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000001" Weight="83" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000038" Weight="83" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000046" Weight="83" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000003" Weight="83" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000043" Weight="83" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000010" Weight="83" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000049" Weight="83" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000047" Weight="83" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000040" Weight="83" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000050" Weight="83" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000051" Weight="83" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000013" Weight="83" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000004" Weight="71" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000039" Weight="71" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000048" Weight="71" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000056" Weight="71" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000044" Weight="71" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000041" Weight="71" />
+	<item Id="6280106" LogicName="gamble" DataName="item" DropValue="1" DropKey="2000012" Weight="71" />
 	<item Id="6300101" LogicName="gamble" DataName="item" DropValue="225-375" DropKey="1900000" Weight="100" />
 	<item Id="6300102" LogicName="gamble" DataName="item" DropValue="450-750" DropKey="1900000" Weight="100" />
 	<item Id="6300103" LogicName="gamble" DataName="item" DropValue="675-1125" DropKey="1900000" Weight="100" />
@@ -1577,78 +1581,78 @@
 	<item Id="6400005" LogicName="data" DataName="item" DropValue="12000" DropKey="1900004" Weight="100" />
 	<item Id="6400006" LogicName="data" DataName="item" DropValue="1" DropKey="1000401" Weight="100" />
 	<item Id="6400007" LogicName="data" DataName="item" DropValue="1" DropKey="1000402" Weight="100" />
-	<item Id="6410101" LogicName="data" DataName="item" DropValue="112-208" DropKey="1900000" Weight="10000" />
-	<item Id="6410102" LogicName="data" DataName="item" DropValue="140-260" DropKey="1900000" Weight="10000" />
-	<item Id="6410103" LogicName="data" DataName="item" DropValue="168-312" DropKey="1900000" Weight="10000" />
-	<item Id="6410201" LogicName="data" DataName="item" DropValue="182-338" DropKey="1900000" Weight="10000" />
-	<item Id="6410202" LogicName="data" DataName="item" DropValue="196-364" DropKey="1900000" Weight="10000" />
-	<item Id="6410203" LogicName="data" DataName="item" DropValue="210-390" DropKey="1900000" Weight="10000" />
-	<item Id="6410301" LogicName="data" DataName="item" DropValue="224-416" DropKey="1900000" Weight="10000" />
-	<item Id="6410302" LogicName="data" DataName="item" DropValue="238-442" DropKey="1900000" Weight="10000" />
-	<item Id="6410303" LogicName="data" DataName="item" DropValue="252-468" DropKey="1900000" Weight="10000" />
-	<item Id="6410401" LogicName="data" DataName="item" DropValue="266-494" DropKey="1900000" Weight="10000" />
-	<item Id="6410402" LogicName="data" DataName="item" DropValue="280-520" DropKey="1900000" Weight="10000" />
-	<item Id="6410403" LogicName="data" DataName="item" DropValue="339-629" DropKey="1900000" Weight="10000" />
-	<item Id="6410501" LogicName="data" DataName="item" DropValue="398-738" DropKey="1900000" Weight="10000" />
-	<item Id="6410502" LogicName="data" DataName="item" DropValue="456-848" DropKey="1900000" Weight="10000" />
-	<item Id="6410503" LogicName="data" DataName="item" DropValue="515-957" DropKey="1900000" Weight="10000" />
-	<item Id="6410504" LogicName="data" DataName="item" DropValue="574-1066" DropKey="1900000" Weight="10000" />
-	<item Id="6410601" LogicName="data" DataName="item" DropValue="633-1175" DropKey="1900000" Weight="10000" />
-	<item Id="6410602" LogicName="data" DataName="item" DropValue="692-1284" DropKey="1900000" Weight="10000" />
-	<item Id="6420101" LogicName="data" DataName="item" DropValue="73-135" DropKey="1900002" Weight="10000" />
-	<item Id="6420102" LogicName="data" DataName="item" DropValue="101-187" DropKey="1900002" Weight="10000" />
-	<item Id="6420103" LogicName="data" DataName="item" DropValue="129-239" DropKey="1900002" Weight="10000" />
-	<item Id="6420201" LogicName="data" DataName="item" DropValue="143-265" DropKey="1900002" Weight="10000" />
-	<item Id="6420202" LogicName="data" DataName="item" DropValue="157-291" DropKey="1900002" Weight="10000" />
-	<item Id="6420203" LogicName="data" DataName="item" DropValue="171-317" DropKey="1900002" Weight="10000" />
-	<item Id="6420301" LogicName="data" DataName="item" DropValue="185-343" DropKey="1900002" Weight="10000" />
-	<item Id="6420302" LogicName="data" DataName="item" DropValue="199-369" DropKey="1900002" Weight="10000" />
-	<item Id="6420303" LogicName="data" DataName="item" DropValue="213-395" DropKey="1900002" Weight="10000" />
-	<item Id="6420401" LogicName="data" DataName="item" DropValue="227-421" DropKey="1900002" Weight="10000" />
-	<item Id="6420402" LogicName="data" DataName="item" DropValue="241-447" DropKey="1900002" Weight="10000" />
-	<item Id="6420403" LogicName="data" DataName="item" DropValue="297-551" DropKey="1900002" Weight="10000" />
-	<item Id="6420501" LogicName="data" DataName="item" DropValue="353-655" DropKey="1900002" Weight="10000" />
-	<item Id="6420502" LogicName="data" DataName="item" DropValue="409-759" DropKey="1900002" Weight="10000" />
-	<item Id="6420503" LogicName="data" DataName="item" DropValue="465-863" DropKey="1900002" Weight="10000" />
-	<item Id="6420504" LogicName="data" DataName="item" DropValue="521-967" DropKey="1900002" Weight="10000" />
-	<item Id="6420601" LogicName="data" DataName="item" DropValue="577-1071" DropKey="1900002" Weight="10000" />
-	<item Id="6420602" LogicName="data" DataName="item" DropValue="633-1175" DropKey="1900002" Weight="10000" />
-	<item Id="6430101" LogicName="data" DataName="item" DropValue="56-104" DropKey="1900201" Weight="10000" />
-	<item Id="6430102" LogicName="data" DataName="item" DropValue="84-156" DropKey="1900201" Weight="10000" />
-	<item Id="6430103" LogicName="data" DataName="item" DropValue="112-208" DropKey="1900201" Weight="10000" />
-	<item Id="6430201" LogicName="data" DataName="item" DropValue="126-234" DropKey="1900201" Weight="10000" />
-	<item Id="6430202" LogicName="data" DataName="item" DropValue="140-260" DropKey="1900201" Weight="10000" />
-	<item Id="6430203" LogicName="data" DataName="item" DropValue="154-286" DropKey="1900201" Weight="10000" />
-	<item Id="6430301" LogicName="data" DataName="item" DropValue="168-312" DropKey="1900201" Weight="10000" />
-	<item Id="6430302" LogicName="data" DataName="item" DropValue="182-338" DropKey="1900201" Weight="10000" />
-	<item Id="6430303" LogicName="data" DataName="item" DropValue="196-364" DropKey="1900201" Weight="10000" />
-	<item Id="6430401" LogicName="data" DataName="item" DropValue="210-390" DropKey="1900201" Weight="10000" />
-	<item Id="6430402" LogicName="data" DataName="item" DropValue="224-416" DropKey="1900201" Weight="10000" />
-	<item Id="6430403" LogicName="data" DataName="item" DropValue="280-520" DropKey="1900201" Weight="10000" />
-	<item Id="6430501" LogicName="data" DataName="item" DropValue="336-624" DropKey="1900201" Weight="10000" />
-	<item Id="6430502" LogicName="data" DataName="item" DropValue="392-728" DropKey="1900201" Weight="10000" />
-	<item Id="6430503" LogicName="data" DataName="item" DropValue="448-832" DropKey="1900201" Weight="10000" />
-	<item Id="6430504" LogicName="data" DataName="item" DropValue="504-936" DropKey="1900201" Weight="10000" />
-	<item Id="6430601" LogicName="data" DataName="item" DropValue="560-1040" DropKey="1900201" Weight="10000" />
-	<item Id="6430602" LogicName="data" DataName="item" DropValue="616-1144" DropKey="1900201" Weight="10000" />
-	<item Id="6440101" LogicName="data" DataName="item" DropValue="56-104" DropKey="1900301" Weight="10000" />
-	<item Id="6440102" LogicName="data" DataName="item" DropValue="84-156" DropKey="1900301" Weight="10000" />
-	<item Id="6440103" LogicName="data" DataName="item" DropValue="112-208" DropKey="1900301" Weight="10000" />
-	<item Id="6440201" LogicName="data" DataName="item" DropValue="126-234" DropKey="1900301" Weight="10000" />
-	<item Id="6440202" LogicName="data" DataName="item" DropValue="140-260" DropKey="1900301" Weight="10000" />
-	<item Id="6440203" LogicName="data" DataName="item" DropValue="154-286" DropKey="1900301" Weight="10000" />
-	<item Id="6440301" LogicName="data" DataName="item" DropValue="168-312" DropKey="1900301" Weight="10000" />
-	<item Id="6440302" LogicName="data" DataName="item" DropValue="182-338" DropKey="1900301" Weight="10000" />
-	<item Id="6440303" LogicName="data" DataName="item" DropValue="196-364" DropKey="1900301" Weight="10000" />
-	<item Id="6440401" LogicName="data" DataName="item" DropValue="210-390" DropKey="1900301" Weight="10000" />
-	<item Id="6440402" LogicName="data" DataName="item" DropValue="224-416" DropKey="1900301" Weight="10000" />
-	<item Id="6440403" LogicName="data" DataName="item" DropValue="280-520" DropKey="1900301" Weight="10000" />
-	<item Id="6440501" LogicName="data" DataName="item" DropValue="336-624" DropKey="1900301" Weight="10000" />
-	<item Id="6440502" LogicName="data" DataName="item" DropValue="392-728" DropKey="1900301" Weight="10000" />
-	<item Id="6440503" LogicName="data" DataName="item" DropValue="448-832" DropKey="1900301" Weight="10000" />
-	<item Id="6440504" LogicName="data" DataName="item" DropValue="504-936" DropKey="1900301" Weight="10000" />
-	<item Id="6440601" LogicName="data" DataName="item" DropValue="560-1040" DropKey="1900301" Weight="10000" />
-	<item Id="6440602" LogicName="data" DataName="item" DropValue="616-1144" DropKey="1900301" Weight="10000" />
+	<item Id="6410101" LogicName="data" DataName="item" DropValue="100" DropKey="1900000" Weight="10000" />
+	<item Id="6410102" LogicName="data" DataName="item" DropValue="500" DropKey="1900000" Weight="10000" />
+	<item Id="6410103" LogicName="data" DataName="item" DropValue="1000" DropKey="1900000" Weight="10000" />
+	<item Id="6410201" LogicName="data" DataName="item" DropValue="300" DropKey="1900000" Weight="10000" />
+	<item Id="6410202" LogicName="data" DataName="item" DropValue="300" DropKey="1900000" Weight="10000" />
+	<item Id="6410203" LogicName="data" DataName="item" DropValue="300" DropKey="1900000" Weight="10000" />
+	<item Id="6410301" LogicName="data" DataName="item" DropValue="400" DropKey="1900000" Weight="10000" />
+	<item Id="6410302" LogicName="data" DataName="item" DropValue="500" DropKey="1900000" Weight="10000" />
+	<item Id="6410303" LogicName="data" DataName="item" DropValue="600" DropKey="1900000" Weight="10000" />
+	<item Id="6410401" LogicName="data" DataName="item" DropValue="600" DropKey="1900000" Weight="10000" />
+	<item Id="6410402" LogicName="data" DataName="item" DropValue="700" DropKey="1900000" Weight="10000" />
+	<item Id="6410403" LogicName="data" DataName="item" DropValue="800" DropKey="1900000" Weight="10000" />
+	<item Id="6410501" LogicName="data" DataName="item" DropValue="900" DropKey="1900000" Weight="10000" />
+	<item Id="6410502" LogicName="data" DataName="item" DropValue="1000" DropKey="1900000" Weight="10000" />
+	<item Id="6410503" LogicName="data" DataName="item" DropValue="1100" DropKey="1900000" Weight="10000" />
+	<item Id="6410504" LogicName="data" DataName="item" DropValue="1100" DropKey="1900000" Weight="10000" />
+	<item Id="6410601" LogicName="data" DataName="item" DropValue="1200" DropKey="1900000" Weight="10000" />
+	<item Id="6410602" LogicName="data" DataName="item" DropValue="1300" DropKey="1900000" Weight="10000" />
+	<item Id="6420101" LogicName="data" DataName="item" DropValue="100" DropKey="1900002" Weight="10000" />
+	<item Id="6420102" LogicName="data" DataName="item" DropValue="500" DropKey="1900002" Weight="10000" />
+	<item Id="6420103" LogicName="data" DataName="item" DropValue="1000" DropKey="1900002" Weight="10000" />
+	<item Id="6420201" LogicName="data" DataName="item" DropValue="200" DropKey="1900002" Weight="10000" />
+	<item Id="6420202" LogicName="data" DataName="item" DropValue="200" DropKey="1900002" Weight="10000" />
+	<item Id="6420203" LogicName="data" DataName="item" DropValue="300" DropKey="1900002" Weight="10000" />
+	<item Id="6420301" LogicName="data" DataName="item" DropValue="300" DropKey="1900002" Weight="10000" />
+	<item Id="6420302" LogicName="data" DataName="item" DropValue="400" DropKey="1900002" Weight="10000" />
+	<item Id="6420303" LogicName="data" DataName="item" DropValue="500" DropKey="1900002" Weight="10000" />
+	<item Id="6420401" LogicName="data" DataName="item" DropValue="600" DropKey="1900002" Weight="10000" />
+	<item Id="6420402" LogicName="data" DataName="item" DropValue="700" DropKey="1900002" Weight="10000" />
+	<item Id="6420403" LogicName="data" DataName="item" DropValue="700" DropKey="1900002" Weight="10000" />
+	<item Id="6420501" LogicName="data" DataName="item" DropValue="800" DropKey="1900002" Weight="10000" />
+	<item Id="6420502" LogicName="data" DataName="item" DropValue="900" DropKey="1900002" Weight="10000" />
+	<item Id="6420503" LogicName="data" DataName="item" DropValue="1000" DropKey="1900002" Weight="10000" />
+	<item Id="6420504" LogicName="data" DataName="item" DropValue="1100" DropKey="1900002" Weight="10000" />
+	<item Id="6420601" LogicName="data" DataName="item" DropValue="1100" DropKey="1900002" Weight="10000" />
+	<item Id="6420602" LogicName="data" DataName="item" DropValue="1200" DropKey="1900002" Weight="10000" />
+	<item Id="6430101" LogicName="data" DataName="item" DropValue="100" DropKey="1900201" Weight="10000" />
+	<item Id="6430102" LogicName="data" DataName="item" DropValue="500" DropKey="1900201" Weight="10000" />
+	<item Id="6430103" LogicName="data" DataName="item" DropValue="1000" DropKey="1900201" Weight="10000" />
+	<item Id="6430201" LogicName="data" DataName="item" DropValue="200" DropKey="1900201" Weight="10000" />
+	<item Id="6430202" LogicName="data" DataName="item" DropValue="200" DropKey="1900201" Weight="10000" />
+	<item Id="6430203" LogicName="data" DataName="item" DropValue="200" DropKey="1900201" Weight="10000" />
+	<item Id="6430301" LogicName="data" DataName="item" DropValue="300" DropKey="1900201" Weight="10000" />
+	<item Id="6430302" LogicName="data" DataName="item" DropValue="400" DropKey="1900201" Weight="10000" />
+	<item Id="6430303" LogicName="data" DataName="item" DropValue="500" DropKey="1900201" Weight="10000" />
+	<item Id="6430401" LogicName="data" DataName="item" DropValue="600" DropKey="1900201" Weight="10000" />
+	<item Id="6430402" LogicName="data" DataName="item" DropValue="600" DropKey="1900201" Weight="10000" />
+	<item Id="6430403" LogicName="data" DataName="item" DropValue="700" DropKey="1900201" Weight="10000" />
+	<item Id="6430501" LogicName="data" DataName="item" DropValue="800" DropKey="1900201" Weight="10000" />
+	<item Id="6430502" LogicName="data" DataName="item" DropValue="900" DropKey="1900201" Weight="10000" />
+	<item Id="6430503" LogicName="data" DataName="item" DropValue="1000" DropKey="1900201" Weight="10000" />
+	<item Id="6430504" LogicName="data" DataName="item" DropValue="1000" DropKey="1900201" Weight="10000" />
+	<item Id="6430601" LogicName="data" DataName="item" DropValue="1100" DropKey="1900201" Weight="10000" />
+	<item Id="6430602" LogicName="data" DataName="item" DropValue="1200" DropKey="1900201" Weight="10000" />
+	<item Id="6440101" LogicName="data" DataName="item" DropValue="100" DropKey="1900301" Weight="10000" />
+	<item Id="6440102" LogicName="data" DataName="item" DropValue="500" DropKey="1900301" Weight="10000" />
+	<item Id="6440103" LogicName="data" DataName="item" DropValue="1000" DropKey="1900301" Weight="10000" />
+	<item Id="6440201" LogicName="data" DataName="item" DropValue="200" DropKey="1900301" Weight="10000" />
+	<item Id="6440202" LogicName="data" DataName="item" DropValue="200" DropKey="1900301" Weight="10000" />
+	<item Id="6440203" LogicName="data" DataName="item" DropValue="200" DropKey="1900301" Weight="10000" />
+	<item Id="6440301" LogicName="data" DataName="item" DropValue="300" DropKey="1900301" Weight="10000" />
+	<item Id="6440302" LogicName="data" DataName="item" DropValue="400" DropKey="1900301" Weight="10000" />
+	<item Id="6440303" LogicName="data" DataName="item" DropValue="500" DropKey="1900301" Weight="10000" />
+	<item Id="6440401" LogicName="data" DataName="item" DropValue="600" DropKey="1900301" Weight="10000" />
+	<item Id="6440402" LogicName="data" DataName="item" DropValue="600" DropKey="1900301" Weight="10000" />
+	<item Id="6440403" LogicName="data" DataName="item" DropValue="700" DropKey="1900301" Weight="10000" />
+	<item Id="6440501" LogicName="data" DataName="item" DropValue="800" DropKey="1900301" Weight="10000" />
+	<item Id="6440502" LogicName="data" DataName="item" DropValue="900" DropKey="1900301" Weight="10000" />
+	<item Id="6440503" LogicName="data" DataName="item" DropValue="1000" DropKey="1900301" Weight="10000" />
+	<item Id="6440504" LogicName="data" DataName="item" DropValue="1000" DropKey="1900301" Weight="10000" />
+	<item Id="6440601" LogicName="data" DataName="item" DropValue="1100" DropKey="1900301" Weight="10000" />
+	<item Id="6440602" LogicName="data" DataName="item" DropValue="1200" DropKey="1900301" Weight="10000" />
 	<item Id="6500000" LogicName="data" DataName="item" DropValue="1-1" DropKey="1000101" Weight="10000" />
 	<item Id="6500001" LogicName="data" DataName="item" DropValue="3" DropKey="1900001" Weight="10000" />
 	<item Id="6500111" LogicName="data" DataName="item" DropValue="149-277" DropKey="1900000" Weight="10000" />
@@ -1795,7 +1799,9 @@
 	<item Id="6515504" LogicName="data" DataName="item" DropValue="3724-6916" DropKey="1900002" Weight="10000" />
 	<item Id="6515601" LogicName="data" DataName="item" DropValue="4004-7436" DropKey="1900002" Weight="10000" />
 	<item Id="6515602" LogicName="data" DataName="item" DropValue="4284-7956" DropKey="1900002" Weight="10000" />
-	<item Id="6525100" LogicName="data" DataName="item" DropValue="100-100" DropKey="1900201" Weight="10000" />
+	<item Id="6525001" LogicName="data" DataName="item" DropValue="100-100" DropKey="1900201" Weight="10000" />
+	<item Id="6525002" LogicName="data" DataName="item" DropValue="1500-1500" DropKey="1900201" Weight="10000" />
+	<item Id="6525003" LogicName="data" DataName="item" DropValue="1500-1500" DropKey="1900201" Weight="10000" />
 	<item Id="6520111" LogicName="data" DataName="item" DropValue="1-1" DropKey="1900201" Weight="10000" />
 	<item Id="6520112" LogicName="data" DataName="item" DropValue="1-1" DropKey="1900201" Weight="10000" />
 	<item Id="6520113" LogicName="data" DataName="item" DropValue="1-1" DropKey="1900201" Weight="10000" />
@@ -1868,7 +1874,9 @@
 	<item Id="6525504" LogicName="data" DataName="item" DropValue="3640-6760" DropKey="1900201" Weight="10000" />
 	<item Id="6525601" LogicName="data" DataName="item" DropValue="3920-7280" DropKey="1900201" Weight="10000" />
 	<item Id="6525602" LogicName="data" DataName="item" DropValue="4200-7800" DropKey="1900201" Weight="10000" />
-	<item Id="6535100" LogicName="data" DataName="item" DropValue="2200-2200" DropKey="1900301" Weight="10000" />
+	<item Id="6535001" LogicName="data" DataName="item" DropValue="1000-1000" DropKey="1900301" Weight="10000" />
+	<item Id="6535002" LogicName="data" DataName="item" DropValue="1000-1000" DropKey="1900301" Weight="10000" />
+	<item Id="6535003" LogicName="data" DataName="item" DropValue="1000-1000" DropKey="1900301" Weight="10000" />
 	<item Id="6530111" LogicName="data" DataName="item" DropValue="1-1" DropKey="1900301" Weight="10000" />
 	<item Id="6530112" LogicName="data" DataName="item" DropValue="1-1" DropKey="1900301" Weight="10000" />
 	<item Id="6530113" LogicName="data" DataName="item" DropValue="1-1" DropKey="1900301" Weight="10000" />
@@ -2809,5 +2817,12 @@
 	<item Id="6990007" LogicName="data" DataName="task" DropValue="2" DropKey="24000702" Weight="1" />
 	<item Id="6990007" LogicName="data" DataName="task" DropValue="2" DropKey="24000703" Weight="1" />
 	<item Id="6990099" LogicName="data" DataName="task" DropValue="2" DropKey="900" Weight="1" />
-	<item Id="8881" LogicName="story" DataName="" DropValue="1" DropKey="11131" Weight="100" />
+	<item Id="86661" LogicName="data" DataName="item" DropValue="911" DropKey="1900000" Weight="100" />
+	<item Id="86662" LogicName="data" DataName="item" DropValue="919" DropKey="1900000" Weight="100" />
+	<item Id="86663" LogicName="data" DataName="item" DropValue="920" DropKey="1900000" Weight="100" />
+	<item Id="86664" LogicName="data" DataName="item" DropValue="921" DropKey="1900000" Weight="100" />
+	<item Id="8881" LogicName="story" DataName="" DropValue="1" DropKey="11201" Weight="100" />
+	<item Id="8882" LogicName="story" DataName="" DropValue="1" DropKey="11202" Weight="100" />
+	<item Id="8883" LogicName="story" DataName="" DropValue="1" DropKey="11203" Weight="100" />
+	<item Id="8884" LogicName="story" DataName="" DropValue="1" DropKey="11204" Weight="100" />
 </root>

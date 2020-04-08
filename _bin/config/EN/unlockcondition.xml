@@ -1,4 +1,4 @@
-<root platform="" version="3801">
+<root platform="" version="4178">
 	<item Id="39000000" Condition="totalsignin" DoneType=">=" DoneValue="1" Limits="" Limits1="" Limits2="" />
 	<item Id="39000001" Condition="buildlevel" DoneType=">=" DoneValue="99" Limits="202" Limits1="" Limits2="" />
 	<item Id="40004001" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="21000001" Limits1="" Limits2="" />
@@ -70,6 +70,7 @@
 	<item Id="39001064" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="22001001" Limits1="" Limits2="" />
 	<item Id="39001065" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="22001002" Limits1="" Limits2="" />
 	<item Id="39001066" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="22001003" Limits1="" Limits2="" />
+	<item Id="39001067" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="23000003" Limits1="" Limits2="" />
 	<item Id="39000200" Condition="unlockbuild" DoneType=">=" DoneValue="1" Limits="200" Limits1="" Limits2="" />
 	<item Id="39000201" Condition="unlockbuild" DoneType=">=" DoneValue="1" Limits="201" Limits1="" Limits2="" />
 	<item Id="39000202" Condition="unlockbuild" DoneType=">=" DoneValue="1" Limits="202" Limits1="" Limits2="" />
@@ -264,67 +265,5 @@
 	<item Id="59000528" Condition="buildlevel" DoneType=">=" DoneValue="28" Limits="212" Limits1="" Limits2="" />
 	<item Id="59000529" Condition="buildlevel" DoneType=">=" DoneValue="29" Limits="212" Limits1="" Limits2="" />
 	<item Id="59000530" Condition="buildlevel" DoneType=">=" DoneValue="30" Limits="212" Limits1="" Limits2="" />
-	<item Id="101" Condition="killnpc" DoneType=">=" DoneValue="4" Limits="race=1601" Limits1="" Limits2="" />
-	<item Id="102" Condition="killnpc" DoneType=">=" DoneValue="4" Limits="killprofession=1100" Limits1="race=1601" Limits2="" />
-	<item Id="103" Condition="killnpc" DoneType=">=" DoneValue="2" Limits="race=1601" Limits1="" Limits2="" />
-	<item Id="201" Condition="explore" DoneType=">=" DoneValue="2" Limits="10101" Limits1="" Limits2="" />
-	<item Id="202" Condition="explorevictory" DoneType=">=" DoneValue="2" Limits="10101" Limits1="" Limits2="" />
-	<item Id="203" Condition="pve" DoneType=">=" DoneValue="2" Limits="400001" Limits1="" Limits2="" />
-	<item Id="204" Condition="pvevictory" DoneType=">=" DoneValue="2" Limits="400001" Limits1="" Limits2="" />
-	<item Id="205" Condition="onceexplorepve" DoneType=">=" DoneValue="2" Limits="10101" Limits1="" Limits2="" />
-	<item Id="210" Condition="pveturns" DoneType="<=" DoneValue="3" Limits="" Limits1="" Limits2="" />
-	<item Id="211" Condition="exploretime" DoneType="<" DoneValue="180" Limits="" Limits1="" Limits2="" />
-	<item Id="212" Condition="fighterteamhero" DoneType="<=" DoneValue="2" Limits="" Limits1="" Limits2="" />
-	<item Id="213" Condition="fighterteamhero" DoneType=">" DoneValue="2" Limits="" Limits1="" Limits2="" />
-	<item Id="214" Condition="fighterdeathhero" DoneType="<" DoneValue="1" Limits="" Limits1="" Limits2="" />
-	<item Id="215" Condition="fighterdeathhero" DoneType=">=" DoneValue="1" Limits="" Limits1="" Limits2="" />
-	<item Id="301" Condition="unlockbuildcount" DoneType=">=" DoneValue="4" Limits="" Limits1="" Limits2="" />
-	<item Id="302" Condition="unlockbuild" DoneType=">=" DoneValue="1" Limits="203" Limits1="" Limits2="" />
-	<item Id="303" Condition="buildlevel" DoneType="=" DoneValue="2" Limits="203" Limits1="" Limits2="" />
-	<item Id="401" Condition="ownmoney" DoneType=">=" DoneValue="10000" Limits="" Limits1="" Limits2="" />
-	<item Id="402" Condition="addmoney" DoneType=">=" DoneValue="1000" Limits="" Limits1="" Limits2="" />
-	<item Id="403" Condition="costmoney" DoneType=">=" DoneValue="100" Limits="" Limits1="" Limits2="" />
-	<item Id="404" Condition="ownsupplies" DoneType=">=" DoneValue="10000" Limits="" Limits1="" Limits2="" />
-	<item Id="405" Condition="addsupplies" DoneType=">=" DoneValue="1000" Limits="" Limits1="" Limits2="" />
-	<item Id="406" Condition="costsupplies" DoneType=">=" DoneValue="100" Limits="" Limits1="" Limits2="" />
-	<item Id="407" Condition="owndiamond" DoneType=">=" DoneValue="1000" Limits="" Limits1="" Limits2="" />
-	<item Id="408" Condition="adddiamond" DoneType=">=" DoneValue="100" Limits="" Limits1="" Limits2="" />
-	<item Id="409" Condition="costdiamond" DoneType=">=" DoneValue="10" Limits="" Limits1="" Limits2="" />
-	<item Id="410" Condition="additem" DoneType=">=" DoneValue="1" Limits="1000101" Limits1="" Limits2="" />
-	<item Id="411" Condition="useitem" DoneType=">=" DoneValue="10" Limits="1000101" Limits1="" Limits2="" />
-	<item Id="501" Condition="ownhero" DoneType=">=" DoneValue="10" Limits="" Limits1="" Limits2="" />
-	<item Id="502" Condition="ownhero" DoneType=">=" DoneValue="1" Limits="race=1601" Limits1="" Limits2="" />
-	<item Id="503" Condition="ownhero" DoneType=">=" DoneValue="2" Limits="profession=1115" Limits1="" Limits2="" />
-	<item Id="504" Condition="ownhero" DoneType=">=" DoneValue="2" Limits="race=1602" Limits1="weapontype=1805" Limits2="" />
-	<item Id="505" Condition="ownhero" DoneType=">=" DoneValue="2" Limits="movetype=1701" Limits1="weapontype=1805" Limits2="" />
-	<item Id="506" Condition="ownhero" DoneType=">=" DoneValue="2" Limits="level&gt;=10" Limits1="race=1601" Limits2="" />
-	<item Id="507" Condition="ownhero" DoneType=">=" DoneValue="2" Limits="classlv=2" Limits1="race=1601" Limits2="" />
-	<item Id="510" Condition="teamhero" DoneType=">=" DoneValue="1" Limits="race=1601" Limits1="posflag=201" Limits2="" />
-	<item Id="511" Condition="teamhero" DoneType=">=" DoneValue="2" Limits="profession=1115" Limits1="posflag=201" Limits2="posflag=201" />
-	<item Id="512" Condition="teamhero" DoneType=">=" DoneValue="2" Limits="race=1602" Limits1="weapontype=1805" Limits2="posflag=201" />
-	<item Id="513" Condition="teamhero" DoneType=">=" DoneValue="2" Limits="movetype=1701" Limits1="weapontype=1805" Limits2="posflag=201" />
-	<item Id="514" Condition="teamhero" DoneType=">=" DoneValue="2" Limits="level&gt;=10" Limits1="race=1601" Limits2="posflag=201" />
-	<item Id="515" Condition="teamhero" DoneType=">=" DoneValue="2" Limits="classlv=2" Limits1="race=1601" Limits2="posflag=201" />
-	<item Id="520" Condition="addhero" DoneType=">=" DoneValue="1" Limits="race=1601" Limits1="" Limits2="" />
-	<item Id="521" Condition="addhero" DoneType=">=" DoneValue="2" Limits="profession=1115" Limits1="" Limits2="" />
-	<item Id="522" Condition="addhero" DoneType=">=" DoneValue="2" Limits="race=1602" Limits1="weapontype=1805" Limits2="" />
-	<item Id="523" Condition="addhero" DoneType=">=" DoneValue="2" Limits="movetype=1701" Limits1="weapontype=1805" Limits2="" />
-	<item Id="524" Condition="addhero" DoneType=">=" DoneValue="2" Limits="level&gt;=10" Limits1="race=1601" Limits2="" />
-	<item Id="525" Condition="addhero" DoneType=">=" DoneValue="2" Limits="classlv=2" Limits1="race=1601" Limits2="" />
-	<item Id="530" Condition="deathhero" DoneType=">=" DoneValue="1" Limits="race=1601" Limits1="" Limits2="" />
-	<item Id="531" Condition="deathhero" DoneType=">=" DoneValue="1" Limits="profession=1115" Limits1="" Limits2="" />
-	<item Id="532" Condition="deathhero" DoneType=">=" DoneValue="1" Limits="race=1602" Limits1="weapontype=1805" Limits2="" />
-	<item Id="533" Condition="deathhero" DoneType=">=" DoneValue="1" Limits="movetype=1701" Limits1="weapontype=1805" Limits2="" />
-	<item Id="534" Condition="deathhero" DoneType=">=" DoneValue="1" Limits="level&gt;=10" Limits1="race=1601" Limits2="" />
-	<item Id="535" Condition="deathhero" DoneType=">=" DoneValue="1" Limits="classlv=2" Limits1="race=1601" Limits2="" />
-	<item Id="601" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="21101001" Limits1="" Limits2="" />
-	<item Id="602" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="type=1" Limits1="" Limits2="" />
-	<item Id="603" Condition="finishtaskcount" DoneType=">=" DoneValue="3" Limits="type=1" Limits1="" Limits2="" />
-	<item Id="701" Condition="totalsignin" DoneType=">=" DoneValue="2" Limits="" Limits1="" Limits2="" />
-	<item Id="702" Condition="continuoussignin" DoneType=">=" DoneValue="2" Limits="" Limits1="" Limits2="" />
-	<item Id="801" Condition="interaction" DoneType=">=" DoneValue="2" Limits="1010102" Limits1="field=1" Limits2="" />
-	<item Id="802" Condition="interaction" DoneType=">=" DoneValue="2" Limits="1010101" Limits1="field=1" Limits2="" />
-	<item Id="810" Condition="interaction" DoneType=">=" DoneValue="2" Limits="15011" Limits1="field=2" Limits2="" />
-	<item Id="811" Condition="interaction" DoneType=">=" DoneValue="2" Limits="15012" Limits1="field=2" Limits2="" />
 	<item Id="59001204" Condition="explore" DoneType=">=" DoneValue="1" Limits="" Limits1="" Limits2="" />
 </root>

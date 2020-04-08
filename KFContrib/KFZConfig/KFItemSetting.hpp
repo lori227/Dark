@@ -4,6 +4,7 @@
 #include "KFrameEx.h"
 #include "KFCore/KFElement.h"
 #include "KFZConfig/KFSetting.h"
+#include "KFExecuteData.h"
 
 namespace KFrame
 {
@@ -50,6 +51,15 @@ namespace KFrame
     class KFItemSetting : public KFIntSetting
     {
     public:
+        virtual ~KFItemSetting()
+        {
+            for ( auto execute : _execute_list )
+            {
+                __KF_DELETE__( KFExecuteData, execute );
+            }
+            _execute_list.clear();
+        }
+
         // 判断是否能使用
         bool CheckCanUse() const;
 
@@ -132,8 +142,8 @@ namespace KFrame
         // 药品类型
         uint32 _drug_type = 0u;
 
-        // 添加的药品数值
-        std::unordered_map< std::string, int32 > _drug_values;
+        // 药品执行功能列表
+        std::vector<KFExecuteData*> _execute_list;
 
         // 使用目标
         uint32 _use_target = 0u;

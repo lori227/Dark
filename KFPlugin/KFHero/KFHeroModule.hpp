@@ -97,6 +97,18 @@ namespace KFrame
         // 英雄主动技能更新
         __KF_ADD_DATA_FUNCTION__( OnHeroActiveUpdate );
 
+        // 添加hp
+        __KF_EXECUTE_FUNCTION__( OnExecuteAddHp );
+
+        // 减少hp
+        __KF_EXECUTE_FUNCTION__( OnExecuteDecHp );
+
+        // 添加dip
+        __KF_EXECUTE_FUNCTION__( OnExecuteAddDip );
+
+        // 减少dip
+        __KF_EXECUTE_FUNCTION__( OnExecuteDecDip );
+
         // 添加英雄等级
         __KF_EXECUTE_FUNCTION__( OnExecuteTechnologyHeroLevel );
 

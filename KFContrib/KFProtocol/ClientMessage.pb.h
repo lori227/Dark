@@ -4916,6 +4916,18 @@ class LIBPROTOC_EXPORT MsgRealmEnterAck : public ::google::protobuf::Message /* 
   ::google::protobuf::uint32 worldflag() const;
   void set_worldflag(::google::protobuf::uint32 value);
 
+  // uint32 foodstep = 7;
+  void clear_foodstep();
+  static const int kFoodstepFieldNumber = 7;
+  ::google::protobuf::uint32 foodstep() const;
+  void set_foodstep(::google::protobuf::uint32 value);
+
+  // uint32 entertype = 8;
+  void clear_entertype();
+  static const int kEntertypeFieldNumber = 8;
+  ::google::protobuf::uint32 entertype() const;
+  void set_entertype(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:KFMsg.MsgRealmEnterAck)
  private:
 
@@ -4931,6 +4943,8 @@ class LIBPROTOC_EXPORT MsgRealmEnterAck : public ::google::protobuf::Message /* 
   ::google::protobuf::uint32 faith_;
   ::google::protobuf::uint32 realmid_;
   ::google::protobuf::uint32 worldflag_;
+  ::google::protobuf::uint32 foodstep_;
+  ::google::protobuf::uint32 entertype_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_ClientMessage_2eproto::TableStruct;
 };
@@ -14776,6 +14790,34 @@ inline ::google::protobuf::Map< ::std::string, ::std::string >*
 MsgRealmEnterAck::mutable_eventdata() {
   // @@protoc_insertion_point(field_mutable_map:KFMsg.MsgRealmEnterAck.eventdata)
   return eventdata_.MutableMap();
+}
+
+// uint32 foodstep = 7;
+inline void MsgRealmEnterAck::clear_foodstep() {
+  foodstep_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgRealmEnterAck::foodstep() const {
+  // @@protoc_insertion_point(field_get:KFMsg.MsgRealmEnterAck.foodstep)
+  return foodstep_;
+}
+inline void MsgRealmEnterAck::set_foodstep(::google::protobuf::uint32 value) {
+  
+  foodstep_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.MsgRealmEnterAck.foodstep)
+}
+
+// uint32 entertype = 8;
+inline void MsgRealmEnterAck::clear_entertype() {
+  entertype_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgRealmEnterAck::entertype() const {
+  // @@protoc_insertion_point(field_get:KFMsg.MsgRealmEnterAck.entertype)
+  return entertype_;
+}
+inline void MsgRealmEnterAck::set_entertype(::google::protobuf::uint32 value) {
+  
+  entertype_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.MsgRealmEnterAck.entertype)
 }
 
 // -------------------------------------------------------------------

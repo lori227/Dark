@@ -21,6 +21,7 @@
 #include "KFHero/KFHeroInterface.h"
 #include "KFRealm/KFPVEInterface.h"
 #include "KFZConfig/KFItemConfig.hpp"
+#include "KFExecute/KFExecuteInterface.h"
 
 namespace KFrame
 {

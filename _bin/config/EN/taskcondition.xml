@@ -1,4 +1,4 @@
-<root platform="" version="4078">
+<root platform="" version="4181">
 	<item Id="30000200" Condition="unlockbuild" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="200" Limits1="" Limits2="" />
 	<item Id="30000201" Condition="unlockbuild" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="201" Limits1="" Limits2="" />
 	<item Id="30000202" Condition="unlockbuild" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="202" Limits1="" Limits2="" />
@@ -157,6 +157,7 @@
 	<item Id="32000018" Condition="buildlevel" DoneType=">=" DoneValue="2" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="212" Limits1="" Limits2="" />
 	<item Id="32000019" Condition="teamhero" DoneType=">=" DoneValue="2" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="level&gt;=3" Limits1="posflag=201" Limits2="" />
 	<item Id="32000020" Condition="smithyweapon" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="" Limits1="" Limits2="" />
+	<item Id="32000021" Condition="finishtask" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="24000002" Limits1="" Limits2="" />
 	<item Id="34000201" Condition="finishtask" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="24000201" Limits1="" Limits2="" />
 	<item Id="34000203" Condition="finishtask" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="24000203" Limits1="" Limits2="" />
 	<item Id="34000204" Condition="finishtask" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="24000204" Limits1="" Limits2="" />
@@ -178,6 +179,7 @@
 	<item Id="34000702" Condition="finishtask" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="24000702" Limits1="" Limits2="" />
 	<item Id="34000703" Condition="finishtask" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="24000703" Limits1="" Limits2="" />
 	<item Id="32999999" Condition="adddiamond" DoneType=">=" DoneValue="100" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="" Limits1="" Limits2="" />
+	<item Id="33000001" Condition="retirementhero" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="" Limits1="" Limits2="" />
 	<item Id="33001001" Condition="interaction" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="10001001" Limits1="field=1" Limits2="" />
 	<item Id="33001002" Condition="interaction" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="10001002" Limits1="field=1" Limits2="" />
 	<item Id="33001003" Condition="interaction" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="10001003" Limits1="field=1" Limits2="" />

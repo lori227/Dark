@@ -30,21 +30,34 @@ namespace KFrame
         }
 
         auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
-        if ( kfelementobject->_config_id == _invalid_int )
+        if ( kfelementobject->_config_id != _invalid_int )
         {
-            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no id", kfelement->_data_name );
-            return false;
+            auto kfsetting = KFChapterConfig::Instance()->FindSetting( kfelementobject->_config_id );
+            if ( kfsetting != nullptr )
+            {
+                player->UpdateData( kfparent, kfelementobject->_config_id, kfparent->_data_setting->_value_key_name, KFEnum::Set, kfsetting->_init_status_id );
+            }
+        }
+        else
+        {
+#ifdef __KF_DEBUG__
+            for ( auto& iter : KFChapterConfig::Instance()->_settings._objects )
+            {
+                auto kfsetting = iter.second;
+                if ( kfsetting->_finish_status_id == 0u )
+                {
+                    continue;
+                }
+
+                auto status = kfparent->Get<uint32>( kfsetting->_id, kfparent->_data_setting->_value_key_name );
+                if ( status == 0u )
+                {
+                    player->UpdateData( kfparent, kfsetting->_id, kfparent->_data_setting->_value_key_name, KFEnum::Set, kfsetting->_init_status_id );
+                }
+            }
+#endif
         }
 
-        auto kfsetting = KFChapterConfig::Instance()->FindSetting( kfelementobject->_config_id );
-        if ( kfsetting == nullptr )
-        {
-            __LOG_ERROR_FUNCTION__( function, line, "chapter=[{}] can't find setting", kfelementobject->_config_id );
-            return false;
-        }
-
-        auto status = kfelementobject->CalcValue( kfparent->_data_setting, kfparent->_data_setting->_value_key_name, 1.0f );
-        player->UpdateData( __STRING__( chapter ), kfelementobject->_config_id, kfparent->_data_setting->_value_key_name, KFEnum::Set, status );
         return true;
     }
 

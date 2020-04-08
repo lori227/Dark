@@ -35,21 +35,21 @@ namespace KFrame
         }
 
         auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
-        if ( kfelementobject->_config_id == _invalid_int )
-        {
-            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] no id", kfelement->_data_name );
-            return false;
-        }
-
-        auto kfsetting = KFTechnologyConfig::Instance()->FindSetting( kfelementobject->_config_id );
-        if ( kfsetting == nullptr )
-        {
-            __LOG_ERROR_FUNCTION__( function, line, "id=[{}] technologysetting = null", kfelementobject->_config_id );
-            return false;
-        }
-
         auto status = kfelementobject->CalcValue( kfparent->_data_setting, kfparent->_data_setting->_value_key_name, 1.0f );
-        UpdateTechnologyData( player, kfparent, kfsetting->_id, status );
+        if ( kfelementobject->_config_id != _invalid_int )
+        {
+            UpdateTechnologyData( player, kfparent, kfelementobject->_config_id, status );
+        }
+        else
+        {
+#ifdef __KF_DEBUG__
+            for ( auto& iter : KFTechnologyConfig::Instance()->_settings._objects )
+            {
+                UpdateTechnologyData( player, kfparent, iter.second, status );
+            }
+#endif
+        }
+
         return true;
     }
 
@@ -99,17 +99,22 @@ namespace KFrame
         auto kfsetting = KFTechnologyConfig::Instance()->FindSetting( technologyid );
         if ( kfsetting == nullptr )
         {
-            return;
+            return _kf_display->SendToClient( player, KFMsg::TechnologySettingError, technologyid );
         }
 
+        UpdateTechnologyData( player, kftechnologyrecord, kfsetting, status );
+    }
+
+    void KFTechnologyModule::UpdateTechnologyData( KFEntity* player, KFData* kftechnologyrecord, const KFTechnologySetting* kfsetting, uint32 status )
+    {
         auto newstatus = ( status == 0u ? kfsetting->_status : status );
-        auto kftechnology = kftechnologyrecord->Find( technologyid );
+        auto kftechnology = kftechnologyrecord->Find( kfsetting->_id );
         if ( kftechnology == nullptr )
         {
             kftechnology = player->CreateData( kftechnologyrecord );
             kftechnology->Set( __STRING__( type ), kfsetting->_type );
             kftechnology->Set( kftechnology->_data_setting->_value_key_name, newstatus );
-            player->AddData( kftechnologyrecord, technologyid, kftechnology );
+            player->AddData( kftechnologyrecord, kfsetting->_id, kftechnology );
         }
         else
         {

@@ -1,7 +1,7 @@
-<root platform="" version="4009">
+<root platform="" version="4143">
 	<item Id="1" MultiId="39000000" Index="1" Cost="" Event="30000005" Title="MultiOption_Campfire_Title" Description="MultiOption_Campfire_Des" OptionTxt="MultiOption_Campfire_Option1" LocalEvent="30000023" />
 	<item Id="2" MultiId="39000001" Index="1" Cost="" Event="30000017" Title="MultiOption_Altar_Title" Description="MultiOption_Altar_Des" OptionTxt="MultiOption_Altar_Option1" LocalEvent="30000023" />
-	<item Id="3" MultiId="39000001" Index="2" Cost="[[2,1900005,1]]" Event="30000044" Title="MultiOption_Altar_Title" Description="MultiOption_Altar_Des" OptionTxt="MultiOption_Altar_Option2" LocalEvent="30000023" />
+	<item Id="3" MultiId="39000001" Index="2" Cost="[[2,1900005,1]]" Event="30000044" Title="MultiOption_Altar_Title" Description="MultiOption_Altar_Des" OptionTxt="MultiOption_Altar_Option2" LocalEvent="" />
 	<item Id="4" MultiId="39000002" Index="1" Cost="[[2,1900101,1]]" Event="30000001" Title="MultiOption_Vine_Title" Description="MultiOption_Vine_Des" OptionTxt="MultiOption_Vine_Option2" LocalEvent="30000023" />
 	<item Id="5" MultiId="39000003" Index="1" Cost="" Event="30000027" Title="MultiOption_OilBegging_Title" Description="MultiOption_OilBegging_Des" OptionTxt="MultiOption_OilBegging_Option1" LocalEvent="" />
 	<item Id="6" MultiId="39000003" Index="2" Cost="[[2,1900102,1]]" Event="30000021" Title="MultiOption_OilBegging_Title" Description="MultiOption_OilBegging_Des" OptionTxt="MultiOption_OilBegging_Option2" LocalEvent="" />

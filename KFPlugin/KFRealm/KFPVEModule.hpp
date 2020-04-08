@@ -73,8 +73,17 @@ namespace KFrame
         // 执行战斗逻辑
         __KF_EXECUTE_FUNCTION__( OnExecutePVEFighter );
 
+        // 添加信仰值
+        __KF_EXECUTE_FUNCTION__( OnExecuteAddFaith );
+
+        // 减少信仰值
+        __KF_EXECUTE_FUNCTION__( OnExecuteDecFaith );
+
         // 掉落英雄经验
         __KF_DROP_LOGIC_FUNCTION__( OnDropHeroExp );
+
+        // pve战斗掉落结果
+        __KF_ELEMENT_RESULT_FUNCTION__( OnPVEDropElementResult );
 
     protected:
         // 请求npc数据

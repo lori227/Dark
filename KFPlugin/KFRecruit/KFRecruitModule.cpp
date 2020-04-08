@@ -640,7 +640,7 @@ namespace KFrame
 
         // 添加英雄
         player->AddData( kfherorecord, kfmsg.uuid(), kfhero );
-        player->AddDataToShow( __STRING__( recruit ), kfhero );
+        player->AddDataToShow( __STRING__( recruit ), 0u, kfhero );
 
         _kf_display->SendToClient( player, KFMsg::HeroRecruitHeroSuc );
     }

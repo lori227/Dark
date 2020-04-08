@@ -17,8 +17,13 @@ namespace KFrame
         __REGISTER_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( exp ), &KFHeroModule::OnHeroExpUpdate );
         __REGISTER_ADD_DATA_1__( __STRING__( active ), &KFHeroModule::OnHeroActiveUpdate );
 
+        __REGISTER_EXECUTE__( __STRING__( addhp ), &KFHeroModule::OnExecuteAddHp );
+        __REGISTER_EXECUTE__( __STRING__( dechp ), &KFHeroModule::OnExecuteDecHp );
+        __REGISTER_EXECUTE__( __STRING__( adddip ), &KFHeroModule::OnExecuteAddDip );
+        __REGISTER_EXECUTE__( __STRING__( decdip ), &KFHeroModule::OnExecuteDecDip );
         __REGISTER_EXECUTE__( __STRING__( herolevel ), &KFHeroModule::OnExecuteTechnologyHeroLevel );
         __REGISTER_EXECUTE__( __STRING__( maxherocount ), &KFHeroModule::OnExecuteTechnologyMaxHeroCount );
+
         ////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_LOCK_HERO_REQ, &KFHeroModule::HandleLockHeroReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_REMOVE_HERO_REQ, &KFHeroModule::HandleRemoveHeroReq );
@@ -37,8 +42,13 @@ namespace KFrame
         __UN_UPDATE_DATA_2__( __STRING__( hero ), __STRING__( exp ) );
         __UN_UPDATE_DATA_1__( __STRING__( active ) );
 
+        __UN_EXECUTE__( __STRING__( addhp ) );
+        __UN_EXECUTE__( __STRING__( dechp ) );
+        __UN_EXECUTE__( __STRING__( adddip ) );
+        __UN_EXECUTE__( __STRING__( decdip ) );
         __UN_EXECUTE__( __STRING__( herolevel ) );
         __UN_EXECUTE__( __STRING__( maxherocount ) );
+
         /////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_LOCK_HERO_REQ );
         __UN_MESSAGE__( KFMsg::MSG_REMOVE_HERO_REQ );
@@ -80,6 +90,7 @@ namespace KFrame
         }
         auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
 
+#ifdef __KF_DEBUG__
         // 已经存在的英雄
         auto kfuuid = kfelementobject->_values.Find( __STRING__( uuid ) );
         if ( kfuuid != nullptr )
@@ -96,6 +107,7 @@ namespace KFrame
             player->UpdateElementToData( kfhero, kfelementobject, kfresult->_multiple );
             return true;
         }
+#endif // __KF_DEBUG__
 
         if ( kfelementobject->_config_id == 0u )
         {
@@ -344,6 +356,113 @@ namespace KFrame
 
     //////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////
+
+    __KF_EXECUTE_FUNCTION__( KFHeroModule::OnExecuteAddHp )
+    {
+        if ( executedata->_param_list._params.size() < 1u )
+        {
+            __LOG_ERROR_FUNCTION__( function, line, "addhp execute param size<1" );
+            return false;
+        }
+
+        auto herouuid = executedata->_calc_value;
+        if ( herouuid == 0u )
+        {
+            __LOG_ERROR_FUNCTION__( function, line, "addhp herouuid is null" );
+            return false;
+        }
+
+        auto kfhero = player->Find( __STRING__( hero ), herouuid );
+        if ( kfhero == nullptr )
+        {
+            __LOG_ERROR_FUNCTION__( function, line, "addhp hero is null" );
+            return false;
+        }
+
+        auto hp = executedata->_param_list._params[0]->_int_value;
+        OperateHp( player, kfhero, KFEnum::Add, hp );
+
+        return true;
+    }
+
+    __KF_EXECUTE_FUNCTION__( KFHeroModule::OnExecuteDecHp )
+    {
+        if ( executedata->_param_list._params.size() < 1u )
+        {
+            __LOG_ERROR_FUNCTION__( function, line, "dechp execute param size<1" );
+            return false;
+        }
+
+        auto herouuid = executedata->_calc_value;
+        if ( herouuid == 0u )
+        {
+            __LOG_ERROR_FUNCTION__( function, line, "dechp herouuid is null" );
+            return false;
+        }
+
+        auto kfhero = player->Find( __STRING__( hero ), herouuid );
+        if ( kfhero == nullptr )
+        {
+            __LOG_ERROR_FUNCTION__( function, line, "dechp hero is null" );
+            return false;
+        }
+
+        auto hp = executedata->_param_list._params[0]->_int_value;
+        OperateHp( player, kfhero, KFEnum::Dec, hp );
+
+        return true;
+    }
+
+    __KF_EXECUTE_FUNCTION__( KFHeroModule::OnExecuteAddDip )
+    {
+        if ( executedata->_param_list._params.size() < 1u )
+        {
+            return false;
+        }
+
+        auto herouuid = executedata->_calc_value;
+        if ( herouuid == 0u )
+        {
+            return false;
+        }
+
+        auto kfhero = player->Find( __STRING__( hero ), herouuid );
+        if ( kfhero == nullptr )
+        {
+            return false;
+        }
+
+        auto dip = executedata->_param_list._params[0]->_int_value;
+        player->UpdateData( kfhero, __STRING__( dip ), KFEnum::Add, dip );
+
+        return true;
+    }
+
+    __KF_EXECUTE_FUNCTION__( KFHeroModule::OnExecuteDecDip )
+    {
+        if ( executedata->_param_list._params.size() < 1u )
+        {
+            return false;
+        }
+
+        auto herouuid = executedata->_calc_value;
+        if ( herouuid == 0u )
+        {
+            return false;
+        }
+
+        auto kfhero = player->Find( __STRING__( hero ), herouuid );
+        if ( kfhero == nullptr )
+        {
+            return false;
+        }
+
+        auto dip = executedata->_param_list._params[0]->_int_value;
+        player->UpdateData( kfhero, __STRING__( dip ), KFEnum::Dec, dip );
+
+        return true;
+    }
+
     __KF_EXECUTE_FUNCTION__( KFHeroModule::OnExecuteTechnologyHeroLevel )
     {
         if ( executedata->_param_list._params.size() < 1u )

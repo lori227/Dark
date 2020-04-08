@@ -57,6 +57,7 @@ namespace KFrame
 
         // 更新科技数据
         void UpdateTechnologyData( KFEntity* player, KFData* kftechnologyrecord, uint32 technologyid, uint32 status );
+        void UpdateTechnologyData( KFEntity* player, KFData* kftechnologyrecord, const KFTechnologySetting* kfsetting, uint32 status );
 
     protected:
         // 玩家组件上下文

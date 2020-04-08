@@ -102,6 +102,9 @@ namespace KFrame
         // 删除道具
         __KF_REMOVE_DATA_FUNCTION__( OnRealmRemoveItem );
 
+        // 探索掉落结果
+        __KF_ELEMENT_RESULT_FUNCTION__( OnRealmDropElementResult );
+
     protected:
         virtual void BindRealmEnterFunction( const std::string& module, KFRealmEnterFunction& function );
         virtual void UnBindRealmEnterFunction( const std::string& module );

@@ -53,6 +53,8 @@ namespace KFrame
         __STRING_DEFINE__( clinic );
         __STRING_DEFINE__( daytime );
         __STRING_DEFINE__( dip );
+        __STRING_DEFINE__( adddip );
+        __STRING_DEFINE__( decdip );
         __STRING_DEFINE__( npc );
         __STRING_DEFINE__( explore );
         __STRING_DEFINE__( random );
@@ -223,6 +225,8 @@ namespace KFrame
         __STRING_DEFINE__( food );
         __STRING_DEFINE__( rune );
         __STRING_DEFINE__( faith );
+        __STRING_DEFINE__( addfaith );
+        __STRING_DEFINE__( decfaith );
         __STRING_DEFINE__( enterfaith );
         __STRING_DEFINE__( leavefaith );
         __STRING_DEFINE__( flee );
@@ -245,6 +249,8 @@ namespace KFrame
         __STRING_DEFINE__( voice );
         __STRING_DEFINE__( custom );
         __STRING_DEFINE__( itemmove );
+        __STRING_DEFINE__( pvedrop );
+        __STRING_DEFINE__( realmdrop );
     }
 }
 

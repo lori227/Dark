@@ -14,6 +14,7 @@ namespace KFrame
         __REGISTER_UPDATE_DATA_2__( __STRING__( item ), __STRING__( count ), &KFRealmModule::OnRealmUseItem );
         __REGISTER_REMOVE_DATA_1__( __STRING__( item ), &KFRealmModule::OnRealmRemoveItem );
 
+        __REGISTER_ELEMENT_RESULT__( __STRING__( realmdrop ), &KFRealmModule::OnRealmDropElementResult );
         ///////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_REALM_ENTER_REQ, &KFRealmModule::HandleRealmEnterReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_REALM_JUMP_REQ, &KFRealmModule::HandleRealmJumpReq );
@@ -37,6 +38,7 @@ namespace KFrame
 
         __UN_UPDATE_DATA_2__( __STRING__( item ), __STRING__( count ) );
         __UN_REMOVE_DATA_1__( __STRING__( item ) );
+        __UN_ELEMENT_RESULT__( __STRING__( realmdrop ) );
         //////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_REALM_ENTER_REQ );
         __UN_MESSAGE__( KFMsg::MSG_REALM_JUMP_REQ );
@@ -155,13 +157,14 @@ namespace KFrame
 
         // 下发给客户端
         KFMsg::MsgRealmEnterAck ack;
+        ack.set_entertype( entertype );
         ack.set_realmid( kfrealmdata->_data.id() );
         ack.set_faith( kfrealmdata->_data.faith() );
+        ack.set_foodstep( kfrealmdata->_data.foodstep() );
         ack.set_worldflag( kfrealmdata->_data.innerworld() );
         ack.mutable_exploredata()->CopyFrom( *pbexplore );
         ack.mutable_buffdata()->CopyFrom( kfrealmdata->_data.buffdata() );
         *ack.mutable_eventdata() = kfrealmdata->_data.eventdata();
-
         _kf_player->SendToClient( player, KFMsg::MSG_REALM_ENTER_ACK, &ack );
 
         // 进入秘境回调
@@ -620,15 +623,21 @@ namespace KFrame
         auto& droplist = GetRealmDropList( kfsetting, result );
         if ( !droplist.empty() )
         {
-            // 把原来的显示同步到客户端
-            player->ShowElementToClient();
-
             // 掉落
-            _kf_drop->Drop( player, droplist, __STRING__( realm ), kfrealmdata->_data.id(), __FUNC_LINE__ );
-
-            // 掉落显示
-            kfrealmdata->BalanceDropData( player );
+            _kf_drop->Drop( player, droplist, __STRING__( realmdrop ), kfrealmdata->_data.id(), __FUNC_LINE__ );
+            player->SyncDataToClient();
         }
+    }
+
+    __KF_ELEMENT_RESULT_FUNCTION__( KFRealmModule::OnRealmDropElementResult )
+    {
+        auto kfrealmdata = _realm_data.Find( player->GetKeyID() );
+        if ( kfrealmdata != nullptr )
+        {
+            kfrealmdata->BalanceDropData( kfresult );
+        }
+
+        return false;
     }
 
     const UInt32Vector& KFRealmModule::GetRealmDropList( const KFRealmLevel* kfsetting, uint32 result )
@@ -788,7 +797,6 @@ namespace KFrame
         }
         else
         {
-            player->Set( __STRING__( realmdata ), _invalid_string );
             auto kfrealmdata = _realm_data.Create( player->GetKeyID() );
             auto ok = kfrealmdata->_data.ParseFromString( strdata );
             if ( !ok )
@@ -819,6 +827,10 @@ namespace KFrame
             player->Set( __STRING__( realmdata ), strdata );
             player->Set( __STRING__( realmid ), kfrecord->_data.id() );
             _realm_data.Remove( player->GetKeyID() );
+        }
+        else
+        {
+            player->Set( __STRING__( realmdata ), _invalid_string );
         }
     }
 

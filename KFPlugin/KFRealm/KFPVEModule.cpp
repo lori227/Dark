@@ -12,6 +12,9 @@ namespace KFrame
         ///////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_DROP_LOGIC__( __STRING__( exp ), &KFPVEModule::OnDropHeroExp );
         __REGISTER_EXECUTE__( __STRING__( pve ), &KFPVEModule::OnExecutePVEFighter );
+        __REGISTER_EXECUTE__( __STRING__( addfaith ), &KFPVEModule::OnExecuteAddFaith );
+        __REGISTER_EXECUTE__( __STRING__( decfaith ), &KFPVEModule::OnExecuteDecFaith );
+        __REGISTER_ELEMENT_RESULT__( __STRING__( pvedrop ), &KFPVEModule::OnPVEDropElementResult );
         ///////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_NPC_GROUP_DATA_REQ, &KFPVEModule::HandleNpcGroupDataReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_PVE_REQ, &KFPVEModule::HandlePVEReq );
@@ -27,8 +30,11 @@ namespace KFrame
     void KFPVEModule::BeforeShut()
     {
         __UN_LEAVE_PLAYER__();
-        __UN_EXECUTE__( __STRING__( pve ) );
         __UN_DROP_LOGIC__( __STRING__( exp ) );
+        __UN_EXECUTE__( __STRING__( pve ) );
+        __UN_EXECUTE__( __STRING__( addfaith ) );
+        __UN_EXECUTE__( __STRING__( decfaith ) );
+        __UN_ELEMENT_RESULT__( __STRING__( pvedrop ) );
         //////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_NPC_GROUP_DATA_REQ );
         __UN_MESSAGE__( KFMsg::MSG_PVE_REQ );
@@ -136,6 +142,35 @@ namespace KFrame
         }
 
         return result == KFMsg::Ok;
+    }
+
+
+    __KF_EXECUTE_FUNCTION__( KFPVEModule::OnExecuteAddFaith )
+    {
+        if ( executedata->_param_list._params.size() < 1u )
+        {
+            __LOG_ERROR_FUNCTION__( function, line, "addfaith execute param size<1" );
+            return false;
+        }
+
+        auto faith = executedata->_param_list._params[0]->_int_value;
+        OperateFaith( player, KFEnum::Add, faith );
+
+        return true;
+    }
+
+    __KF_EXECUTE_FUNCTION__( KFPVEModule::OnExecuteDecFaith )
+    {
+        if ( executedata->_param_list._params.size() < 1u )
+        {
+            __LOG_ERROR_FUNCTION__( function, line, "decfaith execute param size<1" );
+            return false;
+        }
+
+        auto faith = executedata->_param_list._params[0]->_int_value;
+        OperateFaith( player, KFEnum::Dec, faith );
+
+        return true;
     }
 
     __KF_MESSAGE_FUNCTION__( KFPVEModule::HandlePVEReq )
@@ -525,15 +560,21 @@ namespace KFrame
         auto& droplist = PVEGetDropList( player, kfsetting, result );
         if ( !droplist.empty() )
         {
-            // 把原来的显示同步到客户端
-            player->ShowElementToClient();
-
             // 同步属性
-            _kf_drop->Drop( player, droplist, __STRING__( realm ), kfpvedata->_data.id(), __FUNC_LINE__ );
-
-            // 掉落显示
-            kfpvedata->BalanceDropData( player );
+            _kf_drop->Drop( player, droplist, __STRING__( pvedrop ), kfpvedata->_data.id(), __FUNC_LINE__ );
+            player->SyncDataToClient();
         }
+    }
+
+    __KF_ELEMENT_RESULT_FUNCTION__( KFPVEModule::OnPVEDropElementResult )
+    {
+        auto kfpvedata = _pve_record.Find( player->GetKeyID() );
+        if ( kfpvedata != nullptr )
+        {
+            kfpvedata->BalanceDropData( kfresult );
+        }
+
+        return false;
     }
 
     const UInt32Vector& KFPVEModule::PVEGetDropList( KFEntity* player, const KFPVESetting* kfsetting, uint32 result )

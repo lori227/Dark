@@ -4,6 +4,7 @@
 #include "KFrameEx.h"
 #include "KFCore/KFData.h"
 #include "KFKernel/KFEntity.h"
+#include "KFKernel/KFElementResult.h"
 #include "KFProtocol/KFProtocol.h"
 #include "KFZConfig/KFItemConfig.hpp"
 #include "KFZConfig/KFItemTypeConfig.hpp"
@@ -71,7 +72,7 @@ namespace KFrame
         void RecordTownHeros( KFEntity* player );
         ////////////////////////////////////////////////////////////////////////////////////////////////
         // 结算掉落
-        void BalanceDropData( KFEntity* player );
+        void BalanceDropData( const KFElementResult* kfresult );
 
         // 结算
         void BalanceRealmRecord( KFMsg::PBBalanceData* pbdata );

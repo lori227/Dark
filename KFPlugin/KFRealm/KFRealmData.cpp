@@ -353,42 +353,27 @@ namespace KFrame
         pbdata->mutable_loseitem()->CopyFrom( _data.loseitem() );
     }
 
-    void KFRealmData::BalanceDropData( KFEntity* player )
+    void KFRealmData::BalanceDropData( const KFElementResult* kfresult )
     {
-        KFMsg::PBShowElement pbelement;
-        if ( !player->GetShowElement( &pbelement ) )
+        switch ( kfresult->_show_type )
         {
-            return;
+        case KFDataShowEnum::Show_Overlay:
+        {
+            auto pbitem = FindItem( kfresult->_config_id, 0u );
+            pbitem->set_endcount( pbitem->endcount() + kfresult->_total_value );
         }
-
-        for ( auto i = 0; i < pbelement.pbdata_size(); i++ )
+        break;
+        case KFDataShowEnum::Show_NotOverlay:
         {
-            auto& showdata = pbelement.pbdata( i );
-            if ( showdata.name() == __STRING__( item ) )
+            for ( auto kfitem : kfresult->_not_overlay_list )
             {
-                uint32 itemid = 0u;
-                uint32 itemcount = 0u;
-                uint64 itemuuid = 0u;
-
-                for ( auto& iter : showdata.pbuint64() )
-                {
-                    if ( iter.first == __STRING__( id ) )
-                    {
-                        itemid = iter.second;
-                    }
-                    else if ( iter.first == __STRING__( count ) )
-                    {
-                        itemcount = iter.second;
-                    }
-                    else if ( iter.first == __STRING__( uuid ) )
-                    {
-                        itemuuid = iter.second;
-                    }
-                }
-
-                auto pbitem = FindItem( itemid, itemuuid );
-                pbitem->set_endcount( pbitem->endcount() + itemcount );
+                auto pbitem = FindItem( kfresult->_config_id, kfitem->GetKeyID() );
+                pbitem->set_endcount( pbitem->endcount() + 1u );
             }
+        }
+        break;
+        default:
+            break;
         }
     }
 

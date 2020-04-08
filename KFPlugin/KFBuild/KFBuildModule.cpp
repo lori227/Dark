@@ -13,6 +13,7 @@ namespace KFrame
         __REGISTER_ADD_DATA_1__( __STRING__( build ), &KFBuildModule::OnAddUnlockBuild );
         __REGISTER_UPDATE_DATA_2__( __STRING__( build ), __STRING__( level ), &KFBuildModule::OnUpdateBuildLevel );
 
+        __REGISTER_ADD_ELEMENT__( __STRING__( build ), &KFBuildModule::AddBuildElement );
         //////////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_START_UPGRADE_BUILD_REQ, &KFBuildModule::HandleStartUpgradeBuildReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_ONEKEY_UPGRADE_BUILD_REQ, &KFBuildModule::HandleOnekeyUpgradeBuildReq );
@@ -28,11 +29,40 @@ namespace KFrame
         __UN_ADD_DATA_1__( __STRING__( build ) );
         __UN_UPDATE_DATA_2__( __STRING__( build ), __STRING__( level ) );
 
+        __UN_ADD_ELEMENT__( __STRING__( build ) );
         //////////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_START_UPGRADE_BUILD_REQ );
         __UN_MESSAGE__( KFMsg::MSG_ONEKEY_UPGRADE_BUILD_REQ );
         __UN_MESSAGE__( KFMsg::MSG_UPGRADE_BUILD_REQ );
     }
+
+    __KF_ADD_ELEMENT_FUNCTION__( KFBuildModule::AddBuildElement )
+    {
+        auto kfelement = kfresult->_element;
+        if ( !kfelement->IsObject() )
+        {
+            __LOG_ERROR_FUNCTION__( function, line, "element=[{}] not object", kfelement->_data_name );
+            return false;
+        }
+
+        auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
+        auto level = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( level ), kfresult->_multiple );
+
+#ifdef __KF_DEBUG__
+        for ( auto& iter : KFBuildConfig::Instance()->_settings._objects )
+        {
+            auto kfsetting = iter.second;
+            if ( level == 0u || kfsetting->_level <= level )
+            {
+                player->UpdateData( kfparent, kfsetting->_build_id, __STRING__( level ), KFEnum::Set, kfsetting->_level );
+                player->UpdateData( kfparent, kfsetting->_build_id, __STRING__( unlock ), KFEnum::Set, KFGlobal::Instance()->_real_time );
+            }
+        }
+#endif
+
+        return true;
+    }
+
 
 #define __UPDATE_CONDITION_LIST__( updatefunction )\
     auto kfbuildrecord = player->Find( __STRING__( build ) );\
@@ -290,7 +320,7 @@ namespace KFrame
         auto id = kfdata->Get( __STRING__( id ) );
         auto level = kfdata->Get( __STRING__( level ) );
         auto kfsetting = KFBuildConfig::Instance()->FindBuildSetting( id, level + 1u );
-        if ( kfsetting == nullptr )
+        if ( kfsetting == nullptr || kfsetting->_condition.empty() )
         {
             return;
         }

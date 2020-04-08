@@ -124,14 +124,10 @@ namespace KFrame
             return false;
         }
 
-        for ( auto& iter : kfsetting->_drug_values )
+        auto& executelist = kfsetting->_execute_list;
+        for ( auto iter : executelist )
         {
-            // 信仰之水
-            if ( iter.first == __STRING__( faith ) )
-            {
-                auto operater = ( iter.second > 0 ) ? ( KFEnum::Add ) : ( KFEnum::Dec );
-                _kf_pve->OperateFaith( player, operater, abs( iter.second ) );
-            }
+            _kf_execute->Execute( player, iter, __FUNC_LINE__ );
         }
 
         return true;
@@ -204,9 +200,11 @@ namespace KFrame
         }
 
         // 对英雄使用
-        for ( auto& iter : kfsetting->_drug_values )
+        auto& executelist = kfsetting->_execute_list;
+        for ( auto iter : executelist )
         {
-            _kf_hero->AddHeroData( player, kfhero, iter.first, iter.second );
+            iter->_calc_value = kfmsg.herouuid();
+            _kf_execute->Execute( player, iter, __FUNC_LINE__ );
         }
 
         UseCoseItem( player, kfitem, kfsetting );

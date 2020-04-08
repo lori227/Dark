@@ -400,6 +400,7 @@ namespace KFrame
         PutOnRune( player, iterator->second );
 
         // 再合成符石
+        player->SyncDataToClient();
         OnDelayCompoundRune( player, runeset, is_send );
     }
 
