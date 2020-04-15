@@ -73,7 +73,7 @@ namespace KFrame
         // 开始转职
         player->UpdateData( kfhero, __STRING__( profession ), KFEnum::Set, kfmsg.profession() );
 
-        return _kf_display->SendToClient( player, KFMsg::HeroTransferSuc );
+        player->AddDataToShow( __STRING__( transfer ), 0u, kfhero );
     }
 
     __KF_MESSAGE_FUNCTION__( KFTransferModule::HandleSelectInnateReq )
@@ -94,7 +94,10 @@ namespace KFrame
             ret |= RemoveInnateId( player, kfhero, innateid );
         }
 
-        return _kf_display->SendToClient( player, KFMsg::HeroSelectInnateSuc, ret );
+        if ( ret )
+        {
+            player->AddDataToShow( __STRING__( selectinnate ), 0u, kfhero );
+        }
     }
 
     bool KFTransferModule::RemoveInnateId( KFEntity* player, KFData* kfhero, uint32 id )

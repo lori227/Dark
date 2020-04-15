@@ -1,4 +1,4 @@
-<root platform="" version="4232">
+<root platform="" version="4387">
 	<item Id="1" StoryId="3000" Array="1" TriggerType="0" Type="1" Parameter1="10086" Parameter2="0" />
 	<item Id="2" StoryId="3000" Array="2" TriggerType="0" Type="9" Parameter1="200001" Parameter2="0" />
 	<item Id="3" StoryId="3000" Array="3" TriggerType="0" Type="9" Parameter1="200002" Parameter2="0" />
@@ -152,10 +152,10 @@
 	<item Id="151" StoryId="11102" Array="2" TriggerType="1" Type="8" Parameter1="8000001" Parameter2="0" />
 	<item Id="152" StoryId="11102" Array="3" TriggerType="1" Type="9" Parameter1="200002" Parameter2="0" />
 	<item Id="153" StoryId="11103" Array="1" TriggerType="1" Type="9" Parameter1="200002" Parameter2="0" />
-	<item Id="154" StoryId="11201" Array="1" TriggerType="1" Type="7" Parameter1="9000008" Parameter2="0" />
-	<item Id="155" StoryId="11202" Array="1" TriggerType="1" Type="7" Parameter1="9000009" Parameter2="0" />
-	<item Id="156" StoryId="11203" Array="1" TriggerType="1" Type="8" Parameter1="9000010" Parameter2="0" />
-	<item Id="157" StoryId="11204" Array="1" TriggerType="1" Type="8" Parameter1="9000011" Parameter2="0" />
+	<item Id="154" StoryId="11201" Array="1" TriggerType="0" Type="8" Parameter1="9000008" Parameter2="0" />
+	<item Id="155" StoryId="11202" Array="1" TriggerType="0" Type="8" Parameter1="9000009" Parameter2="0" />
+	<item Id="156" StoryId="11203" Array="1" TriggerType="0" Type="8" Parameter1="9000010" Parameter2="0" />
+	<item Id="157" StoryId="11204" Array="1" TriggerType="0" Type="8" Parameter1="9000011" Parameter2="0" />
 	<item Id="158" StoryId="40001" Array="1" TriggerType="1" Type="8" Parameter1="8100001" Parameter2="0" />
 	<item Id="159" StoryId="40002" Array="1" TriggerType="1" Type="8" Parameter1="8100002" Parameter2="0" />
 	<item Id="160" StoryId="40003" Array="1" TriggerType="1" Type="8" Parameter1="8100003" Parameter2="0" />
@@ -208,4 +208,7 @@
 	<item Id="207" StoryId="41119" Array="1" TriggerType="1" Type="8" Parameter1="8110021" Parameter2="0" />
 	<item Id="208" StoryId="41120" Array="1" TriggerType="1" Type="8" Parameter1="8110022" Parameter2="0" />
 	<item Id="209" StoryId="41121" Array="1" TriggerType="1" Type="8" Parameter1="8110023" Parameter2="0" />
+	<item Id="210" StoryId="41122" Array="1" TriggerType="1" Type="8" Parameter1="8110024" Parameter2="0" />
+	<item Id="211" StoryId="41123" Array="1" TriggerType="1" Type="7" Parameter1="8110025" Parameter2="0" />
+	<item Id="212" StoryId="41124" Array="1" TriggerType="1" Type="8" Parameter1="8110026" Parameter2="0" />
 </root>

@@ -7,8 +7,8 @@ namespace KFrame
     {
         _kf_component = _kf_kernel->FindComponent( __STRING__( player ) );
 
-        __REGISTER_EXECUTE__( __STRING__( logicevent ), &KFDialogueModule::OnExecuteLogicEvent );
         __REGISTER_EXECUTE__( __STRING__( dialogue ), &KFDialogueModule::OnExecuteDialogue );
+
         __REGISTER_DROP_LOGIC__( __STRING__( dialogue ), &KFDialogueModule::OnDropDialogue );
         __REGISTER_ADD_ELEMENT__( __STRING__( dialogue ), &KFDialogueModule::AddDialogueElement );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -18,7 +18,6 @@ namespace KFrame
 
     void KFDialogueModule::BeforeShut()
     {
-        __UN_EXECUTE__( __STRING__( logicevent ) );
         __UN_EXECUTE__( __STRING__( dialogue ) );
         __UN_DROP_LOGIC__( __STRING__( dialogue ) );
         __UN_ADD_ELEMENT__( __STRING__( dialogue ) );
@@ -98,6 +97,7 @@ namespace KFrame
             player->SynAddRecordData( kfbranchrecord );
         }
 
+        player->SyncDataToClient();
         SendToClientDialogueStart( player, dialogid, sequence, type, storyid );
     }
 
@@ -128,24 +128,7 @@ namespace KFrame
         ack.set_sequenceid( sequence );
         ack.set_type( type );
         ack.set_storyid( storyid );
-        return _kf_player->SendToClient( player, KFMsg::MSG_START_DIALOGUE_ACK, &ack, 10u );
-    }
-
-    __KF_EXECUTE_FUNCTION__( KFDialogueModule::OnExecuteLogicEvent )
-    {
-        if ( executedata->_param_list._params.size() < 1u )
-        {
-            __LOG_ERROR_FUNCTION__( function, line, "logicevent execute param size<1" );
-            return false;
-        }
-
-        auto eventid = executedata->_param_list._params[0]->_int_value;
-
-        KFMsg::MsgLogicEventAck ack;
-        ack.set_id( eventid );
-        _kf_player->SendToClient( player, KFMsg::MSG_LOGIC_EVENT_ACK, &ack );
-
-        return true;
+        return _kf_player->SendToClient( player, KFMsg::MSG_START_DIALOGUE_ACK, &ack );
     }
 
     __KF_EXECUTE_FUNCTION__( KFDialogueModule::OnExecuteDialogue )
@@ -276,6 +259,9 @@ namespace KFrame
                     kfstory->Set( __STRING__( sequence ), 1u );
                     kfstory->Set( __STRING__( parentid ), mainstory );
 
+                    auto uuid = KFGlobal::Instance()->STMakeUuid( __STRING__( story ) );
+                    kfstory->Set( __STRING__( uuid ), uuid );
+
                     player->AddData( kfstoryrecord, storyid, kfstory );
                 }
                 else
@@ -286,7 +272,7 @@ namespace KFrame
         }
         else
         {
-            _kf_execute->Execute( player, executedata, __FUNC_LINE__ );
+            _kf_execute->Execute( player, executedata, __STRING__( dialoguebranch ), kfmsg.dialogueid(), __FUNC_LINE__ );
         }
 
         // 通知选择分支成功

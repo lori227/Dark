@@ -2,7 +2,7 @@
 
 namespace KFrame
 {
-    void KFItemTypeConfig::ReadSetting( KFNode& xmlnode, KFItemTypeSeting* kfsetting )
+    void KFItemTypeConfig::ReadSetting( KFNode& xmlnode, KFItemTypeSetting* kfsetting )
     {
         kfsetting->_store_name = xmlnode.GetString( "Store", true );
         kfsetting->_bag_name = xmlnode.GetString( "Explore", true );
@@ -26,9 +26,19 @@ namespace KFrame
             auto usemask = KFUtility::SplitValue< uint32 >( struselimit, __SPLIT_STRING__ );
             KFUtility::AddBitMask( kfsetting->_use_limit, usemask );
         }
+
+        auto strtab = xmlnode.GetString( "Tab", true );
+        while ( !strtab.empty() )
+        {
+            auto tabname = KFUtility::SplitString( strtab, __SPLIT_STRING__ );
+            if ( !tabname.empty() )
+            {
+                kfsetting->_tab_name_list.insert( tabname );
+            }
+        }
     }
 
-    bool KFItemTypeSeting::CheckCanMove( const std::string& sourcename, const std::string& targetname ) const
+    bool KFItemTypeSetting::CheckCanMove( const std::string& sourcename, const std::string& targetname ) const
     {
         // 额外的背包, 并且是探索背包
         if ( sourcename == _extend_name && targetname == _bag_name )
@@ -37,5 +47,10 @@ namespace KFrame
         }
 
         return _move_name_list.find( targetname ) != _move_name_list.end();
+    }
+
+    bool KFItemTypeSetting::IsHaveTab( const std::string& name ) const
+    {
+        return _tab_name_list.find( name ) != _tab_name_list.end();
     }
 }

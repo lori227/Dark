@@ -1,4 +1,4 @@
-<root platform="" version="3606">
+<root platform="" version="4273">
 	<item Id="120000" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="208000" />
 	<item Id="120001" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="208001" />
 	<item Id="120002" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="208002" />
@@ -33,4 +33,74 @@
 	<item Id="120105" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="207005" />
 	<item Id="120106" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="207006" />
 	<item Id="120107" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="208026" />
+	<item Id="120201" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110001" />
+	<item Id="120202" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110002" />
+	<item Id="120203" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110003" />
+	<item Id="120204" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110004" />
+	<item Id="120205" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110005" />
+	<item Id="120206" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110006" />
+	<item Id="120207" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110007" />
+	<item Id="120208" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110008" />
+	<item Id="120209" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110009" />
+	<item Id="120210" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110010" />
+	<item Id="120211" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110011" />
+	<item Id="120212" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110012" />
+	<item Id="120213" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110013" />
+	<item Id="120214" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110014" />
+	<item Id="120215" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110015" />
+	<item Id="120216" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110016" />
+	<item Id="120217" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110017" />
+	<item Id="120218" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110018" />
+	<item Id="120219" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110019" />
+	<item Id="120220" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110020" />
+	<item Id="120221" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110021" />
+	<item Id="120222" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110022" />
+	<item Id="120223" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110023" />
+	<item Id="120224" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110024" />
+	<item Id="120225" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110025" />
+	<item Id="120226" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110026" />
+	<item Id="120227" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110027" />
+	<item Id="120228" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110028" />
+	<item Id="120229" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110029" />
+	<item Id="120230" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110030" />
+	<item Id="120231" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110031" />
+	<item Id="120232" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110032" />
+	<item Id="120233" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110033" />
+	<item Id="120234" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110034" />
+	<item Id="120235" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110035" />
+	<item Id="120236" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110036" />
+	<item Id="120237" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110037" />
+	<item Id="120238" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110038" />
+	<item Id="120239" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110039" />
+	<item Id="120240" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110040" />
+	<item Id="120241" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110041" />
+	<item Id="120242" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110042" />
+	<item Id="120243" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110043" />
+	<item Id="120244" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110044" />
+	<item Id="120245" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110045" />
+	<item Id="120246" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110046" />
+	<item Id="120247" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110047" />
+	<item Id="120248" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110048" />
+	<item Id="120249" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110049" />
+	<item Id="120250" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110050" />
+	<item Id="120251" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110051" />
+	<item Id="120252" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110052" />
+	<item Id="120253" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110053" />
+	<item Id="120254" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110054" />
+	<item Id="120255" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110055" />
+	<item Id="120256" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110056" />
+	<item Id="120257" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110057" />
+	<item Id="120258" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110058" />
+	<item Id="120259" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110059" />
+	<item Id="120260" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110060" />
+	<item Id="120261" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110061" />
+	<item Id="120262" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110062" />
+	<item Id="120263" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110063" />
+	<item Id="120264" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110064" />
+	<item Id="120265" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110065" />
+	<item Id="120266" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110066" />
+	<item Id="120267" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110067" />
+	<item Id="120268" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110068" />
+	<item Id="120269" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110069" />
+	<item Id="120270" RaceLimit="" BackGroundLimit="" ProfessionLimit="" TalentId="110070" />
 </root>

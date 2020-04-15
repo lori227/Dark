@@ -1,4 +1,4 @@
-<root platform="" version="3905">
+<root platform="" version="4408">
 	<item Id="10000" Condition="" Cost="" ExecuteName="" ExecuteParam1="" />
 	<item Id="10001" Condition="401" Cost="" ExecuteName="story" ExecuteParam1="10002" />
 	<item Id="10002" Condition="" Cost="[[1,1,500]]" ExecuteName="story" ExecuteParam1="10003" />
@@ -18,4 +18,8 @@
 	<item Id="200020" Condition="" Cost="" ExecuteName="logicevent" ExecuteParam1="30000033" />
 	<item Id="200021" Condition="" Cost="" ExecuteName="story" ExecuteParam1="41116" />
 	<item Id="200022" Condition="" Cost="" ExecuteName="logicevent" ExecuteParam1="30000033" />
+	<item Id="200023" Condition="" Cost="[[2,1000017,1]]" ExecuteName="logicevent" ExecuteParam1="31000002" />
+	<item Id="200024" Condition="" Cost="" ExecuteName="" ExecuteParam1="" />
+	<item Id="200025" Condition="" Cost="" ExecuteName="drop" ExecuteParam1="5800102" />
+	<item Id="200026" Condition="" Cost="" ExecuteName="" ExecuteParam1="" />
 </root>

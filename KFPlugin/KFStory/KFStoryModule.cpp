@@ -63,6 +63,10 @@ namespace KFrame
 
     void KFStoryModule::CheckStory( KFEntity* player )
     {
+        // 查找出最早添加的剧情
+        auto minuuid = __MAX_UINT64__;
+        auto id = _invalid_int;
+
         auto kfstoryrecord = player->Find( __STRING__( story ) );
         for ( auto kfstory = kfstoryrecord->First(); kfstory != nullptr; kfstory = kfstoryrecord->Next() )
         {
@@ -85,10 +89,18 @@ namespace KFrame
                 continue;
             }
 
-            player->UpdateData( __STRING__( mainstory ), KFEnum::Set, storyid );
-            ExecuteStory( player, storyid );
+            auto uuid = kfstory->Get( __STRING__( uuid ) );
+            if ( uuid < minuuid )
+            {
+                minuuid = uuid;
+                id = storyid;
+            }
+        }
 
-            break;
+        if ( id != _invalid_int )
+        {
+            player->UpdateData( __STRING__( mainstory ), KFEnum::Set, id );
+            ExecuteStory( player, id );
         }
     }
 
@@ -189,7 +201,7 @@ namespace KFrame
             return false;
         }
 
-        AddStory( player, kfelementobject->_config_id );
+        AddStory( player, kfelementobject->_config_id, 0u, kfresult->_module_name, kfresult->_module_id );
         return true;
     }
 
@@ -201,14 +213,14 @@ namespace KFrame
         }
 
         auto storyid = executedata->_param_list._params[ 0 ]->_int_value;
-        AddStory( player, storyid );
+        AddStory( player, storyid, 0u, modulename, moduleid );
 
         return true;
     }
 
     __KF_DROP_LOGIC_FUNCTION__( KFStoryModule::OnDropStory )
     {
-        AddStory( player, dropdata->_data_key );
+        AddStory( player, dropdata->_data_key, 0u, modulename, moduleid );
     }
 
     __KF_REMOVE_DATA_FUNCTION__( KFStoryModule::OnRemoveDialogueCallBack )
@@ -293,7 +305,7 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::StoryTriggerTypeLimit );
         }
 
-        AddStory( player, kfmsg.storyid(), kfmsg.childid() );
+        AddStory( player, kfmsg.storyid(), kfmsg.childid(), _invalid_string, _invalid_int );
     }
 
     __KF_MESSAGE_FUNCTION__( KFStoryModule::HandleUpdateStoryReq )
@@ -344,8 +356,11 @@ namespace KFrame
         player->UpdateData( kfstory, __STRING__( sequence ), KFEnum::Add, 1u );
     }
 
-    void KFStoryModule::AddStory( KFEntity* player, uint32 storyid, uint32 childid )
+    void KFStoryModule::AddStory( KFEntity* player, uint32 storyid, uint32 childid,  const std::string& modulename, uint64 moduleid )
     {
+        // 如果当前主剧情为被动剧情，则只添加新剧情数据
+        // 如果当前主剧情为空 或 为主动剧情，则添加并执行新剧情
+        // 如果当前主剧情id和添加剧情id相同，则执行主剧情
         auto kfstorysetting = KFStoryConfig::Instance()->FindSetting( storyid );
         if ( kfstorysetting == nullptr )
         {
@@ -355,11 +370,13 @@ namespace KFrame
 
         auto kfstoryrecord = player->Find( __STRING__( story ) );
         auto kfstory = kfstoryrecord->Find( storyid );
-
         if ( kfstory == nullptr )
         {
             kfstory = player->CreateData( kfstoryrecord );
             kfstory->Set( __STRING__( sequence ), 1u );
+
+            auto uuid = KFGlobal::Instance()->STMakeUuid( __STRING__( story ) );
+            kfstory->Set( __STRING__( uuid ), uuid );
 
             if ( childid != 0u )
             {
@@ -378,28 +395,57 @@ namespace KFrame
             player->AddData( kfstoryrecord, storyid, kfstory );
         }
 
+        SendToClientAddStory( player, storyid, modulename, moduleid );
+
+        bool result = false;
+        auto mainstory = player->Get<uint32>( __STRING__( mainstory ) );
+        if ( mainstory == 0u || mainstory == storyid )
+        {
+            result = true;
+        }
+        else
+        {
+            auto kfmainstorysetting = KFStoryConfig::Instance()->FindSetting( mainstory );
+            if ( kfmainstorysetting && kfmainstorysetting->_trigger_type != 0u )
+            {
+                result = true;
+            }
+        }
+
+        if ( !result )
+        {
+            return;
+        }
+
         UInt32Set storyset;
         storyset.insert( storyid );
 
         auto sequence = kfstory->Get<uint32>( __STRING__( sequence ) );
         while ( sequence == 0u )
         {
-            storyid = kfstory->Get<uint32>( __STRING__( childid ) );
-            auto kfchildstory = kfstoryrecord->Find( storyid );
-            if ( kfchildstory == nullptr )
+            kfstory = kfstoryrecord->Find( storyid );
+            if ( kfstory == nullptr )
             {
                 return;
             }
 
-            if ( storyset.find( storyid ) != storyset.end() )
+            auto childid = kfstory->Get<uint32>( __STRING__( childid ) );
+            auto kfchildstory = kfstoryrecord->Find( childid );
+            if ( kfchildstory == nullptr )
             {
-                // 防止剧情链循环
                 RemoveStory( player, storyid );
                 return;
             }
-            storyset.insert( storyid );
 
+            if ( storyset.find( childid ) != storyset.end() )
+            {
+                RemoveStory( player, childid );
+                return;
+            }
+            storyset.insert( childid );
             sequence = kfchildstory->Get<uint32>( __STRING__( sequence ) );
+
+            storyid = childid;
         }
 
         player->UpdateData( __STRING__( mainstory ), KFEnum::Set, storyid );
@@ -433,5 +479,15 @@ namespace KFrame
             // 当前序列为对话，添加对话
             _kf_dialogue->AddDialogue( player, storysequence->_parameter1, storysequence->_type, storyid );
         }
+    }
+
+    void KFStoryModule::SendToClientAddStory( KFEntity* player, uint32 storyid, const std::string& modulename, uint64 moduleid )
+    {
+        KFMsg::MsgAddStoryAck ack;
+        ack.set_storyid( storyid );
+        ack.set_moduleid( moduleid );
+        ack.set_modulename( modulename );
+
+        _kf_player->SendToClient( player, KFMsg::MSG_ADD_STORY_ACK, &ack );
     }
 }

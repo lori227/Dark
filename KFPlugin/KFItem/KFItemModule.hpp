@@ -30,15 +30,11 @@ namespace KFrame
 
         // 逻辑
         virtual void BeforeRun();
-        virtual void PrepareRun();
 
         // 关闭
         virtual void BeforeShut();
         ////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
-        // 获得背包列表
-        virtual const StringVector& GetItemRecordList();
-
         // 背包格子最大数量
         virtual uint32 GetItemRecordMaxCount( KFEntity* player, KFData* kfitemrecord );
 
@@ -160,9 +156,6 @@ namespace KFrame
     protected:
         // 玩家组件上下文
         KFComponent* _kf_component = nullptr;
-
-        // 物品属性列表
-        StringVector _item_data_list;
 
         // 初始化
         KFBind< uint32, uint32, KFItemFunction > _init_item_function;

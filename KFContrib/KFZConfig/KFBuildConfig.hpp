@@ -8,12 +8,9 @@
 
 namespace KFrame
 {
-    class KFBuildSetting : public KFIntSetting
+    class KFBuildLevelSetting
     {
     public:
-        // 建筑id
-        uint32 _build_id = 0u;
-
         // 建筑等级
         uint32 _level = 0u;
 
@@ -39,21 +36,29 @@ namespace KFrame
         KFElements _onekey_consume;
     };
 
+    class KFBuildSetting : public KFIntSetting
+    {
+    public:
+        // 最大等级
+        uint32 _max_level = 0u;
+
+        // 等级列表
+        KFHashMap< uint32, uint32, KFBuildLevelSetting > _build_level_settings;
+    };
+
     class KFBuildConfig : public KFConfigT< KFBuildSetting >, public KFInstance< KFBuildConfig >
     {
     public:
         KFBuildConfig()
         {
+            _key_name = "BuildId";
             _file_name = "buildlevel";
         }
 
         virtual void LoadAllComplete();
 
-        // 获取配置ID
-        uint32 GetSettingId( uint32 id, uint32 level );
-
         // 获取建筑配置
-        const KFBuildSetting* FindBuildSetting( uint32 id, uint32 level );
+        const KFBuildLevelSetting* FindBuildLevelSetting( uint32 id, uint32 level );
 
     protected:
         // 读取配置

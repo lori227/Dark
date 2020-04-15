@@ -9,10 +9,21 @@ namespace KFrame
         kfsetting->_is_can_move_all = xmlnode.GetBoolen( "MoveAll", true );
         kfsetting->_is_can_clean = xmlnode.GetBoolen( "Clean", true );
         kfsetting->_is_realm_record = xmlnode.GetBoolen( "Record", true );
+        kfsetting->_is_auto_use_gift = xmlnode.GetBoolen( "AutoUseGift", true );
 
         kfsetting->_enter_realm_type = xmlnode.GetUInt32( "EnterType", true );
         kfsetting->_balance_realm_type = xmlnode.GetUInt32( "BalanceType", true );
         kfsetting->_town_realm_type = xmlnode.GetUInt32( "TownType", true );
+
+        auto strtablist = xmlnode.GetString( "TabList" );
+        while ( !strtablist.empty() )
+        {
+            auto value = KFUtility::SplitString( strtablist, __SPLIT_STRING__ );
+            if ( !value.empty() )
+            {
+                kfsetting->_tab_list.emplace( value );
+            }
+        }
 
         auto strmoveshow = xmlnode.GetString( "MoveShow" );
         while ( !strmoveshow.empty() )

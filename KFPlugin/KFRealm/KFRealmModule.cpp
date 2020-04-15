@@ -10,6 +10,8 @@ namespace KFrame
         __REGISTER_LEAVE_PLAYER__( &KFRealmModule::OnLeaveSaveRealmData );
         __REGISTER_REALM_MOVE__( &KFRealmModule::OnReamlMoveCostFood );
         __REGISTER_EXECUTE__( __STRING__( realm ), &KFRealmModule::OnExecuteRealm );
+        __REGISTER_EXECUTE__( __STRING__( logicevent ), &KFRealmModule::OnExecuteLogicEvent );
+        __REGISTER_DROP_LOGIC__( __STRING__( logicevent ), &KFRealmModule::OnDropLogicEvent );
 
         __REGISTER_UPDATE_DATA_2__( __STRING__( item ), __STRING__( count ), &KFRealmModule::OnRealmUseItem );
         __REGISTER_REMOVE_DATA_1__( __STRING__( item ), &KFRealmModule::OnRealmRemoveItem );
@@ -35,6 +37,8 @@ namespace KFrame
         __UN_LEAVE_PLAYER__();
         __UN_REALM_MOVE__();
         __UN_EXECUTE__( __STRING__( realm ) );
+        __UN_EXECUTE__( __STRING__( logicevent ) );
+        __UN_DROP_LOGIC__( __STRING__( logicevent ) );
 
         __UN_UPDATE_DATA_2__( __STRING__( item ), __STRING__( count ) );
         __UN_REMOVE_DATA_1__( __STRING__( item ) );
@@ -95,6 +99,34 @@ namespace KFrame
 
         level = __MAX__( 1u, level );
         return RealmEnter( player, realmid, level, KFMsg::EnterChapter, modulename, moduleid );
+    }
+
+    __KF_EXECUTE_FUNCTION__( KFRealmModule::OnExecuteLogicEvent )
+    {
+        if ( executedata->_param_list._params.size() < 1u )
+        {
+            __LOG_ERROR_FUNCTION__( function, line, "logicevent execute param size<1" );
+            return false;
+        }
+
+        auto eventid = executedata->_param_list._params[0]->_int_value;
+
+        SendToClientLogicEvent( player, eventid );
+
+        return true;
+    }
+
+    __KF_DROP_LOGIC_FUNCTION__( KFRealmModule::OnDropLogicEvent )
+    {
+        SendToClientLogicEvent( player, dropdata->_data_key );
+    }
+
+    void KFRealmModule::SendToClientLogicEvent( KFEntity* player, uint32 eventid )
+    {
+        KFMsg::MsgLogicEventAck ack;
+        ack.set_id( eventid );
+
+        _kf_player->SendToClient( player, KFMsg::MSG_LOGIC_EVENT_ACK, &ack );
     }
 
     __KF_MESSAGE_FUNCTION__( KFRealmModule::HandleRealmEnterReq )
@@ -484,9 +516,6 @@ namespace KFrame
 
         kfrealmdata->_is_in_balance = true;
 
-        // 结果条件
-        RealmBalanceResultCondition( player, kfrealmdata, result );
-
         switch ( result )
         {
         case KFMsg::Victory:
@@ -531,6 +560,9 @@ namespace KFrame
         // 发送消息
         SendRealmBalanceToClient( player, kfrealmdata, KFMsg::Victory );
 
+        // 结果条件
+        RealmBalanceResultCondition( player, kfrealmdata, KFMsg::Victory );
+
         // 设置回调属性
         RealmJumpCondition( player, kfrealmdata->_data.id(), kfrealmdata->_data.level(), 0u );
 
@@ -559,6 +591,9 @@ namespace KFrame
         // 发送消息
         SendRealmBalanceToClient( player, kfrealmdata, KFMsg::Failed );
 
+        // 结果条件
+        RealmBalanceResultCondition( player, kfrealmdata, KFMsg::Failed );
+
         // 清空探索数据
         RealmBalanceClearData( player, KFMsg::Failed );
     }
@@ -581,6 +616,9 @@ namespace KFrame
         // 发送消息
         SendRealmBalanceToClient( player, kfrealmdata, KFMsg::Flee );
 
+        // 结果条件
+        RealmBalanceResultCondition( player, kfrealmdata, KFMsg::Flee );
+
         // 清空探索数据
         RealmBalanceClearData( player, KFMsg::Flee );
     }
@@ -596,6 +634,9 @@ namespace KFrame
 
         // 发送消息b
         SendRealmBalanceToClient( player, kfrealmdata, KFMsg::Town );
+
+        // 结果条件
+        RealmBalanceResultCondition( player, kfrealmdata, KFMsg::Town );
 
         // 设置回城状态
         player->SetStatus( KFMsg::TownStatus );
@@ -623,9 +664,7 @@ namespace KFrame
         auto& droplist = GetRealmDropList( kfsetting, result );
         if ( !droplist.empty() )
         {
-            // 掉落
             _kf_drop->Drop( player, droplist, __STRING__( realmdrop ), kfrealmdata->_data.id(), __FUNC_LINE__ );
-            player->SyncDataToClient();
         }
     }
 

@@ -31,6 +31,7 @@ namespace KFrame
 
         // 逻辑
         virtual void BeforeRun();
+        virtual void AfterLoad();
 
         // 关闭
         virtual void BeforeShut();
@@ -78,34 +79,25 @@ namespace KFrame
         __KF_REMOVE_DATA_FUNCTION__( OnRemoveItemMoveLogic );
 
         // 更新道具索引回调
-        __KF_UPDATE_DATA_FUNCTION__( OnUpdateItemMoveCallBack );
+        __KF_UPDATE_DATA_FUNCTION__( OnUpdateItemTabIndexCallBack );
         ///////////////////////////////////////////////////////////////////////////
         // 包裹数量
         __KF_EXECUTE_FUNCTION__( OnExecuteItemMaxCount );
     protected:
         // 初始化道具格子信息
-        void InitItemEmptyIndexData( KFEntity* player, KFData* kfitemrecord );
+        void InitItemEmptyIndexData( KFEntity* player, KFData* kfitemrecord, const KFItemBagSetting* kfbagsetting );
 
         // 删除格子信息
         void UnInitItemEmptyIndexData( KFEntity* player, const std::string& name );
 
-        // 查找空的格子存放道具
-        uint32 GetItemEmptyIndex( KFEntity* player, KFData* kfitemrecord, uint64 uuid );
-
         // 清空格子信息
-        void AddItemEmptyIndex( KFEntity* player, KFData* kfitemrecord, uint32 index );
+        void AddItemEmptyIndex( KFEntity* player, KFData* kfitemrecord, KFData* kfitem );
 
         // 最大索引
         uint32 GetItemMaxIndex( KFEntity* player, KFData* kfitemrecord );
 
         // 添加最大索引
         void AddItemMaxIndex( KFEntity* player, KFData* kfitemrecord, uint32 count );
-
-        // 索引是否为空
-        bool IsIndexEmpty( KFEntity* player, KFData* kfitemrecord, uint32 index );
-
-        // 删除索引
-        void RemoveItemEmptyIndex( KFEntity* player, KFData* kfitemrecord, uint32 index, uint64 uuid );
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 计算可以叠加物品数量
         uint32 CalcItemAddCount( uint32 sourcecount, uint32 targetcount, uint32 maxcount );
@@ -149,20 +141,26 @@ namespace KFrame
                                const KFItemBagSetting* kftargetbagsetting, KFData* kftargetitem );
 
         // 排序道具
-        void SortItem( KFEntity* player, const std::string& name );
-        void SortItem( KFEntity* player, const KFItemSetting* kfitemsetting, const KFItemBagSetting* kfbagsetting, KFItemIndex* kfindex, KFData* kfitemrecord, std::set<KFData*>& itemlist );
+        void SortItem( KFEntity* player, const std::string& bagname, const std::string& tabname );
+        void SortItem( KFEntity* player, const KFItemSetting* kfitemsetting, const KFItemBagSetting* kfbagsetting, KFItemTabIndex* kftabindex, KFData* kfitemrecord, std::set<KFData*>& itemlist );
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 移动物品显示
         void MoveItemDataToShow( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kftargetrecord, KFData* kfitem );
         void MoveItemDataToShow( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kftargetrecord, uint32 count );
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // 移动背包道具
+        uint32 MoveBagItem( KFEntity* player, const std::string& sourcename, uint64 itemuuid, const std::string& targetname, uint32 targetindex );
+
+        // 移动页签道具
+        uint32 MoveTabItem( KFEntity* player, const std::string& bagname, const std::string& tabname, uint64 itemuuid, uint32 targetindex );
     protected:
         // 玩家组件上下文
         KFComponent* _kf_component = nullptr;
 
         // 保存玩家的背包格子信息
         typedef std::pair<uint64, std::string> ItemIndexKey;
-        KFMap< ItemIndexKey, const ItemIndexKey&, KFItemIndex > _player_item_index;
+        KFMap< ItemIndexKey, const ItemIndexKey&, KFItemBagIndex > _player_item_index;
     };
 }
 

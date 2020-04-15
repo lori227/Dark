@@ -1,4 +1,4 @@
-<root platform="" version="4183">
+<root platform="" version="4436">
 	<item Id="2100031" Skillid="210003" Level="1" />
 	<item Id="1610161" Skillid="161016" Level="1" />
 	<item Id="1201001" Skillid="120100" Level="1" />
@@ -9,6 +9,76 @@
 	<item Id="1201051" Skillid="120105" Level="1" />
 	<item Id="1201061" Skillid="120106" Level="1" />
 	<item Id="2080261" Skillid="208026" Level="1" />
+	<item Id="2071011" Skillid="207101" Level="1" />
+	<item Id="2071021" Skillid="207102" Level="1" />
+	<item Id="2071031" Skillid="207103" Level="1" />
+	<item Id="2071041" Skillid="207104" Level="1" />
+	<item Id="2071051" Skillid="207105" Level="1" />
+	<item Id="2071061" Skillid="207106" Level="1" />
+	<item Id="2071071" Skillid="207107" Level="1" />
+	<item Id="2071081" Skillid="207108" Level="1" />
+	<item Id="2071091" Skillid="207109" Level="1" />
+	<item Id="2071101" Skillid="207110" Level="1" />
+	<item Id="2071111" Skillid="207111" Level="1" />
+	<item Id="2071121" Skillid="207112" Level="1" />
+	<item Id="2071131" Skillid="207113" Level="1" />
+	<item Id="2071141" Skillid="207114" Level="1" />
+	<item Id="2071151" Skillid="207115" Level="1" />
+	<item Id="2071161" Skillid="207116" Level="1" />
+	<item Id="2071171" Skillid="207117" Level="1" />
+	<item Id="2071181" Skillid="207118" Level="1" />
+	<item Id="2071191" Skillid="207119" Level="1" />
+	<item Id="2071201" Skillid="207120" Level="1" />
+	<item Id="2071211" Skillid="207121" Level="1" />
+	<item Id="2071221" Skillid="207122" Level="1" />
+	<item Id="2071231" Skillid="207123" Level="1" />
+	<item Id="2071241" Skillid="207124" Level="1" />
+	<item Id="2071251" Skillid="207125" Level="1" />
+	<item Id="2071261" Skillid="207126" Level="1" />
+	<item Id="2071271" Skillid="207127" Level="1" />
+	<item Id="2071281" Skillid="207128" Level="1" />
+	<item Id="2071291" Skillid="207129" Level="1" />
+	<item Id="2071301" Skillid="207130" Level="1" />
+	<item Id="2071311" Skillid="207131" Level="1" />
+	<item Id="2071321" Skillid="207132" Level="1" />
+	<item Id="2071331" Skillid="207133" Level="1" />
+	<item Id="2071341" Skillid="207134" Level="1" />
+	<item Id="2071351" Skillid="207135" Level="1" />
+	<item Id="2071361" Skillid="207136" Level="1" />
+	<item Id="2071371" Skillid="207137" Level="1" />
+	<item Id="2071381" Skillid="207138" Level="1" />
+	<item Id="2071391" Skillid="207139" Level="1" />
+	<item Id="2071401" Skillid="207140" Level="1" />
+	<item Id="2071411" Skillid="207141" Level="1" />
+	<item Id="2071421" Skillid="207142" Level="1" />
+	<item Id="2071431" Skillid="207143" Level="1" />
+	<item Id="2071441" Skillid="207144" Level="1" />
+	<item Id="2071451" Skillid="207145" Level="1" />
+	<item Id="2071461" Skillid="207146" Level="1" />
+	<item Id="2071471" Skillid="207147" Level="1" />
+	<item Id="2071481" Skillid="207148" Level="1" />
+	<item Id="2071491" Skillid="207149" Level="1" />
+	<item Id="2071501" Skillid="207150" Level="1" />
+	<item Id="2071511" Skillid="207151" Level="1" />
+	<item Id="2071521" Skillid="207152" Level="1" />
+	<item Id="2071531" Skillid="207153" Level="1" />
+	<item Id="2071541" Skillid="207154" Level="1" />
+	<item Id="2071551" Skillid="207155" Level="1" />
+	<item Id="2071561" Skillid="207156" Level="1" />
+	<item Id="2071571" Skillid="207157" Level="1" />
+	<item Id="2071581" Skillid="207158" Level="1" />
+	<item Id="2071591" Skillid="207159" Level="1" />
+	<item Id="2071601" Skillid="207160" Level="1" />
+	<item Id="2071611" Skillid="207161" Level="1" />
+	<item Id="2071621" Skillid="207162" Level="1" />
+	<item Id="2071631" Skillid="207163" Level="1" />
+	<item Id="2071641" Skillid="207164" Level="1" />
+	<item Id="2071651" Skillid="207165" Level="1" />
+	<item Id="2071661" Skillid="207166" Level="1" />
+	<item Id="2071671" Skillid="207167" Level="1" />
+	<item Id="2071681" Skillid="207168" Level="1" />
+	<item Id="2071691" Skillid="207169" Level="1" />
+	<item Id="2071701" Skillid="207170" Level="1" />
 	<item Id="2800011" Skillid="280001" Level="1" />
 	<item Id="2800021" Skillid="280002" Level="1" />
 	<item Id="2800031" Skillid="280003" Level="1" />

@@ -217,7 +217,7 @@ namespace KFrame
         }
         else if ( kfsetting->_type == KFMsg::ProcessStory )
         {
-            _kf_story->AddStory( player, kfsetting->_parameter );
+            _kf_story->AddStory( player, kfsetting->_parameter, _invalid_int, _invalid_string, _invalid_int );
         }
     }
 }

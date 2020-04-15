@@ -1,0 +1,6 @@
+<root platform="" version="4296">
+	<item Id="drop" Sort="10000" />
+	<item Id="task" Sort="11000" />
+	<item Id="dialogue" Sort="12000" />
+	<item Id="story" Sort="13000" />
+</root>

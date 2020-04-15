@@ -18,13 +18,14 @@ namespace KFrame
         __REGISTER_REMOVE_DATA_1__( __STRING__( task ), &KFTaskModule::OnRemoveTask );
         __REGISTER_UPDATE_DATA_1__( __STRING__( realmid ), &KFTaskModule::OnRealmTaskFinish );
 
-        __REGISTER_EXECUTE__( __STRING__( taskstatus ), &KFTaskModule::OnExecuteUpdateTaskStatus );
+        __REGISTER_EXECUTE__( __STRING__( task ), &KFTaskModule::OnExecuteUpdateTaskStatus );
         __REGISTER_EXECUTE__( __STRING__( taskcondition ), &KFTaskModule::OnExecuteUpdateTaskCondition );
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_TASK_RECEIVE_REQ, &KFTaskModule::HandleTaskReceiveReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_TASK_REWARD_REQ, &KFTaskModule::HandleTaskRewardReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_TASK_REMOVE_REQ, &KFTaskModule::HandleTaskRemoveReq );
+        __REGISTER_MESSAGE__( KFMsg::MSG_TASK_ADD_REQ, &KFTaskModule::HandleTaskAddReq );
     }
 
     void KFTaskModule::BeforeShut()
@@ -40,12 +41,13 @@ namespace KFrame
         __UN_UPDATE_DATA_1__( __STRING__( realmid ) );
 
         __UN_ADD_ELEMENT__( __STRING__( task ) );
-        __UN_EXECUTE__( __STRING__( taskstatus ) );
+        __UN_EXECUTE__( __STRING__( task ) );
         __UN_EXECUTE__( __STRING__( taskcondition ) );
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_TASK_RECEIVE_REQ );
         __UN_MESSAGE__( KFMsg::MSG_TASK_REWARD_REQ );
         __UN_MESSAGE__( KFMsg::MSG_TASK_REMOVE_REQ );
+        __UN_MESSAGE__( KFMsg::MSG_TASK_ADD_REQ );
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -148,6 +150,7 @@ namespace KFrame
         if ( kfsetting == nullptr )
         {
             __LOG_ERROR__( "task=[{}] can't find setting", taskid );
+            _kf_display->SendToClient( player, KFMsg::TaskCanNotFind, taskid );
             return nullptr;
         }
 
@@ -192,6 +195,7 @@ namespace KFrame
         if ( kfsetting == nullptr )
         {
             __LOG_ERROR__( "task=[{}] can't find setting", taskid );
+            _kf_display->SendToClient( player, KFMsg::TaskCanNotFind, taskid );
             return nullptr;
         }
 
@@ -208,6 +212,12 @@ namespace KFrame
 
     void KFTaskModule::UpdataTaskStatus( KFEntity* player, const KFTaskSetting* kfsetting, KFData* kftask, uint32 status, uint64 time )
     {
+        auto laststatus = kftask->Get<uint32>( __STRING__( status ) );
+        if ( laststatus == status )
+        {
+            return;
+        }
+
         // 更新状态
         player->UpdateData( kftask, __STRING__( status ), KFEnum::Set, status );
 
@@ -288,7 +298,7 @@ namespace KFrame
         auto kfsetting = KFTaskConfig::Instance()->FindSetting( taskid );
         if ( kfsetting == nullptr )
         {
-            return;
+            return _kf_display->SendToClient( player, KFMsg::TaskCanNotFind, taskid );
         }
 
         FinishTask( player, kftask, kfsetting );
@@ -487,6 +497,7 @@ namespace KFrame
         auto kfsetting = KFTaskConfig::Instance()->FindSetting( taskid );\
         if ( kfsetting == nullptr )\
         {\
+            _kf_display->SendToClient( player, KFMsg::TaskCanNotFind, taskid );\
             continue;\
         }\
         auto status = kftask->Get<uint32>( __STRING__( status ) );\
@@ -596,6 +607,13 @@ namespace KFrame
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    __KF_MESSAGE_FUNCTION__( KFTaskModule::HandleTaskAddReq )
+    {
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgTaskAddReq );
+
+        OpenTask( player, kfmsg.id(), KFMsg::ExecuteStatus, 0u );
+    }
+
     __KF_MESSAGE_FUNCTION__( KFTaskModule::HandleTaskReceiveReq )
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgTaskReceiveReq );
@@ -603,7 +621,7 @@ namespace KFrame
         auto kfsetting = KFTaskConfig::Instance()->FindSetting( kfmsg.id() );
         if ( kfsetting == nullptr )
         {
-            return _kf_display->SendToClient( player, KFMsg::TaskCanNotFind );
+            return _kf_display->SendToClient( player, KFMsg::TaskCanNotFind, kfmsg.id() );
         }
 
         auto kftask = player->Find( __STRING__( task ), kfmsg.id() );
@@ -661,7 +679,7 @@ namespace KFrame
         auto kfsetting = KFTaskConfig::Instance()->FindSetting( kfmsg.id() );
         if ( kfsetting == nullptr )
         {
-            return _kf_display->SendToClient( player, KFMsg::TaskCanNotFind );
+            return _kf_display->SendToClient( player, KFMsg::TaskCanNotFind, kfmsg.id() );
         }
 
         auto kftask = player->Find( __STRING__( task ), kfmsg.id() );
@@ -700,7 +718,7 @@ namespace KFrame
         auto kfsetting = KFTaskConfig::Instance()->FindSetting( kfmsg.id() );
         if ( kfsetting == nullptr )
         {
-            return _kf_display->SendToClient( player, KFMsg::TaskCanNotFind );
+            return _kf_display->SendToClient( player, KFMsg::TaskCanNotFind, kfmsg.id() );
         }
 
         player->RemoveData( __STRING__( task ), kfmsg.id() );
@@ -718,6 +736,7 @@ namespace KFrame
         auto kfsetting = KFTaskConfig::Instance()->FindSetting( taskid );
         if ( kfsetting == nullptr )
         {
+            _kf_display->SendToClient( player, KFMsg::TaskCanNotFind, taskid );
             return false;
         }
 
@@ -802,6 +821,7 @@ namespace KFrame
         auto kfsetting = KFTaskConfig::Instance()->FindSetting( taskid );
         if ( kfsetting == nullptr )
         {
+            _kf_display->SendToClient( player, KFMsg::TaskCanNotFind, taskid );
             return false;
         }
 
@@ -844,6 +864,7 @@ namespace KFrame
             auto kfsetting = KFTaskConfig::Instance()->FindSetting( taskid );
             if ( kfsetting == nullptr )
             {
+                _kf_display->SendToClient( player, KFMsg::TaskCanNotFind, taskid );
                 continue;
             }
 

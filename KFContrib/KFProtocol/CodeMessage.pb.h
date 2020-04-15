@@ -91,8 +91,6 @@ enum ProjectCodeEnum {
   HeroCanNotTransfer = 31126,
   HeroProfessionIsError = 31127,
   HeroNameEmpty = 31128,
-  HeroTransferSuc = 31129,
-  HeroSelectInnateSuc = 31130,
   HeroIsDead = 31131,
   HeroRaceIsError = 31132,
   HeroDivisorNotUnlock = 31133,
@@ -101,7 +99,6 @@ enum ProjectCodeEnum {
   HeroRecruitRefreshWeight = 31136,
   HeroRefreshCountNotEnough = 31137,
   HeroRecruitRefreshSuc = 31138,
-  HeroRecruitHeroSuc = 31139,
   HeroDurabilityNotZero = 31140,
   ContractTimeFormulaError = 31141,
   ContractPriceFormulaError = 31142,
@@ -133,7 +130,6 @@ enum ProjectCodeEnum {
   SmithyMakeNumNotEnough = 31220,
   ClinicCountIsNotEnough = 31221,
   ClinicNotNeedCure = 31222,
-  SmithyMakeWeaponSuc = 31223,
   BuildLevelIsMax = 31224,
   BuildInUpgradeTime = 31225,
   BuildNoFreeUpgradeList = 31226,
@@ -151,6 +147,7 @@ enum ProjectCodeEnum {
   GranaryBuyCountLimit = 31238,
   GranaryBuySettingError = 31239,
   GranaryBuyParamError = 31240,
+  BuildCanNotUpgrade = 31241,
   RealmMapError = 31301,
   RealmLevelError = 31302,
   RealmNotInExplore = 31305,
@@ -198,14 +195,9 @@ enum ProjectCodeEnum {
   ItemUnWeaponOk = 32508,
   ItemUpdateDurabilityError = 32509,
   ItemCanNotUseToHero = 32510,
-  RuneIsNotAutoSet = 32511,
-  RuneSlotIsFull = 32512,
-  RuneSlotIndexError = 32513,
   RuneSameTypeLimit = 32514,
   RunePutOnSuc = 32515,
   RuneTakeOffSuc = 32516,
-  RuneTakeOffFail = 32517,
-  RuneSlotIsEmpty = 32518,
   PlayerHeadIconSetOK = 32601,
   PlayerFactionSetOK = 32602,
   PlayerHeadIconNotExist = 32603,
@@ -224,12 +216,14 @@ enum ProjectCodeEnum {
   DialogueBranchSelectSuc = 32710,
   StoryHaveDialogueBranch = 32711,
   StorySequenceNotFinish = 32712,
+  StoryIsNotMainStory = 32713,
+  TaskChainSettingNotExist = 32800,
   ProjectCodeEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   ProjectCodeEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 LIBPROTOC_EXPORT bool ProjectCodeEnum_IsValid(int value);
 const ProjectCodeEnum ProjectCodeEnum_MIN = LogicError;
-const ProjectCodeEnum ProjectCodeEnum_MAX = StorySequenceNotFinish;
+const ProjectCodeEnum ProjectCodeEnum_MAX = TaskChainSettingNotExist;
 const int ProjectCodeEnum_ARRAYSIZE = ProjectCodeEnum_MAX + 1;
 
 LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* ProjectCodeEnum_descriptor();

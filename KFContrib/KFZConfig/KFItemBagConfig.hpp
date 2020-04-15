@@ -45,6 +45,12 @@ namespace KFrame
         // 探索中是否需要纪录
         bool _is_realm_record = false;
 
+        // 子页签列表
+        StringSet _tab_list;
+
+        // 是否自动使用礼包
+        bool _is_auto_use_gift = false;
+
     public:
         // 判断是否移动显示更新
         bool IsMoveShow( const std::string& name ) const
@@ -62,6 +68,12 @@ namespace KFrame
         bool IsMoveDecUpdate( const std::string& name ) const
         {
             return _move_dec_update_bag.find( name ) != _move_dec_update_bag.end();
+        }
+
+        // 是否有子页签
+        bool IsHaveTab( const std::string& name ) const
+        {
+            return _tab_list.find( name ) != _tab_list.end();
         }
     };
     ////////////////////////////////////////////////////////////////////////////////

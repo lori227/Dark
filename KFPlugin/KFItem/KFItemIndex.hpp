@@ -6,7 +6,7 @@ namespace KFrame
 {
 #define __BEGIN_ITEM_INDEX__ 1u
 
-    class KFItemIndex
+    class KFItemTabIndex
     {
     public:
         // 初始化
@@ -18,19 +18,15 @@ namespace KFrame
             {
                 _emptys.insert( i );
             }
-
-            _max_count = maxvalue;
         }
 
         // 添加索引
-        void AddMaxIndex( uint32 count )
+        void AddMaxIndex( uint32 maxcount, uint32 addcount )
         {
-            for ( auto i = __BEGIN_ITEM_INDEX__; i <= count; ++i )
+            for ( auto i = __BEGIN_ITEM_INDEX__; i <= addcount; ++i )
             {
-                _emptys.insert( i + _max_count );
+                _emptys.insert( i + maxcount );
             }
-
-            _max_count += count;
         }
 
         uint32 FindEmpty( uint64 uuid )
@@ -63,12 +59,6 @@ namespace KFrame
             AddUUID( index, uuid );
         }
 
-        // 最大索引
-        uint32 MaxIndex() const
-        {
-            return _max_count;
-        }
-
         bool IsEmpty( uint32 index )
         {
             return _emptys.find( index ) != _emptys.end();
@@ -98,9 +88,56 @@ namespace KFrame
         }
         /////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////
+        uint32 AddItemIndex( uint64 uuid, uint32 index, uint32 maxcount )
+        {
+            auto newindex = 0u;
+
+            // 判断索引
+            if ( index == 0u || index > maxcount )
+            {
+                // 索引为0, 直接找一个空格子
+                newindex = FindEmpty( uuid );
+            }
+            else
+            {
+                auto olduuid = GetUUID( index );
+                if ( olduuid == 0u )
+                {
+                    // 获得索引没设置uuid
+                    RemoveEmpty( index, uuid );
+                }
+                else if ( olduuid != uuid )
+                {
+                    // 索引和uuid不匹配
+                    newindex = FindEmpty( uuid );
+                }
+            }
+
+            return newindex;
+        }
+
+        void RemoveItemIndex( uint64 uuid, uint32 index )
+        {
+            auto olduuid = GetUUID( index );
+            if ( olduuid == uuid )
+            {
+                AddEmpty( index );
+            }
+        }
+
+        void UpdateItemIndex( uint64 uuid, uint32 oldindex, uint32 newindex )
+        {
+            if ( oldindex != 0u )
+            {
+                RemoveItemIndex( uuid, oldindex );
+            }
+
+            RemoveEmpty( newindex, uuid );
+        }
+
     public:
-        // 最大数量
-        uint32 _max_count = 0u;
+        // 名字
+        std::string _name;
 
         // 空索引列表
         UInt32Set _emptys;
@@ -108,6 +145,62 @@ namespace KFrame
         // 索引对应的物品uuid
         UInt64Map _uuids;
     };
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    class KFItemBagIndex
+    {
+    public:
+        // 查找页签数据
+        KFItemTabIndex* FindTab( const std::string& tabname )
+        {
+            return _tab_index_list.Find( tabname );
+        }
+
+        void InitMaxIndex( uint32 maxcount, const StringSet& tablist )
+        {
+            _max_count = maxcount;
+            for ( auto& tabname : tablist )
+            {
+                InitMaxIndex( tabname );
+            }
+        }
+
+        KFItemTabIndex* InitMaxIndex( const std::string& tabname )
+        {
+            auto kftabindex = _tab_index_list.Create( tabname );
+            kftabindex->_name = tabname;
+            kftabindex->InitMaxIndex( _max_count );
+            return kftabindex;
+        }
+
+        // 添加最大值
+        void AddMaxIndex( uint32 count )
+        {
+            for ( auto& iter : _tab_index_list._objects )
+            {
+                auto kftabindex = iter.second;
+                kftabindex->AddMaxIndex( _max_count, count );
+            }
+
+            _max_count += count;
+        }
+
+        // 最大索引
+        uint32 GetMaxIndex() const
+        {
+            return _max_count;
+        }
+
+        /////////////////////////////////////////////////////////////////////////////////
+    public:
+        // 最大数量
+        uint32 _max_count = 0u;
+
+        // 页签列表
+        KFHashMap<std::string, const std::string&, KFItemTabIndex> _tab_index_list;
+    };
+
 }
 
 #endif

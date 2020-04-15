@@ -1,0 +1,11 @@
+<root platform="" version="4387">
+	<item Id="911" ExecuteName="drop" ExecuteParam1="86661" ExecuteParam2="" ExecuteParam3="" ExecuteParam4="" />
+	<item Id="911" ExecuteName="story" ExecuteParam1="11201" ExecuteParam2="" ExecuteParam3="" ExecuteParam4="" />
+	<item Id="919" ExecuteName="drop" ExecuteParam1="86662" ExecuteParam2="" ExecuteParam3="" ExecuteParam4="" />
+	<item Id="919" ExecuteName="story" ExecuteParam1="11202" ExecuteParam2="" ExecuteParam3="" ExecuteParam4="" />
+	<item Id="920" ExecuteName="drop" ExecuteParam1="86663" ExecuteParam2="" ExecuteParam3="" ExecuteParam4="" />
+	<item Id="920" ExecuteName="story" ExecuteParam1="11203" ExecuteParam2="" ExecuteParam3="" ExecuteParam4="" />
+	<item Id="921" ExecuteName="drop" ExecuteParam1="86664" ExecuteParam2="" ExecuteParam3="" ExecuteParam4="" />
+	<item Id="921" ExecuteName="story" ExecuteParam1="11204" ExecuteParam2="" ExecuteParam3="" ExecuteParam4="" />
+	<item Id="921" ExecuteName="task" ExecuteParam1="920" ExecuteParam2="2" ExecuteParam3="" ExecuteParam4="" />
+</root>

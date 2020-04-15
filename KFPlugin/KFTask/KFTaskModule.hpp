@@ -52,6 +52,8 @@ namespace KFrame
         // 放弃任务
         __KF_MESSAGE_FUNCTION__( HandleTaskRemoveReq );
 
+        // 添加任务
+        __KF_MESSAGE_FUNCTION__( HandleTaskAddReq );
     protected:
         // 添加任务
         __KF_ADD_ELEMENT_FUNCTION__( AddTaskElement );

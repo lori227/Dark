@@ -16,8 +16,9 @@
 #include "KFKernel/KFKernelInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFCondition/KFConditionInterface.h"
-#include "KFTaskChainConfig.hpp"
 #include "KFTimer/KFTimerInterface.h"
+#include "KFDisplay/KFDisplayInterface.h"
+#include "KFTaskChainConfig.hpp"
 
 namespace KFrame
 {

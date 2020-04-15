@@ -41,9 +41,6 @@ namespace KFrame
         ////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
     protected:
-        // 执行逻辑事件
-        __KF_EXECUTE_FUNCTION__( OnExecuteLogicEvent );
-
         // 执行对话
         __KF_EXECUTE_FUNCTION__( OnExecuteDialogue );
 
@@ -58,7 +55,6 @@ namespace KFrame
 
         // 选择分支请求
         __KF_MESSAGE_FUNCTION__( HandleSelectDialogueBranchReq );
-
 
     protected:
         // 通知客户端对话消息

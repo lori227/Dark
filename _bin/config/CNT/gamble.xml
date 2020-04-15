@@ -1,21 +1,21 @@
-<root platform="" version="4136">
-	<item Id="38000001" CostItemId="1900005" Price="1" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500101" InnerDrop="5500101" LocalEvent="" />
-	<item Id="38000002" CostItemId="1900005" Price="1" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500102" InnerDrop="5500102" LocalEvent="" />
-	<item Id="38000003" CostItemId="1900005" Price="1" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500103" InnerDrop="5500103" LocalEvent="" />
-	<item Id="38000004" CostItemId="1900005" Price="1" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500104" InnerDrop="5500104" LocalEvent="" />
-	<item Id="38000005" CostItemId="1900005" Price="1" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500105" InnerDrop="5500105" LocalEvent="" />
-	<item Id="38000006" CostItemId="1900005" Price="1" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500106" InnerDrop="5500106" LocalEvent="" />
-	<item Id="38000007" CostItemId="1900005" Price="1" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500001" InnerDrop="5500001" LocalEvent="" />
-	<item Id="38000008" CostItemId="1900005" Price="1" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500002" InnerDrop="5500002" LocalEvent="" />
-	<item Id="38000009" CostItemId="1900005" Price="1" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500003" InnerDrop="5500003" LocalEvent="" />
-	<item Id="38000010" CostItemId="1900005" Price="1" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500004" InnerDrop="5500004" LocalEvent="" />
-	<item Id="38000011" CostItemId="1900005" Price="1" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500005" InnerDrop="5500005" LocalEvent="" />
-	<item Id="38000012" CostItemId="1900005" Price="1" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500006" InnerDrop="5500006" LocalEvent="" />
-	<item Id="38000013" CostItemId="1900005" Price="1" Params="1,0" MaxPrice="0" ShowCount="7" DropType="1" NormalDrop="36000007" InnerDrop="36000007" LocalEvent="" />
-	<item Id="38000014" CostItemId="1900005" Price="1" Params="1,0" MaxPrice="0" ShowCount="7" DropType="1" NormalDrop="36000008" InnerDrop="36000008" LocalEvent="" />
-	<item Id="38000015" CostItemId="1900005" Price="1" Params="1,0" MaxPrice="0" ShowCount="7" DropType="1" NormalDrop="36000009" InnerDrop="36000009" LocalEvent="" />
-	<item Id="38000016" CostItemId="1900005" Price="1" Params="1,0" MaxPrice="0" ShowCount="7" DropType="1" NormalDrop="36000010" InnerDrop="36000010" LocalEvent="" />
-	<item Id="38000017" CostItemId="1900005" Price="1" Params="1,0" MaxPrice="0" ShowCount="7" DropType="1" NormalDrop="36000011" InnerDrop="36000011" LocalEvent="" />
-	<item Id="38000018" CostItemId="1900005" Price="1" Params="1,0" MaxPrice="0" ShowCount="7" DropType="1" NormalDrop="36000012" InnerDrop="36000012" LocalEvent="" />
-	<item Id="38000019" CostItemId="1900005" Price="1" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5803001" InnerDrop="5802001" LocalEvent="" />
+<root platform="" version="4410">
+	<item Id="38000001" CostItemId="1900000" Price="2000" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500101" InnerDrop="5500101" LocalEvent="" />
+	<item Id="38000002" CostItemId="1900000" Price="2000" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500102" InnerDrop="5500102" LocalEvent="" />
+	<item Id="38000003" CostItemId="1900000" Price="2000" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500103" InnerDrop="5500103" LocalEvent="" />
+	<item Id="38000004" CostItemId="1900000" Price="2000" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500104" InnerDrop="5500104" LocalEvent="" />
+	<item Id="38000005" CostItemId="1900000" Price="2000" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500105" InnerDrop="5500105" LocalEvent="" />
+	<item Id="38000006" CostItemId="1900000" Price="2000" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500106" InnerDrop="5500106" LocalEvent="" />
+	<item Id="38000007" CostItemId="1900000" Price="2000" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500001" InnerDrop="5500001" LocalEvent="" />
+	<item Id="38000008" CostItemId="1900000" Price="2000" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500002" InnerDrop="5500002" LocalEvent="" />
+	<item Id="38000009" CostItemId="1900000" Price="2000" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500003" InnerDrop="5500003" LocalEvent="" />
+	<item Id="38000010" CostItemId="1900000" Price="2000" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500004" InnerDrop="5500004" LocalEvent="" />
+	<item Id="38000011" CostItemId="1900000" Price="2000" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500005" InnerDrop="5500005" LocalEvent="" />
+	<item Id="38000012" CostItemId="1900000" Price="2000" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5500006" InnerDrop="5500006" LocalEvent="" />
+	<item Id="38000013" CostItemId="1900000" Price="2000" Params="1,0" MaxPrice="0" ShowCount="7" DropType="1" NormalDrop="36000007" InnerDrop="36000007" LocalEvent="" />
+	<item Id="38000014" CostItemId="1900000" Price="2000" Params="1,0" MaxPrice="0" ShowCount="7" DropType="1" NormalDrop="36000008" InnerDrop="36000008" LocalEvent="" />
+	<item Id="38000015" CostItemId="1900000" Price="2000" Params="1,0" MaxPrice="0" ShowCount="7" DropType="1" NormalDrop="36000009" InnerDrop="36000009" LocalEvent="" />
+	<item Id="38000016" CostItemId="1900000" Price="2000" Params="1,0" MaxPrice="0" ShowCount="7" DropType="1" NormalDrop="36000010" InnerDrop="36000010" LocalEvent="" />
+	<item Id="38000017" CostItemId="1900000" Price="2000" Params="1,0" MaxPrice="0" ShowCount="7" DropType="1" NormalDrop="36000011" InnerDrop="36000011" LocalEvent="" />
+	<item Id="38000018" CostItemId="1900000" Price="2000" Params="1,0" MaxPrice="0" ShowCount="7" DropType="1" NormalDrop="36000012" InnerDrop="36000012" LocalEvent="" />
+	<item Id="38000019" CostItemId="1900000" Price="2000" Params="1,0" MaxPrice="0" ShowCount="7" DropType="0" NormalDrop="5803001" InnerDrop="5802001" LocalEvent="" />
 </root>

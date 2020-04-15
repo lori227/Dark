@@ -1,4 +1,4 @@
-<root platform="" version="4200">
+<root platform="" version="4409">
 	<item Id="1000301" DrugType="2" Restore="{&quot;addhp&quot;:10}" UseTarget="1" />
 	<item Id="1000302" DrugType="2" Restore="{&quot;addhp&quot;:15}" UseTarget="1" />
 	<item Id="1000303" DrugType="2" Restore="{&quot;addhp&quot;:20}" UseTarget="1" />
@@ -11,5 +11,6 @@
 	<item Id="1000331" DrugType="2" Restore="{&quot;decfaith&quot;:20}" UseTarget="0" />
 	<item Id="1000332" DrugType="2" Restore="{&quot;decfaith&quot;:40}" UseTarget="0" />
 	<item Id="1000333" DrugType="2" Restore="{&quot;decfaith&quot;:60}" UseTarget="0" />
-	<item Id="1000399" DrugType="2" Restore="{&quot;logicevent&quot;:30000005}" UseTarget="0" />
+	<item Id="1900101" DrugType="2" Restore="{&quot;logicevent&quot;:31000003}" UseTarget="0" />
+	<item Id="1900106" DrugType="2" Restore="{&quot;logicevent&quot;:30000005}" UseTarget="0" />
 </root>

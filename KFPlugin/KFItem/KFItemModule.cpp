@@ -46,16 +46,6 @@ namespace KFrame
         __UN_MESSAGE__( KFMsg::MSG_REMOVE_ITEM_COUNT_REQ );
     }
 
-    void KFItemModule::PrepareRun()
-    {
-        _item_data_list.clear();
-        _item_data_list = _kf_component->GetDataList( __STRING__( item ) );
-    }
-
-    const StringVector& KFItemModule::GetItemRecordList()
-    {
-        return _item_data_list;
-    }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     void KFItemModule::BindInitItemFunction( uint32 itemtype, KFItemFunction& function )
     {
@@ -101,7 +91,7 @@ namespace KFrame
             return 0u;
         }
 
-        auto kfitemrecord = player->Find( _item_data_list.front() );
+        auto kfitemrecord = player->Find( KFItemBagConfig::Instance()->_settings._objects.begin()->first );
         kfitemrecord = FindItemRecord( player, kfitemrecord, kfsetting, 0u );
         if ( kfitemrecord == nullptr )
         {
@@ -304,6 +294,7 @@ namespace KFrame
         if ( kfsetting == nullptr )
         {
             __LOG_ERROR_FUNCTION__( function, line, "id=[{}] itemsetting = null", kfelementobject->_config_id );
+            _kf_display->SendToClient( player, KFMsg::ItemSettingNotExist, kfelementobject->_config_id );
             return false;
         }
 
@@ -322,45 +313,40 @@ namespace KFrame
         CallItemLuaFunction( player, KFItemEnum::AddFunction, kfsetting, itemcount );
 
         // 自动打开的礼包
-        if ( kfsetting->_type == KFItemEnum::Gift && kfparent->_data_setting->_name == __STRING__( gift ) && kfsetting->_auto_use != 0u )
+        if ( kfsetting->IsAutoUse() )
         {
-            AddItemResult( kfresult, kfparent->_data_setting->_name, kfsetting->_id, itemcount );
-
-            // 礼包道具 进入仓库自动使用
-            if ( !kfsetting->_reward.IsEmpty() )
+            auto kfitembagsetting = KFItemBagConfig::Instance()->FindSetting( kfparent->_data_setting->_name );
+            if ( kfitembagsetting != nullptr && kfitembagsetting->_is_auto_use_gift )
             {
-                player->AddElement( &kfsetting->_reward, itemcount, kfresult->_module_name, kfresult->_module_id, __FUNC_LINE__ );
+                AddItemResult( kfresult, kfparent->_data_setting->_name, kfsetting->_id, itemcount );
+                player->AddElement( &kfsetting->_reward, itemcount, _invalid_string, _invalid_int, __FUNC_LINE__ );
+                return true;
+            }
+        }
+
+        // 判断堆叠类型
+        if ( kfsetting->_overlay_type == KFItemEnum::OverlayByTime )
+        {
+            // 计算时间
+            auto itemtime = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( time ), kfresult->_multiple );
+            if ( itemtime == 0u )
+            {
+                __LOG_ERROR_FUNCTION__( function, line, "time item id=[{}] count = 0", kfelementobject->_config_id );
+                return false;
+            }
+
+            AddOverlayTimeItem( player, kfparent, kfresult, kfsetting, itemcount, itemtime );
+        }
+        else if ( kfsetting->_overlay_type == KFItemEnum::OverlayByCount )
+        {
+            // 按数量叠加道具
+            if ( kfsetting->IsOverlay() )
+            {
+                AddOverlayCountItem( player, kfparent, kfresult, kfsetting, itemcount );
             }
             else
             {
-                __LOG_ERROR_FUNCTION__( function, line, "item id=[{}] reward is null", kfelementobject->_config_id );
-            }
-        }
-        else
-        {
-            if ( kfsetting->_overlay_type == KFItemEnum::OverlayByTime )
-            {
-                // 计算时间
-                auto itemtime = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( time ), kfresult->_multiple );
-                if ( itemtime == 0u )
-                {
-                    __LOG_ERROR_FUNCTION__( function, line, "time item id=[{}] count = 0", kfelementobject->_config_id );
-                    return false;
-                }
-
-                AddOverlayTimeItem( player, kfparent, kfresult, kfsetting, itemcount, itemtime );
-            }
-            else if ( kfsetting->_overlay_type == KFItemEnum::OverlayByCount )
-            {
-                // 按数量叠加道具
-                if ( kfsetting->IsOverlay() )
-                {
-                    AddOverlayCountItem( player, kfparent, kfresult, kfsetting, itemcount );
-                }
-                else
-                {
-                    AddNotOverlayItem( player, kfparent, kfresult, kfsetting, itemcount );
-                }
+                AddNotOverlayItem( player, kfparent, kfresult, kfsetting, itemcount );
             }
         }
 
@@ -496,12 +482,13 @@ namespace KFrame
         if ( kfsetting == nullptr )
         {
             __LOG_ERROR_FUNCTION__( function, line, "item=[{}] can't find setting", itemid );
+            _kf_display->SendToClient( player, KFMsg::ItemSettingNotExist, itemid );
             return kfitem;
         }
 
         if ( kfitem == nullptr )
         {
-            kfitem = player->CreateData( _item_data_list.front() );
+            kfitem = player->CreateData( KFItemBagConfig::Instance()->_settings._objects.begin()->first );
             if ( kfitem == nullptr )
             {
                 return kfitem;
@@ -535,7 +522,7 @@ namespace KFrame
             return nullptr;
         }
 
-        auto kfitemrecord = player->Find( _item_data_list.front() );
+        auto kfitemrecord = player->Find( KFItemBagConfig::Instance()->_settings._objects.begin()->first );
         return FindItemRecord( player, kfitemrecord, kfsetting, 0u );
     }
 
@@ -652,6 +639,7 @@ namespace KFrame
         if ( kfsetting == nullptr )
         {
             __LOG_ERROR_FUNCTION__( function, line, "item id=[{}] setting = nullptr", kfelementobject->_config_id );
+            _kf_display->SendToClient( player, KFMsg::ItemSettingNotExist, kfelementobject->_config_id );
             return false;
         }
 
@@ -927,9 +915,9 @@ namespace KFrame
 
     __KF_ENTER_PLAYER_FUNCTION__( KFItemModule::OnEnterItemModule )
     {
-        for ( auto& dataname : _item_data_list )
+        for ( auto& iter : KFItemBagConfig::Instance()->_settings._objects )
         {
-            auto kfitemrecord = player->Find( dataname );
+            auto kfitemrecord = player->Find( iter.first );
             for ( auto kfitem = kfitemrecord->First(); kfitem != nullptr; kfitem = kfitemrecord->Next() )
             {
                 auto time = kfitem->Get<uint64>( __STRING__( time ) );
@@ -967,9 +955,9 @@ namespace KFrame
             return;
         }
 
-        for ( auto& dataname : _item_data_list )
+        for ( auto& iter : KFItemBagConfig::Instance()->_settings._objects )
         {
-            auto ok = player->RemoveData( dataname, subid );
+            auto ok = player->RemoveData( iter.first, subid );
             if ( ok )
             {
                 break;
@@ -995,9 +983,9 @@ namespace KFrame
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////
     std::tuple<KFData*, KFData*> KFItemModule::FindItem( KFEntity* player, uint64 itemuuid )
     {
-        for ( auto& strname : _item_data_list )
+        for ( auto& iter : KFItemBagConfig::Instance()->_settings._objects )
         {
-            auto kfitemrecord = player->Find( strname );
+            auto kfitemrecord = player->Find( iter.first );
             auto kfitem = kfitemrecord->Find( itemuuid );
             if ( kfitem != nullptr )
             {

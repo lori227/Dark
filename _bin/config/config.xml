@@ -1,4 +1,4 @@
-<root platform="" version="4013">
+<root platform="" version="4455">
 	<item Id="redis" Name="redis" FileName="./setting/{}_{}_redis.xml" Reload="0" ClearData="0" ClearFile="0" ChildFile="0" />
 	<item Id="mongo" Name="mongo" FileName="./setting/{}_{}_mongo.xml" Reload="0" ClearData="0" ClearFile="0" ChildFile="0" />
 	<item Id="mysql" Name="mysql" FileName="./setting/{}_{}_mysql.xml" Reload="0" ClearData="0" ClearFile="0" ChildFile="0" />
@@ -24,6 +24,7 @@
 	<item Id="reset" Name="reset" FileName="./config/reset.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="signin" Name="signin" FileName="./config/signin.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="store" Name="store" FileName="./config/store.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
+	<item Id="goods" Name="goods" FileName="./config/goods.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="achieve" Name="achieve" FileName="./config/achieve.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="constant" Name="constant" FileName="./config/constant.xml" Reload="1" ClearData="0" ClearFile="0" ChildFile="0" />
 	<item Id="dropdata" Name="dropdata" FileName="./config/dropdata.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
@@ -100,4 +101,9 @@
 	<item Id="heroquality" Name="heroquality" FileName="./config/heroquality.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="realmtime" Name="realmtime" FileName="./config/realmtime.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="weather" Name="weather" FileName="./config/weather.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
+	<item Id="execute" Name="taskexecute" FileName="./config/taskexecute.xml" Reload="1" ClearData="1" ClearFile="1" ChildFile="0" />
+	<item Id="executesort" Name="executesort" FileName="./config/executesort.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
+	<item Id="injury" Name="injury" FileName="./config/injury.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
+	<item Id="injuryrandom" Name="injuryrandom" FileName="./config/injuryrandom.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
+	<item Id="storeunlock" Name="storeunlock" FileName="./config/storeunlock.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 </root>

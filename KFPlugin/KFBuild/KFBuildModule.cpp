@@ -45,17 +45,39 @@ namespace KFrame
             return false;
         }
 
+#ifdef __KF_DEBUG__
         auto kfelementobject = reinterpret_cast< KFElementObject* >( kfelement );
         auto level = kfelementobject->CalcValue( kfparent->_data_setting, __STRING__( level ), kfresult->_multiple );
-
-#ifdef __KF_DEBUG__
-        for ( auto& iter : KFBuildConfig::Instance()->_settings._objects )
+        if ( level == 0u )
         {
-            auto kfsetting = iter.second;
-            if ( level == 0u || kfsetting->_level <= level )
+            // 顶级
+            for ( auto& iter : KFBuildConfig::Instance()->_settings._objects )
             {
-                player->UpdateData( kfparent, kfsetting->_build_id, __STRING__( level ), KFEnum::Set, kfsetting->_level );
-                player->UpdateData( kfparent, kfsetting->_build_id, __STRING__( unlock ), KFEnum::Set, KFGlobal::Instance()->_real_time );
+                auto kfsetting = iter.second;
+
+                auto oldlevel = kfparent->Get<uint32>( kfsetting->_id, __STRING__( level ) );
+                for ( auto i = oldlevel + 1u; i <= kfsetting->_max_level; ++i )
+                {
+                    player->UpdateData( kfparent, kfsetting->_id, __STRING__( level ), KFEnum::Set, i );
+                }
+
+                player->UpdateData( kfparent, kfsetting->_id, __STRING__( unlock ), KFEnum::Set, KFGlobal::Instance()->_real_time );
+            }
+        }
+        else
+        {
+            // 每次加一级
+            for ( auto& iter : KFBuildConfig::Instance()->_settings._objects )
+            {
+                auto kfsetting = iter.second;
+                auto oldlevel = kfparent->Get<uint32>( kfsetting->_id, __STRING__( level ) );
+                if ( oldlevel >= kfsetting->_max_level )
+                {
+                    continue;
+                }
+
+                player->UpdateData( kfparent, kfsetting->_id, __STRING__( level ), KFEnum::Add, 1u );
+                player->UpdateData( kfparent, kfsetting->_id, __STRING__( unlock ), KFEnum::Set, KFGlobal::Instance()->_real_time );
             }
         }
 #endif
@@ -127,7 +149,7 @@ namespace KFrame
         }
 
         auto level = kfbuild->Get( __STRING__( level ) );
-        auto kfsetting = KFBuildConfig::Instance()->FindBuildSetting( kfmsg.id(), level + 1u );
+        auto kfsetting = KFBuildConfig::Instance()->FindBuildLevelSetting( kfmsg.id(), level + 1u );
         if ( kfsetting == nullptr )
         {
             // 建筑已满级
@@ -159,7 +181,7 @@ namespace KFrame
         double multiple = 1.0 - static_cast<double>( decconsume ) / KFRandEnum::TenThousand;
 
         // 资源是否足够
-        auto& dataname = player->RemoveElement( &kfsetting->_consume, multiple, __STRING__( buildupgrade ), kfsetting->_id, __FUNC_LINE__ );
+        auto& dataname = player->RemoveElement( &kfsetting->_consume, multiple, __STRING__( buildupgrade ), kfmsg.id(), __FUNC_LINE__ );
         if ( !dataname.empty() )
         {
             return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
@@ -195,7 +217,7 @@ namespace KFrame
         }
 
         auto level = kfbuild->Get<uint64>( __STRING__( level ) );
-        auto kfsetting = KFBuildConfig::Instance()->FindBuildSetting( kfmsg.id(), level + 1u );
+        auto kfsetting = KFBuildConfig::Instance()->FindBuildLevelSetting( kfmsg.id(), level + 1u );
         if ( kfsetting == nullptr )
         {
             // 建筑等级配置错误
@@ -203,7 +225,7 @@ namespace KFrame
         }
 
         auto count = ( upgradetime - nowtime - 1u ) / kfsetting->_unit_time + 1u;
-        auto& dataname = player->RemoveElement( &kfsetting->_onekey_consume, count, __STRING__( buildonekey ), kfsetting->_id, __FUNC_LINE__ );
+        auto& dataname = player->RemoveElement( &kfsetting->_onekey_consume, count, __STRING__( buildonekey ), kfmsg.id(), __FUNC_LINE__ );
         if ( !dataname.empty() )
         {
             return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
@@ -224,7 +246,7 @@ namespace KFrame
         }
 
         auto level = kfbuild->Get( __STRING__( level ) );
-        auto kfsetting = KFBuildConfig::Instance()->FindBuildSetting( kfmsg.id(), level + 1u );
+        auto kfsetting = KFBuildConfig::Instance()->FindBuildLevelSetting( kfmsg.id(), level + 1u );
         if ( kfsetting == nullptr )
         {
             // 建筑已满级
@@ -232,8 +254,14 @@ namespace KFrame
         }
 
         auto upgradetime = kfbuild->Get<uint64>( __STRING__( time ) );
+        if ( upgradetime == 0u )
+        {
+            // 建筑不可升级
+            return _kf_display->SendToClient( player, KFMsg::BuildCanNotUpgrade );
+        }
+
         auto nowtime = KFGlobal::Instance()->_real_time;
-        if ( upgradetime == 0u || upgradetime > nowtime )
+        if ( upgradetime > nowtime )
         {
             // 建筑正在升级
             return _kf_display->SendToClient( player, KFMsg::BuildInUpgradeTime );
@@ -273,7 +301,7 @@ namespace KFrame
     {
         auto id = kfdata->Get( __STRING__( id ) );
         auto level = kfdata->Get( __STRING__( level ) );
-        auto kfbuildsetting = KFBuildConfig::Instance()->FindBuildSetting( id, level );
+        auto kfbuildsetting = KFBuildConfig::Instance()->FindBuildLevelSetting( id, level );
         if ( kfbuildsetting == nullptr )
         {
             return;
@@ -319,7 +347,7 @@ namespace KFrame
 
         auto id = kfdata->Get( __STRING__( id ) );
         auto level = kfdata->Get( __STRING__( level ) );
-        auto kfsetting = KFBuildConfig::Instance()->FindBuildSetting( id, level + 1u );
+        auto kfsetting = KFBuildConfig::Instance()->FindBuildLevelSetting( id, level + 1u );
         if ( kfsetting == nullptr || kfsetting->_condition.empty() )
         {
             return;

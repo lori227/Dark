@@ -127,7 +127,7 @@ namespace KFrame
         auto& executelist = kfsetting->_execute_list;
         for ( auto iter : executelist )
         {
-            _kf_execute->Execute( player, iter, __FUNC_LINE__ );
+            _kf_execute->Execute( player, iter, __STRING__( useitem ), kfsetting->_id, __FUNC_LINE__ );
         }
 
         return true;
@@ -204,7 +204,7 @@ namespace KFrame
         for ( auto iter : executelist )
         {
             iter->_calc_value = kfmsg.herouuid();
-            _kf_execute->Execute( player, iter, __FUNC_LINE__ );
+            _kf_execute->Execute( player, iter, __STRING__( useitem ), itemid, __FUNC_LINE__ );
         }
 
         UseCoseItem( player, kfitem, kfsetting );

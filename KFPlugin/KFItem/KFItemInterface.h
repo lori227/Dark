@@ -11,9 +11,6 @@ namespace KFrame
     class KFItemInterface : public KFModule
     {
     public:
-        // 获得背包列表
-        virtual const StringVector& GetItemRecordList() = 0;
-
         // 背包格子最大数量
         virtual uint32 GetItemRecordMaxCount( KFEntity* player, KFData* kfitemrecord ) = 0;
 

@@ -251,6 +251,7 @@ namespace KFrame
         __STRING_DEFINE__( itemmove );
         __STRING_DEFINE__( pvedrop );
         __STRING_DEFINE__( realmdrop );
+        __STRING_DEFINE__( selectinnate );
     }
 }
 

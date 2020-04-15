@@ -5,7 +5,7 @@
 
 namespace KFrame
 {
-    class KFItemTypeSeting : public KFIntSetting
+    class KFItemTypeSetting : public KFIntSetting
     {
     public:
         // 仓库名字
@@ -29,13 +29,19 @@ namespace KFrame
         // 排序索引
         uint32 _sort_index = 0u;
 
+        // 可以放入的页签列表
+        StringSet _tab_name_list;
+
     public:
         // 判断是否能移动
         bool CheckCanMove( const std::string& sourcename, const std::string& targetname ) const;
+
+        // 是否在页签中
+        bool IsHaveTab( const std::string& name ) const;
     };
     ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
-    class KFItemTypeConfig : public KFConfigT< KFItemTypeSeting >, public KFInstance< KFItemTypeConfig >
+    class KFItemTypeConfig : public KFConfigT< KFItemTypeSetting >, public KFInstance< KFItemTypeConfig >
     {
     public:
         KFItemTypeConfig()
@@ -44,7 +50,7 @@ namespace KFrame
         }
     protected:
         // 读取配置
-        virtual void ReadSetting( KFNode& xmlnode, KFItemTypeSeting* kfsetting );
+        virtual void ReadSetting( KFNode& xmlnode, KFItemTypeSetting* kfsetting );
     };
 }
 

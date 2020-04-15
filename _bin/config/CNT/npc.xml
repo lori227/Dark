@@ -1,4 +1,4 @@
-<root platform="" version="3762">
+<root platform="" version="4347">
 	<item Id="2000" />
 	<item Id="2001" />
 	<item Id="2002" />
@@ -68,4 +68,11 @@
 	<item Id="10001023" />
 	<item Id="10001024" />
 	<item Id="10001025" />
+	<item Id="10010101" />
+	<item Id="10010104" />
+	<item Id="10000025" />
+	<item Id="10000024" />
+	<item Id="10000034" />
+	<item Id="10010204" />
+	<item Id="10010304" />
 </root>

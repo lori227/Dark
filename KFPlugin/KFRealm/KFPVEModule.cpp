@@ -332,6 +332,8 @@ namespace KFrame
         kfpvedata->_data.set_moduleid( moduleid );
         kfpvedata->_data.set_modulename( modulename );
 
+        kfpvedata->RecordBeginHeros( player );
+
         /////////////////////////////////////////////////////////////////////////////////////////////
         KFMsg::MsgPVEAck ack;
         ack.set_pveid( pveid );
@@ -560,9 +562,7 @@ namespace KFrame
         auto& droplist = PVEGetDropList( player, kfsetting, result );
         if ( !droplist.empty() )
         {
-            // 同步属性
             _kf_drop->Drop( player, droplist, __STRING__( pvedrop ), kfpvedata->_data.id(), __FUNC_LINE__ );
-            player->SyncDataToClient();
         }
     }
 
@@ -627,8 +627,6 @@ namespace KFrame
 
     void KFPVEModule::PVEBalanceRecord( KFEntity* player, KFRealmData* kfpvedata, uint32 result )
     {
-        kfpvedata->RecordBeginHeros( player );
-
         // 更新死亡英雄(死亡英雄可获得结算经验)
         _kf_hero_team->UpdateDeadHero( player );
 
@@ -643,40 +641,40 @@ namespace KFrame
         // 胜场增加
         player->UpdateData( __STRING__( pvevictory ), KFEnum::Add, 1u );
 
-        // 战斗结果条件结算
-        PVEBalanceResultCondition( player, kfpvedata, KFMsg::Victory, truns );
-
         // 战斗纪录
         PVEBalanceRecord( player, kfpvedata, KFMsg::Victory );
 
         // 发送给客户端
         SendPVEBalanceToClient( player, kfpvedata, KFMsg::Victory );
+
+        // 战斗结果条件结算
+        PVEBalanceResultCondition( player, kfpvedata, KFMsg::Victory, truns );
         return KFMsg::Ok;
     }
 
     uint32 KFPVEModule::PVEBalanceFailed( KFEntity* player, KFRealmData* kfpvedata, uint32 truns )
     {
-        // 战斗结果条件结算
-        PVEBalanceResultCondition( player, kfpvedata, KFMsg::Failed, truns );
-
         // 战斗纪录
         PVEBalanceRecord( player, kfpvedata, KFMsg::Failed );
 
         // 发送给客户端
         SendPVEBalanceToClient( player, kfpvedata, KFMsg::Failed );
+
+        // 战斗结果条件结算
+        PVEBalanceResultCondition( player, kfpvedata, KFMsg::Failed, truns );
         return KFMsg::Ok;
     }
 
     uint32 KFPVEModule::PVEBalanceAce( KFEntity* player, KFRealmData* kfpvedata, uint32 truns )
     {
-        // 战斗结果条件结算
-        PVEBalanceResultCondition( player, kfpvedata, KFMsg::Ace, truns );
-
         // 战斗纪录
         PVEBalanceRecord( player, kfpvedata, KFMsg::Ace );
 
         // 发送给客户端
         SendPVEBalanceToClient( player, kfpvedata, KFMsg::Ace );
+
+        // 战斗结果条件结算
+        PVEBalanceResultCondition( player, kfpvedata, KFMsg::Ace, truns );
         return KFMsg::Ok;
     }
 

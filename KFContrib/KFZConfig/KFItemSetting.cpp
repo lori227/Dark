@@ -22,6 +22,11 @@ namespace KFrame
         return true;
     }
 
+    bool KFItemSetting::IsAutoUse() const
+    {
+        return _auto_use != 0u;
+    }
+
     const std::string& KFItemSetting::GetFunction( uint32 type ) const
     {
         if ( type >= KFItemEnum::MaxFunction )

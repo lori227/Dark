@@ -1,0 +1,6 @@
+<root platform="" version="4444">
+	<item Id="1" Pool="1011010" DeadProb="1000" />
+	<item Id="2" Pool="1011010" DeadProb="2000" />
+	<item Id="3" Pool="1011010" DeadProb="3000" />
+	<item Id="4" Pool="1011010" DeadProb="10000" />
+</root>

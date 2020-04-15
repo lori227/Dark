@@ -88,6 +88,12 @@ namespace KFrame
         // 秘境逻辑事件
         __KF_EXECUTE_FUNCTION__( OnExecuteRealm );
 
+        // 执行探索事件
+        __KF_EXECUTE_FUNCTION__( OnExecuteLogicEvent );
+
+        // 掉落探索事件回调
+        __KF_DROP_LOGIC_FUNCTION__( OnDropLogicEvent );
+
         // 进入游戏
         __KF_BEFORE_ENTER_PLAYER_FUNCTION__( OnEnterInitRealmData );
 
@@ -158,6 +164,10 @@ namespace KFrame
         //////////////////////////////////////////////////////////////////////////////////////
         // 获取玩家当前秘境层配置
         const KFRealmLevel* FindRealmLevelSetting( KFEntity* player );
+
+        // 发送探索事件消息
+        void SendToClientLogicEvent( KFEntity* player, uint32 eventid );
+
     protected:
         // 玩家组件上下文
         KFComponent* _kf_component = nullptr;

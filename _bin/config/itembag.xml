@@ -1,13 +1,9 @@
-<root platform="" version="4068">
-	<item Id="normal" AddShow="1" MoveAddUpdate="" MoveDecUpdate="" MoveShow="" Record="0" EnterType="0" BalanceType="0" TownType="0" Move="1" MoveAll="0" Clean="0" />
-	<item Id="gift" AddShow="1" MoveAddUpdate="" MoveDecUpdate="" MoveShow="" Record="0" EnterType="0" BalanceType="0" TownType="0" Move="1" MoveAll="0" Clean="0" />
-	<item Id="drug" AddShow="1" MoveAddUpdate="" MoveDecUpdate="" MoveShow="" Record="0" EnterType="0" BalanceType="0" TownType="0" Move="1" MoveAll="0" Clean="0" />
-	<item Id="weapon" AddShow="1" MoveAddUpdate="" MoveDecUpdate="" MoveShow="" Record="0" EnterType="0" BalanceType="0" TownType="0" Move="1" MoveAll="0" Clean="0" />
-	<item Id="material" AddShow="1" MoveAddUpdate="" MoveDecUpdate="" MoveShow="" Record="0" EnterType="0" BalanceType="0" TownType="0" Move="1" MoveAll="0" Clean="0" />
-	<item Id="rune" AddShow="1" MoveAddUpdate="select" MoveDecUpdate="" MoveShow="" Record="0" EnterType="1" BalanceType="1" TownType="0" Move="0" MoveAll="0" Clean="0" />
-	<item Id="runeslot" AddShow="1" MoveAddUpdate="" MoveDecUpdate="" MoveShow="" Record="0" EnterType="1" BalanceType="1" TownType="0" Move="0" MoveAll="0" Clean="0" />
-	<item Id="explore" AddShow="1" MoveAddUpdate="select" MoveDecUpdate="extend" MoveShow="" Record="1" EnterType="0" BalanceType="2" TownType="2" Move="1" MoveAll="0" Clean="1" />
-	<item Id="other" AddShow="1" MoveAddUpdate="" MoveDecUpdate="" MoveShow="" Record="1" EnterType="1" BalanceType="2" TownType="2" Move="0" MoveAll="0" Clean="0" />
-	<item Id="extend" AddShow="0" MoveAddUpdate="select" MoveDecUpdate="" MoveShow="explore,other" Record="0" EnterType="0" BalanceType="0" TownType="0" Move="1" MoveAll="1" Clean="0" />
-	<item Id="select" AddShow="0" MoveAddUpdate="" MoveDecUpdate="" MoveShow="explore,other,rune" Record="0" EnterType="0" BalanceType="0" TownType="0" Move="0" MoveAll="0" Clean="0" />
+<root platform="" version="4458">
+	<item Id="storage" TabList="index,normal,gift,drug,weapon,material" AddShow="1" MoveAddUpdate="" MoveDecUpdate="" MoveShow="" Record="0" EnterType="0" BalanceType="0" TownType="0" Move="1" MoveAll="0" Clean="0" AutoUseGift="1" />
+	<item Id="rune" TabList="index" AddShow="1" MoveAddUpdate="select" MoveDecUpdate="" MoveShow="" Record="0" EnterType="1" BalanceType="1" TownType="0" Move="0" MoveAll="0" Clean="0" AutoUseGift="0" />
+	<item Id="runeslot" TabList="index" AddShow="1" MoveAddUpdate="" MoveDecUpdate="" MoveShow="" Record="0" EnterType="1" BalanceType="1" TownType="0" Move="0" MoveAll="0" Clean="0" AutoUseGift="0" />
+	<item Id="explore" TabList="index" AddShow="1" MoveAddUpdate="select" MoveDecUpdate="extend" MoveShow="" Record="1" EnterType="0" BalanceType="2" TownType="2" Move="1" MoveAll="0" Clean="1" AutoUseGift="0" />
+	<item Id="other" TabList="index" AddShow="1" MoveAddUpdate="" MoveDecUpdate="" MoveShow="" Record="1" EnterType="1" BalanceType="2" TownType="2" Move="0" MoveAll="0" Clean="0" AutoUseGift="0" />
+	<item Id="extend" TabList="index" AddShow="1" MoveAddUpdate="select" MoveDecUpdate="" MoveShow="explore,other" Record="0" EnterType="0" BalanceType="0" TownType="0" Move="1" MoveAll="1" Clean="0" AutoUseGift="0" />
+	<item Id="select" TabList="index" AddShow="0" MoveAddUpdate="" MoveDecUpdate="" MoveShow="explore,other,rune,extend" Record="0" EnterType="0" BalanceType="0" TownType="0" Move="0" MoveAll="0" Clean="0" AutoUseGift="0" />
 </root>

@@ -74,6 +74,10 @@ namespace KFrame
 
         // 获得堆叠数量
         uint32 GetOverlayCount( const std::string& bagname ) const;
+
+        // 是否自动使用
+        bool IsAutoUse() const;
+
     public:
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////

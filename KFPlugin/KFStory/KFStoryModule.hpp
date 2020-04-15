@@ -37,7 +37,7 @@ namespace KFrame
         virtual void BeforeShut();
 
         // 添加剧情
-        virtual void AddStory( KFEntity* player, uint32 storyid, uint32 childid = 0u );
+        virtual void AddStory( KFEntity* player, uint32 storyid, uint32 childid, const std::string& modulename, uint64 moduleid );
         ////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
     protected:
@@ -83,6 +83,9 @@ namespace KFrame
 
         // 执行剧情
         void ExecuteStory( KFEntity* player, uint32 storyid );
+
+        // 发送添加剧情数据
+        void SendToClientAddStory( KFEntity* player, uint32 storyid, const std::string& modulename, uint64 moduleid );
 
     protected:
         // 玩家组件上下文

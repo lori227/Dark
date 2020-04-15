@@ -1,4 +1,5 @@
 ﻿#include "KFTaskChainModule.hpp"
+#include "KFProtocol/KFProtocol.h"
 
 namespace KFrame
 {
@@ -119,6 +120,7 @@ namespace KFrame
         auto kftaskchainsetting = KFTaskChainConfig::Instance()->FindSetting( taskchainid );
         if ( kftaskchainsetting == nullptr )
         {
+            _kf_display->SendToClient( player, KFMsg::TaskChainSettingNotExist, taskchainid );
             __LOG_ERROR_FUNCTION__( function, line, "taskchain=[{}] can't find setting", taskchainid );
             return false;
         }

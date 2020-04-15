@@ -58,7 +58,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\021CodeMessage.proto\022\005KFMsg*\265\"\n\017ProjectCo"
+      "\n\021CodeMessage.proto\022\005KFMsg*\255!\n\017ProjectCo"
       "deEnum\022\016\n\nLogicError\020\000\022\024\n\016MatchRequestOk"
       "\020\231\362\001\022\026\n\020MatchAlreadyWait\020\232\362\001\022\021\n\013MatchInR"
       "oom\020\233\362\001\022\025\n\017MatchNotInMatch\020\234\362\001\022\023\n\rMatchC"
@@ -82,97 +82,93 @@ void AddDescriptorsImpl() {
       "evelNotEnough\020\224\363\001\022\033\n\025HeroTransferCostErr"
       "or\020\225\363\001\022\030\n\022HeroCanNotTransfer\020\226\363\001\022\033\n\025Hero"
       "ProfessionIsError\020\227\363\001\022\023\n\rHeroNameEmpty\020\230"
-      "\363\001\022\025\n\017HeroTransferSuc\020\231\363\001\022\031\n\023HeroSelectI"
-      "nnateSuc\020\232\363\001\022\020\n\nHeroIsDead\020\233\363\001\022\025\n\017HeroRa"
-      "ceIsError\020\234\363\001\022\032\n\024HeroDivisorNotUnlock\020\235\363"
-      "\001\022\035\n\027HeroRecruitRefreshCount\020\236\363\001\022 \n\032Hero"
-      "RecruitRefreshGenerate\020\237\363\001\022\036\n\030HeroRecrui"
-      "tRefreshWeight\020\240\363\001\022\037\n\031HeroRefreshCountNo"
-      "tEnough\020\241\363\001\022\033\n\025HeroRecruitRefreshSuc\020\242\363\001"
-      "\022\030\n\022HeroRecruitHeroSuc\020\243\363\001\022\033\n\025HeroDurabi"
-      "lityNotZero\020\244\363\001\022\036\n\030ContractTimeFormulaEr"
-      "ror\020\245\363\001\022\037\n\031ContractPriceFormulaError\020\246\363\001"
-      "\022\030\n\022ContractTimeIsZero\020\247\363\001\022!\n\033HeroTeamDu"
-      "rabilityNotEnough\020\250\363\001\022\025\n\017HeroContractSuc"
-      "\020\251\363\001\022\023\n\rHeroRetireSuc\020\252\363\001\022\035\n\027SpecialHero"
-      "CanNotRemove\020\253\363\001\022\031\n\023TrainCampLevelError\020"
-      "\340\363\001\022\031\n\023TrainCampIndexError\020\341\363\001\022\033\n\025TrainC"
-      "ampHeroNotExist\020\342\363\001\022\032\n\024TrainCampHeroIsEx"
-      "ist\020\343\363\001\022\030\n\022BuildFuncNotActive\020\344\363\001\022\032\n\024Mai"
-      "nCampSkinNotExist\020\345\363\001\022\033\n\025MainCampSkinNot"
-      "Active\020\346\363\001\022\030\n\022ClinicSettingError\020\347\363\001\022\033\n\025"
-      "ClinicItemIsNotEnough\020\350\363\001\022\030\n\022ClinicMoney"
-      "IsError\020\351\363\001\022\033\n\025TrainCampSettingError\020\352\363\001"
-      "\022\031\n\023TrainCampIsFinished\020\353\363\001\022\031\n\023GranarySe"
-      "ttingError\020\354\363\001\022\030\n\022GranaryHaveNotItem\020\355\363\001"
-      "\022\034\n\026SmithyConsumeNotEnough\020\356\363\001\022\030\n\022Smithy"
-      "SettingError\020\357\363\001\022\027\n\021SmithyHaveNotItem\020\360\363"
-      "\001\022\026\n\020SmithyStoreIsMax\020\361\363\001\022\036\n\030SmithyWeapo"
-      "nSettingError\020\362\363\001\022\030\n\022SmithyMakeNumError\020"
-      "\363\363\001\022\034\n\026SmithyMakeNumNotEnough\020\364\363\001\022\034\n\026Cli"
-      "nicCountIsNotEnough\020\365\363\001\022\027\n\021ClinicNotNeed"
-      "Cure\020\366\363\001\022\031\n\023SmithyMakeWeaponSuc\020\367\363\001\022\025\n\017B"
-      "uildLevelIsMax\020\370\363\001\022\030\n\022BuildInUpgradeTime"
-      "\020\371\363\001\022\034\n\026BuildNoFreeUpgradeList\020\372\363\001\022\037\n\031Bu"
-      "ildUpgradeLackCondition\020\373\363\001\022\033\n\025BuildNotI"
-      "nUpgradeTime\020\374\363\001\022\034\n\026BuildLevelSettingErr"
-      "or\020\375\363\001\022\034\n\026TechnologySettingError\020\376\363\001\022 \n\032"
-      "TechnologyLackPreCondition\020\377\363\001\022\030\n\022Techno"
-      "logyIsUnlock\020\200\364\001\022\026\n\020TechnologyIslock\020\201\364\001"
-      "\022\025\n\017BuildUpgradeSuc\020\202\364\001\022\024\n\016TrainNotFinis"
-      "h\020\203\364\001\022\032\n\024SmithyMakeLevelLimit\020\204\364\001\022\027\n\021For"
-      "mulaParamError\020\205\364\001\022\032\n\024GranaryBuyCountLim"
-      "it\020\206\364\001\022\034\n\026GranaryBuySettingError\020\207\364\001\022\032\n\024"
-      "GranaryBuyParamError\020\210\364\001\022\023\n\rRealmMapErro"
-      "r\020\305\364\001\022\025\n\017RealmLevelError\020\306\364\001\022\027\n\021RealmNot"
-      "InExplore\020\311\364\001\022\020\n\nPVEIdError\020\312\364\001\022\020\n\nPVEAl"
-      "ready\020\313\364\001\022\022\n\014RealmAlready\020\314\364\001\022\026\n\020RealmNo"
-      "tInStatus\020\315\364\001\022\024\n\016PVENotInStatus\020\316\364\001\022\026\n\020P"
-      "VEHeroTeamEmpty\020\317\364\001\022\026\n\020PVEHeroTeamExist\020"
-      "\320\364\001\022\023\n\rPVEMapIdError\020\321\364\001\022\024\n\016RealmDataErr"
-      "or\020\322\364\001\022\025\n\017RealmIdMismatch\020\323\364\001\022\022\n\014RealmNo"
-      "tTown\020\324\364\001\022\021\n\013RealmInTown\020\325\364\001\022\030\n\022RealmHer"
-      "oTeamEmpty\020\326\364\001\022\023\n\rPVECanNotFlee\020\327\364\001\022\023\n\rN"
-      "pcGroupError\020\330\364\001\022\023\n\rGambleIdError\020\331\364\001\022\026\n"
-      "\020GambleParamError\020\333\364\001\022\025\n\017ExchangeIdError"
-      "\020\334\364\001\022\025\n\017ExchangeNotRune\020\335\364\001\022\030\n\022ExchangeL"
-      "evelError\020\336\364\001\022\023\n\rSelectIdError\020\337\364\001\022\026\n\020Se"
-      "lectCountError\020\340\364\001\022\025\n\017SelectUUIDError\020\341\364"
-      "\001\022\027\n\021SelectRecordError\020\342\364\001\022\027\n\021MultiEvent"
-      "IdError\020\343\364\001\022\032\n\024MultiEventIndexError\020\344\364\001\022"
-      "\022\n\014NpcRandError\020\345\364\001\022\024\n\016ChapterIdError\020\221\375"
-      "\001\022\024\n\016ChapterNotOpen\020\222\375\001\022\027\n\021ChapterEventE"
-      "rror\020\223\375\001\022\031\n\023ChapterDefaultError\020\224\375\001\022\032\n\024C"
-      "hapterStatusIdError\020\225\375\001\022\032\n\024ChapterExecut"
-      "eFailed\020\226\375\001\022\024\n\016ItemWeaponOnly\020\364\375\001\022\031\n\023Ite"
-      "mWeaponRaceLimit\020\365\375\001\022\031\n\023ItemWeaponHeroLi"
-      "mit\020\366\375\001\022\032\n\024ItemWeaponLevelLimit\020\367\375\001\022\026\n\020I"
-      "temWeaponFailed\020\370\375\001\022\022\n\014ItemWeaponOk\020\371\375\001\022"
-      "\030\n\022ItemWeaponNotExist\020\372\375\001\022\030\n\022ItemUnWeapo"
-      "nFailed\020\373\375\001\022\024\n\016ItemUnWeaponOk\020\374\375\001\022\037\n\031Ite"
-      "mUpdateDurabilityError\020\375\375\001\022\031\n\023ItemCanNot"
-      "UseToHero\020\376\375\001\022\026\n\020RuneIsNotAutoSet\020\377\375\001\022\024\n"
-      "\016RuneSlotIsFull\020\200\376\001\022\030\n\022RuneSlotIndexErro"
-      "r\020\201\376\001\022\027\n\021RuneSameTypeLimit\020\202\376\001\022\022\n\014RunePu"
-      "tOnSuc\020\203\376\001\022\024\n\016RuneTakeOffSuc\020\204\376\001\022\025\n\017Rune"
-      "TakeOffFail\020\205\376\001\022\025\n\017RuneSlotIsEmpty\020\206\376\001\022\031"
-      "\n\023PlayerHeadIconSetOK\020\331\376\001\022\030\n\022PlayerFacti"
-      "onSetOK\020\332\376\001\022\034\n\026PlayerHeadIconNotExist\020\333\376"
-      "\001\022\033\n\025PlayerFactionNotExist\020\334\376\001\022\032\n\024Player"
-      "HeadIconNotHad\020\335\376\001\022\032\n\024StorySettingNotExi"
-      "st\020\274\377\001\022\023\n\rStoryNotExist\020\275\377\001\022\032\n\024StorySequ"
-      "enceIsError\020\276\377\001\022\033\n\025StoryTriggerTypeLimit"
-      "\020\277\377\001\022\035\n\027DialogueSettingNotExist\020\300\377\001\022\026\n\020D"
-      "ialogueNotExist\020\301\377\001\022\033\n\025DialogueHaveNotBr"
-      "anch\020\302\377\001\022\034\n\026DialogueBranchNotExist\020\303\377\001\022!"
-      "\n\033DialogueBranchLackCondition\020\304\377\001\022\033\n\025Bra"
-      "nchSettingNotExist\020\305\377\001\022\035\n\027DialogueBranch"
-      "SelectSuc\020\306\377\001\022\035\n\027StoryHaveDialogueBranch"
-      "\020\307\377\001\022\034\n\026StorySequenceNotFinish\020\310\377\001b\006prot"
-      "o3"
+      "\363\001\022\020\n\nHeroIsDead\020\233\363\001\022\025\n\017HeroRaceIsError\020"
+      "\234\363\001\022\032\n\024HeroDivisorNotUnlock\020\235\363\001\022\035\n\027HeroR"
+      "ecruitRefreshCount\020\236\363\001\022 \n\032HeroRecruitRef"
+      "reshGenerate\020\237\363\001\022\036\n\030HeroRecruitRefreshWe"
+      "ight\020\240\363\001\022\037\n\031HeroRefreshCountNotEnough\020\241\363"
+      "\001\022\033\n\025HeroRecruitRefreshSuc\020\242\363\001\022\033\n\025HeroDu"
+      "rabilityNotZero\020\244\363\001\022\036\n\030ContractTimeFormu"
+      "laError\020\245\363\001\022\037\n\031ContractPriceFormulaError"
+      "\020\246\363\001\022\030\n\022ContractTimeIsZero\020\247\363\001\022!\n\033HeroTe"
+      "amDurabilityNotEnough\020\250\363\001\022\025\n\017HeroContrac"
+      "tSuc\020\251\363\001\022\023\n\rHeroRetireSuc\020\252\363\001\022\035\n\027Special"
+      "HeroCanNotRemove\020\253\363\001\022\031\n\023TrainCampLevelEr"
+      "ror\020\340\363\001\022\031\n\023TrainCampIndexError\020\341\363\001\022\033\n\025Tr"
+      "ainCampHeroNotExist\020\342\363\001\022\032\n\024TrainCampHero"
+      "IsExist\020\343\363\001\022\030\n\022BuildFuncNotActive\020\344\363\001\022\032\n"
+      "\024MainCampSkinNotExist\020\345\363\001\022\033\n\025MainCampSki"
+      "nNotActive\020\346\363\001\022\030\n\022ClinicSettingError\020\347\363\001"
+      "\022\033\n\025ClinicItemIsNotEnough\020\350\363\001\022\030\n\022ClinicM"
+      "oneyIsError\020\351\363\001\022\033\n\025TrainCampSettingError"
+      "\020\352\363\001\022\031\n\023TrainCampIsFinished\020\353\363\001\022\031\n\023Grana"
+      "rySettingError\020\354\363\001\022\030\n\022GranaryHaveNotItem"
+      "\020\355\363\001\022\034\n\026SmithyConsumeNotEnough\020\356\363\001\022\030\n\022Sm"
+      "ithySettingError\020\357\363\001\022\027\n\021SmithyHaveNotIte"
+      "m\020\360\363\001\022\026\n\020SmithyStoreIsMax\020\361\363\001\022\036\n\030SmithyW"
+      "eaponSettingError\020\362\363\001\022\030\n\022SmithyMakeNumEr"
+      "ror\020\363\363\001\022\034\n\026SmithyMakeNumNotEnough\020\364\363\001\022\034\n"
+      "\026ClinicCountIsNotEnough\020\365\363\001\022\027\n\021ClinicNot"
+      "NeedCure\020\366\363\001\022\025\n\017BuildLevelIsMax\020\370\363\001\022\030\n\022B"
+      "uildInUpgradeTime\020\371\363\001\022\034\n\026BuildNoFreeUpgr"
+      "adeList\020\372\363\001\022\037\n\031BuildUpgradeLackCondition"
+      "\020\373\363\001\022\033\n\025BuildNotInUpgradeTime\020\374\363\001\022\034\n\026Bui"
+      "ldLevelSettingError\020\375\363\001\022\034\n\026TechnologySet"
+      "tingError\020\376\363\001\022 \n\032TechnologyLackPreCondit"
+      "ion\020\377\363\001\022\030\n\022TechnologyIsUnlock\020\200\364\001\022\026\n\020Tec"
+      "hnologyIslock\020\201\364\001\022\025\n\017BuildUpgradeSuc\020\202\364\001"
+      "\022\024\n\016TrainNotFinish\020\203\364\001\022\032\n\024SmithyMakeLeve"
+      "lLimit\020\204\364\001\022\027\n\021FormulaParamError\020\205\364\001\022\032\n\024G"
+      "ranaryBuyCountLimit\020\206\364\001\022\034\n\026GranaryBuySet"
+      "tingError\020\207\364\001\022\032\n\024GranaryBuyParamError\020\210\364"
+      "\001\022\030\n\022BuildCanNotUpgrade\020\211\364\001\022\023\n\rRealmMapE"
+      "rror\020\305\364\001\022\025\n\017RealmLevelError\020\306\364\001\022\027\n\021Realm"
+      "NotInExplore\020\311\364\001\022\020\n\nPVEIdError\020\312\364\001\022\020\n\nPV"
+      "EAlready\020\313\364\001\022\022\n\014RealmAlready\020\314\364\001\022\026\n\020Real"
+      "mNotInStatus\020\315\364\001\022\024\n\016PVENotInStatus\020\316\364\001\022\026"
+      "\n\020PVEHeroTeamEmpty\020\317\364\001\022\026\n\020PVEHeroTeamExi"
+      "st\020\320\364\001\022\023\n\rPVEMapIdError\020\321\364\001\022\024\n\016RealmData"
+      "Error\020\322\364\001\022\025\n\017RealmIdMismatch\020\323\364\001\022\022\n\014Real"
+      "mNotTown\020\324\364\001\022\021\n\013RealmInTown\020\325\364\001\022\030\n\022Realm"
+      "HeroTeamEmpty\020\326\364\001\022\023\n\rPVECanNotFlee\020\327\364\001\022\023"
+      "\n\rNpcGroupError\020\330\364\001\022\023\n\rGambleIdError\020\331\364\001"
+      "\022\026\n\020GambleParamError\020\333\364\001\022\025\n\017ExchangeIdEr"
+      "ror\020\334\364\001\022\025\n\017ExchangeNotRune\020\335\364\001\022\030\n\022Exchan"
+      "geLevelError\020\336\364\001\022\023\n\rSelectIdError\020\337\364\001\022\026\n"
+      "\020SelectCountError\020\340\364\001\022\025\n\017SelectUUIDError"
+      "\020\341\364\001\022\027\n\021SelectRecordError\020\342\364\001\022\027\n\021MultiEv"
+      "entIdError\020\343\364\001\022\032\n\024MultiEventIndexError\020\344"
+      "\364\001\022\022\n\014NpcRandError\020\345\364\001\022\024\n\016ChapterIdError"
+      "\020\221\375\001\022\024\n\016ChapterNotOpen\020\222\375\001\022\027\n\021ChapterEve"
+      "ntError\020\223\375\001\022\031\n\023ChapterDefaultError\020\224\375\001\022\032"
+      "\n\024ChapterStatusIdError\020\225\375\001\022\032\n\024ChapterExe"
+      "cuteFailed\020\226\375\001\022\024\n\016ItemWeaponOnly\020\364\375\001\022\031\n\023"
+      "ItemWeaponRaceLimit\020\365\375\001\022\031\n\023ItemWeaponHer"
+      "oLimit\020\366\375\001\022\032\n\024ItemWeaponLevelLimit\020\367\375\001\022\026"
+      "\n\020ItemWeaponFailed\020\370\375\001\022\022\n\014ItemWeaponOk\020\371"
+      "\375\001\022\030\n\022ItemWeaponNotExist\020\372\375\001\022\030\n\022ItemUnWe"
+      "aponFailed\020\373\375\001\022\024\n\016ItemUnWeaponOk\020\374\375\001\022\037\n\031"
+      "ItemUpdateDurabilityError\020\375\375\001\022\031\n\023ItemCan"
+      "NotUseToHero\020\376\375\001\022\027\n\021RuneSameTypeLimit\020\202\376"
+      "\001\022\022\n\014RunePutOnSuc\020\203\376\001\022\024\n\016RuneTakeOffSuc\020"
+      "\204\376\001\022\031\n\023PlayerHeadIconSetOK\020\331\376\001\022\030\n\022Player"
+      "FactionSetOK\020\332\376\001\022\034\n\026PlayerHeadIconNotExi"
+      "st\020\333\376\001\022\033\n\025PlayerFactionNotExist\020\334\376\001\022\032\n\024P"
+      "layerHeadIconNotHad\020\335\376\001\022\032\n\024StorySettingN"
+      "otExist\020\274\377\001\022\023\n\rStoryNotExist\020\275\377\001\022\032\n\024Stor"
+      "ySequenceIsError\020\276\377\001\022\033\n\025StoryTriggerType"
+      "Limit\020\277\377\001\022\035\n\027DialogueSettingNotExist\020\300\377\001"
+      "\022\026\n\020DialogueNotExist\020\301\377\001\022\033\n\025DialogueHave"
+      "NotBranch\020\302\377\001\022\034\n\026DialogueBranchNotExist\020"
+      "\303\377\001\022!\n\033DialogueBranchLackCondition\020\304\377\001\022\033"
+      "\n\025BranchSettingNotExist\020\305\377\001\022\035\n\027DialogueB"
+      "ranchSelectSuc\020\306\377\001\022\035\n\027StoryHaveDialogueB"
+      "ranch\020\307\377\001\022\034\n\026StorySequenceNotFinish\020\310\377\001\022"
+      "\031\n\023StoryIsNotMainStory\020\311\377\001\022\036\n\030TaskChainS"
+      "ettingNotExist\020\240\200\002b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 4442);
+      descriptor, 4306);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "CodeMessage.proto", &protobuf_RegisterTypes);
 }
@@ -232,8 +228,6 @@ bool ProjectCodeEnum_IsValid(int value) {
     case 31126:
     case 31127:
     case 31128:
-    case 31129:
-    case 31130:
     case 31131:
     case 31132:
     case 31133:
@@ -242,7 +236,6 @@ bool ProjectCodeEnum_IsValid(int value) {
     case 31136:
     case 31137:
     case 31138:
-    case 31139:
     case 31140:
     case 31141:
     case 31142:
@@ -274,7 +267,6 @@ bool ProjectCodeEnum_IsValid(int value) {
     case 31220:
     case 31221:
     case 31222:
-    case 31223:
     case 31224:
     case 31225:
     case 31226:
@@ -292,6 +284,7 @@ bool ProjectCodeEnum_IsValid(int value) {
     case 31238:
     case 31239:
     case 31240:
+    case 31241:
     case 31301:
     case 31302:
     case 31305:
@@ -339,14 +332,9 @@ bool ProjectCodeEnum_IsValid(int value) {
     case 32508:
     case 32509:
     case 32510:
-    case 32511:
-    case 32512:
-    case 32513:
     case 32514:
     case 32515:
     case 32516:
-    case 32517:
-    case 32518:
     case 32601:
     case 32602:
     case 32603:
@@ -365,6 +353,8 @@ bool ProjectCodeEnum_IsValid(int value) {
     case 32710:
     case 32711:
     case 32712:
+    case 32713:
+    case 32800:
       return true;
     default:
       return false;

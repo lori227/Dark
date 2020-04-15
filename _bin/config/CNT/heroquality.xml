@@ -1,5 +1,5 @@
-<root platform="" version="4174">
-	<item Id="1" GrowthMax="95" HeadFrame="HeroQuality03" />
+<root platform="" version="4420">
+	<item Id="1" GrowthMax="90" HeadFrame="HeroQuality03" />
 	<item Id="2" GrowthMax="100" HeadFrame="HeroQuality04" />
 	<item Id="3" GrowthMax="110" HeadFrame="HeroQuality05" />
 	<item Id="4" GrowthMax="120" HeadFrame="HeroQuality05" />

@@ -9,7 +9,7 @@ namespace KFrame
     {
     public:
         // 添加剧情
-        virtual void AddStory( KFEntity* player, uint32 storyid, uint32 childid = 0u ) = 0;
+        virtual void AddStory( KFEntity* player, uint32 storyid, uint32 childid, const std::string& modulename, uint64 moduleid ) = 0;
     };
 
     __KF_INTERFACE__( _kf_story, KFStoryInterface );

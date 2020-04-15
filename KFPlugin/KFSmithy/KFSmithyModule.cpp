@@ -428,9 +428,6 @@ namespace KFrame
         // 增加武器
         player->AddElement( &kfweaponsetting->_item, kfmsg.num(), __STRING__( smithymake ), kfweaponsetting->_id, __FUNC_LINE__ );
 
-        // 发送通知
-        _kf_display->SendToClient( player, KFMsg::SmithyMakeWeaponSuc );
-
         // 条件回调
         if ( kfitemsetting != nullptr )
         {
