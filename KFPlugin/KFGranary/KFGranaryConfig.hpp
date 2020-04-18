@@ -11,7 +11,6 @@ namespace KFrame
     {
     public:
         // 消耗
-        std::string _str_consume;
         KFElements _consume;
     };
 

@@ -16,7 +16,6 @@ namespace KFrame
         uint32 _need_num = 0u;
 
         // 打造消耗
-        std::string _str_consume;
         KFElements _consume;
     };
 

@@ -7,7 +7,7 @@ namespace KFrame
     {
         kfsetting->_is_clear = xmlnode.GetBoolen( "Clear", true );
         kfsetting->_generate_technology_id = xmlnode.GetUInt32( "GenerateId" );
-        kfsetting->_str_cost = xmlnode.GetString( "Cost", true );
+        kfsetting->_cost_elements._str_element = xmlnode.GetString( "Cost", true );
     }
 
     void KFRecruitConfig::LoadAllComplete()
@@ -15,7 +15,7 @@ namespace KFrame
         for ( auto& iter : _settings._objects )
         {
             auto kfsetting = iter.second;
-            KFElementConfig::Instance()->ParseElement( kfsetting->_cost_elements, kfsetting->_str_cost, __FILE__, kfsetting->_id );
+            KFElementConfig::Instance()->ParseElement( kfsetting->_cost_elements, kfsetting->_cost_elements._str_element, __FILE__, kfsetting->_id );
         }
     }
 }

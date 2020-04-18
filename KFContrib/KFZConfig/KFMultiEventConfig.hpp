@@ -10,7 +10,6 @@ namespace KFrame
     {
     public:
         // 花费
-        std::string _str_cost;
         KFElements _cost_elements;
 
         // 事件id

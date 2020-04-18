@@ -47,5 +47,6 @@
 		<Plugin Name="KFDialogue" Config=""/>
 		<Plugin Name="KFTLog" Config=""/>
 		<Plugin Name="KFStory" Config=""/>
+		<Plugin Name="KFStore" Config=""/>
 	</Plugins>
 </Setting>

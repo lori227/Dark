@@ -33,8 +33,8 @@ namespace KFrame
         kflevelsetting->_upgrade_time = xmlnode.GetUInt32( "UpgradeTime", true );
         kflevelsetting->_unit_time = xmlnode.GetUInt32( "UnitTime", true );
 
-        kflevelsetting->_str_consume = xmlnode.GetString( "Consume", true );
-        kflevelsetting->_str_onekey_consume = xmlnode.GetString( "OnekeyConsume", true );
+        kflevelsetting->_consume._str_element = xmlnode.GetString( "Consume", true );
+        kflevelsetting->_onekey_consume._str_element = xmlnode.GetString( "OnekeyConsume", true );
     }
 
     void KFBuildConfig::LoadAllComplete()
@@ -45,8 +45,8 @@ namespace KFrame
             for ( auto& leveliter : kfsetting->_build_level_settings._objects )
             {
                 auto kflevelsetting = leveliter.second;
-                KFElementConfig::Instance()->ParseElement( kflevelsetting->_consume, kflevelsetting->_str_consume, __FILE__, kfsetting->_id );
-                KFElementConfig::Instance()->ParseElement( kflevelsetting->_onekey_consume, kflevelsetting->_str_onekey_consume, __FILE__, kfsetting->_id );
+                KFElementConfig::Instance()->ParseElement( kflevelsetting->_consume, kflevelsetting->_consume._str_element, __FILE__, kfsetting->_id );
+                KFElementConfig::Instance()->ParseElement( kflevelsetting->_onekey_consume, kflevelsetting->_onekey_consume._str_element, __FILE__, kfsetting->_id );
             }
         }
     }

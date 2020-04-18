@@ -148,6 +148,7 @@
     <ClInclude Include="KFItemBagConfig.hpp">
       <Filter>Item</Filter>
     </ClInclude>
+    <ClInclude Include="KFCountCostConfig.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Option">

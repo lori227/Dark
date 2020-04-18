@@ -1,4 +1,4 @@
-<root platform="" version="3891">
+<root platform="" version="4464">
 	<item Id="161000" RaceLimit="" ProfessionLimit="1100" WeaponLimit="1801" BackGroundLimit="" />
 	<item Id="161001" RaceLimit="" ProfessionLimit="1101" WeaponLimit="1801" BackGroundLimit="" />
 	<item Id="161002" RaceLimit="" ProfessionLimit="1102" WeaponLimit="1801" BackGroundLimit="" />
@@ -138,5 +138,24 @@
 	<item Id="208024" RaceLimit="" ProfessionLimit="" WeaponLimit="" BackGroundLimit="" />
 	<item Id="208025" RaceLimit="" ProfessionLimit="" WeaponLimit="" BackGroundLimit="" />
 	<item Id="208026" RaceLimit="" ProfessionLimit="" WeaponLimit="" BackGroundLimit="" />
+	<item Id="161100" RaceLimit="" ProfessionLimit="1100" WeaponLimit="" BackGroundLimit="" />
+	<item Id="161101" RaceLimit="" ProfessionLimit="1100" WeaponLimit="" BackGroundLimit="" />
+	<item Id="161102" RaceLimit="" ProfessionLimit="1105,1999" WeaponLimit="" BackGroundLimit="" />
 	<item Id="161103" RaceLimit="" ProfessionLimit="1105,1999" WeaponLimit="" BackGroundLimit="" />
+	<item Id="161104" RaceLimit="" ProfessionLimit="1110" WeaponLimit="" BackGroundLimit="" />
+	<item Id="161105" RaceLimit="" ProfessionLimit="1110" WeaponLimit="" BackGroundLimit="" />
+	<item Id="161106" RaceLimit="" ProfessionLimit="1115" WeaponLimit="" BackGroundLimit="" />
+	<item Id="161107" RaceLimit="" ProfessionLimit="1115" WeaponLimit="" BackGroundLimit="" />
+	<item Id="161108" RaceLimit="" ProfessionLimit="1118" WeaponLimit="" BackGroundLimit="" />
+	<item Id="161109" RaceLimit="" ProfessionLimit="1118" WeaponLimit="" BackGroundLimit="" />
+	<item Id="161110" RaceLimit="" ProfessionLimit="1123" WeaponLimit="" BackGroundLimit="" />
+	<item Id="161111" RaceLimit="" ProfessionLimit="1123" WeaponLimit="" BackGroundLimit="" />
+	<item Id="161112" RaceLimit="" ProfessionLimit="1126" WeaponLimit="" BackGroundLimit="" />
+	<item Id="161113" RaceLimit="" ProfessionLimit="1126" WeaponLimit="" BackGroundLimit="" />
+	<item Id="161114" RaceLimit="" ProfessionLimit="1145" WeaponLimit="" BackGroundLimit="" />
+	<item Id="161115" RaceLimit="" ProfessionLimit="1145" WeaponLimit="" BackGroundLimit="" />
+	<item Id="161116" RaceLimit="" ProfessionLimit="1129" WeaponLimit="" BackGroundLimit="" />
+	<item Id="161117" RaceLimit="" ProfessionLimit="1129" WeaponLimit="" BackGroundLimit="" />
+	<item Id="161118" RaceLimit="" ProfessionLimit="1134" WeaponLimit="" BackGroundLimit="" />
+	<item Id="161119" RaceLimit="" ProfessionLimit="1134" WeaponLimit="" BackGroundLimit="" />
 </root>

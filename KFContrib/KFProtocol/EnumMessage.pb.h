@@ -100,29 +100,6 @@ inline bool CampEnum_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<CampEnum>(
     CampEnum_descriptor(), name, value);
 }
-enum RefreshEnum {
-  UnknowRefresh = 0,
-  RefreshByFree = 1,
-  RefreshByCount = 2,
-  RefreshByCost = 3,
-  RefreshEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  RefreshEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
-};
-LIBPROTOC_EXPORT bool RefreshEnum_IsValid(int value);
-const RefreshEnum RefreshEnum_MIN = UnknowRefresh;
-const RefreshEnum RefreshEnum_MAX = RefreshByCost;
-const int RefreshEnum_ARRAYSIZE = RefreshEnum_MAX + 1;
-
-LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* RefreshEnum_descriptor();
-inline const ::std::string& RefreshEnum_Name(RefreshEnum value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    RefreshEnum_descriptor(), value);
-}
-inline bool RefreshEnum_Parse(
-    const ::std::string& name, RefreshEnum* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<RefreshEnum>(
-    RefreshEnum_descriptor(), name, value);
-}
 enum DivisorEnum {
   UnknowDivisor = 0,
   DivisorOfRace = 1,
@@ -565,11 +542,6 @@ template <> struct is_proto_enum< ::KFMsg::CampEnum> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::CampEnum>() {
   return ::KFMsg::CampEnum_descriptor();
-}
-template <> struct is_proto_enum< ::KFMsg::RefreshEnum> : ::std::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::RefreshEnum>() {
-  return ::KFMsg::RefreshEnum_descriptor();
 }
 template <> struct is_proto_enum< ::KFMsg::DivisorEnum> : ::std::true_type {};
 template <>

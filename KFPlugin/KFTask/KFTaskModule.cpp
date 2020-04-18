@@ -316,7 +316,7 @@ namespace KFrame
         TaskExecute( player, kftask, kfsetting );
 
         // 提示客户端
-        _kf_display->SendToClient( player, KFMsg::TaskRewardOk, kfsetting->_id );
+        _kf_display->DelayToClient( player, KFMsg::TaskRewardOk, kfsetting->_id );
 
         // 完成任务链
         _kf_task_chain->FinishTaskChain( player, kftask, __FUNC_LINE__ );
@@ -401,7 +401,7 @@ namespace KFrame
             DoneTask( player, kftask, kfsetting, update );
         }
 
-        _kf_display->SendToClient( player, KFMsg::TaskReceiveOk, kfsetting->_id );
+        _kf_display->DelayToClient( player, KFMsg::TaskReceiveOk, kfsetting->_id );
     }
 
     void KFTaskModule::DoneTask( KFEntity* player, KFData* kftask, const KFTaskSetting* kfsetting, bool update )

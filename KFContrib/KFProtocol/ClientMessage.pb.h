@@ -10482,17 +10482,10 @@ class LIBPROTOC_EXPORT MsgExecuteStoryReq : public ::google::protobuf::Message /
 
   // accessors -------------------------------------------------------
 
-  // uint32 storyid = 1;
-  void clear_storyid();
-  static const int kStoryidFieldNumber = 1;
-  ::google::protobuf::uint32 storyid() const;
-  void set_storyid(::google::protobuf::uint32 value);
-
   // @@protoc_insertion_point(class_scope:KFMsg.MsgExecuteStoryReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint32 storyid_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_ClientMessage_2eproto::TableStruct;
 };
@@ -17147,20 +17140,6 @@ inline void MsgAddStoryAck::set_allocated_modulename(::std::string* modulename) 
 // -------------------------------------------------------------------
 
 // MsgExecuteStoryReq
-
-// uint32 storyid = 1;
-inline void MsgExecuteStoryReq::clear_storyid() {
-  storyid_ = 0u;
-}
-inline ::google::protobuf::uint32 MsgExecuteStoryReq::storyid() const {
-  // @@protoc_insertion_point(field_get:KFMsg.MsgExecuteStoryReq.storyid)
-  return storyid_;
-}
-inline void MsgExecuteStoryReq::set_storyid(::google::protobuf::uint32 value) {
-  
-  storyid_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.MsgExecuteStoryReq.storyid)
-}
 
 // -------------------------------------------------------------------
 

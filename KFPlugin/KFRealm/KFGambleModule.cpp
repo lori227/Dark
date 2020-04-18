@@ -329,11 +329,6 @@ namespace KFrame
                 continue;
             }
 
-            if ( _kf_item->IsItemRecordFull( player, kfitemrecord ) )
-            {
-                kfitemrecord = player->Find( __STRING__( extend ) );
-            }
-
             _kf_item_move->MoveItem( player, kfselectrecord, kfitem, kfitemrecord, 0 );
         }
 

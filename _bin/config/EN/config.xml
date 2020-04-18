@@ -1,4 +1,4 @@
-<root platform="" version="4455">
+<root platform="" version="4471">
 	<item Id="redis" Name="redis" FileName="./setting/{}_{}_redis.xml" Reload="0" ClearData="0" ClearFile="0" ChildFile="0" />
 	<item Id="mongo" Name="mongo" FileName="./setting/{}_{}_mongo.xml" Reload="0" ClearData="0" ClearFile="0" ChildFile="0" />
 	<item Id="mysql" Name="mysql" FileName="./setting/{}_{}_mysql.xml" Reload="0" ClearData="0" ClearFile="0" ChildFile="0" />
@@ -49,7 +49,6 @@
 	<item Id="weapontype" Name="weapontype" FileName="./config/weapontype.xml" Reload="1" ClearData="0" ClearFile="0" ChildFile="0" />
 	<item Id="weight" Name="heroweightpool" FileName="./config/heroweightpool.xml" Reload="1" ClearData="1" ClearFile="1" ChildFile="0" />
 	<item Id="weight" Name="itemweightpool" FileName="./config/itemweightpool.xml" Reload="1" ClearData="1" ClearFile="1" ChildFile="0" />
-	<item Id="weight" Name="goodsweightpool" FileName="./config/goodsweightpool.xml" Reload="1" ClearData="1" ClearFile="1" ChildFile="0" />
 	<item Id="race" Name="herorace" FileName="./config/herorace.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="character" Name="herocharacter" FileName="./config/herocharacter.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="background" Name="herobackground" FileName="./config/herobackground.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
@@ -71,8 +70,6 @@
 	<item Id="record" Name="record" FileName="./config/record.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="realm" Name="realm" FileName="./config/realm.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="pve" Name="pve" FileName="./config/pve.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
-	<item Id="shopgeneral" Name="shopgeneral" FileName="./config/shopgeneral.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
-	<item Id="shopgoods" Name="shopgoods" FileName="./config/shopgoods.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="granarybuy" Name="granarybuy" FileName="./config/granarybuy.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="smithyweapon" Name="smithyweapon" FileName="./config/smithyweapon.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="chapter" Name="chapter" FileName="./config/chapter.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />

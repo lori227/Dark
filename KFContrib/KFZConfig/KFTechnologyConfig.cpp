@@ -15,7 +15,7 @@ namespace KFrame
         auto strunlocktechnology = xmlnode.GetString( "UnlockId" );
         KFUtility::SplitList( kfsetting->_unlock_technology, strunlocktechnology, __SPLIT_STRING__ );
 
-        kfsetting->_str_consume = xmlnode.GetString( "Consume" );
+        kfsetting->_consume._str_element = xmlnode.GetString( "Consume" );
         KFReadSetting::ReadExecuteData( xmlnode, &kfsetting->_execute_data );
     }
 
@@ -24,7 +24,7 @@ namespace KFrame
         for ( auto& iter : _settings._objects )
         {
             auto kfsetting = iter.second;
-            KFElementConfig::Instance()->ParseElement( kfsetting->_consume, kfsetting->_str_consume, __FILE__, kfsetting->_id );
+            KFElementConfig::Instance()->ParseElement( kfsetting->_consume, kfsetting->_consume._str_element, __FILE__, kfsetting->_id );
         }
     }
 }

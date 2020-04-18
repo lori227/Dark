@@ -51,6 +51,12 @@ namespace KFrame
         // 是否自动使用礼包
         bool _is_auto_use_gift = false;
 
+        // 额外的背包名字
+        std::string _extend_bag_name;
+
+        // 使用的子背包
+        std::string _use_child_bag_name;
+
     public:
         // 判断是否移动显示更新
         bool IsMoveShow( const std::string& name ) const

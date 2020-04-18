@@ -153,6 +153,8 @@ namespace KFrame
         void AddItemResult( KFElementResult* kfresult, const std::string& itemname, uint32 itemid, uint32 count );
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        bool FindUseRemoveItem( KFEntity* player, KFData* kfparent, const KFItemSetting* kfsetting, uint32 itemcount, std::list<KFData*>& itemlist );
+
     protected:
         // 玩家组件上下文
         KFComponent* _kf_component = nullptr;

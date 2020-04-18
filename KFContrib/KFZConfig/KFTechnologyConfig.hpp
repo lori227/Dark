@@ -29,7 +29,6 @@ namespace KFrame
         UInt32Vector _unlock_technology;
 
         // 升级消耗
-        std::string _str_consume;
         KFElements _consume;
 
         // 执行功能

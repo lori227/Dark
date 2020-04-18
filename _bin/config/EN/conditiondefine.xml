@@ -1,4 +1,4 @@
-<root platform="" version="3868">
+<root platform="" version="4474">
 	<item Id="pveclean" ParentName="player" DataName="pveid" CallType="3" InitCalc="" SaveUUid="0" TriggerType="3" TriggerCheck="16" TriggerUse="2" TriggerValue="0" UseOperate="3" UseType="0" UseValue="0" />
 	<item Id="exploreclean" ParentName="player" DataName="realmid" CallType="3" InitCalc="" SaveUUid="0" TriggerType="3" TriggerCheck="16" TriggerUse="2" TriggerValue="0" UseOperate="3" UseType="0" UseValue="0" />
 	<item Id="explore" ParentName="balance" DataName="realmresult" CallType="3" InitCalc="" SaveUUid="0" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
@@ -42,7 +42,7 @@
 	<item Id="removehero" ParentName="hero" DataName="lock" CallType="2" InitCalc="" SaveUUid="0" TriggerType="0" TriggerCheck="13" TriggerUse="2" TriggerValue="101" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="retirementhero" ParentName="hero" DataName="lock" CallType="2" InitCalc="" SaveUUid="0" TriggerType="0" TriggerCheck="13" TriggerUse="2" TriggerValue="102" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="contracthero" ParentName="hero" DataName="adddurability" CallType="3" InitCalc="" SaveUUid="0" TriggerType="1" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
-	<item Id="killnpc" ParentName="npc" DataName="" CallType="2" InitCalc="" SaveUUid="0" TriggerType="0" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
+	<item Id="killnpc" ParentName="npc" DataName="death" CallType="2" InitCalc="" SaveUUid="0" TriggerType="0" TriggerCheck="13" TriggerUse="2" TriggerValue="1" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="interaction" ParentName="interaction" DataName="id" CallType="3" InitCalc="" SaveUUid="0" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="dialogue" ParentName="dialogue" DataName="id" CallType="2" InitCalc="" SaveUUid="0" TriggerType="0" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />
 	<item Id="story" ParentName="story" DataName="id" CallType="2" InitCalc="" SaveUUid="0" TriggerType="0" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />

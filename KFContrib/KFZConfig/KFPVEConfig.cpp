@@ -22,7 +22,7 @@ namespace KFrame
         auto strinnerdropfail = xmlnode.GetString( "InnerDropFail", true );
         KFReadSetting::ParseConditionList( strinnerdropfail, kfsetting->_inner_fail_drop_list );
 
-        kfsetting->_str_consume = xmlnode.GetString( "Consume", true );
+        kfsetting->_consume._str_element = xmlnode.GetString( "Consume", true );
 
         kfsetting->_normal_flee_rate = xmlnode.GetUInt32( "NormalFlee" );
         kfsetting->_inner_flee_rate = xmlnode.GetUInt32( "InnerFlee" );
@@ -38,7 +38,7 @@ namespace KFrame
         for ( auto& iter : _settings._objects )
         {
             auto kfsetting = iter.second;
-            KFElementConfig::Instance()->ParseElement( kfsetting->_consume, kfsetting->_str_consume, __FILE__, kfsetting->_id );
+            KFElementConfig::Instance()->ParseElement( kfsetting->_consume, kfsetting->_consume._str_element, __FILE__, kfsetting->_id );
 
             kfsetting->_npc_rand_setting = KFNpcRandConfig::Instance()->FindSetting( kfsetting->_npc_rand_id );
             if ( kfsetting->_npc_rand_setting == nullptr )

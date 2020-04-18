@@ -1,4 +1,4 @@
-<root platform="" version="4434">
+<root platform="" version="4526">
 	<item Id="5000001" RandType="2" DropDataId="6000001" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5000001" RandType="2" DropDataId="6001001" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5000001" RandType="2" DropDataId="6002001" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
@@ -595,7 +595,7 @@
 	<item Id="5230201" RandType="2" DropDataId="6270001" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230201" RandType="2" DropDataId="6260001" Weight="2000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230201" RandType="2" DropDataId="6280002" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
-	<item Id="5230201" RandType="2" DropDataId="6260104" Weight="8000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5230201" RandType="2" DropDataId="6260104" Weight="6000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230202" RandType="2" DropDataId="6200202" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230202" RandType="2" DropDataId="6210202" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230202" RandType="2" DropDataId="6220202" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
@@ -605,7 +605,7 @@
 	<item Id="5230202" RandType="2" DropDataId="6270001" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230202" RandType="2" DropDataId="6260001" Weight="2000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230202" RandType="2" DropDataId="6280002" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
-	<item Id="5230202" RandType="2" DropDataId="6260104" Weight="8000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5230202" RandType="2" DropDataId="6260104" Weight="6000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230203" RandType="2" DropDataId="6200203" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230203" RandType="2" DropDataId="6210203" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230203" RandType="2" DropDataId="6220203" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
@@ -615,7 +615,7 @@
 	<item Id="5230203" RandType="2" DropDataId="6270001" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230203" RandType="2" DropDataId="6260001" Weight="2000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230203" RandType="2" DropDataId="6280002" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
-	<item Id="5230203" RandType="2" DropDataId="6260104" Weight="8000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5230203" RandType="2" DropDataId="6260104" Weight="6000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230301" RandType="2" DropDataId="6200301" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230301" RandType="2" DropDataId="6210301" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230301" RandType="2" DropDataId="6220301" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
@@ -625,7 +625,7 @@
 	<item Id="5230301" RandType="2" DropDataId="6270001" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230301" RandType="2" DropDataId="6260001" Weight="2000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230301" RandType="2" DropDataId="6280003" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
-	<item Id="5230301" RandType="2" DropDataId="6260104" Weight="8000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5230301" RandType="2" DropDataId="6260104" Weight="6000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230302" RandType="2" DropDataId="6200302" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230302" RandType="2" DropDataId="6210302" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230302" RandType="2" DropDataId="6220302" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
@@ -635,7 +635,7 @@
 	<item Id="5230302" RandType="2" DropDataId="6270001" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230302" RandType="2" DropDataId="6260001" Weight="2000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230302" RandType="2" DropDataId="6280003" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
-	<item Id="5230302" RandType="2" DropDataId="6260104" Weight="8000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5230302" RandType="2" DropDataId="6260104" Weight="6000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230303" RandType="2" DropDataId="6200303" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230303" RandType="2" DropDataId="6210303" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230303" RandType="2" DropDataId="6220303" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
@@ -645,7 +645,7 @@
 	<item Id="5230303" RandType="2" DropDataId="6270001" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230303" RandType="2" DropDataId="6260001" Weight="2000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230303" RandType="2" DropDataId="6280003" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
-	<item Id="5230303" RandType="2" DropDataId="6260104" Weight="8000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5230303" RandType="2" DropDataId="6260104" Weight="6000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230401" RandType="2" DropDataId="6200401" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230401" RandType="2" DropDataId="6210401" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230401" RandType="2" DropDataId="6220401" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
@@ -655,7 +655,7 @@
 	<item Id="5230401" RandType="2" DropDataId="6270001" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230401" RandType="2" DropDataId="6260001" Weight="2000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230401" RandType="2" DropDataId="6280004" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
-	<item Id="5230401" RandType="2" DropDataId="6260104" Weight="8000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5230401" RandType="2" DropDataId="6260104" Weight="6000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230402" RandType="2" DropDataId="6200402" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230402" RandType="2" DropDataId="6210402" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230402" RandType="2" DropDataId="6220402" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
@@ -665,7 +665,7 @@
 	<item Id="5230402" RandType="2" DropDataId="6270001" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230402" RandType="2" DropDataId="6260001" Weight="2000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230402" RandType="2" DropDataId="6280004" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
-	<item Id="5230402" RandType="2" DropDataId="6260104" Weight="8000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5230402" RandType="2" DropDataId="6260104" Weight="6000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230403" RandType="2" DropDataId="6200403" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230403" RandType="2" DropDataId="6210403" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230403" RandType="2" DropDataId="6220403" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
@@ -675,7 +675,7 @@
 	<item Id="5230403" RandType="2" DropDataId="6270001" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230403" RandType="2" DropDataId="6260001" Weight="2000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230403" RandType="2" DropDataId="6280004" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
-	<item Id="5230403" RandType="2" DropDataId="6260104" Weight="8000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5230403" RandType="2" DropDataId="6260104" Weight="6000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230501" RandType="2" DropDataId="6200501" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230501" RandType="2" DropDataId="6210501" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230501" RandType="2" DropDataId="6220501" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
@@ -685,7 +685,7 @@
 	<item Id="5230501" RandType="2" DropDataId="6270001" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230501" RandType="2" DropDataId="6260001" Weight="2000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230501" RandType="2" DropDataId="6280005" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
-	<item Id="5230501" RandType="2" DropDataId="6260104" Weight="8000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5230501" RandType="2" DropDataId="6260104" Weight="6000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230502" RandType="2" DropDataId="6200502" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230502" RandType="2" DropDataId="6210502" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230502" RandType="2" DropDataId="6220502" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
@@ -695,7 +695,7 @@
 	<item Id="5230502" RandType="2" DropDataId="6270001" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230502" RandType="2" DropDataId="6260001" Weight="2000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230502" RandType="2" DropDataId="6280005" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
-	<item Id="5230502" RandType="2" DropDataId="6260104" Weight="8000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5230502" RandType="2" DropDataId="6260104" Weight="6000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230503" RandType="2" DropDataId="6200503" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230503" RandType="2" DropDataId="6210503" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230503" RandType="2" DropDataId="6220503" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
@@ -705,7 +705,7 @@
 	<item Id="5230503" RandType="2" DropDataId="6270001" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230503" RandType="2" DropDataId="6260001" Weight="2000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230503" RandType="2" DropDataId="6280005" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
-	<item Id="5230503" RandType="2" DropDataId="6260104" Weight="8000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5230503" RandType="2" DropDataId="6260104" Weight="6000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230504" RandType="2" DropDataId="6200504" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230504" RandType="2" DropDataId="6210504" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230504" RandType="2" DropDataId="6220504" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
@@ -715,7 +715,7 @@
 	<item Id="5230504" RandType="2" DropDataId="6270001" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230504" RandType="2" DropDataId="6260001" Weight="2000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230504" RandType="2" DropDataId="6280005" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
-	<item Id="5230504" RandType="2" DropDataId="6260104" Weight="8000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5230504" RandType="2" DropDataId="6260104" Weight="6000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230601" RandType="2" DropDataId="6200601" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230601" RandType="2" DropDataId="6210601" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230601" RandType="2" DropDataId="6220601" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
@@ -725,7 +725,7 @@
 	<item Id="5230601" RandType="2" DropDataId="6270001" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230601" RandType="2" DropDataId="6260001" Weight="2000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230601" RandType="2" DropDataId="6280006" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
-	<item Id="5230601" RandType="2" DropDataId="6260104" Weight="8000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5230601" RandType="2" DropDataId="6260104" Weight="6000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230602" RandType="2" DropDataId="6200602" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230602" RandType="2" DropDataId="6210602" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230602" RandType="2" DropDataId="6220602" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
@@ -735,7 +735,7 @@
 	<item Id="5230602" RandType="2" DropDataId="6270001" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230602" RandType="2" DropDataId="6260001" Weight="2000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5230602" RandType="2" DropDataId="6280006" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
-	<item Id="5230602" RandType="2" DropDataId="6260104" Weight="8000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5230602" RandType="2" DropDataId="6260104" Weight="6000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5240101" RandType="2" DropDataId="6205101" Weight="7000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5240101" RandType="2" DropDataId="6215101" Weight="7000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5240101" RandType="2" DropDataId="6225101" Weight="0" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
@@ -1494,10 +1494,10 @@
 	<item Id="5300623" RandType="2" DropDataId="6260105" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5320000" RandType="2" DropDataId="6500000" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5320001" RandType="2" DropDataId="6500001" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
-	<item Id="5320101" RandType="2" DropDataId="6535001" Weight="10000" DropCount="1" Reset="0" Exclude="0" ConditionType="1" Condition="drop=1" />
-	<item Id="5320101" RandType="2" DropDataId="6525001" Weight="10000" DropCount="1" Reset="0" Exclude="0" ConditionType="1" Condition="drop=1" />
-	<item Id="5320102" RandType="2" DropDataId="6535002" Weight="10000" DropCount="1" Reset="0" Exclude="0" ConditionType="1" Condition="drop=1" />
-	<item Id="5320102" RandType="2" DropDataId="6525002" Weight="10000" DropCount="1" Reset="0" Exclude="0" ConditionType="1" Condition="drop=1" />
+	<item Id="5320101" RandType="2" DropDataId="6535001" Weight="0" DropCount="1" Reset="0" Exclude="0" ConditionType="1" Condition="drop=1" />
+	<item Id="5320101" RandType="2" DropDataId="6525001" Weight="0" DropCount="1" Reset="0" Exclude="0" ConditionType="1" Condition="drop=1" />
+	<item Id="5320102" RandType="2" DropDataId="6535002" Weight="0" DropCount="1" Reset="0" Exclude="0" ConditionType="1" Condition="drop=1" />
+	<item Id="5320102" RandType="2" DropDataId="6525002" Weight="0" DropCount="1" Reset="0" Exclude="0" ConditionType="1" Condition="drop=1" />
 	<item Id="5320103" RandType="2" DropDataId="6525003" Weight="10000" DropCount="1" Reset="0" Exclude="0" ConditionType="1" Condition="drop=1" />
 	<item Id="5320103" RandType="2" DropDataId="6535003" Weight="10000" DropCount="1" Reset="0" Exclude="0" ConditionType="1" Condition="drop=1" />
 	<item Id="5320101" RandType="2" DropDataId="6505101" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
@@ -1987,6 +1987,7 @@
 	<item Id="5800010" RandType="1" DropDataId="6800005" Weight="800" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5900001" RandType="2" DropDataId="6900001" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5900002" RandType="2" DropDataId="6900002" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5900100" RandType="2" DropDataId="6900100" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5900101" RandType="2" DropDataId="6900101" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5900101" RandType="2" DropDataId="6900102" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5900101" RandType="2" DropDataId="6900103" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />

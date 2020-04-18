@@ -331,9 +331,6 @@ namespace KFrame
         kfpvedata->_data.set_id( pveid );
         kfpvedata->_data.set_moduleid( moduleid );
         kfpvedata->_data.set_modulename( modulename );
-
-        kfpvedata->RecordBeginHeros( player );
-
         /////////////////////////////////////////////////////////////////////////////////////////////
         KFMsg::MsgPVEAck ack;
         ack.set_pveid( pveid );
@@ -601,8 +598,6 @@ namespace KFrame
     {
         // 设置pveid为0
         player->Set( __STRING__( pveid ), 0u );
-        player->CleanData( __STRING__( npc ), false );
-
         auto kfrealmdata = static_cast< KFRealmModule* >( _kf_realm )->GetRealmData( player );
         if ( kfrealmdata == nullptr )
         {
@@ -627,6 +622,8 @@ namespace KFrame
 
     void KFPVEModule::PVEBalanceRecord( KFEntity* player, KFRealmData* kfpvedata, uint32 result )
     {
+        kfpvedata->RecordBeginHeros( player );
+
         // 更新死亡英雄(死亡英雄可获得结算经验)
         _kf_hero_team->UpdateDeadHero( player );
 
@@ -928,6 +925,8 @@ namespace KFrame
                 _kf_hero->AddExp( player, kfhero, pbdata->exp() );
             }
         }
+
+        player->SyncDataToClient();
     }
 
     __KF_MESSAGE_FUNCTION__( KFPVEModule::HandleFightHeroListReq )
@@ -1063,80 +1062,33 @@ namespace KFrame
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgKillNpcReq );
 
-        auto kfrecord = _pve_record.Find( playerid );
-        if ( kfrecord == nullptr )
-        {
-            return _kf_display->SendToClient( player, KFMsg::PVENotInStatus );
-        }
-
         auto kfnpc = player->Find( __STRING__( npc ), kfmsg.npcuuid() );
         if ( kfnpc == nullptr )
         {
             return;
         }
+        kfnpc->Set( __STRING__( death ), 1u );
 
-        if ( kfmsg.herouuid() != 0u )
+        auto kfhero = player->Find( __STRING__( hero ), kfmsg.herouuid() );
+        if ( kfhero == nullptr )
         {
-            auto pbhero = kfrecord->FindHero( kfmsg.herouuid() );
-            if ( pbhero != nullptr )
-            {
-                pbhero->add_killnpc( kfmsg.npcuuid() );
-            }
+            return;
         }
-        else
-        {
-            kfrecord->_data.add_killnpc( kfmsg.npcuuid() );
-        }
+
+        kfnpc->Set( __STRING__( killrace ), kfhero->Get( __STRING__( race ) ) );
+        kfnpc->Set( __STRING__( killprofession ), kfhero->Get( __STRING__( profession ) ) );
+        kfnpc->Set( __STRING__( killweapontype ), kfhero->Get( __STRING__( weapontype ) ) );
+        kfnpc->Set( __STRING__( killmovetype ), kfhero->Get( __STRING__( movetype ) ) );
     }
 
     void KFPVEModule::StatisticsHeroKillNpcs( KFEntity* player, KFRealmData* kfrecord, uint32 pveresult )
     {
         auto kfnpcrecord = player->Find( __STRING__( npc ) );
-
-        // 英雄击杀
-        for ( auto i = 0; i < kfrecord->_data.herodata_size(); ++i )
+        for ( auto kfnpc = kfnpcrecord->First(); kfnpc != nullptr; kfnpc = kfnpcrecord->Next() )
         {
-            auto pbhero = &kfrecord->_data.herodata( i );
-            for ( auto j = 0; j < pbhero->killnpc_size(); ++j )
-            {
-                auto npcid = pbhero->killnpc( j );
-                StatisticsHeroKillNpc( player, kfnpcrecord, kfrecord, pveresult, pbhero->uuid(), npcid );
-            }
+            kfnpc->Set( __STRING__( pveresult ), pveresult );
         }
-
-        // 系统击杀
-        for ( auto i = 0; i < kfrecord->_data.killnpc_size(); ++i )
-        {
-            auto npcid = kfrecord->_data.killnpc( i );
-            StatisticsHeroKillNpc( player, kfnpcrecord, kfrecord, pveresult, 0u, npcid );
-        }
-
-        // 清空剩余的npc
-        player->CleanData( kfnpcrecord, false );
-    }
-
-    void KFPVEModule::StatisticsHeroKillNpc( KFEntity* player, KFData* kfnpcrecord, KFRealmData* kfrecord, uint32 pveresult, uint64 herouuid, uint64 npcid )
-    {
-        auto kfnpc = kfnpcrecord->Find( npcid );
-        if ( kfnpc == nullptr )
-        {
-            return;
-        }
-
-        if ( herouuid != 0u )
-        {
-            auto kfhero = player->Find( __STRING__( hero ), herouuid );
-            if ( kfhero != nullptr )
-            {
-                kfnpc->Set( __STRING__( killrace ), kfhero->Get( __STRING__( race ) ) );
-                kfnpc->Set( __STRING__( killprofession ), kfhero->Get( __STRING__( profession ) ) );
-                kfnpc->Set( __STRING__( killweapontype ), kfhero->Get( __STRING__( weapontype ) ) );
-                kfnpc->Set( __STRING__( killmovetype ), kfhero->Get( __STRING__( movetype ) ) );
-            }
-        }
-
-        kfnpc->Set( __STRING__( pveresult ), pveresult );
-        player->RemoveData( kfnpcrecord, npcid );
+        player->CleanData( kfnpcrecord, true );
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -8,15 +8,6 @@ namespace KFrame
     class KFItemTypeSetting : public KFIntSetting
     {
     public:
-        // 仓库名字
-        std::string _store_name;
-
-        // 背包名字
-        std::string _bag_name;
-
-        // 额外的背包名
-        std::string _extend_name;
-
         // 移动目标名字列表
         StringSet _move_name_list;
 
@@ -32,12 +23,18 @@ namespace KFrame
         // 可以放入的页签列表
         StringSet _tab_name_list;
 
+        // 状态对应的背包名
+        std::unordered_map<uint32, std::string> _status_bag_name;
+
     public:
         // 判断是否能移动
         bool CheckCanMove( const std::string& sourcename, const std::string& targetname ) const;
 
         // 是否在页签中
         bool IsHaveTab( const std::string& name ) const;
+
+        // 查找背包名
+        const std::string& GetBagName( uint32 status ) const;
     };
     ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////

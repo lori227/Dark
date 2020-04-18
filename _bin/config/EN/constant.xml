@@ -1,4 +1,4 @@
-<root platform="" version="3973">
+<root platform="" version="4505">
 	<item Name="playernamelength" Key="" Value="15" Channel="0" Service="0" />
 	<item Name="recruitrefreshtime" Key="" Value="0.4" Channel="0" Service="0" />
 	<item Name="recruittime" Key="" Value="0.4" Channel="0" Service="0" />
@@ -18,4 +18,5 @@
 	<item Name="leavefaith" Key="" Value="0" Channel="0" Service="0" />
 	<item Name="granarybuytime" Key="" Value="0" Channel="0" Service="0" />
 	<item Name="renewcontracttime" Key="" Value="0.4" Channel="0" Service="0" />
+	<item Name="shoprefreshtime" Key="" Value="0.4" Channel="0" Service="0" />
 </root>

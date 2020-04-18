@@ -19,6 +19,7 @@ namespace KFrame
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_START_STORY_REQ, &KFStoryModule::HandleStartStoryReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_UPDATE_STORY_REQ, &KFStoryModule::HandleUpdateStoryReq );
+        __REGISTER_MESSAGE__( KFMsg::MSG_EXECUTE_STORY_REQ, &KFStoryModule::HandleExecuteStoryReq );
     }
 
     void KFStoryModule::BeforeShut()
@@ -35,6 +36,7 @@ namespace KFrame
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_START_STORY_REQ );
         __UN_MESSAGE__( KFMsg::MSG_UPDATE_STORY_REQ );
+        __UN_MESSAGE__( KFMsg::MSG_EXECUTE_STORY_REQ );
     }
 
     __KF_ENTER_PLAYER_FUNCTION__( KFStoryModule::OnEnterStoryModule )
@@ -49,10 +51,6 @@ namespace KFrame
                 player->UpdateData( __STRING__( mainstory ), KFEnum::Set, 0u );
 
                 CheckStory( player );
-            }
-            else
-            {
-                ExecuteStory( player, mainstory );
             }
         }
         else
@@ -100,7 +98,6 @@ namespace KFrame
         if ( id != _invalid_int )
         {
             player->UpdateData( __STRING__( mainstory ), KFEnum::Set, id );
-            ExecuteStory( player, id );
         }
     }
 
@@ -259,7 +256,6 @@ namespace KFrame
                 player->UpdateData( kfstory, __STRING__( sequence ), KFEnum::Set, 0u );
 
                 player->UpdateData( __STRING__( mainstory ), KFEnum::Set, childid );
-                ExecuteStory( player, childid );
             }
 
             return;
@@ -356,7 +352,25 @@ namespace KFrame
         player->UpdateData( kfstory, __STRING__( sequence ), KFEnum::Add, 1u );
     }
 
-    void KFStoryModule::AddStory( KFEntity* player, uint32 storyid, uint32 childid,  const std::string& modulename, uint64 moduleid )
+    __KF_MESSAGE_FUNCTION__( KFStoryModule::HandleExecuteStoryReq )
+    {
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgExecuteStoryReq );
+
+        auto mainstory = player->Get<uint32>( __STRING__( mainstory ) );
+        if ( mainstory == 0u )
+        {
+            // 当前没有正在执行的剧情
+            return _kf_display->SendToClient( player, KFMsg::StoryIsNotMainStory ); ;
+        }
+
+        auto result = ExecuteStory( player, mainstory );
+        if ( result != KFMsg::Ok )
+        {
+            _kf_display->SendToClient( player, result );
+        }
+    }
+
+    void KFStoryModule::AddStory( KFEntity* player, uint32 storyid, uint32 childid, const std::string& modulename, uint64 moduleid )
     {
         // 如果当前主剧情为被动剧情，则只添加新剧情数据
         // 如果当前主剧情为空 或 为主动剧情，则添加并执行新剧情
@@ -449,22 +463,21 @@ namespace KFrame
         }
 
         player->UpdateData( __STRING__( mainstory ), KFEnum::Set, storyid );
-        ExecuteStory( player, storyid );
     }
 
-    void KFStoryModule::ExecuteStory( KFEntity* player, uint32 storyid )
+    uint32 KFStoryModule::ExecuteStory( KFEntity* player, uint32 storyid )
     {
         auto kfstory = player->Find( __STRING__( story ), storyid );
         if ( kfstory == nullptr )
         {
-            return;
+            return KFMsg::StoryNotExist;
         }
         auto sequence = kfstory->Get<uint32>( __STRING__( sequence ) );
 
         auto storysequence = KFStoryConfig::Instance()->FindStorySequence( storyid, sequence );
         if ( storysequence == nullptr )
         {
-            return;
+            return KFMsg::StorySettingNotExist;
         }
 
         if ( storysequence->_type == KFMsg::ProcessTask )
@@ -479,6 +492,8 @@ namespace KFrame
             // 当前序列为对话，添加对话
             _kf_dialogue->AddDialogue( player, storysequence->_parameter1, storysequence->_type, storyid );
         }
+
+        return KFMsg::Ok;
     }
 
     void KFStoryModule::SendToClientAddStory( KFEntity* player, uint32 storyid, const std::string& modulename, uint64 moduleid )

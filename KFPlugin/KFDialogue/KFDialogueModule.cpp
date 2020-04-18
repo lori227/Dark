@@ -276,7 +276,7 @@ namespace KFrame
         }
 
         // 通知选择分支成功
-        _kf_display->SendToClient( player, KFMsg::DialogueBranchSelectSuc );
+        _kf_display->DelayToClient( player, KFMsg::DialogueBranchSelectSuc );
 
         // 如果对话是剧情，则剧情跳到下一序列，删除对话
         player->RemoveData( __STRING__( dialogue ), kfmsg.dialogueid() );

@@ -125,7 +125,6 @@ namespace KFrame
         __STRING_DEFINE__( team );
         __STRING_DEFINE__( death );
         __STRING_DEFINE__( truns );
-        __STRING_DEFINE__( refresh );
         __STRING_DEFINE__( refreshtaskchain );
         __STRING_DEFINE__( taskstatus );
         __STRING_DEFINE__( taskcondition );

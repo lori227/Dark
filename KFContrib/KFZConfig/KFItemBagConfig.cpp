@@ -10,6 +10,8 @@ namespace KFrame
         kfsetting->_is_can_clean = xmlnode.GetBoolen( "Clean", true );
         kfsetting->_is_realm_record = xmlnode.GetBoolen( "Record", true );
         kfsetting->_is_auto_use_gift = xmlnode.GetBoolen( "AutoUseGift", true );
+        kfsetting->_extend_bag_name = xmlnode.GetString( "Extend", true );
+        kfsetting->_use_child_bag_name = xmlnode.GetString( "UseChild", true );
 
         kfsetting->_enter_realm_type = xmlnode.GetUInt32( "EnterType", true );
         kfsetting->_balance_realm_type = xmlnode.GetUInt32( "BalanceType", true );

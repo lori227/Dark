@@ -29,7 +29,6 @@ namespace KFrame
         UInt32Vector _inner_fail_drop_list;
 
         // 进入消耗
-        std::string _str_consume;
         KFElements _consume;
 
         // 逃跑成功率
@@ -61,7 +60,7 @@ namespace KFrame
                 return 0u;
             }
 
-            auto index = KFGlobal::Instance()->RandRatio( count );
+            auto index = KFGlobal::Instance()->RandRatio( ( uint32 )count );
             return _dungeon_id_list.at( index );
         }
     };

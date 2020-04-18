@@ -7,8 +7,8 @@ namespace KFrame
     {
         auto index = xmlnode.GetUInt32( "Index" );
         auto kfdata = kfsetting->_multi_event_data_list.Create( index );
-        kfdata->_str_cost = xmlnode.GetString( "Cost" );
         kfdata->_event_id = xmlnode.GetUInt32( "Event" );
+        kfdata->_cost_elements._str_element = xmlnode.GetString( "Cost" );
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -20,7 +20,7 @@ namespace KFrame
             for ( auto& miter : kfsetting->_multi_event_data_list._objects )
             {
                 auto kfdata = miter.second;
-                KFElementConfig::Instance()->ParseElement( kfdata->_cost_elements, kfdata->_str_cost, __FILE__, kfsetting->_id );
+                KFElementConfig::Instance()->ParseElement( kfdata->_cost_elements, kfdata->_cost_elements._str_element, __FILE__, kfsetting->_id );
             }
         }
     }

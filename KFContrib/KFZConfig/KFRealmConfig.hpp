@@ -59,7 +59,6 @@ namespace KFrame
         std::unordered_map< uint32, KFRealmLevel > _levels;
 
         // 进入消耗
-        std::string _str_consume;
         KFElements _consume;
 
         // 道具惩罚规则

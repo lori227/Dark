@@ -16,7 +16,6 @@ namespace KFrame
         uint32 _generate_technology_id = 0u;
 
         // 刷新花费
-        std::string _str_cost;
         KFElements _cost_elements;
     };
     ////////////////////////////////////////////////////////////////////////////////

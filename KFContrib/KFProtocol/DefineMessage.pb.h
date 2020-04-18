@@ -1135,18 +1135,6 @@ class LIBPROTOC_EXPORT PBBalanceHeroServer : public ::google::protobuf::Message 
 
   // accessors -------------------------------------------------------
 
-  // repeated uint64 killnpc = 11;
-  int killnpc_size() const;
-  void clear_killnpc();
-  static const int kKillnpcFieldNumber = 11;
-  ::google::protobuf::uint64 killnpc(int index) const;
-  void set_killnpc(int index, ::google::protobuf::uint64 value);
-  void add_killnpc(::google::protobuf::uint64 value);
-  const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
-      killnpc() const;
-  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
-      mutable_killnpc();
-
   // map<string, uint32> beginattributes = 12;
   int beginattributes_size() const;
   void clear_beginattributes();
@@ -1285,8 +1273,6 @@ class LIBPROTOC_EXPORT PBBalanceHeroServer : public ::google::protobuf::Message 
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > killnpc_;
-  mutable int _killnpc_cached_byte_size_;
   ::google::protobuf::internal::MapField<
       PBBalanceHeroServer_BeginattributesEntry_DoNotUse,
       ::std::string, ::google::protobuf::uint32,
@@ -2725,18 +2711,6 @@ class LIBPROTOC_EXPORT PBRealmData : public ::google::protobuf::Message /* @@pro
   const ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceItem >&
       loseitem() const;
 
-  // repeated uint64 killnpc = 13;
-  int killnpc_size() const;
-  void clear_killnpc();
-  static const int kKillnpcFieldNumber = 13;
-  ::google::protobuf::uint64 killnpc(int index) const;
-  void set_killnpc(int index, ::google::protobuf::uint64 value);
-  void add_killnpc(::google::protobuf::uint64 value);
-  const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
-      killnpc() const;
-  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
-      mutable_killnpc();
-
   // map<uint32, .KFMsg.PBExploreData> explore = 15;
   int explore_size() const;
   void clear_explore();
@@ -2907,6 +2881,12 @@ class LIBPROTOC_EXPORT PBRealmData : public ::google::protobuf::Message /* @@pro
   ::google::protobuf::uint32 weathertotalturn() const;
   void set_weathertotalturn(::google::protobuf::uint32 value);
 
+  // uint32 timecurrentturn = 45;
+  void clear_timecurrentturn();
+  static const int kTimecurrentturnFieldNumber = 45;
+  ::google::protobuf::uint32 timecurrentturn() const;
+  void set_timecurrentturn(::google::protobuf::uint32 value);
+
   // uint32 weathercurrentturn = 35;
   void clear_weathercurrentturn();
   static const int kWeathercurrentturnFieldNumber = 35;
@@ -2918,12 +2898,6 @@ class LIBPROTOC_EXPORT PBRealmData : public ::google::protobuf::Message /* @@pro
   static const int kNextweatherFieldNumber = 36;
   ::google::protobuf::uint32 nextweather() const;
   void set_nextweather(::google::protobuf::uint32 value);
-
-  // uint32 timecurrentturn = 45;
-  void clear_timecurrentturn();
-  static const int kTimecurrentturnFieldNumber = 45;
-  ::google::protobuf::uint32 timecurrentturn() const;
-  void set_timecurrentturn(::google::protobuf::uint32 value);
 
   // uint32 timetype = 41;
   void clear_timetype();
@@ -2956,8 +2930,6 @@ class LIBPROTOC_EXPORT PBRealmData : public ::google::protobuf::Message /* @@pro
   ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceHeroServer > herodata_;
   ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceItemServer > itemdata_;
   ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceItem > loseitem_;
-  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > killnpc_;
-  mutable int _killnpc_cached_byte_size_;
   ::google::protobuf::internal::MapField<
       PBRealmData_ExploreEntry_DoNotUse,
       ::google::protobuf::uint32, ::KFMsg::PBExploreData,
@@ -3002,9 +2974,9 @@ class LIBPROTOC_EXPORT PBRealmData : public ::google::protobuf::Message /* @@pro
   ::google::protobuf::uint32 weathertotalstep_;
   ::google::protobuf::uint32 weathercurrentstep_;
   ::google::protobuf::uint32 weathertotalturn_;
+  ::google::protobuf::uint32 timecurrentturn_;
   ::google::protobuf::uint32 weathercurrentturn_;
   ::google::protobuf::uint32 nextweather_;
-  ::google::protobuf::uint32 timecurrentturn_;
   ::google::protobuf::uint32 timetype_;
   ::google::protobuf::uint32 timetotalstep_;
   ::google::protobuf::uint32 timecurrentstep_;
@@ -3874,36 +3846,6 @@ inline void PBBalanceHeroServer::set_death(bool value) {
   
   death_ = value;
   // @@protoc_insertion_point(field_set:KFMsg.PBBalanceHeroServer.death)
-}
-
-// repeated uint64 killnpc = 11;
-inline int PBBalanceHeroServer::killnpc_size() const {
-  return killnpc_.size();
-}
-inline void PBBalanceHeroServer::clear_killnpc() {
-  killnpc_.Clear();
-}
-inline ::google::protobuf::uint64 PBBalanceHeroServer::killnpc(int index) const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceHeroServer.killnpc)
-  return killnpc_.Get(index);
-}
-inline void PBBalanceHeroServer::set_killnpc(int index, ::google::protobuf::uint64 value) {
-  killnpc_.Set(index, value);
-  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceHeroServer.killnpc)
-}
-inline void PBBalanceHeroServer::add_killnpc(::google::protobuf::uint64 value) {
-  killnpc_.Add(value);
-  // @@protoc_insertion_point(field_add:KFMsg.PBBalanceHeroServer.killnpc)
-}
-inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
-PBBalanceHeroServer::killnpc() const {
-  // @@protoc_insertion_point(field_list:KFMsg.PBBalanceHeroServer.killnpc)
-  return killnpc_;
-}
-inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
-PBBalanceHeroServer::mutable_killnpc() {
-  // @@protoc_insertion_point(field_mutable_list:KFMsg.PBBalanceHeroServer.killnpc)
-  return &killnpc_;
 }
 
 // map<string, uint32> beginattributes = 12;
@@ -5079,36 +5021,6 @@ inline const ::google::protobuf::RepeatedPtrField< ::KFMsg::PBBalanceItem >&
 PBRealmData::loseitem() const {
   // @@protoc_insertion_point(field_list:KFMsg.PBRealmData.loseitem)
   return loseitem_;
-}
-
-// repeated uint64 killnpc = 13;
-inline int PBRealmData::killnpc_size() const {
-  return killnpc_.size();
-}
-inline void PBRealmData::clear_killnpc() {
-  killnpc_.Clear();
-}
-inline ::google::protobuf::uint64 PBRealmData::killnpc(int index) const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBRealmData.killnpc)
-  return killnpc_.Get(index);
-}
-inline void PBRealmData::set_killnpc(int index, ::google::protobuf::uint64 value) {
-  killnpc_.Set(index, value);
-  // @@protoc_insertion_point(field_set:KFMsg.PBRealmData.killnpc)
-}
-inline void PBRealmData::add_killnpc(::google::protobuf::uint64 value) {
-  killnpc_.Add(value);
-  // @@protoc_insertion_point(field_add:KFMsg.PBRealmData.killnpc)
-}
-inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
-PBRealmData::killnpc() const {
-  // @@protoc_insertion_point(field_list:KFMsg.PBRealmData.killnpc)
-  return killnpc_;
-}
-inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
-PBRealmData::mutable_killnpc() {
-  // @@protoc_insertion_point(field_mutable_list:KFMsg.PBRealmData.killnpc)
-  return &killnpc_;
 }
 
 // .KFMsg.PBHeroBuffData buffdata = 14;

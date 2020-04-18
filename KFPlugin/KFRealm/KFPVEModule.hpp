@@ -159,7 +159,6 @@ namespace KFrame
 
         // 统计英雄击杀npc
         void StatisticsHeroKillNpcs( KFEntity* player, KFRealmData* kfrecord, uint32 pveresult );
-        void StatisticsHeroKillNpc( KFEntity* player, KFData* kfnpcrecord, KFRealmData* kfrecord, uint32 pveresult, uint64 herouuid, uint64 npcid );
 
         // 计算逃跑成功率
         uint32 CalcFleeSuccessRate( KFEntity* player, const KFPVESetting* kfsetting, double herolevel, double npclevel, bool isinrealm );

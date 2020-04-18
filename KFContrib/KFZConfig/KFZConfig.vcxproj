@@ -17,6 +17,7 @@
     <ClInclude Include="KFChapterConfig.hpp" />
     <ClInclude Include="KFCharacterConfig.hpp" />
     <ClInclude Include="KFConfig.h" />
+    <ClInclude Include="KFCountCostConfig.h" />
     <ClInclude Include="KFCurrencyConfig.hpp" />
     <ClInclude Include="KFDataSetting.h" />
     <ClInclude Include="KFDialogueBranchConfig.hpp" />

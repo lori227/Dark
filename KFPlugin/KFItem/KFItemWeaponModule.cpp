@@ -34,20 +34,9 @@ namespace KFrame
 
     KFData* KFItemWeaponModule::FindWeaponRecord( KFEntity* player )
     {
-        KFData* kfitemrecord = nullptr;
-        auto kftypesetting = KFItemTypeConfig::Instance()->FindSetting( KFItemEnum::Weapon );
-
         auto status = player->GetStatus();
-        if ( status == KFMsg::ExploreStatus || status == KFMsg::PVEStatus )
-        {
-            kfitemrecord = player->Find( kftypesetting->_bag_name );
-        }
-        else
-        {
-            kfitemrecord = player->Find( kftypesetting->_store_name );
-        }
-
-        return kfitemrecord;
+        auto kftypesetting = KFItemTypeConfig::Instance()->FindSetting( KFItemEnum::Weapon );
+        return player->Find( kftypesetting->GetBagName( status ) );
     }
 
     __KF_INIT_ITEM_FUNCTION__( KFItemWeaponModule::InitWeaponData )
@@ -165,7 +154,7 @@ namespace KFrame
         }
 
         // 通知装备成功
-        _kf_display->SendToClient( player, KFMsg::ItemWeaponOk );
+        _kf_display->DelayToClient( player, KFMsg::ItemWeaponOk );
     }
 
     __KF_MESSAGE_FUNCTION__( KFItemWeaponModule::HandleHeroWeaponAnotherReq )
@@ -219,7 +208,7 @@ namespace KFrame
         }
 
         // 通知装备成
-        _kf_display->SendToClient( player, KFMsg::ItemWeaponOk );
+        _kf_display->DelayToClient( player, KFMsg::ItemWeaponOk );
     }
 
     __KF_MESSAGE_FUNCTION__( KFItemWeaponModule::HandleHeroUnWeaponReq )
@@ -246,7 +235,7 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::ItemWeaponNotExist );
         }
 
-        _kf_display->SendToClient( player, KFMsg::ItemUnWeaponOk );
+        _kf_display->DelayToClient( player, KFMsg::ItemUnWeaponOk );
     }
 
     __KF_MESSAGE_FUNCTION__( KFItemWeaponModule::HandleUpdateDurabilityReq )

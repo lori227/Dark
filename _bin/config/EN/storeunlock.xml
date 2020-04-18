@@ -1,5 +1,4 @@
-<root platform="" version="4455">
-	<item Id="1" Index="1" Sort="1" StoreId="11111" UnLockCondition="11111" />
-	<item Id="2" Index="1" Sort="2" StoreId="22222" UnLockCondition="22222" />
-	<item Id="3" Index="1" Sort="3" StoreId="33333" UnLockCondition="33333" />
+<root platform="" version="4533">
+	<item Id="1" Index="1" Sort="1" StoreId="100101" UnLockCondition="" />
+	<item Id="2" Index="2" Sort="1" StoreId="100102" UnLockCondition="" />
 </root>

@@ -271,7 +271,7 @@ namespace KFrame
         player->UpdateData( kfbuild, __STRING__( time ), KFEnum::Set, 0u );
         player->UpdateData( kfbuild, __STRING__( level ), KFEnum::Add, 1u );
 
-        _kf_display->SendToClient( player, KFMsg::BuildUpgradeSuc );
+        _kf_display->DelayToClient( player, KFMsg::BuildUpgradeSuc );
     }
 
     bool KFBuildModule::IsUpgradeListLimit( KFEntity* player )

@@ -19,7 +19,6 @@ namespace KFrame
         UInt32Vector _condition;
 
         // 消耗
-        std::string _str_cost;
         KFElements _cost;
 
         // 执行功能

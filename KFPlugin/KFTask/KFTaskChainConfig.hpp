@@ -87,7 +87,6 @@ namespace KFrame
         uint32 _done_time = 0u;
 
         // 接取消耗
-        std::string _str_cost;
         KFElements _receive_cost;
 
         // 前置条件

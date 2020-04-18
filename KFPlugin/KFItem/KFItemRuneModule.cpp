@@ -125,7 +125,7 @@ namespace KFrame
         }
         else if ( operateresult != _invalid_int )
         {
-            return _kf_display->SendToClient( player, operateresult );
+            return _kf_display->DelayToClient( player, operateresult );
         }
     }
 

@@ -65,11 +65,14 @@ namespace KFrame
         // 探索结算更新
         __KF_UPDATE_DATA_FUNCTION__( OnUpdateRealmCallBack );
 
+        // 开始剧情请求
+        __KF_MESSAGE_FUNCTION__( HandleStartStoryReq );
+
         // 更新剧情序列请求
         __KF_MESSAGE_FUNCTION__( HandleUpdateStoryReq );
 
-        // 开始剧情请求
-        __KF_MESSAGE_FUNCTION__( HandleStartStoryReq );
+        // 执行剧情请求
+        __KF_MESSAGE_FUNCTION__( HandleExecuteStoryReq );
 
     public:
         // 检查剧情
@@ -82,7 +85,7 @@ namespace KFrame
         void AddSequence( KFEntity* player, KFData* kfdata, uint32 type );
 
         // 执行剧情
-        void ExecuteStory( KFEntity* player, uint32 storyid );
+        uint32 ExecuteStory( KFEntity* player, uint32 storyid );
 
         // 发送添加剧情数据
         void SendToClientAddStory( KFEntity* player, uint32 storyid, const std::string& modulename, uint64 moduleid );

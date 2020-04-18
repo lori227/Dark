@@ -1,4 +1,4 @@
-<root platform="" version="4442">
+<root platform="" version="4535">
 	<item Name="defaultprofession" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="defaultbackground" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="generatedirectattribute" Key="" Value="9" Channel="0" Service="0" />
@@ -32,7 +32,7 @@
 	<item Name="transferleveloffest" Key="" Value="4" Channel="0" Service="0" />
 	<item Name="Powercoefficient_B" Key="" Value="0" Channel="0" Service="0" />
 	<item Name="initclinicnum" Key="" Value="2000" Channel="0" Service="0" />
-	<item Name="initgranarynum" Key="" Value="1200" Channel="0" Service="0" />
+	<item Name="initgranarynum" Key="" Value="50" Channel="0" Service="0" />
 	<item Name="initsmithynum" Key="" Value="1000" Channel="0" Service="0" />
 	<item Name="roledeath_characterpool" Key="" Value="4069001" Channel="0" Service="0" />
 	<item Name="heronamelength" Key="" Value="40" Channel="0" Service="0" />

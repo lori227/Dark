@@ -1,11 +1,11 @@
-<root platform="" version="4457">
-	<item Id="1" Store="storage" Explore="explore" Extend="extend" Move="storage,explore,extend" Tab="index,normal" Auto="1" UseLimit="" Sort="1" />
-	<item Id="2" Store="storage" Explore="explore" Extend="extend" Move="storage,explore,extend" Tab="index,gift" Auto="1" UseLimit="" Sort="5" />
-	<item Id="3" Store="storage" Explore="explore" Extend="extend" Move="storage,explore,extend" Tab="index,drug" Auto="1" UseLimit="" Sort="8" />
-	<item Id="4" Store="storage" Explore="explore" Extend="extend" Move="storage,explore,extend" Tab="index,weapon" Auto="1" UseLimit="" Sort="4" />
-	<item Id="5" Store="storage" Explore="explore" Extend="extend" Move="storage,explore,extend" Tab="index,material" Auto="1" UseLimit="" Sort="6" />
-	<item Id="6" Store="" Explore="rune" Extend="extend" Move="rune,runeslot" Tab="index" Auto="2" UseLimit="" Sort="3" />
-	<item Id="7" Store="" Explore="explore" Extend="extend" Move="explore,extend" Tab="index" Auto="0" UseLimit="" Sort="10" />
-	<item Id="8" Store="storage" Explore="explore" Extend="extend" Move="storage,explore,extend" Tab="index,drug" Auto="0" UseLimit="" Sort="7" />
-	<item Id="9" Store="" Explore="explore" Extend="extend" Move="explore,extend" Tab="index" Auto="0" UseLimit="" Sort="2" />
+<root platform="" version="4524">
+	<item Id="1" Storage="0:storage,3:explore,4:explore,100:select" Move="storage,explore,extend" Tab="index,normal" Auto="1" UseLimit="" Sort="1" />
+	<item Id="2" Storage="0:storage,3:explore,4:explore,100:select" Move="storage,explore,extend" Tab="index,gift" Auto="1" UseLimit="" Sort="5" />
+	<item Id="3" Storage="0:storage,3:explore,4:explore,100:select" Move="storage,explore,extend" Tab="index,drug" Auto="1" UseLimit="" Sort="8" />
+	<item Id="4" Storage="0:storage,3:explore,4:explore,100:select" Move="storage,explore,extend" Tab="index,weapon" Auto="1" UseLimit="" Sort="4" />
+	<item Id="5" Storage="0:storage,3:explore,4:explore,100:select" Move="storage,explore,extend" Tab="index,material" Auto="1" UseLimit="" Sort="6" />
+	<item Id="6" Storage="3:rune,4:rune,100:select" Move="rune,runeslot,extend" Tab="index" Auto="2" UseLimit="" Sort="3" />
+	<item Id="7" Storage="3:explore,4:explore,100:select" Move="explore,extend" Tab="index" Auto="0" UseLimit="" Sort="10" />
+	<item Id="8" Storage="0:storage,3:explore,4:explore,100:select" Move="storage,explore,extend" Tab="index,drug" Auto="0" UseLimit="" Sort="7" />
+	<item Id="9" Storage="3:explore,4:explore,100:select" Move="explore,extend" Tab="index" Auto="0" UseLimit="" Sort="2" />
 </root>

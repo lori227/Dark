@@ -4,11 +4,23 @@ namespace KFrame
 {
     void KFItemTypeConfig::ReadSetting( KFNode& xmlnode, KFItemTypeSetting* kfsetting )
     {
-        kfsetting->_store_name = xmlnode.GetString( "Store", true );
-        kfsetting->_bag_name = xmlnode.GetString( "Explore", true );
-        kfsetting->_extend_name = xmlnode.GetString( "Extend", true );
         kfsetting->_is_auto = xmlnode.GetUInt32( "Auto", true );
         kfsetting->_sort_index = xmlnode.GetUInt32( "Sort", true );
+
+        auto strstorage = xmlnode.GetString( "Storage", true );
+        while ( !strstorage.empty() )
+        {
+            auto statusstorage = KFUtility::SplitString( strstorage, __SPLIT_STRING__ );
+            if ( !statusstorage.empty() )
+            {
+                auto status = KFUtility::SplitValue<uint32>( statusstorage, __DOMAIN_STRING__ );
+                auto name = KFUtility::SplitString( statusstorage, __DOMAIN_STRING__ );
+                if ( !name.empty() )
+                {
+                    kfsetting->_status_bag_name[ status ] = name;
+                }
+            }
+        }
 
         auto strmove = xmlnode.GetString( "Move", true );
         while ( !strmove.empty() )
@@ -40,17 +52,26 @@ namespace KFrame
 
     bool KFItemTypeSetting::CheckCanMove( const std::string& sourcename, const std::string& targetname ) const
     {
-        // 额外的背包, 并且是探索背包
-        if ( sourcename == _extend_name && targetname == _bag_name )
-        {
-            return true;
-        }
-
         return _move_name_list.find( targetname ) != _move_name_list.end();
     }
 
     bool KFItemTypeSetting::IsHaveTab( const std::string& name ) const
     {
         return _tab_name_list.find( name ) != _tab_name_list.end();
+    }
+
+    const std::string& KFItemTypeSetting::GetBagName( uint32 status ) const
+    {
+        auto iter = _status_bag_name.find( status );
+        if ( iter == _status_bag_name.end() )
+        {
+            iter = _status_bag_name.find( 0 );
+            if ( iter == _status_bag_name.end() )
+            {
+                return _invalid_string;
+            }
+        }
+
+        return iter->second;
     }
 }

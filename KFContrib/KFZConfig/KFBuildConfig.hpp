@@ -28,11 +28,9 @@ namespace KFrame
         uint64 _unit_time = 0u;
 
         // 升级消耗
-        std::string _str_consume;
         KFElements _consume;
 
         // 快速完成消耗
-        std::string _str_onekey_consume;
         KFElements _onekey_consume;
     };
 

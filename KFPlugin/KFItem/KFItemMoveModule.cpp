@@ -91,6 +91,13 @@ namespace KFrame
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     __KF_ADD_DATA_FUNCTION__( KFItemMoveModule::OnAddItemMoveLogic )
     {
+        ItemIndexKey indexkey( player->GetKeyID(), kfparent->_data_setting->_name );
+        auto kfbagindex = _player_item_index.Find( indexkey );
+        if ( kfbagindex == nullptr )
+        {
+            return;
+        }
+
         auto itemid = kfdata->Get<uint32>( kfdata->_data_setting->_config_key_name );
         auto kfitemsetting = KFItemConfig::Instance()->FindSetting( itemid );
         if ( kfitemsetting == nullptr )
@@ -100,13 +107,6 @@ namespace KFrame
 
         auto kftypesetting = KFItemTypeConfig::Instance()->FindSetting( kfitemsetting->_type );
         if ( kftypesetting == nullptr )
-        {
-            return;
-        }
-
-        ItemIndexKey indexkey( player->GetKeyID(), kfparent->_data_setting->_name );
-        auto kfbagindex = _player_item_index.Find( indexkey );
-        if ( kfbagindex == nullptr )
         {
             return;
         }
@@ -135,6 +135,13 @@ namespace KFrame
             return;
         }
 
+        ItemIndexKey indexkey( player->GetKeyID(), kfparent->_data_setting->_name );
+        auto kfbagindex = _player_item_index.Find( indexkey );
+        if ( kfbagindex == nullptr )
+        {
+            return;
+        }
+
         auto itemid = kfdata->Get<uint32>( kfdata->_data_setting->_config_key_name );
         auto kfitemsetting = KFItemConfig::Instance()->FindSetting( itemid );
         if ( kfitemsetting == nullptr )
@@ -144,13 +151,6 @@ namespace KFrame
 
         auto kftypesetting = KFItemTypeConfig::Instance()->FindSetting( kfitemsetting->_type );
         if ( kftypesetting == nullptr )
-        {
-            return;
-        }
-
-        ItemIndexKey indexkey( player->GetKeyID(), kfparent->_data_setting->_name );
-        auto kfbagindex = _player_item_index.Find( indexkey );
-        if ( kfbagindex == nullptr )
         {
             return;
         }
@@ -646,20 +646,6 @@ namespace KFrame
             return player->Find( sourcename );
         }
 
-        for ( auto& name : kftypesetting->_move_name_list )
-        {
-            if ( name == excludename || name == kftypesetting->_extend_name )
-            {
-                continue;
-            }
-
-            auto kfitemrecord = player->Find( name );
-            if ( kfitemrecord != nullptr )
-            {
-                return kfitemrecord;
-            }
-        }
-
         return nullptr;
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -973,12 +959,18 @@ namespace KFrame
             }
 
             auto kftypesetting = KFItemTypeConfig::Instance()->FindSetting( kfitemsetting->_type );
-            if ( kftypesetting == nullptr || !kftypesetting->CheckCanMove( kfmsg.sourcename(), kftypesetting->_store_name ) )
+            if ( kftypesetting == nullptr )
             {
                 continue;
             }
 
-            auto kftargetrecord = player->Find( kftypesetting->_store_name );
+            auto bagname = kftypesetting->GetBagName( 0u );
+            if ( !kftypesetting->CheckCanMove( kfmsg.sourcename(), bagname ) )
+            {
+                continue;
+            }
+
+            auto kftargetrecord = player->Find( bagname );
             if ( kftargetrecord == nullptr )
             {
                 continue;
@@ -1128,7 +1120,7 @@ namespace KFrame
             else if ( kftypesetting->_is_auto == KFMsg::AutoStore )
             {
                 // 自动存入仓库
-                auto kftargetrecord = player->Find( kftypesetting->_store_name );
+                auto kftargetrecord = player->Find( kftypesetting->GetBagName( 0u ) );
                 if ( kftargetrecord != nullptr )
                 {
                     auto kftargetbagsetting = KFItemBagConfig::Instance()->FindSetting( kftargetrecord->_data_setting->_name );
