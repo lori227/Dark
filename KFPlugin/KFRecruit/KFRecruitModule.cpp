@@ -122,7 +122,7 @@ namespace KFrame
         RefreshRecruitFreeHero( player, 0u );
     }
 
-    __KF_AFTER_ENTER_PLAYER_FUNCTION__( KFRecruitModule::OnAfterEnterRecruitModule )
+    __KF_ENTER_PLAYER_FUNCTION__( KFRecruitModule::OnAfterEnterRecruitModule )
     {
         auto kfeffect = player->Find( __STRING__( effect ) );
         auto newversion = kfeffect->Get<uint32>( __STRING__( newversion ) );

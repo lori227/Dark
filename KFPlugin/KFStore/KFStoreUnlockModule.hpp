@@ -40,7 +40,7 @@ namespace KFrame
         __KF_UPDATE_DATA_FUNCTION__( OnUpdateDataUnlockStore );
 
         // 进入游戏
-        __KF_BEFORE_ENTER_PLAYER_FUNCTION__( OnEnterUnlockStore );
+        __KF_ENTER_PLAYER_FUNCTION__( OnEnterUnlockStore );
 
         // 解锁商店
         void UnlockStoreData( KFEntity* player, const KFStoreUnlockSetting* kfsetting, KFData* kfindexrecord );

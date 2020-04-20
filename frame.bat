@@ -344,8 +344,9 @@ rem call :CopyInterface KFRankShard
 copy /y %framepath%\%binpath%\config\rank.xml ..\Resource\config\
 
 rem public
-call :CopyInterface KFPublicClient
-call :CopyInterface KFPublicShard
+call :CopyInterface KFBasicClient
+call :CopyInterface KFBasicShard
+call :CopyInterface KFBasicAttribute
 
 rem relation
 rem call :CopyInterface KFRelationClient

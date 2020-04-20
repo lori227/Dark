@@ -826,7 +826,7 @@ namespace KFrame
         return kfrealmdata->IsInnerWorld();
     }
 
-    __KF_BEFORE_ENTER_PLAYER_FUNCTION__( KFRealmModule::OnEnterInitRealmData )
+    __KF_ENTER_PLAYER_FUNCTION__( KFRealmModule::OnEnterInitRealmData )
     {
         auto strdata = player->Get<std::string>( __STRING__( realmdata ) );
         if ( strdata.empty() )

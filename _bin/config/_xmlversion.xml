@@ -1,4 +1,4 @@
-<root version="4537">
+<root version="4559">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -124,10 +124,7 @@
 	<item name="chapter" version="4435" />
 	<item name="status" version="4435" />
 	<item name="levelvalue" version="4436" />
-	<item name="injuryrandom" version="4444" />
-	<item name="heroattribute" version="4450" />
 	<item name="camptext" version="4459" />
-	<item name="herotransfer" version="4462" />
 	<item name="heroskill" version="4464" />
 	<item name="taskchain" version="4465" />
 	<item name="injurytype" version="4473" />
@@ -135,21 +132,13 @@
 	<item name="conditiondefine" version="4474" />
 	<item name="heropinchface" version="4477" />
 	<item name="buildlevel" version="4491" />
-	<item name="npcgenerate" version="4503" />
 	<item name="constant" version="4505" />
-	<item name="realm" version="4506" />
-	<item name="uitext" version="4507" />
 	<item name="config" version="4513" />
 	<item name="countcost" version="4515" />
-	<item name="class" version="4517" />
 	<item name="herogenerate" version="4519" />
-	<item name="heroprofession" version="4520" />
 	<item name="npcgroup" version="4521" />
-	<item name="heroweightpool" version="4522" />
 	<item name="itemtype" version="4524" />
-	<item name="technology" version="4525" />
 	<item name="dropgroup" version="4526" />
-	<item name="rolebasetext" version="4527" />
 	<item name="itembag" version="4528" />
 	<item name="meshconfig" version="4531" />
 	<item name="time" version="4532" />
@@ -160,4 +149,15 @@
 	<item name="dropdata" version="4536" />
 	<item name="tipstext" version="4537" />
 	<item name="errorcode" version="4537" />
+	<item name="heroprofession" version="4545" />
+	<item name="herotransfer" version="4546" />
+	<item name="heroattribute" version="4549" />
+	<item name="npcgenerate" version="4550" />
+	<item name="uitext" version="4551" />
+	<item name="rolebasetext" version="4553" />
+	<item name="injuryrandom" version="4554" />
+	<item name="heroweightpool" version="4554" />
+	<item name="realm" version="4557" />
+	<item name="technology" version="4558" />
+	<item name="class" version="4559" />
 </root>

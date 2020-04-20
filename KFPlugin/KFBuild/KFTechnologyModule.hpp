@@ -38,7 +38,7 @@ namespace KFrame
         ////////////////////////////////////////////////////////////////////////////////
     protected:
         // 进入游戏
-        __KF_BEFORE_ENTER_PLAYER_FUNCTION__( OnEnterTechnologyModule );
+        __KF_ENTER_PLAYER_FUNCTION__( OnEnterTechnologyModule );
 
         // 添加科技
         __KF_ADD_ELEMENT_FUNCTION__( AddTechnologyElement );

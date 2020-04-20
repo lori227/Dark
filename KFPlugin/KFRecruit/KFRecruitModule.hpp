@@ -69,7 +69,7 @@ namespace KFrame
         ///////////////////////////////////////////////////////////////////////
         // 进入游戏
         __KF_ENTER_PLAYER_FUNCTION__( OnEnterRecruitModule );
-        __KF_AFTER_ENTER_PLAYER_FUNCTION__( OnAfterEnterRecruitModule );
+        __KF_ENTER_PLAYER_FUNCTION__( OnAfterEnterRecruitModule );
 
         // 离开游戏
         __KF_LEAVE_PLAYER_FUNCTION__( OnLeaveRecruitModule );

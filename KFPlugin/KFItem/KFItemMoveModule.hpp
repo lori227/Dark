@@ -67,7 +67,7 @@ namespace KFrame
 
     protected:
         // 进入游戏
-        __KF_AFTER_ENTER_PLAYER_FUNCTION__( OnEnterItemMoveModule );
+        __KF_ENTER_PLAYER_FUNCTION__( OnEnterItemMoveModule );
 
         // 离开游戏
         __KF_LEAVE_PLAYER_FUNCTION__( OnLeaveItemMoveModule );

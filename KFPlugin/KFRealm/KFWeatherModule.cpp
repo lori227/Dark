@@ -125,6 +125,9 @@ namespace KFrame
             kfrealmdata->_data.set_weathercurrentstep( 0 );
             kfrealmdata->_data.set_weather( kfweatherdata->_weahter_id );
             kfrealmdata->_data.set_weathertotalstep( KFGlobal::Instance()->RandRange( kfweatherdata->_min_realm_duration, kfweatherdata->_max_realm_duration, 1u ) );
+
+            // 随机下一次天气
+            RandNextWeatherData( kfrealmdata, kfweathersetting );
         }
 
         SendUpdateWeatherToClient( player, kfrealmdata );
@@ -167,6 +170,9 @@ namespace KFrame
         pbrealmdata->set_weather( kfweather->_weahter_id );
         pbrealmdata->set_weathercurrentstep( pbrealmdata->weathercurrentstep() - pbrealmdata->weathertotalstep() );
         pbrealmdata->set_weathertotalstep( KFGlobal::Instance()->RandRange( kfweather->_min_realm_duration, kfweather->_max_realm_duration, 1u ) );
+
+        // 随机下一次天气
+        RandNextWeatherData( kfrealmdata, kfweathersetting );
         SendUpdateWeatherToClient( player, kfrealmdata );
     }
 

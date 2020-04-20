@@ -47,7 +47,7 @@ namespace protobuf_DefineMessage_2eproto {
 struct LIBPROTOC_EXPORT TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[30];
+  static const ::google::protobuf::internal::ParseTable schema[33];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -67,15 +67,24 @@ LIBPROTOC_EXPORT extern PBBalanceHeroServerDefaultTypeInternal _PBBalanceHeroSer
 class PBBalanceHeroServer_BeginattributesEntry_DoNotUse;
 class PBBalanceHeroServer_BeginattributesEntry_DoNotUseDefaultTypeInternal;
 LIBPROTOC_EXPORT extern PBBalanceHeroServer_BeginattributesEntry_DoNotUseDefaultTypeInternal _PBBalanceHeroServer_BeginattributesEntry_DoNotUse_default_instance_;
+class PBBalanceHeroServer_BegininjuryEntry_DoNotUse;
+class PBBalanceHeroServer_BegininjuryEntry_DoNotUseDefaultTypeInternal;
+LIBPROTOC_EXPORT extern PBBalanceHeroServer_BegininjuryEntry_DoNotUseDefaultTypeInternal _PBBalanceHeroServer_BegininjuryEntry_DoNotUse_default_instance_;
 class PBBalanceHeroServer_EndattributesEntry_DoNotUse;
 class PBBalanceHeroServer_EndattributesEntry_DoNotUseDefaultTypeInternal;
 LIBPROTOC_EXPORT extern PBBalanceHeroServer_EndattributesEntry_DoNotUseDefaultTypeInternal _PBBalanceHeroServer_EndattributesEntry_DoNotUse_default_instance_;
+class PBBalanceHeroServer_EndinjuryEntry_DoNotUse;
+class PBBalanceHeroServer_EndinjuryEntry_DoNotUseDefaultTypeInternal;
+LIBPROTOC_EXPORT extern PBBalanceHeroServer_EndinjuryEntry_DoNotUseDefaultTypeInternal _PBBalanceHeroServer_EndinjuryEntry_DoNotUse_default_instance_;
 class PBBalanceHero_ActiveEntry_DoNotUse;
 class PBBalanceHero_ActiveEntry_DoNotUseDefaultTypeInternal;
 LIBPROTOC_EXPORT extern PBBalanceHero_ActiveEntry_DoNotUseDefaultTypeInternal _PBBalanceHero_ActiveEntry_DoNotUse_default_instance_;
 class PBBalanceHero_AttributesEntry_DoNotUse;
 class PBBalanceHero_AttributesEntry_DoNotUseDefaultTypeInternal;
 LIBPROTOC_EXPORT extern PBBalanceHero_AttributesEntry_DoNotUseDefaultTypeInternal _PBBalanceHero_AttributesEntry_DoNotUse_default_instance_;
+class PBBalanceHero_InjuryEntry_DoNotUse;
+class PBBalanceHero_InjuryEntry_DoNotUseDefaultTypeInternal;
+LIBPROTOC_EXPORT extern PBBalanceHero_InjuryEntry_DoNotUseDefaultTypeInternal _PBBalanceHero_InjuryEntry_DoNotUse_default_instance_;
 class PBBalanceHero_InnateEntry_DoNotUse;
 class PBBalanceHero_InnateEntry_DoNotUseDefaultTypeInternal;
 LIBPROTOC_EXPORT extern PBBalanceHero_InnateEntry_DoNotUseDefaultTypeInternal _PBBalanceHero_InnateEntry_DoNotUse_default_instance_;
@@ -152,9 +161,12 @@ template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceData* Arena::CreateMaybeMessage<::
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceHero* Arena::CreateMaybeMessage<::KFMsg::PBBalanceHero>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceHeroServer* Arena::CreateMaybeMessage<::KFMsg::PBBalanceHeroServer>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceHeroServer_BeginattributesEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBBalanceHeroServer_BeginattributesEntry_DoNotUse>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceHeroServer_BegininjuryEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBBalanceHeroServer_BegininjuryEntry_DoNotUse>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceHeroServer_EndattributesEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBBalanceHeroServer_EndattributesEntry_DoNotUse>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceHeroServer_EndinjuryEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBBalanceHeroServer_EndinjuryEntry_DoNotUse>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceHero_ActiveEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBBalanceHero_ActiveEntry_DoNotUse>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceHero_AttributesEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBBalanceHero_AttributesEntry_DoNotUse>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceHero_InjuryEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBBalanceHero_InjuryEntry_DoNotUse>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceHero_InnateEntry_DoNotUse* Arena::CreateMaybeMessage<::KFMsg::PBBalanceHero_InnateEntry_DoNotUse>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceItem* Arena::CreateMaybeMessage<::KFMsg::PBBalanceItem>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::PBBalanceItemServer* Arena::CreateMaybeMessage<::KFMsg::PBBalanceItemServer>(Arena*);
@@ -533,6 +545,27 @@ public:
 
 // -------------------------------------------------------------------
 
+class PBBalanceHero_InjuryEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<PBBalanceHero_InjuryEntry_DoNotUse, 
+    ::google::protobuf::uint32, ::google::protobuf::uint32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<PBBalanceHero_InjuryEntry_DoNotUse, 
+    ::google::protobuf::uint32, ::google::protobuf::uint32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    0 > SuperType;
+  PBBalanceHero_InjuryEntry_DoNotUse();
+  PBBalanceHero_InjuryEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const PBBalanceHero_InjuryEntry_DoNotUse& other);
+  static const PBBalanceHero_InjuryEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const PBBalanceHero_InjuryEntry_DoNotUse*>(&_PBBalanceHero_InjuryEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
+// -------------------------------------------------------------------
+
 class LIBPROTOC_EXPORT PBBalanceHero : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.PBBalanceHero) */ {
  public:
   PBBalanceHero();
@@ -568,7 +601,7 @@ class LIBPROTOC_EXPORT PBBalanceHero : public ::google::protobuf::Message /* @@p
                &_PBBalanceHero_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    7;
 
   void Swap(PBBalanceHero* other);
   friend void swap(PBBalanceHero& a, PBBalanceHero& b) {
@@ -648,6 +681,15 @@ class LIBPROTOC_EXPORT PBBalanceHero : public ::google::protobuf::Message /* @@p
   ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >*
       mutable_innate();
 
+  // map<uint32, uint32> injury = 24;
+  int injury_size() const;
+  void clear_injury();
+  static const int kInjuryFieldNumber = 24;
+  const ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >&
+      injury() const;
+  ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >*
+      mutable_injury();
+
   // bytes name = 5;
   void clear_name();
   static const int kNameFieldNumber = 5;
@@ -704,6 +746,18 @@ class LIBPROTOC_EXPORT PBBalanceHero : public ::google::protobuf::Message /* @@p
   bool death() const;
   void set_death(bool value);
 
+  // uint32 quality = 9;
+  void clear_quality();
+  static const int kQualityFieldNumber = 9;
+  ::google::protobuf::uint32 quality() const;
+  void set_quality(::google::protobuf::uint32 value);
+
+  // uint32 maxhp = 10;
+  void clear_maxhp();
+  static const int kMaxhpFieldNumber = 10;
+  ::google::protobuf::uint32 maxhp() const;
+  void set_maxhp(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:KFMsg.PBBalanceHero)
  private:
 
@@ -726,6 +780,12 @@ class LIBPROTOC_EXPORT PBBalanceHero : public ::google::protobuf::Message /* @@p
       ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
       ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
       0 > innate_;
+  ::google::protobuf::internal::MapField<
+      PBBalanceHero_InjuryEntry_DoNotUse,
+      ::google::protobuf::uint32, ::google::protobuf::uint32,
+      ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+      ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+      0 > injury_;
   ::google::protobuf::internal::ArenaStringPtr name_;
   ::google::protobuf::uint64 uuid_;
   ::google::protobuf::uint32 race_;
@@ -734,6 +794,8 @@ class LIBPROTOC_EXPORT PBBalanceHero : public ::google::protobuf::Message /* @@p
   ::google::protobuf::uint32 exp_;
   ::google::protobuf::uint32 level_;
   bool death_;
+  ::google::protobuf::uint32 quality_;
+  ::google::protobuf::uint32 maxhp_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_DefineMessage_2eproto::TableStruct;
 };
@@ -774,7 +836,7 @@ class LIBPROTOC_EXPORT PBBalanceData : public ::google::protobuf::Message /* @@p
                &_PBBalanceData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    8;
 
   void Swap(PBBalanceData* other);
   friend void swap(PBBalanceData& a, PBBalanceData& b) {
@@ -909,7 +971,7 @@ class LIBPROTOC_EXPORT PBBalanceItemServer : public ::google::protobuf::Message 
                &_PBBalanceItemServer_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    9;
 
   void Swap(PBBalanceItemServer* other);
   friend void swap(PBBalanceItemServer& a, PBBalanceItemServer& b) {
@@ -1047,6 +1109,48 @@ public:
 
 // -------------------------------------------------------------------
 
+class PBBalanceHeroServer_BegininjuryEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<PBBalanceHeroServer_BegininjuryEntry_DoNotUse, 
+    ::google::protobuf::uint32, ::google::protobuf::uint32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<PBBalanceHeroServer_BegininjuryEntry_DoNotUse, 
+    ::google::protobuf::uint32, ::google::protobuf::uint32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    0 > SuperType;
+  PBBalanceHeroServer_BegininjuryEntry_DoNotUse();
+  PBBalanceHeroServer_BegininjuryEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const PBBalanceHeroServer_BegininjuryEntry_DoNotUse& other);
+  static const PBBalanceHeroServer_BegininjuryEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const PBBalanceHeroServer_BegininjuryEntry_DoNotUse*>(&_PBBalanceHeroServer_BegininjuryEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
+// -------------------------------------------------------------------
+
+class PBBalanceHeroServer_EndinjuryEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<PBBalanceHeroServer_EndinjuryEntry_DoNotUse, 
+    ::google::protobuf::uint32, ::google::protobuf::uint32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<PBBalanceHeroServer_EndinjuryEntry_DoNotUse, 
+    ::google::protobuf::uint32, ::google::protobuf::uint32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+    0 > SuperType;
+  PBBalanceHeroServer_EndinjuryEntry_DoNotUse();
+  PBBalanceHeroServer_EndinjuryEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const PBBalanceHeroServer_EndinjuryEntry_DoNotUse& other);
+  static const PBBalanceHeroServer_EndinjuryEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const PBBalanceHeroServer_EndinjuryEntry_DoNotUse*>(&_PBBalanceHeroServer_EndinjuryEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
+// -------------------------------------------------------------------
+
 class LIBPROTOC_EXPORT PBBalanceHeroServer : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.PBBalanceHeroServer) */ {
  public:
   PBBalanceHeroServer();
@@ -1082,7 +1186,7 @@ class LIBPROTOC_EXPORT PBBalanceHeroServer : public ::google::protobuf::Message 
                &_PBBalanceHeroServer_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    14;
 
   void Swap(PBBalanceHeroServer* other);
   friend void swap(PBBalanceHeroServer& a, PBBalanceHeroServer& b) {
@@ -1135,19 +1239,19 @@ class LIBPROTOC_EXPORT PBBalanceHeroServer : public ::google::protobuf::Message 
 
   // accessors -------------------------------------------------------
 
-  // map<string, uint32> beginattributes = 12;
+  // map<string, uint32> beginattributes = 13;
   int beginattributes_size() const;
   void clear_beginattributes();
-  static const int kBeginattributesFieldNumber = 12;
+  static const int kBeginattributesFieldNumber = 13;
   const ::google::protobuf::Map< ::std::string, ::google::protobuf::uint32 >&
       beginattributes() const;
   ::google::protobuf::Map< ::std::string, ::google::protobuf::uint32 >*
       mutable_beginattributes();
 
-  // map<string, uint32> endattributes = 13;
+  // map<string, uint32> endattributes = 14;
   int endattributes_size() const;
   void clear_endattributes();
-  static const int kEndattributesFieldNumber = 13;
+  static const int kEndattributesFieldNumber = 14;
   const ::google::protobuf::Map< ::std::string, ::google::protobuf::uint32 >&
       endattributes() const;
   ::google::protobuf::Map< ::std::string, ::google::protobuf::uint32 >*
@@ -1200,6 +1304,24 @@ class LIBPROTOC_EXPORT PBBalanceHeroServer : public ::google::protobuf::Message 
       endinnate() const;
   ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
       mutable_endinnate();
+
+  // map<uint32, uint32> begininjury = 24;
+  int begininjury_size() const;
+  void clear_begininjury();
+  static const int kBegininjuryFieldNumber = 24;
+  const ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >&
+      begininjury() const;
+  ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >*
+      mutable_begininjury();
+
+  // map<uint32, uint32> endinjury = 25;
+  int endinjury_size() const;
+  void clear_endinjury();
+  static const int kEndinjuryFieldNumber = 25;
+  const ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >&
+      endinjury() const;
+  ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >*
+      mutable_endinjury();
 
   // bytes name = 5;
   void clear_name();
@@ -1269,6 +1391,18 @@ class LIBPROTOC_EXPORT PBBalanceHeroServer : public ::google::protobuf::Message 
   bool death() const;
   void set_death(bool value);
 
+  // uint32 quality = 11;
+  void clear_quality();
+  static const int kQualityFieldNumber = 11;
+  ::google::protobuf::uint32 quality() const;
+  void set_quality(::google::protobuf::uint32 value);
+
+  // uint32 maxhp = 12;
+  void clear_maxhp();
+  static const int kMaxhpFieldNumber = 12;
+  ::google::protobuf::uint32 maxhp() const;
+  void set_maxhp(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:KFMsg.PBBalanceHeroServer)
  private:
 
@@ -1293,6 +1427,18 @@ class LIBPROTOC_EXPORT PBBalanceHeroServer : public ::google::protobuf::Message 
   mutable int _begininnate_cached_byte_size_;
   ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > endinnate_;
   mutable int _endinnate_cached_byte_size_;
+  ::google::protobuf::internal::MapField<
+      PBBalanceHeroServer_BegininjuryEntry_DoNotUse,
+      ::google::protobuf::uint32, ::google::protobuf::uint32,
+      ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+      ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+      0 > begininjury_;
+  ::google::protobuf::internal::MapField<
+      PBBalanceHeroServer_EndinjuryEntry_DoNotUse,
+      ::google::protobuf::uint32, ::google::protobuf::uint32,
+      ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+      ::google::protobuf::internal::WireFormatLite::TYPE_UINT32,
+      0 > endinjury_;
   ::google::protobuf::internal::ArenaStringPtr name_;
   ::google::protobuf::uint64 uuid_;
   ::google::protobuf::uint32 race_;
@@ -1303,6 +1449,8 @@ class LIBPROTOC_EXPORT PBBalanceHeroServer : public ::google::protobuf::Message 
   ::google::protobuf::uint32 beginlevel_;
   ::google::protobuf::uint32 endlevel_;
   bool death_;
+  ::google::protobuf::uint32 quality_;
+  ::google::protobuf::uint32 maxhp_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_DefineMessage_2eproto::TableStruct;
 };
@@ -1343,7 +1491,7 @@ class LIBPROTOC_EXPORT PBFighterHeroData : public ::google::protobuf::Message /*
                &_PBFighterHeroData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    15;
 
   void Swap(PBFighterHeroData* other);
   friend void swap(PBFighterHeroData& a, PBFighterHeroData& b) {
@@ -1467,7 +1615,7 @@ class LIBPROTOC_EXPORT PBExplorePlayerData : public ::google::protobuf::Message 
                &_PBExplorePlayerData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    16;
 
   void Swap(PBExplorePlayerData* other);
   friend void swap(PBExplorePlayerData& a, PBExplorePlayerData& b) {
@@ -1612,7 +1760,7 @@ class LIBPROTOC_EXPORT PBNpcGroupData : public ::google::protobuf::Message /* @@
                &_PBNpcGroupData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    17;
 
   void Swap(PBNpcGroupData* other);
   friend void swap(PBNpcGroupData& a, PBNpcGroupData& b) {
@@ -1765,7 +1913,7 @@ class LIBPROTOC_EXPORT PBExploreNpcData : public ::google::protobuf::Message /* 
                &_PBExploreNpcData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    19;
 
   void Swap(PBExploreNpcData* other);
   friend void swap(PBExploreNpcData& a, PBExploreNpcData& b) {
@@ -1927,7 +2075,7 @@ class LIBPROTOC_EXPORT PBBuffData : public ::google::protobuf::Message /* @@prot
                &_PBBuffData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    20;
 
   void Swap(PBBuffData* other);
   friend void swap(PBBuffData& a, PBBuffData& b) {
@@ -2044,7 +2192,7 @@ class LIBPROTOC_EXPORT PBBuffListData : public ::google::protobuf::Message /* @@
                &_PBBuffListData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    21;
 
   void Swap(PBBuffListData* other);
   friend void swap(PBBuffListData& a, PBBuffListData& b) {
@@ -2195,7 +2343,7 @@ class LIBPROTOC_EXPORT PBHeroBuffData : public ::google::protobuf::Message /* @@
                &_PBHeroBuffData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    24;
 
   void Swap(PBHeroBuffData* other);
   friend void swap(PBHeroBuffData& a, PBHeroBuffData& b) {
@@ -2343,7 +2491,7 @@ class LIBPROTOC_EXPORT PBExploreData : public ::google::protobuf::Message /* @@p
                &_PBExploreData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    26;
 
   void Swap(PBExploreData* other);
   friend void swap(PBExploreData& a, PBExploreData& b) {
@@ -2622,7 +2770,7 @@ class LIBPROTOC_EXPORT PBRealmData : public ::google::protobuf::Message /* @@pro
                &_PBRealmData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    28;
+    31;
 
   void Swap(PBRealmData* other);
   friend void swap(PBRealmData& a, PBRealmData& b) {
@@ -3021,7 +3169,7 @@ class LIBPROTOC_EXPORT PBPunishData : public ::google::protobuf::Message /* @@pr
                &_PBPunishData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    29;
+    32;
 
   void Swap(PBPunishData* other);
   friend void swap(PBPunishData& a, PBPunishData& b) {
@@ -3286,6 +3434,8 @@ inline void PBBalanceItem::set_count(::google::protobuf::uint32 value) {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 // PBBalanceHero
 
 // uint64 uuid = 1;
@@ -3439,6 +3589,34 @@ inline void PBBalanceHero::set_death(bool value) {
   // @@protoc_insertion_point(field_set:KFMsg.PBBalanceHero.death)
 }
 
+// uint32 quality = 9;
+inline void PBBalanceHero::clear_quality() {
+  quality_ = 0u;
+}
+inline ::google::protobuf::uint32 PBBalanceHero::quality() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceHero.quality)
+  return quality_;
+}
+inline void PBBalanceHero::set_quality(::google::protobuf::uint32 value) {
+  
+  quality_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceHero.quality)
+}
+
+// uint32 maxhp = 10;
+inline void PBBalanceHero::clear_maxhp() {
+  maxhp_ = 0u;
+}
+inline ::google::protobuf::uint32 PBBalanceHero::maxhp() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceHero.maxhp)
+  return maxhp_;
+}
+inline void PBBalanceHero::set_maxhp(::google::protobuf::uint32 value) {
+  
+  maxhp_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceHero.maxhp)
+}
+
 // map<string, uint32> attributes = 21;
 inline int PBBalanceHero::attributes_size() const {
   return attributes_.size();
@@ -3491,6 +3669,24 @@ inline ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::
 PBBalanceHero::mutable_innate() {
   // @@protoc_insertion_point(field_mutable_map:KFMsg.PBBalanceHero.innate)
   return innate_.MutableMap();
+}
+
+// map<uint32, uint32> injury = 24;
+inline int PBBalanceHero::injury_size() const {
+  return injury_.size();
+}
+inline void PBBalanceHero::clear_injury() {
+  injury_.Clear();
+}
+inline const ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >&
+PBBalanceHero::injury() const {
+  // @@protoc_insertion_point(field_map:KFMsg.PBBalanceHero.injury)
+  return injury_.GetMap();
+}
+inline ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >*
+PBBalanceHero::mutable_injury() {
+  // @@protoc_insertion_point(field_mutable_map:KFMsg.PBBalanceHero.injury)
+  return injury_.MutableMap();
 }
 
 // -------------------------------------------------------------------
@@ -3660,6 +3856,10 @@ inline void PBBalanceItemServer::set_usecount(::google::protobuf::uint32 value) 
   usecount_ = value;
   // @@protoc_insertion_point(field_set:KFMsg.PBBalanceItemServer.usecount)
 }
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
 
@@ -3848,7 +4048,35 @@ inline void PBBalanceHeroServer::set_death(bool value) {
   // @@protoc_insertion_point(field_set:KFMsg.PBBalanceHeroServer.death)
 }
 
-// map<string, uint32> beginattributes = 12;
+// uint32 quality = 11;
+inline void PBBalanceHeroServer::clear_quality() {
+  quality_ = 0u;
+}
+inline ::google::protobuf::uint32 PBBalanceHeroServer::quality() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceHeroServer.quality)
+  return quality_;
+}
+inline void PBBalanceHeroServer::set_quality(::google::protobuf::uint32 value) {
+  
+  quality_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceHeroServer.quality)
+}
+
+// uint32 maxhp = 12;
+inline void PBBalanceHeroServer::clear_maxhp() {
+  maxhp_ = 0u;
+}
+inline ::google::protobuf::uint32 PBBalanceHeroServer::maxhp() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBBalanceHeroServer.maxhp)
+  return maxhp_;
+}
+inline void PBBalanceHeroServer::set_maxhp(::google::protobuf::uint32 value) {
+  
+  maxhp_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBBalanceHeroServer.maxhp)
+}
+
+// map<string, uint32> beginattributes = 13;
 inline int PBBalanceHeroServer::beginattributes_size() const {
   return beginattributes_.size();
 }
@@ -3866,7 +4094,7 @@ PBBalanceHeroServer::mutable_beginattributes() {
   return beginattributes_.MutableMap();
 }
 
-// map<string, uint32> endattributes = 13;
+// map<string, uint32> endattributes = 14;
 inline int PBBalanceHeroServer::endattributes_size() const {
   return endattributes_.size();
 }
@@ -4002,6 +4230,42 @@ inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
 PBBalanceHeroServer::mutable_endinnate() {
   // @@protoc_insertion_point(field_mutable_list:KFMsg.PBBalanceHeroServer.endinnate)
   return &endinnate_;
+}
+
+// map<uint32, uint32> begininjury = 24;
+inline int PBBalanceHeroServer::begininjury_size() const {
+  return begininjury_.size();
+}
+inline void PBBalanceHeroServer::clear_begininjury() {
+  begininjury_.Clear();
+}
+inline const ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >&
+PBBalanceHeroServer::begininjury() const {
+  // @@protoc_insertion_point(field_map:KFMsg.PBBalanceHeroServer.begininjury)
+  return begininjury_.GetMap();
+}
+inline ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >*
+PBBalanceHeroServer::mutable_begininjury() {
+  // @@protoc_insertion_point(field_mutable_map:KFMsg.PBBalanceHeroServer.begininjury)
+  return begininjury_.MutableMap();
+}
+
+// map<uint32, uint32> endinjury = 25;
+inline int PBBalanceHeroServer::endinjury_size() const {
+  return endinjury_.size();
+}
+inline void PBBalanceHeroServer::clear_endinjury() {
+  endinjury_.Clear();
+}
+inline const ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >&
+PBBalanceHeroServer::endinjury() const {
+  // @@protoc_insertion_point(field_map:KFMsg.PBBalanceHeroServer.endinjury)
+  return endinjury_.GetMap();
+}
+inline ::google::protobuf::Map< ::google::protobuf::uint32, ::google::protobuf::uint32 >*
+PBBalanceHeroServer::mutable_endinjury() {
+  // @@protoc_insertion_point(field_mutable_map:KFMsg.PBBalanceHeroServer.endinjury)
+  return endinjury_.MutableMap();
 }
 
 // -------------------------------------------------------------------
@@ -5475,6 +5739,12 @@ inline void PBPunishData::set_value(::google::protobuf::uint32 value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

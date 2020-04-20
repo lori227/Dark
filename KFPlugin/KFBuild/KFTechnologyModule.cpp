@@ -126,7 +126,7 @@ namespace KFrame
         }
     }
 
-    __KF_BEFORE_ENTER_PLAYER_FUNCTION__( KFTechnologyModule::OnEnterTechnologyModule )
+    __KF_ENTER_PLAYER_FUNCTION__( KFTechnologyModule::OnEnterTechnologyModule )
     {
         // 设置科技类型
         auto kftechnologyrecord = player->Find( __STRING__( technology ) );

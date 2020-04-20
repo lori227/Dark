@@ -70,8 +70,9 @@ cp -f $framebinpath/KFWorld$filename.so $binpath/
 cp -f $framebinpath/KFCommand$filename.so $binpath/
 cp -f $framebinpath/KFReset$filename.so $binpath/
 cp -f $framebinpath/KFLua$filename.so $binpath/
-cp -f $framebinpath/KFPublicClient$filename.so $binpath/
-cp -f $framebinpath/KFPublicShard$filename.so $binpath/
+cp -f $framebinpath/KFBasicClient$filename.so $binpath/
+cp -f $framebinpath/KFBasicShard$filename.so $binpath/
+cp -f $framebinpath/KFBasicAttribute$filename.so $binpath/
 cp -f $framebinpath/KFDrop$filename.so $binpath/
 cp -f $framebinpath/KFUnlock$filename.so $binpath/
 cp -f $framebinpath/KFCondition$filename.so $binpath/

@@ -1,4 +1,4 @@
-<root platform="" version="4520">
+<root platform="" version="4545">
 	<item Id="1001" RaceLimit="1602" SexLimit="1" WeaponType="1803|1801" MoveType="1701" Mobility="3" MaxEP="4" ClassLv="0" Attr_maxhp="190" Attr_atk="63" Attr_def="62" Attr_res="62" Attr_tal="25" Attr_spd="25" Attr_luk="25" MaxLevel="10" RoleDurability="[10,10]" VoiceType="1,2,3,4,5" />
 	<item Id="1100" RaceLimit="1602" SexLimit="1" WeaponType="1801" MoveType="1701" Mobility="3" MaxEP="4" ClassLv="1" Attr_maxhp="237" Attr_atk="79" Attr_def="77" Attr_res="77" Attr_tal="25" Attr_spd="25" Attr_luk="25" MaxLevel="10" RoleDurability="[10,10]" VoiceType="1,2,3,4,5" />
 	<item Id="1101" RaceLimit="1602" SexLimit="1" WeaponType="1801" MoveType="1701" Mobility="3" MaxEP="4" ClassLv="2" Attr_maxhp="284" Attr_atk="95" Attr_def="92" Attr_res="92" Attr_tal="30" Attr_spd="30" Attr_luk="30" MaxLevel="20" RoleDurability="[10,10]" VoiceType="1,2,3,4,5" />

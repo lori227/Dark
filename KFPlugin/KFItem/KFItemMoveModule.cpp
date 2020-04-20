@@ -186,7 +186,7 @@ namespace KFrame
         kftabindex->UpdateItemIndex( key, oldvalue, newvalue );
     }
 
-    __KF_AFTER_ENTER_PLAYER_FUNCTION__( KFItemMoveModule::OnEnterItemMoveModule )
+    __KF_ENTER_PLAYER_FUNCTION__( KFItemMoveModule::OnEnterItemMoveModule )
     {
         for ( auto& iter : KFItemBagConfig::Instance()->_settings._objects )
         {

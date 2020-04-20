@@ -323,33 +323,42 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::StoryNotExist );
         }
 
-        auto sequenceid = kfstory->Get<uint32>( __STRING__( sequence ) );
-        auto storysequence = kfstorysetting->FindStorySequence( sequenceid );
-        if ( storysequence == nullptr )
+        if ( kfmsg.sequence() == 0u )
         {
             return _kf_display->SendToClient( player, KFMsg::StorySequenceIsError );
         }
 
-        if ( storysequence->_type == KFMsg::ProcessPVE ||
-                storysequence->_type == KFMsg::ProcessExplore ||
-                storysequence->_type == KFMsg::ProcessTask )
+        auto cursequence = kfstory->Get<uint32>( __STRING__( sequence ) );
+        auto addsequence = 0u;
+        for ( ; addsequence < kfmsg.sequence(); ++addsequence )
         {
-            return _kf_display->SendToClient( player, KFMsg::StorySequenceNotFinish );
-        }
-
-        if ( storysequence->_type == KFMsg::BubbleDialogue )
-        {
-            // 剧情序列对话有分支，不能跳过
-            auto dialogueid = storysequence->_parameter1;
-            auto kfdialoguesetting = KFDialogueConfig::Instance()->FindSetting( dialogueid );
-            if ( kfdialoguesetting != nullptr && kfdialoguesetting->_sequence > 0u )
+            auto storysequence = kfstorysetting->FindStorySequence( cursequence + addsequence );
+            if ( storysequence == nullptr )
             {
-                return _kf_display->SendToClient( player, KFMsg::StoryHaveDialogueBranch );
+                break;
+            }
+
+            if ( storysequence->_type == KFMsg::ProcessPVE ||
+                    storysequence->_type == KFMsg::ProcessExplore ||
+                    storysequence->_type == KFMsg::ProcessTask )
+            {
+                return _kf_display->SendToClient( player, KFMsg::StorySequenceNotFinish );
+            }
+
+            if ( storysequence->_type == KFMsg::BubbleDialogue || storysequence->_type == KFMsg::UIDialogue )
+            {
+                // 剧情序列对话有分支，不能跳过
+                auto dialogueid = storysequence->_parameter1;
+                auto kfdialoguesetting = KFDialogueConfig::Instance()->FindSetting( dialogueid );
+                if ( kfdialoguesetting != nullptr && kfdialoguesetting->_sequence > 0u )
+                {
+                    return _kf_display->SendToClient( player, KFMsg::StoryHaveDialogueBranch );
+                }
             }
         }
 
         // 剧情序列更新
-        player->UpdateData( kfstory, __STRING__( sequence ), KFEnum::Add, 1u );
+        player->UpdateData( kfstory, __STRING__( sequence ), KFEnum::Add, addsequence );
     }
 
     __KF_MESSAGE_FUNCTION__( KFStoryModule::HandleExecuteStoryReq )

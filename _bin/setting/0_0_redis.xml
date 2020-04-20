@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8' ?>
+﻿<?xml version='1.0' encoding='utf-8' ?>
 <Config>
 	<!--Name 数据库名字 -->
 	<!--Ip 数据库地址 -->
@@ -8,7 +8,7 @@
 	<!--MinLogicId 最小逻辑id -->
 	<!--MaxLogicId 最大逻辑id -->
 	
-	<!--目录, 充值信息-->
+	<!--目录信息-->
 	<Module Name="dir">
 		<Redis MinLogicId="0" MaxLogicId="0">
 			<Write IP="127.0.0.1" Port="6379" Password="redis@lori227-="/>
@@ -41,7 +41,7 @@
 	</Module>
 
 	<!--公共数据, 玩家名字信息-->
-	<Module Name="public">
+	<Module Name="basic">
 		<Redis MinLogicId="0" MaxLogicId="0">
 			<Write IP="127.0.0.1" Port="6379" Password="redis@lori227-="/>
 			<Read IP="127.0.0.1" Port="6379" Password="redis@lori227-="/>

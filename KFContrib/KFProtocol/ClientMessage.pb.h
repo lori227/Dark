@@ -10040,11 +10040,18 @@ class LIBPROTOC_EXPORT MsgUpdateStoryReq : public ::google::protobuf::Message /*
   ::google::protobuf::uint32 storyid() const;
   void set_storyid(::google::protobuf::uint32 value);
 
+  // uint32 sequence = 2;
+  void clear_sequence();
+  static const int kSequenceFieldNumber = 2;
+  ::google::protobuf::uint32 sequence() const;
+  void set_sequence(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:KFMsg.MsgUpdateStoryReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 storyid_;
+  ::google::protobuf::uint32 sequence_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_ClientMessage_2eproto::TableStruct;
 };
@@ -16986,6 +16993,20 @@ inline void MsgUpdateStoryReq::set_storyid(::google::protobuf::uint32 value) {
   
   storyid_ = value;
   // @@protoc_insertion_point(field_set:KFMsg.MsgUpdateStoryReq.storyid)
+}
+
+// uint32 sequence = 2;
+inline void MsgUpdateStoryReq::clear_sequence() {
+  sequence_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgUpdateStoryReq::sequence() const {
+  // @@protoc_insertion_point(field_get:KFMsg.MsgUpdateStoryReq.sequence)
+  return sequence_;
+}
+inline void MsgUpdateStoryReq::set_sequence(::google::protobuf::uint32 value) {
+  
+  sequence_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.MsgUpdateStoryReq.sequence)
 }
 
 // -------------------------------------------------------------------

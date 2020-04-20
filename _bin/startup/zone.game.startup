@@ -21,9 +21,9 @@
 		<Plugin Name="KFRole" Config=""/>	
 		<Plugin Name="KFCommand" Config=""/>
 		<Plugin Name="KFDataClient" Config=""/>	
+		<Plugin Name="KFBasicClient" Config=""/>	
 		<Plugin Name="KFMatchClient" Config=""/>	
 		<Plugin Name="KFRoomClient" Config=""/>	
-		<Plugin Name="KFPublicClient" Config=""/>	
 		<Plugin Name="KFReset" Config=""/>
 		<Plugin Name="KFUnlock" Config=""/>
 		<Plugin Name="KFExecute" Config=""/>

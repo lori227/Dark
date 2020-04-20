@@ -95,7 +95,7 @@ namespace KFrame
         __KF_DROP_LOGIC_FUNCTION__( OnDropLogicEvent );
 
         // 进入游戏
-        __KF_BEFORE_ENTER_PLAYER_FUNCTION__( OnEnterInitRealmData );
+        __KF_ENTER_PLAYER_FUNCTION__( OnEnterInitRealmData );
 
         // 离开游戏
         __KF_LEAVE_PLAYER_FUNCTION__( OnLeaveSaveRealmData );
