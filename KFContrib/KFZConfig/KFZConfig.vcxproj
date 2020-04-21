@@ -27,6 +27,8 @@
     <ClInclude Include="KFGambleConfig.hpp" />
     <ClInclude Include="KFGenerateConfig.hpp" />
     <ClInclude Include="KFInitialProcessConfig.hpp" />
+    <ClInclude Include="KFInjuryConfig.hpp" />
+    <ClInclude Include="KFInjuryRandomConfig.hpp" />
     <ClInclude Include="KFInnerWorldConfig.hpp" />
     <ClInclude Include="KFItemBagConfig.hpp" />
     <ClInclude Include="KFLevelValueConfig.hpp" />
@@ -80,6 +82,8 @@
     <ClCompile Include="KFGambleConfig.cpp" />
     <ClCompile Include="KFGenerateConfig.cpp" />
     <ClCompile Include="KFInitialProcessConfig.cpp" />
+    <ClCompile Include="KFInjuryConfig.cpp" />
+    <ClCompile Include="KFInjuryRandomConfig.cpp" />
     <ClCompile Include="KFInnerWorldConfig.cpp" />
     <ClCompile Include="KFItemBagConfig.cpp" />
     <ClCompile Include="KFLevelValueConfig.cpp" />

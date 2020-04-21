@@ -375,12 +375,13 @@ enum InitialProcessEnum {
   ProcessSequence = 9,
   ChapterAndStory = 10,
   ProcessStory = 11,
+  CreateRole = 12,
   InitialProcessEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   InitialProcessEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 LIBPROTOC_EXPORT bool InitialProcessEnum_IsValid(int value);
 const InitialProcessEnum InitialProcessEnum_MIN = ProcessInvalid;
-const InitialProcessEnum InitialProcessEnum_MAX = ProcessStory;
+const InitialProcessEnum InitialProcessEnum_MAX = CreateRole;
 const int InitialProcessEnum_ARRAYSIZE = InitialProcessEnum_MAX + 1;
 
 LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* InitialProcessEnum_descriptor();

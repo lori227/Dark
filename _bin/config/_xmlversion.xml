@@ -1,4 +1,4 @@
-<root version="4565">
+<root version="4569">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -99,7 +99,6 @@
 	<item name="appearance" version="4277" />
 	<item name="executesort" version="4296" />
 	<item name="npcrand" version="4315" />
-	<item name="npc" version="4347" />
 	<item name="taskcondition" version="4372" />
 	<item name="tasktype" version="4382" />
 	<item name="taskexecute" version="4387" />
@@ -155,9 +154,10 @@
 	<item name="rolebasetext" version="4553" />
 	<item name="injuryrandom" version="4554" />
 	<item name="heroweightpool" version="4554" />
-	<item name="realm" version="4557" />
 	<item name="buildlevel" version="4560" />
 	<item name="technology" version="4560" />
-	<item name="story" version="4564" />
 	<item name="class" version="4565" />
+	<item name="realm" version="4567" />
+	<item name="story" version="4568" />
+	<item name="npc" version="4569" />
 </root>

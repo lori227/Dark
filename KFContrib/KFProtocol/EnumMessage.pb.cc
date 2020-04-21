@@ -90,27 +90,27 @@ void AddDescriptorsImpl() {
       "Expire\020\001\022\r\n\tNumExpire\020\002*;\n\017BalanceShowEn"
       "um\022\016\n\nUnknowShow\020\000\022\013\n\007Explore\020\001\022\013\n\007Balan"
       "ce\020\002*\?\n\014ItemAutoEnum\022\017\n\013AutoInvalid\020\000\022\r\n"
-      "\tAutoStore\020\001\022\017\n\013AutoDestory\020\002*\362\001\n\022Initia"
+      "\tAutoStore\020\001\022\017\n\013AutoDestory\020\002*\202\002\n\022Initia"
       "lProcessEnum\022\022\n\016ProcessInvalid\020\000\022\r\n\tProc"
       "essCG\020\001\022\016\n\nProcessPVE\020\002\022\022\n\016ProcessExplor"
       "e\020\003\022\022\n\016ProcessChapter\020\004\022\017\n\013ProcessTask\020\005"
       "\022\020\n\014ProcessScene\020\006\022\016\n\nUIDialogue\020\007\022\022\n\016Bu"
       "bbleDialogue\020\010\022\023\n\017ProcessSequence\020\t\022\023\n\017C"
-      "hapterAndStory\020\n\022\020\n\014ProcessStory\020\013*s\n\016Re"
-      "almEnterEnum\022\020\n\014EnterInvalid\020\000\022\020\n\014EnterC"
-      "hapter\020\001\022\016\n\nEnterLogin\020\002\022\r\n\tEnterTown\020\003\022"
-      "\r\n\tEnterJump\020\004\022\017\n\013EnterExtend\020\005*;\n\017Exten"
-      "dLevelEnum\022\026\n\022ExtendLevelInvalid\020\000\022\020\n\013Ex"
-      "tendLevel\020\220N*c\n\013BalanceEnum\022\021\n\rUnknowBal"
-      "ance\020\000\022\013\n\007Victory\020\001\022\n\n\006Failed\020\002\022\010\n\004Flee\020"
-      "\003\022\010\n\004Town\020\004\022\007\n\003Ace\020\005\022\013\n\007Chapter\020d*1\n\010Jum"
-      "pEnum\022\017\n\013JumpInvalid\020\000\022\t\n\005Leave\020\001\022\t\n\005Ent"
-      "er\020\002*G\n\rRealmTimeEnum\022\017\n\013TimeInvalid\020\000\022\013"
-      "\n\007Morning\020\001\022\r\n\tAfternoon\020\002\022\t\n\005Night\020\003b\006p"
-      "roto3"
+      "hapterAndStory\020\n\022\020\n\014ProcessStory\020\013\022\016\n\nCr"
+      "eateRole\020\014*s\n\016RealmEnterEnum\022\020\n\014EnterInv"
+      "alid\020\000\022\020\n\014EnterChapter\020\001\022\016\n\nEnterLogin\020\002"
+      "\022\r\n\tEnterTown\020\003\022\r\n\tEnterJump\020\004\022\017\n\013EnterE"
+      "xtend\020\005*;\n\017ExtendLevelEnum\022\026\n\022ExtendLeve"
+      "lInvalid\020\000\022\020\n\013ExtendLevel\020\220N*c\n\013BalanceE"
+      "num\022\021\n\rUnknowBalance\020\000\022\013\n\007Victory\020\001\022\n\n\006F"
+      "ailed\020\002\022\010\n\004Flee\020\003\022\010\n\004Town\020\004\022\007\n\003Ace\020\005\022\013\n\007"
+      "Chapter\020d*1\n\010JumpEnum\022\017\n\013JumpInvalid\020\000\022\t"
+      "\n\005Leave\020\001\022\t\n\005Enter\020\002*G\n\rRealmTimeEnum\022\017\n"
+      "\013TimeInvalid\020\000\022\013\n\007Morning\020\001\022\r\n\tAfternoon"
+      "\020\002\022\t\n\005Night\020\003b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1965);
+      descriptor, 1981);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "EnumMessage.proto", &protobuf_RegisterTypes);
 }
@@ -362,6 +362,7 @@ bool InitialProcessEnum_IsValid(int value) {
     case 9:
     case 10:
     case 11:
+    case 12:
       return true;
     default:
       return false;

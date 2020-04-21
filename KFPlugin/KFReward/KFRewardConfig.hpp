@@ -35,7 +35,7 @@ namespace KFrame
         bool FormatElement( KFElements& kfelements, const std::string& dataname, const std::string& datavalue, uint32 dataid );
 
         // 解析奖励字符串
-        bool ParseElement( KFElements& kfelements, const std::string& strelement );
+        bool ParseElement( KFElements& kfelements );
 
     protected:
         virtual void ClearSetting();

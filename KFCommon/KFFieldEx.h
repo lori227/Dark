@@ -251,6 +251,9 @@ namespace KFrame
         __STRING_DEFINE__( pvedrop );
         __STRING_DEFINE__( realmdrop );
         __STRING_DEFINE__( selectinnate );
+        __STRING_DEFINE__( injury );
+        __STRING_DEFINE__( injurycount );
+        __STRING_DEFINE__( dead );
     }
 }
 

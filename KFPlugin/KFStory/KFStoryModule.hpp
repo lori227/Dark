@@ -65,6 +65,9 @@ namespace KFrame
         // 探索结算更新
         __KF_UPDATE_DATA_FUNCTION__( OnUpdateRealmCallBack );
 
+        // 名字更新
+        __KF_UPDATE_STRING_FUNCTION__( OnUpdateNameCallBack );
+
         // 开始剧情请求
         __KF_MESSAGE_FUNCTION__( HandleStartStoryReq );
 

@@ -16,6 +16,7 @@ namespace KFrame
         __REGISTER_UPDATE_DATA_2__( __STRING__( story ), __STRING__( sequence ), &KFStoryModule::OnUpdateSequenceCallBack );
         __REGISTER_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( pveresult ), &KFStoryModule::OnUpdatePVECallBack );
         __REGISTER_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( realmresult ), &KFStoryModule::OnUpdateRealmCallBack );
+        __REGISTER_UPDATE_STRING_2__( __STRING__( basic ), __STRING__( name ), &KFStoryModule::OnUpdateNameCallBack );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_START_STORY_REQ, &KFStoryModule::HandleStartStoryReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_UPDATE_STORY_REQ, &KFStoryModule::HandleUpdateStoryReq );
@@ -33,6 +34,7 @@ namespace KFrame
         __UN_UPDATE_DATA_2__( __STRING__( story ), __STRING__( sequence ) );
         __UN_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( pveresult ) );
         __UN_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( realmresult ) );
+        __UN_UPDATE_STRING_2__( __STRING__( basic ), __STRING__( name ) );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_START_STORY_REQ );
         __UN_MESSAGE__( KFMsg::MSG_UPDATE_STORY_REQ );
@@ -175,10 +177,17 @@ namespace KFrame
             return;
         }
 
-        auto id = kfdata->Get<uint32>( __STRING__( id ) );
-        if ( kfsetting->_parameter1 == id )
+        if ( type == KFMsg::CreateRole )
         {
             player->UpdateData( kfstory, __STRING__( sequence ), KFEnum::Add, 1u );
+        }
+        else
+        {
+            auto id = kfdata->Get<uint32>( __STRING__( id ) );
+            if ( kfsetting->_parameter1 == id )
+            {
+                player->UpdateData( kfstory, __STRING__( sequence ), KFEnum::Add, 1u );
+            }
         }
     }
 
@@ -284,6 +293,15 @@ namespace KFrame
         AddSequence( player, kfdata->GetParent(), KFMsg::ProcessExplore );
     }
 
+    __KF_UPDATE_STRING_FUNCTION__( KFStoryModule::OnUpdateNameCallBack )
+    {
+        if ( oldvalue == _invalid_string )
+        {
+            // 创建角色
+            AddSequence( player, kfdata, KFMsg::CreateRole );
+        }
+    }
+
     __KF_MESSAGE_FUNCTION__( KFStoryModule::HandleStartStoryReq )
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgStartStoryReq );
@@ -340,7 +358,8 @@ namespace KFrame
 
             if ( storysequence->_type == KFMsg::ProcessPVE ||
                     storysequence->_type == KFMsg::ProcessExplore ||
-                    storysequence->_type == KFMsg::ProcessTask )
+                    storysequence->_type == KFMsg::ProcessTask ||
+                    storysequence->_type == KFMsg::CreateRole )
             {
                 return _kf_display->SendToClient( player, KFMsg::StorySequenceNotFinish );
             }

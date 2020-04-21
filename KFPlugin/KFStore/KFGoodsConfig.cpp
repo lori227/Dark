@@ -5,9 +5,9 @@ namespace KFrame
     void KFGoodsConfig::ReadSetting( KFNode& xmlnode, KFGoodsSetting* kfsetting )
     {
         kfsetting->_store_id = xmlnode.GetUInt32( "StoreId" );
-        kfsetting->_goods_data._str_element = xmlnode.GetString( "Item" );
-        kfsetting->_buy_price._str_element = xmlnode.GetString( "Price" );
-        kfsetting->_discount_price._str_element = xmlnode.GetString( "Discount" );
+        kfsetting->_goods_data._str_parse = xmlnode.GetString( "Item" );
+        kfsetting->_buy_price._str_parse = xmlnode.GetString( "Price" );
+        kfsetting->_discount_price._str_parse = xmlnode.GetString( "Discount" );
         kfsetting->_start_buy_time = KFDate::FromString( xmlnode.GetString( "BeginTime" ) );
         kfsetting->_end_buy_time = KFDate::FromString( xmlnode.GetString( "EndTime" ) );
         kfsetting->_start_discount_time = KFDate::FromString( xmlnode.GetString( "DiscountBeginTime" ) );
@@ -29,9 +29,9 @@ namespace KFrame
         {
             auto kfgoodssetting = iter.second;
 
-            KFElementConfig::Instance()->ParseElement( kfgoodssetting->_goods_data, kfgoodssetting->_goods_data._str_element, __FILE__, kfgoodssetting->_id );
-            KFElementConfig::Instance()->ParseElement( kfgoodssetting->_buy_price, kfgoodssetting->_buy_price._str_element, __FILE__, kfgoodssetting->_id );
-            KFElementConfig::Instance()->ParseElement( kfgoodssetting->_discount_price, kfgoodssetting->_discount_price._str_element, __FILE__, kfgoodssetting->_id );
+            KFElementConfig::Instance()->ParseElement( kfgoodssetting->_goods_data, __FILE__, kfgoodssetting->_id );
+            KFElementConfig::Instance()->ParseElement( kfgoodssetting->_buy_price, __FILE__, kfgoodssetting->_id );
+            KFElementConfig::Instance()->ParseElement( kfgoodssetting->_discount_price, __FILE__, kfgoodssetting->_id );
 
             if ( kfgoodssetting->_group_id != 0u )
             {

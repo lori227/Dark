@@ -42,6 +42,7 @@ namespace KFrame
         __KF_ADD_CONFIG__( KFTransferConfig );
         __KF_ADD_CONFIG__( KFWeaponTypeConfig );
         __KF_ADD_CONFIG__( KFQualityConfig );
+        __KF_ADD_CONFIG__( KFInjuryConfig );
     }
 
 }

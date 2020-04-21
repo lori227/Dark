@@ -149,6 +149,12 @@
       <Filter>Item</Filter>
     </ClInclude>
     <ClInclude Include="KFCountCostConfig.h" />
+    <ClInclude Include="KFInjuryRandomConfig.hpp">
+      <Filter>Hero</Filter>
+    </ClInclude>
+    <ClInclude Include="KFInjuryConfig.hpp">
+      <Filter>Hero</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Option">
@@ -317,6 +323,12 @@
     </ClCompile>
     <ClCompile Include="KFItemBagConfig.cpp">
       <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="KFInjuryConfig.cpp">
+      <Filter>Hero</Filter>
+    </ClCompile>
+    <ClCompile Include="KFInjuryRandomConfig.cpp">
+      <Filter>Hero</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -316,7 +316,7 @@ namespace KFrame
         }
 
         KFMsg::MsgTrainFeeAck ack;
-        ack.set_element( consume->_str_element );
+        ack.set_element( consume->GetElement() );
         _kf_player->SendToClient( player, KFMsg::MSG_TRAIN_FEE_ACK, &ack );
     }
 
@@ -370,7 +370,7 @@ namespace KFrame
 
         KFMsg::MsgTrainOneKeyFeeAck ack;
         ack.set_index( kfmsg.index() );
-        ack.set_element( consume->_str_element );
+        ack.set_element( consume->GetElement() );
         _kf_player->SendToClient( player, KFMsg::MSG_TRAIN_FEE_ONE_KEY_ACK, &ack );
     }
 

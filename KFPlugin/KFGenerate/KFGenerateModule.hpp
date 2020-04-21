@@ -30,6 +30,7 @@
 #include "KFZConfig/KFTransferConfig.hpp"
 #include "KFZConfig/KFWeaponTypeConfig.hpp"
 #include "KFZConfig/KFQualityConfig.hpp"
+#include "KFZConfig/KFInjuryConfig.hpp"
 
 namespace KFrame
 {
@@ -65,6 +66,9 @@ namespace KFrame
 
         // 随机权重数据
         virtual UInt32Vector& RandWeightData( KFEntity* player, KFData* kfhero, const std::string& str, const UInt32Vector& slist, bool update = true, bool istransfer = false );
+
+        // 随机伤病数据
+        virtual void RandInjuryData( KFEntity* player, KFData* kfhero, uint32 poolid );
     protected:
         // 英雄等级更新
         __KF_UPDATE_DATA_FUNCTION__( OnHeroLevelUpdateCallBack );

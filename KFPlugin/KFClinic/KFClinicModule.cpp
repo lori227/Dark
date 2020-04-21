@@ -420,7 +420,7 @@ namespace KFrame
         auto costmoney = std::get<1>( returndata );
 
         KFMsg::MsgClinicMedicalFeeAck ack;
-        ack.set_element( costmoney != nullptr ? costmoney->_str_element : _invalid_string );
+        ack.set_element( costmoney != nullptr ? costmoney->GetElement() : _invalid_string );
         _kf_player->SendToClient( player, KFMsg::MSG_CLINIC_MEDICAL_FEE_ACK, &ack );
     }
 

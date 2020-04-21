@@ -1363,4 +1363,69 @@ namespace KFrame
 
         return randlist;
     }
+
+    void KFGenerateModule::RandInjuryData( KFEntity* player, KFData* kfhero, uint32 poolid )
+    {
+        auto kfinjuryrecord = kfhero->Find( __STRING__( injury ) );
+
+        UInt32Set excludelist;
+
+        if ( kfinjuryrecord->IsFull() )
+        {
+            // 伤病部位已满
+            for ( auto& iter : KFInjuryConfig::Instance()->_settings._objects )
+            {
+                auto kfinjury = kfinjuryrecord->Find( iter.second->_id );
+                if ( kfinjury == nullptr )
+                {
+                    excludelist.insert( iter.second->_id );
+                }
+            }
+        }
+
+        for ( auto kfinjury = kfinjuryrecord->First(); kfinjury != nullptr; kfinjury = kfinjuryrecord->Next() )
+        {
+            // 剔除满级的伤病
+            auto id = kfinjury->Get<uint32>( __STRING__( id ) );
+            auto level = kfinjury->Get<uint32>( __STRING__( level ) );
+
+            auto kfinjurysetting = KFInjuryConfig::Instance()->FindSetting( id );
+            if ( level >= kfinjurysetting->_max_level )
+            {
+                excludelist.insert( id );
+            }
+        }
+
+        auto weightpool = KFWeightConfig::Instance()->FindWeightPool( poolid );
+        if ( weightpool == nullptr )
+        {
+            return;
+        }
+
+        auto weightdata = weightpool->Rand( excludelist, true );
+        if ( weightdata == nullptr )
+        {
+            return;
+        }
+
+        auto randid = weightdata->_id;
+        auto kfinjurysetting = KFInjuryConfig::Instance()->FindSetting( randid );
+        if ( kfinjurysetting == nullptr )
+        {
+            return;
+        }
+
+        auto kfinjury = kfinjuryrecord->Find( randid );
+        if ( kfinjury == nullptr )
+        {
+            auto kfinjury = player->CreateData( kfinjuryrecord );
+            kfinjury->Set( __STRING__( level ), 1u );
+
+            player->AddData( kfinjuryrecord, randid, kfinjury );
+        }
+        else
+        {
+            player->UpdateData( kfinjury, __STRING__( level ), KFEnum::Add, 1u );
+        }
+    }
 }

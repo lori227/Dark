@@ -66,7 +66,7 @@ namespace KFrame
         kfsetting->_task_chain_id = xmlnode.GetUInt32( "ChainId" );
         kfsetting->_receive_time = xmlnode.GetUInt32( "PickupTime" );
         kfsetting->_done_time = xmlnode.GetUInt32( "CompleteTime" );
-        kfsetting->_receive_cost._str_element = xmlnode.GetString( "PickupCost" );
+        kfsetting->_receive_cost._str_parse = xmlnode.GetString( "PickupCost" );
 
         auto strcondition = xmlnode.GetString( "Condition" );
         kfsetting->_conditions.Parse( strcondition, kfsetting->_id, __FILE__, __LINE__ );
@@ -91,7 +91,7 @@ namespace KFrame
         for ( auto& iter : _settings._objects )
         {
             auto kfsetting = iter.second;
-            KFElementConfig::Instance()->ParseElement( kfsetting->_receive_cost, kfsetting->_receive_cost._str_element, __FILE__, kfsetting->_id );
+            KFElementConfig::Instance()->ParseElement( kfsetting->_receive_cost, __FILE__, kfsetting->_id );
         }
     }
 }

@@ -31,7 +31,7 @@ namespace KFrame
         auto strinnatepool = xmlnode.GetString( "InnatePool", true );
         KFUtility::SplitList( kfsetting->_innate_pool_list, strinnatepool, __SPLIT_STRING__ );
 
-        kfsetting->_cost._str_element = xmlnode.GetString( "Cost", true );
+        kfsetting->_cost._str_parse = xmlnode.GetString( "Cost", true );
 
         _parent_child_map[kfsetting->_parent_id].push_back( kfsetting->_child_id );
         _child_parent_map[kfsetting->_child_id].push_back( kfsetting->_parent_id );
@@ -43,7 +43,7 @@ namespace KFrame
         for ( auto& iter : _settings._objects )
         {
             auto kfsetting = iter.second;
-            KFElementConfig::Instance()->ParseElement( kfsetting->_cost, kfsetting->_cost._str_element, __FILE__, kfsetting->_id );
+            KFElementConfig::Instance()->ParseElement( kfsetting->_cost, __FILE__, kfsetting->_id );
         }
     }
 

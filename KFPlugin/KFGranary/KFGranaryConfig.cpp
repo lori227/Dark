@@ -4,7 +4,7 @@ namespace KFrame
 {
     void KFGranaryConfig::ReadSetting( KFNode& xmlnode, KFGranarySetting* kfsetting )
     {
-        kfsetting->_consume._str_element = xmlnode.GetString( "Consume", true );
+        kfsetting->_consume._str_parse = xmlnode.GetString( "Consume", true );
     }
 
     void KFGranaryConfig::LoadAllComplete()
@@ -12,7 +12,7 @@ namespace KFrame
         for ( auto& iter : _settings._objects )
         {
             auto kfsetting = iter.second;
-            KFElementConfig::Instance()->ParseElement( kfsetting->_consume, kfsetting->_consume._str_element, __FILE__, kfsetting->_id );
+            KFElementConfig::Instance()->ParseElement( kfsetting->_consume, __FILE__, kfsetting->_id );
         }
     }
 }

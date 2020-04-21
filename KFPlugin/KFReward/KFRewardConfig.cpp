@@ -72,15 +72,15 @@ namespace KFrame
         return kfelements.Parse( strdata, __FUNC_LINE__ );
     }
 
-    bool KFRewardConfig::ParseElement( KFElements& kfelements, const std::string& strelement )
+    bool KFRewardConfig::ParseElement( KFElements& kfelements )
     {
-        if ( strelement.empty() )
+        if ( kfelements._str_parse.empty() )
         {
             return true;
         }
 
         // 将字符串解析成数组
-        __JSON_PARSE_STRING__( kfjson, strelement );
+        __JSON_PARSE_STRING__( kfjson, kfelements._str_parse );
         if ( !kfjson.IsArray() )
         {
             return false;
