@@ -60,8 +60,6 @@ namespace KFrame
                 {
                     player->UpdateData( kfparent, kfsetting->_id, __STRING__( level ), KFEnum::Set, i );
                 }
-
-                player->UpdateData( kfparent, kfsetting->_id, __STRING__( unlock ), KFEnum::Set, KFGlobal::Instance()->_real_time );
             }
         }
         else
@@ -77,7 +75,6 @@ namespace KFrame
                 }
 
                 player->UpdateData( kfparent, kfsetting->_id, __STRING__( level ), KFEnum::Add, 1u );
-                player->UpdateData( kfparent, kfsetting->_id, __STRING__( unlock ), KFEnum::Set, KFGlobal::Instance()->_real_time );
             }
         }
 #endif

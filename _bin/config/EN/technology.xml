@@ -1,4 +1,4 @@
-<root platform="" version="4558">
+<root platform="" version="4560">
 	<item Id="7290000" Status="1" Condition="" UnlockId="" BuildingId="203" Consume="" Type="20302" ExecuteName="recruitweight" ExecuteParam1="4100201:30" ExecuteParam2="4100202:50" ExecuteParam3="4100203:0" ExecuteParam4="4100204:20" ExecuteParam5="" ExecuteParam6="" />
 	<item Id="7290001" Status="1" Condition="" UnlockId="" BuildingId="203" Consume="" Type="20302" ExecuteName="recruitweight" ExecuteParam1="4100201:0" ExecuteParam2="4100202:0" ExecuteParam3="4100203:100" ExecuteParam4="4100204:0" ExecuteParam5="" ExecuteParam6="" />
 	<item Id="7290002" Status="1" Condition="" UnlockId="" BuildingId="203" Consume="" Type="20301" ExecuteName="recruitcount" ExecuteParam1="4" ExecuteParam2="" ExecuteParam3="" ExecuteParam4="" ExecuteParam5="" ExecuteParam6="" />

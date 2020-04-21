@@ -1,4 +1,4 @@
-<root version="4559">
+<root version="4565">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -102,7 +102,6 @@
 	<item name="npc" version="4347" />
 	<item name="taskcondition" version="4372" />
 	<item name="tasktype" version="4382" />
-	<item name="story" version="4387" />
 	<item name="taskexecute" version="4387" />
 	<item name="tasktext" version="4389" />
 	<item name="itemtext" version="4390" />
@@ -131,7 +130,6 @@
 	<item name="injury" version="4473" />
 	<item name="conditiondefine" version="4474" />
 	<item name="heropinchface" version="4477" />
-	<item name="buildlevel" version="4491" />
 	<item name="constant" version="4505" />
 	<item name="config" version="4513" />
 	<item name="countcost" version="4515" />
@@ -158,6 +156,8 @@
 	<item name="injuryrandom" version="4554" />
 	<item name="heroweightpool" version="4554" />
 	<item name="realm" version="4557" />
-	<item name="technology" version="4558" />
-	<item name="class" version="4559" />
+	<item name="buildlevel" version="4560" />
+	<item name="technology" version="4560" />
+	<item name="story" version="4564" />
+	<item name="class" version="4565" />
 </root>

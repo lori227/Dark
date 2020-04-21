@@ -1,4 +1,4 @@
-<root platform="" version="4491">
+<root platform="" version="4560">
 	<item Id="202001" BuildId="202" Level="1" Condition="" Technology="7050301,7290028" Consume="" UpgradeTime="0" OnekeyConsume="" UnitTime="0" />
 	<item Id="202002" BuildId="202" Level="2" Condition="" Technology="7050302" Consume="[[1,3,1800],[2,1900201,2000]]" UpgradeTime="5" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
 	<item Id="202003" BuildId="202" Level="3" Condition="59000102&amp;59000202&amp;59000502" Technology="7050303,7050501" Consume="[[1,3,3000],[2,1900201,5000]]" UpgradeTime="10" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
