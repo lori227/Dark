@@ -39,16 +39,22 @@ namespace KFrame
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    const std::string& KFRewardConfig::StringElement( const std::string& dataname, uint32 datavalue, uint32 dataid )
+    const std::string& KFRewardConfig::FormatIntString( const std::string& dataname, uint32 datavalue, uint32 dataid )
     {
-        static std::string _str_element;
+        return FormatStrString( dataname, __TO_STRING__( datavalue ), dataid );
+    }
+
+    const std::string& KFRewardConfig::FormatStrString( const std::string& dataname, const std::string& datavalue, uint32 dataid )
+    {
+        static std::string _str_element = _invalid_string;
         _str_element.clear();
 
         auto kfsetting = FindSetting( dataname );
         if ( kfsetting != nullptr )
         {
-            auto strdata = __FORMAT__( kfsetting->_element_template, datavalue, dataid );
-            _str_element = __FORMAT__( "[{}]", strdata );
+            _str_element = "[";
+            _str_element += __FORMAT__( kfsetting->_element_template, datavalue, dataid );
+            _str_element += "]";
         }
         else
         {
@@ -58,73 +64,90 @@ namespace KFrame
         return _str_element;
     }
 
-    bool KFRewardConfig::FormatElement( KFElements& kfelements, const std::string& dataname, const std::string& datavalue, uint32 dataid )
+    const std::string& KFRewardConfig::FormatSettingString( const KFElementSetting& kfsetting )
     {
-        auto kfsetting = FindSetting( dataname );
-        if ( kfsetting == nullptr )
+        static std::string _str_element = _invalid_string;
+        _str_element.clear();
+
+        auto index = 0u;
+        _str_element = "[";
+        for ( auto& tupledata : kfsetting._data_list )
         {
-            __LOG_ERROR__( "dataname=[{}] no template", dataname );
-            return false;
+            auto& dataname = std::get<0>( tupledata );
+            auto& datavalue = std::get<1>( tupledata );
+            auto& dataid = std::get<2>( tupledata );
+
+            auto kfrewardsetting = FindSetting( dataname );
+            if ( kfrewardsetting == nullptr )
+            {
+                __LOG_ERROR__( "dataname=[{}] no template", dataname );
+                continue;
+            }
+
+            if ( index > 0u )
+            {
+                _str_element += ",";
+            }
+
+            ++index;
+            _str_element += __FORMAT__( kfrewardsetting->_element_template, datavalue, dataid );
         }
 
-        auto strelement = __FORMAT__( kfsetting->_element_template, datavalue, dataid );
-        auto strdata = __FORMAT__( "[{}]", strelement );
-        return kfelements.Parse( strdata, __FUNC_LINE__ );
+        _str_element += "]";
+        return _str_element;
     }
 
-    bool KFRewardConfig::ParseElement( KFElements& kfelements )
+    const std::string& KFRewardConfig::ParseString( const std::string& strparase )
     {
-        if ( kfelements._str_parse.empty() )
-        {
-            return true;
-        }
+        static std::string _str_element = _invalid_string;
+        _str_element.clear();
 
         // 将字符串解析成数组
-        __JSON_PARSE_STRING__( kfjson, kfelements._str_parse );
+        __JSON_PARSE_STRING__( kfjson, strparase );
         if ( !kfjson.IsArray() )
         {
-            return false;
+            return _str_element;
         }
 
-        std::string strdata = "[";
+        _str_element = "[";
         auto size = __JSON_ARRAY_SIZE__( kfjson );
         for ( uint32 i = 0u; i < size; ++i )
         {
             auto& jsonarray = __JSON_ARRAY_INDEX__( kfjson, i );
             if ( !jsonarray.IsArray() )
             {
-                return false;
+                continue;
             }
 
             auto len = __JSON_ARRAY_SIZE__( jsonarray );
             if ( len != 3u )
             {
-                return false;
+                continue;
             }
 
             auto type = jsonarray[ 0 ].GetUint();
             auto code = jsonarray[ 1 ].GetUint();
             auto num = jsonarray[ 2 ].GetUint();
 
-            auto& strreward = FormatElement( type, code, num );
+            auto& strreward = FormatRewardString( type, code, num );
             if ( strreward.empty() )
             {
-                return false;
+                continue;
             }
 
             if ( i > 0u )
             {
-                strdata += ",";
+                _str_element += ",";
             }
 
-            strdata += strreward;
+            _str_element += strreward;
         }
-        strdata += "]";
+        _str_element += "]";
 
-        return kfelements.Parse( strdata, __FUNC_LINE__ );
+        return _str_element;
     }
 
-    const std::string& KFRewardConfig::FormatElement( uint32 type, uint32 code, uint32 num )
+    const std::string& KFRewardConfig::FormatRewardString( uint32 type, uint32 code, uint32 num )
     {
         auto idvalue = CalcTypeCodeValue( type, code );
         auto iter = _id_name_list.find( idvalue );
@@ -133,20 +156,7 @@ namespace KFrame
             return _invalid_string;
         }
 
-        static std::string _str_element;
-        _str_element.clear();
-
-        auto kfsetting = FindSetting( iter->second );
-        if ( kfsetting != nullptr )
-        {
-            _str_element = __FORMAT__( kfsetting->_element_template, num, code );
-        }
-        else
-        {
-            __LOG_ERROR__( "dataname=[{}] no template", iter->second );
-        }
-
-        return _str_element;
+        return FormatIntString( iter->second, num, code );
     }
 
 }

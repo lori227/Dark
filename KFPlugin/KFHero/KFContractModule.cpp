@@ -200,8 +200,7 @@ namespace KFrame
         price = ( basicprice * durability + levelprice ) * ( 1 + adddurability * adddurability * param8 );
 
         auto finalprice = static_cast<uint32>( price + 0.5 );
-
-        cost = KFElementConfig::Instance()->StringElemnt( kfpricesetting->_type, finalprice, 0u );
+        cost = KFElementConfig::Instance()->FormatString( kfpricesetting->_type, finalprice );
 
         return true;
     }

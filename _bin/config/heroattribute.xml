@@ -1,4 +1,4 @@
-<root platform="" version="4549">
+<root platform="" version="4571">
 	<item Id="4080001" Attr_maxhp="100-100" Attr_atk="100-100" Attr_def="100-100" Attr_res="100-100" Attr_tal="100-100" Attr_spd="100-100" Attr_luk="100-100" />
 	<item Id="4080002" Attr_maxhp="100-150" Attr_atk="100-150" Attr_def="100-150" Attr_res="100-150" Attr_tal="100-150" Attr_spd="100-150" Attr_luk="100-150" />
 	<item Id="4080003" Attr_maxhp="90-90" Attr_atk="90-90" Attr_def="90-90" Attr_res="90-90" Attr_tal="90-90" Attr_spd="90-90" Attr_luk="90-90" />
@@ -17,7 +17,7 @@
 	<item Id="4090096" Attr_maxhp="58-62" Attr_atk="58-62" Attr_def="58-62" Attr_res="58-62" Attr_tal="58-62" Attr_spd="58-62" Attr_luk="58-62" />
 	<item Id="4090095" Attr_maxhp="48-52" Attr_atk="48-52" Attr_def="48-52" Attr_res="48-52" Attr_tal="48-52" Attr_spd="48-52" Attr_luk="48-52" />
 	<item Id="4090201" Attr_maxhp="95-100" Attr_atk="95-100" Attr_def="95-100" Attr_res="95-100" Attr_tal="95-100" Attr_spd="95-100" Attr_luk="95-100" />
-	<item Id="4090202" Attr_maxhp="85-90" Attr_atk="85-90" Attr_def="85-90" Attr_res="85-90" Attr_tal="85-90" Attr_spd="85-90" Attr_luk="85-90" />
+	<item Id="4090202" Attr_maxhp="85-85" Attr_atk="85-85" Attr_def="85-85" Attr_res="85-85" Attr_tal="85-85" Attr_spd="85-85" Attr_luk="85-85" />
 	<item Id="4090203" Attr_maxhp="90-90" Attr_atk="90-90" Attr_def="90-90" Attr_res="90-90" Attr_tal="90-90" Attr_spd="90-90" Attr_luk="90-90" />
 	<item Id="4090204" Attr_maxhp="115-115" Attr_atk="115-115" Attr_def="115-115" Attr_res="115-115" Attr_tal="115-115" Attr_spd="115-115" Attr_luk="115-115" />
 	<item Id="4090301" Attr_maxhp="88-88" Attr_atk="88-88" Attr_def="80-80" Attr_res="88-88" Attr_tal="88-88" Attr_spd="88-88" Attr_luk="88-88" />

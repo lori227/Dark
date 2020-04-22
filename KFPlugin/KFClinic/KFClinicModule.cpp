@@ -604,13 +604,7 @@ namespace KFrame
         moneycount = std::round( moneycount * setting->_scale_consume_money );
 
         // 费用数据格式
-        auto consumestr = KFElementConfig::Instance()->StringElemnt( kfformulasetting->_type, moneycount, _invalid_int );
-        _clinic_consume_money.Parse( consumestr, __FUNC_LINE__ );
-
-        if ( _clinic_consume_money.IsEmpty() )
-        {
-            return nullptr;
-        }
+        KFElementConfig::Instance()->FormatElement( _clinic_consume_money, kfformulasetting->_type, moneycount );
         return &_clinic_consume_money;
     }
 }

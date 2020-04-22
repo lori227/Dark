@@ -1,4 +1,4 @@
-<root platform="" version="4526">
+<root platform="" version="4583">
 	<item Id="5000001" RandType="2" DropDataId="6000001" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5000001" RandType="2" DropDataId="6001001" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5000001" RandType="2" DropDataId="6002001" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
@@ -1985,6 +1985,14 @@
 	<item Id="5804006" RandType="1" DropDataId="6801006" Weight="1000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5800010" RandType="1" DropDataId="6110100" Weight="200" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5800010" RandType="1" DropDataId="6800005" Weight="800" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5800021" RandType="2" DropDataId="6800021" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5800022" RandType="2" DropDataId="6800022" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5800023" RandType="2" DropDataId="6800023" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5800024" RandType="2" DropDataId="6800024" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5800025" RandType="2" DropDataId="6800025" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5800026" RandType="2" DropDataId="6800026" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5800027" RandType="2" DropDataId="6800027" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
+	<item Id="5800028" RandType="2" DropDataId="6800028" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5900001" RandType="2" DropDataId="6900001" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5900002" RandType="2" DropDataId="6900002" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />
 	<item Id="5900100" RandType="2" DropDataId="6900100" Weight="10000" DropCount="0" Reset="0" Exclude="0" ConditionType="1" Condition="" />

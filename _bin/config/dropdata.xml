@@ -1,4 +1,4 @@
-<root platform="" version="4536">
+<root platform="" version="4583">
 	<item Id="6000001" LogicName="exp" DataName="" DropValue="50" DropKey="0" Weight="100" />
 	<item Id="6001001" LogicName="data" DataName="item" DropValue="1000" DropKey="1900000" Weight="100" />
 	<item Id="6002001" LogicName="data" DataName="item" DropValue="1000" DropKey="1900002" Weight="100" />
@@ -2172,6 +2172,14 @@
 	<item Id="6800005" LogicName="dechp" DataName="" DropValue="2" DropKey="0" Weight="200" />
 	<item Id="6800006" LogicName="dechp" DataName="" DropValue="2" DropKey="0" Weight="200" />
 	<item Id="6800007" LogicName="addbuff" DataName="" DropValue="10000" DropKey="280006" Weight="10000" />
+	<item Id="6800021" LogicName="data" DataName="item" DropValue="1" DropKey="1900105" Weight="10000" />
+	<item Id="6800022" LogicName="data" DataName="item" DropValue="1" DropKey="1900101" Weight="10000" />
+	<item Id="6800023" LogicName="data" DataName="item" DropValue="1" DropKey="1900103" Weight="10000" />
+	<item Id="6800024" LogicName="data" DataName="item" DropValue="1" DropKey="1900106" Weight="10000" />
+	<item Id="6800025" LogicName="data" DataName="item" DropValue="1500" DropKey="1900000" Weight="10000" />
+	<item Id="6800026" LogicName="data" DataName="item" DropValue="1500" DropKey="1900201" Weight="10000" />
+	<item Id="6800027" LogicName="data" DataName="item" DropValue="1500" DropKey="1900301" Weight="10000" />
+	<item Id="6800028" LogicName="data" DataName="item" DropValue="1500" DropKey="1900004" Weight="10000" />
 	<item Id="6801001" LogicName="addbuff" DataName="" DropValue="10000" DropKey="280006" Weight="400" />
 	<item Id="6801001" LogicName="addbuff" DataName="" DropValue="10000" DropKey="280007" Weight="0" />
 	<item Id="6801001" LogicName="addbuff" DataName="" DropValue="10000" DropKey="280008" Weight="0" />

@@ -1,4 +1,4 @@
-<root version="4569">
+<root version="4587">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -38,7 +38,6 @@
 	<item name="recruitdivisor" version="1536" />
 	<item name="npcskill" version="1536" />
 	<item name="explorerecord" version="1536" />
-	<item name="battletipstype" version="1536" />
 	<item name="clinic" version="1559" />
 	<item name="goodsweightpool" version="1599" />
 	<item name="recruitrefresh" version="1658" />
@@ -74,7 +73,6 @@
 	<item name="RenderCaptureCfg" version="3600" />
 	<item name="buildbasics" version="3600" />
 	<item name="leader" version="3600" />
-	<item name="itemweapon" version="3600" />
 	<item name="herorace" version="3604" />
 	<item name="herobackground" version="3610" />
 	<item name="reward" version="3696" />
@@ -90,7 +88,6 @@
 	<item name="initialprocess" version="4110" />
 	<item name="worldmaptext" version="4131" />
 	<item name="herolevel" version="4141" />
-	<item name="minimap" version="4150" />
 	<item name="realmtime" version="4224" />
 	<item name="weather" version="4224" />
 	<item name="unlock" version="4259" />
@@ -103,8 +100,6 @@
 	<item name="tasktype" version="4382" />
 	<item name="taskexecute" version="4387" />
 	<item name="tasktext" version="4389" />
-	<item name="itemtext" version="4390" />
-	<item name="prompttext" version="4391" />
 	<item name="refrainfactor" version="4404" />
 	<item name="dialogue" version="4405" />
 	<item name="dialoguebranch" version="4408" />
@@ -113,17 +108,12 @@
 	<item name="dialoguetext" version="4411" />
 	<item name="itemtab" version="4412" />
 	<item name="gmcommand" version="4415" />
-	<item name="itemcommon" version="4418" />
-	<item name="heroquality" version="4420" />
-	<item name="formula" version="4421" />
 	<item name="task" version="4425" />
-	<item name="multievent" version="4426" />
 	<item name="pve" version="4430" />
 	<item name="chapter" version="4435" />
 	<item name="status" version="4435" />
 	<item name="levelvalue" version="4436" />
 	<item name="camptext" version="4459" />
-	<item name="heroskill" version="4464" />
 	<item name="taskchain" version="4465" />
 	<item name="injurytype" version="4473" />
 	<item name="injury" version="4473" />
@@ -132,10 +122,8 @@
 	<item name="constant" version="4505" />
 	<item name="config" version="4513" />
 	<item name="countcost" version="4515" />
-	<item name="herogenerate" version="4519" />
 	<item name="npcgroup" version="4521" />
 	<item name="itemtype" version="4524" />
-	<item name="dropgroup" version="4526" />
 	<item name="itembag" version="4528" />
 	<item name="meshconfig" version="4531" />
 	<item name="time" version="4532" />
@@ -143,21 +131,33 @@
 	<item name="storeunlock" version="4533" />
 	<item name="store" version="4534" />
 	<item name="heroconstant" version="4535" />
-	<item name="dropdata" version="4536" />
-	<item name="tipstext" version="4537" />
 	<item name="errorcode" version="4537" />
 	<item name="heroprofession" version="4545" />
 	<item name="herotransfer" version="4546" />
-	<item name="heroattribute" version="4549" />
 	<item name="npcgenerate" version="4550" />
-	<item name="uitext" version="4551" />
-	<item name="rolebasetext" version="4553" />
 	<item name="injuryrandom" version="4554" />
-	<item name="heroweightpool" version="4554" />
 	<item name="buildlevel" version="4560" />
 	<item name="technology" version="4560" />
 	<item name="class" version="4565" />
 	<item name="realm" version="4567" />
 	<item name="story" version="4568" />
 	<item name="npc" version="4569" />
+	<item name="formula" version="4570" />
+	<item name="heroattribute" version="4571" />
+	<item name="itemtext" version="4575" />
+	<item name="minimap" version="4576" />
+	<item name="uitext" version="4579" />
+	<item name="tipstext" version="4581" />
+	<item name="battletipstype" version="4582" />
+	<item name="dropgroup" version="4583" />
+	<item name="itemcommon" version="4583" />
+	<item name="dropdata" version="4583" />
+	<item name="multievent" version="4583" />
+	<item name="heroweightpool" version="4584" />
+	<item name="rolebasetext" version="4584" />
+	<item name="prompttext" version="4585" />
+	<item name="itemweapon" version="4586" />
+	<item name="heroquality" version="4587" />
+	<item name="herogenerate" version="4587" />
+	<item name="heroskill" version="4587" />
 </root>

@@ -34,12 +34,13 @@ extern PROTOBUF_INTERNAL_EXPORT_protobuf_FrameDefineMessage_2eproto ::google::pr
 }  // namespace protobuf_FrameDefineMessage_2eproto
 namespace protobuf_FrameServerMessage_2eproto {
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_FrameServerMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PBMail_DataEntry_DoNotUse;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_FrameServerMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PBRelation_PlayerdataEntry_DoNotUse;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_FrameServerMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PBRelation_BasicdataEntry_DoNotUse;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_FrameServerMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PBRelation_RelationdataEntry_DoNotUse;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_FrameServerMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_S2SQueryAttributeToGameAck_PbdataEntry_DoNotUse;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_FrameServerMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_FrameServerMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_S2SUpdateIntValueToBasicReq_PbdataEntry_DoNotUse;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_FrameServerMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_FrameServerMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_S2SUpdateStrValueToBasicReq_PbdataEntry_DoNotUse;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_FrameServerMessage_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_FrameServerMessage_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_PBMail;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_FrameServerMessage_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_PBRelation;
 }  // namespace protobuf_FrameServerMessage_2eproto
@@ -309,11 +310,11 @@ class S2SSetPlayerNameToGameAckDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<S2SSetPlayerNameToGameAck>
       _instance;
 } _S2SSetPlayerNameToGameAck_default_instance_;
-class PBRelation_PlayerdataEntry_DoNotUseDefaultTypeInternal {
+class PBRelation_BasicdataEntry_DoNotUseDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<PBRelation_PlayerdataEntry_DoNotUse>
+  ::google::protobuf::internal::ExplicitlyConstructed<PBRelation_BasicdataEntry_DoNotUse>
       _instance;
-} _PBRelation_PlayerdataEntry_DoNotUse_default_instance_;
+} _PBRelation_BasicdataEntry_DoNotUse_default_instance_;
 class PBRelation_RelationdataEntry_DoNotUseDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<PBRelation_RelationdataEntry_DoNotUse>
@@ -344,16 +345,26 @@ class S2SQueryRelationInviteToGameAckDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<S2SQueryRelationInviteToGameAck>
       _instance;
 } _S2SQueryRelationInviteToGameAck_default_instance_;
-class S2SUpdateDataToRelationReq_PbdataEntry_DoNotUseDefaultTypeInternal {
+class S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUseDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse>
+  ::google::protobuf::internal::ExplicitlyConstructed<S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse>
       _instance;
-} _S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse_default_instance_;
-class S2SUpdateDataToRelationReqDefaultTypeInternal {
+} _S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse_default_instance_;
+class S2SUpdateIntValueToRelationReqDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<S2SUpdateDataToRelationReq>
+  ::google::protobuf::internal::ExplicitlyConstructed<S2SUpdateIntValueToRelationReq>
       _instance;
-} _S2SUpdateDataToRelationReq_default_instance_;
+} _S2SUpdateIntValueToRelationReq_default_instance_;
+class S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUseDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse>
+      _instance;
+} _S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse_default_instance_;
+class S2SUpdateStrValueToRelationReqDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<S2SUpdateStrValueToRelationReq>
+      _instance;
+} _S2SUpdateStrValueToRelationReq_default_instance_;
 class S2SApplyAddRelationToRelationReqDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<S2SApplyAddRelationToRelationReq>
@@ -399,6 +410,11 @@ class S2SUpdateFriendLinessToGameAckDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<S2SUpdateFriendLinessToGameAck>
       _instance;
 } _S2SUpdateFriendLinessToGameAck_default_instance_;
+class S2SRefuseRelationToRelationReqDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<S2SRefuseRelationToRelationReq>
+      _instance;
+} _S2SRefuseRelationToRelationReq_default_instance_;
 }  // namespace KFMsg
 namespace protobuf_FrameServerMessage_2eproto {
 static void InitDefaultsS2SAddGateToWorldReq() {
@@ -1156,18 +1172,18 @@ static void InitDefaultsS2SSetPlayerNameToGameAck() {
 LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_S2SSetPlayerNameToGameAck =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsS2SSetPlayerNameToGameAck}, {}};
 
-static void InitDefaultsPBRelation_PlayerdataEntry_DoNotUse() {
+static void InitDefaultsPBRelation_BasicdataEntry_DoNotUse() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::KFMsg::_PBRelation_PlayerdataEntry_DoNotUse_default_instance_;
-    new (ptr) ::KFMsg::PBRelation_PlayerdataEntry_DoNotUse();
+    void* ptr = &::KFMsg::_PBRelation_BasicdataEntry_DoNotUse_default_instance_;
+    new (ptr) ::KFMsg::PBRelation_BasicdataEntry_DoNotUse();
   }
-  ::KFMsg::PBRelation_PlayerdataEntry_DoNotUse::InitAsDefaultInstance();
+  ::KFMsg::PBRelation_BasicdataEntry_DoNotUse::InitAsDefaultInstance();
 }
 
-LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_PBRelation_PlayerdataEntry_DoNotUse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsPBRelation_PlayerdataEntry_DoNotUse}, {}};
+LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_PBRelation_BasicdataEntry_DoNotUse =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsPBRelation_BasicdataEntry_DoNotUse}, {}};
 
 static void InitDefaultsPBRelation_RelationdataEntry_DoNotUse() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -1195,7 +1211,7 @@ static void InitDefaultsPBRelation() {
 
 LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<2> scc_info_PBRelation =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsPBRelation}, {
-      &protobuf_FrameServerMessage_2eproto::scc_info_PBRelation_PlayerdataEntry_DoNotUse.base,
+      &protobuf_FrameServerMessage_2eproto::scc_info_PBRelation_BasicdataEntry_DoNotUse.base,
       &protobuf_FrameServerMessage_2eproto::scc_info_PBRelation_RelationdataEntry_DoNotUse.base,}};
 
 static void InitDefaultsS2SQueryRelationToRelationReq() {
@@ -1256,33 +1272,61 @@ LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<1> scc_info_S2SQueryRelat
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsS2SQueryRelationInviteToGameAck}, {
       &protobuf_FrameServerMessage_2eproto::scc_info_PBRelation.base,}};
 
-static void InitDefaultsS2SUpdateDataToRelationReq_PbdataEntry_DoNotUse() {
+static void InitDefaultsS2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::KFMsg::_S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse_default_instance_;
-    new (ptr) ::KFMsg::S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse();
+    void* ptr = &::KFMsg::_S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse_default_instance_;
+    new (ptr) ::KFMsg::S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse();
   }
-  ::KFMsg::S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse::InitAsDefaultInstance();
+  ::KFMsg::S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse::InitAsDefaultInstance();
 }
 
-LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsS2SUpdateDataToRelationReq_PbdataEntry_DoNotUse}, {}};
+LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsS2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse}, {}};
 
-static void InitDefaultsS2SUpdateDataToRelationReq() {
+static void InitDefaultsS2SUpdateIntValueToRelationReq() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::KFMsg::_S2SUpdateDataToRelationReq_default_instance_;
-    new (ptr) ::KFMsg::S2SUpdateDataToRelationReq();
+    void* ptr = &::KFMsg::_S2SUpdateIntValueToRelationReq_default_instance_;
+    new (ptr) ::KFMsg::S2SUpdateIntValueToRelationReq();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::KFMsg::S2SUpdateDataToRelationReq::InitAsDefaultInstance();
+  ::KFMsg::S2SUpdateIntValueToRelationReq::InitAsDefaultInstance();
 }
 
-LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<1> scc_info_S2SUpdateDataToRelationReq =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsS2SUpdateDataToRelationReq}, {
-      &protobuf_FrameServerMessage_2eproto::scc_info_S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse.base,}};
+LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<1> scc_info_S2SUpdateIntValueToRelationReq =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsS2SUpdateIntValueToRelationReq}, {
+      &protobuf_FrameServerMessage_2eproto::scc_info_S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse.base,}};
+
+static void InitDefaultsS2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::KFMsg::_S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse_default_instance_;
+    new (ptr) ::KFMsg::S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse();
+  }
+  ::KFMsg::S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse::InitAsDefaultInstance();
+}
+
+LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsS2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse}, {}};
+
+static void InitDefaultsS2SUpdateStrValueToRelationReq() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::KFMsg::_S2SUpdateStrValueToRelationReq_default_instance_;
+    new (ptr) ::KFMsg::S2SUpdateStrValueToRelationReq();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::KFMsg::S2SUpdateStrValueToRelationReq::InitAsDefaultInstance();
+}
+
+LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<1> scc_info_S2SUpdateStrValueToRelationReq =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsS2SUpdateStrValueToRelationReq}, {
+      &protobuf_FrameServerMessage_2eproto::scc_info_S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse.base,}};
 
 static void InitDefaultsS2SApplyAddRelationToRelationReq() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -1412,6 +1456,20 @@ static void InitDefaultsS2SUpdateFriendLinessToGameAck() {
 LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_S2SUpdateFriendLinessToGameAck =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsS2SUpdateFriendLinessToGameAck}, {}};
 
+static void InitDefaultsS2SRefuseRelationToRelationReq() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::KFMsg::_S2SRefuseRelationToRelationReq_default_instance_;
+    new (ptr) ::KFMsg::S2SRefuseRelationToRelationReq();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::KFMsg::S2SRefuseRelationToRelationReq::InitAsDefaultInstance();
+}
+
+LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<0> scc_info_S2SRefuseRelationToRelationReq =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsS2SRefuseRelationToRelationReq}, {}};
+
 void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_S2SAddGateToWorldReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_S2SRemoveGateToWorldReq.base);
@@ -1466,15 +1524,17 @@ void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_S2SQueryAttributeToGameAck.base);
   ::google::protobuf::internal::InitSCC(&scc_info_S2SSetPlayerNameToBasicReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_S2SSetPlayerNameToGameAck.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_PBRelation_PlayerdataEntry_DoNotUse.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_PBRelation_BasicdataEntry_DoNotUse.base);
   ::google::protobuf::internal::InitSCC(&scc_info_PBRelation_RelationdataEntry_DoNotUse.base);
   ::google::protobuf::internal::InitSCC(&scc_info_PBRelation.base);
   ::google::protobuf::internal::InitSCC(&scc_info_S2SQueryRelationToRelationReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_S2SQueryRelationToGameAck.base);
   ::google::protobuf::internal::InitSCC(&scc_info_S2SQueryRelationInviteToRelationReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_S2SQueryRelationInviteToGameAck.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_S2SUpdateDataToRelationReq.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_S2SUpdateIntValueToRelationReq.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_S2SUpdateStrValueToRelationReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_S2SApplyAddRelationToRelationReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_S2SApplyAddRelationToGameAck.base);
   ::google::protobuf::internal::InitSCC(&scc_info_S2SDelRelationInviteToRelationReq.base);
@@ -1484,9 +1544,10 @@ void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_S2SDelRelationToGameAck.base);
   ::google::protobuf::internal::InitSCC(&scc_info_S2SUpdateFriendLinessToRelationReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_S2SUpdateFriendLinessToGameAck.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_S2SRefuseRelationToRelationReq.base);
 }
 
-::google::protobuf::Metadata file_level_metadata[71];
+::google::protobuf::Metadata file_level_metadata[74];
 const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[1];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
@@ -1887,13 +1948,13 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SSetPlayerNameToGameAck, playerid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SSetPlayerNameToGameAck, name_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SSetPlayerNameToGameAck, costdata_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRelation_PlayerdataEntry_DoNotUse, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRelation_PlayerdataEntry_DoNotUse, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRelation_BasicdataEntry_DoNotUse, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRelation_BasicdataEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRelation_PlayerdataEntry_DoNotUse, key_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRelation_PlayerdataEntry_DoNotUse, value_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRelation_BasicdataEntry_DoNotUse, key_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRelation_BasicdataEntry_DoNotUse, value_),
   0,
   1,
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRelation_RelationdataEntry_DoNotUse, _has_bits_),
@@ -1911,21 +1972,21 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRelation, playerid_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRelation, playerdata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRelation, basicdata_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRelation, relationdata_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SQueryRelationToRelationReq, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SQueryRelationToRelationReq, dataname_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SQueryRelationToRelationReq, relationname_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SQueryRelationToRelationReq, playerid_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SQueryRelationToGameAck, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SQueryRelationToGameAck, dataname_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SQueryRelationToGameAck, relationname_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SQueryRelationToGameAck, playerid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SQueryRelationToGameAck, pbrelation_),
   ~0u,  // no _has_bits_
@@ -1933,39 +1994,56 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SQueryRelationInviteToRelationReq, dataname_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SQueryRelationInviteToRelationReq, relationname_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SQueryRelationInviteToRelationReq, playerid_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SQueryRelationInviteToGameAck, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SQueryRelationInviteToGameAck, dataname_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SQueryRelationInviteToGameAck, relationname_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SQueryRelationInviteToGameAck, playerid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SQueryRelationInviteToGameAck, pbinvite_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse, key_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse, value_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse, key_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse, value_),
   0,
   1,
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateDataToRelationReq, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateIntValueToRelationReq, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateDataToRelationReq, dataname_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateDataToRelationReq, playerid_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateDataToRelationReq, pbdata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateIntValueToRelationReq, relationname_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateIntValueToRelationReq, playerid_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateIntValueToRelationReq, pbdata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse, key_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse, value_),
+  0,
+  1,
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateStrValueToRelationReq, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateStrValueToRelationReq, relationname_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateStrValueToRelationReq, playerid_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateStrValueToRelationReq, pbdata_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SApplyAddRelationToRelationReq, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SApplyAddRelationToRelationReq, dataname_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SApplyAddRelationToRelationReq, relationname_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SApplyAddRelationToRelationReq, playername_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SApplyAddRelationToRelationReq, playerid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SApplyAddRelationToRelationReq, message_),
@@ -1974,7 +2052,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SApplyAddRelationToGameAck, dataname_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SApplyAddRelationToGameAck, relationname_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SApplyAddRelationToGameAck, playerid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SApplyAddRelationToGameAck, pbinvite_),
   ~0u,  // no _has_bits_
@@ -1982,7 +2060,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SDelRelationInviteToRelationReq, dataname_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SDelRelationInviteToRelationReq, relationname_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SDelRelationInviteToRelationReq, listname_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SDelRelationInviteToRelationReq, selfplayerid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SDelRelationInviteToRelationReq, targetplayerid_),
@@ -1991,7 +2069,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SAddRelationToRelationReq, dataname_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SAddRelationToRelationReq, relationname_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SAddRelationToRelationReq, playerid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SAddRelationToRelationReq, playername_),
   ~0u,  // no _has_bits_
@@ -1999,7 +2077,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SAddRelationToGameAck, dataname_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SAddRelationToGameAck, relationname_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SAddRelationToGameAck, playerid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SAddRelationToGameAck, pbrelation_),
   ~0u,  // no _has_bits_
@@ -2007,14 +2085,14 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SDelRelationToRelationReq, dataname_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SDelRelationToRelationReq, relationname_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SDelRelationToRelationReq, playerid_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SDelRelationToGameAck, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SDelRelationToGameAck, dataname_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SDelRelationToGameAck, relationname_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SDelRelationToGameAck, playerid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SDelRelationToGameAck, relationid_),
   ~0u,  // no _has_bits_
@@ -2034,6 +2112,14 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateFriendLinessToGameAck, playerid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateFriendLinessToGameAck, targetplayerid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SUpdateFriendLinessToGameAck, friendliness_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SRefuseRelationToRelationReq, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SRefuseRelationToRelationReq, refusename_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SRefuseRelationToRelationReq, playerid_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::S2SRefuseRelationToRelationReq, refusevalue_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::KFMsg::S2SAddGateToWorldReq)},
@@ -2089,24 +2175,27 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 370, -1, sizeof(::KFMsg::S2SQueryAttributeToGameAck)},
   { 378, -1, sizeof(::KFMsg::S2SSetPlayerNameToBasicReq)},
   { 388, -1, sizeof(::KFMsg::S2SSetPlayerNameToGameAck)},
-  { 397, 404, sizeof(::KFMsg::PBRelation_PlayerdataEntry_DoNotUse)},
+  { 397, 404, sizeof(::KFMsg::PBRelation_BasicdataEntry_DoNotUse)},
   { 406, 413, sizeof(::KFMsg::PBRelation_RelationdataEntry_DoNotUse)},
   { 415, -1, sizeof(::KFMsg::PBRelation)},
   { 423, -1, sizeof(::KFMsg::S2SQueryRelationToRelationReq)},
   { 430, -1, sizeof(::KFMsg::S2SQueryRelationToGameAck)},
   { 438, -1, sizeof(::KFMsg::S2SQueryRelationInviteToRelationReq)},
   { 445, -1, sizeof(::KFMsg::S2SQueryRelationInviteToGameAck)},
-  { 453, 460, sizeof(::KFMsg::S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse)},
-  { 462, -1, sizeof(::KFMsg::S2SUpdateDataToRelationReq)},
-  { 470, -1, sizeof(::KFMsg::S2SApplyAddRelationToRelationReq)},
-  { 479, -1, sizeof(::KFMsg::S2SApplyAddRelationToGameAck)},
-  { 487, -1, sizeof(::KFMsg::S2SDelRelationInviteToRelationReq)},
-  { 496, -1, sizeof(::KFMsg::S2SAddRelationToRelationReq)},
-  { 504, -1, sizeof(::KFMsg::S2SAddRelationToGameAck)},
-  { 512, -1, sizeof(::KFMsg::S2SDelRelationToRelationReq)},
-  { 519, -1, sizeof(::KFMsg::S2SDelRelationToGameAck)},
-  { 527, -1, sizeof(::KFMsg::S2SUpdateFriendLinessToRelationReq)},
-  { 536, -1, sizeof(::KFMsg::S2SUpdateFriendLinessToGameAck)},
+  { 453, 460, sizeof(::KFMsg::S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse)},
+  { 462, -1, sizeof(::KFMsg::S2SUpdateIntValueToRelationReq)},
+  { 470, 477, sizeof(::KFMsg::S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse)},
+  { 479, -1, sizeof(::KFMsg::S2SUpdateStrValueToRelationReq)},
+  { 487, -1, sizeof(::KFMsg::S2SApplyAddRelationToRelationReq)},
+  { 496, -1, sizeof(::KFMsg::S2SApplyAddRelationToGameAck)},
+  { 504, -1, sizeof(::KFMsg::S2SDelRelationInviteToRelationReq)},
+  { 513, -1, sizeof(::KFMsg::S2SAddRelationToRelationReq)},
+  { 521, -1, sizeof(::KFMsg::S2SAddRelationToGameAck)},
+  { 529, -1, sizeof(::KFMsg::S2SDelRelationToRelationReq)},
+  { 536, -1, sizeof(::KFMsg::S2SDelRelationToGameAck)},
+  { 544, -1, sizeof(::KFMsg::S2SUpdateFriendLinessToRelationReq)},
+  { 553, -1, sizeof(::KFMsg::S2SUpdateFriendLinessToGameAck)},
+  { 561, -1, sizeof(::KFMsg::S2SRefuseRelationToRelationReq)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -2163,15 +2252,17 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_S2SQueryAttributeToGameAck_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_S2SSetPlayerNameToBasicReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_S2SSetPlayerNameToGameAck_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBRelation_PlayerdataEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBRelation_BasicdataEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBRelation_RelationdataEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_PBRelation_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_S2SQueryRelationToRelationReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_S2SQueryRelationToGameAck_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_S2SQueryRelationInviteToRelationReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_S2SQueryRelationInviteToGameAck_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_S2SUpdateDataToRelationReq_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_S2SUpdateIntValueToRelationReq_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_S2SUpdateStrValueToRelationReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_S2SApplyAddRelationToRelationReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_S2SApplyAddRelationToGameAck_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_S2SDelRelationInviteToRelationReq_default_instance_),
@@ -2181,6 +2272,7 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_S2SDelRelationToGameAck_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_S2SUpdateFriendLinessToRelationReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_S2SUpdateFriendLinessToGameAck_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::KFMsg::_S2SRefuseRelationToRelationReq_default_instance_),
 };
 
 void protobuf_AssignDescriptors() {
@@ -2198,7 +2290,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 71);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 74);
 }
 
 void AddDescriptorsImpl() {
@@ -2298,109 +2390,119 @@ void AddDescriptorsImpl() {
       "(\004\022\017\n\007oldname\030\003 \001(\014\022\017\n\007newname\030\004 \001(\014\022\020\n\010"
       "costdata\030\005 \001(\014\"]\n\031S2SSetPlayerNameToGame"
       "Ack\022\016\n\006result\030\001 \001(\r\022\020\n\010playerid\030\002 \001(\004\022\014\n"
-      "\004name\030\003 \001(\014\022\020\n\010costdata\030\004 \001(\014\"\370\001\n\nPBRela"
-      "tion\022\020\n\010playerid\030\001 \001(\004\0225\n\nplayerdata\030\002 \003"
-      "(\0132!.KFMsg.PBRelation.PlayerdataEntry\0229\n"
-      "\014relationdata\030\003 \003(\0132#.KFMsg.PBRelation.R"
-      "elationdataEntry\0321\n\017PlayerdataEntry\022\013\n\003k"
-      "ey\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001\0323\n\021Relationd"
-      "ataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001"
-      "\"C\n\035S2SQueryRelationToRelationReq\022\020\n\010dat"
-      "aname\030\001 \001(\014\022\020\n\010playerid\030\002 \001(\004\"f\n\031S2SQuer"
-      "yRelationToGameAck\022\020\n\010dataname\030\001 \001(\014\022\020\n\010"
-      "playerid\030\002 \001(\004\022%\n\npbrelation\030\003 \003(\0132\021.KFM"
-      "sg.PBRelation\"I\n#S2SQueryRelationInviteT"
-      "oRelationReq\022\020\n\010dataname\030\001 \001(\014\022\020\n\010player"
-      "id\030\003 \001(\004\"j\n\037S2SQueryRelationInviteToGame"
-      "Ack\022\020\n\010dataname\030\001 \001(\014\022\020\n\010playerid\030\002 \001(\004\022"
-      "#\n\010pbinvite\030\003 \003(\0132\021.KFMsg.PBRelation\"\256\001\n"
-      "\032S2SUpdateDataToRelationReq\022\020\n\010dataname\030"
-      "\001 \001(\014\022\020\n\010playerid\030\002 \001(\004\022=\n\006pbdata\030\003 \003(\0132"
-      "-.KFMsg.S2SUpdateDataToRelationReq.Pbdat"
-      "aEntry\032-\n\013PbdataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005va"
-      "lue\030\002 \001(\014:\0028\001\"k\n S2SApplyAddRelationToRe"
-      "lationReq\022\020\n\010dataname\030\001 \001(\014\022\022\n\nplayernam"
-      "e\030\002 \001(\014\022\020\n\010playerid\030\003 \001(\004\022\017\n\007message\030\004 \001"
-      "(\014\"g\n\034S2SApplyAddRelationToGameAck\022\020\n\010da"
-      "taname\030\001 \001(\014\022\020\n\010playerid\030\002 \001(\004\022#\n\010pbinvi"
-      "te\030\003 \001(\0132\021.KFMsg.PBRelation\"u\n!S2SDelRel"
-      "ationInviteToRelationReq\022\020\n\010dataname\030\001 \001"
-      "(\014\022\020\n\010listname\030\002 \001(\014\022\024\n\014selfplayerid\030\003 \001"
-      "(\004\022\026\n\016targetplayerid\030\004 \001(\004\"U\n\033S2SAddRela"
-      "tionToRelationReq\022\020\n\010dataname\030\001 \001(\014\022\020\n\010p"
-      "layerid\030\002 \001(\004\022\022\n\nplayername\030\003 \001(\014\"d\n\027S2S"
-      "AddRelationToGameAck\022\020\n\010dataname\030\001 \001(\014\022\020"
-      "\n\010playerid\030\002 \001(\004\022%\n\npbrelation\030\004 \001(\0132\021.K"
-      "FMsg.PBRelation\"A\n\033S2SDelRelationToRelat"
-      "ionReq\022\020\n\010dataname\030\001 \001(\014\022\020\n\010playerid\030\002 \001"
-      "(\004\"Q\n\027S2SDelRelationToGameAck\022\020\n\010datanam"
-      "e\030\001 \001(\014\022\020\n\010playerid\030\002 \001(\004\022\022\n\nrelationid\030"
-      "\003 \001(\004\"v\n\"S2SUpdateFriendLinessToRelation"
-      "Req\022\014\n\004type\030\001 \001(\r\022\024\n\014selfplayerid\030\002 \001(\004\022"
-      "\026\n\016targetplayerid\030\003 \001(\004\022\024\n\014friendliness\030"
-      "\004 \001(\r\"`\n\036S2SUpdateFriendLinessToGameAck\022"
-      "\020\n\010playerid\030\001 \001(\004\022\026\n\016targetplayerid\030\002 \001("
-      "\004\022\024\n\014friendliness\030\003 \001(\r*\312\021\n\023FrameServerP"
-      "rotocol\022#\n\037S2S_FRAME_SERVER_PROTOCOL_BEG"
-      "IN\020\000\022\037\n\031S2S_ADD_GATE_TO_WORLD_REQ\020\242\234\001\022\"\n"
-      "\034S2S_REMOVE_GATE_TO_WORLD_REQ\020\243\234\001\022\034\n\026S2S"
-      "_LOGIN_TO_LOGIN_REQ\020\205\235\001\022\033\n\025S2S_LOGIN_TO_"
-      "GATE_ACK\020\206\235\001\022\034\n\026S2S_LOGIN_TO_WORLD_REQ\020\207"
-      "\235\001\022\034\n\026S2S_LOGIN_TO_LOGIN_ACK\020\210\235\001\022\033\n\025S2S_"
-      "LOGIN_TO_GAME_REQ\020\211\235\001\022\034\n\026S2S_LOGOUT_TO_G"
-      "AME_REQ\020\212\235\001\022 \n\032S2S_DISCONNECT_TO_GAME_RE"
-      "Q\020\213\235\001\022\033\n\025S2S_LEAVE_TO_GAME_REQ\020\214\235\001\022\033\n\025S2"
-      "S_ENTER_TO_GATE_ACK\020\215\235\001\022\035\n\027S2S_RELOGIN_T"
-      "O_GAME_REQ\020\216\235\001\022\035\n\027S2S_RELOGIN_TO_GATE_AC"
-      "K\020\217\235\001\022\035\n\027S2S_CONNECT_TO_GAME_REQ\020\220\235\001\022#\n\035"
-      "S2S_PLAYER_ENTER_TO_WORLD_REQ\020\352\235\001\022#\n\035S2S"
-      "_PLAYER_LEAVE_TO_WORLD_REQ\020\353\235\001\022!\n\033S2S_KI"
-      "CK_PLAYER_TO_GAME_REQ\020\354\235\001\022!\n\033S2S_KICK_PL"
-      "AYER_TO_GATE_REQ\020\355\235\001\022\037\n\031S2S_BROADCAST_TO"
-      "_GAME_REQ\020\315\236\001\022\037\n\031S2S_BROADCAST_TO_GAME_A"
-      "CK\020\316\236\001\022 \n\032S2S_BROADCAST_TO_WORLD_REQ\020\317\236\001"
-      "\022 \n\032S2S_BROADCAST_TO_WORLD_ACK\020\320\236\001\022\037\n\031S2"
-      "S_BROADCAST_TO_GATE_REQ\020\321\236\001\022!\n\033S2S_LOAD_"
-      "PLAYER_TO_DATA_REQ\020\261\237\001\022!\n\033S2S_LOAD_PLAYE"
-      "R_TO_GAME_ACK\020\262\237\001\022!\n\033S2S_SAVE_PLAYER_TO_"
-      "DATA_REQ\020\263\237\001\022!\n\033S2S_SAVE_PLAYER_TO_GAME_"
-      "ACK\020\264\237\001\022\"\n\034S2S_QUERY_PLAYER_TO_DATA_REQ\020"
-      "\265\237\001\022\"\n\034S2S_QUERY_PLAYER_TO_GAME_ACK\020\266\237\001\022"
-      "\035\n\027S2S_NEW_PLAYER_MAIL_REQ\020\225\240\001\022\030\n\022S2S_QU"
-      "ERY_MAIL_REQ\020\226\240\001\022\030\n\022S2S_QUERY_MAIL_ACK\020\227"
-      "\240\001\022\026\n\020S2S_ADD_MAIL_REQ\020\230\240\001\022\035\n\027S2S_NOTICE"
-      "_NEW_MAIL_REQ\020\231\240\001\022 \n\032S2S_UPDATE_MAIL_STA"
-      "TUS_REQ\020\232\240\001\022 \n\032S2S_UPDATE_MAIL_STATUS_AC"
-      "K\020\233\240\001\022 \n\032S2S_NOTICE_RANK_WORKER_REQ\020\371\240\001\022"
-      "\033\n\025S2S_SYNC_REFRESH_RANK\020\372\240\001\022\036\n\030S2S_UPDA"
-      "TE_RANK_DATA_REQ\020\373\240\001\022\035\n\027S2S_QUERY_RANK_L"
-      "IST_REQ\020\374\240\001\022$\n\036S2S_QUERY_FRIEND_RANK_LIS"
-      "T_REQ\020\375\240\001\022\'\n!S2S_UPDATE_INT_VALUE_TO_BAS"
-      "IC_REQ\020\335\241\001\022\'\n!S2S_UPDATE_STR_VALUE_TO_BA"
-      "SIC_REQ\020\336\241\001\022&\n S2S_QUERY_ATTRIBUTE_TO_BA"
-      "SIC_REQ\020\337\241\001\022%\n\037S2S_QUERY_ATTRIBUTE_TO_GA"
-      "ME_ACK\020\340\241\001\022#\n\035S2S_CLEAR_ONLINE_TO_BASIC_"
-      "REQ\020\341\241\001\022&\n S2S_SET_PLAYER_NAME_TO_BASIC_"
-      "REQ\020\342\241\001\022%\n\037S2S_SET_PLAYER_NAME_TO_GAME_A"
-      "CK\020\343\241\001\022%\n\037S2S_UPDATE_DATA_TO_RELATION_RE"
-      "Q\020\301\242\001\022(\n\"S2S_QUERY_RELATION_TO_RELATION_"
-      "REQ\020\302\242\001\022$\n\036S2S_QUERY_RELATION_TO_GAME_AC"
-      "K\020\303\242\001\022/\n)S2S_QUERY_RELATION_INVITE_TO_RE"
-      "LATION_REQ\020\304\242\001\022+\n%S2S_QUERY_RELATION_INV"
-      "ITE_TO_GAME_ACK\020\305\242\001\022,\n&S2S_APPLY_ADD_REL"
-      "ATION_TO_RELATION_REQ\020\306\242\001\022(\n\"S2S_APPLY_A"
-      "DD_RELATION_TO_GAME_ACK\020\307\242\001\022-\n\'S2S_DEL_R"
-      "ELATION_INVITE_TO_RELATION_REQ\020\310\242\001\022&\n S2"
-      "S_ADD_RELATION_TO_RELATION_REQ\020\311\242\001\022\"\n\034S2"
-      "S_ADD_RELATION_TO_GAME_ACK\020\312\242\001\022&\n S2S_DE"
-      "L_RELATION_TO_RELATION_REQ\020\313\242\001\022\"\n\034S2S_DE"
-      "L_RELATION_TO_GAME_ACK\020\314\242\001\022-\n\'S2S_UPDATE"
-      "_FRIENDLINESS_TO_RELATION_REQ\020\315\242\001\022)\n#S2S"
-      "_UPDATE_FRIENDLINESS_TO_GAME_ACK\020\316\242\001b\006pr"
-      "oto3"
+      "\004name\030\003 \001(\014\022\020\n\010costdata\030\004 \001(\014\"\365\001\n\nPBRela"
+      "tion\022\020\n\010playerid\030\001 \001(\004\0223\n\tbasicdata\030\002 \003("
+      "\0132 .KFMsg.PBRelation.BasicdataEntry\0229\n\014r"
+      "elationdata\030\003 \003(\0132#.KFMsg.PBRelation.Rel"
+      "ationdataEntry\0320\n\016BasicdataEntry\022\013\n\003key\030"
+      "\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001\0323\n\021Relationdata"
+      "Entry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001\"G\n"
+      "\035S2SQueryRelationToRelationReq\022\024\n\014relati"
+      "onname\030\001 \001(\014\022\020\n\010playerid\030\002 \001(\004\"j\n\031S2SQue"
+      "ryRelationToGameAck\022\024\n\014relationname\030\001 \001("
+      "\014\022\020\n\010playerid\030\002 \001(\004\022%\n\npbrelation\030\003 \003(\0132"
+      "\021.KFMsg.PBRelation\"M\n#S2SQueryRelationIn"
+      "viteToRelationReq\022\024\n\014relationname\030\001 \001(\014\022"
+      "\020\n\010playerid\030\002 \001(\004\"n\n\037S2SQueryRelationInv"
+      "iteToGameAck\022\024\n\014relationname\030\001 \001(\014\022\020\n\010pl"
+      "ayerid\030\002 \001(\004\022#\n\010pbinvite\030\003 \003(\0132\021.KFMsg.P"
+      "BRelation\"\272\001\n\036S2SUpdateIntValueToRelatio"
+      "nReq\022\024\n\014relationname\030\001 \001(\014\022\020\n\010playerid\030\002"
+      " \001(\004\022A\n\006pbdata\030\003 \003(\01321.KFMsg.S2SUpdateIn"
+      "tValueToRelationReq.PbdataEntry\032-\n\013Pbdat"
+      "aEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\004:\0028\001\"\272"
+      "\001\n\036S2SUpdateStrValueToRelationReq\022\024\n\014rel"
+      "ationname\030\001 \001(\014\022\020\n\010playerid\030\002 \001(\004\022A\n\006pbd"
+      "ata\030\003 \003(\01321.KFMsg.S2SUpdateStrValueToRel"
+      "ationReq.PbdataEntry\032-\n\013PbdataEntry\022\013\n\003k"
+      "ey\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001\"o\n S2SApplyA"
+      "ddRelationToRelationReq\022\024\n\014relationname\030"
+      "\001 \001(\014\022\022\n\nplayername\030\002 \001(\014\022\020\n\010playerid\030\003 "
+      "\001(\004\022\017\n\007message\030\004 \001(\014\"k\n\034S2SApplyAddRelat"
+      "ionToGameAck\022\024\n\014relationname\030\001 \001(\014\022\020\n\010pl"
+      "ayerid\030\002 \001(\004\022#\n\010pbinvite\030\003 \001(\0132\021.KFMsg.P"
+      "BRelation\"y\n!S2SDelRelationInviteToRelat"
+      "ionReq\022\024\n\014relationname\030\001 \001(\014\022\020\n\010listname"
+      "\030\002 \001(\014\022\024\n\014selfplayerid\030\003 \001(\004\022\026\n\016targetpl"
+      "ayerid\030\004 \001(\004\"Y\n\033S2SAddRelationToRelation"
+      "Req\022\024\n\014relationname\030\001 \001(\014\022\020\n\010playerid\030\002 "
+      "\001(\004\022\022\n\nplayername\030\003 \001(\014\"h\n\027S2SAddRelatio"
+      "nToGameAck\022\024\n\014relationname\030\001 \001(\014\022\020\n\010play"
+      "erid\030\002 \001(\004\022%\n\npbrelation\030\004 \001(\0132\021.KFMsg.P"
+      "BRelation\"E\n\033S2SDelRelationToRelationReq"
+      "\022\024\n\014relationname\030\001 \001(\014\022\020\n\010playerid\030\002 \001(\004"
+      "\"U\n\027S2SDelRelationToGameAck\022\024\n\014relationn"
+      "ame\030\001 \001(\014\022\020\n\010playerid\030\002 \001(\004\022\022\n\nrelationi"
+      "d\030\003 \001(\004\"v\n\"S2SUpdateFriendLinessToRelati"
+      "onReq\022\014\n\004type\030\001 \001(\r\022\024\n\014selfplayerid\030\002 \001("
+      "\004\022\026\n\016targetplayerid\030\003 \001(\004\022\024\n\014friendlines"
+      "s\030\004 \001(\r\"`\n\036S2SUpdateFriendLinessToGameAc"
+      "k\022\020\n\010playerid\030\001 \001(\004\022\026\n\016targetplayerid\030\002 "
+      "\001(\004\022\024\n\014friendliness\030\003 \001(\r\"[\n\036S2SRefuseRe"
+      "lationToRelationReq\022\022\n\nrefusename\030\001 \001(\014\022"
+      "\020\n\010playerid\030\002 \001(\004\022\023\n\013refusevalue\030\003 \001(\004*\246"
+      "\022\n\023FrameServerProtocol\022#\n\037S2S_FRAME_SERV"
+      "ER_PROTOCOL_BEGIN\020\000\022\037\n\031S2S_ADD_GATE_TO_W"
+      "ORLD_REQ\020\242\234\001\022\"\n\034S2S_REMOVE_GATE_TO_WORLD"
+      "_REQ\020\243\234\001\022\034\n\026S2S_LOGIN_TO_LOGIN_REQ\020\205\235\001\022\033"
+      "\n\025S2S_LOGIN_TO_GATE_ACK\020\206\235\001\022\034\n\026S2S_LOGIN"
+      "_TO_WORLD_REQ\020\207\235\001\022\034\n\026S2S_LOGIN_TO_LOGIN_"
+      "ACK\020\210\235\001\022\033\n\025S2S_LOGIN_TO_GAME_REQ\020\211\235\001\022\034\n\026"
+      "S2S_LOGOUT_TO_GAME_REQ\020\212\235\001\022 \n\032S2S_DISCON"
+      "NECT_TO_GAME_REQ\020\213\235\001\022\033\n\025S2S_LEAVE_TO_GAM"
+      "E_REQ\020\214\235\001\022\033\n\025S2S_ENTER_TO_GATE_ACK\020\215\235\001\022\035"
+      "\n\027S2S_RELOGIN_TO_GAME_REQ\020\216\235\001\022\035\n\027S2S_REL"
+      "OGIN_TO_GATE_ACK\020\217\235\001\022\035\n\027S2S_CONNECT_TO_G"
+      "AME_REQ\020\220\235\001\022#\n\035S2S_PLAYER_ENTER_TO_WORLD"
+      "_REQ\020\352\235\001\022#\n\035S2S_PLAYER_LEAVE_TO_WORLD_RE"
+      "Q\020\353\235\001\022!\n\033S2S_KICK_PLAYER_TO_GAME_REQ\020\354\235\001"
+      "\022!\n\033S2S_KICK_PLAYER_TO_GATE_REQ\020\355\235\001\022\037\n\031S"
+      "2S_BROADCAST_TO_GAME_REQ\020\315\236\001\022\037\n\031S2S_BROA"
+      "DCAST_TO_GAME_ACK\020\316\236\001\022 \n\032S2S_BROADCAST_T"
+      "O_WORLD_REQ\020\317\236\001\022 \n\032S2S_BROADCAST_TO_WORL"
+      "D_ACK\020\320\236\001\022\037\n\031S2S_BROADCAST_TO_GATE_REQ\020\321"
+      "\236\001\022!\n\033S2S_LOAD_PLAYER_TO_DATA_REQ\020\261\237\001\022!\n"
+      "\033S2S_LOAD_PLAYER_TO_GAME_ACK\020\262\237\001\022!\n\033S2S_"
+      "SAVE_PLAYER_TO_DATA_REQ\020\263\237\001\022!\n\033S2S_SAVE_"
+      "PLAYER_TO_GAME_ACK\020\264\237\001\022\"\n\034S2S_QUERY_PLAY"
+      "ER_TO_DATA_REQ\020\265\237\001\022\"\n\034S2S_QUERY_PLAYER_T"
+      "O_GAME_ACK\020\266\237\001\022\035\n\027S2S_NEW_PLAYER_MAIL_RE"
+      "Q\020\225\240\001\022\030\n\022S2S_QUERY_MAIL_REQ\020\226\240\001\022\030\n\022S2S_Q"
+      "UERY_MAIL_ACK\020\227\240\001\022\026\n\020S2S_ADD_MAIL_REQ\020\230\240"
+      "\001\022\035\n\027S2S_NOTICE_NEW_MAIL_REQ\020\231\240\001\022 \n\032S2S_"
+      "UPDATE_MAIL_STATUS_REQ\020\232\240\001\022 \n\032S2S_UPDATE"
+      "_MAIL_STATUS_ACK\020\233\240\001\022 \n\032S2S_NOTICE_RANK_"
+      "WORKER_REQ\020\371\240\001\022\033\n\025S2S_SYNC_REFRESH_RANK\020"
+      "\372\240\001\022\036\n\030S2S_UPDATE_RANK_DATA_REQ\020\373\240\001\022\035\n\027S"
+      "2S_QUERY_RANK_LIST_REQ\020\374\240\001\022$\n\036S2S_QUERY_"
+      "FRIEND_RANK_LIST_REQ\020\375\240\001\022\'\n!S2S_UPDATE_I"
+      "NT_VALUE_TO_BASIC_REQ\020\335\241\001\022\'\n!S2S_UPDATE_"
+      "STR_VALUE_TO_BASIC_REQ\020\336\241\001\022&\n S2S_QUERY_"
+      "ATTRIBUTE_TO_BASIC_REQ\020\337\241\001\022%\n\037S2S_QUERY_"
+      "ATTRIBUTE_TO_GAME_ACK\020\340\241\001\022#\n\035S2S_CLEAR_O"
+      "NLINE_TO_BASIC_REQ\020\341\241\001\022&\n S2S_SET_PLAYER"
+      "_NAME_TO_BASIC_REQ\020\342\241\001\022%\n\037S2S_SET_PLAYER"
+      "_NAME_TO_GAME_ACK\020\343\241\001\022(\n\"S2S_QUERY_RELAT"
+      "ION_TO_RELATION_REQ\020\301\242\001\022$\n\036S2S_QUERY_REL"
+      "ATION_TO_GAME_ACK\020\302\242\001\022/\n)S2S_QUERY_RELAT"
+      "ION_INVITE_TO_RELATION_REQ\020\303\242\001\022+\n%S2S_QU"
+      "ERY_RELATION_INVITE_TO_GAME_ACK\020\304\242\001\022*\n$S"
+      "2S_UPDATE_INT_VALUE_TO_RELATION_REQ\020\305\242\001\022"
+      "*\n$S2S_UPDATE_STR_VALUE_TO_RELATION_REQ\020"
+      "\306\242\001\022,\n&S2S_APPLY_ADD_RELATION_TO_RELATIO"
+      "N_REQ\020\307\242\001\022(\n\"S2S_APPLY_ADD_RELATION_TO_G"
+      "AME_ACK\020\310\242\001\022-\n\'S2S_DEL_RELATION_INVITE_T"
+      "O_RELATION_REQ\020\311\242\001\022&\n S2S_ADD_RELATION_T"
+      "O_RELATION_REQ\020\312\242\001\022\"\n\034S2S_ADD_RELATION_T"
+      "O_GAME_ACK\020\313\242\001\022&\n S2S_DEL_RELATION_TO_RE"
+      "LATION_REQ\020\314\242\001\022\"\n\034S2S_DEL_RELATION_TO_GA"
+      "ME_ACK\020\315\242\001\022-\n\'S2S_UPDATE_FRIENDLINESS_TO"
+      "_RELATION_REQ\020\316\242\001\022)\n#S2S_UPDATE_FRIENDLI"
+      "NESS_TO_GAME_ACK\020\317\242\001\022)\n#S2S_REFUSE_RELAT"
+      "ION_TO_RELATION_REQ\020\320\242\001b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 7724);
+      descriptor, 8151);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "FrameServerMessage.proto", &protobuf_RegisterTypes);
   ::protobuf_FrameDefineMessage_2eproto::AddDescriptors();
@@ -2487,6 +2589,8 @@ bool FrameServerProtocol_IsValid(int value) {
     case 20812:
     case 20813:
     case 20814:
+    case 20815:
+    case 20816:
       return true;
     default:
       return false;
@@ -16907,16 +17011,16 @@ void S2SSetPlayerNameToGameAck::InternalSwap(S2SSetPlayerNameToGameAck* other) {
 
 // ===================================================================
 
-PBRelation_PlayerdataEntry_DoNotUse::PBRelation_PlayerdataEntry_DoNotUse() {}
-PBRelation_PlayerdataEntry_DoNotUse::PBRelation_PlayerdataEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
-void PBRelation_PlayerdataEntry_DoNotUse::MergeFrom(const PBRelation_PlayerdataEntry_DoNotUse& other) {
+PBRelation_BasicdataEntry_DoNotUse::PBRelation_BasicdataEntry_DoNotUse() {}
+PBRelation_BasicdataEntry_DoNotUse::PBRelation_BasicdataEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+void PBRelation_BasicdataEntry_DoNotUse::MergeFrom(const PBRelation_BasicdataEntry_DoNotUse& other) {
   MergeFromInternal(other);
 }
-::google::protobuf::Metadata PBRelation_PlayerdataEntry_DoNotUse::GetMetadata() const {
+::google::protobuf::Metadata PBRelation_BasicdataEntry_DoNotUse::GetMetadata() const {
   ::protobuf_FrameServerMessage_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_FrameServerMessage_2eproto::file_level_metadata[53];
 }
-void PBRelation_PlayerdataEntry_DoNotUse::MergeFrom(
+void PBRelation_BasicdataEntry_DoNotUse::MergeFrom(
     const ::google::protobuf::Message& other) {
   ::google::protobuf::Message::MergeFrom(other);
 }
@@ -16945,7 +17049,7 @@ void PBRelation::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int PBRelation::kPlayeridFieldNumber;
-const int PBRelation::kPlayerdataFieldNumber;
+const int PBRelation::kBasicdataFieldNumber;
 const int PBRelation::kRelationdataFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -16960,7 +17064,7 @@ PBRelation::PBRelation(const PBRelation& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  playerdata_.MergeFrom(from.playerdata_);
+  basicdata_.MergeFrom(from.basicdata_);
   relationdata_.MergeFrom(from.relationdata_);
   playerid_ = from.playerid_;
   // @@protoc_insertion_point(copy_constructor:KFMsg.PBRelation)
@@ -16998,7 +17102,7 @@ void PBRelation::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  playerdata_.Clear();
+  basicdata_.Clear();
   relationdata_.Clear();
   playerid_ = GOOGLE_ULONGLONG(0);
   _internal_metadata_.Clear();
@@ -17028,23 +17132,23 @@ bool PBRelation::MergePartialFromCodedStream(
         break;
       }
 
-      // map<string, bytes> playerdata = 2;
+      // map<string, bytes> basicdata = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          PBRelation_PlayerdataEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
-              PBRelation_PlayerdataEntry_DoNotUse,
+          PBRelation_BasicdataEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
+              PBRelation_BasicdataEntry_DoNotUse,
               ::std::string, ::std::string,
               ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
               ::google::protobuf::internal::WireFormatLite::TYPE_BYTES,
               0 >,
-            ::google::protobuf::Map< ::std::string, ::std::string > > parser(&playerdata_);
+            ::google::protobuf::Map< ::std::string, ::std::string > > parser(&basicdata_);
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
               input, &parser));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             parser.key().data(), static_cast<int>(parser.key().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "KFMsg.PBRelation.PlayerdataEntry.key"));
+            "KFMsg.PBRelation.BasicdataEntry.key"));
         } else {
           goto handle_unusual;
         }
@@ -17105,8 +17209,8 @@ void PBRelation::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->playerid(), output);
   }
 
-  // map<string, bytes> playerdata = 2;
-  if (!this->playerdata().empty()) {
+  // map<string, bytes> basicdata = 2;
+  if (!this->basicdata().empty()) {
     typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
         ConstPtr;
     typedef ConstPtr SortItem;
@@ -17116,36 +17220,36 @@ void PBRelation::SerializeWithCachedSizes(
         ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
           p->first.data(), static_cast<int>(p->first.length()),
           ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "KFMsg.PBRelation.PlayerdataEntry.key");
+          "KFMsg.PBRelation.BasicdataEntry.key");
       }
     };
 
     if (output->IsSerializationDeterministic() &&
-        this->playerdata().size() > 1) {
+        this->basicdata().size() > 1) {
       ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->playerdata().size()]);
+          new SortItem[this->basicdata().size()]);
       typedef ::google::protobuf::Map< ::std::string, ::std::string >::size_type size_type;
       size_type n = 0;
       for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->playerdata().begin();
-          it != this->playerdata().end(); ++it, ++n) {
+          it = this->basicdata().begin();
+          it != this->basicdata().end(); ++it, ++n) {
         items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
       }
       ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<PBRelation_PlayerdataEntry_DoNotUse> entry;
+      ::std::unique_ptr<PBRelation_BasicdataEntry_DoNotUse> entry;
       for (size_type i = 0; i < n; i++) {
-        entry.reset(playerdata_.NewEntryWrapper(
+        entry.reset(basicdata_.NewEntryWrapper(
             items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
         ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
             2, *entry, output);
         Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
       }
     } else {
-      ::std::unique_ptr<PBRelation_PlayerdataEntry_DoNotUse> entry;
+      ::std::unique_ptr<PBRelation_BasicdataEntry_DoNotUse> entry;
       for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->playerdata().begin();
-          it != this->playerdata().end(); ++it) {
-        entry.reset(playerdata_.NewEntryWrapper(
+          it = this->basicdata().begin();
+          it != this->basicdata().end(); ++it) {
+        entry.reset(basicdata_.NewEntryWrapper(
             it->first, it->second));
         ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
             2, *entry, output);
@@ -17222,8 +17326,8 @@ void PBRelation::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->playerid(), target);
   }
 
-  // map<string, bytes> playerdata = 2;
-  if (!this->playerdata().empty()) {
+  // map<string, bytes> basicdata = 2;
+  if (!this->basicdata().empty()) {
     typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
         ConstPtr;
     typedef ConstPtr SortItem;
@@ -17233,25 +17337,25 @@ void PBRelation::SerializeWithCachedSizes(
         ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
           p->first.data(), static_cast<int>(p->first.length()),
           ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "KFMsg.PBRelation.PlayerdataEntry.key");
+          "KFMsg.PBRelation.BasicdataEntry.key");
       }
     };
 
     if (deterministic &&
-        this->playerdata().size() > 1) {
+        this->basicdata().size() > 1) {
       ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->playerdata().size()]);
+          new SortItem[this->basicdata().size()]);
       typedef ::google::protobuf::Map< ::std::string, ::std::string >::size_type size_type;
       size_type n = 0;
       for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->playerdata().begin();
-          it != this->playerdata().end(); ++it, ++n) {
+          it = this->basicdata().begin();
+          it != this->basicdata().end(); ++it, ++n) {
         items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
       }
       ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<PBRelation_PlayerdataEntry_DoNotUse> entry;
+      ::std::unique_ptr<PBRelation_BasicdataEntry_DoNotUse> entry;
       for (size_type i = 0; i < n; i++) {
-        entry.reset(playerdata_.NewEntryWrapper(
+        entry.reset(basicdata_.NewEntryWrapper(
             items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
         target = ::google::protobuf::internal::WireFormatLite::
                    InternalWriteMessageNoVirtualToArray(
@@ -17260,11 +17364,11 @@ void PBRelation::SerializeWithCachedSizes(
         Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
       }
     } else {
-      ::std::unique_ptr<PBRelation_PlayerdataEntry_DoNotUse> entry;
+      ::std::unique_ptr<PBRelation_BasicdataEntry_DoNotUse> entry;
       for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->playerdata().begin();
-          it != this->playerdata().end(); ++it) {
-        entry.reset(playerdata_.NewEntryWrapper(
+          it = this->basicdata().begin();
+          it != this->basicdata().end(); ++it) {
+        entry.reset(basicdata_.NewEntryWrapper(
             it->first, it->second));
         target = ::google::protobuf::internal::WireFormatLite::
                    InternalWriteMessageNoVirtualToArray(
@@ -17345,15 +17449,15 @@ size_t PBRelation::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // map<string, bytes> playerdata = 2;
+  // map<string, bytes> basicdata = 2;
   total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->playerdata_size());
+      ::google::protobuf::internal::FromIntSize(this->basicdata_size());
   {
-    ::std::unique_ptr<PBRelation_PlayerdataEntry_DoNotUse> entry;
+    ::std::unique_ptr<PBRelation_BasicdataEntry_DoNotUse> entry;
     for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-        it = this->playerdata().begin();
-        it != this->playerdata().end(); ++it) {
-      entry.reset(playerdata_.NewEntryWrapper(it->first, it->second));
+        it = this->basicdata().begin();
+        it != this->basicdata().end(); ++it) {
+      entry.reset(basicdata_.NewEntryWrapper(it->first, it->second));
       total_size += ::google::protobuf::internal::WireFormatLite::
           MessageSizeNoVirtual(*entry);
     }
@@ -17407,7 +17511,7 @@ void PBRelation::MergeFrom(const PBRelation& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  playerdata_.MergeFrom(from.playerdata_);
+  basicdata_.MergeFrom(from.basicdata_);
   relationdata_.MergeFrom(from.relationdata_);
   if (from.playerid() != 0) {
     set_playerid(from.playerid());
@@ -17438,7 +17542,7 @@ void PBRelation::Swap(PBRelation* other) {
 }
 void PBRelation::InternalSwap(PBRelation* other) {
   using std::swap;
-  playerdata_.Swap(&other->playerdata_);
+  basicdata_.Swap(&other->basicdata_);
   relationdata_.Swap(&other->relationdata_);
   swap(playerid_, other->playerid_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -17455,7 +17559,7 @@ void PBRelation::InternalSwap(PBRelation* other) {
 void S2SQueryRelationToRelationReq::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int S2SQueryRelationToRelationReq::kDatanameFieldNumber;
+const int S2SQueryRelationToRelationReq::kRelationnameFieldNumber;
 const int S2SQueryRelationToRelationReq::kPlayeridFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -17470,16 +17574,16 @@ S2SQueryRelationToRelationReq::S2SQueryRelationToRelationReq(const S2SQueryRelat
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.dataname().size() > 0) {
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.relationname().size() > 0) {
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   playerid_ = from.playerid_;
   // @@protoc_insertion_point(copy_constructor:KFMsg.S2SQueryRelationToRelationReq)
 }
 
 void S2SQueryRelationToRelationReq::SharedCtor() {
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   playerid_ = GOOGLE_ULONGLONG(0);
 }
 
@@ -17489,7 +17593,7 @@ S2SQueryRelationToRelationReq::~S2SQueryRelationToRelationReq() {
 }
 
 void S2SQueryRelationToRelationReq::SharedDtor() {
-  dataname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void S2SQueryRelationToRelationReq::SetCachedSize(int size) const {
@@ -17512,7 +17616,7 @@ void S2SQueryRelationToRelationReq::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  dataname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   playerid_ = GOOGLE_ULONGLONG(0);
   _internal_metadata_.Clear();
 }
@@ -17527,12 +17631,12 @@ bool S2SQueryRelationToRelationReq::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bytes dataname = 1;
+      // bytes relationname = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_dataname()));
+                input, this->mutable_relationname()));
         } else {
           goto handle_unusual;
         }
@@ -17579,10 +17683,10 @@ void S2SQueryRelationToRelationReq::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      1, this->dataname(), output);
+      1, this->relationname(), output);
   }
 
   // uint64 playerid = 2;
@@ -17604,11 +17708,11 @@ void S2SQueryRelationToRelationReq::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        1, this->dataname(), target);
+        1, this->relationname(), target);
   }
 
   // uint64 playerid = 2;
@@ -17633,11 +17737,11 @@ size_t S2SQueryRelationToRelationReq::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->dataname());
+        this->relationname());
   }
 
   // uint64 playerid = 2;
@@ -17674,9 +17778,9 @@ void S2SQueryRelationToRelationReq::MergeFrom(const S2SQueryRelationToRelationRe
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.dataname().size() > 0) {
+  if (from.relationname().size() > 0) {
 
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   if (from.playerid() != 0) {
     set_playerid(from.playerid());
@@ -17707,7 +17811,7 @@ void S2SQueryRelationToRelationReq::Swap(S2SQueryRelationToRelationReq* other) {
 }
 void S2SQueryRelationToRelationReq::InternalSwap(S2SQueryRelationToRelationReq* other) {
   using std::swap;
-  dataname_.Swap(&other->dataname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  relationname_.Swap(&other->relationname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(playerid_, other->playerid_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -17724,7 +17828,7 @@ void S2SQueryRelationToRelationReq::InternalSwap(S2SQueryRelationToRelationReq* 
 void S2SQueryRelationToGameAck::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int S2SQueryRelationToGameAck::kDatanameFieldNumber;
+const int S2SQueryRelationToGameAck::kRelationnameFieldNumber;
 const int S2SQueryRelationToGameAck::kPlayeridFieldNumber;
 const int S2SQueryRelationToGameAck::kPbrelationFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -17741,16 +17845,16 @@ S2SQueryRelationToGameAck::S2SQueryRelationToGameAck(const S2SQueryRelationToGam
       _internal_metadata_(NULL),
       pbrelation_(from.pbrelation_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.dataname().size() > 0) {
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.relationname().size() > 0) {
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   playerid_ = from.playerid_;
   // @@protoc_insertion_point(copy_constructor:KFMsg.S2SQueryRelationToGameAck)
 }
 
 void S2SQueryRelationToGameAck::SharedCtor() {
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   playerid_ = GOOGLE_ULONGLONG(0);
 }
 
@@ -17760,7 +17864,7 @@ S2SQueryRelationToGameAck::~S2SQueryRelationToGameAck() {
 }
 
 void S2SQueryRelationToGameAck::SharedDtor() {
-  dataname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void S2SQueryRelationToGameAck::SetCachedSize(int size) const {
@@ -17784,7 +17888,7 @@ void S2SQueryRelationToGameAck::Clear() {
   (void) cached_has_bits;
 
   pbrelation_.Clear();
-  dataname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   playerid_ = GOOGLE_ULONGLONG(0);
   _internal_metadata_.Clear();
 }
@@ -17799,12 +17903,12 @@ bool S2SQueryRelationToGameAck::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bytes dataname = 1;
+      // bytes relationname = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_dataname()));
+                input, this->mutable_relationname()));
         } else {
           goto handle_unusual;
         }
@@ -17863,10 +17967,10 @@ void S2SQueryRelationToGameAck::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      1, this->dataname(), output);
+      1, this->relationname(), output);
   }
 
   // uint64 playerid = 2;
@@ -17897,11 +18001,11 @@ void S2SQueryRelationToGameAck::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        1, this->dataname(), target);
+        1, this->relationname(), target);
   }
 
   // uint64 playerid = 2;
@@ -17945,11 +18049,11 @@ size_t S2SQueryRelationToGameAck::ByteSizeLong() const {
     }
   }
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->dataname());
+        this->relationname());
   }
 
   // uint64 playerid = 2;
@@ -17987,9 +18091,9 @@ void S2SQueryRelationToGameAck::MergeFrom(const S2SQueryRelationToGameAck& from)
   (void) cached_has_bits;
 
   pbrelation_.MergeFrom(from.pbrelation_);
-  if (from.dataname().size() > 0) {
+  if (from.relationname().size() > 0) {
 
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   if (from.playerid() != 0) {
     set_playerid(from.playerid());
@@ -18021,7 +18125,7 @@ void S2SQueryRelationToGameAck::Swap(S2SQueryRelationToGameAck* other) {
 void S2SQueryRelationToGameAck::InternalSwap(S2SQueryRelationToGameAck* other) {
   using std::swap;
   CastToBase(&pbrelation_)->InternalSwap(CastToBase(&other->pbrelation_));
-  dataname_.Swap(&other->dataname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  relationname_.Swap(&other->relationname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(playerid_, other->playerid_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -18038,7 +18142,7 @@ void S2SQueryRelationToGameAck::InternalSwap(S2SQueryRelationToGameAck* other) {
 void S2SQueryRelationInviteToRelationReq::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int S2SQueryRelationInviteToRelationReq::kDatanameFieldNumber;
+const int S2SQueryRelationInviteToRelationReq::kRelationnameFieldNumber;
 const int S2SQueryRelationInviteToRelationReq::kPlayeridFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -18053,16 +18157,16 @@ S2SQueryRelationInviteToRelationReq::S2SQueryRelationInviteToRelationReq(const S
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.dataname().size() > 0) {
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.relationname().size() > 0) {
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   playerid_ = from.playerid_;
   // @@protoc_insertion_point(copy_constructor:KFMsg.S2SQueryRelationInviteToRelationReq)
 }
 
 void S2SQueryRelationInviteToRelationReq::SharedCtor() {
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   playerid_ = GOOGLE_ULONGLONG(0);
 }
 
@@ -18072,7 +18176,7 @@ S2SQueryRelationInviteToRelationReq::~S2SQueryRelationInviteToRelationReq() {
 }
 
 void S2SQueryRelationInviteToRelationReq::SharedDtor() {
-  dataname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void S2SQueryRelationInviteToRelationReq::SetCachedSize(int size) const {
@@ -18095,7 +18199,7 @@ void S2SQueryRelationInviteToRelationReq::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  dataname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   playerid_ = GOOGLE_ULONGLONG(0);
   _internal_metadata_.Clear();
 }
@@ -18110,22 +18214,22 @@ bool S2SQueryRelationInviteToRelationReq::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bytes dataname = 1;
+      // bytes relationname = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_dataname()));
+                input, this->mutable_relationname()));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // uint64 playerid = 3;
-      case 3: {
+      // uint64 playerid = 2;
+      case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
@@ -18162,15 +18266,15 @@ void S2SQueryRelationInviteToRelationReq::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      1, this->dataname(), output);
+      1, this->relationname(), output);
   }
 
-  // uint64 playerid = 3;
+  // uint64 playerid = 2;
   if (this->playerid() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(3, this->playerid(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->playerid(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -18187,16 +18291,16 @@ void S2SQueryRelationInviteToRelationReq::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        1, this->dataname(), target);
+        1, this->relationname(), target);
   }
 
-  // uint64 playerid = 3;
+  // uint64 playerid = 2;
   if (this->playerid() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(3, this->playerid(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->playerid(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -18216,14 +18320,14 @@ size_t S2SQueryRelationInviteToRelationReq::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->dataname());
+        this->relationname());
   }
 
-  // uint64 playerid = 3;
+  // uint64 playerid = 2;
   if (this->playerid() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt64Size(
@@ -18257,9 +18361,9 @@ void S2SQueryRelationInviteToRelationReq::MergeFrom(const S2SQueryRelationInvite
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.dataname().size() > 0) {
+  if (from.relationname().size() > 0) {
 
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   if (from.playerid() != 0) {
     set_playerid(from.playerid());
@@ -18290,7 +18394,7 @@ void S2SQueryRelationInviteToRelationReq::Swap(S2SQueryRelationInviteToRelationR
 }
 void S2SQueryRelationInviteToRelationReq::InternalSwap(S2SQueryRelationInviteToRelationReq* other) {
   using std::swap;
-  dataname_.Swap(&other->dataname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  relationname_.Swap(&other->relationname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(playerid_, other->playerid_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -18307,7 +18411,7 @@ void S2SQueryRelationInviteToRelationReq::InternalSwap(S2SQueryRelationInviteToR
 void S2SQueryRelationInviteToGameAck::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int S2SQueryRelationInviteToGameAck::kDatanameFieldNumber;
+const int S2SQueryRelationInviteToGameAck::kRelationnameFieldNumber;
 const int S2SQueryRelationInviteToGameAck::kPlayeridFieldNumber;
 const int S2SQueryRelationInviteToGameAck::kPbinviteFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -18324,16 +18428,16 @@ S2SQueryRelationInviteToGameAck::S2SQueryRelationInviteToGameAck(const S2SQueryR
       _internal_metadata_(NULL),
       pbinvite_(from.pbinvite_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.dataname().size() > 0) {
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.relationname().size() > 0) {
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   playerid_ = from.playerid_;
   // @@protoc_insertion_point(copy_constructor:KFMsg.S2SQueryRelationInviteToGameAck)
 }
 
 void S2SQueryRelationInviteToGameAck::SharedCtor() {
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   playerid_ = GOOGLE_ULONGLONG(0);
 }
 
@@ -18343,7 +18447,7 @@ S2SQueryRelationInviteToGameAck::~S2SQueryRelationInviteToGameAck() {
 }
 
 void S2SQueryRelationInviteToGameAck::SharedDtor() {
-  dataname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void S2SQueryRelationInviteToGameAck::SetCachedSize(int size) const {
@@ -18367,7 +18471,7 @@ void S2SQueryRelationInviteToGameAck::Clear() {
   (void) cached_has_bits;
 
   pbinvite_.Clear();
-  dataname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   playerid_ = GOOGLE_ULONGLONG(0);
   _internal_metadata_.Clear();
 }
@@ -18382,12 +18486,12 @@ bool S2SQueryRelationInviteToGameAck::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bytes dataname = 1;
+      // bytes relationname = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_dataname()));
+                input, this->mutable_relationname()));
         } else {
           goto handle_unusual;
         }
@@ -18446,10 +18550,10 @@ void S2SQueryRelationInviteToGameAck::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      1, this->dataname(), output);
+      1, this->relationname(), output);
   }
 
   // uint64 playerid = 2;
@@ -18480,11 +18584,11 @@ void S2SQueryRelationInviteToGameAck::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        1, this->dataname(), target);
+        1, this->relationname(), target);
   }
 
   // uint64 playerid = 2;
@@ -18528,11 +18632,11 @@ size_t S2SQueryRelationInviteToGameAck::ByteSizeLong() const {
     }
   }
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->dataname());
+        this->relationname());
   }
 
   // uint64 playerid = 2;
@@ -18570,9 +18674,9 @@ void S2SQueryRelationInviteToGameAck::MergeFrom(const S2SQueryRelationInviteToGa
   (void) cached_has_bits;
 
   pbinvite_.MergeFrom(from.pbinvite_);
-  if (from.dataname().size() > 0) {
+  if (from.relationname().size() > 0) {
 
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   if (from.playerid() != 0) {
     set_playerid(from.playerid());
@@ -18604,7 +18708,7 @@ void S2SQueryRelationInviteToGameAck::Swap(S2SQueryRelationInviteToGameAck* othe
 void S2SQueryRelationInviteToGameAck::InternalSwap(S2SQueryRelationInviteToGameAck* other) {
   using std::swap;
   CastToBase(&pbinvite_)->InternalSwap(CastToBase(&other->pbinvite_));
-  dataname_.Swap(&other->dataname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  relationname_.Swap(&other->relationname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(playerid_, other->playerid_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -18618,16 +18722,16 @@ void S2SQueryRelationInviteToGameAck::InternalSwap(S2SQueryRelationInviteToGameA
 
 // ===================================================================
 
-S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse::S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse() {}
-S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse::S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
-void S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse::MergeFrom(const S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse& other) {
+S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse::S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse() {}
+S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse::S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+void S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse::MergeFrom(const S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse& other) {
   MergeFromInternal(other);
 }
-::google::protobuf::Metadata S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse::GetMetadata() const {
+::google::protobuf::Metadata S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse::GetMetadata() const {
   ::protobuf_FrameServerMessage_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_FrameServerMessage_2eproto::file_level_metadata[60];
 }
-void S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse::MergeFrom(
+void S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse::MergeFrom(
     const ::google::protobuf::Message& other) {
   ::google::protobuf::Message::MergeFrom(other);
 }
@@ -18635,90 +18739,520 @@ void S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse::MergeFrom(
 
 // ===================================================================
 
-void S2SUpdateDataToRelationReq::InitAsDefaultInstance() {
+void S2SUpdateIntValueToRelationReq::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int S2SUpdateDataToRelationReq::kDatanameFieldNumber;
-const int S2SUpdateDataToRelationReq::kPlayeridFieldNumber;
-const int S2SUpdateDataToRelationReq::kPbdataFieldNumber;
+const int S2SUpdateIntValueToRelationReq::kRelationnameFieldNumber;
+const int S2SUpdateIntValueToRelationReq::kPlayeridFieldNumber;
+const int S2SUpdateIntValueToRelationReq::kPbdataFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-S2SUpdateDataToRelationReq::S2SUpdateDataToRelationReq()
+S2SUpdateIntValueToRelationReq::S2SUpdateIntValueToRelationReq()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   ::google::protobuf::internal::InitSCC(
-      &protobuf_FrameServerMessage_2eproto::scc_info_S2SUpdateDataToRelationReq.base);
+      &protobuf_FrameServerMessage_2eproto::scc_info_S2SUpdateIntValueToRelationReq.base);
   SharedCtor();
-  // @@protoc_insertion_point(constructor:KFMsg.S2SUpdateDataToRelationReq)
+  // @@protoc_insertion_point(constructor:KFMsg.S2SUpdateIntValueToRelationReq)
 }
-S2SUpdateDataToRelationReq::S2SUpdateDataToRelationReq(const S2SUpdateDataToRelationReq& from)
+S2SUpdateIntValueToRelationReq::S2SUpdateIntValueToRelationReq(const S2SUpdateIntValueToRelationReq& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   pbdata_.MergeFrom(from.pbdata_);
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.dataname().size() > 0) {
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.relationname().size() > 0) {
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   playerid_ = from.playerid_;
-  // @@protoc_insertion_point(copy_constructor:KFMsg.S2SUpdateDataToRelationReq)
+  // @@protoc_insertion_point(copy_constructor:KFMsg.S2SUpdateIntValueToRelationReq)
 }
 
-void S2SUpdateDataToRelationReq::SharedCtor() {
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+void S2SUpdateIntValueToRelationReq::SharedCtor() {
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   playerid_ = GOOGLE_ULONGLONG(0);
 }
 
-S2SUpdateDataToRelationReq::~S2SUpdateDataToRelationReq() {
-  // @@protoc_insertion_point(destructor:KFMsg.S2SUpdateDataToRelationReq)
+S2SUpdateIntValueToRelationReq::~S2SUpdateIntValueToRelationReq() {
+  // @@protoc_insertion_point(destructor:KFMsg.S2SUpdateIntValueToRelationReq)
   SharedDtor();
 }
 
-void S2SUpdateDataToRelationReq::SharedDtor() {
-  dataname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+void S2SUpdateIntValueToRelationReq::SharedDtor() {
+  relationname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
-void S2SUpdateDataToRelationReq::SetCachedSize(int size) const {
+void S2SUpdateIntValueToRelationReq::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* S2SUpdateDataToRelationReq::descriptor() {
+const ::google::protobuf::Descriptor* S2SUpdateIntValueToRelationReq::descriptor() {
   ::protobuf_FrameServerMessage_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_FrameServerMessage_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
 }
 
-const S2SUpdateDataToRelationReq& S2SUpdateDataToRelationReq::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_FrameServerMessage_2eproto::scc_info_S2SUpdateDataToRelationReq.base);
+const S2SUpdateIntValueToRelationReq& S2SUpdateIntValueToRelationReq::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_FrameServerMessage_2eproto::scc_info_S2SUpdateIntValueToRelationReq.base);
   return *internal_default_instance();
 }
 
 
-void S2SUpdateDataToRelationReq::Clear() {
-// @@protoc_insertion_point(message_clear_start:KFMsg.S2SUpdateDataToRelationReq)
+void S2SUpdateIntValueToRelationReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:KFMsg.S2SUpdateIntValueToRelationReq)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   pbdata_.Clear();
-  dataname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   playerid_ = GOOGLE_ULONGLONG(0);
   _internal_metadata_.Clear();
 }
 
-bool S2SUpdateDataToRelationReq::MergePartialFromCodedStream(
+bool S2SUpdateIntValueToRelationReq::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:KFMsg.S2SUpdateDataToRelationReq)
+  // @@protoc_insertion_point(parse_start:KFMsg.S2SUpdateIntValueToRelationReq)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bytes dataname = 1;
+      // bytes relationname = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_dataname()));
+                input, this->mutable_relationname()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint64 playerid = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &playerid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // map<string, uint64> pbdata = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+          S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
+              S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse,
+              ::std::string, ::google::protobuf::uint64,
+              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+              ::google::protobuf::internal::WireFormatLite::TYPE_UINT64,
+              0 >,
+            ::google::protobuf::Map< ::std::string, ::google::protobuf::uint64 > > parser(&pbdata_);
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+              input, &parser));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            parser.key().data(), static_cast<int>(parser.key().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "KFMsg.S2SUpdateIntValueToRelationReq.PbdataEntry.key"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:KFMsg.S2SUpdateIntValueToRelationReq)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:KFMsg.S2SUpdateIntValueToRelationReq)
+  return false;
+#undef DO_
+}
+
+void S2SUpdateIntValueToRelationReq::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:KFMsg.S2SUpdateIntValueToRelationReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+      1, this->relationname(), output);
+  }
+
+  // uint64 playerid = 2;
+  if (this->playerid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->playerid(), output);
+  }
+
+  // map<string, uint64> pbdata = 3;
+  if (!this->pbdata().empty()) {
+    typedef ::google::protobuf::Map< ::std::string, ::google::protobuf::uint64 >::const_pointer
+        ConstPtr;
+    typedef ConstPtr SortItem;
+    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
+    struct Utf8Check {
+      static void Check(ConstPtr p) {
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          p->first.data(), static_cast<int>(p->first.length()),
+          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          "KFMsg.S2SUpdateIntValueToRelationReq.PbdataEntry.key");
+      }
+    };
+
+    if (output->IsSerializationDeterministic() &&
+        this->pbdata().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->pbdata().size()]);
+      typedef ::google::protobuf::Map< ::std::string, ::google::protobuf::uint64 >::size_type size_type;
+      size_type n = 0;
+      for (::google::protobuf::Map< ::std::string, ::google::protobuf::uint64 >::const_iterator
+          it = this->pbdata().begin();
+          it != this->pbdata().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      ::std::unique_ptr<S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse> entry;
+      for (size_type i = 0; i < n; i++) {
+        entry.reset(pbdata_.NewEntryWrapper(
+            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
+        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+            3, *entry, output);
+        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
+      }
+    } else {
+      ::std::unique_ptr<S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse> entry;
+      for (::google::protobuf::Map< ::std::string, ::google::protobuf::uint64 >::const_iterator
+          it = this->pbdata().begin();
+          it != this->pbdata().end(); ++it) {
+        entry.reset(pbdata_.NewEntryWrapper(
+            it->first, it->second));
+        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+            3, *entry, output);
+        Utf8Check::Check(&*it);
+      }
+    }
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:KFMsg.S2SUpdateIntValueToRelationReq)
+}
+
+::google::protobuf::uint8* S2SUpdateIntValueToRelationReq::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:KFMsg.S2SUpdateIntValueToRelationReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        1, this->relationname(), target);
+  }
+
+  // uint64 playerid = 2;
+  if (this->playerid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->playerid(), target);
+  }
+
+  // map<string, uint64> pbdata = 3;
+  if (!this->pbdata().empty()) {
+    typedef ::google::protobuf::Map< ::std::string, ::google::protobuf::uint64 >::const_pointer
+        ConstPtr;
+    typedef ConstPtr SortItem;
+    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
+    struct Utf8Check {
+      static void Check(ConstPtr p) {
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          p->first.data(), static_cast<int>(p->first.length()),
+          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          "KFMsg.S2SUpdateIntValueToRelationReq.PbdataEntry.key");
+      }
+    };
+
+    if (deterministic &&
+        this->pbdata().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->pbdata().size()]);
+      typedef ::google::protobuf::Map< ::std::string, ::google::protobuf::uint64 >::size_type size_type;
+      size_type n = 0;
+      for (::google::protobuf::Map< ::std::string, ::google::protobuf::uint64 >::const_iterator
+          it = this->pbdata().begin();
+          it != this->pbdata().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      ::std::unique_ptr<S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse> entry;
+      for (size_type i = 0; i < n; i++) {
+        entry.reset(pbdata_.NewEntryWrapper(
+            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
+        target = ::google::protobuf::internal::WireFormatLite::
+                   InternalWriteMessageNoVirtualToArray(
+                       3, *entry, deterministic, target);
+;
+        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
+      }
+    } else {
+      ::std::unique_ptr<S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse> entry;
+      for (::google::protobuf::Map< ::std::string, ::google::protobuf::uint64 >::const_iterator
+          it = this->pbdata().begin();
+          it != this->pbdata().end(); ++it) {
+        entry.reset(pbdata_.NewEntryWrapper(
+            it->first, it->second));
+        target = ::google::protobuf::internal::WireFormatLite::
+                   InternalWriteMessageNoVirtualToArray(
+                       3, *entry, deterministic, target);
+;
+        Utf8Check::Check(&*it);
+      }
+    }
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:KFMsg.S2SUpdateIntValueToRelationReq)
+  return target;
+}
+
+size_t S2SUpdateIntValueToRelationReq::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:KFMsg.S2SUpdateIntValueToRelationReq)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // map<string, uint64> pbdata = 3;
+  total_size += 1 *
+      ::google::protobuf::internal::FromIntSize(this->pbdata_size());
+  {
+    ::std::unique_ptr<S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse> entry;
+    for (::google::protobuf::Map< ::std::string, ::google::protobuf::uint64 >::const_iterator
+        it = this->pbdata().begin();
+        it != this->pbdata().end(); ++it) {
+      entry.reset(pbdata_.NewEntryWrapper(it->first, it->second));
+      total_size += ::google::protobuf::internal::WireFormatLite::
+          MessageSizeNoVirtual(*entry);
+    }
+  }
+
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->relationname());
+  }
+
+  // uint64 playerid = 2;
+  if (this->playerid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->playerid());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void S2SUpdateIntValueToRelationReq::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:KFMsg.S2SUpdateIntValueToRelationReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  const S2SUpdateIntValueToRelationReq* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const S2SUpdateIntValueToRelationReq>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:KFMsg.S2SUpdateIntValueToRelationReq)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:KFMsg.S2SUpdateIntValueToRelationReq)
+    MergeFrom(*source);
+  }
+}
+
+void S2SUpdateIntValueToRelationReq::MergeFrom(const S2SUpdateIntValueToRelationReq& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:KFMsg.S2SUpdateIntValueToRelationReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  pbdata_.MergeFrom(from.pbdata_);
+  if (from.relationname().size() > 0) {
+
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
+  }
+  if (from.playerid() != 0) {
+    set_playerid(from.playerid());
+  }
+}
+
+void S2SUpdateIntValueToRelationReq::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:KFMsg.S2SUpdateIntValueToRelationReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void S2SUpdateIntValueToRelationReq::CopyFrom(const S2SUpdateIntValueToRelationReq& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:KFMsg.S2SUpdateIntValueToRelationReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool S2SUpdateIntValueToRelationReq::IsInitialized() const {
+  return true;
+}
+
+void S2SUpdateIntValueToRelationReq::Swap(S2SUpdateIntValueToRelationReq* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void S2SUpdateIntValueToRelationReq::InternalSwap(S2SUpdateIntValueToRelationReq* other) {
+  using std::swap;
+  pbdata_.Swap(&other->pbdata_);
+  relationname_.Swap(&other->relationname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(playerid_, other->playerid_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+}
+
+::google::protobuf::Metadata S2SUpdateIntValueToRelationReq::GetMetadata() const {
+  protobuf_FrameServerMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_FrameServerMessage_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse::S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse() {}
+S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse::S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+void S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse::MergeFrom(const S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::google::protobuf::Metadata S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse::GetMetadata() const {
+  ::protobuf_FrameServerMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_FrameServerMessage_2eproto::file_level_metadata[62];
+}
+void S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse::MergeFrom(
+    const ::google::protobuf::Message& other) {
+  ::google::protobuf::Message::MergeFrom(other);
+}
+
+
+// ===================================================================
+
+void S2SUpdateStrValueToRelationReq::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int S2SUpdateStrValueToRelationReq::kRelationnameFieldNumber;
+const int S2SUpdateStrValueToRelationReq::kPlayeridFieldNumber;
+const int S2SUpdateStrValueToRelationReq::kPbdataFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+S2SUpdateStrValueToRelationReq::S2SUpdateStrValueToRelationReq()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_FrameServerMessage_2eproto::scc_info_S2SUpdateStrValueToRelationReq.base);
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:KFMsg.S2SUpdateStrValueToRelationReq)
+}
+S2SUpdateStrValueToRelationReq::S2SUpdateStrValueToRelationReq(const S2SUpdateStrValueToRelationReq& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  pbdata_.MergeFrom(from.pbdata_);
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.relationname().size() > 0) {
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
+  }
+  playerid_ = from.playerid_;
+  // @@protoc_insertion_point(copy_constructor:KFMsg.S2SUpdateStrValueToRelationReq)
+}
+
+void S2SUpdateStrValueToRelationReq::SharedCtor() {
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  playerid_ = GOOGLE_ULONGLONG(0);
+}
+
+S2SUpdateStrValueToRelationReq::~S2SUpdateStrValueToRelationReq() {
+  // @@protoc_insertion_point(destructor:KFMsg.S2SUpdateStrValueToRelationReq)
+  SharedDtor();
+}
+
+void S2SUpdateStrValueToRelationReq::SharedDtor() {
+  relationname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void S2SUpdateStrValueToRelationReq::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ::google::protobuf::Descriptor* S2SUpdateStrValueToRelationReq::descriptor() {
+  ::protobuf_FrameServerMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_FrameServerMessage_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const S2SUpdateStrValueToRelationReq& S2SUpdateStrValueToRelationReq::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_FrameServerMessage_2eproto::scc_info_S2SUpdateStrValueToRelationReq.base);
+  return *internal_default_instance();
+}
+
+
+void S2SUpdateStrValueToRelationReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:KFMsg.S2SUpdateStrValueToRelationReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  pbdata_.Clear();
+  relationname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  playerid_ = GOOGLE_ULONGLONG(0);
+  _internal_metadata_.Clear();
+}
+
+bool S2SUpdateStrValueToRelationReq::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:KFMsg.S2SUpdateStrValueToRelationReq)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // bytes relationname = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_relationname()));
         } else {
           goto handle_unusual;
         }
@@ -18743,8 +19277,8 @@ bool S2SUpdateDataToRelationReq::MergePartialFromCodedStream(
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
-              S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse,
+          S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
+              S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse,
               ::std::string, ::std::string,
               ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
               ::google::protobuf::internal::WireFormatLite::TYPE_BYTES,
@@ -18755,7 +19289,7 @@ bool S2SUpdateDataToRelationReq::MergePartialFromCodedStream(
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             parser.key().data(), static_cast<int>(parser.key().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "KFMsg.S2SUpdateDataToRelationReq.PbdataEntry.key"));
+            "KFMsg.S2SUpdateStrValueToRelationReq.PbdataEntry.key"));
         } else {
           goto handle_unusual;
         }
@@ -18774,24 +19308,24 @@ bool S2SUpdateDataToRelationReq::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:KFMsg.S2SUpdateDataToRelationReq)
+  // @@protoc_insertion_point(parse_success:KFMsg.S2SUpdateStrValueToRelationReq)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:KFMsg.S2SUpdateDataToRelationReq)
+  // @@protoc_insertion_point(parse_failure:KFMsg.S2SUpdateStrValueToRelationReq)
   return false;
 #undef DO_
 }
 
-void S2SUpdateDataToRelationReq::SerializeWithCachedSizes(
+void S2SUpdateStrValueToRelationReq::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:KFMsg.S2SUpdateDataToRelationReq)
+  // @@protoc_insertion_point(serialize_start:KFMsg.S2SUpdateStrValueToRelationReq)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      1, this->dataname(), output);
+      1, this->relationname(), output);
   }
 
   // uint64 playerid = 2;
@@ -18810,7 +19344,7 @@ void S2SUpdateDataToRelationReq::SerializeWithCachedSizes(
         ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
           p->first.data(), static_cast<int>(p->first.length()),
           ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "KFMsg.S2SUpdateDataToRelationReq.PbdataEntry.key");
+          "KFMsg.S2SUpdateStrValueToRelationReq.PbdataEntry.key");
       }
     };
 
@@ -18826,7 +19360,7 @@ void S2SUpdateDataToRelationReq::SerializeWithCachedSizes(
         items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
       }
       ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse> entry;
+      ::std::unique_ptr<S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse> entry;
       for (size_type i = 0; i < n; i++) {
         entry.reset(pbdata_.NewEntryWrapper(
             items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
@@ -18835,7 +19369,7 @@ void S2SUpdateDataToRelationReq::SerializeWithCachedSizes(
         Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
       }
     } else {
-      ::std::unique_ptr<S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse> entry;
+      ::std::unique_ptr<S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse> entry;
       for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
           it = this->pbdata().begin();
           it != this->pbdata().end(); ++it) {
@@ -18852,21 +19386,21 @@ void S2SUpdateDataToRelationReq::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:KFMsg.S2SUpdateDataToRelationReq)
+  // @@protoc_insertion_point(serialize_end:KFMsg.S2SUpdateStrValueToRelationReq)
 }
 
-::google::protobuf::uint8* S2SUpdateDataToRelationReq::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* S2SUpdateStrValueToRelationReq::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:KFMsg.S2SUpdateDataToRelationReq)
+  // @@protoc_insertion_point(serialize_to_array_start:KFMsg.S2SUpdateStrValueToRelationReq)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        1, this->dataname(), target);
+        1, this->relationname(), target);
   }
 
   // uint64 playerid = 2;
@@ -18885,7 +19419,7 @@ void S2SUpdateDataToRelationReq::SerializeWithCachedSizes(
         ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
           p->first.data(), static_cast<int>(p->first.length()),
           ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "KFMsg.S2SUpdateDataToRelationReq.PbdataEntry.key");
+          "KFMsg.S2SUpdateStrValueToRelationReq.PbdataEntry.key");
       }
     };
 
@@ -18901,7 +19435,7 @@ void S2SUpdateDataToRelationReq::SerializeWithCachedSizes(
         items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
       }
       ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse> entry;
+      ::std::unique_ptr<S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse> entry;
       for (size_type i = 0; i < n; i++) {
         entry.reset(pbdata_.NewEntryWrapper(
             items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
@@ -18912,7 +19446,7 @@ void S2SUpdateDataToRelationReq::SerializeWithCachedSizes(
         Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
       }
     } else {
-      ::std::unique_ptr<S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse> entry;
+      ::std::unique_ptr<S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse> entry;
       for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
           it = this->pbdata().begin();
           it != this->pbdata().end(); ++it) {
@@ -18931,12 +19465,12 @@ void S2SUpdateDataToRelationReq::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:KFMsg.S2SUpdateDataToRelationReq)
+  // @@protoc_insertion_point(serialize_to_array_end:KFMsg.S2SUpdateStrValueToRelationReq)
   return target;
 }
 
-size_t S2SUpdateDataToRelationReq::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:KFMsg.S2SUpdateDataToRelationReq)
+size_t S2SUpdateStrValueToRelationReq::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:KFMsg.S2SUpdateStrValueToRelationReq)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -18948,7 +19482,7 @@ size_t S2SUpdateDataToRelationReq::ByteSizeLong() const {
   total_size += 1 *
       ::google::protobuf::internal::FromIntSize(this->pbdata_size());
   {
-    ::std::unique_ptr<S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse> entry;
+    ::std::unique_ptr<S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse> entry;
     for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
         it = this->pbdata().begin();
         it != this->pbdata().end(); ++it) {
@@ -18958,11 +19492,11 @@ size_t S2SUpdateDataToRelationReq::ByteSizeLong() const {
     }
   }
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->dataname());
+        this->relationname());
   }
 
   // uint64 playerid = 2;
@@ -18977,70 +19511,70 @@ size_t S2SUpdateDataToRelationReq::ByteSizeLong() const {
   return total_size;
 }
 
-void S2SUpdateDataToRelationReq::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:KFMsg.S2SUpdateDataToRelationReq)
+void S2SUpdateStrValueToRelationReq::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:KFMsg.S2SUpdateStrValueToRelationReq)
   GOOGLE_DCHECK_NE(&from, this);
-  const S2SUpdateDataToRelationReq* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const S2SUpdateDataToRelationReq>(
+  const S2SUpdateStrValueToRelationReq* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const S2SUpdateStrValueToRelationReq>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:KFMsg.S2SUpdateDataToRelationReq)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:KFMsg.S2SUpdateStrValueToRelationReq)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:KFMsg.S2SUpdateDataToRelationReq)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:KFMsg.S2SUpdateStrValueToRelationReq)
     MergeFrom(*source);
   }
 }
 
-void S2SUpdateDataToRelationReq::MergeFrom(const S2SUpdateDataToRelationReq& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:KFMsg.S2SUpdateDataToRelationReq)
+void S2SUpdateStrValueToRelationReq::MergeFrom(const S2SUpdateStrValueToRelationReq& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:KFMsg.S2SUpdateStrValueToRelationReq)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   pbdata_.MergeFrom(from.pbdata_);
-  if (from.dataname().size() > 0) {
+  if (from.relationname().size() > 0) {
 
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   if (from.playerid() != 0) {
     set_playerid(from.playerid());
   }
 }
 
-void S2SUpdateDataToRelationReq::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:KFMsg.S2SUpdateDataToRelationReq)
+void S2SUpdateStrValueToRelationReq::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:KFMsg.S2SUpdateStrValueToRelationReq)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void S2SUpdateDataToRelationReq::CopyFrom(const S2SUpdateDataToRelationReq& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:KFMsg.S2SUpdateDataToRelationReq)
+void S2SUpdateStrValueToRelationReq::CopyFrom(const S2SUpdateStrValueToRelationReq& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:KFMsg.S2SUpdateStrValueToRelationReq)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool S2SUpdateDataToRelationReq::IsInitialized() const {
+bool S2SUpdateStrValueToRelationReq::IsInitialized() const {
   return true;
 }
 
-void S2SUpdateDataToRelationReq::Swap(S2SUpdateDataToRelationReq* other) {
+void S2SUpdateStrValueToRelationReq::Swap(S2SUpdateStrValueToRelationReq* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void S2SUpdateDataToRelationReq::InternalSwap(S2SUpdateDataToRelationReq* other) {
+void S2SUpdateStrValueToRelationReq::InternalSwap(S2SUpdateStrValueToRelationReq* other) {
   using std::swap;
   pbdata_.Swap(&other->pbdata_);
-  dataname_.Swap(&other->dataname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  relationname_.Swap(&other->relationname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(playerid_, other->playerid_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata S2SUpdateDataToRelationReq::GetMetadata() const {
+::google::protobuf::Metadata S2SUpdateStrValueToRelationReq::GetMetadata() const {
   protobuf_FrameServerMessage_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_FrameServerMessage_2eproto::file_level_metadata[kIndexInFileMessages];
 }
@@ -19051,7 +19585,7 @@ void S2SUpdateDataToRelationReq::InternalSwap(S2SUpdateDataToRelationReq* other)
 void S2SApplyAddRelationToRelationReq::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int S2SApplyAddRelationToRelationReq::kDatanameFieldNumber;
+const int S2SApplyAddRelationToRelationReq::kRelationnameFieldNumber;
 const int S2SApplyAddRelationToRelationReq::kPlayernameFieldNumber;
 const int S2SApplyAddRelationToRelationReq::kPlayeridFieldNumber;
 const int S2SApplyAddRelationToRelationReq::kMessageFieldNumber;
@@ -19068,9 +19602,9 @@ S2SApplyAddRelationToRelationReq::S2SApplyAddRelationToRelationReq(const S2SAppl
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.dataname().size() > 0) {
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.relationname().size() > 0) {
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   playername_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.playername().size() > 0) {
@@ -19085,7 +19619,7 @@ S2SApplyAddRelationToRelationReq::S2SApplyAddRelationToRelationReq(const S2SAppl
 }
 
 void S2SApplyAddRelationToRelationReq::SharedCtor() {
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   playername_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   message_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   playerid_ = GOOGLE_ULONGLONG(0);
@@ -19097,7 +19631,7 @@ S2SApplyAddRelationToRelationReq::~S2SApplyAddRelationToRelationReq() {
 }
 
 void S2SApplyAddRelationToRelationReq::SharedDtor() {
-  dataname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   playername_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   message_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -19122,7 +19656,7 @@ void S2SApplyAddRelationToRelationReq::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  dataname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   playername_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   message_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   playerid_ = GOOGLE_ULONGLONG(0);
@@ -19139,12 +19673,12 @@ bool S2SApplyAddRelationToRelationReq::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bytes dataname = 1;
+      // bytes relationname = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_dataname()));
+                input, this->mutable_relationname()));
         } else {
           goto handle_unusual;
         }
@@ -19215,10 +19749,10 @@ void S2SApplyAddRelationToRelationReq::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      1, this->dataname(), output);
+      1, this->relationname(), output);
   }
 
   // bytes playername = 2;
@@ -19252,11 +19786,11 @@ void S2SApplyAddRelationToRelationReq::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        1, this->dataname(), target);
+        1, this->relationname(), target);
   }
 
   // bytes playername = 2;
@@ -19295,11 +19829,11 @@ size_t S2SApplyAddRelationToRelationReq::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->dataname());
+        this->relationname());
   }
 
   // bytes playername = 2;
@@ -19350,9 +19884,9 @@ void S2SApplyAddRelationToRelationReq::MergeFrom(const S2SApplyAddRelationToRela
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.dataname().size() > 0) {
+  if (from.relationname().size() > 0) {
 
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   if (from.playername().size() > 0) {
 
@@ -19391,7 +19925,7 @@ void S2SApplyAddRelationToRelationReq::Swap(S2SApplyAddRelationToRelationReq* ot
 }
 void S2SApplyAddRelationToRelationReq::InternalSwap(S2SApplyAddRelationToRelationReq* other) {
   using std::swap;
-  dataname_.Swap(&other->dataname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  relationname_.Swap(&other->relationname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   playername_.Swap(&other->playername_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
@@ -19414,7 +19948,7 @@ void S2SApplyAddRelationToGameAck::InitAsDefaultInstance() {
       ::KFMsg::PBRelation::internal_default_instance());
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int S2SApplyAddRelationToGameAck::kDatanameFieldNumber;
+const int S2SApplyAddRelationToGameAck::kRelationnameFieldNumber;
 const int S2SApplyAddRelationToGameAck::kPlayeridFieldNumber;
 const int S2SApplyAddRelationToGameAck::kPbinviteFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -19430,9 +19964,9 @@ S2SApplyAddRelationToGameAck::S2SApplyAddRelationToGameAck(const S2SApplyAddRela
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.dataname().size() > 0) {
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.relationname().size() > 0) {
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   if (from.has_pbinvite()) {
     pbinvite_ = new ::KFMsg::PBRelation(*from.pbinvite_);
@@ -19444,7 +19978,7 @@ S2SApplyAddRelationToGameAck::S2SApplyAddRelationToGameAck(const S2SApplyAddRela
 }
 
 void S2SApplyAddRelationToGameAck::SharedCtor() {
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&pbinvite_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&playerid_) -
       reinterpret_cast<char*>(&pbinvite_)) + sizeof(playerid_));
@@ -19456,7 +19990,7 @@ S2SApplyAddRelationToGameAck::~S2SApplyAddRelationToGameAck() {
 }
 
 void S2SApplyAddRelationToGameAck::SharedDtor() {
-  dataname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete pbinvite_;
 }
 
@@ -19480,7 +20014,7 @@ void S2SApplyAddRelationToGameAck::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  dataname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (GetArenaNoVirtual() == NULL && pbinvite_ != NULL) {
     delete pbinvite_;
   }
@@ -19499,12 +20033,12 @@ bool S2SApplyAddRelationToGameAck::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bytes dataname = 1;
+      // bytes relationname = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_dataname()));
+                input, this->mutable_relationname()));
         } else {
           goto handle_unusual;
         }
@@ -19563,10 +20097,10 @@ void S2SApplyAddRelationToGameAck::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      1, this->dataname(), output);
+      1, this->relationname(), output);
   }
 
   // uint64 playerid = 2;
@@ -19594,11 +20128,11 @@ void S2SApplyAddRelationToGameAck::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        1, this->dataname(), target);
+        1, this->relationname(), target);
   }
 
   // uint64 playerid = 2;
@@ -19630,11 +20164,11 @@ size_t S2SApplyAddRelationToGameAck::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->dataname());
+        this->relationname());
   }
 
   // .KFMsg.PBRelation pbinvite = 3;
@@ -19678,9 +20212,9 @@ void S2SApplyAddRelationToGameAck::MergeFrom(const S2SApplyAddRelationToGameAck&
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.dataname().size() > 0) {
+  if (from.relationname().size() > 0) {
 
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   if (from.has_pbinvite()) {
     mutable_pbinvite()->::KFMsg::PBRelation::MergeFrom(from.pbinvite());
@@ -19714,7 +20248,7 @@ void S2SApplyAddRelationToGameAck::Swap(S2SApplyAddRelationToGameAck* other) {
 }
 void S2SApplyAddRelationToGameAck::InternalSwap(S2SApplyAddRelationToGameAck* other) {
   using std::swap;
-  dataname_.Swap(&other->dataname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  relationname_.Swap(&other->relationname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(pbinvite_, other->pbinvite_);
   swap(playerid_, other->playerid_);
@@ -19732,7 +20266,7 @@ void S2SApplyAddRelationToGameAck::InternalSwap(S2SApplyAddRelationToGameAck* ot
 void S2SDelRelationInviteToRelationReq::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int S2SDelRelationInviteToRelationReq::kDatanameFieldNumber;
+const int S2SDelRelationInviteToRelationReq::kRelationnameFieldNumber;
 const int S2SDelRelationInviteToRelationReq::kListnameFieldNumber;
 const int S2SDelRelationInviteToRelationReq::kSelfplayeridFieldNumber;
 const int S2SDelRelationInviteToRelationReq::kTargetplayeridFieldNumber;
@@ -19749,9 +20283,9 @@ S2SDelRelationInviteToRelationReq::S2SDelRelationInviteToRelationReq(const S2SDe
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.dataname().size() > 0) {
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.relationname().size() > 0) {
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   listname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.listname().size() > 0) {
@@ -19764,7 +20298,7 @@ S2SDelRelationInviteToRelationReq::S2SDelRelationInviteToRelationReq(const S2SDe
 }
 
 void S2SDelRelationInviteToRelationReq::SharedCtor() {
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   listname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&selfplayerid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&targetplayerid_) -
@@ -19777,7 +20311,7 @@ S2SDelRelationInviteToRelationReq::~S2SDelRelationInviteToRelationReq() {
 }
 
 void S2SDelRelationInviteToRelationReq::SharedDtor() {
-  dataname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   listname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -19801,7 +20335,7 @@ void S2SDelRelationInviteToRelationReq::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  dataname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   listname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&selfplayerid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&targetplayerid_) -
@@ -19819,12 +20353,12 @@ bool S2SDelRelationInviteToRelationReq::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bytes dataname = 1;
+      // bytes relationname = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_dataname()));
+                input, this->mutable_relationname()));
         } else {
           goto handle_unusual;
         }
@@ -19897,10 +20431,10 @@ void S2SDelRelationInviteToRelationReq::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      1, this->dataname(), output);
+      1, this->relationname(), output);
   }
 
   // bytes listname = 2;
@@ -19933,11 +20467,11 @@ void S2SDelRelationInviteToRelationReq::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        1, this->dataname(), target);
+        1, this->relationname(), target);
   }
 
   // bytes listname = 2;
@@ -19974,11 +20508,11 @@ size_t S2SDelRelationInviteToRelationReq::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->dataname());
+        this->relationname());
   }
 
   // bytes listname = 2;
@@ -20029,9 +20563,9 @@ void S2SDelRelationInviteToRelationReq::MergeFrom(const S2SDelRelationInviteToRe
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.dataname().size() > 0) {
+  if (from.relationname().size() > 0) {
 
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   if (from.listname().size() > 0) {
 
@@ -20069,7 +20603,7 @@ void S2SDelRelationInviteToRelationReq::Swap(S2SDelRelationInviteToRelationReq* 
 }
 void S2SDelRelationInviteToRelationReq::InternalSwap(S2SDelRelationInviteToRelationReq* other) {
   using std::swap;
-  dataname_.Swap(&other->dataname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  relationname_.Swap(&other->relationname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   listname_.Swap(&other->listname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
@@ -20089,7 +20623,7 @@ void S2SDelRelationInviteToRelationReq::InternalSwap(S2SDelRelationInviteToRelat
 void S2SAddRelationToRelationReq::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int S2SAddRelationToRelationReq::kDatanameFieldNumber;
+const int S2SAddRelationToRelationReq::kRelationnameFieldNumber;
 const int S2SAddRelationToRelationReq::kPlayeridFieldNumber;
 const int S2SAddRelationToRelationReq::kPlayernameFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -20105,9 +20639,9 @@ S2SAddRelationToRelationReq::S2SAddRelationToRelationReq(const S2SAddRelationToR
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.dataname().size() > 0) {
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.relationname().size() > 0) {
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   playername_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.playername().size() > 0) {
@@ -20118,7 +20652,7 @@ S2SAddRelationToRelationReq::S2SAddRelationToRelationReq(const S2SAddRelationToR
 }
 
 void S2SAddRelationToRelationReq::SharedCtor() {
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   playername_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   playerid_ = GOOGLE_ULONGLONG(0);
 }
@@ -20129,7 +20663,7 @@ S2SAddRelationToRelationReq::~S2SAddRelationToRelationReq() {
 }
 
 void S2SAddRelationToRelationReq::SharedDtor() {
-  dataname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   playername_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -20153,7 +20687,7 @@ void S2SAddRelationToRelationReq::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  dataname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   playername_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   playerid_ = GOOGLE_ULONGLONG(0);
   _internal_metadata_.Clear();
@@ -20169,12 +20703,12 @@ bool S2SAddRelationToRelationReq::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bytes dataname = 1;
+      // bytes relationname = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_dataname()));
+                input, this->mutable_relationname()));
         } else {
           goto handle_unusual;
         }
@@ -20233,10 +20767,10 @@ void S2SAddRelationToRelationReq::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      1, this->dataname(), output);
+      1, this->relationname(), output);
   }
 
   // uint64 playerid = 2;
@@ -20264,11 +20798,11 @@ void S2SAddRelationToRelationReq::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        1, this->dataname(), target);
+        1, this->relationname(), target);
   }
 
   // uint64 playerid = 2;
@@ -20300,11 +20834,11 @@ size_t S2SAddRelationToRelationReq::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->dataname());
+        this->relationname());
   }
 
   // bytes playername = 3;
@@ -20348,9 +20882,9 @@ void S2SAddRelationToRelationReq::MergeFrom(const S2SAddRelationToRelationReq& f
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.dataname().size() > 0) {
+  if (from.relationname().size() > 0) {
 
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   if (from.playername().size() > 0) {
 
@@ -20385,7 +20919,7 @@ void S2SAddRelationToRelationReq::Swap(S2SAddRelationToRelationReq* other) {
 }
 void S2SAddRelationToRelationReq::InternalSwap(S2SAddRelationToRelationReq* other) {
   using std::swap;
-  dataname_.Swap(&other->dataname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  relationname_.Swap(&other->relationname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   playername_.Swap(&other->playername_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
@@ -20406,7 +20940,7 @@ void S2SAddRelationToGameAck::InitAsDefaultInstance() {
       ::KFMsg::PBRelation::internal_default_instance());
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int S2SAddRelationToGameAck::kDatanameFieldNumber;
+const int S2SAddRelationToGameAck::kRelationnameFieldNumber;
 const int S2SAddRelationToGameAck::kPlayeridFieldNumber;
 const int S2SAddRelationToGameAck::kPbrelationFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -20422,9 +20956,9 @@ S2SAddRelationToGameAck::S2SAddRelationToGameAck(const S2SAddRelationToGameAck& 
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.dataname().size() > 0) {
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.relationname().size() > 0) {
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   if (from.has_pbrelation()) {
     pbrelation_ = new ::KFMsg::PBRelation(*from.pbrelation_);
@@ -20436,7 +20970,7 @@ S2SAddRelationToGameAck::S2SAddRelationToGameAck(const S2SAddRelationToGameAck& 
 }
 
 void S2SAddRelationToGameAck::SharedCtor() {
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&pbrelation_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&playerid_) -
       reinterpret_cast<char*>(&pbrelation_)) + sizeof(playerid_));
@@ -20448,7 +20982,7 @@ S2SAddRelationToGameAck::~S2SAddRelationToGameAck() {
 }
 
 void S2SAddRelationToGameAck::SharedDtor() {
-  dataname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete pbrelation_;
 }
 
@@ -20472,7 +21006,7 @@ void S2SAddRelationToGameAck::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  dataname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (GetArenaNoVirtual() == NULL && pbrelation_ != NULL) {
     delete pbrelation_;
   }
@@ -20491,12 +21025,12 @@ bool S2SAddRelationToGameAck::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bytes dataname = 1;
+      // bytes relationname = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_dataname()));
+                input, this->mutable_relationname()));
         } else {
           goto handle_unusual;
         }
@@ -20555,10 +21089,10 @@ void S2SAddRelationToGameAck::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      1, this->dataname(), output);
+      1, this->relationname(), output);
   }
 
   // uint64 playerid = 2;
@@ -20586,11 +21120,11 @@ void S2SAddRelationToGameAck::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        1, this->dataname(), target);
+        1, this->relationname(), target);
   }
 
   // uint64 playerid = 2;
@@ -20622,11 +21156,11 @@ size_t S2SAddRelationToGameAck::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->dataname());
+        this->relationname());
   }
 
   // .KFMsg.PBRelation pbrelation = 4;
@@ -20670,9 +21204,9 @@ void S2SAddRelationToGameAck::MergeFrom(const S2SAddRelationToGameAck& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.dataname().size() > 0) {
+  if (from.relationname().size() > 0) {
 
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   if (from.has_pbrelation()) {
     mutable_pbrelation()->::KFMsg::PBRelation::MergeFrom(from.pbrelation());
@@ -20706,7 +21240,7 @@ void S2SAddRelationToGameAck::Swap(S2SAddRelationToGameAck* other) {
 }
 void S2SAddRelationToGameAck::InternalSwap(S2SAddRelationToGameAck* other) {
   using std::swap;
-  dataname_.Swap(&other->dataname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  relationname_.Swap(&other->relationname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(pbrelation_, other->pbrelation_);
   swap(playerid_, other->playerid_);
@@ -20724,7 +21258,7 @@ void S2SAddRelationToGameAck::InternalSwap(S2SAddRelationToGameAck* other) {
 void S2SDelRelationToRelationReq::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int S2SDelRelationToRelationReq::kDatanameFieldNumber;
+const int S2SDelRelationToRelationReq::kRelationnameFieldNumber;
 const int S2SDelRelationToRelationReq::kPlayeridFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -20739,16 +21273,16 @@ S2SDelRelationToRelationReq::S2SDelRelationToRelationReq(const S2SDelRelationToR
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.dataname().size() > 0) {
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.relationname().size() > 0) {
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   playerid_ = from.playerid_;
   // @@protoc_insertion_point(copy_constructor:KFMsg.S2SDelRelationToRelationReq)
 }
 
 void S2SDelRelationToRelationReq::SharedCtor() {
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   playerid_ = GOOGLE_ULONGLONG(0);
 }
 
@@ -20758,7 +21292,7 @@ S2SDelRelationToRelationReq::~S2SDelRelationToRelationReq() {
 }
 
 void S2SDelRelationToRelationReq::SharedDtor() {
-  dataname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void S2SDelRelationToRelationReq::SetCachedSize(int size) const {
@@ -20781,7 +21315,7 @@ void S2SDelRelationToRelationReq::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  dataname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   playerid_ = GOOGLE_ULONGLONG(0);
   _internal_metadata_.Clear();
 }
@@ -20796,12 +21330,12 @@ bool S2SDelRelationToRelationReq::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bytes dataname = 1;
+      // bytes relationname = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_dataname()));
+                input, this->mutable_relationname()));
         } else {
           goto handle_unusual;
         }
@@ -20848,10 +21382,10 @@ void S2SDelRelationToRelationReq::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      1, this->dataname(), output);
+      1, this->relationname(), output);
   }
 
   // uint64 playerid = 2;
@@ -20873,11 +21407,11 @@ void S2SDelRelationToRelationReq::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        1, this->dataname(), target);
+        1, this->relationname(), target);
   }
 
   // uint64 playerid = 2;
@@ -20902,11 +21436,11 @@ size_t S2SDelRelationToRelationReq::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->dataname());
+        this->relationname());
   }
 
   // uint64 playerid = 2;
@@ -20943,9 +21477,9 @@ void S2SDelRelationToRelationReq::MergeFrom(const S2SDelRelationToRelationReq& f
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.dataname().size() > 0) {
+  if (from.relationname().size() > 0) {
 
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   if (from.playerid() != 0) {
     set_playerid(from.playerid());
@@ -20976,7 +21510,7 @@ void S2SDelRelationToRelationReq::Swap(S2SDelRelationToRelationReq* other) {
 }
 void S2SDelRelationToRelationReq::InternalSwap(S2SDelRelationToRelationReq* other) {
   using std::swap;
-  dataname_.Swap(&other->dataname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  relationname_.Swap(&other->relationname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(playerid_, other->playerid_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -20993,7 +21527,7 @@ void S2SDelRelationToRelationReq::InternalSwap(S2SDelRelationToRelationReq* othe
 void S2SDelRelationToGameAck::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int S2SDelRelationToGameAck::kDatanameFieldNumber;
+const int S2SDelRelationToGameAck::kRelationnameFieldNumber;
 const int S2SDelRelationToGameAck::kPlayeridFieldNumber;
 const int S2SDelRelationToGameAck::kRelationidFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -21009,9 +21543,9 @@ S2SDelRelationToGameAck::S2SDelRelationToGameAck(const S2SDelRelationToGameAck& 
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.dataname().size() > 0) {
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.relationname().size() > 0) {
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   ::memcpy(&playerid_, &from.playerid_,
     static_cast<size_t>(reinterpret_cast<char*>(&relationid_) -
@@ -21020,7 +21554,7 @@ S2SDelRelationToGameAck::S2SDelRelationToGameAck(const S2SDelRelationToGameAck& 
 }
 
 void S2SDelRelationToGameAck::SharedCtor() {
-  dataname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&playerid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&relationid_) -
       reinterpret_cast<char*>(&playerid_)) + sizeof(relationid_));
@@ -21032,7 +21566,7 @@ S2SDelRelationToGameAck::~S2SDelRelationToGameAck() {
 }
 
 void S2SDelRelationToGameAck::SharedDtor() {
-  dataname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void S2SDelRelationToGameAck::SetCachedSize(int size) const {
@@ -21055,7 +21589,7 @@ void S2SDelRelationToGameAck::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  dataname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relationname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&playerid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&relationid_) -
       reinterpret_cast<char*>(&playerid_)) + sizeof(relationid_));
@@ -21072,12 +21606,12 @@ bool S2SDelRelationToGameAck::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bytes dataname = 1;
+      // bytes relationname = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_dataname()));
+                input, this->mutable_relationname()));
         } else {
           goto handle_unusual;
         }
@@ -21138,10 +21672,10 @@ void S2SDelRelationToGameAck::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      1, this->dataname(), output);
+      1, this->relationname(), output);
   }
 
   // uint64 playerid = 2;
@@ -21168,11 +21702,11 @@ void S2SDelRelationToGameAck::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        1, this->dataname(), target);
+        1, this->relationname(), target);
   }
 
   // uint64 playerid = 2;
@@ -21202,11 +21736,11 @@ size_t S2SDelRelationToGameAck::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // bytes dataname = 1;
-  if (this->dataname().size() > 0) {
+  // bytes relationname = 1;
+  if (this->relationname().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->dataname());
+        this->relationname());
   }
 
   // uint64 playerid = 2;
@@ -21250,9 +21784,9 @@ void S2SDelRelationToGameAck::MergeFrom(const S2SDelRelationToGameAck& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.dataname().size() > 0) {
+  if (from.relationname().size() > 0) {
 
-    dataname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dataname_);
+    relationname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relationname_);
   }
   if (from.playerid() != 0) {
     set_playerid(from.playerid());
@@ -21286,7 +21820,7 @@ void S2SDelRelationToGameAck::Swap(S2SDelRelationToGameAck* other) {
 }
 void S2SDelRelationToGameAck::InternalSwap(S2SDelRelationToGameAck* other) {
   using std::swap;
-  dataname_.Swap(&other->dataname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  relationname_.Swap(&other->relationname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(playerid_, other->playerid_);
   swap(relationid_, other->relationid_);
@@ -21937,6 +22471,317 @@ void S2SUpdateFriendLinessToGameAck::InternalSwap(S2SUpdateFriendLinessToGameAck
 }
 
 
+// ===================================================================
+
+void S2SRefuseRelationToRelationReq::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int S2SRefuseRelationToRelationReq::kRefusenameFieldNumber;
+const int S2SRefuseRelationToRelationReq::kPlayeridFieldNumber;
+const int S2SRefuseRelationToRelationReq::kRefusevalueFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+S2SRefuseRelationToRelationReq::S2SRefuseRelationToRelationReq()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_FrameServerMessage_2eproto::scc_info_S2SRefuseRelationToRelationReq.base);
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:KFMsg.S2SRefuseRelationToRelationReq)
+}
+S2SRefuseRelationToRelationReq::S2SRefuseRelationToRelationReq(const S2SRefuseRelationToRelationReq& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  refusename_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.refusename().size() > 0) {
+    refusename_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.refusename_);
+  }
+  ::memcpy(&playerid_, &from.playerid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&refusevalue_) -
+    reinterpret_cast<char*>(&playerid_)) + sizeof(refusevalue_));
+  // @@protoc_insertion_point(copy_constructor:KFMsg.S2SRefuseRelationToRelationReq)
+}
+
+void S2SRefuseRelationToRelationReq::SharedCtor() {
+  refusename_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&playerid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&refusevalue_) -
+      reinterpret_cast<char*>(&playerid_)) + sizeof(refusevalue_));
+}
+
+S2SRefuseRelationToRelationReq::~S2SRefuseRelationToRelationReq() {
+  // @@protoc_insertion_point(destructor:KFMsg.S2SRefuseRelationToRelationReq)
+  SharedDtor();
+}
+
+void S2SRefuseRelationToRelationReq::SharedDtor() {
+  refusename_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void S2SRefuseRelationToRelationReq::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ::google::protobuf::Descriptor* S2SRefuseRelationToRelationReq::descriptor() {
+  ::protobuf_FrameServerMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_FrameServerMessage_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const S2SRefuseRelationToRelationReq& S2SRefuseRelationToRelationReq::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_FrameServerMessage_2eproto::scc_info_S2SRefuseRelationToRelationReq.base);
+  return *internal_default_instance();
+}
+
+
+void S2SRefuseRelationToRelationReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:KFMsg.S2SRefuseRelationToRelationReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  refusename_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&playerid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&refusevalue_) -
+      reinterpret_cast<char*>(&playerid_)) + sizeof(refusevalue_));
+  _internal_metadata_.Clear();
+}
+
+bool S2SRefuseRelationToRelationReq::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:KFMsg.S2SRefuseRelationToRelationReq)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // bytes refusename = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_refusename()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint64 playerid = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &playerid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint64 refusevalue = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &refusevalue_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:KFMsg.S2SRefuseRelationToRelationReq)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:KFMsg.S2SRefuseRelationToRelationReq)
+  return false;
+#undef DO_
+}
+
+void S2SRefuseRelationToRelationReq::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:KFMsg.S2SRefuseRelationToRelationReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bytes refusename = 1;
+  if (this->refusename().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+      1, this->refusename(), output);
+  }
+
+  // uint64 playerid = 2;
+  if (this->playerid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->playerid(), output);
+  }
+
+  // uint64 refusevalue = 3;
+  if (this->refusevalue() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(3, this->refusevalue(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:KFMsg.S2SRefuseRelationToRelationReq)
+}
+
+::google::protobuf::uint8* S2SRefuseRelationToRelationReq::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:KFMsg.S2SRefuseRelationToRelationReq)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bytes refusename = 1;
+  if (this->refusename().size() > 0) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        1, this->refusename(), target);
+  }
+
+  // uint64 playerid = 2;
+  if (this->playerid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->playerid(), target);
+  }
+
+  // uint64 refusevalue = 3;
+  if (this->refusevalue() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(3, this->refusevalue(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:KFMsg.S2SRefuseRelationToRelationReq)
+  return target;
+}
+
+size_t S2SRefuseRelationToRelationReq::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:KFMsg.S2SRefuseRelationToRelationReq)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // bytes refusename = 1;
+  if (this->refusename().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->refusename());
+  }
+
+  // uint64 playerid = 2;
+  if (this->playerid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->playerid());
+  }
+
+  // uint64 refusevalue = 3;
+  if (this->refusevalue() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->refusevalue());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void S2SRefuseRelationToRelationReq::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:KFMsg.S2SRefuseRelationToRelationReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  const S2SRefuseRelationToRelationReq* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const S2SRefuseRelationToRelationReq>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:KFMsg.S2SRefuseRelationToRelationReq)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:KFMsg.S2SRefuseRelationToRelationReq)
+    MergeFrom(*source);
+  }
+}
+
+void S2SRefuseRelationToRelationReq::MergeFrom(const S2SRefuseRelationToRelationReq& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:KFMsg.S2SRefuseRelationToRelationReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.refusename().size() > 0) {
+
+    refusename_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.refusename_);
+  }
+  if (from.playerid() != 0) {
+    set_playerid(from.playerid());
+  }
+  if (from.refusevalue() != 0) {
+    set_refusevalue(from.refusevalue());
+  }
+}
+
+void S2SRefuseRelationToRelationReq::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:KFMsg.S2SRefuseRelationToRelationReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void S2SRefuseRelationToRelationReq::CopyFrom(const S2SRefuseRelationToRelationReq& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:KFMsg.S2SRefuseRelationToRelationReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool S2SRefuseRelationToRelationReq::IsInitialized() const {
+  return true;
+}
+
+void S2SRefuseRelationToRelationReq::Swap(S2SRefuseRelationToRelationReq* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void S2SRefuseRelationToRelationReq::InternalSwap(S2SRefuseRelationToRelationReq* other) {
+  using std::swap;
+  refusename_.Swap(&other->refusename_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(playerid_, other->playerid_);
+  swap(refusevalue_, other->refusevalue_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+}
+
+::google::protobuf::Metadata S2SRefuseRelationToRelationReq::GetMetadata() const {
+  protobuf_FrameServerMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_FrameServerMessage_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace KFMsg
 namespace google {
@@ -22100,8 +22945,8 @@ template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::S2SSetPlayerNameToBasicRe
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::S2SSetPlayerNameToGameAck* Arena::CreateMaybeMessage< ::KFMsg::S2SSetPlayerNameToGameAck >(Arena* arena) {
   return Arena::CreateInternal< ::KFMsg::S2SSetPlayerNameToGameAck >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBRelation_PlayerdataEntry_DoNotUse* Arena::CreateMaybeMessage< ::KFMsg::PBRelation_PlayerdataEntry_DoNotUse >(Arena* arena) {
-  return Arena::CreateInternal< ::KFMsg::PBRelation_PlayerdataEntry_DoNotUse >(arena);
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBRelation_BasicdataEntry_DoNotUse* Arena::CreateMaybeMessage< ::KFMsg::PBRelation_BasicdataEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateInternal< ::KFMsg::PBRelation_BasicdataEntry_DoNotUse >(arena);
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::PBRelation_RelationdataEntry_DoNotUse* Arena::CreateMaybeMessage< ::KFMsg::PBRelation_RelationdataEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateInternal< ::KFMsg::PBRelation_RelationdataEntry_DoNotUse >(arena);
@@ -22121,11 +22966,17 @@ template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::S2SQueryRelationInviteToR
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::S2SQueryRelationInviteToGameAck* Arena::CreateMaybeMessage< ::KFMsg::S2SQueryRelationInviteToGameAck >(Arena* arena) {
   return Arena::CreateInternal< ::KFMsg::S2SQueryRelationInviteToGameAck >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse* Arena::CreateMaybeMessage< ::KFMsg::S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse >(Arena* arena) {
-  return Arena::CreateInternal< ::KFMsg::S2SUpdateDataToRelationReq_PbdataEntry_DoNotUse >(arena);
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse* Arena::CreateMaybeMessage< ::KFMsg::S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateInternal< ::KFMsg::S2SUpdateIntValueToRelationReq_PbdataEntry_DoNotUse >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::S2SUpdateDataToRelationReq* Arena::CreateMaybeMessage< ::KFMsg::S2SUpdateDataToRelationReq >(Arena* arena) {
-  return Arena::CreateInternal< ::KFMsg::S2SUpdateDataToRelationReq >(arena);
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::S2SUpdateIntValueToRelationReq* Arena::CreateMaybeMessage< ::KFMsg::S2SUpdateIntValueToRelationReq >(Arena* arena) {
+  return Arena::CreateInternal< ::KFMsg::S2SUpdateIntValueToRelationReq >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse* Arena::CreateMaybeMessage< ::KFMsg::S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateInternal< ::KFMsg::S2SUpdateStrValueToRelationReq_PbdataEntry_DoNotUse >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::S2SUpdateStrValueToRelationReq* Arena::CreateMaybeMessage< ::KFMsg::S2SUpdateStrValueToRelationReq >(Arena* arena) {
+  return Arena::CreateInternal< ::KFMsg::S2SUpdateStrValueToRelationReq >(arena);
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::S2SApplyAddRelationToRelationReq* Arena::CreateMaybeMessage< ::KFMsg::S2SApplyAddRelationToRelationReq >(Arena* arena) {
   return Arena::CreateInternal< ::KFMsg::S2SApplyAddRelationToRelationReq >(arena);
@@ -22153,6 +23004,9 @@ template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::S2SUpdateFriendLinessToRe
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::S2SUpdateFriendLinessToGameAck* Arena::CreateMaybeMessage< ::KFMsg::S2SUpdateFriendLinessToGameAck >(Arena* arena) {
   return Arena::CreateInternal< ::KFMsg::S2SUpdateFriendLinessToGameAck >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KFMsg::S2SRefuseRelationToRelationReq* Arena::CreateMaybeMessage< ::KFMsg::S2SRefuseRelationToRelationReq >(Arena* arena) {
+  return Arena::CreateInternal< ::KFMsg::S2SRefuseRelationToRelationReq >(arena);
 }
 }  // namespace protobuf
 }  // namespace google

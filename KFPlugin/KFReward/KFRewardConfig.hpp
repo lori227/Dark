@@ -4,6 +4,7 @@
 #include "KFCore/KFElement.h"
 #include "KFZConfig/KFConfig.h"
 #include "KFZConfig/KFSetting.h"
+#include "KFZConfig/KFElementConfig.h"
 
 namespace KFrame
 {
@@ -29,13 +30,10 @@ namespace KFrame
         }
 
         // 获取奖励字符串
-        const std::string& StringElement( const std::string& dataname, uint32 datavalue, uint32 dataid );
-
-        // 格式化奖励
-        bool FormatElement( KFElements& kfelements, const std::string& dataname, const std::string& datavalue, uint32 dataid );
-
-        // 解析奖励字符串
-        bool ParseElement( KFElements& kfelements );
+        const std::string& FormatIntString( const std::string& dataname, uint32 datavalue, uint32 dataid );
+        const std::string& FormatStrString( const std::string& dataname, const std::string& datavalue, uint32 dataid );
+        const std::string& FormatSettingString( const KFElementSetting& kfsetting );
+        const std::string& ParseString( const std::string& strparase );
 
     protected:
         virtual void ClearSetting();
@@ -47,7 +45,7 @@ namespace KFrame
         uint64 CalcTypeCodeValue( uint64 type, uint64 code );
 
         // 格式化字串
-        const std::string& FormatElement( uint32 type, uint32 code, uint32 num );
+        const std::string& FormatRewardString( uint32 type, uint32 code, uint32 num );
 
     private:
         std::unordered_map<uint64, std::string> _id_name_list;

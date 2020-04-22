@@ -452,8 +452,7 @@ namespace KFrame
         auto costnum = static_cast<uint32>( std::round( totalexp * param1 * setting->_scale_consume ) );
 
         // 费用数据格式
-        auto& elemntstr = KFElementConfig::Instance()->StringElemnt( kfformulasetting->_type, costnum, _invalid_int );
-        _element.Parse( elemntstr, __FUNC_LINE__ );
+        KFElementConfig::Instance()->FormatElement( _element, kfformulasetting->_type, costnum );
         return &_element;
     }
 
@@ -486,10 +485,7 @@ namespace KFrame
 
         // 消耗个数 = 剩余分钟 / 参数1 * 参数2
         auto costnum = static_cast<uint32>( std::round( leftmin / param1 * param2 ) );
-
-        // 费用数据格式
-        auto& elemntstr = KFElementConfig::Instance()->StringElemnt( kfformulasetting->_type, costnum, _invalid_int );
-        _element.Parse( elemntstr, __FUNC_LINE__ );
+        KFElementConfig::Instance()->FormatElement( _element, kfformulasetting->_type, costnum );
         return &_element;
     }
 

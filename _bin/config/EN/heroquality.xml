@@ -1,10 +1,10 @@
-<root platform="" version="4420">
-	<item Id="1" GrowthMax="90" HeadFrame="HeroQuality03" />
-	<item Id="2" GrowthMax="100" HeadFrame="HeroQuality04" />
-	<item Id="3" GrowthMax="110" HeadFrame="HeroQuality05" />
-	<item Id="4" GrowthMax="120" HeadFrame="HeroQuality05" />
-	<item Id="5" GrowthMax="130" HeadFrame="HeroQuality06" />
-	<item Id="6" GrowthMax="140" HeadFrame="HeroQuality06" />
-	<item Id="7" GrowthMax="150" HeadFrame="HeroQuality07" />
-	<item Id="8" GrowthMax="99999" HeadFrame="HeroQuality07" />
+<root platform="" version="4587">
+	<item Id="1" GrowthMax="90" HeadFrame="HeroQuality03" name="HeroQuality01" SkillQuality="0" InnateNum="1" InnateQuality="0" RoleDurability="20-20" Attr_maxhp="100-100" Attr_atk="100-100" Attr_def="100-100" Attr_res="100-100" Attr_tal="100-100" Attr_spd="100-100" Attr_luk="100-100" />
+	<item Id="2" GrowthMax="100" HeadFrame="HeroQuality04" name="HeroQuality02" SkillQuality="0" InnateNum="1" InnateQuality="0" RoleDurability="20-25" Attr_maxhp="100-150" Attr_atk="100-150" Attr_def="100-150" Attr_res="100-150" Attr_tal="100-150" Attr_spd="100-150" Attr_luk="100-150" />
+	<item Id="3" GrowthMax="110" HeadFrame="HeroQuality05" name="HeroQuality03" SkillQuality="1-5" InnateNum="2" InnateQuality="1-5" RoleDurability="20-30" Attr_maxhp="100-100" Attr_atk="100-100" Attr_def="100-100" Attr_res="100-100" Attr_tal="100-100" Attr_spd="100-100" Attr_luk="100-100" />
+	<item Id="4" GrowthMax="120" HeadFrame="HeroQuality05" name="HeroQuality04" SkillQuality="2-5" InnateNum="2" InnateQuality="2-5" RoleDurability="20-35" Attr_maxhp="100-150" Attr_atk="100-150" Attr_def="100-150" Attr_res="100-150" Attr_tal="100-150" Attr_spd="100-150" Attr_luk="100-150" />
+	<item Id="5" GrowthMax="130" HeadFrame="HeroQuality06" name="HeroQuality05" SkillQuality="3-5" InnateNum="3" InnateQuality="3-5" RoleDurability="20-40" Attr_maxhp="100-100" Attr_atk="100-100" Attr_def="100-100" Attr_res="100-100" Attr_tal="100-100" Attr_spd="100-100" Attr_luk="100-100" />
+	<item Id="6" GrowthMax="140" HeadFrame="HeroQuality06" name="HeroQuality06" SkillQuality="4-5" InnateNum="3" InnateQuality="4-5" RoleDurability="20-45" Attr_maxhp="100-150" Attr_atk="100-150" Attr_def="100-150" Attr_res="100-150" Attr_tal="100-150" Attr_spd="100-150" Attr_luk="100-150" />
+	<item Id="7" GrowthMax="150" HeadFrame="HeroQuality07" name="HeroQuality07" SkillQuality="3-6" InnateNum="3" InnateQuality="3-6" RoleDurability="20-50" Attr_maxhp="100-100" Attr_atk="100-100" Attr_def="100-100" Attr_res="100-100" Attr_tal="100-100" Attr_spd="100-100" Attr_luk="100-100" />
+	<item Id="8" GrowthMax="99999" HeadFrame="HeroQuality07" name="HeroQuality08" SkillQuality="4-6" InnateNum="3" InnateQuality="4-6" RoleDurability="20-55" Attr_maxhp="100-150" Attr_atk="100-150" Attr_def="100-150" Attr_res="100-150" Attr_tal="100-150" Attr_spd="100-150" Attr_luk="100-150" />
 </root>

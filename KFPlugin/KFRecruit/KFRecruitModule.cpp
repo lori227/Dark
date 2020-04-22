@@ -547,7 +547,7 @@ namespace KFrame
         finalprice = CalcRecruitHeroDiscount( kfeffect, kfhero, finalprice );
 
         // 格式化费用数据
-        auto& strcost = KFElementConfig::Instance()->StringElemnt( kfformulasetting->_type, finalprice, 0u );
+        auto& strcost = KFElementConfig::Instance()->FormatString( kfformulasetting->_type, finalprice );
         if ( !update )
         {
             kfrecruit->Set( __STRING__( cost ), strcost );

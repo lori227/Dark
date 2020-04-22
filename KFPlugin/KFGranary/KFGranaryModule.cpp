@@ -272,7 +272,7 @@ namespace KFrame
         static KFElements _item_element;
         if ( _item_element.IsEmpty() )
         {
-            auto ok = KFElementConfig::Instance()->FormatElemnt( _item_element, __STRING__( item ), "1", itemid );
+            auto ok = KFElementConfig::Instance()->FormatElement( _item_element, __STRING__( item ), 1, itemid );
             if ( !ok )
             {
                 return _kf_display->SendToClient( player, KFMsg::ElementParseError );
@@ -339,7 +339,7 @@ namespace KFrame
         static KFElements _item_element;
         if ( _item_element.IsEmpty() )
         {
-            auto ok = KFElementConfig::Instance()->FormatElemnt( _item_element, __STRING__( item ), "1", itemid );
+            auto ok = KFElementConfig::Instance()->FormatElement( _item_element, __STRING__( item ), 1, itemid );
             if ( !ok )
             {
                 return _kf_display->SendToClient( player, KFMsg::ElementParseError );

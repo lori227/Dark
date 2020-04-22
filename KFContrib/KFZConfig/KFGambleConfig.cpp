@@ -28,7 +28,7 @@ namespace KFrame
         for ( auto& iter : _settings._objects )
         {
             auto kfsetting = iter.second;
-            KFElementConfig::Instance()->FormatElemnt( kfsetting->_cost_item, __STRING__( item ), "1", kfsetting->_cost_item_id );
+            KFElementConfig::Instance()->FormatElement( kfsetting->_cost_item, __STRING__( item ), 1u, kfsetting->_cost_item_id );
         }
     }
 

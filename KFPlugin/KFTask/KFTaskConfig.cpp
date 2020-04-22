@@ -40,7 +40,7 @@ namespace KFrame
             auto& dataname = kfsetting->_execute_data._param_list._params[ 0 ]->_str_value;
             auto& datavalue = kfsetting->_execute_data._param_list._params[ 1 ]->_str_value;
             auto& datakey = kfsetting->_execute_data._param_list._params[ 2 ]->_int_value;
-            KFElementConfig::Instance()->FormatElemnt( kfsetting->_execute_data._param_list._elements, dataname, datavalue, datakey );
+            KFElementConfig::Instance()->FormatElement( kfsetting->_execute_data._param_list._elements, dataname, datavalue, datakey );
         }
     }
 }

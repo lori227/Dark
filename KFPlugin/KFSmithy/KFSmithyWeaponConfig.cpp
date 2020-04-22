@@ -13,8 +13,8 @@ namespace KFrame
         for ( auto& iter : _settings._objects )
         {
             auto kfsetting = iter.second;
-            KFElementConfig::Instance()->FormatElemnt( kfsetting->_item, __STRING__( item ), "1", iter.first );
             KFElementConfig::Instance()->ParseElement( kfsetting->_consume, __FILE__, kfsetting->_id );
+            KFElementConfig::Instance()->FormatElement( kfsetting->_item, __STRING__( item ), 1u, iter.first );
         }
     }
 }
