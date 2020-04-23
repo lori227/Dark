@@ -1,4 +1,4 @@
-<root version="4654">
+<root version="4660">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -40,7 +40,6 @@
 	<item name="explorerecord" version="1536" />
 	<item name="clinic" version="1559" />
 	<item name="goodsweightpool" version="1599" />
-	<item name="recruitrefresh" version="1658" />
 	<item name="camp" version="1692" />
 	<item name="weaponaffix" version="1700" />
 	<item name="itemweightpool" version="1700" />
@@ -145,7 +144,6 @@
 	<item name="tasktext" version="4626" />
 	<item name="camptext" version="4627" />
 	<item name="story" version="4629" />
-	<item name="heroweightpool" version="4631" />
 	<item name="errorcode" version="4632" />
 	<item name="heroconstant" version="4632" />
 	<item name="heroquality" version="4633" />
@@ -155,10 +153,13 @@
 	<item name="itemtext" version="4642" />
 	<item name="dialoguetext" version="4644" />
 	<item name="dropdata" version="4646" />
-	<item name="technology" version="4647" />
-	<item name="herogenerate" version="4650" />
 	<item name="dropgroup" version="4651" />
 	<item name="multievent" version="4652" />
 	<item name="uitext" version="4652" />
-	<item name="formula" version="4654" />
+	<item name="formula" version="4655" />
+	<item name="technology" version="4656" />
+	<item name="heroweightpool" version="4657" />
+	<item name="recruitrefresh" version="4658" />
+	<item name="eventparams" version="4659" />
+	<item name="herogenerate" version="4660" />
 </root>
