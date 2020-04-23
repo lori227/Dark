@@ -12,11 +12,8 @@ namespace KFrame
             kfsetting->_max_count = __MAX_UINT32__;
         }
 
-        auto strparams = xmlnode.GetString( "Params" );
-        KFUtility::SplitList( kfsetting->_params, strparams, __SPLIT_STRING__ );
-
+        kfsetting->_params = xmlnode.GetUInt32Vector( "Params" );
         kfsetting->_show_count = xmlnode.GetUInt32( "ShowCount" );
-
         kfsetting->_drop_type = xmlnode.GetUInt32( "DropType", true );
         kfsetting->_normal_drop_id = xmlnode.GetUInt32( "NormalDrop" );
         kfsetting->_inner_drop_id = xmlnode.GetUInt32( "InnerDrop" );

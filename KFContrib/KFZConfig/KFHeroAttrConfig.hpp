@@ -8,9 +8,9 @@ namespace KFrame
     class KFAttributeData
     {
     public:
-        uint32 _min_value = 0u;
-        uint32 _max_value = 0u;
+        KFRange<uint32> _range;
 
+    public:
         uint32 GetValue() const;
     };
 

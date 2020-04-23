@@ -385,7 +385,7 @@ namespace KFrame
         player->AddDataToShow( dropdata->_logic_name, hp, false );
     }
 
-    bool KFHeroTeamModule::CheckHeroConditions( KFData* kfhero, const KeyValue* conditions )
+    bool KFHeroTeamModule::CheckHeroConditions( KFData* kfhero, const StringUInt64* conditions )
     {
         if ( conditions != nullptr )
         {
@@ -402,7 +402,7 @@ namespace KFrame
         return true;
     }
 
-    void KFHeroTeamModule::OperateHpValue( KFEntity* player, uint32 operate, uint32 value, const KeyValue* conditions /* = nullptr */ )
+    void KFHeroTeamModule::OperateHpValue( KFEntity* player, uint32 operate, uint32 value, const StringUInt64* conditions /* = nullptr */ )
     {
         auto kfherorecord = player->Find( __STRING__( hero ) );
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
@@ -419,7 +419,7 @@ namespace KFrame
         }
     }
 
-    void KFHeroTeamModule::OperateHpPercent( KFEntity* player, uint32 operate, uint32 value, const KeyValue* conditions /* = nullptr */ )
+    void KFHeroTeamModule::OperateHpPercent( KFEntity* player, uint32 operate, uint32 value, const StringUInt64* conditions /* = nullptr */ )
     {
         auto kfherorecord = player->Find( __STRING__( hero ) );
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
@@ -442,7 +442,7 @@ namespace KFrame
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgAddTeamHpReq );
 
-        KeyValue conditions;
+        StringUInt64 conditions;
         auto pbconditions = &kfmsg.conditions();
         __PROTO_TO_MAP__( pbconditions, conditions );
 
@@ -460,7 +460,7 @@ namespace KFrame
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgDecTeamHpReq );
 
-        KeyValue conditions;
+        StringUInt64 conditions;
         auto pbconditions = &kfmsg.conditions();
         __PROTO_TO_MAP__( pbconditions, conditions );
 

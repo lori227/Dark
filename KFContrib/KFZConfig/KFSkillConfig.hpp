@@ -20,8 +20,11 @@ namespace KFrame
         // 背景限制
         UInt32Set _background_list;
 
+        // 技能品质
+        uint32 _quality = 0u;
+
         // 是否有效( 被限制 )
-        bool IsValid( uint32 race, uint32 profession, uint32 background, uint32 weapontype ) const;
+        bool IsValid( uint32 race, uint32 profession, uint32 background, uint32 weapontype, uint32 minquality, uint32 maxquality ) const;
     };
     ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////

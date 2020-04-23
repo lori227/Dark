@@ -13,7 +13,7 @@ namespace KFrame
         KFElements _cost_elements;
 
         // 事件id
-        uint32 _event_id = 0u;
+        UInt32Vector _event_list;
     };
 
     class KFMultiEventSetting : public KFIntSetting

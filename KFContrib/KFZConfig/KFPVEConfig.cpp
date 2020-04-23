@@ -7,8 +7,7 @@ namespace KFrame
     {
         kfsetting->_npc_rand_id = xmlnode.GetUInt32( "NpcRand" );
 
-        auto strdungeon = xmlnode.GetString( "DungeonId" );
-        KFUtility::SplitList( kfsetting->_dungeon_id_list, strdungeon, __SPLIT_STRING__ );
+        kfsetting->_dungeon_id_list = xmlnode.GetUInt32Vector( "DungeonId" );
 
         auto strdropvictory = xmlnode.GetString( "DropVictory", true );
         KFReadSetting::ParseConditionList( strdropvictory, kfsetting->_victory_drop_list );

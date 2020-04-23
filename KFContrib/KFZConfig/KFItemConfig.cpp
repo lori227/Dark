@@ -143,7 +143,9 @@ namespace KFrame
             executedata->_name = iter->name.GetString();
 
             auto param = executedata->_param_list.AddParam();
+
             param->_int_value = iter->value.GetUint();
+            param->_vector_value.emplace_back( param->_int_value );
 
             kfsetting->_execute_list.emplace_back( executedata );
         }
@@ -156,12 +158,8 @@ namespace KFrame
         kfsetting->_level_limit = xmlnode.GetUInt32( "LevelLimit", true );
         kfsetting->_durability = xmlnode.GetUInt32( "Durability", true );
         kfsetting->_durability_cost = xmlnode.GetUInt32( "Cost", true );
-
-        auto straffix = xmlnode.GetString( "AffixPool" );
-        KFUtility::SplitList( kfsetting->_affix_pool_list, straffix, __SPLIT_STRING__ );
-
-        auto strracelimit = xmlnode.GetString( "RaceLimit" );
-        KFUtility::SplitSet( kfsetting->_race_limit_list, strracelimit, __SPLIT_STRING__ );
+        kfsetting->_affix_pool_list = xmlnode.GetUInt32Vector( "AffixPool" );
+        kfsetting->_race_limit_list = xmlnode.GetUInt32Set( "RaceLimit" );
     }
 
     void KFItemConfig::ReadMaterialSetting( KFNode& xmlnode, KFItemSetting* kfsetting )

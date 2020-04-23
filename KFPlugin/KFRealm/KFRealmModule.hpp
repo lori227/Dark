@@ -166,7 +166,8 @@ namespace KFrame
         const KFRealmLevel* FindRealmLevelSetting( KFEntity* player );
 
         // 发送探索事件消息
-        void SendToClientLogicEvent( KFEntity* player, uint32 eventid );
+        void SendLogicEventToClient( KFEntity* player, uint32 eventid );
+        void SendLogicEventToClient( KFEntity* player, const UInt32Vector& eventlist );
 
     protected:
         // 玩家组件上下文

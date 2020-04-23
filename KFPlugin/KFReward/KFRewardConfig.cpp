@@ -156,7 +156,15 @@ namespace KFrame
             return _invalid_string;
         }
 
-        return FormatIntString( iter->second, num, code );
+        auto kfsetting = FindSetting( iter->second );
+        if ( kfsetting == nullptr )
+        {
+            return _invalid_string;
+        }
+
+        static std::string _str_element;
+        _str_element = __FORMAT__( kfsetting->_element_template, num, code );
+        return _str_element;
     }
 
 }

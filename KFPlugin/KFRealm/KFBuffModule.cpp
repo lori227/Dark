@@ -174,7 +174,7 @@ namespace KFrame
 
     void KFBuffModule::AddBuffToShow( KFEntity* player, const std::string& logicname, uint32 buffid, uint32 count )
     {
-        KeyValue values;
+        StringUInt64 values;
         values[ __STRING__( id ) ] = buffid;
         values[ __STRING__( count ) ] = count;
         player->AddDataToShow( logicname, buffid, values, false );

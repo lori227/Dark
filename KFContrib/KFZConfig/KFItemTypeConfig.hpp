@@ -24,7 +24,7 @@ namespace KFrame
         StringSet _tab_name_list;
 
         // 状态对应的背包名
-        std::unordered_map<uint32, std::string> _status_bag_name;
+        UInt64String _status_bag_name;
 
     public:
         // 判断是否能移动

@@ -1345,7 +1345,7 @@ namespace KFrame
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     void KFItemMoveModule::MoveItemDataToShow( KFEntity* player, const KFItemSetting* kfsetting, KFData* kfsourcerecord, KFData* kftargetrecord, uint32 count )
     {
-        KeyValue values;
+        StringUInt64 values;
         values[ __STRING__( count ) ] = count;
         values[ __STRING__( id ) ] = kfsetting->_id;
         player->AddDataToShow( kfsourcerecord->_data_setting->_name, 0u, __STRING__( item ), kfsetting->_id, values, true, kftargetrecord->_data_setting->_name );

@@ -435,6 +435,12 @@ namespace KFrame
         __RAND_WEIGHT_DATA_CLEAR__( kfgeneratesetting->_background_pool_id, KFBackGroundConfig::Instance(), IsValid( race, sex ), backgroundid, includelist );
         kfbackground->Set( backgroundid );
 
+        // 随机品质
+        auto qualityid = 1u;
+        auto kfquality = kfhero->Find( __STRING__( quality ) );
+        __RAND_WEIGHT_DATA_CLEAR__( kfgeneratesetting->_quality_pool_id, KFQualityConfig::Instance(), IsValid(), qualityid, includelist );
+        kfquality->Set( qualityid );
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 随机生成性格
@@ -463,29 +469,21 @@ namespace KFrame
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 随机成长率
         auto kfgrowth = kfhero->Find( __STRING__( growth ) );
-        auto kfgrowthsetting = KFHeroAttributeConfig::Instance()->FindSetting( kfgeneratesetting->_growth_id );
-        if ( kfgrowthsetting != nullptr )
+        auto kfqualitysetting = KFQualityConfig::Instance()->FindSetting( qualityid );
+        if ( kfqualitysetting != nullptr )
         {
-            auto totalgrowth = 0u;
-            for ( auto iter : kfgrowthsetting->_datas._objects )
+            for ( auto iter : kfqualitysetting->_growth._objects )
             {
                 auto& name = iter.first;
                 auto minvalue = iter.second->_min_value + mingrowth;
                 auto maxvalue = iter.second->_max_value + maxgrowth;
-                auto value = KFGlobal::Instance()->RandRange( minvalue, maxvalue, 1u );
+                auto value = KFGlobal::Instance()->RandRange( minvalue, maxvalue );
                 kfgrowth->Set( name, value );
-
-                totalgrowth += value;
             }
-
-            // 根据平均成长率求品质
-            auto averagegrowth = totalgrowth / kfgrowth->Size();
-            auto quality = KFQualityConfig::Instance()->GetQualityByGrowth( averagegrowth );
-            kfhero->Set( __STRING__( quality ), quality );
         }
         else
         {
-            __LOG_ERROR__( "attribute id={} can't find", kfgeneratesetting->_growth_id );
+            __LOG_ERROR__( "quality id={} can't find", qualityid );
         }
 
         // 获取英雄等级
@@ -578,7 +576,7 @@ namespace KFrame
         }
         else
         {
-            durability = kfprofessionsetting->RandRoleDurability();
+            durability = kfqualitysetting->_role_durability.CalcValue();
         }
 
         kfhero->Set( __STRING__( durability ), durability );
@@ -640,7 +638,7 @@ namespace KFrame
             auto kfdata = kfhead->Find( kfsetting->_id );
             if ( kfdata != nullptr )
             {
-                auto value = KFGlobal::Instance()->RandDouble( kfsetting->_min_value, kfsetting->_max_value );
+                auto value = kfsetting->_range.CalcValue();
                 kfdata->Set< int64 >( value * KFRandEnum::TenThousand );
             }
         }
@@ -738,8 +736,7 @@ namespace KFrame
         auto dipweightdata = kfnpcsetting->_rand_dip_list.Rand();
         if ( dipweightdata != nullptr )
         {
-            auto dip = KFGlobal::Instance()->RandRange( dipweightdata->_min_value, dipweightdata->_max_value, 1 );
-            kfnpc->Set( __STRING__( dip ), dip );
+            kfnpc->Set( __STRING__( dip ), dipweightdata->_range.CalcValue() );
         }
         else
         {
@@ -1251,42 +1248,10 @@ namespace KFrame
         RandWeightData( player, kfhero, __STRING__( character ), kfsetting->_character_pool_list, update );
 
         // 随机天赋
-        randlist = RandWeightData( player, kfhero, __STRING__( innate ), kfsetting->_innate_pool_list, update, true );
-        if ( update )
-        {
-            for ( auto iter : randlist )
-            {
-                // 转职获得的天赋增加标记
-                auto kfinnate = kfhero->Find( __STRING__( innate ), iter );
-                player->UpdateData( kfinnate, __STRING__( flag ), KFEnum::Set, 1u );
-            }
-        }
-        else
-        {
-            // 随机删除获得天赋
-            static auto _option = KFGlobal::Instance()->FindConstant( "useinnatecount" );
-            auto kfinnaterecord = kfhero->Find( __STRING__( innate ) );
-            if ( kfinnaterecord->Size() <= _option->_uint32_value )
-            {
-                return;
-            }
-
-            UInt32Vector innatelist;
-            for ( auto kfdata = kfinnaterecord->First(); kfdata != nullptr; kfdata = kfinnaterecord->Next() )
-            {
-                innatelist.push_back( kfdata->Get<uint32>( kfinnaterecord->_data_setting->_config_key_name ) );
-            }
-
-            auto removecount = innatelist.size() - _option->_uint32_value;
-            std::random_shuffle( innatelist.begin(), innatelist.end() );
-            for ( auto i = 0u; i < removecount; i++ )
-            {
-                kfinnaterecord->Remove( innatelist[i] );
-            }
-        }
+        RandWeightData( player, kfhero, __STRING__( innate ), kfsetting->_innate_pool_list, update );
     }
 
-    UInt32Vector& KFGenerateModule::RandWeightData( KFEntity* player, KFData* kfhero, const std::string& dataname, const UInt32Vector& slist, bool update /*= true*/, bool istransfer /*= false*/ )
+    UInt32Vector& KFGenerateModule::RandWeightData( KFEntity* player, KFData* kfhero, const std::string& dataname, const UInt32Vector& slist, bool update /*= true*/ )
     {
         static UInt32Vector randlist;
         randlist.clear();
@@ -1305,7 +1270,7 @@ namespace KFrame
         UInt32Set excludelist;
         for ( auto kfdata = kfdatarecord->First(); kfdata != nullptr; kfdata = kfdatarecord->Next() )
         {
-            excludelist.insert( kfdata->Get<uint32>( kfdatarecord->_data_setting->_config_key_name ) );
+            excludelist.insert( kfdata->Get<uint32>( kfdatarecord->_data_setting->_key_name ) );
         }
 
         static UInt32Set includelist;
@@ -1315,20 +1280,33 @@ namespace KFrame
         auto professionid = kfhero->Get( __STRING__( profession ) );
         auto backgroundid = kfhero->Get( __STRING__( background ) );
         auto weapontype = kfhero->Get( __STRING__( weapontype ) );
-        static auto _option = KFGlobal::Instance()->FindConstant( "useinnatecount" );
+
+        auto quality = kfhero->Get<uint32>( __STRING__( quality ) );
+        auto kfqualitysetting = KFQualityConfig::Instance()->FindSetting( quality );
+        if ( kfqualitysetting == nullptr )
+        {
+            return randlist;
+        }
+
+        auto minquality = 0u;
+        auto maxquality = 0u;
+        if ( dataname == __STRING__( active ) )
+        {
+            minquality = kfqualitysetting->_active_quality._min_value;
+            maxquality = kfqualitysetting->_active_quality._max_value;
+        }
+        else if ( dataname == __STRING__( innate ) )
+        {
+            minquality = kfqualitysetting->_innate_quality._min_value;
+            maxquality = kfqualitysetting->_innate_quality._max_value;
+        }
 
         for ( auto poolid : slist )
         {
             auto randid = 0u;
             if ( dataname == __STRING__( active ) || dataname == __STRING__( innate ) )
             {
-                if ( !istransfer && dataname == __STRING__( innate ) && kfdatarecord->Size() >= _option->_uint32_value )
-                {
-                    // 只有转职时天赋可超过使用上限
-                    return randlist;
-                }
-
-                __RAND_WEIGHT_DATA__( poolid, KFSkillConfig::Instance(), IsValid( race, professionid, backgroundid, weapontype ), randid, includelist );
+                __RAND_WEIGHT_DATA__( poolid, KFSkillConfig::Instance(), IsValid( race, professionid, backgroundid, weapontype, minquality, maxquality ), randid, includelist );
             }
             else if ( dataname == __STRING__( character ) )
             {
@@ -1361,7 +1339,82 @@ namespace KFrame
             }
         }
 
+        if ( dataname == __STRING__( innate ) )
+        {
+            UpdateInnateData( player, kfhero, randlist, update );
+        }
+
         return randlist;
+    }
+
+    void KFGenerateModule::UpdateInnateData( KFEntity* player, KFData* kfhero, const UInt32Vector& randlist, bool update )
+    {
+        auto quality = kfhero->Get<uint32>( __STRING__( quality ) );
+        auto kfqualitysetting = KFQualityConfig::Instance()->FindSetting( quality );
+        if ( kfqualitysetting == nullptr )
+        {
+            return;
+        }
+
+        auto kfinnaterecord = kfhero->Find( __STRING__( innate ) );
+        auto innatenum = kfinnaterecord->Size();
+        if ( innatenum <= kfqualitysetting->_innate_num )
+        {
+            return;
+        }
+
+        auto posflag = kfhero->Get<uint32>( __STRING__( posflag ) );
+        if ( !update || posflag == KFMsg::TrainBuild )
+        {
+            // 数据不更新或英雄在训练所中，删除超过的技能数量
+            auto removenum = innatenum - kfqualitysetting->_innate_num;
+
+            UInt32Set randset;
+            for ( auto iter : randlist )
+            {
+                randset.insert( iter );
+            }
+
+            // 英雄有AB天赋，新增CDE天赋，最后装备CD天赋
+            UInt32Vector removelist;
+            for ( auto kfinnate = kfinnaterecord->First(); kfinnate != nullptr; kfinnate = kfinnaterecord->Next() )
+            {
+                auto innateid = kfinnate->Get<uint32>( kfinnaterecord->_data_setting->_key_name );
+                if ( randset.find( innateid ) == randset.end() )
+                {
+                    removelist.emplace_back( innateid );
+                    if ( removelist.size() >= removenum )
+                    {
+                        break;
+                    }
+                }
+            }
+
+            if ( removelist.size() < removenum )
+            {
+                removelist.insert( removelist.end(), randlist.rbegin(), randlist.rbegin() + removenum - removelist.size() );
+            }
+
+            for ( auto iter : removelist )
+            {
+                if ( update )
+                {
+                    player->RemoveData( kfinnaterecord, iter );
+                }
+                else
+                {
+                    kfinnaterecord->Remove( iter );
+                }
+            }
+
+            return;
+        }
+
+        for ( auto iter : randlist )
+        {
+            // 新增天赋设置标记
+            player->UpdateData( kfinnaterecord, iter, __STRING__( flag ), KFEnum::Set, 1u );
+        }
     }
 
     void KFGenerateModule::RandInjuryData( KFEntity* player, KFData* kfhero, uint32 poolid )

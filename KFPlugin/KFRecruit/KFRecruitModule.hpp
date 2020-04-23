@@ -113,9 +113,11 @@ namespace KFrame
 
         // 计算招募花费
         void CalcRecruitCostData( KFEntity* player, KFData* kfeffect, KFData* kfrecruit, KFData* kfhero, uint32 generateid, bool update );
+        void CalcRecruitCostItem( KFEntity* player, KFData* kfhero, const KFFormulaParam* kfformulaparam, KFElementSetting* kfelementsetting );
+        void CalcRecruitCostCurrency( KFEntity* player, KFData* kfeffect, KFData* kfhero, const KFFormulaParam* kfformulaparam, KFElementSetting* kfelementsetting );
 
         // 计算种族亲和
-        uint32 CalcRecruitHeroDiscount( KFData* kfeffect, KFData* kfhero, uint32 price );
+        uint32 CalcRecruitHeroDiscount( KFData* kfeffect, KFData* kfhero, double price );
 
         // 刷新种族亲和
         void RefreshRecruitHeroDiscount( KFEntity* player, KFData* kfeffect, uint32 race );

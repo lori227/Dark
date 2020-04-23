@@ -81,6 +81,9 @@ namespace KFrame
         // 检查定时器
         void CheckGranaryTimer( KFEntity* player );
 
+        // 判断粮食的最大拥有限制能添加的个数
+        uint32 CalcMaxFootCountAddCount( KFEntity* player, uint32 footitemid );
+
     protected:
         // 玩家组件上下文
         KFComponent* _kf_component = nullptr;

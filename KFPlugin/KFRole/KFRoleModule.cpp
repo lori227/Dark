@@ -18,6 +18,7 @@ namespace KFrame
         __REGISTER_MESSAGE__( KFMsg::MSG_SET_PLAYER_HEADICON_REQ, &KFRoleModule::HandleSetPlayerHeadIconReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_SET_PLAYER_FACTION_REQ, &KFRoleModule::HandleSetPlayerFactionReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_UPDATE_MAIN_STAGE_REQ, &KFRoleModule::HandleUpdateMainStageReq );
+        __REGISTER_MESSAGE__( KFMsg::MSG_POSITION_UPDATE_REQ, &KFRoleModule::HandlePositionUpdateReq );
     }
 
     void KFRoleModule::BeforeShut()
@@ -33,6 +34,7 @@ namespace KFrame
         __UN_MESSAGE__( KFMsg::MSG_SET_PLAYER_HEADICON_REQ );
         __UN_MESSAGE__( KFMsg::MSG_SET_PLAYER_FACTION_REQ );
         __UN_MESSAGE__( KFMsg::MSG_UPDATE_MAIN_STAGE_REQ );
+        __UN_MESSAGE__( KFMsg::MSG_POSITION_UPDATE_REQ );
     }
 
     __KF_ENTER_PLAYER_FUNCTION__( KFRoleModule::OnEnterRoleModule )
@@ -219,5 +221,12 @@ namespace KFrame
         {
             _kf_story->AddStory( player, kfsetting->_parameter, _invalid_int, _invalid_string, _invalid_int );
         }
+    }
+
+    __KF_MESSAGE_FUNCTION__( KFRoleModule::HandlePositionUpdateReq )
+    {
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgPositionUpdateReq );
+
+        player->Set( __STRING__( position ), kfmsg.position() );
     }
 }

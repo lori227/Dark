@@ -5,23 +5,9 @@ namespace KFrame
     /////////////////////////////////////////////////////////////////////////////////
     void KFCharacterConfig::ReadSetting( KFNode& xmlnode, KFCharacterSetting* kfsetting )
     {
-        auto strrace = xmlnode.GetString( "RaceLimit", true );
-        if ( !strrace.empty() )
-        {
-            KFUtility::SplitSet( kfsetting->_race_list, strrace, __SPLIT_STRING__ );
-        }
-
-        auto strbackground = xmlnode.GetString( "BackGroundLimit", true );
-        if ( !strbackground.empty() )
-        {
-            KFUtility::SplitSet( kfsetting->_background_list, strbackground, __SPLIT_STRING__ );
-        }
-
-        auto strprofession = xmlnode.GetString( "ProfessionLimit", true );
-        if ( !strprofession.empty() )
-        {
-            KFUtility::SplitSet( kfsetting->_profession_list, strprofession, __SPLIT_STRING__ );
-        }
+        kfsetting->_race_list = xmlnode.GetUInt32Set( "RaceLimit", true );
+        kfsetting->_background_list = xmlnode.GetUInt32Set( "BackGroundLimit", true );
+        kfsetting->_profession_list = xmlnode.GetUInt32Set( "ProfessionLimit", true );
     }
     /////////////////////////////////////////////////////////////////////////////////
     bool KFCharacterSetting::IsValid( uint32 race, uint32 background, uint32 profession ) const

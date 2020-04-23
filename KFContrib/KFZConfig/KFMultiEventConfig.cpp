@@ -7,8 +7,8 @@ namespace KFrame
     {
         auto index = xmlnode.GetUInt32( "Index" );
         auto kfdata = kfsetting->_multi_event_data_list.Create( index );
-        kfdata->_event_id = xmlnode.GetUInt32( "Event" );
         kfdata->_cost_elements._str_parse = xmlnode.GetString( "Cost" );
+        kfdata->_event_list = xmlnode.GetUInt32Vector( "Event" );
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////
 

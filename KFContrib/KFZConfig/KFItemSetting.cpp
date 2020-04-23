@@ -50,6 +50,6 @@ namespace KFrame
             return _overlay_count;
         }
 
-        return iter->second;
+        return ( uint32 )iter->second;
     }
 }

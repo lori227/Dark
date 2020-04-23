@@ -5,22 +5,13 @@ namespace KFrame
     /////////////////////////////////////////////////////////////////////////////////
     void KFProfessionConfig::ReadSetting( KFNode& xmlnode, KFProfessionSetting* kfsetting )
     {
-        auto strracelimit = xmlnode.GetString( "RaceLimit", true );
-        KFUtility::SplitSet( kfsetting->_race_list, strracelimit, __SPLIT_STRING__ );
-
+        kfsetting->_race_list = xmlnode.GetUInt32Set( "RaceLimit", true );
         kfsetting->_sex_limit = xmlnode.GetUInt32( "SexLimit" );
-
         kfsetting->_move_type = xmlnode.GetUInt32( "MoveType" );
         kfsetting->_max_level = xmlnode.GetUInt32( "MaxLevel" );
         kfsetting->_class_lv = xmlnode.GetUInt32( "ClassLv" );
-
-        // 武器类型
-        auto strweapon = xmlnode.GetString( "WeaponType" );
-        KFUtility::SplitSet( kfsetting->_weapon_type_list, strweapon, __SPLIT_STRING__ );
-
-        // 音色类型
-        auto strvoice = xmlnode.GetString( "VoiceType" );
-        KFUtility::SplitList( kfsetting->_voice_list, strvoice, __SPLIT_STRING__ );
+        kfsetting->_weapon_type_list = xmlnode.GetUInt32Set( "WeaponType" );
+        kfsetting->_voice_list = xmlnode.GetUInt32Vector( "VoiceType" );
 
         // 属性偏好率
         std::list< std::string > keylist;
@@ -41,13 +32,12 @@ namespace KFrame
         KFUtility::ParseArrayList( durabilitylist, strdurability );
         if ( durabilitylist.size() == 2u )
         {
-            if ( durabilitylist[0] == 0u || durabilitylist[1] == 0u || durabilitylist[0] > durabilitylist[1] )
+            if ( durabilitylist[0] == 0u )
             {
                 return __LOG_ERROR__( "Profession = [{}] RoleDurability is error", kfsetting->_id );
             }
 
-            kfsetting->_min_durability = durabilitylist[0];
-            kfsetting->_max_durability = durabilitylist[1];
+            kfsetting->_durability_range.SetValue( durabilitylist[ 0 ], durabilitylist[ 1 ] );
         }
         else
         {
@@ -140,6 +130,6 @@ namespace KFrame
 
     uint32 KFProfessionSetting::RandRoleDurability() const
     {
-        return KFGlobal::Instance()->RandRange( _min_durability, _max_durability, 1u );
+        return _durability_range.CalcValue();
     }
 }

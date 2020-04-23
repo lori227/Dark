@@ -249,51 +249,60 @@ namespace KFrame
         }
     }
 
+    uint32 KFGranaryModule::CalcMaxFootCountAddCount( KFEntity* player, uint32 footitemid )
+    {
+        // 计算最大能拥有个数
+        static auto _max_foot_option = KFGlobal::Instance()->FindConstant( __STRING__( itemmaxcount ), footitemid );
+
+        auto kfitemrecord = player->Find( __STRING__( storage ) );
+        auto havefoodcount = _kf_item->GetItemCount( player, kfitemrecord, footitemid, _max_foot_option->_uint32_value );
+        return _max_foot_option->_uint32_value - __MIN__( havefoodcount, _max_foot_option->_uint32_value );
+    }
+
     __KF_MESSAGE_FUNCTION__( KFGranaryModule::HandleGranaryGatherReq )
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgGranaryGatherReq );
 
+        static auto _foot_option = KFGlobal::Instance()->FindConstant( __STRING__( fooditemid ) );
+        auto footitemid = _foot_option->_uint32_value;
+
+        static KFElements _item_element;
+        if ( _item_element.IsEmpty() )
+        {
+            auto ok = KFElementConfig::Instance()->FormatElement( _item_element, __STRING__( item ), 1, footitemid );
+            if ( !ok )
+            {
+                return _kf_display->SendToClient( player, KFMsg::ElementParseError );
+            }
+        }
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////
         if ( !IsGranaryActive( player ) )
         {
             return _kf_display->SendToClient( player, KFMsg::BuildFuncNotActive );
         }
 
         auto kfgranary = player->Find( __STRING__( granary ) );
-        auto num = kfgranary->Get<uint32>( __STRING__( num ) );
-        if ( num == 0u )
+        auto totalcount = kfgranary->Get<uint32>( __STRING__( num ) );
+        if ( totalcount == 0u )
         {
             // 没有粮食不能收获
             return _kf_display->SendToClient( player, KFMsg::GranaryHaveNotItem );
         }
 
-        static auto _option = KFGlobal::Instance()->FindConstant( __STRING__( fooditemid ) );
-        auto itemid = _option->_uint32_value;
-
-        static KFElements _item_element;
-        if ( _item_element.IsEmpty() )
+        // 计算最大数量限制下可添加的数量
+        auto canaddcount = CalcMaxFootCountAddCount( player, footitemid );
+        if ( canaddcount == 0u )
         {
-            auto ok = KFElementConfig::Instance()->FormatElement( _item_element, __STRING__( item ), 1, itemid );
-            if ( !ok )
-            {
-                return _kf_display->SendToClient( player, KFMsg::ElementParseError );
-            }
+            return _kf_display->SendToClient( player, KFMsg::GranaryFootMaxCountLimit );
         }
 
-        auto totalcount = num;
         auto critresult = IsGranaryCrit( player, totalcount );
-
-        // 粮食放进仓库
-        auto canaddcount = _kf_item->GetCanAddItemCount( player, itemid, totalcount );
+        canaddcount = _kf_item->GetCanAddItemCount( player, footitemid, __MIN__( totalcount, canaddcount ) );
         if ( canaddcount == 0u )
         {
             // 仓库已满
             return _kf_display->SendToClient( player, KFMsg::ItemBagIsFull );
-        }
-
-        if ( canaddcount != totalcount )
-        {
-            // 仓库已满
-            _kf_display->SendToClient( player, KFMsg::ItemBagIsFull );
         }
 
         SendGranaryCritMsg( player, critresult );
@@ -301,17 +310,14 @@ namespace KFrame
         // 添加物品进背包
         player->AddElement( &_item_element, canaddcount, __STRING__( granary ), 0u, __FUNC_LINE__ );
 
+        player->UpdateData( kfgranary, __STRING__( num ), KFEnum::Dec, canaddcount );
         player->UpdateData( kfgranary, __STRING__( daynum ), KFEnum::Add, canaddcount );
         player->UpdateData( kfgranary, __STRING__( daytime ), KFEnum::Set, KFGlobal::Instance()->_real_time );
-
-        // 更新数量
-        auto leftnum = ( ( num > canaddcount ) ? ( num - canaddcount ) : 0u );
-        player->UpdateData( kfgranary, __STRING__( num ), KFEnum::Set, leftnum );
 
         // 条件更新
         {
             auto kfbuildgather = player->Find( __STRING__( buildgather ) );
-            kfbuildgather->Set( __STRING__( id ), itemid );
+            kfbuildgather->Set( __STRING__( id ), footitemid );
             player->UpdateData( kfbuildgather, __STRING__( count ), KFEnum::Set, canaddcount );
         }
     }
@@ -320,30 +326,31 @@ namespace KFrame
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgGranaryBuyReq );
 
-        // 已购买次数
-        auto buycount = player->Get<uint32>( __STRING__( granary ), __STRING__( buycount ) );
-        static auto _buy_option = KFGlobal::Instance()->FindConstant( __STRING__( granaryfreebuycount ) );
-        auto freecount = _buy_option->_uint32_value;
-
-        // 付费购买次数
-        auto paycount = player->Get<uint32>( __STRING__( effect ), __STRING__( granarybuycount ) );
-
-        if ( buycount >= freecount + paycount )
-        {
-            return _kf_display->SendToClient( player, KFMsg::GranaryBuyCountLimit );
-        }
-
         static auto _item_option = KFGlobal::Instance()->FindConstant( __STRING__( fooditemid ) );
-        auto itemid = _item_option->_uint32_value;
+        auto footitemid = _item_option->_uint32_value;
 
         static KFElements _item_element;
         if ( _item_element.IsEmpty() )
         {
-            auto ok = KFElementConfig::Instance()->FormatElement( _item_element, __STRING__( item ), 1, itemid );
+            auto ok = KFElementConfig::Instance()->FormatElement( _item_element, __STRING__( item ), 1, footitemid );
             if ( !ok )
             {
                 return _kf_display->SendToClient( player, KFMsg::ElementParseError );
             }
+        }
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////
+        static auto _buy_option = KFGlobal::Instance()->FindConstant( __STRING__( granaryfreebuycount ) );
+
+        // 已购买次数
+        auto buycount = player->Get<uint32>( __STRING__( granary ), __STRING__( buycount ) );
+        auto freecount = _buy_option->_uint32_value;
+
+        // 付费购买次数
+        auto paycount = player->Get<uint32>( __STRING__( effect ), __STRING__( granarybuycount ) );
+        if ( buycount >= freecount + paycount )
+        {
+            return _kf_display->SendToClient( player, KFMsg::GranaryBuyCountLimit );
         }
 
         auto addnum = player->Get<uint32>( __STRING__( effect ), __STRING__( granaryaddnum ) );
@@ -356,24 +363,27 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::GranaryBuyParamError );
         }
 
-        // 判断仓库是否已满
-        auto finalcount = static_cast<double>( addnum ) / cdtime * buyfactor * KFTimeEnum::OneMinuteSecond;
-        auto totalcount = static_cast<uint32>( finalcount + 0.5 );
+        auto totalcount = static_cast<uint32>( std::round( static_cast< double >( addnum ) / cdtime * buyfactor * KFTimeEnum::OneMinuteSecond ) );
         if ( totalcount == 0u )
         {
             return _kf_display->SendToClient( player, KFMsg::GranaryBuyParamError );
         }
 
-        auto critresult = IsGranaryCrit( player, totalcount );
+        // 计算最大数量限制下可添加的数量
+        auto canaddcount = CalcMaxFootCountAddCount( player, footitemid );
+        if ( canaddcount == 0u )
+        {
+            return _kf_display->SendToClient( player, KFMsg::GranaryFootMaxCountLimit );
+        }
 
-        auto canaddcount = _kf_item->GetCanAddItemCount( player, itemid, totalcount );
+        // 计算暴击
+        auto critresult = IsGranaryCrit( player, totalcount );
+        canaddcount = _kf_item->GetCanAddItemCount( player, footitemid, __MIN__( totalcount, canaddcount ) );
         if ( canaddcount == 0u )
         {
             // 仓库已满
             return _kf_display->SendToClient( player, KFMsg::ItemBagIsFull );
         }
-
-        SendGranaryCritMsg( player, critresult );
 
         if ( buycount >= freecount )
         {
@@ -390,13 +400,14 @@ namespace KFrame
             {
                 return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
             }
-
         }
 
-        // 添加粮食进背包
-        player->AddElement( &_item_element, canaddcount, __STRING__( granary ), 0u, __FUNC_LINE__ );
+        // 发送收取暴击消息
+        SendGranaryCritMsg( player, critresult );
 
+        // 添加粮食进背包
         player->UpdateData( __STRING__( granary ), __STRING__( buycount ), KFEnum::Add, 1u );
+        player->AddElement( &_item_element, canaddcount, __STRING__( granary ), 0u, __FUNC_LINE__ );
     }
 
     __KF_TIMER_FUNCTION__( KFGranaryModule::OnTimerAddItem )
@@ -418,7 +429,7 @@ namespace KFrame
         auto curnum = kfgranary->Get<uint32>( __STRING__( num ) );
         addnum = __MIN__( addnum, maxnum - curnum );
 
-        player->UpdateData( kfgranary, __STRING__( calctime ), KFEnum::Set, KFGlobal::Instance()->_real_time );
         player->UpdateData( kfgranary, __STRING__( num ), KFEnum::Add, addnum );
+        player->UpdateData( kfgranary, __STRING__( calctime ), KFEnum::Set, KFGlobal::Instance()->_real_time );
     }
 }

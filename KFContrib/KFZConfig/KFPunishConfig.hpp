@@ -9,16 +9,14 @@ namespace KFrame
     {
     public:
         // 权重值
-        uint32 _min_weight = 0u;
-        uint32 _max_weight = 0u;
+        KFRange<uint32> _range_weight;
 
         // 类型
         std::string _name;
         uint32 _key = 0;
 
         // 数值
-        uint32 _min_value = 0u;
-        uint32 _max_value = 0u;
+        KFRange<uint32> _range_value;
     };
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -27,8 +25,7 @@ namespace KFrame
     {
     public:
         // 随机数量
-        uint32 _min_count = 0u;
-        uint32 _max_count = 0u;
+        KFRange<uint32> _range_count;
 
         // 列表
         std::vector< KFPunishData > _punish_list;

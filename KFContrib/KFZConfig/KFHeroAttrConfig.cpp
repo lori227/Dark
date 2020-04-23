@@ -17,8 +17,7 @@ namespace KFrame
                 auto data = kfsetting->_datas.Create( attrname );
 
                 auto strline = xmlnode.GetString( key.c_str() );
-                data->_min_value = KFUtility::SplitValue< uint32 >( strline, __RANGE_STRING__ );
-                data->_max_value = KFUtility::SplitValue< uint32 >( strline, __RANGE_STRING__ );
+                data->_range.SetValue( strline );
             }
         }
     }
@@ -26,12 +25,6 @@ namespace KFrame
     /////////////////////////////////////////////////////////////////////////////////
     uint32 KFAttributeData::GetValue() const
     {
-        if ( _min_value >= _max_value )
-        {
-            return _min_value;
-        }
-
-        return KFGlobal::Instance()->RandRange( _min_value, _max_value, 1 );
+        return _range.CalcValue();
     }
-
 }

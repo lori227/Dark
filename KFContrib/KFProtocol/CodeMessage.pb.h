@@ -148,6 +148,7 @@ enum ProjectCodeEnum {
   GranaryBuySettingError = 31239,
   GranaryBuyParamError = 31240,
   BuildCanNotUpgrade = 31241,
+  GranaryFootMaxCountLimit = 31242,
   RealmMapError = 31301,
   RealmLevelError = 31302,
   RealmNotInExplore = 31305,

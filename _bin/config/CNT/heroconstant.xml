@@ -1,4 +1,4 @@
-<root platform="" version="4535">
+<root platform="" version="4632">
 	<item Name="defaultprofession" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="defaultbackground" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="generatedirectattribute" Key="" Value="9" Channel="0" Service="0" />
@@ -8,13 +8,13 @@
 	<item Name="initherolevellimit" Key="" Value="2" Channel="0" Service="0" />
 	<item Name="maxherolevel" Key="" Value="30" Channel="0" Service="0" />
 	<item Name="maxactivecount" Key="" Value="20" Channel="0" Service="0" />
-	<item Name="maxinnatecount" Key="" Value="4" Channel="0" Service="0" />
+	<item Name="maxinnatecount" Key="" Value="20" Channel="0" Service="0" />
 	<item Name="useinnatecount" Key="" Value="2" Channel="0" Service="0" />
 	<item Name="maxcharactercount" Key="" Value="20" Channel="0" Service="0" />
 	<item Name="maxinjurycount" Key="" Value="4" Channel="0" Service="0" />
 	<item Name="maxheroteamcount" Key="" Value="4" Channel="0" Service="0" />
 	<item Name="recruitinitcount" Key="" Value="2" Channel="0" Service="0" />
-	<item Name="recruitmaxcount" Key="" Value="10" Channel="0" Service="0" />
+	<item Name="recruitmaxcount" Key="" Value="4" Channel="0" Service="0" />
 	<item Name="recruitrefresh" Key="" Value="21600" Channel="0" Service="0" />
 	<item Name="maxhp_bar" Key="" Value="200" Channel="0" Service="0" />
 	<item Name="maxatk_bar" Key="" Value="150" Channel="0" Service="0" />

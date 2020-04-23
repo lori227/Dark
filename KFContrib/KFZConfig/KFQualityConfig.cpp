@@ -2,38 +2,28 @@
 
 namespace KFrame
 {
-    uint32 KFQualityConfig::GetQualityByGrowth( uint32 growth )
-    {
-        if ( growth > _max_growth )
-        {
-            return static_cast<uint32>( _quality_map.size() );
-        }
-
-        auto iter = _quality_map.lower_bound( growth );
-        if ( iter == _quality_map.end() )
-        {
-            return 1u;
-        }
-
-        return iter->second;
-    }
-
-    void KFQualityConfig::ClearSetting()
-    {
-        _max_growth = 0u;
-        _quality_map.clear();
-        KFConfigT< KFQualitySetting >::ClearSetting();
-    }
-
+    /////////////////////////////////////////////////////////////////////////////////
     void KFQualityConfig::ReadSetting( KFNode& xmlnode, KFQualitySetting* kfsetting )
     {
-        kfsetting->_max_growth = xmlnode.GetUInt32( "GrowthMax", true );
+        kfsetting->_innate_num = xmlnode.GetUInt32( "InnateNum", true );
 
-        if ( kfsetting->_max_growth > _max_growth )
+        kfsetting->_innate_quality.SetValue( xmlnode.GetString( "InnateQuality", true ) );
+        kfsetting->_active_quality.SetValue( xmlnode.GetString( "SkillQuality", true ) );
+        kfsetting->_role_durability.SetValue( xmlnode.GetString( "RoleDurability" ) );
+
+        std::list< std::string > keylist;
+        xmlnode.GetKeyList( keylist );
+
+        for ( auto& key : keylist )
         {
-            _max_growth = kfsetting->_max_growth;
+            auto attrname = key;
+            KFUtility::SplitString( attrname, "Attr_" );
+            if ( !attrname.empty() )
+            {
+                auto data = kfsetting->_growth.Create( attrname );
+                data->SetValue( xmlnode.GetString( key.c_str() ) );
+            }
         }
-
-        _quality_map[kfsetting->_max_growth] = static_cast<uint32>( kfsetting->_id );
     }
+
 }

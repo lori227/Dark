@@ -16,8 +16,7 @@ namespace KFrame
         kfsetting->_level_value = KFUtility::SplitValue<int32>( strlevel, __DOMAIN_STRING__ );
 
         // character
-        auto strcharacter = xmlnode.GetString( "RandCharacter", true );
-        KFUtility::SplitList( kfsetting->_character_pool_list, strcharacter, __SPLIT_STRING__ );
+        kfsetting->_character_pool_list = xmlnode.GetUInt32Vector( "RandCharacter", true );
 
         // skill
         auto strskillline = xmlnode.GetString( "RandSkill" );
@@ -43,8 +42,7 @@ namespace KFrame
                 auto maxvalue = KFUtility::SplitValue<uint32>( strsan, __DOMAIN_STRING__ );
                 auto weight = KFUtility::SplitValue<uint32>( strsan, __DOMAIN_STRING__ );
                 auto kfweight = kfsetting->_rand_dip_list.Create( 0, weight );
-                kfweight->_min_value = minvalue;
-                kfweight->_max_value = maxvalue;
+                kfweight->_range.SetValue( minvalue, maxvalue );
             }
         }
 

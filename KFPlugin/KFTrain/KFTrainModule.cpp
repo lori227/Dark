@@ -434,18 +434,15 @@ namespace KFrame
         _element.Clear();
 
         // 公式配置
-        auto kfformulasetting = KFFormulaConfig::Instance()->FindSetting( setting->_consume_fid );
-        if ( kfformulasetting == nullptr || kfformulasetting->_type.empty() )
+        auto kfformulasetting = KFFormulaConfig::Instance()->FindFormulaParam( setting->_consume_fid );
+        if ( kfformulasetting == nullptr ||
+                kfformulasetting->_type.empty() ||
+                kfformulasetting->_params._objects.size() < 1u )
         {
             return nullptr;
         }
 
-        if ( kfformulasetting->_params.size() < 1u )
-        {
-            return nullptr;
-        }
-
-        auto param1 = kfformulasetting->_params[0]->_double_value;
+        auto param1 = kfformulasetting->_params._objects[0]->_double_value;
 
         // 消耗个数 = 训练总经验 * 公式参数1 * 消耗缩放比例
         auto totalexp = double( setting->_total_time ) / KFTimeEnum::OneMinuteSecond * setting->_add_exp;
@@ -462,25 +459,21 @@ namespace KFrame
         _element.Clear();
 
         // 公式配置
-        auto kfformulasetting = KFFormulaConfig::Instance()->FindSetting( setting->_onekey_consume_fid );
-        if ( kfformulasetting == nullptr || kfformulasetting->_type.empty() )
+        auto kfformulasetting = KFFormulaConfig::Instance()->FindFormulaParam( setting->_onekey_consume_fid );
+        if ( kfformulasetting == nullptr ||
+                kfformulasetting->_type.empty() ||
+                kfformulasetting->_params._objects.size() < 2u )
         {
             return nullptr;
         }
 
-        if ( kfformulasetting->_params.size() < 2u )
-        {
-            return nullptr;
-        }
-
-        auto param1 = kfformulasetting->_params[0]->_double_value;
+        auto param1 = kfformulasetting->_params._objects[0]->_double_value;
         if ( param1 == 0.0 )
         {
             return nullptr;
         }
 
-
-        auto param2 = kfformulasetting->_params[1]->_double_value;
+        auto param2 = kfformulasetting->_params._objects[1]->_double_value;
         auto leftmin = lefttime / KFTimeEnum::OneMinuteSecond;
 
         // 消耗个数 = 剩余分钟 / 参数1 * 参数2

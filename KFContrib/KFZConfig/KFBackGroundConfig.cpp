@@ -4,18 +4,8 @@ namespace KFrame
 {
     void KFBackGroundConfig::ReadSetting( KFNode& xmlnode, KFBackGroundSetting* kfsetting )
     {
-        auto strracelimit = xmlnode.GetString( "RaceLimit", true );
-        if ( !strracelimit.empty() )
-        {
-            KFUtility::SplitSet( kfsetting->_race_list, strracelimit, __SPLIT_STRING__ );
-        }
-
-        auto strsexlimit = xmlnode.GetString( "SexLimit", true );
-        if ( !strsexlimit.empty() )
-        {
-            KFUtility::SplitSet( kfsetting->_sex_list, strsexlimit, __SPLIT_STRING__ );
-        }
-
+        kfsetting->_race_list = xmlnode.GetUInt32Set( "RaceLimit", true );
+        kfsetting->_sex_list = xmlnode.GetUInt32Set( "SexLimit", true );
     }
     /////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////

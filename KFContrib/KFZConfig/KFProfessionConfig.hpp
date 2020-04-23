@@ -30,11 +30,8 @@ namespace KFrame
         // 职业等级
         uint32 _class_lv = 0u;
 
-        // 最小耐久度
-        uint32 _min_durability = 0u;
-
-        // 最大耐久度
-        uint32 _max_durability = 0u;
+        // 耐久度
+        KFRange<uint32> _durability_range;
 
         // 音色类型
         UInt32Vector _voice_list;

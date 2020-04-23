@@ -65,7 +65,7 @@ namespace KFrame
         virtual KFData* GenerateNpcHero( KFEntity* player, KFData* kfnpcrecord, uint32 generateid, uint32 level );
 
         // 随机权重数据
-        virtual UInt32Vector& RandWeightData( KFEntity* player, KFData* kfhero, const std::string& str, const UInt32Vector& slist, bool update = true, bool istransfer = false );
+        virtual UInt32Vector& RandWeightData( KFEntity* player, KFData* kfhero, const std::string& str, const UInt32Vector& slist, bool update = true );
 
         // 随机伤病数据
         virtual void RandInjuryData( KFEntity* player, KFData* kfhero, uint32 poolid );
@@ -118,6 +118,9 @@ namespace KFrame
 
         // 英雄职业更新
         void OnHeroProUpdate( KFEntity* player, KFData* kfhero, uint32 oldvalue, uint32 newvalue, bool update = true );
+
+        // 更新天赋数据
+        void UpdateInnateData( KFEntity* player, KFData* kfhero, const UInt32Vector& randlist, bool update );
 
     private:
         // 玩家组件上下文

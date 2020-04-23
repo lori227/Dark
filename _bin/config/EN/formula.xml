@@ -1,11 +1,19 @@
-<root platform="" version="4570">
-	<item Id="1" Type="money" Param1="100" Param2="89" Param3="30" Param4="120" Param5="1" Param6="1" Param7="300" Param8="" />
-	<item Id="2" Type="diamond" Param1="0.2" Param2="89" Param3="0.1" Param4="0.12" Param5="1" Param6="1" Param7="0.3" Param8="" />
-	<item Id="3" Type="money" Param1="10" Param2="100" Param3="" Param4="" Param5="" Param6="" Param7="" Param8="" />
-	<item Id="4" Type="killexp" Param1="40" Param2="20" Param3="" Param4="" Param5="" Param6="" Param7="" Param8="" />
-	<item Id="5" Type="supplies" Param1="0.5" Param2="" Param3="" Param4="" Param5="" Param6="" Param7="" Param8="" />
-	<item Id="6" Type="diamond" Param1="10" Param2="1" Param3="" Param4="" Param5="" Param6="" Param7="" Param8="" />
-	<item Id="7" Type="" Param1="0.5" Param2="5" Param3="" Param4="" Param5="" Param6="" Param7="" Param8="" />
-	<item Id="8" Type="money" Param1="100" Param2="89" Param3="30" Param4="120" Param5="1" Param6="1" Param7="300" Param8="4" />
-	<item Id="9" Type="diamond" Param1="0.2" Param2="89" Param3="0.1" Param4="0.12" Param5="1" Param6="1" Param7="0.3" Param8="4" />
+<root platform="" version="4654">
+	<item FormulaId="1" Type="money" Param1="0" Param2="2000" Param3="1" Param4="100" Param5="1" Param6="100" Param7="2" Param8="" />
+	<item FormulaId="2" Type="diamond" Param1="0" Param2="2" Param3="1" Param4="0.1" Param5="1" Param6="0.1" Param7="2" Param8="" />
+	<item FormulaId="3" Type="money" Param1="10" Param2="100" Param3="" Param4="" Param5="" Param6="" Param7="" Param8="" />
+	<item FormulaId="4" Type="killexp" Param1="40" Param2="20" Param3="" Param4="" Param5="" Param6="" Param7="" Param8="" />
+	<item FormulaId="5" Type="money" Param1="0.5" Param2="" Param3="" Param4="" Param5="" Param6="" Param7="" Param8="" />
+	<item FormulaId="6" Type="diamond" Param1="10" Param2="1" Param3="" Param4="" Param5="" Param6="" Param7="" Param8="" />
+	<item FormulaId="7" Type="" Param1="0.5" Param2="5" Param3="" Param4="" Param5="" Param6="" Param7="" Param8="" />
+	<item FormulaId="8" Type="money" Param1="0" Param2="2000" Param3="1" Param4="100" Param5="1" Param6="100" Param7="2" Param8="4" />
+	<item FormulaId="9" Type="diamond" Param1="0" Param2="2" Param3="1" Param4="0.1" Param5="1" Param6="0.1" Param7="2" Param8="4" />
+	<item FormulaId="10" Type="item" Param1="1" Param2="1000017" Param3="111" Param4="" Param5="" Param6="" Param7="" Param8="" />
+	<item FormulaId="10" Type="item" Param1="2" Param2="1000017" Param3="111" Param4="" Param5="" Param6="" Param7="" Param8="" />
+	<item FormulaId="10" Type="item" Param1="3" Param2="1000017" Param3="111" Param4="" Param5="" Param6="" Param7="" Param8="" />
+	<item FormulaId="10" Type="item" Param1="4" Param2="1000017" Param3="111" Param4="" Param5="" Param6="" Param7="" Param8="" />
+	<item FormulaId="10" Type="item" Param1="5" Param2="1000017" Param3="111" Param4="" Param5="" Param6="" Param7="" Param8="" />
+	<item FormulaId="10" Type="item" Param1="6" Param2="1000017" Param3="111" Param4="" Param5="" Param6="" Param7="" Param8="" />
+	<item FormulaId="10" Type="item" Param1="7" Param2="1000017" Param3="111" Param4="" Param5="" Param6="" Param7="" Param8="" />
+	<item FormulaId="10" Type="item" Param1="8" Param2="1000017" Param3="111" Param4="" Param5="" Param6="" Param7="" Param8="" />
 </root>

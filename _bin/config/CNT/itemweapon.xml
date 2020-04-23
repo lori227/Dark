@@ -1,15 +1,15 @@
-<root platform="" version="4586">
+<root platform="" version="4613">
 	<item Id="3180101" WeaponType="1801" WeaponLeve="1" Durability="20" Cost="1.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;31&quot;},{&quot;hitrate&quot;:&quot;40&quot;}]" AffixPool="4900001,4900001,4900001,4900001" />
 	<item Id="3180102" WeaponType="1801" WeaponLeve="2" Durability="20" Cost="1.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;46&quot;},{&quot;hitrate&quot;:&quot;40&quot;}]" AffixPool="4900002,4900001,4900001,4900001" />
 	<item Id="3180103" WeaponType="1801" WeaponLeve="3" Durability="20" Cost="1.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;62&quot;},{&quot;hitrate&quot;:&quot;40&quot;}]" AffixPool="4900003,4900003,4900001,4900001" />
 	<item Id="3180104" WeaponType="1801" WeaponLeve="4" Durability="20" Cost="1.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;82&quot;},{&quot;hitrate&quot;:&quot;40&quot;}]" AffixPool="4900004,4900004,4900004,4900001" />
 	<item Id="3180105" WeaponType="1801" WeaponLeve="5" Durability="20" Cost="1.0" RaceLimit="1602" FixedAttr="[{&quot;power&quot;:&quot;103&quot;},{&quot;hitrate&quot;:&quot;40&quot;}]" AffixPool="4900005,4900005,4900005,4900101" />
 	<item Id="3180106" WeaponType="1801" WeaponLeve="5" Durability="20" Cost="1.0" RaceLimit="1603" FixedAttr="[{&quot;power&quot;:&quot;103&quot;},{&quot;hitrate&quot;:&quot;40&quot;}]" AffixPool="4900005,4900005,4900005,4900101" />
-	<item Id="3180201" WeaponType="1802" WeaponLeve="1" Durability="20" Cost="1.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;29&quot;},{&quot;hitrate&quot;:&quot;30&quot;}]" AffixPool="4900001,4900001,4900001,4900001" />
-	<item Id="3180202" WeaponType="1802" WeaponLeve="2" Durability="20" Cost="1.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;44&quot;},{&quot;hitrate&quot;:&quot;30&quot;}]" AffixPool="4900002,4900001,4900001,4900001" />
-	<item Id="3180203" WeaponType="1802" WeaponLeve="3" Durability="20" Cost="1.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;59&quot;},{&quot;hitrate&quot;:&quot;30&quot;}]" AffixPool="4900003,4900003,4900001,4900001" />
-	<item Id="3180204" WeaponType="1802" WeaponLeve="4" Durability="20" Cost="1.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;78&quot;},{&quot;hitrate&quot;:&quot;30&quot;}]" AffixPool="4900004,4900004,4900004,4900001" />
-	<item Id="3180205" WeaponType="1802" WeaponLeve="5" Durability="20" Cost="1.0" RaceLimit="1601" FixedAttr="[{&quot;power&quot;:&quot;98&quot;},{&quot;hitrate&quot;:&quot;30&quot;}]" AffixPool="4900005,4900005,4900005,4900101" />
+	<item Id="3180201" WeaponType="1802" WeaponLeve="1" Durability="20" Cost="1.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;29&quot;},{&quot;hitrate&quot;:&quot;35&quot;}]" AffixPool="4900001,4900001,4900001,4900001" />
+	<item Id="3180202" WeaponType="1802" WeaponLeve="2" Durability="20" Cost="1.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;44&quot;},{&quot;hitrate&quot;:&quot;35&quot;}]" AffixPool="4900002,4900001,4900001,4900001" />
+	<item Id="3180203" WeaponType="1802" WeaponLeve="3" Durability="20" Cost="1.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;59&quot;},{&quot;hitrate&quot;:&quot;35&quot;}]" AffixPool="4900003,4900003,4900001,4900001" />
+	<item Id="3180204" WeaponType="1802" WeaponLeve="4" Durability="20" Cost="1.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;78&quot;},{&quot;hitrate&quot;:&quot;35&quot;}]" AffixPool="4900004,4900004,4900004,4900001" />
+	<item Id="3180205" WeaponType="1802" WeaponLeve="5" Durability="20" Cost="1.0" RaceLimit="1601" FixedAttr="[{&quot;power&quot;:&quot;98&quot;},{&quot;hitrate&quot;:&quot;35&quot;}]" AffixPool="4900005,4900005,4900005,4900101" />
 	<item Id="3180301" WeaponType="1803" WeaponLeve="1" Durability="20" Cost="1.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;34&quot;},{&quot;hitrate&quot;:&quot;40&quot;}]" AffixPool="4900001,4900001,4900001,4900001" />
 	<item Id="3180302" WeaponType="1803" WeaponLeve="2" Durability="20" Cost="1.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;50&quot;},{&quot;hitrate&quot;:&quot;40&quot;}]" AffixPool="4900002,4900001,4900001,4900001" />
 	<item Id="3180303" WeaponType="1803" WeaponLeve="3" Durability="20" Cost="1.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;67&quot;},{&quot;hitrate&quot;:&quot;40&quot;}]" AffixPool="4900003,4900003,4900001,4900001" />
@@ -39,11 +39,11 @@
 	<item Id="3181104" WeaponType="1801" WeaponLeve="4" Durability="1" Cost="0.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;82&quot;},{&quot;hitrate&quot;:&quot;40&quot;}]" AffixPool="" />
 	<item Id="3181105" WeaponType="1801" WeaponLeve="5" Durability="1" Cost="0.0" RaceLimit="1602" FixedAttr="[{&quot;power&quot;:&quot;103&quot;},{&quot;hitrate&quot;:&quot;40&quot;}]" AffixPool="" />
 	<item Id="3181106" WeaponType="1801" WeaponLeve="5" Durability="1" Cost="0.0" RaceLimit="1603" FixedAttr="[{&quot;power&quot;:&quot;103&quot;},{&quot;hitrate&quot;:&quot;40&quot;}]" AffixPool="" />
-	<item Id="3181201" WeaponType="1802" WeaponLeve="1" Durability="1" Cost="0.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;29&quot;},{&quot;hitrate&quot;:&quot;30&quot;}]" AffixPool="" />
-	<item Id="3181202" WeaponType="1802" WeaponLeve="2" Durability="1" Cost="0.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;44&quot;},{&quot;hitrate&quot;:&quot;30&quot;}]" AffixPool="" />
-	<item Id="3181203" WeaponType="1802" WeaponLeve="3" Durability="1" Cost="0.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;59&quot;},{&quot;hitrate&quot;:&quot;30&quot;}]" AffixPool="" />
-	<item Id="3181204" WeaponType="1802" WeaponLeve="4" Durability="1" Cost="0.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;78&quot;},{&quot;hitrate&quot;:&quot;30&quot;}]" AffixPool="" />
-	<item Id="3181205" WeaponType="1802" WeaponLeve="5" Durability="1" Cost="0.0" RaceLimit="1601" FixedAttr="[{&quot;power&quot;:&quot;98&quot;},{&quot;hitrate&quot;:&quot;30&quot;}]" AffixPool="" />
+	<item Id="3181201" WeaponType="1802" WeaponLeve="1" Durability="1" Cost="0.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;29&quot;},{&quot;hitrate&quot;:&quot;35&quot;}]" AffixPool="" />
+	<item Id="3181202" WeaponType="1802" WeaponLeve="2" Durability="1" Cost="0.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;44&quot;},{&quot;hitrate&quot;:&quot;35&quot;}]" AffixPool="" />
+	<item Id="3181203" WeaponType="1802" WeaponLeve="3" Durability="1" Cost="0.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;59&quot;},{&quot;hitrate&quot;:&quot;35&quot;}]" AffixPool="" />
+	<item Id="3181204" WeaponType="1802" WeaponLeve="4" Durability="1" Cost="0.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;78&quot;},{&quot;hitrate&quot;:&quot;35&quot;}]" AffixPool="" />
+	<item Id="3181205" WeaponType="1802" WeaponLeve="5" Durability="1" Cost="0.0" RaceLimit="1601" FixedAttr="[{&quot;power&quot;:&quot;98&quot;},{&quot;hitrate&quot;:&quot;35&quot;}]" AffixPool="" />
 	<item Id="3181301" WeaponType="1803" WeaponLeve="1" Durability="1" Cost="0.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;34&quot;},{&quot;hitrate&quot;:&quot;40&quot;}]" AffixPool="" />
 	<item Id="3181302" WeaponType="1803" WeaponLeve="2" Durability="1" Cost="0.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;50&quot;},{&quot;hitrate&quot;:&quot;40&quot;}]" AffixPool="" />
 	<item Id="3181303" WeaponType="1803" WeaponLeve="3" Durability="1" Cost="0.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;67&quot;},{&quot;hitrate&quot;:&quot;40&quot;}]" AffixPool="" />
@@ -68,8 +68,8 @@
 	<item Id="3181604" WeaponType="1806" WeaponLeve="4" Durability="1" Cost="0.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;63&quot;},{&quot;hitrate&quot;:&quot;30&quot;}]" AffixPool="" />
 	<item Id="3181605" WeaponType="1806" WeaponLeve="5" Durability="1" Cost="0.0" RaceLimit="1603" FixedAttr="[{&quot;power&quot;:&quot;79&quot;},{&quot;hitrate&quot;:&quot;30&quot;}]" AffixPool="" />
 	<item Id="3180100" WeaponType="1801" WeaponLeve="1" Durability="1" Cost="0.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;19&quot;},{&quot;hitrate&quot;:&quot;40&quot;}]" AffixPool="" />
-	<item Id="3180200" WeaponType="1802" WeaponLeve="1" Durability="1" Cost="0.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;17&quot;},{&quot;hitrate&quot;:&quot;40&quot;}]" AffixPool="" />
-	<item Id="3180300" WeaponType="1803" WeaponLeve="1" Durability="1" Cost="0.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;20&quot;},{&quot;hitrate&quot;:&quot;30&quot;}]" AffixPool="" />
+	<item Id="3180200" WeaponType="1802" WeaponLeve="1" Durability="1" Cost="0.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;17&quot;},{&quot;hitrate&quot;:&quot;35&quot;}]" AffixPool="" />
+	<item Id="3180300" WeaponType="1803" WeaponLeve="1" Durability="1" Cost="0.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;20&quot;},{&quot;hitrate&quot;:&quot;40&quot;}]" AffixPool="" />
 	<item Id="3180400" WeaponType="1804" WeaponLeve="1" Durability="1" Cost="0.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;17&quot;},{&quot;hitrate&quot;:&quot;45&quot;}]" AffixPool="" />
 	<item Id="3180500" WeaponType="1805" WeaponLeve="1" Durability="1" Cost="0.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;17&quot;},{&quot;hitrate&quot;:&quot;45&quot;}]" AffixPool="" />
 	<item Id="3180600" WeaponType="1806" WeaponLeve="1" Durability="1" Cost="0.0" RaceLimit="" FixedAttr="[{&quot;power&quot;:&quot;14&quot;},{&quot;hitrate&quot;:&quot;30&quot;}]" AffixPool="" />

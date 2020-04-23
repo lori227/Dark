@@ -307,7 +307,7 @@ Global
 		{9F702011-8B8A-480B-A01B-9D5DBC823714} = {CE4FBC4E-F0A1-4CBF-906E-3B258B61B839}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {0F58A6B8-C040-4A92-9898-1E6968E55CF1}
 		Qt5Version = msvc2015_86
+		SolutionGuid = {0F58A6B8-C040-4A92-9898-1E6968E55CF1}
 	EndGlobalSection
 EndGlobal

@@ -109,23 +109,30 @@ namespace KFrame
             return false;
         }
 
-        auto eventid = executedata->_param_list._params[0]->_int_value;
-
-        SendToClientLogicEvent( player, eventid );
-
+        auto& eventlist = executedata->_param_list._params[0]->_vector_value;
+        SendLogicEventToClient( player, eventlist );
         return true;
     }
 
     __KF_DROP_LOGIC_FUNCTION__( KFRealmModule::OnDropLogicEvent )
     {
-        SendToClientLogicEvent( player, dropdata->_data_key );
+        SendLogicEventToClient( player, dropdata->_data_key );
     }
 
-    void KFRealmModule::SendToClientLogicEvent( KFEntity* player, uint32 eventid )
+    void KFRealmModule::SendLogicEventToClient( KFEntity* player, uint32 eventid )
+    {
+        UInt32Vector eventlist;
+        eventlist.push_back( eventid );
+        return SendLogicEventToClient( player, eventlist );
+    }
+
+    void KFRealmModule::SendLogicEventToClient( KFEntity* player, const UInt32Vector& eventlist )
     {
         KFMsg::MsgLogicEventAck ack;
-        ack.set_id( eventid );
-
+        for ( auto eventid : eventlist )
+        {
+            ack.add_id( eventid );
+        }
         _kf_player->SendToClient( player, KFMsg::MSG_LOGIC_EVENT_ACK, &ack );
     }
 

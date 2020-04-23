@@ -254,6 +254,8 @@ namespace KFrame
         __STRING_DEFINE__( injury );
         __STRING_DEFINE__( injurycount );
         __STRING_DEFINE__( dead );
+        __STRING_DEFINE__( itemmaxcount );
+        __STRING_DEFINE__( position );
     }
 }
 

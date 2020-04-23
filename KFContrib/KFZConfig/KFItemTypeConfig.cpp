@@ -6,47 +6,15 @@ namespace KFrame
     {
         kfsetting->_is_auto = xmlnode.GetUInt32( "Auto", true );
         kfsetting->_sort_index = xmlnode.GetUInt32( "Sort", true );
-
-        auto strstorage = xmlnode.GetString( "Storage", true );
-        while ( !strstorage.empty() )
-        {
-            auto statusstorage = KFUtility::SplitString( strstorage, __SPLIT_STRING__ );
-            if ( !statusstorage.empty() )
-            {
-                auto status = KFUtility::SplitValue<uint32>( statusstorage, __DOMAIN_STRING__ );
-                auto name = KFUtility::SplitString( statusstorage, __DOMAIN_STRING__ );
-                if ( !name.empty() )
-                {
-                    kfsetting->_status_bag_name[ status ] = name;
-                }
-            }
-        }
-
-        auto strmove = xmlnode.GetString( "Move", true );
-        while ( !strmove.empty() )
-        {
-            auto movename = KFUtility::SplitString( strmove, __SPLIT_STRING__ );
-            if ( !movename.empty() )
-            {
-                kfsetting->_move_name_list.insert( movename );
-            }
-        }
+        kfsetting->_status_bag_name = xmlnode.GetUInt64String( "Storage", true );
+        kfsetting->_move_name_list = xmlnode.GetStringSet( "Move", true );
+        kfsetting->_tab_name_list = xmlnode.GetStringSet( "Tab", true );
 
         auto struselimit = xmlnode.GetString( "UseLimit", true );
         while ( !struselimit.empty() )
         {
             auto usemask = KFUtility::SplitValue< uint32 >( struselimit, __SPLIT_STRING__ );
             KFUtility::AddBitMask( kfsetting->_use_limit, usemask );
-        }
-
-        auto strtab = xmlnode.GetString( "Tab", true );
-        while ( !strtab.empty() )
-        {
-            auto tabname = KFUtility::SplitString( strtab, __SPLIT_STRING__ );
-            if ( !tabname.empty() )
-            {
-                kfsetting->_tab_name_list.insert( tabname );
-            }
         }
     }
 

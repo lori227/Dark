@@ -47,8 +47,11 @@ namespace KFrame
         __KF_MESSAGE_FUNCTION__( HandleRetireHeroReq );
 
     public:
-        // 获取续签数据
-        bool GetContractData( KFData* kfhero, uint32& durability, std::string& cost, uint32& errnum );
+        // 计算签约年限
+        uint32 CalcContractDurability( KFData* kfhero );
+
+        // 计算续约费用
+        const std::string& CalcContractCostPrice( KFData* kfhero, uint32 durability );
 
     protected:
         KFComponent* _kf_component = nullptr;

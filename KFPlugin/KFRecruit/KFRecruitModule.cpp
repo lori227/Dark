@@ -493,83 +493,147 @@ namespace KFrame
     void KFRecruitModule::CalcRecruitCostData( KFEntity* player, KFData* kfeffect, KFData* kfrecruit, KFData* kfhero, uint32 generateid, bool update )
     {
         auto kfgeneratesetting = KFGenerateConfig::Instance()->FindSetting( generateid );
-        if ( kfgeneratesetting == nullptr || kfgeneratesetting->_cost_formula_id == 0u )
+        if ( kfgeneratesetting == nullptr || kfgeneratesetting->_formula_list.empty() )
         {
             return;
         }
 
-        auto kfformulasetting = KFFormulaConfig::Instance()->FindSetting( kfgeneratesetting->_cost_formula_id );
-        if ( kfformulasetting == nullptr || kfformulasetting->_type.empty() || kfformulasetting->_params.size() < 7u )
+        KFElementSetting kfelementsetting;
+        for ( auto formulaid : kfgeneratesetting->_formula_list )
         {
-            return;
+            auto kfformulasetting = KFFormulaConfig::Instance()->FindSetting( formulaid );
+            if ( kfformulasetting == nullptr )
+            {
+                continue;
+            }
+
+            auto kfformulaparam = kfformulasetting->GetFormulaParam();
+            if ( kfformulaparam == nullptr )
+            {
+                continue;
+            }
+
+            if ( kfformulaparam->_type == __STRING__( item ) )
+            {
+                // 获得品质对应的计算公式
+                auto quality = kfhero->Get<uint32>( __STRING__( quality ) );
+                kfformulaparam = kfformulasetting->GetFormulaParam( 0, quality );
+                if ( kfformulaparam != nullptr )
+                {
+                    CalcRecruitCostItem( player, kfhero, kfformulaparam, &kfelementsetting );
+                }
+            }
+            else
+            {
+                CalcRecruitCostCurrency( player, kfeffect, kfhero, kfformulaparam, &kfelementsetting );
+            }
         }
-
-        // 计算平均成长率
-        auto totalgrowth = 0u;
-        auto kfgrowth = kfhero->Find( __STRING__( growth ) );
-        for ( auto kfchild = kfgrowth->First(); kfchild != nullptr; kfchild = kfgrowth->Next() )
-        {
-            totalgrowth += kfchild->Get<uint32>();
-        }
-        auto averagegrowth = static_cast<double>( totalgrowth ) / kfgrowth->Size();
-
-        auto price = 0.0;
-        auto basicprice = 0.0;
-        auto levelprice = 0.0;
-        auto param1 = kfformulasetting->_params[0]->_double_value;
-        auto param2 = kfformulasetting->_params[1]->_double_value;
-        auto param3 = kfformulasetting->_params[2]->_double_value;
-        auto param4 = kfformulasetting->_params[3]->_double_value;
-        auto param5 = kfformulasetting->_params[4]->_double_value;
-        auto param6 = kfformulasetting->_params[5]->_double_value;
-        auto param7 = kfformulasetting->_params[6]->_double_value;
-
-        if ( param5 != 0u )
-        {
-            // 基础价格
-            basicprice = param1 + ( averagegrowth - param2 ) * param3 / param5;
-            basicprice = __MAX__( basicprice, param4 );
-        }
-
-        if ( param6 != 0u )
-        {
-            // 等级价格
-            auto level = kfhero->Get<uint32>( __STRING__( level ) );
-            levelprice = level * param7 / param6;
-        }
-
-        auto maxdurability = kfhero->Get<uint32>( __STRING__( maxdurability ) );
-        price = basicprice * maxdurability + levelprice;
-
-        auto finalprice = static_cast<uint32>( price + 0.5 );
-
-        // 种族亲和, 费用减低
-        finalprice = CalcRecruitHeroDiscount( kfeffect, kfhero, finalprice );
 
         // 格式化费用数据
-        auto& strcost = KFElementConfig::Instance()->FormatString( kfformulasetting->_type, finalprice );
-        if ( !update )
+        if ( !kfelementsetting.IsEmpty() )
         {
-            kfrecruit->Set( __STRING__( cost ), strcost );
-        }
-        else
-        {
-            player->UpdateData( kfrecruit, __STRING__( cost ), strcost );
+            auto& strcost = KFElementConfig::Instance()->FormatString( kfelementsetting );
+            if ( !update )
+            {
+                kfrecruit->Set( __STRING__( cost ), strcost );
+            }
+            else
+            {
+                player->UpdateData( kfrecruit, __STRING__( cost ), strcost );
+            }
         }
     }
 
-    uint32 KFRecruitModule::CalcRecruitHeroDiscount( KFData* kfeffect, KFData* kfhero, uint32 price )
+    void KFRecruitModule::CalcRecruitCostItem( KFEntity* player, KFData* kfhero, const KFFormulaParam* kfformulaparam, KFElementSetting* kfelementsetting )
+    {
+        // 参数1 品质
+        // 参数2 道具id
+        // 参数3 道具数量
+        if ( kfformulaparam->_params._objects.size() < 3u )
+        {
+            return;
+        }
+
+        auto itemid = kfformulaparam->_params._objects[ 1 ]->_int_value;
+        auto itemcount = kfformulaparam->_params._objects[ 2 ]->_int_value;
+        kfelementsetting->AddData( kfformulaparam->_type, itemcount, itemid );
+    }
+
+    void KFRecruitModule::CalcRecruitCostCurrency( KFEntity* player, KFData* kfeffect, KFData* kfhero, const KFFormulaParam* kfformulaparam, KFElementSetting* kfelementsetting )
+    {
+        // 参数1 保底价格
+        // 参数2 品质单价
+        // 参数3 年限区间
+        // 参数4 每个年限区间单价
+        // 参数5 等级区间
+        // 参数6 每个等级区间单价
+        // 参数7 品质没有白色和褐色, 修正值
+
+        // 计算公式
+        // 基础价格 = MAX((参数1+(角色品质-参数7)*参数2),参数1)
+        // 年限价格 = 服役年限 / 参数3 * 参数4
+        // 等级价格 = 角色等级 / 参数5 * 参数6
+        // 最终价格 = 基础价格 + 年限价格 + 等级价格  (四舍五入)
+
+        if ( kfformulaparam->_type.empty() ||
+                kfformulaparam->_params._objects.size() < 7u )
+        {
+            return;
+        }
+
+        // 品质
+        auto quality = kfhero->Get<uint32>( __STRING__( quality ) );
+
+        // 参数1 保底价格
+        auto param1 = kfformulaparam->_params._objects[ 0 ]->_double_value;
+        // 参数2 品质单价
+        auto param2 = kfformulaparam->_params._objects[ 1 ]->_double_value;
+        // 参数7 品质没有白色和褐色, 修正值
+        auto param7 = kfformulaparam->_params._objects[ 6 ]->_double_value;
+
+        // 基础价格
+        auto basicprice = param1 + ( quality - param7 ) * param2;
+        auto finalprice = __MAX__( basicprice, param1 );
+
+        // 参数3 年限区间
+        auto param3 = kfformulaparam->_params._objects[ 2 ]->_double_value;
+        // 参数4 每个年限区间单价
+        auto param4 = kfformulaparam->_params._objects[ 3 ]->_double_value;
+        if ( param3 != 0 )
+        {
+            // 年限价格
+            auto durability = kfhero->Get<uint32>( __STRING__( durability ) );
+            finalprice += durability / param3 * param4;
+        }
+
+        // 参数5 等级区间
+        auto param5 = kfformulaparam->_params._objects[ 4 ]->_double_value;
+        // 参数6 每个等级区间单价
+        auto param6 = kfformulaparam->_params._objects[ 5 ]->_double_value;
+        if ( param5 != 0 )
+        {
+            // 等级价格
+            auto level = kfhero->Get<uint32>( __STRING__( level ) );
+            finalprice += level / param5 * param6;
+        }
+
+        // 种族亲和, 费用减低
+        auto costprice = CalcRecruitHeroDiscount( kfeffect, kfhero, finalprice );
+        kfelementsetting->AddData( kfformulaparam->_type, costprice );
+    }
+
+    uint32 KFRecruitModule::CalcRecruitHeroDiscount( KFData* kfeffect, KFData* kfhero, double price )
     {
         auto race = kfhero->Get<uint32>( __STRING__( race ) );
         auto discount = kfeffect->Get<uint32>( __STRING__( recruitdiscount ), race, __STRING__( value ) );
-        if ( discount == 0u )
+        if ( discount != 0u )
         {
-            return price;
+            discount = __MIN__( discount, KFRandEnum::TenThousand );
+            double ratio = 1.0f - static_cast< double >( discount ) / static_cast< double >( KFRandEnum::TenThousand );
+            price *= ratio ;
         }
 
-        double ratio = 1.0f - static_cast< double >( discount ) / static_cast< double >( KFRandEnum::TenThousand );
-        auto finalprice = static_cast< double >( price ) * ratio + 0.5;
-        return static_cast< uint32 >( finalprice );
+        return static_cast< uint32 >( std::round( price ) );
     }
 
     void KFRecruitModule::RefreshRecruitHeroDiscount( KFEntity* player, KFData* kfeffect, uint32 race )

@@ -27,8 +27,7 @@ namespace KFrame
             }
         }
 
-        auto strrefreshcost = xmlnode.GetString( "RefreshCost" );
-        KFUtility::SplitList( kfsetting->_refresh_cost_list, strrefreshcost, __SPLIT_STRING__ );
+        kfsetting->_refresh_cost_list = xmlnode.GetUInt32Vector( "RefreshCost" );
     }
 
     void KFStoreConfig::LoadAllComplete()

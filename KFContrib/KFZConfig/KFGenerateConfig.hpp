@@ -34,11 +34,11 @@ namespace KFrame
         // 初始属性偏转率id
         uint32 _attr_id = 0u;
 
-        // 成长率id
-        uint32 _growth_id = 0u;
+        // 品质池id
+        uint32 _quality_pool_id = 0u;
 
         // 招募消耗花费公式
-        uint32 _cost_formula_id = 0u;
+        UInt32Vector _formula_list;
 
         // 耐久度
         uint32 _durability = 0u;

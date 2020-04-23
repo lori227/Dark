@@ -58,10 +58,10 @@ namespace KFrame
         virtual void ClearHeroEp( KFEntity* player );
 
         // 操作队伍英雄血量
-        virtual void OperateHpValue( KFEntity* player, uint32 operate, uint32 value, const KeyValue* conditions = nullptr );
+        virtual void OperateHpValue( KFEntity* player, uint32 operate, uint32 value, const StringUInt64* conditions = nullptr );
 
         // 操作队伍英雄血量百分比
-        virtual void OperateHpPercent( KFEntity* player, uint32 operate, uint32 value, const KeyValue* conditions = nullptr );
+        virtual void OperateHpPercent( KFEntity* player, uint32 operate, uint32 value, const StringUInt64* conditions = nullptr );
         ////////////////////////////////////////////////////////////////////////////////
     protected:
         // 进入游戏
@@ -100,7 +100,7 @@ namespace KFrame
         void CheckHeroInTeam( KFEntity* player );
 
         // 判断英雄限制条件
-        bool CheckHeroConditions( KFData* kfhero, const KeyValue* conditions );
+        bool CheckHeroConditions( KFData* kfhero, const StringUInt64* conditions );
     protected:
         // 玩家上下文组件
         KFComponent* _kf_component = nullptr;

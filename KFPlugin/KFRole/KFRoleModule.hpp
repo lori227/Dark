@@ -46,6 +46,9 @@ namespace KFrame
         // 更新主线流程
         __KF_MESSAGE_FUNCTION__( HandleUpdateMainStageReq );
 
+        // 更新位置信息
+        __KF_MESSAGE_FUNCTION__( HandlePositionUpdateReq );
+
     protected:
         // 金币更新
         __KF_UPDATE_DATA_FUNCTION__( OnUpdateMoneyCallBack );
@@ -67,6 +70,8 @@ namespace KFrame
 
         // 进入游戏检查
         __KF_ENTER_PLAYER_FUNCTION__( OnEnterRoleModule );
+
+
 
     protected:
         // 执行初始化流程

@@ -34,20 +34,15 @@ namespace KFrame
         }
 
         // 获取续签数据
-        uint32 nextdurability = _invalid_int;
-        std::string cost = _invalid_string;
-        uint32 errnum = _invalid_int;
-        if ( !GetContractData( kfhero, nextdurability, cost, errnum ) )
-        {
-            return _kf_display->SendToClient( player, errnum );
-        }
-
-        // 通知客户端数据
         KFMsg::MsgContractDataAck ack;
         ack.set_uuid( kfmsg.uuid() );
+        auto nextdurability = CalcContractDurability( kfhero );
+        if ( nextdurability != 0u )
+        {
+            auto& strcost = CalcContractCostPrice( kfhero, nextdurability );
+            ack.set_cost( strcost );
+        }
         ack.set_durability( nextdurability );
-        ack.set_cost( cost );
-
         _kf_player->SendToClient( player, KFMsg::MSG_CONTRACT_DATA_ACK, &ack );
     }
 
@@ -68,24 +63,20 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::HeroDurabilityNotZero );
         }
 
-        // 获取续签数据
-        uint32 nextdurability = _invalid_int;
-        std::string cost = _invalid_string;
-        uint32 errnum = _invalid_int;
-        if ( !GetContractData( kfhero, nextdurability, cost, errnum ) )
-        {
-            return _kf_display->SendToClient( player, errnum );
-        }
-
+        auto nextdurability = CalcContractDurability( kfhero );
         if ( nextdurability == _invalid_int )
         {
             return _kf_display->SendToClient( player, KFMsg::ContractTimeIsZero );
         }
 
         static KFElements _cost_element;
-        _cost_element.Parse( cost, __FUNC_LINE__ );
+        auto& strcost = CalcContractCostPrice( kfhero, nextdurability );
+        if ( strcost.empty() )
+        {
+            return _kf_display->SendToClient( player, KFMsg::ContractPriceFormulaError );
+        }
 
-        // 消耗是否足够
+        _cost_element.Parse( strcost, __FUNC_LINE__ );
         auto& dataname = player->RemoveElement( &_cost_element, _default_multiple, __STRING__( contracthero ), 0u, __FUNC_LINE__ );
         if ( !dataname.empty() )
         {
@@ -124,86 +115,98 @@ namespace KFrame
         return _kf_display->SendToClient( player, KFMsg::HeroRetireSuc );
     }
 
-    bool KFContractModule::GetContractData( KFData* kfhero, uint32& durability, std::string& cost, uint32& errnum )
+    uint32 KFContractModule::CalcContractDurability( KFData* kfhero )
     {
         auto custom = kfhero->Get<uint32>( __STRING__( custom ) );
         if ( custom > 0u )
         {
-            return true;
+            return 0u;
         }
 
         // 续签时间公式id
         static auto _timefid_option = KFGlobal::Instance()->FindConstant( __STRING__( contracttimefid ) );
-        auto kftimesetting = KFFormulaConfig::Instance()->FindSetting( _timefid_option->_uint32_value );
-        if ( kftimesetting == nullptr || kftimesetting->_params.size() < 2u )
+        auto kftimeformulaparam = KFFormulaConfig::Instance()->FindFormulaParam( _timefid_option->_uint32_value );
+        if ( kftimeformulaparam == nullptr || kftimeformulaparam->_params._objects.size() < 2u )
         {
-            errnum = KFMsg::ContractTimeFormulaError;
-            return false;
+            return 0u;
         }
 
-        auto param1 = kftimesetting->_params[0]->_double_value;
-        auto param2 = kftimesetting->_params[1]->_double_value;
+        auto param1 = kftimeformulaparam->_params._objects[ 0 ]->_double_value;
+        auto param2 = kftimeformulaparam->_params._objects[ 1 ]->_double_value;
 
         // 计算续签年限
         auto maxdurability = kfhero->Get<uint32>( __STRING__( maxdurability ) );
-        durability = static_cast<uint32>( __MAX__( maxdurability * param1, param2 ) );
-        if ( durability == 0u )
-        {
-            return true;
-        }
+        auto nextdurability = maxdurability * param1;
+        nextdurability = static_cast< uint32 >( __MAX__( nextdurability, param2 ) );
+        return nextdurability;
+    }
+
+    const std::string& KFContractModule::CalcContractCostPrice( KFData* kfhero, uint32 durability )
+    {
+        // 参数1 保底价格
+        // 参数2 品质单价
+        // 参数3 年限区间
+        // 参数4 每个年限区间单价
+        // 参数5 等级区间
+        // 参数6 每个等级区间单价
+        // 参数7 品质没有白色和褐色, 修正值
+        // 参数8 每次续约涨价幅度
+
+        // 基础价格 Max((参数1+(角色品质-参数7)*参数2),参数1)
+        // 年限价格 续约年限/参数3*参数4
+        // 等级价格 角色等级/参数5*参数6
+        // 最终价格 (基础价格+年限价格+等级价格)*(1+续约次数*参数8), 四舍五入
 
         // 续签价格公式id
         static auto _pricefid_option = KFGlobal::Instance()->FindConstant( __STRING__( contractpricefid ) );
-        auto kfpricesetting = KFFormulaConfig::Instance()->FindSetting( _pricefid_option->_uint32_value );
-        if ( kfpricesetting == nullptr || kfpricesetting->_type.empty() || kfpricesetting->_params.size() < 8u )
+        auto kfpriceformulaparam = KFFormulaConfig::Instance()->FindFormulaParam( _pricefid_option->_uint32_value );
+        if ( kfpriceformulaparam == nullptr ||
+                kfpriceformulaparam->_type.empty() ||
+                kfpriceformulaparam->_params._objects.size() < 8u )
         {
-            errnum = KFMsg::ContractPriceFormulaError;
-            return false;
+            return _invalid_string;
         }
 
-        auto price = 0.0;
-        auto basicprice = 0.0;
-        auto levelprice = 0.0;
-        param1 = kfpricesetting->_params[0]->_double_value;
-        param2 = kfpricesetting->_params[1]->_double_value;
-        auto param3 = kfpricesetting->_params[2]->_double_value;
-        auto param4 = kfpricesetting->_params[3]->_double_value;
-        auto param5 = kfpricesetting->_params[4]->_double_value;
-        auto param6 = kfpricesetting->_params[5]->_double_value;
-        auto param7 = kfpricesetting->_params[6]->_double_value;
-        auto param8 = kfpricesetting->_params[7]->_double_value;
+        // 品质
+        auto quality = kfhero->Get<uint32>( __STRING__( quality ) );
 
-        // 计算平均成长率
-        auto totalgrowth = 0u;
-        auto kfgrowth = kfhero->Find( __STRING__( growth ) );
-        for ( auto kfchild = kfgrowth->First(); kfchild != nullptr; kfchild = kfgrowth->Next() )
-        {
-            totalgrowth += kfchild->Get<uint32>();
-        }
-        auto averagegrowth = static_cast<double>( totalgrowth ) / kfgrowth->Size();
+        // 参数1 保底价格
+        auto param1 = kfpriceformulaparam->_params._objects[ 0 ]->_double_value;
+        // 参数2 品质单价
+        auto param2 = kfpriceformulaparam->_params._objects[ 1 ]->_double_value;
+        // 参数7 品质没有白色和褐色, 修正值
+        auto param7 = kfpriceformulaparam->_params._objects[ 6 ]->_double_value;
 
-        if ( param5 != 0u )
+        // 基础价格 Max((参数1+(角色品质-参数7)*参数2),参数1)
+        auto basicprice = param1 + ( quality - param7 ) * param2;
+        auto finalprice = __MAX__( basicprice, param1 );
+
+        // 参数3 年限区间
+        auto param3 = kfpriceformulaparam->_params._objects[ 2 ]->_double_value;
+        // 参数4 每个年限区间单价
+        auto param4 = kfpriceformulaparam->_params._objects[ 3 ]->_double_value;
+        if ( param3 != 0 )
         {
-            // 基础价格
-            basicprice = param1 + ( averagegrowth - param2 ) * param3 / param5;
-            basicprice = __MAX__( basicprice, param4 );
+            // 年限价格 续约年限/参数3*参数4
+            finalprice += durability / param3 * param4;
         }
 
-        if ( param6 != 0u )
+        // 参数5 等级区间
+        auto param5 = kfpriceformulaparam->_params._objects[ 4 ]->_double_value;
+        // 参数6 每个等级区间单价
+        auto param6 = kfpriceformulaparam->_params._objects[ 5 ]->_double_value;
+        if ( param5 != 0 )
         {
-            // 等级价格
+            // 等级价格 角色等级/参数5*参数6
             auto level = kfhero->Get<uint32>( __STRING__( level ) );
-            levelprice = level * param7 / param6;
+            finalprice += level / param5 * param6;
         }
 
-        auto adddurability = kfhero->Get<uint32>( __STRING__( adddurability ) ) + 1u;
-        price = ( basicprice * durability + levelprice ) * ( 1 + adddurability * adddurability * param8 );
-
-        auto finalprice = static_cast<uint32>( price + 0.5 );
-        cost = KFElementConfig::Instance()->FormatString( kfpricesetting->_type, finalprice );
-
-        return true;
+        // 参数8 每次续约涨价幅度
+        auto param8 = kfpriceformulaparam->_params._objects[ 7 ]->_double_value;
+        // 最终价格 (基础价格+年限价格+等级价格)*(1+续约次数*参数8), 四舍五入
+        auto adddurability = kfhero->Get<uint32>( __STRING__( adddurability ) );
+        finalprice *= ( 1.0 + ( adddurability + 1.0 ) * param8 );
+        return KFElementConfig::Instance()->FormatString( kfpriceformulaparam->_type, ( uint32 )std::round( finalprice ) );
     }
-
-
 }

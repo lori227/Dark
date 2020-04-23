@@ -91,13 +91,8 @@ namespace KFrame
             return 0u;
         }
 
-        auto kfitemrecord = player->Find( KFItemBagConfig::Instance()->_settings._objects.begin()->first );
+        auto kfitemrecord = player->Find( KFItemBagConfig::Instance()->_default_bag_name );
         kfitemrecord = FindItemRecord( player, kfitemrecord, kfsetting, 0u );
-        if ( kfitemrecord == nullptr )
-        {
-            return 0u;
-        }
-
         return GetItemCount( player, kfitemrecord, kfsetting->_id, maxvalue );
     }
 
@@ -485,7 +480,7 @@ namespace KFrame
 
         if ( kfitem == nullptr )
         {
-            kfitem = player->CreateData( KFItemBagConfig::Instance()->_settings._objects.begin()->first );
+            kfitem = player->CreateData( KFItemBagConfig::Instance()->_default_bag_name );
             if ( kfitem == nullptr )
             {
                 return kfitem;
@@ -513,14 +508,14 @@ namespace KFrame
 
     KFData* KFItemModule::FindItemRecord( KFEntity* player, uint32 itemid )
     {
+        auto kfitemrecord = player->Find( KFItemBagConfig::Instance()->_default_bag_name );
         auto kfsetting = KFItemConfig::Instance()->FindSetting( itemid );
         if ( kfsetting == nullptr )
         {
-            return nullptr;
+            return kfitemrecord;
         }
 
-        auto kfitemrecord = player->Find( KFItemBagConfig::Instance()->_settings._objects.begin()->first );
-        return FindItemRecord( player, kfitemrecord, kfsetting, kfsetting->GetOverlayCount( kfitemrecord->_data_setting->_name ) );
+        return FindItemRecord( player, kfitemrecord, kfsetting, 0u );
     }
 
     KFData* KFItemModule::FindItemRecord( KFEntity* player, KFData* kfitem )
@@ -528,7 +523,7 @@ namespace KFrame
         auto kfsetting = KFItemConfig::Instance()->FindSetting( kfitem->Get<uint32>( kfitem->_data_setting->_config_key_name ) );
         if ( kfsetting == nullptr )
         {
-            return nullptr;
+            return kfitem->GetParent();
         }
 
         return FindItemRecord( player, kfitem->GetParent(), kfsetting, kfitem->Get<uint32>( kfitem->_data_setting->_value_key_name ) );
@@ -552,7 +547,7 @@ namespace KFrame
         }
 
         auto kffindrecord = player->Find( bagname );
-        if ( itemcount > 0 )
+        if ( itemcount > 0u )
         {
             auto kfbagsetting = KFItemBagConfig::Instance()->FindSetting( bagname );
             if ( kfbagsetting != nullptr && !kfbagsetting->_extend_bag_name.empty() )

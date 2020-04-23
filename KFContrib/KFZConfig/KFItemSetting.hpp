@@ -93,7 +93,7 @@ namespace KFrame
 
         // 默认叠加数量
         uint32 _overlay_count = 0u;
-        std::unordered_map<std::string, uint32> _overlay_count_list;
+        StringUInt64 _overlay_count_list;
 
         // 可使用次数( 0 = 不能使用 )
         uint32 _use_count = 0u;

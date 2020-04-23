@@ -590,21 +590,24 @@ namespace KFrame
         _clinic_consume_money.Clear();
 
         // 公式配置
-        auto kfformulasetting = KFFormulaConfig::Instance()->FindSetting( setting->_consume_money_fid );
-        if ( kfformulasetting == nullptr || kfformulasetting->_type.empty() || kfformulasetting->_params.size() < 2u )
+        auto kfformulaparam = KFFormulaConfig::Instance()->FindFormulaParam( setting->_consume_money_fid );
+        if ( kfformulaparam == nullptr ||
+                kfformulaparam->_type.empty() ||
+                kfformulaparam->_params._objects.size() < 2u )
         {
             return nullptr;
         }
 
-        auto param1 = kfformulasetting->_params[0]->_double_value;
-        auto param2 = kfformulasetting->_params[1]->_double_value;
+        auto param1 = kfformulaparam->_params._objects[0]->_double_value;
+        auto param2 = kfformulaparam->_params._objects[1]->_double_value;
+
         // 基本金币
         auto moneycount = __MAX__( addhp * param1, param2 );
         // 实际金币
         moneycount = std::round( moneycount * setting->_scale_consume_money );
 
         // 费用数据格式
-        KFElementConfig::Instance()->FormatElement( _clinic_consume_money, kfformulasetting->_type, moneycount );
+        KFElementConfig::Instance()->FormatElement( _clinic_consume_money, kfformulaparam->_type, moneycount );
         return &_clinic_consume_money;
     }
 }

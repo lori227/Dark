@@ -21,16 +21,9 @@ namespace KFrame
         }
 
         kfsetting->_level = xmlnode.GetUInt32( "Level", true );
-
-        auto stractivepool = xmlnode.GetString( "ActivePool", true );
-        KFUtility::SplitList( kfsetting->_active_pool_list, stractivepool, __SPLIT_STRING__ );
-
-        auto strcharacterpool = xmlnode.GetString( "CharacterPool", true );
-        KFUtility::SplitList( kfsetting->_character_pool_list, strcharacterpool, __SPLIT_STRING__ );
-
-        auto strinnatepool = xmlnode.GetString( "InnatePool", true );
-        KFUtility::SplitList( kfsetting->_innate_pool_list, strinnatepool, __SPLIT_STRING__ );
-
+        kfsetting->_active_pool_list = xmlnode.GetUInt32Vector( "ActivePool", true );
+        kfsetting->_character_pool_list = xmlnode.GetUInt32Vector( "CharacterPool", true );
+        kfsetting->_innate_pool_list = xmlnode.GetUInt32Vector( "InnatePool", true );
         kfsetting->_cost._str_parse = xmlnode.GetString( "Cost", true );
 
         _parent_child_map[kfsetting->_parent_id].push_back( kfsetting->_child_id );

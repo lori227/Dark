@@ -5,9 +5,7 @@ namespace KFrame
     void KFNpcGroupConfig::ReadSetting( KFNode& xmlnode, KFNpcGroupSetting* kfsetting )
     {
         // 生成
-        auto strgenerate = xmlnode.GetString( "Npc" );
-        KFUtility::SplitList( kfsetting->_npc_generate_list, strgenerate, __SPLIT_STRING__ );
-
+        kfsetting->_npc_generate_list = xmlnode.GetUInt32Vector( "Npc" );
         kfsetting->_show_model = xmlnode.GetString( "SpawnModel" );
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////

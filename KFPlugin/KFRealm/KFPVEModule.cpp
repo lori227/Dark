@@ -735,16 +735,16 @@ namespace KFrame
         KFWeightList< DynamicPunishData > randlist;
         for ( auto& punishdata : kfpunishsetting->_punish_list )
         {
-            auto weight = KFGlobal::Instance()->RandRange( punishdata._min_weight, punishdata._max_weight, 1u );
+            auto weight = punishdata._range_weight.CalcValue();
             auto randdata = randlist.Create( ++tempid, weight );
             randdata->_name = punishdata._name;
             randdata->_key = punishdata._key;
-            randdata->_value = KFGlobal::Instance()->RandRange( punishdata._min_value, punishdata._max_value, 1u );
+            randdata->_value = punishdata._range_value.CalcValue();
         }
 
         // 计算惩罚数量
         UInt32Set excludelist;
-        auto punishcount = KFGlobal::Instance()->RandRange( kfpunishsetting->_min_count, kfpunishsetting->_max_count, 1u );
+        auto punishcount = kfpunishsetting->_range_count.CalcValue();
         for ( auto i = 0u; i < punishcount; ++i )
         {
             auto punishdata = randlist.Rand( excludelist, true );

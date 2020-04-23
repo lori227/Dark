@@ -374,7 +374,10 @@ namespace KFrame
 
         KFMsg::MsgMultiEventAck ack;
         ack.set_multieventid( kfmsg.multieventid() );
-        ack.set_eventid( kfeventdata->_event_id );
-        _kf_player->SendToClient( player, KFMsg::MSG_MULTI_EVENT_ACK, &ack );
+        for ( auto eventid : kfeventdata->_event_list )
+        {
+            ack.add_eventid( eventid );
+        }
+        _kf_player->SendToClient( player, KFMsg::MSG_MULTI_EVENT_ACK, &ack, 1u );
     }
 }

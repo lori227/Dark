@@ -33,10 +33,10 @@ namespace KFrame
         virtual void ClearHeroEp( KFEntity* player ) = 0;
 
         // 操作队伍英雄血量数值
-        virtual void OperateHpValue( KFEntity* player, uint32 operate, uint32 value, const KeyValue* conditions = nullptr ) = 0;
+        virtual void OperateHpValue( KFEntity* player, uint32 operate, uint32 value, const StringUInt64* conditions = nullptr ) = 0;
 
         // 操作队伍英雄血量百分比
-        virtual void OperateHpPercent( KFEntity* player, uint32 operate, uint32 value, const KeyValue* conditions = nullptr ) = 0;
+        virtual void OperateHpPercent( KFEntity* player, uint32 operate, uint32 value, const StringUInt64* conditions = nullptr ) = 0;
     };
 
     //////////////////////////////////////////////////////////////////////////////////

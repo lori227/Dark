@@ -94,6 +94,10 @@ namespace KFrame
     protected:
         // 读取配置
         virtual void ReadSetting( KFNode& xmlnode, KFItemBagSetting* kfsetting );
+
+    public:
+        // 默认的背包名字
+        std::string _default_bag_name;
     };
 }
 
