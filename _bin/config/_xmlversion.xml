@@ -1,4 +1,4 @@
-<root version="4743">
+<root version="4760">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -30,7 +30,6 @@
 	<item name="equipaffix" version="727" />
 	<item name="item_resource" version="843" />
 	<item name="itemequip" version="846" />
-	<item name="weapontype" version="917" />
 	<item name="technologylevel" version="1109" />
 	<item name="currency" version="1172" />
 	<item name="traincamp" version="1175" />
@@ -119,12 +118,10 @@
 	<item name="taskchain" version="4626" />
 	<item name="tasktext" version="4626" />
 	<item name="errorcode" version="4632" />
-	<item name="itemcommon" version="4642" />
 	<item name="recruitrefresh" version="4658" />
 	<item name="herogenerate" version="4660" />
 	<item name="itemtext" version="4668" />
 	<item name="eventparams" version="4670" />
-	<item name="realm" version="4673" />
 	<item name="heroquality" version="4674" />
 	<item name="formula" version="4674" />
 	<item name="task" version="4679" />
@@ -134,8 +131,6 @@
 	<item name="unlockcondition" version="4695" />
 	<item name="buildlevel" version="4696" />
 	<item name="injurytype" version="4697" />
-	<item name="prompttext" version="4698" />
-	<item name="class" version="4699" />
 	<item name="herolevel" version="4702" />
 	<item name="herotransfer" version="4702" />
 	<item name="heroweightpool" version="4702" />
@@ -144,22 +139,27 @@
 	<item name="multievent" version="4705" />
 	<item name="heroconstant" version="4709" />
 	<item name="technology" version="4710" />
-	<item name="dropgroup" version="4712" />
-	<item name="dropdata" version="4714" />
 	<item name="unlock" version="4715" />
 	<item name="taskcondition" version="4717" />
-	<item name="uitext" version="4718" />
-	<item name="heroprofession" version="4720" />
-	<item name="rolebasetext" version="4720" />
 	<item name="npcgroup" version="4721" />
-	<item name="npcgenerate" version="4722" />
 	<item name="dialoguetext" version="4724" />
 	<item name="itemtype" version="4725" />
 	<item name="camptext" version="4732" />
 	<item name="npc" version="4736" />
-	<item name="initialprocess" version="4741" />
-	<item name="story" version="4741" />
-	<item name="player" version="4741" />
 	<item name="dialogue" version="4742" />
 	<item name="pve" version="4743" />
+	<item name="heroprofession" version="4746" />
+	<item name="realm" version="4747" />
+	<item name="weapontype" version="4748" />
+	<item name="dropdata" version="4748" />
+	<item name="initialprocess" version="4750" />
+	<item name="player" version="4750" />
+	<item name="dropgroup" version="4752" />
+	<item name="npcgenerate" version="4753" />
+	<item name="prompttext" version="4755" />
+	<item name="itemcommon" version="4756" />
+	<item name="story" version="4757" />
+	<item name="class" version="4758" />
+	<item name="rolebasetext" version="4759" />
+	<item name="uitext" version="4760" />
 </root>

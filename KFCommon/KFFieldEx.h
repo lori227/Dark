@@ -60,6 +60,7 @@ namespace KFrame
         __STRING_DEFINE__( random );
         __STRING_DEFINE__( realm );
         __STRING_DEFINE__( realmid );
+        __STRING_DEFINE__( realmlevel );
         __STRING_DEFINE__( realmtown );
         __STRING_DEFINE__( realmdata );
         __STRING_DEFINE__( activeindex );

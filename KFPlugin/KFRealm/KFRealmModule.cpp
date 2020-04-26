@@ -259,6 +259,7 @@ namespace KFrame
         player->Set( __STRING__( realmdata ), _invalid_string );
         player->UpdateData( __STRING__( realmtown ), KFEnum::Set, _invalid_int );
         player->UpdateData( __STRING__( realmid ), KFEnum::Set, realmid );
+        player->UpdateData( __STRING__( realmlevel ), KFEnum::Set, level );
         //////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////////
         auto kfrealmdata = _realm_data.Create( player->GetKeyID() );
@@ -441,6 +442,7 @@ namespace KFrame
         // 完成/进入关卡条件回调
         RealmJumpCondition( player, kfrealmdata->_data.id(), lastlevel, level );
 
+        player->UpdateData( __STRING__( realmlevel ), KFEnum::Set, level );
         return std::make_tuple( KFMsg::Ok, kfrealmdata, pbexplore );
     }
 
@@ -712,6 +714,7 @@ namespace KFrame
         player->Set( __STRING__( realmdata ), _invalid_string );
         player->UpdateData( __STRING__( realmtown ), KFEnum::Set, 0u );
         player->UpdateData( __STRING__( realmid ), KFEnum::Set, 0u );
+        player->UpdateData( __STRING__( realmlevel ), KFEnum::Set, 0u );
     }
 
     uint32 KFRealmModule::GetItemBagRealmBalanceType( const KFItemBagSetting* kfsetting, uint32 result )

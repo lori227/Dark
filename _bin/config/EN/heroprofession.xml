@@ -1,4 +1,4 @@
-<root platform="" version="4720">
+<root platform="" version="4746">
 	<item Id="1001" RaceLimit="1602" SexLimit="1" WeaponType="1803|1801" MoveType="1701" Mobility="3" MaxEP="4" ClassLv="0" Attr_maxhp="190" Attr_atk="63" Attr_def="62" Attr_res="62" Attr_tal="25" Attr_spd="25" Attr_luk="25" MaxLevel="10" RoleDurability="[10,10]" VoiceType="1,2,3,4,5" />
 	<item Id="1100" RaceLimit="1602" SexLimit="1" WeaponType="1801" MoveType="1701" Mobility="3" MaxEP="4" ClassLv="1" Attr_maxhp="237" Attr_atk="79" Attr_def="77" Attr_res="77" Attr_tal="25" Attr_spd="25" Attr_luk="25" MaxLevel="10" RoleDurability="[10,10]" VoiceType="1,2,3,4,5" />
 	<item Id="1101" RaceLimit="1602" SexLimit="1" WeaponType="1801" MoveType="1701" Mobility="3" MaxEP="4" ClassLv="2" Attr_maxhp="284" Attr_atk="95" Attr_def="92" Attr_res="92" Attr_tal="30" Attr_spd="30" Attr_luk="30" MaxLevel="20" RoleDurability="[10,10]" VoiceType="1,2,3,4,5" />
@@ -51,5 +51,5 @@
 	<item Id="1137" RaceLimit="1601" SexLimit="1" WeaponType="1802" MoveType="1702" Mobility="5" MaxEP="4" ClassLv="2" Attr_maxhp="337" Attr_atk="85" Attr_def="87" Attr_res="69" Attr_tal="22" Attr_spd="30" Attr_luk="48" MaxLevel="20" RoleDurability="[10,10]" VoiceType="1,2,3,4,5" />
 	<item Id="1138" RaceLimit="1601" SexLimit="1" WeaponType="1802" MoveType="1702" Mobility="5" MaxEP="4" ClassLv="3" Attr_maxhp="365" Attr_atk="92" Attr_def="94" Attr_res="74" Attr_tal="24" Attr_spd="32" Attr_luk="52" MaxLevel="30" RoleDurability="[10,10]" VoiceType="1,2,3,4,5" />
 	<item Id="1999" RaceLimit="1602" SexLimit="1" WeaponType="1803" MoveType="1702" Mobility="5" MaxEP="4" ClassLv="1" Attr_maxhp="184" Attr_atk="121" Attr_def="57" Attr_res="57" Attr_tal="25" Attr_spd="28" Attr_luk="26" MaxLevel="10" RoleDurability="[10,10]" VoiceType="1,2,3,4,5" />
-	<item Id="1998" RaceLimit="1603" SexLimit="1" WeaponType="1802" MoveType="1701" Mobility="3" MaxEP="4" ClassLv="1" Attr_maxhp="254" Attr_atk="40" Attr_def="105" Attr_res="24" Attr_tal="14" Attr_spd="29" Attr_luk="67" MaxLevel="10" RoleDurability="[10,10]" VoiceType="1,2,3,4,5" />
+	<item Id="1998" RaceLimit="1603" SexLimit="1" WeaponType="0" MoveType="1701" Mobility="3" MaxEP="4" ClassLv="1" Attr_maxhp="254" Attr_atk="40" Attr_def="105" Attr_res="24" Attr_tal="14" Attr_spd="29" Attr_luk="67" MaxLevel="10" RoleDurability="[10,10]" VoiceType="1,2,3,4,5" />
 </root>

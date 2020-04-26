@@ -1,4 +1,4 @@
-<root platform="" version="4714">
+<root platform="" version="4748">
 	<item Id="6000001" LogicName="exp" DataName="" DropValue="50" DropKey="0" Weight="100" />
 	<item Id="6001001" LogicName="data" DataName="item" DropValue="1000" DropKey="1900000" Weight="100" />
 	<item Id="6002001" LogicName="data" DataName="item" DropValue="1000" DropKey="1900002" Weight="100" />
@@ -85,6 +85,7 @@
 	<item Id="6110231" LogicName="data" DataName="item" DropValue="500" DropKey="1900301" Weight="100" />
 	<item Id="6110241" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
 	<item Id="6110242" LogicName="data" DataName="item" DropValue="450" DropKey="1000017" Weight="100" />
+	<item Id="6110243" LogicName="data" DataName="item" DropValue="10" DropKey="1900105" Weight="100" />
 	<item Id="6110251" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
 	<item Id="6110261" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
 	<item Id="6110262" LogicName="data" DataName="item" DropValue="2000" DropKey="1900201" Weight="100" />
@@ -93,6 +94,7 @@
 	<item Id="6110282" LogicName="data" DataName="item" DropValue="100" DropKey="1000017" Weight="100" />
 	<item Id="6110283" LogicName="data" DataName="item" DropValue="200" DropKey="1900003" Weight="100" />
 	<item Id="6110284" LogicName="data" DataName="item" DropValue="500" DropKey="1900004" Weight="100" />
+	<item Id="6110285" LogicName="data" DataName="item" DropValue="10" DropKey="1900105" Weight="100" />
 	<item Id="6110291" LogicName="data" DataName="item" DropValue="2" DropKey="1900001" Weight="100" />
 	<item Id="6110301" LogicName="data" DataName="hero" DropValue="4100108" DropKey="0" Weight="100" />
 	<item Id="6110302" LogicName="data" DataName="item" DropValue="3" DropKey="1900106" Weight="100" />
@@ -101,6 +103,7 @@
 	<item Id="6110322" LogicName="data" DataName="item" DropValue="100" DropKey="1000017" Weight="100" />
 	<item Id="6110323" LogicName="data" DataName="item" DropValue="200" DropKey="1900003" Weight="100" />
 	<item Id="6110324" LogicName="data" DataName="item" DropValue="500" DropKey="1900004" Weight="100" />
+	<item Id="6110325" LogicName="data" DataName="item" DropValue="10" DropKey="1900105" Weight="100" />
 	<item Id="6110331" LogicName="data" DataName="item" DropValue="5" DropKey="1900001" Weight="100" />
 	<item Id="6110332" LogicName="data" DataName="item" DropValue="1000" DropKey="1900000" Weight="100" />
 	<item Id="6110333" LogicName="data" DataName="item" DropValue="1000" DropKey="1900002" Weight="100" />
@@ -2203,10 +2206,10 @@
 	<item Id="6800022" LogicName="data" DataName="item" DropValue="1" DropKey="1900101" Weight="10000" />
 	<item Id="6800023" LogicName="data" DataName="item" DropValue="1" DropKey="1900103" Weight="10000" />
 	<item Id="6800024" LogicName="data" DataName="item" DropValue="1" DropKey="1900106" Weight="10000" />
-	<item Id="6800025" LogicName="data" DataName="item" DropValue="1500" DropKey="1900000" Weight="10000" />
-	<item Id="6800026" LogicName="data" DataName="item" DropValue="1500" DropKey="1900201" Weight="10000" />
-	<item Id="6800027" LogicName="data" DataName="item" DropValue="1500" DropKey="1900301" Weight="10000" />
-	<item Id="6800028" LogicName="data" DataName="item" DropValue="1500" DropKey="1900004" Weight="10000" />
+	<item Id="6800025" LogicName="data" DataName="item" DropValue="1000" DropKey="1900000" Weight="10000" />
+	<item Id="6800026" LogicName="data" DataName="item" DropValue="1000" DropKey="1900201" Weight="10000" />
+	<item Id="6800027" LogicName="data" DataName="item" DropValue="1000" DropKey="1900301" Weight="10000" />
+	<item Id="6800028" LogicName="data" DataName="item" DropValue="1000" DropKey="1900004" Weight="10000" />
 	<item Id="6801001" LogicName="addbuff" DataName="" DropValue="10000" DropKey="280006" Weight="400" />
 	<item Id="6801001" LogicName="addbuff" DataName="" DropValue="10000" DropKey="280007" Weight="0" />
 	<item Id="6801001" LogicName="addbuff" DataName="" DropValue="10000" DropKey="280008" Weight="0" />
