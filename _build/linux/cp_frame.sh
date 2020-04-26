@@ -80,3 +80,7 @@ cp -f $framebinpath/KFExecute$filename.so $binpath/
 cp -f $framebinpath/KFAccount$filename.so $binpath/
 cp -f $framebinpath/KFDirClient$filename.so $binpath/
 cp -f $framebinpath/KFDirShard$filename.so $binpath/
+cp -f $framebinpath/KFDirAttribute$filename.so $binpath/
+cp -f $framebinpath/KFRelationClient$filename.so $binpath/
+cp -f $framebinpath/KFRelationShard$filename.so $binpath/
+cp -f $framebinpath/KFRelationAttribute$filename.so $binpath/

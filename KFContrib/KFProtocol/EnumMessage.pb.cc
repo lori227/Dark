@@ -33,7 +33,7 @@ namespace protobuf_EnumMessage_2eproto {
 void InitDefaults() {
 }
 
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[19];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[20];
 const ::google::protobuf::uint32 TableStruct::offsets[1] = {};
 static const ::google::protobuf::internal::MigrationSchema* schemas = NULL;
 static const ::google::protobuf::Message* const* file_default_instances = NULL;
@@ -107,10 +107,13 @@ void AddDescriptorsImpl() {
       "Chapter\020d*1\n\010JumpEnum\022\017\n\013JumpInvalid\020\000\022\t"
       "\n\005Leave\020\001\022\t\n\005Enter\020\002*G\n\rRealmTimeEnum\022\017\n"
       "\013TimeInvalid\020\000\022\013\n\007Morning\020\001\022\r\n\tAfternoon"
-      "\020\002\022\t\n\005Night\020\003b\006proto3"
+      "\020\002\022\t\n\005Night\020\003*g\n\014FunctionEnum\022\023\n\017Functio"
+      "nInvalid\020\000\022\017\n\013InnerWorld1\020\001\022\017\n\013InnerWorl"
+      "d2\020\002\022\017\n\013InnerWorld3\020\003\022\017\n\013OnekeyEquip\020\004b\006"
+      "proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1981);
+      descriptor, 2086);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "EnumMessage.proto", &protobuf_RegisterTypes);
 }
@@ -445,6 +448,23 @@ bool RealmTimeEnum_IsValid(int value) {
     case 1:
     case 2:
     case 3:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::google::protobuf::EnumDescriptor* FunctionEnum_descriptor() {
+  protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[19];
+}
+bool FunctionEnum_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
       return true;
     default:
       return false;

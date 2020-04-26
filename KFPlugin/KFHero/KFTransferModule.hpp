@@ -20,6 +20,7 @@
 #include "KFZConfig/KFSkillConfig.hpp"
 #include "KFZConfig/KFCharacterConfig.hpp"
 #include "KFZConfig/KFRaceConfig.hpp"
+#include "KFZConfig/KFQualityConfig.hpp"
 
 namespace KFrame
 {
@@ -46,10 +47,6 @@ namespace KFrame
 
         // 选择天赋请求
         __KF_MESSAGE_FUNCTION__( HandleSelectInnateReq );
-
-    public:
-        // 删除英雄天赋
-        bool RemoveInnateId( KFEntity* player, KFData* kfhero, uint32 id );
 
     protected:
         KFComponent* _kf_component = nullptr;

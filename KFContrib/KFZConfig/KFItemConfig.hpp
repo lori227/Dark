@@ -55,10 +55,10 @@ namespace KFrame
 
     private:
         // 符石类型等级表(type*10000+level, itemid)
-        std::unordered_map<uint32, uint32 > _rune_type_level;
+        UInt32Map _rune_type_level;
 
         // 符石合成表(低级 高级)
-        std::unordered_map< uint32, uint32 > _rune_compound;
+        UInt32Map _rune_compound;
 
     };
 }

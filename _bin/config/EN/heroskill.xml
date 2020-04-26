@@ -1,4 +1,4 @@
-<root platform="" version="4596">
+<root platform="" version="4702">
 	<item Id="161000" RaceLimit="" ProfessionLimit="1100" WeaponLimit="1801" BackGroundLimit="" Quality="5" />
 	<item Id="161001" RaceLimit="" ProfessionLimit="1101" WeaponLimit="1801" BackGroundLimit="" Quality="5" />
 	<item Id="161002" RaceLimit="" ProfessionLimit="1102" WeaponLimit="1801" BackGroundLimit="" Quality="5" />
@@ -158,4 +158,16 @@
 	<item Id="161117" RaceLimit="" ProfessionLimit="1129" WeaponLimit="" BackGroundLimit="" Quality="5" />
 	<item Id="161118" RaceLimit="" ProfessionLimit="1134" WeaponLimit="" BackGroundLimit="" Quality="5" />
 	<item Id="161119" RaceLimit="" ProfessionLimit="1134" WeaponLimit="" BackGroundLimit="" Quality="5" />
+	<item Id="140001" RaceLimit="" ProfessionLimit="1100" WeaponLimit="" BackGroundLimit="" Quality="5" />
+	<item Id="140002" RaceLimit="" ProfessionLimit="1100" WeaponLimit="" BackGroundLimit="" Quality="5" />
+	<item Id="140003" RaceLimit="" ProfessionLimit="1100" WeaponLimit="" BackGroundLimit="" Quality="5" />
+	<item Id="140004" RaceLimit="" ProfessionLimit="1100" WeaponLimit="" BackGroundLimit="" Quality="5" />
+	<item Id="140101" RaceLimit="" ProfessionLimit="1105,1999,1106,1100" WeaponLimit="" BackGroundLimit="" Quality="5" />
+	<item Id="140102" RaceLimit="" ProfessionLimit="1105,1999,1106,1100" WeaponLimit="" BackGroundLimit="" Quality="5" />
+	<item Id="140103" RaceLimit="" ProfessionLimit="1105,1999,1106,1100" WeaponLimit="" BackGroundLimit="" Quality="5" />
+	<item Id="140104" RaceLimit="" ProfessionLimit="1105,1999,1106,1100" WeaponLimit="" BackGroundLimit="" Quality="5" />
+	<item Id="140801" RaceLimit="" ProfessionLimit="1129" WeaponLimit="" BackGroundLimit="" Quality="5" />
+	<item Id="140802" RaceLimit="" ProfessionLimit="1129" WeaponLimit="" BackGroundLimit="" Quality="5" />
+	<item Id="140803" RaceLimit="" ProfessionLimit="1129" WeaponLimit="" BackGroundLimit="" Quality="5" />
+	<item Id="140804" RaceLimit="" ProfessionLimit="1129" WeaponLimit="" BackGroundLimit="" Quality="5" />
 </root>

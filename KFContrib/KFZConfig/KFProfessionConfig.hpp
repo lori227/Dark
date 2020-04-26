@@ -22,7 +22,7 @@ namespace KFrame
         UInt32Set _weapon_type_list;
 
         // 英雄属性偏好率
-        std::unordered_map< std::string, uint32 > _attribute;
+        StringUInt32 _attribute;
 
         // 最大等级
         uint32 _max_level = 0u;

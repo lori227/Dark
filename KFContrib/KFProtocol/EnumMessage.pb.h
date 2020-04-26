@@ -511,6 +511,30 @@ inline bool RealmTimeEnum_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<RealmTimeEnum>(
     RealmTimeEnum_descriptor(), name, value);
 }
+enum FunctionEnum {
+  FunctionInvalid = 0,
+  InnerWorld1 = 1,
+  InnerWorld2 = 2,
+  InnerWorld3 = 3,
+  OnekeyEquip = 4,
+  FunctionEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  FunctionEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+LIBPROTOC_EXPORT bool FunctionEnum_IsValid(int value);
+const FunctionEnum FunctionEnum_MIN = FunctionInvalid;
+const FunctionEnum FunctionEnum_MAX = OnekeyEquip;
+const int FunctionEnum_ARRAYSIZE = FunctionEnum_MAX + 1;
+
+LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* FunctionEnum_descriptor();
+inline const ::std::string& FunctionEnum_Name(FunctionEnum value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    FunctionEnum_descriptor(), value);
+}
+inline bool FunctionEnum_Parse(
+    const ::std::string& name, FunctionEnum* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<FunctionEnum>(
+    FunctionEnum_descriptor(), name, value);
+}
 // ===================================================================
 
 
@@ -628,6 +652,11 @@ template <> struct is_proto_enum< ::KFMsg::RealmTimeEnum> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::RealmTimeEnum>() {
   return ::KFMsg::RealmTimeEnum_descriptor();
+}
+template <> struct is_proto_enum< ::KFMsg::FunctionEnum> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::FunctionEnum>() {
+  return ::KFMsg::FunctionEnum_descriptor();
 }
 
 }  // namespace protobuf

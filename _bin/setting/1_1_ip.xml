@@ -7,34 +7,15 @@
 	<AuthServer Url="http://192.168.2.30:7001/"/>
 
 	<!-- 目录服务器地址 -->
-	<DirServer Url="http://192.168.2.30:7001/"/>
+	<DirServer Url="http://192.168.2.30:7501/"/>
 
 	<!-- 充值服务器地址 -->
 	<PayServer Url="http://192.168.2.30:7001/"/>
 
-	<!--Port 端口-->
-	<!-- Type 端口计算类型 0=固定端口 1=由id计算 2=共享内存计算--> 
-	<!-- tcp服务器配置 -->
-	<TcpServer>
-		<!-- route服务器 -->
-		<Server AppName="route" AppType="master">
-			<App Id="22.0.1" Ip="192.168.2.30" Type="1" Port="10000"/>
-		</Server>
-
-		<!-- zone master -->
-		<!-- 通用小区id填0, 如果特殊设置填写设定的小区id, 只能是在后面-->
-		<Server AppName="zone" AppType="master">
-			<App Id="91.0.1" Ip="127.0.0.1" Type="1" Port="11000"/>
-			<App Id="91.1.1" Ip="127.0.0.1" Type="1" Port="11010"/>
-			<App Id="91.2.1" Ip="127.0.0.1" Type="1" Port="11020"/>
-			<App Id="91.3.1" Ip="127.0.0.1" Type="1" Port="11030"/>
-		</Server>
-	</TcpServer>
-
-  <!-- vpn 地址-->
-  <Vpns>
-    <Vpn Zone="1" Ip="183.3.144.83"/>
-    <Vpn Zone="2" Ip="183.3.144.83"/>
-  </Vpns>
+  	<!-- vpn 地址-->
+  	<Vpns>
+    	<Vpn Zone="1" Ip="183.3.144.83"/>
+    	<Vpn Zone="2" Ip="183.3.144.83"/>
+  	</Vpns>
 </Config>
 

@@ -12,7 +12,7 @@ namespace KFrame
         uint32 _sex = 0u;
 
         // 英雄属性偏好率
-        std::unordered_map< std::string, uint32 > _attribute;
+        StringUInt32 _attribute;
 
     public:
         // 获得属性

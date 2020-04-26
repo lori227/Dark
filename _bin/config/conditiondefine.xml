@@ -1,4 +1,4 @@
-<root platform="" version="4474">
+<root platform="" version="4695">
 	<item Id="pveclean" ParentName="player" DataName="pveid" CallType="3" InitCalc="" SaveUUid="0" TriggerType="3" TriggerCheck="16" TriggerUse="2" TriggerValue="0" UseOperate="3" UseType="0" UseValue="0" />
 	<item Id="exploreclean" ParentName="player" DataName="realmid" CallType="3" InitCalc="" SaveUUid="0" TriggerType="3" TriggerCheck="16" TriggerUse="2" TriggerValue="0" UseOperate="3" UseType="0" UseValue="0" />
 	<item Id="explore" ParentName="balance" DataName="realmresult" CallType="3" InitCalc="" SaveUUid="0" TriggerType="3" TriggerCheck="0" TriggerUse="0" TriggerValue="0" UseOperate="1" UseType="0" UseValue="1" />

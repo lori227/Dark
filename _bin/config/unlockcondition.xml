@@ -1,4 +1,4 @@
-<root platform="" version="4259">
+<root platform="" version="4695">
 	<item Id="39000000" Condition="totalsignin" DoneType=">=" DoneValue="1" Limits="" Limits1="" Limits2="" />
 	<item Id="39000001" Condition="buildlevel" DoneType=">=" DoneValue="99" Limits="202" Limits1="" Limits2="" />
 	<item Id="40004001" Condition="finishtask" DoneType=">=" DoneValue="1" Limits="21000001" Limits1="" Limits2="" />
@@ -266,5 +266,8 @@
 	<item Id="59000528" Condition="buildlevel" DoneType=">=" DoneValue="28" Limits="212" Limits1="" Limits2="" />
 	<item Id="59000529" Condition="buildlevel" DoneType=">=" DoneValue="29" Limits="212" Limits1="" Limits2="" />
 	<item Id="59000530" Condition="buildlevel" DoneType=">=" DoneValue="30" Limits="212" Limits1="" Limits2="" />
+	<item Id="59001101" Condition="technology" DoneType=">=" DoneValue="1" Limits="7040102" Limits1="" Limits2="" />
+	<item Id="59001102" Condition="technology" DoneType=">=" DoneValue="1" Limits="7020102" Limits1="" Limits2="" />
+	<item Id="59001103" Condition="technology" DoneType=">=" DoneValue="1" Limits="7010102" Limits1="" Limits2="" />
 	<item Id="59001204" Condition="explore" DoneType=">=" DoneValue="1" Limits="" Limits1="" Limits2="" />
 </root>

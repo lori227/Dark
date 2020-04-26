@@ -1,4 +1,4 @@
-<root platform="" version="4600">
+<root platform="" version="4702">
 	<item Id="1" Exp="0" Floor="999" Upper="999" ActivePool="" InnatePool="" />
 	<item Id="2" Exp="150" Floor="999" Upper="999" ActivePool="" InnatePool="" />
 	<item Id="3" Exp="400" Floor="999" Upper="999" ActivePool="4050001" InnatePool="" />
@@ -8,7 +8,7 @@
 	<item Id="7" Exp="1200" Floor="999" Upper="999" ActivePool="" InnatePool="" />
 	<item Id="8" Exp="1400" Floor="999" Upper="999" ActivePool="" InnatePool="" />
 	<item Id="9" Exp="1600" Floor="999" Upper="999" ActivePool="" InnatePool="" />
-	<item Id="10" Exp="1800" Floor="999" Upper="999" ActivePool="" InnatePool="4070002" />
+	<item Id="10" Exp="1800" Floor="999" Upper="999" ActivePool="" InnatePool="4070001" />
 	<item Id="11" Exp="2000" Floor="999" Upper="999" ActivePool="" InnatePool="" />
 	<item Id="12" Exp="2200" Floor="999" Upper="999" ActivePool="" InnatePool="" />
 	<item Id="13" Exp="2400" Floor="999" Upper="999" ActivePool="" InnatePool="" />

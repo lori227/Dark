@@ -44,7 +44,7 @@ namespace KFrame
         uint32 _attr_id = 0u;
 
         // 订制属性
-        std::unordered_map< std::string, uint32 > _attribute;
+        StringUInt32 _attribute;
 
     public:
         // 计算npc等级

@@ -91,6 +91,8 @@ enum ProjectCodeEnum {
   HeroCanNotTransfer = 31126,
   HeroProfessionIsError = 31127,
   HeroNameEmpty = 31128,
+  HeroSelectInnateNumError = 31129,
+  HeroSelectInnateIdError = 31130,
   HeroIsDead = 31131,
   HeroRaceIsError = 31132,
   HeroDivisorNotUnlock = 31133,

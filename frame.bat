@@ -322,6 +322,7 @@ call :CopyInterface KFChannel 1000-框架-渠道配置.xlsx
 call :CopyInterface KFAccount
 call :CopyInterface KFDirClient
 call :CopyInterface KFDirShard
+call :CopyInterface KFDirAttribute
 
 rem data
 call :CopyInterface KFDataClient

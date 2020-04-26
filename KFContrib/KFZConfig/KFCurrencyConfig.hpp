@@ -29,7 +29,7 @@ namespace KFrame
 
     private:
         // 货币表(货币名 id)
-        std::unordered_map<std::string, uint64> _currency_map;
+        StringUInt64 _currency_map;
     };
 }
 

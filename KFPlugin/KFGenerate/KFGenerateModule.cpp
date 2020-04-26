@@ -824,6 +824,14 @@ namespace KFrame
         // 音色数据
         GenerateVoice( player, kfnpc, kfprofessionsetting );
 
+        // 设置主动技能
+        auto kfactiverecord = kfnpc->Find( __STRING__( active ) );
+        if ( kfactiverecord->Size() > 0u )
+        {
+            auto activeindex = kfactiverecord->First()->Get<uint32>( __STRING__( id ) );
+            kfnpc->Set( __STRING__( activeindex ), activeindex );
+        }
+
         return kfnpc;
     }
 
@@ -1282,23 +1290,22 @@ namespace KFrame
         auto weapontype = kfhero->Get( __STRING__( weapontype ) );
 
         auto quality = kfhero->Get<uint32>( __STRING__( quality ) );
-        auto kfqualitysetting = KFQualityConfig::Instance()->FindSetting( quality );
-        if ( kfqualitysetting == nullptr )
-        {
-            return randlist;
-        }
-
         auto minquality = 0u;
         auto maxquality = 0u;
-        if ( dataname == __STRING__( active ) )
+
+        auto kfqualitysetting = KFQualityConfig::Instance()->FindSetting( quality );
+        if ( kfqualitysetting != nullptr )
         {
-            minquality = kfqualitysetting->_active_quality._min_value;
-            maxquality = kfqualitysetting->_active_quality._max_value;
-        }
-        else if ( dataname == __STRING__( innate ) )
-        {
-            minquality = kfqualitysetting->_innate_quality._min_value;
-            maxquality = kfqualitysetting->_innate_quality._max_value;
+            if ( dataname == __STRING__( active ) )
+            {
+                minquality = kfqualitysetting->_active_quality._min_value;
+                maxquality = kfqualitysetting->_active_quality._max_value;
+            }
+            else if ( dataname == __STRING__( innate ) )
+            {
+                minquality = kfqualitysetting->_innate_quality._min_value;
+                maxquality = kfqualitysetting->_innate_quality._max_value;
+            }
         }
 
         for ( auto poolid : slist )

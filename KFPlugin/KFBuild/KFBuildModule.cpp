@@ -311,7 +311,7 @@ namespace KFrame
             auto kftechsetting = KFTechnologyConfig::Instance()->FindSetting( id );
             if ( kftechsetting == nullptr )
             {
-                __LOG_ERROR__( "Technology id [{}] is not exist", id );
+                _kf_display->SendToClient( player, KFMsg::TechnologySettingError, id );
                 continue;
             }
 

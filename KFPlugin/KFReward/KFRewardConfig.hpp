@@ -48,7 +48,7 @@ namespace KFrame
         const std::string& FormatRewardString( uint32 type, uint32 code, uint32 num );
 
     private:
-        std::unordered_map<uint64, std::string> _id_name_list;
+        UInt64String _id_name_list;
     };
 }
 
