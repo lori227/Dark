@@ -13,6 +13,7 @@ namespace KFrame
         __REGISTER_UPDATE_DATA_2__( __STRING__( story ), __STRING__( sequence ), &KFRoleModule::OnUpdateStoryCallBack );
         __REGISTER_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( pveresult ), &KFRoleModule::OnUpdatePVECallBack );
         __REGISTER_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( realmresult ), &KFRoleModule::OnUpdateRealmCallBack );
+        __REGISTER_UPDATE_STRING_2__( __STRING__( basic ), __STRING__( name ), &KFRoleModule::OnUpdateNameCallBack );
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_SET_PLAYER_HEADICON_REQ, &KFRoleModule::HandleSetPlayerHeadIconReq );
@@ -30,6 +31,7 @@ namespace KFrame
         __UN_UPDATE_DATA_2__( __STRING__( story ), __STRING__( sequence ) );
         __UN_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( pveresult ) );
         __UN_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( realmresult ) );
+        __UN_UPDATE_DATA_2__( __STRING__( basic ), __STRING__( name ) );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_SET_PLAYER_HEADICON_REQ );
         __UN_MESSAGE__( KFMsg::MSG_SET_PLAYER_FACTION_REQ );
@@ -152,6 +154,15 @@ namespace KFrame
         }
 
         AddSequence( player, kfdata->GetParent(), KFMsg::ProcessExplore );
+    }
+
+    __KF_UPDATE_STRING_FUNCTION__( KFRoleModule::OnUpdateNameCallBack )
+    {
+        if ( oldvalue == _invalid_string )
+        {
+            // 设置团长标记
+            player->UpdateData( __STRING__( basic ), __STRING__( commander ), KFEnum::Set, 1u );
+        }
     }
 
     void KFRoleModule::AddSequence( KFEntity* player, KFData* kfdata, uint32 type )

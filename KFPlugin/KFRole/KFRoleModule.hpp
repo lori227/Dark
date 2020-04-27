@@ -68,6 +68,9 @@ namespace KFrame
         // 探索结算更新
         __KF_UPDATE_DATA_FUNCTION__( OnUpdateRealmCallBack );
 
+        // 名字更新
+        __KF_UPDATE_STRING_FUNCTION__( OnUpdateNameCallBack );
+
         // 进入游戏检查
         __KF_ENTER_PLAYER_FUNCTION__( OnEnterRoleModule );
 

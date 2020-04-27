@@ -437,8 +437,6 @@ namespace KFrame
             player->AddData( kfstoryrecord, storyid, kfstory );
         }
 
-        SendToClientAddStory( player, storyid, modulename, moduleid );
-
         bool result = false;
         auto mainstory = player->Get<uint32>( __STRING__( mainstory ) );
         if ( mainstory == 0u || mainstory == storyid )
@@ -454,43 +452,43 @@ namespace KFrame
             }
         }
 
-        if ( !result )
+        if ( result )
         {
-            return;
+            UInt32Set storyset;
+            storyset.insert( storyid );
+
+            auto sequence = kfstory->Get<uint32>( __STRING__( sequence ) );
+            while ( sequence == 0u )
+            {
+                kfstory = kfstoryrecord->Find( storyid );
+                if ( kfstory == nullptr )
+                {
+                    return;
+                }
+
+                auto childid = kfstory->Get<uint32>( __STRING__( childid ) );
+                auto kfchildstory = kfstoryrecord->Find( childid );
+                if ( kfchildstory == nullptr )
+                {
+                    RemoveStory( player, storyid );
+                    return;
+                }
+
+                if ( storyset.find( childid ) != storyset.end() )
+                {
+                    RemoveStory( player, childid );
+                    return;
+                }
+                storyset.insert( childid );
+                sequence = kfchildstory->Get<uint32>( __STRING__( sequence ) );
+
+                storyid = childid;
+            }
+
+            player->UpdateData( __STRING__( mainstory ), KFEnum::Set, storyid );
         }
 
-        UInt32Set storyset;
-        storyset.insert( storyid );
-
-        auto sequence = kfstory->Get<uint32>( __STRING__( sequence ) );
-        while ( sequence == 0u )
-        {
-            kfstory = kfstoryrecord->Find( storyid );
-            if ( kfstory == nullptr )
-            {
-                return;
-            }
-
-            auto childid = kfstory->Get<uint32>( __STRING__( childid ) );
-            auto kfchildstory = kfstoryrecord->Find( childid );
-            if ( kfchildstory == nullptr )
-            {
-                RemoveStory( player, storyid );
-                return;
-            }
-
-            if ( storyset.find( childid ) != storyset.end() )
-            {
-                RemoveStory( player, childid );
-                return;
-            }
-            storyset.insert( childid );
-            sequence = kfchildstory->Get<uint32>( __STRING__( sequence ) );
-
-            storyid = childid;
-        }
-
-        player->UpdateData( __STRING__( mainstory ), KFEnum::Set, storyid );
+        SendToClientAddStory( player, storyid, modulename, moduleid );
     }
 
     uint32 KFStoryModule::ExecuteStory( KFEntity* player, uint32 storyid )

@@ -257,6 +257,7 @@ namespace KFrame
         __STRING_DEFINE__( dead );
         __STRING_DEFINE__( itemmaxcount );
         __STRING_DEFINE__( position );
+        __STRING_DEFINE__( commander );
     }
 }
 
