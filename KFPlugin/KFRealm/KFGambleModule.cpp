@@ -376,7 +376,7 @@ namespace KFrame
         ack.set_multieventid( kfmsg.multieventid() );
         for ( auto eventid : kfeventdata->_event_list )
         {
-            ack.add_eventid( eventid );
+            ( *ack.mutable_eventid() )[ ack.eventid_size() + 1 ] = eventid;
         }
         _kf_player->SendToClient( player, KFMsg::MSG_MULTI_EVENT_ACK, &ack, 1u );
     }

@@ -131,7 +131,7 @@ namespace KFrame
         KFMsg::MsgLogicEventAck ack;
         for ( auto eventid : eventlist )
         {
-            ack.add_id( eventid );
+            ( *ack.mutable_id() )[ack.id_size() + 1] = eventid;
         }
         _kf_player->SendToClient( player, KFMsg::MSG_LOGIC_EVENT_ACK, &ack );
     }

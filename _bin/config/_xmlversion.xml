@@ -1,4 +1,4 @@
-<root version="4788">
+<root version="4790">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -157,9 +157,9 @@
 	<item name="injuryrandom" version="4785" />
 	<item name="heroweightpool" version="4785" />
 	<item name="injury" version="4785" />
-	<item name="rolebasetext" version="4785" />
 	<item name="heroconstant" version="4786" />
 	<item name="realm" version="4787" />
 	<item name="dropgroup" version="4788" />
-	<item name="dropdata" version="4788" />
+	<item name="rolebasetext" version="4790" />
+	<item name="dropdata" version="4790" />
 </root>
