@@ -331,6 +331,9 @@ namespace KFrame
         kfpvedata->_data.set_id( pveid );
         kfpvedata->_data.set_moduleid( moduleid );
         kfpvedata->_data.set_modulename( modulename );
+
+        kfpvedata->RecordBeginHeros( player );
+
         /////////////////////////////////////////////////////////////////////////////////////////////
         KFMsg::MsgPVEAck ack;
         ack.set_pveid( pveid );
@@ -622,10 +625,13 @@ namespace KFrame
 
     void KFPVEModule::PVEBalanceRecord( KFEntity* player, KFRealmData* kfpvedata, uint32 result )
     {
-        kfpvedata->RecordBeginHeros( player );
+        kfpvedata->RecordPeriodHeros( player );
 
-        // 更新死亡英雄(死亡英雄可获得结算经验)
-        _kf_hero_team->UpdateDeadHero( player );
+        if ( _kf_realm->GetRealmData( player ) == nullptr )
+        {
+            // 更新死亡英雄(死亡英雄可获得结算经验)
+            _kf_hero_team->UpdateDeadHero( player );
+        }
 
         // 战斗结算
         PVEBalanceDrop( player, kfpvedata, result );
@@ -682,8 +688,11 @@ namespace KFrame
             return KFMsg::PVECanNotFlee;
         }
 
-        // 更新死亡英雄(死亡英雄可获得结算经验)
-        _kf_hero_team->UpdateDeadHero( player );
+        if ( _kf_realm->GetRealmData( player ) == nullptr )
+        {
+            // 更新死亡英雄(死亡英雄可获得结算经验)
+            _kf_hero_team->UpdateDeadHero( player );
+        }
 
         // 计算逃跑惩罚
         auto& punishlist = PVEFleePunish( player, kfpvedata );
@@ -899,24 +908,17 @@ namespace KFrame
             }
 
             // 更新hp
-            auto kffighter = kfhero->Find( __STRING__( fighter ) );
-            auto maxhp = kffighter->Get<uint32>( __STRING__( maxhp ) );
-            auto curhp = __MIN__( pbdata->hp(), maxhp );
-            auto kfhp = kffighter->Find( __STRING__( hp ) );
-            if ( curhp != kfhp->Get<uint32>() )
+            auto hp = _kf_hero->OperateHp( player, kfhero, KFEnum::Set, pbdata->hp(), true );
+            if ( hp == 0u )
             {
-                auto hp = player->UpdateData( pbdata->uuid(), kfhp, KFEnum::Set, curhp );
-                if ( hp == 0u )
-                {
-                    continue;
-                }
+                continue;
             }
 
             // 更新ep
-            auto kfep = kffighter->Find( __STRING__( ep ) );
-            if ( pbdata->ep() != kfep->Get<uint32>() )
+            auto kffighter = kfhero->Find( __STRING__( fighter ) );
+            if ( pbdata->ep() != kffighter->Get<uint32>( __STRING__( ep ) ) )
             {
-                player->UpdateData( pbdata->uuid(), kfep, KFEnum::Set, pbdata->ep() );
+                player->UpdateData( kffighter, __STRING__( ep ), KFEnum::Set, pbdata->ep() );
             }
 
             //  更新exp

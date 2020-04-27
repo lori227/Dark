@@ -24,7 +24,7 @@ namespace KFrame
         virtual uint32 CalcMaxLevel( KFEntity* player, KFData* kfhero ) = 0;
 
         // 改变hp
-        virtual uint32 OperateHp( KFEntity* player, KFData* kfhero, uint32 operate, uint32 hp ) = 0;
+        virtual uint32 OperateHp( KFEntity* player, KFData* kfhero, uint32 operate, uint32 hp, bool death = false ) = 0;
 
         // 添加属性
         virtual uint32 AddHeroData( KFEntity* player, KFData* kfhero, const std::string& name, int32 value ) = 0;

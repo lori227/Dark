@@ -1,4 +1,4 @@
-<root version="4760">
+<root version="4788">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -63,7 +63,6 @@
 	<item name="granary" version="3056" />
 	<item name="sequence" version="3057" />
 	<item name="jumpaddress" version="3109" />
-	<item name="granarybuy" version="3207" />
 	<item name="option" version="3541" />
 	<item name="RenderCaptureCfg" version="3600" />
 	<item name="buildbasics" version="3600" />
@@ -105,7 +104,6 @@
 	<item name="goods" version="4532" />
 	<item name="storeunlock" version="4533" />
 	<item name="store" version="4534" />
-	<item name="injuryrandom" version="4554" />
 	<item name="heroattribute" version="4571" />
 	<item name="minimap" version="4576" />
 	<item name="battletipstype" version="4582" />
@@ -115,51 +113,53 @@
 	<item name="itemweapon" version="4613" />
 	<item name="itemgift" version="4616" />
 	<item name="quality" version="4620" />
-	<item name="taskchain" version="4626" />
-	<item name="tasktext" version="4626" />
 	<item name="errorcode" version="4632" />
 	<item name="recruitrefresh" version="4658" />
 	<item name="herogenerate" version="4660" />
 	<item name="itemtext" version="4668" />
-	<item name="eventparams" version="4670" />
 	<item name="heroquality" version="4674" />
 	<item name="formula" version="4674" />
-	<item name="task" version="4679" />
 	<item name="gmcommand" version="4683" />
-	<item name="npcskill" version="4689" />
 	<item name="conditiondefine" version="4695" />
-	<item name="unlockcondition" version="4695" />
-	<item name="buildlevel" version="4696" />
 	<item name="injurytype" version="4697" />
 	<item name="herolevel" version="4702" />
 	<item name="herotransfer" version="4702" />
-	<item name="heroweightpool" version="4702" />
-	<item name="injury" version="4702" />
 	<item name="heroskill" version="4702" />
 	<item name="multievent" version="4705" />
-	<item name="heroconstant" version="4709" />
-	<item name="technology" version="4710" />
 	<item name="unlock" version="4715" />
-	<item name="taskcondition" version="4717" />
 	<item name="npcgroup" version="4721" />
 	<item name="dialoguetext" version="4724" />
 	<item name="itemtype" version="4725" />
-	<item name="camptext" version="4732" />
-	<item name="npc" version="4736" />
-	<item name="dialogue" version="4742" />
 	<item name="pve" version="4743" />
 	<item name="heroprofession" version="4746" />
-	<item name="realm" version="4747" />
 	<item name="weapontype" version="4748" />
-	<item name="dropdata" version="4748" />
 	<item name="initialprocess" version="4750" />
 	<item name="player" version="4750" />
-	<item name="dropgroup" version="4752" />
-	<item name="npcgenerate" version="4753" />
 	<item name="prompttext" version="4755" />
-	<item name="itemcommon" version="4756" />
-	<item name="story" version="4757" />
-	<item name="class" version="4758" />
-	<item name="rolebasetext" version="4759" />
-	<item name="uitext" version="4760" />
+	<item name="taskcondition" version="4763" />
+	<item name="tasktext" version="4763" />
+	<item name="npcgenerate" version="4765" />
+	<item name="npcskill" version="4765" />
+	<item name="itemcommon" version="4766" />
+	<item name="buildlevel" version="4767" />
+	<item name="unlockcondition" version="4767" />
+	<item name="camptext" version="4767" />
+	<item name="task" version="4769" />
+	<item name="dialogue" version="4775" />
+	<item name="npc" version="4776" />
+	<item name="uitext" version="4778" />
+	<item name="technology" version="4779" />
+	<item name="granarybuy" version="4779" />
+	<item name="story" version="4780" />
+	<item name="taskchain" version="4781" />
+	<item name="class" version="4782" />
+	<item name="eventparams" version="4784" />
+	<item name="injuryrandom" version="4785" />
+	<item name="heroweightpool" version="4785" />
+	<item name="injury" version="4785" />
+	<item name="rolebasetext" version="4785" />
+	<item name="heroconstant" version="4786" />
+	<item name="realm" version="4787" />
+	<item name="dropgroup" version="4788" />
+	<item name="dropdata" version="4788" />
 </root>

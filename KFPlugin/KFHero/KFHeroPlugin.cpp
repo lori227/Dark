@@ -50,7 +50,7 @@ namespace KFrame
         __KF_ADD_CONFIG__( KFRaceConfig );
         __KF_ADD_CONFIG__( KFElementConfig );
         __KF_ADD_CONFIG__( KFFormulaConfig );
-        //__KF_ADD_CONFIG__( KFInjuryRandomConfig );
+        __KF_ADD_CONFIG__( KFInjuryRandomConfig );
         __KF_ADD_CONFIG__( KFQualityConfig );
     }
 }

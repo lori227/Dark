@@ -194,6 +194,13 @@ namespace KFrame
         player->SetStatus( KFMsg::ExploreStatus );
         kfrealmdata->_is_in_balance = false;
 
+        // 进入秘境回调
+        for ( auto& iter : _realm_enter_function._objects )
+        {
+            auto kffunction = iter.second;
+            kffunction->_function( player, kfrealmdata, entertype );
+        }
+
         // 下发给客户端
         KFMsg::MsgRealmEnterAck ack;
         ack.set_entertype( entertype );
@@ -204,16 +211,7 @@ namespace KFrame
         ack.mutable_exploredata()->CopyFrom( *pbexplore );
         ack.mutable_buffdata()->CopyFrom( kfrealmdata->_data.buffdata() );
         *ack.mutable_eventdata() = kfrealmdata->_data.eventdata();
-        _kf_player->SendToClient( player, KFMsg::MSG_REALM_ENTER_ACK, &ack );
-
-        // 进入秘境回调
-        for ( auto& iter : _realm_enter_function._objects )
-        {
-            auto kffunction = iter.second;
-            kffunction->_function( player, kfrealmdata, entertype );
-        }
-
-        return true;
+        return _kf_player->SendToClient( player, KFMsg::MSG_REALM_ENTER_ACK, &ack, 1u );
     }
 
     std::tuple<uint32, KFRealmData*, KFMsg::PBExploreData*> KFRealmModule::RealmChapterEnter( KFEntity* player, uint32 realmid, uint32 level, const std::string& modulename, uint64 moduleid )
@@ -281,6 +279,8 @@ namespace KFrame
 
         // 进入关卡条件回调
         RealmJumpCondition( player, realmid, 0u, level );
+
+        kfrealmdata->RecordBeginHeros( player );
 
         // 纪录背包数据
         kfrealmdata->RecordBeginItems( player );
@@ -382,6 +382,8 @@ namespace KFrame
 
         // 设置开始时间
         kfrealmdata->_data.set_starttime( KFGlobal::Instance()->_real_time );
+
+        kfrealmdata->RecordBeginHeros( player );
 
         // 纪录初始道具信息
         kfrealmdata->RecordBeginItems( player );
@@ -557,7 +559,10 @@ namespace KFrame
         player->SetStatus( kfrealmdata->_data.status() );
 
         // 纪录英雄数据
-        kfrealmdata->RecordBeginHeros( player );
+        kfrealmdata->RecordPeriodHeros( player );
+
+        // 更新死亡英雄(死亡英雄可获得结算经验)
+        _kf_hero_team->UpdateDeadHero( player );
 
         // 结算掉落
         RealmBalanceDrop( player, kfrealmdata, KFMsg::Victory );
@@ -588,7 +593,10 @@ namespace KFrame
         player->SetStatus( kfrealmdata->_data.status() );
 
         // 纪录英雄数据
-        kfrealmdata->RecordBeginHeros( player );
+        kfrealmdata->RecordPeriodHeros( player );
+
+        // 更新死亡英雄(死亡英雄可获得结算经验)
+        _kf_hero_team->UpdateDeadHero( player );
 
         // 结算掉落
         RealmBalanceDrop( player, kfrealmdata, KFMsg::Failed );
@@ -616,7 +624,11 @@ namespace KFrame
         player->SetStatus( kfrealmdata->_data.status() );
 
         // 纪录英雄数据
-        kfrealmdata->RecordBeginHeros( player );
+        kfrealmdata->RecordPeriodHeros( player );
+
+        // 更新死亡英雄(死亡英雄可获得结算经验)
+        _kf_hero_team->UpdateDeadHero( player );
+
         kfrealmdata->RecordEndHeros( player );
 
         // 纪录最终道具
@@ -635,7 +647,11 @@ namespace KFrame
     void KFRealmModule::RealmBalanceTown( KFEntity* player, KFRealmData* kfrealmdata )
     {
         // 纪录英雄数据
-        kfrealmdata->RecordBeginHeros( player );
+        kfrealmdata->RecordPeriodHeros( player );
+
+        // 更新死亡英雄(死亡英雄可获得结算经验)
+        _kf_hero_team->UpdateDeadHero( player );
+
         kfrealmdata->RecordEndHeros( player );
 
         // 结算获得的道具

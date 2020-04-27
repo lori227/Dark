@@ -1,18 +1,8 @@
-<root platform="" version="4554">
+<root platform="" version="4785">
 	<item Id="1" Pool="4069002" DeadProb="0" />
-	<item Id="2" Pool="4069002" DeadProb="0" />
-	<item Id="3" Pool="4069002" DeadProb="0" />
-	<item Id="4" Pool="4069002" DeadProb="0" />
-	<item Id="5" Pool="4069002" DeadProb="0" />
-	<item Id="6" Pool="4069002" DeadProb="0" />
-	<item Id="7" Pool="4069002" DeadProb="0" />
-	<item Id="8" Pool="4069002" DeadProb="0" />
-	<item Id="9" Pool="4069002" DeadProb="0" />
-	<item Id="10" Pool="4069002" DeadProb="0" />
-	<item Id="11" Pool="4069002" DeadProb="0" />
-	<item Id="12" Pool="4069002" DeadProb="0" />
-	<item Id="13" Pool="4069002" DeadProb="0" />
-	<item Id="14" Pool="4069002" DeadProb="0" />
-	<item Id="15" Pool="4069002" DeadProb="5000" />
-	<item Id="16" Pool="4069002" DeadProb="10000" />
+	<item Id="2" Pool="4069003" DeadProb="2000" />
+	<item Id="3" Pool="4069003" DeadProb="4000" />
+	<item Id="4" Pool="4069003" DeadProb="6000" />
+	<item Id="5" Pool="4069003" DeadProb="8000" />
+	<item Id="6" Pool="4069003" DeadProb="10000" />
 </root>

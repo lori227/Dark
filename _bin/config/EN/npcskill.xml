@@ -1,4 +1,4 @@
-<root platform="" version="4689">
+<root platform="" version="4765">
 	<item Id="1" ActiveSkill="4050001" InnateSkill="" />
 	<item Id="2" ActiveSkill="4050001" InnateSkill="" />
 	<item Id="3" ActiveSkill="4050001" InnateSkill="" />
@@ -50,4 +50,5 @@
 	<item Id="49" ActiveSkill="4050001" InnateSkill="" />
 	<item Id="50" ActiveSkill="4050001" InnateSkill="" />
 	<item Id="51" ActiveSkill="4050001" InnateSkill="" />
+	<item Id="101" ActiveSkill="4050001" InnateSkill="" />
 </root>

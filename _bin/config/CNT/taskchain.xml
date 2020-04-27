@@ -1,4 +1,4 @@
-<root platform="" version="4626">
+<root platform="" version="4781">
 	<item Id="1" Order="1" Weight="0" Task="21101001" TaskStatus="2" LogicName="chapter" LogicId="101" LogicStatus="990" FinishStatus="991" ExtendChain="2:10000,1001:10000,1002:10000,1003:10000,1004:10000,1005:10000,1006:10000,1007:10000,1008:10000,1009:10000,1010:10000,1011:10000,1012:10000,2000:10000,2001:10000,2002:10000,2003:10000,2004:10000,2005:10000,2006:10000,2007:10000,2008:10000,2009:10000,2010:10000,2011:10000,2012:10000,2013:10000,2014:10000,2015:10000,2016:10000,2017:10000,2018:10000,2019:10000,2020:10000,2021:10000,2022:10000,2023:10000,2024:10000" StartRefresh="" StopRefresh="" />
 	<item Id="1" Order="2" Weight="0" Task="8000001" TaskStatus="2" LogicName="" LogicId="" LogicStatus="0" FinishStatus="0" ExtendChain="" StartRefresh="" StopRefresh="" />
 	<item Id="1" Order="3" Weight="0" Task="21101002" TaskStatus="2" LogicName="chapter" LogicId="102" LogicStatus="992" FinishStatus="993" ExtendChain="200:10000,300:10000,5001:10000,5002:10000,5003:10000,5004:10000" StartRefresh="" StopRefresh="" />

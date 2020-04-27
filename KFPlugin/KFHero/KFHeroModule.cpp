@@ -529,6 +529,13 @@ namespace KFrame
 
     uint32 KFHeroModule::AddExp( KFEntity* player, KFData* kfhero, uint32 exp )
     {
+        auto hp = kfhero->Get( __STRING__( fighter ), __STRING__( hp ) );
+        if ( hp == 0u )
+        {
+            // 英雄已经死亡
+            return 0u;
+        }
+
         auto exprate = kfhero->Get<uint32>( __STRING__( exprate ) );
         if ( exprate == 0u )
         {
@@ -541,13 +548,6 @@ namespace KFrame
         if ( level >= maxlevel )
         {
             // 英雄已满级
-            return 0u;
-        }
-
-        auto hp = kfhero->Get( __STRING__( fighter ), __STRING__( hp ) );
-        if ( hp == 0u )
-        {
-            // 英雄已经死亡
             return 0u;
         }
 
@@ -604,10 +604,15 @@ namespace KFrame
         return maxlevel;
     }
 
-    uint32 KFHeroModule::OperateHp( KFEntity* player, KFData* kfhero, uint32 operate, uint32 hp )
+    uint32 KFHeroModule::OperateHp( KFEntity* player, KFData* kfhero, uint32 operate, uint32 hp, bool death /*= false*/ )
     {
         auto kffighter = kfhero->Find( __STRING__( fighter ) );
         auto nowhp = kffighter->Get<uint32>( __STRING__( hp ) );
+        if ( nowhp == 0u )
+        {
+            return nowhp;
+        }
+
         auto maxhp = kffighter->Get<uint32>( __STRING__( maxhp ) );
 
         if ( operate == KFEnum::Add )
@@ -620,16 +625,52 @@ namespace KFrame
         }
         else if ( operate == KFEnum::Set )
         {
-            hp = __MAX__( hp, 1u );
+            if ( !death )
+            {
+                hp = __MAX__( hp, 1u );
+            }
+
             hp = __MIN__( hp, maxhp );
         }
         else if ( operate == KFEnum::Dec )
         {
-            hp = ( hp >= nowhp ? ( nowhp - 1 ) : hp );
+            auto dechp = ( death ? nowhp : ( nowhp - 1 ) );
+            hp = ( hp >= nowhp ? dechp : hp );
         }
 
         player->UpdateData( kffighter, __STRING__( hp ), operate, hp );
-        return hp;
+
+        nowhp = kffighter->Get<uint32>( __STRING__( hp ) );
+        if ( nowhp == 0u )
+        {
+            OnHeroInjury( player, kfhero );
+        }
+
+        return nowhp;
+    }
+
+    void KFHeroModule::OnHeroInjury( KFEntity* player, KFData* kfhero )
+    {
+        player->UpdateData( kfhero, __STRING__( injurycount ), KFEnum::Add, 1u );
+
+        auto injurycount = kfhero->Get<uint32>( __STRING__( injurycount ) );
+        auto kfinjurysetting = KFInjuryRandomConfig::Instance()->FindInjureRandomSetting( injurycount );
+        if ( kfinjurysetting == nullptr )
+        {
+            return;
+        }
+
+        auto randvalue = KFGlobal::Instance()->RandRatio( KFRandEnum::TenThousand );
+        if ( randvalue < kfinjurysetting->_dead_prob )
+        {
+            // 英雄死亡，添加死亡标记
+            player->UpdateData( kfhero, __STRING__( dead ), KFEnum::Set, 1u );
+        }
+        else
+        {
+            // 随机伤病
+            _kf_generate->RandInjuryData( player, kfhero, kfinjurysetting->_pool );
+        }
     }
 
     KFData* KFHeroModule::FindAliveHero( KFData* kfherorecord, uint64 uuid )
@@ -640,11 +681,11 @@ namespace KFrame
             return nullptr;
         }
 
-        /*auto durability = kfhero->Get<uint32>( __STRING__( durability ) );
-        if ( durability == 0u )
+        auto hp = kfhero->Get<uint32>( __STRING__( fighter ), __STRING__( hp ) );
+        if ( hp == 0u )
         {
             return nullptr;
-        }*/
+        }
 
         return kfhero;
     }

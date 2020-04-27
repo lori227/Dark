@@ -45,14 +45,14 @@ namespace KFrame
         // 检查队伍里的数据, 如果英雄没在队伍里, 需要清除标记
         CheckHeroInTeam( player );
 
-        UpdateDeadHero( player );
-
         // 探索地图内不做处理
         auto realmid = player->Get<uint32>( __STRING__( realmid ) );
         if ( realmid != 0u )
         {
             return;
         }
+
+        UpdateDeadHero( player );
 
         // 清空队伍英雄ep
         ClearHeroEp( player );
@@ -150,30 +150,39 @@ namespace KFrame
 
     void KFHeroTeamModule::UpdateDeadHero( KFEntity* player )
     {
-        // 随机死亡性格池
-        static auto _option = KFGlobal::Instance()->FindConstant( "roledeath_characterpool" );
-
         auto kfherorecord = player->Find( __STRING__( hero ) );
         auto kfteamarray = player->Find( __STRING__( heroteam ) );
 
+        UInt64Set removelist;
         for ( auto kfteam = kfteamarray->First(); kfteam != nullptr; kfteam = kfteamarray->Next() )
         {
-            auto kfhero = kfherorecord->Find( kfteam->Get<uint64>() );
+            auto kfhero = kfherorecord->Find( kfteam->Get() );
             if ( kfhero == nullptr )
             {
                 continue;
             }
 
-            auto kffighter = kfhero->Find( __STRING__( fighter ) );
-            auto hp = kffighter->Get<uint32>( __STRING__( hp ) );
-            if ( hp == 0u )
+            auto dead = kfhero->Get<uint32>( __STRING__( dead ) );
+            if ( dead > 0u )
             {
-                player->UpdateData( kffighter, __STRING__( hp ), KFEnum::Set, 1u );
-
-                UInt32Vector character_pool_list;
-                character_pool_list.push_back( _option->_uint32_value );
-                _kf_generate->RandWeightData( player, kfhero, __STRING__( character ), character_pool_list );
+                // 删除死亡玩家
+                removelist.insert( kfhero->Get( __STRING__( uuid ) ) );
             }
+            else
+            {
+                // 复活空血玩家
+                auto kffighter = kfhero->Find( __STRING__( fighter ) );
+                auto hp = kffighter->Get<uint32>( __STRING__( hp ) );
+                if ( hp == 0u )
+                {
+                    player->UpdateData( kffighter, __STRING__( hp ), KFEnum::Set, 1u );
+                }
+            }
+        }
+
+        for ( auto iter : removelist )
+        {
+            player->RemoveData( kfherorecord, iter );
         }
     }
 

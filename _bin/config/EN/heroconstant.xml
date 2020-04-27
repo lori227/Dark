@@ -1,4 +1,4 @@
-<root platform="" version="4709">
+<root platform="" version="4786">
 	<item Name="defaultprofession" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="defaultbackground" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="generatedirectattribute" Key="" Value="9" Channel="0" Service="0" />
@@ -34,7 +34,7 @@
 	<item Name="initclinicnum" Key="" Value="1000" Channel="0" Service="0" />
 	<item Name="initgranarynum" Key="" Value="50" Channel="0" Service="0" />
 	<item Name="initsmithynum" Key="" Value="1000" Channel="0" Service="0" />
-	<item Name="roledeath_characterpool" Key="" Value="4069001" Channel="0" Service="0" />
+	<item Name="roledeath_characterpool" Key="" Value="" Channel="0" Service="0" />
 	<item Name="heronamelength" Key="" Value="40" Channel="0" Service="0" />
 	<item Name="exploregrainwarningcount" Key="" Value="50" Channel="0" Service="0" />
 	<item Name="contracttimefid" Key="" Value="7" Channel="0" Service="0" />

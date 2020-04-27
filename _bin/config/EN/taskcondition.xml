@@ -1,4 +1,4 @@
-<root platform="" version="4717">
+<root platform="" version="4763">
 	<item Id="30000200" Condition="unlockbuild" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="200" Limits1="" Limits2="" />
 	<item Id="30000201" Condition="unlockbuild" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="201" Limits1="" Limits2="" />
 	<item Id="30000202" Condition="unlockbuild" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="202" Limits1="" Limits2="" />
@@ -315,20 +315,20 @@
 	<item Id="35100002" Condition="exploreenter" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="20001" Limits1="level=3" Limits2="" />
 	<item Id="38000000" Condition="finishtask" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="21101010" Limits1="" Limits2="" />
 	<item Id="38020101" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7040102" Limits1="" Limits2="" />
-	<item Id="38020102" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7040104" Limits1="" Limits2="" />
-	<item Id="38020103" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7040106" Limits1="" Limits2="" />
-	<item Id="38020104" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7040108" Limits1="" Limits2="" />
-	<item Id="38020105" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7040110" Limits1="" Limits2="" />
+	<item Id="38020102" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7040103" Limits1="" Limits2="" />
+	<item Id="38020103" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7040104" Limits1="" Limits2="" />
+	<item Id="38020104" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7040105" Limits1="" Limits2="" />
+	<item Id="38020105" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7040106" Limits1="" Limits2="" />
 	<item Id="38020201" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7020102" Limits1="" Limits2="" />
-	<item Id="38020202" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7020104" Limits1="" Limits2="" />
-	<item Id="38020203" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7020106" Limits1="" Limits2="" />
-	<item Id="38020204" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7020108" Limits1="" Limits2="" />
-	<item Id="38020205" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7020110" Limits1="" Limits2="" />
+	<item Id="38020202" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7020103" Limits1="" Limits2="" />
+	<item Id="38020203" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7020104" Limits1="" Limits2="" />
+	<item Id="38020204" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7020105" Limits1="" Limits2="" />
+	<item Id="38020205" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7020106" Limits1="" Limits2="" />
 	<item Id="38020301" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7010102" Limits1="" Limits2="" />
-	<item Id="38020302" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7010104" Limits1="" Limits2="" />
-	<item Id="38020303" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7010106" Limits1="" Limits2="" />
-	<item Id="38020304" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7010108" Limits1="" Limits2="" />
-	<item Id="38020305" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7010110" Limits1="" Limits2="" />
+	<item Id="38020302" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7010103" Limits1="" Limits2="" />
+	<item Id="38020303" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7010104" Limits1="" Limits2="" />
+	<item Id="38020304" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7010105" Limits1="" Limits2="" />
+	<item Id="38020305" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7010106" Limits1="" Limits2="" />
 	<item Id="38020401" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7000201" Limits1="" Limits2="" />
 	<item Id="38020402" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7000202" Limits1="" Limits2="" />
 	<item Id="38020403" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7000203" Limits1="" Limits2="" />

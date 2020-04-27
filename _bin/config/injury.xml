@@ -1,4 +1,4 @@
-<root platform="" version="4702">
+<root platform="" version="4785">
 	<item Id="1" Type="101" Level="1" />
 	<item Id="2" Type="101" Level="2" />
 	<item Id="3" Type="101" Level="3" />
@@ -21,6 +21,4 @@
 	<item Id="20" Type="105" Level="4" />
 	<item Id="21" Type="106" Level="1" />
 	<item Id="22" Type="106" Level="2" />
-	<item Id="23" Type="106" Level="3" />
-	<item Id="24" Type="106" Level="4" />
 </root>

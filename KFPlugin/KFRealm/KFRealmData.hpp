@@ -65,6 +65,9 @@ namespace KFrame
         // 初始化英雄数据
         void RecordBeginHeros( KFEntity* player );
 
+        // 记录英雄期间数据(结算前)
+        void RecordPeriodHeros( KFEntity* player );
+
         // 英雄最终数据
         void RecordEndHeros( KFEntity* player );
 
@@ -88,6 +91,7 @@ namespace KFrame
     protected:
         // 计算英雄数据
         void RecordHeroBeginData( KFData* kfhero, KFMsg::PBBalanceHeroServer* pbhero );
+        void RecordHeroPeriodData( KFData* kfhero, KFMsg::PBBalanceHeroServer* pbhero );
         void RecordHeroEndData( KFData* kfhero, KFMsg::PBBalanceHeroServer* pbhero );
         //////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////
@@ -107,11 +111,14 @@ namespace KFrame
         // 计算英雄属性
         void BalanceHeroAttributes( const KFMsg::PBBalanceHeroServer* pbheroserver, KFMsg::PBBalanceHero* pbheroclient );
 
-        // 结算英雄主动技能
+        // 计算英雄主动技能
         void BalanceHeroActives( const KFMsg::PBBalanceHeroServer* pbheroserver, KFMsg::PBBalanceHero* pbheroclient );
 
         // 计算英雄天赋技能
         void BalanceHeroInnates( const KFMsg::PBBalanceHeroServer* pbheroserver, KFMsg::PBBalanceHero* pbheroclient );
+
+        // 计算英雄伤病
+        void BalanceHeroInjurys( const KFMsg::PBBalanceHeroServer* pbheroserver, KFMsg::PBBalanceHero* pbheroclient );
 
     public:
         // 是否在结算中

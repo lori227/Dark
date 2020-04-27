@@ -20,6 +20,7 @@
 #include "KFZConfig/KFLevelConfig.hpp"
 #include "KFZConfig/KFProfessionConfig.hpp"
 #include "KFRealm/KFRealmInterface.h"
+#include "KFZConfig/KFInjuryRandomConfig.hpp"
 
 namespace KFrame
 {
@@ -52,7 +53,7 @@ namespace KFrame
         virtual uint32 CalcMaxLevel( KFEntity* player, KFData* kfhero );
 
         // 添加hp
-        virtual uint32 OperateHp( KFEntity* player, KFData* kfhero, uint32 operate, uint32 hp );
+        virtual uint32 OperateHp( KFEntity* player, KFData* kfhero, uint32 operate, uint32 hp, bool death = false );
 
         // 添加属性
         virtual uint32 AddHeroData( KFEntity* player, KFData* kfhero, const std::string& name, int32 value );
@@ -118,6 +119,9 @@ namespace KFrame
     protected:
         // 更新所有英雄的最大等级
         void UpdateAllHeroMaxLevel( KFEntity* player );
+
+        // 英雄伤病处理
+        void OnHeroInjury( KFEntity* player, KFData* kfhero );
 
         // 玩家上下文组件
         KFComponent* _kf_component = nullptr;

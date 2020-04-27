@@ -124,13 +124,29 @@ namespace KFrame
         }
     }
 
+    void KFRealmData::RecordPeriodHeros( KFEntity* player )
+    {
+        auto kfherorecord = player->Find( __STRING__( hero ) );
+        for ( auto i = 0; i < _data.herodata_size(); ++i )
+        {
+            auto pbhero = _data.mutable_herodata( i );
+            auto kfhero = kfherorecord->Find( pbhero->uuid() ) ;
+            if ( kfhero == nullptr )
+            {
+                continue;
+            }
+
+            RecordHeroPeriodData( kfhero, pbhero );
+        }
+    }
+
     void KFRealmData::RecordEndHeros( KFEntity* player )
     {
         auto kfherorecord = player->Find( __STRING__( hero ) );
         for ( auto i = 0; i < _data.herodata_size(); ++i )
         {
             auto pbhero = _data.mutable_herodata( i );
-            auto kfhero = _kf_hero->FindAliveHero( kfherorecord, pbhero->uuid() );
+            auto kfhero = kfherorecord->Find( pbhero->uuid() );
             if ( kfhero == nullptr )
             {
                 continue;
@@ -160,15 +176,35 @@ namespace KFrame
 
     void KFRealmData::RecordHeroBeginData( KFData* kfhero, KFMsg::PBBalanceHeroServer* pbhero )
     {
-        pbhero->set_death( true );
+        pbhero->set_death( false );
         pbhero->set_uuid( kfhero->GetKeyID() );
         pbhero->set_name( kfhero->Get<std::string>( __STRING__( name ) ) );
         pbhero->set_race( kfhero->Get<uint32>( __STRING__( race ) ) );
         pbhero->set_profession( kfhero->Get<uint32>( __STRING__( profession ) ) );
         pbhero->set_sex( kfhero->Get<uint32>( __STRING__( sex ) ) );
+        pbhero->set_quality( kfhero->Get<uint32>( __STRING__( quality ) ) );
 
+        // 伤病
+        auto kfinjuryrecord = kfhero->Find( __STRING__( injury ) );
+        auto& pbinjury = *pbhero->mutable_begininjury();
+        for ( auto kfinjury = kfinjuryrecord->First(); kfinjury != nullptr; kfinjury = kfinjuryrecord->Next() )
+        {
+            pbinjury[ kfinjury->GetKeyID() ] = kfinjury->Get<uint32>( __STRING__( level ) );
+        }
+    }
+
+    void KFRealmData::RecordHeroPeriodData( KFData* kfhero, KFMsg::PBBalanceHeroServer* pbhero )
+    {
+        pbhero->set_maxhp( kfhero->Get<uint32>( __STRING__( fighter ), __STRING__( maxhp ) ) );
         pbhero->set_beginexp( kfhero->Get<uint32>( __STRING__( exp ) ) );
         pbhero->set_beginlevel( kfhero->Get<uint32>( __STRING__( level ) ) );
+
+        bool death = kfhero->Get<uint32>( __STRING__( dead ) );
+        pbhero->set_death( death );
+        if ( death )
+        {
+            return;
+        }
         //////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////
         // 战斗属性
@@ -176,7 +212,7 @@ namespace KFrame
         auto& pbattributes = *pbhero->mutable_beginattributes();
         for ( auto kfchild = kffighter->First(); kfchild != nullptr; kfchild = kffighter->Next() )
         {
-            pbattributes[ kfchild->_data_setting->_name ] = kfchild->Get<uint32>();
+            pbattributes[kfchild->_data_setting->_name] = kfchild->Get<uint32>();
         }
 
         // 主动技能
@@ -196,9 +232,25 @@ namespace KFrame
 
     void KFRealmData::RecordHeroEndData( KFData* kfhero, KFMsg::PBBalanceHeroServer* pbhero )
     {
-        pbhero->set_death( false );
         pbhero->set_endexp( kfhero->Get<uint32>( __STRING__( exp ) ) );
         pbhero->set_endlevel( kfhero->Get<uint32>( __STRING__( level ) ) );
+
+        bool death = kfhero->Get<uint32>( __STRING__( dead ) );
+        pbhero->set_death( death );
+
+        if ( death )
+        {
+            return;
+        }
+
+        // 伤病
+        auto kfinjuryrecord = kfhero->Find( __STRING__( injury ) );
+        auto& pbinjury = *pbhero->mutable_endinjury();
+        for ( auto kfinjury = kfinjuryrecord->First(); kfinjury != nullptr; kfinjury = kfinjuryrecord->Next() )
+        {
+            pbinjury[kfinjury->GetKeyID()] = kfinjury->Get<uint32>( __STRING__( level ) );
+        }
+
         if ( pbhero->endlevel() == pbhero->beginlevel() )
         {
             return;
@@ -424,6 +476,9 @@ namespace KFrame
                 pbheroclient->set_name( pbheroserver->name() );
                 pbheroclient->set_race( pbheroserver->race() );
                 pbheroclient->set_profession( pbheroserver->profession() );
+                pbheroclient->set_quality( pbheroserver->quality() );
+                pbheroclient->set_maxhp( pbheroserver->maxhp() );
+                pbheroclient->set_level( pbheroserver->beginlevel() );
             }
             else
             {
@@ -441,6 +496,9 @@ namespace KFrame
                     // 天赋技能
                     BalanceHeroInnates( pbheroserver, pbheroclient );
                 }
+
+                // 伤病
+                BalanceHeroInjurys( pbheroserver, pbheroclient );
             }
         }
     }
@@ -508,6 +566,27 @@ namespace KFrame
             if ( !_check_begin_innate( pbheroserver, innateid ) )
             {
                 ( *pbheroclient->mutable_innate() )[ pbheroclient->innate_size() + 1 ] = innateid;
+            }
+        }
+    }
+
+    void KFRealmData::BalanceHeroInjurys( const KFMsg::PBBalanceHeroServer* pbheroserver, KFMsg::PBBalanceHero* pbheroclient )
+    {
+        auto& pbinjury = *pbheroclient->mutable_injury();
+        for ( auto enditer : pbheroserver->endinjury() )
+        {
+            auto& begininjury = pbheroserver->begininjury();
+            auto beginiter = begininjury.find( enditer.first );
+            if ( beginiter == begininjury.end() )
+            {
+                pbinjury[enditer.first] = enditer.second;
+            }
+            else
+            {
+                if ( enditer.second > beginiter->second )
+                {
+                    pbinjury[enditer.first] = enditer.second;
+                }
             }
         }
     }

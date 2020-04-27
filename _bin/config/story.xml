@@ -1,4 +1,4 @@
-<root platform="" version="4757">
+<root platform="" version="4780">
 	<item Id="1" StoryId="3000" Array="1" TriggerType="0" Type="1" Parameter1="10086" Parameter2="0" />
 	<item Id="2" StoryId="3000" Array="2" TriggerType="0" Type="9" Parameter1="200001" Parameter2="0" />
 	<item Id="3" StoryId="3000" Array="3" TriggerType="0" Type="9" Parameter1="200002" Parameter2="0" />
