@@ -107,6 +107,8 @@ namespace KFrame
     __KF_ENTER_PLAYER_FUNCTION__( KFTaskModule::OnEnterTaskModule )
     {
         UInt64List removes;
+        std::map<KFData*, const KFTaskSetting* > finishtasklist;
+
         auto kftaskrecord = player->Find( __STRING__( task ) );
         for ( auto kftask = kftaskrecord->First(); kftask != nullptr; kftask = kftaskrecord->Next() )
         {
@@ -121,7 +123,7 @@ namespace KFrame
             auto status = kftask->Get<uint32>( __STRING__( status ) );
             if ( status == KFMsg::DoneStatus )
             {
-                AddFinishTask( player, kfsetting );
+                finishtasklist[ kftask ] = kfsetting;
                 continue;
             }
 
@@ -136,6 +138,11 @@ namespace KFrame
         for ( auto taskid : removes )
         {
             kftaskrecord->Remove( taskid );
+        }
+
+        for ( auto& iter : finishtasklist )
+        {
+            AddFinishTask( player, iter.first, iter.second, true );
         }
     }
 
@@ -269,7 +276,7 @@ namespace KFrame
         return true;
     }
 
-    void KFTaskModule::AddFinishTask( KFEntity* player, const KFTaskSetting* kfsetting )
+    void KFTaskModule::AddFinishTask( KFEntity* player, KFData* kftask, const KFTaskSetting* kfsetting, bool update )
     {
         // 不是自动提交
         if ( !kfsetting->IsAutoTask() )
@@ -283,8 +290,15 @@ namespace KFrame
             return;
         }
 
-        // 启动一个定时器
-        __LIMIT_TIMER_2__( player->GetKeyID(), kfsetting->_id, 10u, 1, &KFTaskModule::OnTimerTaskFinish );
+        if ( update )
+        {
+            FinishTask( player, kftask, kfsetting );
+        }
+        else
+        {
+            // 新加的任务, 启动一个定时器
+            __LIMIT_TIMER_2__( player->GetKeyID(), kfsetting->_id, 10u, 1, &KFTaskModule::OnTimerTaskFinish );
+        }
     }
 
     void KFTaskModule::FinishTask( KFEntity* player, uint32 taskid )
@@ -425,7 +439,7 @@ namespace KFrame
         }
 
         // 刚创建的任务, 如果是完成状态, 又是自动交付, 延迟删除
-        AddFinishTask( player, kfsetting );
+        AddFinishTask( player, kftask, kfsetting, update );
     }
 
     __KF_TIMER_FUNCTION__( KFTaskModule::OnTimerTaskFinish )
@@ -857,6 +871,7 @@ namespace KFrame
 
     __KF_UPDATE_DATA_FUNCTION__( KFTaskModule::OnRealmTaskFinish )
     {
+        std::map<KFData*, const KFTaskSetting* > tasklist;
         auto kftaskrecord = player->Find( __STRING__( task ) );
         for ( auto kftask = kftaskrecord->First(); kftask != nullptr; kftask = kftaskrecord->Next() )
         {
@@ -874,7 +889,12 @@ namespace KFrame
                 continue;
             }
 
-            AddFinishTask( player, kfsetting );
+            tasklist[ kftask ] = kfsetting;
+        }
+
+        for ( auto& iter : tasklist )
+        {
+            AddFinishTask( player, iter.first, iter.second, true );
         }
     }
 }

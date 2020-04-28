@@ -1,9 +1,9 @@
-<root platform="" version="4702">
+<root platform="" version="4812">
 	<item Id="1" Exp="0" Floor="999" Upper="999" ActivePool="" InnatePool="" />
 	<item Id="2" Exp="150" Floor="999" Upper="999" ActivePool="" InnatePool="" />
 	<item Id="3" Exp="400" Floor="999" Upper="999" ActivePool="4050001" InnatePool="" />
-	<item Id="4" Exp="600" Floor="999" Upper="999" ActivePool="" InnatePool="" />
-	<item Id="5" Exp="800" Floor="999" Upper="999" ActivePool="" InnatePool="" />
+	<item Id="4" Exp="700" Floor="999" Upper="999" ActivePool="" InnatePool="" />
+	<item Id="5" Exp="900" Floor="999" Upper="999" ActivePool="" InnatePool="" />
 	<item Id="6" Exp="1000" Floor="999" Upper="999" ActivePool="" InnatePool="4070001" />
 	<item Id="7" Exp="1200" Floor="999" Upper="999" ActivePool="" InnatePool="" />
 	<item Id="8" Exp="1400" Floor="999" Upper="999" ActivePool="" InnatePool="" />

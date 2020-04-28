@@ -79,7 +79,7 @@ namespace KFrame
         void DoneTask( KFEntity* player, KFData* kftask, const KFTaskSetting* kfsetting, bool update );
 
         // 添加到完成任务列表
-        void AddFinishTask( KFEntity* player, const KFTaskSetting* kfsetting );
+        void AddFinishTask( KFEntity* player, KFData* kftask, const KFTaskSetting* kfsetting, bool update );
         __KF_TIMER_FUNCTION__( OnTimerTaskFinish );
 
         // 任务交付完成

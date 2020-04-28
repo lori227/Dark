@@ -1,9 +1,9 @@
-<root platform="" version="4674">
+<root platform="" version="4802">
 	<item Id="1" GrowthMax="1" HeadFrame="HeroQuality01" name="HeroQuality01" SkillQuality="" InnateNum="1" InnateQuality="" RoleDurability="8-8" Attr_maxhp="70-70" Attr_atk="70-70" Attr_def="70-70" Attr_res="70-70" Attr_tal="70-70" Attr_spd="70-70" Attr_luk="70-70" />
 	<item Id="2" GrowthMax="1" HeadFrame="HeroQuality02" name="HeroQuality02" SkillQuality="" InnateNum="1" InnateQuality="" RoleDurability="8-8" Attr_maxhp="80-80" Attr_atk="80-80" Attr_def="80-80" Attr_res="80-80" Attr_tal="80-80" Attr_spd="80-80" Attr_luk="80-80" />
 	<item Id="3" GrowthMax="90" HeadFrame="HeroQuality03" name="HeroQuality03" SkillQuality="1-7" InnateNum="1" InnateQuality="1-7" RoleDurability="8-8" Attr_maxhp="90-90" Attr_atk="90-90" Attr_def="90-90" Attr_res="90-90" Attr_tal="90-90" Attr_spd="90-90" Attr_luk="90-90" />
 	<item Id="4" GrowthMax="100" HeadFrame="HeroQuality04" name="HeroQuality04" SkillQuality="1-7" InnateNum="1" InnateQuality="1-7" RoleDurability="10-10" Attr_maxhp="100-100" Attr_atk="100-100" Attr_def="100-100" Attr_res="100-100" Attr_tal="100-100" Attr_spd="100-100" Attr_luk="100-100" />
 	<item Id="5" GrowthMax="110" HeadFrame="HeroQuality05" name="HeroQuality05" SkillQuality="1-7" InnateNum="2" InnateQuality="1-7" RoleDurability="12-12" Attr_maxhp="110-110" Attr_atk="110-110" Attr_def="110-110" Attr_res="110-110" Attr_tal="110-110" Attr_spd="110-110" Attr_luk="110-110" />
 	<item Id="6" GrowthMax="130" HeadFrame="HeroQuality06" name="HeroQuality06" SkillQuality="1-7" InnateNum="2" InnateQuality="1-7" RoleDurability="12-12" Attr_maxhp="130-130" Attr_atk="130-130" Attr_def="130-130" Attr_res="130-130" Attr_tal="130-130" Attr_spd="130-130" Attr_luk="130-130" />
-	<item Id="7" GrowthMax="150" HeadFrame="HeroQuality07" name="HeroQuality07" SkillQuality="1-7" InnateNum="3" InnateQuality="1-7" RoleDurability="12-12" Attr_maxhp="150-150" Attr_atk="150-150" Attr_def="150-150" Attr_res="150-150" Attr_tal="150-150" Attr_spd="150-150" Attr_luk="150-150" />
+	<item Id="7" GrowthMax="150" HeadFrame="HeroQuality07" name="HeroQuality07" SkillQuality="1-7" InnateNum="5" InnateQuality="1-7" RoleDurability="12-12" Attr_maxhp="150-150" Attr_atk="150-150" Attr_def="150-150" Attr_res="150-150" Attr_tal="150-150" Attr_spd="150-150" Attr_luk="150-150" />
 </root>
