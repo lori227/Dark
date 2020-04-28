@@ -29,6 +29,7 @@ namespace KFrame
         __REGISTER_MESSAGE__( KFMsg::MSG_EXPLORE_DROP_REQ, &KFRealmModule::HandleExploreDropReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_INTERACT_ITEM_REQ, &KFRealmModule::HandleInteractItemReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_UPDATE_EXPLORE_EVENT_REQ, &KFRealmModule::HandleUpdateExploreEventReq );
+        __REGISTER_MESSAGE__( KFMsg::MSG_REALM_LEVEL_FINISH_REQ, &KFRealmModule::HandleRealmLevelFinishReq );
     }
 
     void KFRealmModule::BeforeShut()
@@ -55,6 +56,7 @@ namespace KFrame
         __UN_MESSAGE__( KFMsg::MSG_EXPLORE_DROP_REQ );
         __UN_MESSAGE__( KFMsg::MSG_INTERACT_ITEM_REQ );
         __UN_MESSAGE__( KFMsg::MSG_UPDATE_EXPLORE_EVENT_REQ );
+        __UN_MESSAGE__( KFMsg::MSG_REALM_LEVEL_FINISH_REQ );
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -134,6 +136,20 @@ namespace KFrame
             ( *ack.mutable_id() )[ack.id_size() + 1] = eventid;
         }
         _kf_player->SendToClient( player, KFMsg::MSG_LOGIC_EVENT_ACK, &ack );
+    }
+
+    __KF_MESSAGE_FUNCTION__( KFRealmModule::HandleRealmLevelFinishReq )
+    {
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgRealmLevelFinishReq );
+
+        auto kfrealmdata = _realm_data.Find( player->GetKeyID() );
+        if ( kfrealmdata == nullptr )
+        {
+            return _kf_display->SendToClient( player, KFMsg::RealmNotInStatus );
+        }
+
+        // 直接使用leave条件来当完成条件( 策划说不要改)
+        RealmJumpCondition( player, kfrealmdata->_data.id(), kfrealmdata->_data.level(), 0u );
     }
 
     __KF_MESSAGE_FUNCTION__( KFRealmModule::HandleRealmEnterReq )
@@ -442,7 +458,7 @@ namespace KFrame
         ExploreInitData( pbexplore, kfexplorelevel->_explore_id, ( uint32 )kfsetting->_levels.size(), level, lastlevel );
 
         // 完成/进入关卡条件回调
-        RealmJumpCondition( player, kfrealmdata->_data.id(), lastlevel, level );
+        RealmJumpCondition( player, kfrealmdata->_data.id(), 0u, level );
 
         player->UpdateData( __STRING__( realmlevel ), KFEnum::Set, level );
         return std::make_tuple( KFMsg::Ok, kfrealmdata, pbexplore );

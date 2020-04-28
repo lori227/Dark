@@ -470,12 +470,13 @@ enum JumpEnum {
   JumpInvalid = 0,
   Leave = 1,
   Enter = 2,
+  Finish = 3,
   JumpEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   JumpEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 LIBPROTOC_EXPORT bool JumpEnum_IsValid(int value);
 const JumpEnum JumpEnum_MIN = JumpInvalid;
-const JumpEnum JumpEnum_MAX = Enter;
+const JumpEnum JumpEnum_MAX = Finish;
 const int JumpEnum_ARRAYSIZE = JumpEnum_MAX + 1;
 
 LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* JumpEnum_descriptor();

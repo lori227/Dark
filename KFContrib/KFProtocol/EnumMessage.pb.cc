@@ -104,16 +104,16 @@ void AddDescriptorsImpl() {
       "lInvalid\020\000\022\020\n\013ExtendLevel\020\220N*c\n\013BalanceE"
       "num\022\021\n\rUnknowBalance\020\000\022\013\n\007Victory\020\001\022\n\n\006F"
       "ailed\020\002\022\010\n\004Flee\020\003\022\010\n\004Town\020\004\022\007\n\003Ace\020\005\022\013\n\007"
-      "Chapter\020d*1\n\010JumpEnum\022\017\n\013JumpInvalid\020\000\022\t"
-      "\n\005Leave\020\001\022\t\n\005Enter\020\002*G\n\rRealmTimeEnum\022\017\n"
-      "\013TimeInvalid\020\000\022\013\n\007Morning\020\001\022\r\n\tAfternoon"
-      "\020\002\022\t\n\005Night\020\003*g\n\014FunctionEnum\022\023\n\017Functio"
-      "nInvalid\020\000\022\017\n\013InnerWorld1\020\001\022\017\n\013InnerWorl"
-      "d2\020\002\022\017\n\013InnerWorld3\020\003\022\017\n\013OnekeyEquip\020\004b\006"
-      "proto3"
+      "Chapter\020d*=\n\010JumpEnum\022\017\n\013JumpInvalid\020\000\022\t"
+      "\n\005Leave\020\001\022\t\n\005Enter\020\002\022\n\n\006Finish\020\003*G\n\rReal"
+      "mTimeEnum\022\017\n\013TimeInvalid\020\000\022\013\n\007Morning\020\001\022"
+      "\r\n\tAfternoon\020\002\022\t\n\005Night\020\003*g\n\014FunctionEnu"
+      "m\022\023\n\017FunctionInvalid\020\000\022\017\n\013InnerWorld1\020\001\022"
+      "\017\n\013InnerWorld2\020\002\022\017\n\013InnerWorld3\020\003\022\017\n\013One"
+      "keyEquip\020\004b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2086);
+      descriptor, 2098);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "EnumMessage.proto", &protobuf_RegisterTypes);
 }
@@ -432,6 +432,7 @@ bool JumpEnum_IsValid(int value) {
     case 0:
     case 1:
     case 2:
+    case 3:
       return true;
     default:
       return false;

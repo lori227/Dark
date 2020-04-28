@@ -1,4 +1,4 @@
-<root version="4826">
+<root version="4827">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -154,7 +154,6 @@
 	<item name="buildlevel" version="4817" />
 	<item name="uitext" version="4819" />
 	<item name="technology" version="4820" />
-	<item name="prompttext" version="4820" />
 	<item name="smithyweapon" version="4823" />
 	<item name="heroprofession" version="4824" />
 	<item name="class" version="4824" />
@@ -162,4 +161,5 @@
 	<item name="heroconstant" version="4824" />
 	<item name="constant" version="4825" />
 	<item name="heroquality" version="4826" />
+	<item name="prompttext" version="4827" />
 </root>
