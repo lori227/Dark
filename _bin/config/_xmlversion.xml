@@ -1,4 +1,4 @@
-<root version="4817">
+<root version="4826">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -47,7 +47,6 @@
 	<item name="smithy" version="1935" />
 	<item name="maincamp_camera" version="2016" />
 	<item name="filter" version="2053" />
-	<item name="smithyweapon" version="2387" />
 	<item name="buildcondition" version="2500" />
 	<item name="train" version="2516" />
 	<item name="tlog" version="2552" />
@@ -94,7 +93,6 @@
 	<item name="chapter" version="4435" />
 	<item name="status" version="4435" />
 	<item name="heropinchface" version="4477" />
-	<item name="constant" version="4505" />
 	<item name="config" version="4513" />
 	<item name="countcost" version="4515" />
 	<item name="meshconfig" version="4531" />
@@ -111,7 +109,6 @@
 	<item name="itemgift" version="4616" />
 	<item name="quality" version="4620" />
 	<item name="recruitrefresh" version="4658" />
-	<item name="herogenerate" version="4660" />
 	<item name="formula" version="4674" />
 	<item name="gmcommand" version="4683" />
 	<item name="conditiondefine" version="4695" />
@@ -122,11 +119,9 @@
 	<item name="dialoguetext" version="4724" />
 	<item name="itemtype" version="4725" />
 	<item name="pve" version="4743" />
-	<item name="heroprofession" version="4746" />
 	<item name="weapontype" version="4748" />
 	<item name="initialprocess" version="4750" />
 	<item name="player" version="4750" />
-	<item name="prompttext" version="4755" />
 	<item name="taskcondition" version="4763" />
 	<item name="tasktext" version="4763" />
 	<item name="npcskill" version="4765" />
@@ -137,11 +132,9 @@
 	<item name="granarybuy" version="4779" />
 	<item name="story" version="4780" />
 	<item name="taskchain" version="4781" />
-	<item name="class" version="4782" />
 	<item name="eventparams" version="4784" />
 	<item name="heroweightpool" version="4785" />
 	<item name="injury" version="4785" />
-	<item name="heroconstant" version="4786" />
 	<item name="realm" version="4787" />
 	<item name="unlockcondition" version="4793" />
 	<item name="camptext" version="4793" />
@@ -149,11 +142,8 @@
 	<item name="rolebasetext" version="4799" />
 	<item name="npcrand" version="4801" />
 	<item name="npcgroup" version="4801" />
-	<item name="heroquality" version="4802" />
 	<item name="multievent" version="4806" />
-	<item name="uitext" version="4806" />
 	<item name="injuryrandom" version="4808" />
-	<item name="technology" version="4811" />
 	<item name="herolevel" version="4812" />
 	<item name="npcgenerate" version="4812" />
 	<item name="dropgroup" version="4813" />
@@ -162,4 +152,14 @@
 	<item name="errorcode" version="4815" />
 	<item name="tipstext" version="4816" />
 	<item name="buildlevel" version="4817" />
+	<item name="uitext" version="4819" />
+	<item name="technology" version="4820" />
+	<item name="prompttext" version="4820" />
+	<item name="smithyweapon" version="4823" />
+	<item name="heroprofession" version="4824" />
+	<item name="class" version="4824" />
+	<item name="herogenerate" version="4824" />
+	<item name="heroconstant" version="4824" />
+	<item name="constant" version="4825" />
+	<item name="heroquality" version="4826" />
 </root>

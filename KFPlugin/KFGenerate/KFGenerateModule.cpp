@@ -443,26 +443,27 @@ namespace KFrame
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        UInt32Vector character_pool_list = kfgeneratesetting->_character_pool_list;
+        UInt32Vector innate_pool_list = kfgeneratesetting->_innate_pool_list;
+        UInt32Vector active_pool_list = kfgeneratesetting->_active_pool_list;
+        auto kflevelsetting = KFLevelConfig::Instance()->FindSetting( 1u );
+        if ( kflevelsetting != nullptr )
+        {
+            innate_pool_list.insert( innate_pool_list.end(), kflevelsetting->_innate_pool_list.begin(), kflevelsetting->_innate_pool_list.end() );
+            active_pool_list.insert( active_pool_list.end(), kflevelsetting->_active_pool_list.begin(), kflevelsetting->_active_pool_list.end() );
+        }
+
         // 随机生成性格
         RandWeightData( player, kfhero, __STRING__( character ), kfgeneratesetting->_character_pool_list, false );
-
-        // 随机生成天赋
-        RandWeightData( player, kfhero, __STRING__( innate ), kfgeneratesetting->_innate_pool_list, false );
 
         // 随机生成主动技能
         RandWeightData( player, kfhero, __STRING__( active ), kfgeneratesetting->_active_pool_list, false );
 
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        auto kflevelsetting = KFLevelConfig::Instance()->FindSetting( 1u );
-        if ( kflevelsetting != nullptr )
+        // 随机生成天赋
+        auto randlist = RandWeightData( player, kfhero, __STRING__( innate ), kfgeneratesetting->_innate_pool_list, false );
+        if ( !randlist.empty() )
         {
-            // 随机1级主动技能
-            RandWeightData( player, kfhero, __STRING__( active ), kflevelsetting->_active_pool_list, false );
-
-            // 随机1级天赋
-            RandWeightData( player, kfhero, __STRING__( innate ), kflevelsetting->_innate_pool_list, false );
+            UpdateInnateData( player, kfhero, randlist, false );
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1112,7 +1113,16 @@ namespace KFrame
         RandWeightData( player, kfhero, __STRING__( active ), active_pool_list, update );
 
         // 随机天赋
-        RandWeightData( player, kfhero, __STRING__( innate ), innate_pool_list, update );
+        auto randlist = RandWeightData( player, kfhero, __STRING__( innate ), innate_pool_list, update );
+        if ( !randlist.empty() )
+        {
+            auto posflag = kfhero->Get<uint32>( __STRING__( posflag ) );
+            if ( posflag == KFMsg::TrainBuild )
+            {
+                update = false;
+            }
+            UpdateInnateData( player, kfhero, randlist, update );
+        }
     }
 
     __KF_UPDATE_DATA_FUNCTION__( KFGenerateModule::OnHeroProUpdateCallBack )
@@ -1256,7 +1266,11 @@ namespace KFrame
         RandWeightData( player, kfhero, __STRING__( character ), kfsetting->_character_pool_list, update );
 
         // 随机天赋
-        RandWeightData( player, kfhero, __STRING__( innate ), kfsetting->_innate_pool_list, update );
+        randlist = RandWeightData( player, kfhero, __STRING__( innate ), kfsetting->_innate_pool_list, update );
+        if ( !randlist.empty() )
+        {
+            UpdateInnateData( player, kfhero, randlist, update );
+        }
     }
 
     UInt32Vector& KFGenerateModule::RandWeightData( KFEntity* player, KFData* kfhero, const std::string& dataname, const UInt32Vector& slist, bool update /*= true*/ )
@@ -1346,11 +1360,6 @@ namespace KFrame
             }
         }
 
-        if ( dataname == __STRING__( innate ) )
-        {
-            UpdateInnateData( player, kfhero, randlist, update );
-        }
-
         return randlist;
     }
 
@@ -1370,10 +1379,17 @@ namespace KFrame
             return;
         }
 
-        auto posflag = kfhero->Get<uint32>( __STRING__( posflag ) );
-        if ( !update || posflag == KFMsg::TrainBuild )
+        if ( update )
         {
-            // 数据不更新或英雄在训练所中，删除超过的技能数量
+            for ( auto iter : randlist )
+            {
+                // 新增天赋设置标记
+                player->UpdateData( kfinnaterecord, iter, __STRING__( flag ), KFEnum::Set, 1u );
+            }
+        }
+        else
+        {
+            // 数据不更新，删除超过的技能数量
             auto removenum = innatenum - kfqualitysetting->_innate_num;
 
             UInt32Set randset;
@@ -1402,6 +1418,13 @@ namespace KFrame
                 removelist.insert( removelist.end(), randlist.rbegin(), randlist.rbegin() + removenum - removelist.size() );
             }
 
+            auto posflag = kfhero->Get<uint32>( __STRING__( posflag ) );
+            if ( posflag == KFMsg::TrainBuild )
+            {
+                // 在训练所升级更新数据
+                update = true;
+            }
+
             for ( auto iter : removelist )
             {
                 if ( update )
@@ -1413,14 +1436,6 @@ namespace KFrame
                     kfinnaterecord->Remove( iter );
                 }
             }
-
-            return;
-        }
-
-        for ( auto iter : randlist )
-        {
-            // 新增天赋设置标记
-            player->UpdateData( kfinnaterecord, iter, __STRING__( flag ), KFEnum::Set, 1u );
         }
     }
 

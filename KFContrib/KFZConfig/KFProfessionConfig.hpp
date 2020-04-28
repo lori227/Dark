@@ -30,9 +30,6 @@ namespace KFrame
         // 职业等级
         uint32 _class_lv = 0u;
 
-        // 耐久度
-        KFRange<uint32> _durability_range;
-
         // 音色类型
         UInt32Vector _voice_list;
 
@@ -48,9 +45,6 @@ namespace KFrame
 
         // 随机武器类型
         uint32 RandWeapontype() const;
-
-        // 随机耐久度
-        uint32 RandRoleDurability() const;
     };
     ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
