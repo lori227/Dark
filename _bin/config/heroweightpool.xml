@@ -1,4 +1,4 @@
-<root platform="" version="4785">
+<root platform="" version="4880">
 	<item Id="4010001" Value="1602" Weight="300" />
 	<item Id="4010001" Value="1603" Weight="300" />
 	<item Id="4010001" Value="1601" Weight="100" />
@@ -81,9 +81,13 @@
 	<item Id="4030103" Value="1133" Weight="100" />
 	<item Id="4030103" Value="1136" Weight="100" />
 	<item Id="4030103" Value="1138" Weight="100" />
-	<item Id="4030201" Value="3" Weight="6000" />
-	<item Id="4030201" Value="4" Weight="3000" />
-	<item Id="4030201" Value="5" Weight="1000" />
+	<item Id="4030201" Value="1" Weight="1" />
+	<item Id="4030201" Value="2" Weight="1" />
+	<item Id="4030201" Value="3" Weight="1" />
+	<item Id="4030201" Value="4" Weight="1" />
+	<item Id="4030201" Value="5" Weight="1" />
+	<item Id="4030201" Value="6" Weight="1" />
+	<item Id="4030201" Value="7" Weight="1" />
 	<item Id="4030211" Value="1" Weight="10000" />
 	<item Id="4030212" Value="2" Weight="10000" />
 	<item Id="4030213" Value="3" Weight="10000" />
@@ -139,7 +143,7 @@
 	<item Id="4050001" Value="161048" Weight="100" />
 	<item Id="4050001" Value="161049" Weight="100" />
 	<item Id="4050001" Value="161050" Weight="100" />
-	<item Id="4050001" Value="161100" Weight="100" />
+	<item Id="4050001" Value="161101" Weight="100" />
 	<item Id="4050001" Value="161103" Weight="100" />
 	<item Id="4050001" Value="161105" Weight="100" />
 	<item Id="4050001" Value="161106" Weight="100" />
@@ -265,6 +269,18 @@
 	<item Id="4070001" Value="140102" Weight="100" />
 	<item Id="4070001" Value="140103" Weight="100" />
 	<item Id="4070001" Value="140104" Weight="100" />
+	<item Id="4070001" Value="140201" Weight="100" />
+	<item Id="4070001" Value="140202" Weight="100" />
+	<item Id="4070001" Value="140203" Weight="100" />
+	<item Id="4070001" Value="140204" Weight="100" />
+	<item Id="4070001" Value="140301" Weight="100" />
+	<item Id="4070001" Value="140302" Weight="100" />
+	<item Id="4070001" Value="140303" Weight="100" />
+	<item Id="4070001" Value="140304" Weight="100" />
+	<item Id="4070001" Value="140401" Weight="100" />
+	<item Id="4070001" Value="140402" Weight="100" />
+	<item Id="4070001" Value="140403" Weight="100" />
+	<item Id="4070001" Value="140404" Weight="100" />
 	<item Id="4070001" Value="140801" Weight="100" />
 	<item Id="4070001" Value="140802" Weight="100" />
 	<item Id="4070001" Value="140803" Weight="100" />

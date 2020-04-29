@@ -1,4 +1,4 @@
-<root platform="" version="4825">
+<root platform="" version="4865">
 	<item Name="playernamelength" Key="" Value="15" Channel="0" Service="0" />
 	<item Name="recruitrefreshtime" Key="" Value="0.4" Channel="0" Service="0" />
 	<item Name="recruittime" Key="" Value="0.4" Channel="0" Service="0" />
@@ -22,7 +22,7 @@
 	<item Name="worldmapmodelloc" Key="" Value="-2180,4930,73" Channel="0" Service="0" />
 	<item Name="worldmapmodelrot" Key="" Value="150" Channel="0" Service="0" />
 	<item Name="worldmapmodelspeed" Key="" Value="1500" Channel="0" Service="0" />
-	<item Name="worldmapmodelrange" Key="" Value="100" Channel="0" Service="0" />
+	<item Name="worldmapmodelrange" Key="" Value="300" Channel="0" Service="0" />
 	<item Name="worldmapmodelscale" Key="" Value="3" Channel="0" Service="0" />
 	<item Name="worldmapcameraspeed" Key="" Value="7500" Channel="0" Service="0" />
 </root>

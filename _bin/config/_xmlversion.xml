@@ -1,4 +1,4 @@
-<root version="4827">
+<root version="4881">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -33,7 +33,6 @@
 	<item name="technologylevel" version="1109" />
 	<item name="currency" version="1172" />
 	<item name="traincamp" version="1175" />
-	<item name="affixtext" version="1220" />
 	<item name="recruitdivisor" version="1536" />
 	<item name="explorerecord" version="1536" />
 	<item name="clinic" version="1559" />
@@ -60,7 +59,6 @@
 	<item name="runeexchange" version="2937" />
 	<item name="multioption" version="2993" />
 	<item name="granary" version="3056" />
-	<item name="sequence" version="3057" />
 	<item name="jumpaddress" version="3109" />
 	<item name="option" version="3541" />
 	<item name="RenderCaptureCfg" version="3600" />
@@ -68,7 +66,6 @@
 	<item name="leader" version="3600" />
 	<item name="herorace" version="3604" />
 	<item name="herobackground" version="3610" />
-	<item name="reward" version="3696" />
 	<item name="punish" version="3782" />
 	<item name="heroment" version="3798" />
 	<item name="taskchainrefresh" version="3908" />
@@ -114,52 +111,55 @@
 	<item name="conditiondefine" version="4695" />
 	<item name="injurytype" version="4697" />
 	<item name="herotransfer" version="4702" />
-	<item name="heroskill" version="4702" />
 	<item name="unlock" version="4715" />
-	<item name="dialoguetext" version="4724" />
 	<item name="itemtype" version="4725" />
 	<item name="pve" version="4743" />
-	<item name="weapontype" version="4748" />
 	<item name="initialprocess" version="4750" />
-	<item name="player" version="4750" />
 	<item name="taskcondition" version="4763" />
 	<item name="tasktext" version="4763" />
 	<item name="npcskill" version="4765" />
-	<item name="itemcommon" version="4766" />
 	<item name="task" version="4769" />
-	<item name="dialogue" version="4775" />
-	<item name="npc" version="4776" />
-	<item name="granarybuy" version="4779" />
-	<item name="story" version="4780" />
 	<item name="taskchain" version="4781" />
 	<item name="eventparams" version="4784" />
-	<item name="heroweightpool" version="4785" />
 	<item name="injury" version="4785" />
-	<item name="realm" version="4787" />
 	<item name="unlockcondition" version="4793" />
 	<item name="camptext" version="4793" />
-	<item name="itemtext" version="4796" />
-	<item name="rolebasetext" version="4799" />
 	<item name="npcrand" version="4801" />
-	<item name="npcgroup" version="4801" />
 	<item name="multievent" version="4806" />
 	<item name="injuryrandom" version="4808" />
-	<item name="herolevel" version="4812" />
 	<item name="npcgenerate" version="4812" />
-	<item name="dropgroup" version="4813" />
-	<item name="dropdata" version="4813" />
-	<item name="levelvalue" version="4814" />
 	<item name="errorcode" version="4815" />
 	<item name="tipstext" version="4816" />
-	<item name="buildlevel" version="4817" />
-	<item name="uitext" version="4819" />
-	<item name="technology" version="4820" />
-	<item name="smithyweapon" version="4823" />
 	<item name="heroprofession" version="4824" />
 	<item name="class" version="4824" />
-	<item name="herogenerate" version="4824" />
 	<item name="heroconstant" version="4824" />
-	<item name="constant" version="4825" />
-	<item name="heroquality" version="4826" />
 	<item name="prompttext" version="4827" />
+	<item name="reward" version="4828" />
+	<item name="smithyweapon" version="4832" />
+	<item name="dialogue" version="4833" />
+	<item name="npcgroup" version="4840" />
+	<item name="herolevel" version="4841" />
+	<item name="heroquality" version="4843" />
+	<item name="herogenerate" version="4847" />
+	<item name="weapontype" version="4850" />
+	<item name="sequence" version="4854" />
+	<item name="story" version="4856" />
+	<item name="granarybuy" version="4857" />
+	<item name="itemtext" version="4859" />
+	<item name="itemcommon" version="4860" />
+	<item name="player" version="4861" />
+	<item name="affixtext" version="4862" />
+	<item name="buildlevel" version="4863" />
+	<item name="heroskill" version="4864" />
+	<item name="constant" version="4865" />
+	<item name="dropgroup" version="4866" />
+	<item name="dropdata" version="4868" />
+	<item name="npc" version="4870" />
+	<item name="rolebasetext" version="4870" />
+	<item name="technology" version="4872" />
+	<item name="dialoguetext" version="4874" />
+	<item name="levelvalue" version="4875" />
+	<item name="realm" version="4879" />
+	<item name="heroweightpool" version="4880" />
+	<item name="uitext" version="4881" />
 </root>

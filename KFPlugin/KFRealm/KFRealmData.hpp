@@ -8,7 +8,6 @@
 #include "KFProtocol/KFProtocol.h"
 #include "KFZConfig/KFItemConfig.hpp"
 #include "KFZConfig/KFItemTypeConfig.hpp"
-#include "KFZConfig/KFCurrencyConfig.hpp"
 #include "KFZConfig/KFItemBagConfig.hpp"
 
 namespace KFrame

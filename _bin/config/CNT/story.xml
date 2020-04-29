@@ -1,8 +1,8 @@
-<root platform="" version="4780">
+<root platform="" version="4856">
 	<item Id="1" StoryId="3000" Array="1" TriggerType="0" Type="1" Parameter1="10086" Parameter2="0" />
 	<item Id="2" StoryId="3000" Array="2" TriggerType="0" Type="9" Parameter1="200001" Parameter2="0" />
 	<item Id="3" StoryId="3000" Array="3" TriggerType="0" Type="9" Parameter1="200002" Parameter2="0" />
-	<item Id="4" StoryId="3000" Array="4" TriggerType="0" Type="8" Parameter1="8200002" Parameter2="0" />
+	<item Id="4" StoryId="3000" Array="4" TriggerType="0" Type="9" Parameter1="200003" Parameter2="0" />
 	<item Id="5" StoryId="3000" Array="5" TriggerType="0" Type="7" Parameter1="8210001" Parameter2="0" />
 	<item Id="6" StoryId="3000" Array="6" TriggerType="0" Type="12" Parameter1="0" Parameter2="0" />
 	<item Id="7" StoryId="3001" Array="1" TriggerType="0" Type="7" Parameter1="8200003" Parameter2="0" />
@@ -176,7 +176,7 @@
 	<item Id="175" StoryId="11301" Array="1" TriggerType="1" Type="1" Parameter1="10086" Parameter2="0" />
 	<item Id="176" StoryId="11302" Array="1" TriggerType="1" Type="9" Parameter1="200001" Parameter2="0" />
 	<item Id="177" StoryId="11303" Array="1" TriggerType="1" Type="9" Parameter1="200002" Parameter2="0" />
-	<item Id="178" StoryId="11304" Array="1" TriggerType="1" Type="8" Parameter1="8200002" Parameter2="0" />
+	<item Id="178" StoryId="11304" Array="1" TriggerType="1" Type="9" Parameter1="200003" Parameter2="0" />
 	<item Id="179" StoryId="40001" Array="1" TriggerType="1" Type="8" Parameter1="8100001" Parameter2="0" />
 	<item Id="180" StoryId="40002" Array="1" TriggerType="1" Type="8" Parameter1="8100002" Parameter2="0" />
 	<item Id="181" StoryId="40003" Array="1" TriggerType="1" Type="8" Parameter1="8100003" Parameter2="0" />

@@ -53,7 +53,6 @@ namespace KFrame
         __KF_ADD_CONFIG__( KFPVEConfig );
         __KF_ADD_CONFIG__( KFRealmConfig );
         __KF_ADD_CONFIG__( KFElementConfig );
-        __KF_ADD_CONFIG__( KFCurrencyConfig );
         __KF_ADD_CONFIG__( KFItemConfig );
         __KF_ADD_CONFIG__( KFItemTypeConfig );
         __KF_ADD_CONFIG__( KFElementConfig );

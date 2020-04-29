@@ -150,6 +150,12 @@ namespace KFrame
 
         // 直接使用leave条件来当完成条件( 策划说不要改)
         RealmJumpCondition( player, kfrealmdata->_data.id(), kfrealmdata->_data.level(), 0u );
+
+        KFMsg::MsgRealmLevelFinishAck ack;
+        ack.set_realmid( kfmsg.realmid() );
+        ack.set_nextlevel( kfmsg.nextlevel() );
+        ack.set_birthplace( kfmsg.birthplace() );
+        _kf_player->SendToClient( player, KFMsg::MSG_REALM_LEVEL_FINISH_ACK, &ack, 1u );
     }
 
     __KF_MESSAGE_FUNCTION__( KFRealmModule::HandleRealmEnterReq )

@@ -127,16 +127,24 @@ namespace KFrame
     void KFRealmData::RecordPeriodHeros( KFEntity* player )
     {
         auto kfherorecord = player->Find( __STRING__( hero ) );
+
+        UInt32Vector removelist;
         for ( auto i = 0; i < _data.herodata_size(); ++i )
         {
             auto pbhero = _data.mutable_herodata( i );
             auto kfhero = kfherorecord->Find( pbhero->uuid() ) ;
-            if ( kfhero == nullptr )
+            if ( kfhero == nullptr || kfhero->Get<uint32>( __STRING__( posflag ) ) != KFMsg::HeroTeam )
             {
+                removelist.emplace_back( i );
                 continue;
             }
 
             RecordHeroPeriodData( kfhero, pbhero );
+        }
+
+        for ( auto iter = removelist.rbegin(); iter != removelist.rend(); ++iter )
+        {
+            _data.mutable_herodata()->DeleteSubrange( *iter, 1 );
         }
     }
 
@@ -178,11 +186,6 @@ namespace KFrame
     {
         pbhero->set_death( false );
         pbhero->set_uuid( kfhero->GetKeyID() );
-        pbhero->set_name( kfhero->Get<std::string>( __STRING__( name ) ) );
-        pbhero->set_race( kfhero->Get<uint32>( __STRING__( race ) ) );
-        pbhero->set_profession( kfhero->Get<uint32>( __STRING__( profession ) ) );
-        pbhero->set_sex( kfhero->Get<uint32>( __STRING__( sex ) ) );
-        pbhero->set_quality( kfhero->Get<uint32>( __STRING__( quality ) ) );
 
         // 伤病
         auto kfinjuryrecord = kfhero->Find( __STRING__( injury ) );
@@ -195,6 +198,11 @@ namespace KFrame
 
     void KFRealmData::RecordHeroPeriodData( KFData* kfhero, KFMsg::PBBalanceHeroServer* pbhero )
     {
+        pbhero->set_name( kfhero->Get<std::string>( __STRING__( name ) ) );
+        pbhero->set_race( kfhero->Get<uint32>( __STRING__( race ) ) );
+        pbhero->set_profession( kfhero->Get<uint32>( __STRING__( profession ) ) );
+        pbhero->set_sex( kfhero->Get<uint32>( __STRING__( sex ) ) );
+        pbhero->set_quality( kfhero->Get<uint32>( __STRING__( quality ) ) );
         pbhero->set_maxhp( kfhero->Get<uint32>( __STRING__( fighter ), __STRING__( maxhp ) ) );
         pbhero->set_beginexp( kfhero->Get<uint32>( __STRING__( exp ) ) );
         pbhero->set_beginlevel( kfhero->Get<uint32>( __STRING__( level ) ) );
