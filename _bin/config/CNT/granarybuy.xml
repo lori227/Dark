@@ -1,6 +1,6 @@
-<root platform="" version="4857">
-	<item Id="1" Consume="[[1,1,2000]]" />
-	<item Id="2" Consume="[[1,1,5000]]" />
+<root platform="" version="4897">
+	<item Id="1" Consume="[[1,2,10]]" />
+	<item Id="2" Consume="[[1,2,20]]" />
 	<item Id="3" Consume="[[1,2,20]]" />
 	<item Id="4" Consume="[[1,2,20]]" />
 	<item Id="5" Consume="[[1,2,40]]" />

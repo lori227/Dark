@@ -1,4 +1,4 @@
-<root platform="" version="4806">
+<root platform="" version="4892">
 	<item Id="1" MultiId="39000000" Index="1" Cost="" Event="30000005" Title="MultiOption_Campfire_Title" Description="MultiOption_Campfire_Des" OptionTxt="MultiOption_Campfire_Option1" LocalEvent="30000023" SoundName="" />
 	<item Id="2" MultiId="39000001" Index="1" Cost="" Event="30000017" Title="MultiOption_Altar_Title" Description="MultiOption_Altar_Des" OptionTxt="MultiOption_Altar_Option1" LocalEvent="30000023" SoundName="" />
 	<item Id="3" MultiId="39000001" Index="2" Cost="[[2,1900005,1]]" Event="30000044" Title="MultiOption_Altar_Title" Description="MultiOption_Altar_Des" OptionTxt="MultiOption_Altar_Option2" LocalEvent="30000023" SoundName="" />
@@ -18,7 +18,7 @@
 	<item Id="17" MultiId="39000009" Index="3" Cost="" Event="31000014" Title="MultiOption_Trader_Title" Description="MultiOption_Trader_Main_Menu_Des" OptionTxt="MultiOption_Trader_Main_Menu_3" LocalEvent="" SoundName="" />
 	<item Id="18" MultiId="39000009" Index="4" Cost="" Event="31000015" Title="MultiOption_Trader_Title" Description="MultiOption_Trader_Main_Menu_Des" OptionTxt="MultiOption_Trader_Main_Menu_4" LocalEvent="" SoundName="" />
 	<item Id="19" MultiId="39000009" Index="5" Cost="" Event="31000016" Title="MultiOption_Trader_Title" Description="MultiOption_Trader_Main_Menu_Des" OptionTxt="MultiOption_Trader_Main_Menu_5" LocalEvent="" SoundName="" />
-	<item Id="20" MultiId="39000010" Index="1" Cost="[[2,1900005,1]]" Event="31000017,31000012" Title="MultiOption_Trader_Title" Description="MultiOption_Trader_Good_Menu_Des" OptionTxt="MultiOption_Trader_Good_Menu_1" LocalEvent="" SoundName="" />
+	<item Id="20" MultiId="39000010" Index="1" Cost="[[2,1900005,2]]" Event="31000017,31000012" Title="MultiOption_Trader_Title" Description="MultiOption_Trader_Good_Menu_Des" OptionTxt="MultiOption_Trader_Good_Menu_1" LocalEvent="" SoundName="" />
 	<item Id="21" MultiId="39000010" Index="2" Cost="[[2,1900005,1]]" Event="31000018,31000012" Title="MultiOption_Trader_Title" Description="MultiOption_Trader_Good_Menu_Des" OptionTxt="MultiOption_Trader_Good_Menu_2" LocalEvent="" SoundName="" />
 	<item Id="22" MultiId="39000010" Index="3" Cost="[[2,1900005,2]]" Event="31000019,31000012" Title="MultiOption_Trader_Title" Description="MultiOption_Trader_Good_Menu_Des" OptionTxt="MultiOption_Trader_Good_Menu_3" LocalEvent="" SoundName="" />
 	<item Id="23" MultiId="39000010" Index="4" Cost="[[2,1900005,3]]" Event="31000020,31000012" Title="MultiOption_Trader_Title" Description="MultiOption_Trader_Good_Menu_Des" OptionTxt="MultiOption_Trader_Good_Menu_4" LocalEvent="" SoundName="" />
@@ -52,7 +52,7 @@
 	<item Id="51" MultiId="39000020" Index="1" Cost="[[2,1000017,20]]" Event="30000052" Title="MultiOption_StoneMineLarge_Title" Description="MultiOption_StoneMineLarge_Des" OptionTxt="MultiOption_StoneMineLarge_Option1" LocalEvent="30000023" SoundName="" />
 	<item Id="52" MultiId="39000020" Index="2" Cost="[[2,1900105,3]]" Event="30000052" Title="MultiOption_StoneMineLarge_Title" Description="MultiOption_StoneMineLarge_Des" OptionTxt="MultiOption_StoneMineLarge_Option2" LocalEvent="30000023" SoundName="" />
 	<item Id="53" MultiId="39000021" Index="1" Cost="[[2,1000017,5]]" Event="30000057" Title="MultiOption_IronMineSmall_Title" Description="MultiOption_IronMineSmall_Des" OptionTxt="MultiOption_IronMineSmall_Option1" LocalEvent="30000023" SoundName="" />
-	<item Id="54" MultiId="39000021" Index="1" Cost="[[2,1900105,1]]" Event="30000057" Title="MultiOption_IronMineSmall_Title" Description="MultiOption_IronMineSmall_Des" OptionTxt="MultiOption_IronMineSmall_Option2" LocalEvent="30000023" SoundName="" />
+	<item Id="54" MultiId="39000021" Index="2" Cost="[[2,1900105,1]]" Event="30000057" Title="MultiOption_IronMineSmall_Title" Description="MultiOption_IronMineSmall_Des" OptionTxt="MultiOption_IronMineSmall_Option2" LocalEvent="30000023" SoundName="" />
 	<item Id="55" MultiId="39000022" Index="1" Cost="[[2,1000017,10]]" Event="30000058" Title="MultiOption_IronMineMedium_Title" Description="MultiOption_IronMineMedium_Des" OptionTxt="MultiOption_IronMineMedium_Option1" LocalEvent="30000023" SoundName="" />
 	<item Id="56" MultiId="39000022" Index="2" Cost="[[2,1900105,2]]" Event="30000058" Title="MultiOption_IronMineMedium_Title" Description="MultiOption_IronMineMedium_Des" OptionTxt="MultiOption_IronMineMedium_Option2" LocalEvent="30000023" SoundName="" />
 	<item Id="57" MultiId="39000023" Index="1" Cost="[[2,1000017,20]]" Event="30000059" Title="MultiOption_IronMineLarge_Title" Description="MultiOption_IronMineLarge_Des" OptionTxt="MultiOption_IronMineLarge_Option1" LocalEvent="30000023" SoundName="" />

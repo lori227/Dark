@@ -3,8 +3,6 @@
 
 namespace KFrame
 {
-#define __MAIN_INDEX_NAME__ __STRING__( index )
-
     void KFItemMoveModule::BeforeRun()
     {
         _kf_component = _kf_kernel->FindComponent( __STRING__( player ) );
@@ -190,8 +188,14 @@ namespace KFrame
     {
         for ( auto& iter : KFItemBagConfig::Instance()->_settings._objects )
         {
+            auto kfsetting = iter.second;
+            if ( kfsetting->_index_name.empty() )
+            {
+                continue;
+            }
+
             auto kfitemrecord = player->Find( iter.first );
-            InitItemEmptyIndexData( player, kfitemrecord, iter.second );
+            InitItemEmptyIndexData( player, kfitemrecord, kfsetting );
         }
     }
 
@@ -199,6 +203,12 @@ namespace KFrame
     {
         for ( auto& iter : KFItemBagConfig::Instance()->_settings._objects )
         {
+            auto kfsetting = iter.second;
+            if ( kfsetting->_index_name.empty() )
+            {
+                continue;
+            }
+
             UnInitItemEmptyIndexData( player, iter.first );
         }
     }
@@ -329,6 +339,12 @@ namespace KFrame
 
     KFData* KFItemMoveModule::FindIndexItem( KFEntity* player, KFData* kfitemrecord, uint32 index )
     {
+        auto kfbagsetting = KFItemBagConfig::Instance()->FindSetting( kfitemrecord->_data_setting->_name );
+        if ( kfbagsetting == nullptr )
+        {
+            return nullptr;
+        }
+
         // 指定索引
         ItemIndexKey key( player->GetKeyID(), kfitemrecord->_data_setting->_name );
         auto kfbagindex = _player_item_index.Find( key );
@@ -337,7 +353,7 @@ namespace KFrame
             return nullptr;
         }
 
-        auto kftabindex = kfbagindex->FindTab( __MAIN_INDEX_NAME__ );
+        auto kftabindex = kfbagindex->FindTab( kfbagsetting->_index_name );
         if ( kftabindex == nullptr )
         {
             return nullptr;
@@ -363,7 +379,7 @@ namespace KFrame
         auto uuid = KFGlobal::Instance()->STMakeUuid( __STRING__( item ) );
         kftargetitem->SetKeyID( uuid );
         kftargetitem->Set( __STRING__( count ), splitcount );
-        kftargetitem->Set( __MAIN_INDEX_NAME__, splitindex );
+        kftargetitem->Set( kftargetbagsetting->_index_name, splitindex );
 
         auto isupdate = kftargetbagsetting->IsMoveAddUpdate( kfsourcebagsetting->_id );
         player->AddData( kftargetrecord, uuid, kftargetitem, isupdate );
@@ -384,13 +400,13 @@ namespace KFrame
         // 如果背包相同
         if ( kfsourcerecord == kftargetrecord )
         {
-            if ( targetindex == 0u || targetindex == kfsourceitem->Get<uint32>( __MAIN_INDEX_NAME__ ) )
+            if ( targetindex == 0u || targetindex == kfsourceitem->Get<uint32>( kfsourcebagsetting->_index_name ) )
             {
                 return KFMsg::ItemIndexError;
             }
 
             // 源背包索引
-            player->UpdateData( kfsourceitem, __MAIN_INDEX_NAME__, KFEnum::Set, targetindex );
+            player->UpdateData( kfsourceitem, kfsourcebagsetting->_index_name, KFEnum::Set, targetindex );
             return KFMsg::Ok;
         }
 
@@ -401,7 +417,7 @@ namespace KFrame
         }
 
         // 添加目标背包
-        kfsourceitem->Set( __MAIN_INDEX_NAME__, targetindex );
+        kfsourceitem->Set( kfsourcebagsetting->_index_name, targetindex );
         auto isupdate = kftargetbagsetting->IsMoveAddUpdate( kfsourcebagsetting->_id );
         player->AddData( kftargetrecord, kfsourceitem->GetKeyID(), kfsourceitem, isupdate );
 
@@ -423,13 +439,13 @@ namespace KFrame
             return KFMsg::ItemIndexError;
         }
 
-        auto sourceindex = kfsourceitem->Get<uint32>( __MAIN_INDEX_NAME__ );
-        auto targetindex = kftargetitem->Get<uint32>( __MAIN_INDEX_NAME__ );
+        auto sourceindex = kfsourceitem->Get<uint32>( kfsourcebagsetting->_index_name );
+        auto targetindex = kftargetitem->Get<uint32>( kftargetbagsetting->_index_name );
         if ( kfsourcerecord == kftargetrecord )
         {
             // 背包相同, 直接更新索引
-            player->UpdateData( kfsourceitem, __MAIN_INDEX_NAME__, KFEnum::Set, targetindex );
-            player->UpdateData( kftargetitem, __MAIN_INDEX_NAME__, KFEnum::Set, sourceindex );
+            player->UpdateData( kfsourceitem, kfsourcebagsetting->_index_name, KFEnum::Set, targetindex );
+            player->UpdateData( kftargetitem, kftargetbagsetting->_index_name, KFEnum::Set, sourceindex );
             return KFMsg::Ok;
         }
 
@@ -775,20 +791,16 @@ namespace KFrame
 
     uint32 KFItemMoveModule::MoveBagItem( KFEntity* player, const std::string& sourcename, uint64 itemuuid, const std::string& targetname, uint32 targetindex )
     {
+        auto kfsourcebagsetting = KFItemBagConfig::Instance()->FindSetting( sourcename );
+        if ( kfsourcebagsetting != nullptr && !kfsourcebagsetting->_is_can_move )
         {
-            auto kfitembagsetting = KFItemBagConfig::Instance()->FindSetting( sourcename );
-            if ( kfitembagsetting != nullptr && !kfitembagsetting->_is_can_move )
-            {
-                return KFMsg::ItemBagCanNotMove;
-            }
+            return KFMsg::ItemBagCanNotMove;
         }
 
+        auto kftargetbagsetting = KFItemBagConfig::Instance()->FindSetting( targetname );
+        if ( kftargetbagsetting != nullptr && !kftargetbagsetting->_is_can_move )
         {
-            auto kfitembagsetting = KFItemBagConfig::Instance()->FindSetting( targetname );
-            if ( kfitembagsetting != nullptr && !kfitembagsetting->_is_can_move )
-            {
-                return KFMsg::ItemBagCanNotMove;
-            }
+            return KFMsg::ItemBagCanNotMove;
         }
 
         // 判断背包属性
@@ -814,7 +826,7 @@ namespace KFrame
         auto result = MoveItem( player, kfsourcerecord, kfsourceitem, kftargetrecord, targetindex );
         if ( result != KFMsg::Ok )
         {
-            player->UpdateData( kfsourceitem, __MAIN_INDEX_NAME__, KFEnum::Set, kfsourceitem->Get<uint32>( __MAIN_INDEX_NAME__ ) );
+            player->UpdateData( kfsourceitem, kfsourcebagsetting->_index_name, KFEnum::Set, kfsourceitem->Get<uint32>( kfsourcebagsetting->_index_name ) );
         }
 
         return result;

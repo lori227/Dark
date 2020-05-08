@@ -1,4 +1,4 @@
-<root platform="" version="4860">
+<root platform="" version="4997">
 	<item Id="1000017" Type="8" Quality="4" OverlayType="1" OverlayCount="999" ExploreOverlayCount="100" UseCount="0" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
 	<item Id="1000101" Type="1" Quality="5" OverlayType="1" OverlayCount="99999999" ExploreOverlayCount="100" UseCount="0" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
 	<item Id="1000201" Type="1" Quality="6" OverlayType="1" OverlayCount="99999999" ExploreOverlayCount="100" UseCount="0" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
@@ -32,11 +32,11 @@
 	<item Id="1900002" Type="2" Quality="4" OverlayType="1" OverlayCount="99999999" ExploreOverlayCount="2000" UseCount="0" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
 	<item Id="1900003" Type="2" Quality="4" OverlayType="1" OverlayCount="99999999" ExploreOverlayCount="2000" UseCount="0" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
 	<item Id="1900004" Type="2" Quality="4" OverlayType="1" OverlayCount="99999999" ExploreOverlayCount="2000" UseCount="0" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
-	<item Id="1900005" Type="9" Quality="5" OverlayType="1" OverlayCount="5" ExploreOverlayCount="5" UseCount="0" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
+	<item Id="1900005" Type="10" Quality="5" OverlayType="1" OverlayCount="5" ExploreOverlayCount="5" UseCount="0" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
 	<item Id="1900101" Type="3" Quality="5" OverlayType="1" OverlayCount="5" ExploreOverlayCount="5" UseCount="1" UseLimit="2" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
-	<item Id="1900102" Type="9" Quality="5" OverlayType="1" OverlayCount="5" ExploreOverlayCount="5" UseCount="0" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
-	<item Id="1900103" Type="9" Quality="5" OverlayType="1" OverlayCount="5" ExploreOverlayCount="5" UseCount="0" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
-	<item Id="1900104" Type="9" Quality="5" OverlayType="1" OverlayCount="1" ExploreOverlayCount="1" UseCount="0" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
+	<item Id="1900102" Type="10" Quality="5" OverlayType="1" OverlayCount="5" ExploreOverlayCount="5" UseCount="0" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
+	<item Id="1900103" Type="10" Quality="5" OverlayType="1" OverlayCount="5" ExploreOverlayCount="5" UseCount="0" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
+	<item Id="1900104" Type="10" Quality="5" OverlayType="1" OverlayCount="1" ExploreOverlayCount="1" UseCount="0" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
 	<item Id="1900105" Type="9" Quality="4" OverlayType="1" OverlayCount="5" ExploreOverlayCount="5" UseCount="0" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
 	<item Id="1900106" Type="3" Quality="6" OverlayType="1" OverlayCount="1" ExploreOverlayCount="1" UseCount="1" UseLimit="2" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />
 	<item Id="1900107" Type="9" Quality="4" OverlayType="1" OverlayCount="1" ExploreOverlayCount="1" UseCount="0" UseLimit="0" Sell="[{&quot;money&quot;:&quot;1&quot;}]" />

@@ -445,14 +445,6 @@ namespace KFrame
             return _kf_display->SendToClient( player, errnum );
         }
 
-        auto kfclinic = player->Find( __STRING__( clinic ) );
-        auto num = kfclinic->Get( __STRING__( num ) );
-        if ( num < setting->_consume_hp_item_count )
-        {
-            // 医疗所道具不足
-            return _kf_display->SendToClient( player, KFMsg::ClinicItemIsNotEnough );
-        }
-
         // 金钱是否足够
         auto& dataname = player->RemoveElement( costmoney, _default_multiple, __STRING__( clinic ), 0u, __FUNC_LINE__ );
         if ( !dataname.empty() )
@@ -460,6 +452,8 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
         }
 
+        auto kfclinic = player->Find( __STRING__( clinic ) );
+        auto num = kfclinic->Get( __STRING__( num ) );
         auto totaldecnum = 0;
         auto wanttocure = ( uint32 )kfmsg.uuid_size();
         for ( auto i = 0u; i < wanttocure && i < setting->_cure_count; i++ )
@@ -538,6 +532,14 @@ namespace KFrame
             if ( herolist.size() > setting->_cure_count )
             {
                 errnum = KFMsg::ClinicCountIsNotEnough;
+                break;
+            }
+
+            auto kfclinic = player->Find( __STRING__( clinic ) );
+            auto num = kfclinic->Get( __STRING__( num ) );
+            if ( num < setting->_consume_hp_item_count )
+            {
+                errnum = KFMsg::ClinicItemIsNotEnough;
                 break;
             }
 

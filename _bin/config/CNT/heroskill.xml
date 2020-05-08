@@ -1,4 +1,4 @@
-<root platform="" version="4864">
+<root platform="" version="5013">
 	<item Id="161000" RaceLimit="" ProfessionLimit="1100" WeaponLimit="1801" BackGroundLimit="" Quality="4" />
 	<item Id="161001" RaceLimit="" ProfessionLimit="1101" WeaponLimit="1801" BackGroundLimit="" Quality="5" />
 	<item Id="161002" RaceLimit="" ProfessionLimit="1102" WeaponLimit="1801" BackGroundLimit="" Quality="6" />
@@ -56,12 +56,12 @@
 	<item Id="130102" RaceLimit="" ProfessionLimit="1101" WeaponLimit="" BackGroundLimit="" Quality="5" />
 	<item Id="130301" RaceLimit="" ProfessionLimit="1103" WeaponLimit="" BackGroundLimit="" Quality="5" />
 	<item Id="130302" RaceLimit="" ProfessionLimit="1103" WeaponLimit="" BackGroundLimit="" Quality="5" />
-	<item Id="130501" RaceLimit="" ProfessionLimit="1105,1999" WeaponLimit="" BackGroundLimit="" Quality="4" />
-	<item Id="130502" RaceLimit="" ProfessionLimit="1105,1999" WeaponLimit="" BackGroundLimit="" Quality="4" />
-	<item Id="130601" RaceLimit="" ProfessionLimit="1106" WeaponLimit="" BackGroundLimit="" Quality="5" />
-	<item Id="130602" RaceLimit="" ProfessionLimit="1106" WeaponLimit="" BackGroundLimit="" Quality="5" />
-	<item Id="130801" RaceLimit="" ProfessionLimit="1108" WeaponLimit="" BackGroundLimit="" Quality="5" />
-	<item Id="130802" RaceLimit="" ProfessionLimit="1108" WeaponLimit="" BackGroundLimit="" Quality="5" />
+	<item Id="130501" RaceLimit="" ProfessionLimit="1105,1999,1107" WeaponLimit="" BackGroundLimit="" Quality="4" />
+	<item Id="130502" RaceLimit="" ProfessionLimit="1105,1999,1107" WeaponLimit="" BackGroundLimit="" Quality="4" />
+	<item Id="130601" RaceLimit="" ProfessionLimit="1106,1107" WeaponLimit="" BackGroundLimit="" Quality="5" />
+	<item Id="130602" RaceLimit="" ProfessionLimit="1106,1107" WeaponLimit="" BackGroundLimit="" Quality="5" />
+	<item Id="130801" RaceLimit="" ProfessionLimit="1108,1107" WeaponLimit="" BackGroundLimit="" Quality="5" />
+	<item Id="130802" RaceLimit="" ProfessionLimit="1108,1107" WeaponLimit="" BackGroundLimit="" Quality="5" />
 	<item Id="131001" RaceLimit="" ProfessionLimit="1110" WeaponLimit="" BackGroundLimit="" Quality="4" />
 	<item Id="131002" RaceLimit="" ProfessionLimit="1110" WeaponLimit="" BackGroundLimit="" Quality="4" />
 	<item Id="131101" RaceLimit="" ProfessionLimit="1111" WeaponLimit="" BackGroundLimit="" Quality="5" />
@@ -178,6 +178,10 @@
 	<item Id="140402" RaceLimit="" ProfessionLimit="1118,1119,1120,1121,1122" WeaponLimit="" BackGroundLimit="" Quality="4" />
 	<item Id="140403" RaceLimit="" ProfessionLimit="1118,1119,1120,1121,1122" WeaponLimit="" BackGroundLimit="" Quality="4" />
 	<item Id="140404" RaceLimit="" ProfessionLimit="1118,1119,1120,1121,1122" WeaponLimit="" BackGroundLimit="" Quality="4" />
+	<item Id="140501" RaceLimit="" ProfessionLimit="1123,1124,1125,1141,1142" WeaponLimit="" BackGroundLimit="" Quality="4" />
+	<item Id="140502" RaceLimit="" ProfessionLimit="1123,1124,1125,1141,1143" WeaponLimit="" BackGroundLimit="" Quality="4" />
+	<item Id="140503" RaceLimit="" ProfessionLimit="1123,1124,1125,1141,1144" WeaponLimit="" BackGroundLimit="" Quality="4" />
+	<item Id="140504" RaceLimit="" ProfessionLimit="1123,1124,1125,1141,1145" WeaponLimit="" BackGroundLimit="" Quality="4" />
 	<item Id="140801" RaceLimit="" ProfessionLimit="1129,1130,1131,1132,1133" WeaponLimit="" BackGroundLimit="" Quality="4" />
 	<item Id="140802" RaceLimit="" ProfessionLimit="1129,1130,1131,1132,1133" WeaponLimit="" BackGroundLimit="" Quality="4" />
 	<item Id="140803" RaceLimit="" ProfessionLimit="1129,1130,1131,1132,1133" WeaponLimit="" BackGroundLimit="" Quality="4" />

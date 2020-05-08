@@ -702,9 +702,11 @@ namespace KFrame
         // 删除招募英雄
         player->RemoveData( kfrecruitrecord, kfmsg.uuid() );
 
+        player->AddDataToShow( __STRING__( recruit ), 0u, __STRING__( uuid ), kfmsg.uuid(), false );
+
         // 添加英雄
         player->AddData( kfherorecord, kfmsg.uuid(), kfhero );
-        player->AddDataToShow( __STRING__( recruit ), 0u, kfhero );
+
     }
 
     __KF_MESSAGE_FUNCTION__( KFRecruitModule::HandleSetRecruitHeroNameReq )

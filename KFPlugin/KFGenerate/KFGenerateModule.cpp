@@ -1216,6 +1216,24 @@ namespace KFrame
             newweapontype = newprosetting->RandWeapontype();
         }
 
+        // 随机主动技能
+        auto randlist = RandWeightData( player, kfhero, __STRING__( active ), kfsetting->_active_pool_list, update );
+        if ( update && !randlist.empty() )
+        {
+            // 转职主动技能更新为最新的技能
+            player->UpdateData( kfhero, __STRING__( activeindex ), KFEnum::Set, *randlist.rbegin() );
+        }
+
+        // 随机性格
+        RandWeightData( player, kfhero, __STRING__( character ), kfsetting->_character_pool_list, update );
+
+        // 随机天赋
+        randlist = RandWeightData( player, kfhero, __STRING__( innate ), kfsetting->_innate_pool_list, update );
+        if ( !randlist.empty() )
+        {
+            UpdateInnateData( player, kfhero, randlist, update );
+        }
+
         auto kftransferrecord = kfhero->Find( __STRING__( transfer ) );
         auto kftransfer = player->CreateData( kftransferrecord );
         auto index = kftransferrecord->Size() + 1;
@@ -1239,37 +1257,19 @@ namespace KFrame
             // 将血量回满
             player->UpdateData( kffighter, __STRING__( hp ), KFEnum::Set, maxhp );
 
-            // 更新职业等级
-            player->UpdateData( kfhero, __STRING__( classlv ), KFEnum::Set, newprosetting->_class_lv );
-
             // 更新最大等级
             player->UpdateData( kfhero, __STRING__( maxlevel ), KFEnum::Set, maxlevel );
+
+            // 更新职业等级
+            player->UpdateData( kfhero, __STRING__( classlv ), KFEnum::Set, newprosetting->_class_lv );
         }
         else
         {
             kftransferrecord->Add( index, kftransfer );
             kfhero->Set( __STRING__( weapontype ), newweapontype );
             kffighter->Set( __STRING__( hp ), maxhp );
-            kfhero->Set( __STRING__( classlv ), newprosetting->_class_lv );
             kfhero->Set( __STRING__( maxlevel ), maxlevel );
-        }
-
-        // 随机主动技能
-        auto randlist = RandWeightData( player, kfhero, __STRING__( active ), kfsetting->_active_pool_list, update );
-        if ( update && !randlist.empty() )
-        {
-            // 转职主动技能更新为最新的技能
-            player->UpdateData( kfhero, __STRING__( activeindex ), KFEnum::Set, *randlist.rbegin() );
-        }
-
-        // 随机性格
-        RandWeightData( player, kfhero, __STRING__( character ), kfsetting->_character_pool_list, update );
-
-        // 随机天赋
-        randlist = RandWeightData( player, kfhero, __STRING__( innate ), kfsetting->_innate_pool_list, update );
-        if ( !randlist.empty() )
-        {
-            UpdateInnateData( player, kfhero, randlist, update );
+            kfhero->Set( __STRING__( classlv ), newprosetting->_class_lv );
         }
     }
 

@@ -1,4 +1,4 @@
-<root platform="" version="4571">
+<root platform="" version="4947">
 	<item Id="4080001" Attr_maxhp="100-100" Attr_atk="100-100" Attr_def="100-100" Attr_res="100-100" Attr_tal="100-100" Attr_spd="100-100" Attr_luk="100-100" />
 	<item Id="4080002" Attr_maxhp="100-150" Attr_atk="100-150" Attr_def="100-150" Attr_res="100-150" Attr_tal="100-150" Attr_spd="100-150" Attr_luk="100-150" />
 	<item Id="4080003" Attr_maxhp="90-90" Attr_atk="90-90" Attr_def="90-90" Attr_res="90-90" Attr_tal="90-90" Attr_spd="90-90" Attr_luk="90-90" />

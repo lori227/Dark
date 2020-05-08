@@ -70,10 +70,10 @@ namespace KFrame
             }
         }
 
+        player->AddDataToShow( __STRING__( transfer ), 0u, kfhero );
+
         // 开始转职
         player->UpdateData( kfhero, __STRING__( profession ), KFEnum::Set, kfmsg.profession() );
-
-        player->AddDataToShow( __STRING__( transfer ), 0u, kfhero );
     }
 
     __KF_MESSAGE_FUNCTION__( KFTransferModule::HandleSelectInnateReq )

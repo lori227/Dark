@@ -1,10 +1,10 @@
-<root platform="" version="4616">
+<root platform="" version="4950">
 	<item Id="1900000" DropId="0" AutoUse="1" Reward="[{&quot;money&quot;:&quot;1&quot;}]" />
 	<item Id="1900001" DropId="0" AutoUse="1" Reward="[{&quot;diamond&quot;:&quot;1&quot;}]" />
 	<item Id="1900002" DropId="0" AutoUse="1" Reward="[{&quot;supplies&quot;:&quot;1&quot;}]" />
 	<item Id="1900003" DropId="0" AutoUse="1" Reward="[{&quot;clinic&quot;:{&quot;num&quot;:&quot;1&quot;}}]" />
 	<item Id="1900004" DropId="0" AutoUse="1" Reward="[{&quot;smithy&quot;:{&quot;totalnum&quot;:&quot;1&quot;}}]" />
-	<item Id="1910001" DropId="0" AutoUse="0" Reward="[{&quot;diamond&quot;:&quot;300&quot;}]" />
+	<item Id="1910001" DropId="5900001" AutoUse="0" Reward="" />
 	<item Id="1910002" DropId="5900001" AutoUse="0" Reward="" />
 	<item Id="1910003" DropId="5900001" AutoUse="0" Reward="" />
 	<item Id="1910004" DropId="5900001" AutoUse="0" Reward="" />

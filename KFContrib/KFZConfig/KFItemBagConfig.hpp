@@ -57,6 +57,9 @@ namespace KFrame
         // 使用的子背包
         std::string _use_child_bag_name;
 
+        // 背包位置索引字段名称( 没有就是不使用索引)
+        std::string  _index_name;
+
     public:
         // 判断是否移动显示更新
         bool IsMoveShow( const std::string& name ) const

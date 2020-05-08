@@ -195,7 +195,7 @@ namespace KFrame
                     continue;
                 }
 
-                player->UpdateData( kfgoodsrecord, goodsid, kfgoodsrecord->_data_setting->_value_key_name, KFEnum::Set, stock );
+                player->UpdateData( kfgoodsrecord, goodsid, kfgoodsrecord->_data_setting->_value_key_name, KFEnum::Add, stock );
 
                 // 判断是否需要排除相同商品
                 if ( kfsetting->_random_type == KFMsg::ExcludeRandom )

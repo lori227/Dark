@@ -1,4 +1,4 @@
-<root version="4881">
+<root version="5014">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -31,7 +31,6 @@
 	<item name="item_resource" version="843" />
 	<item name="itemequip" version="846" />
 	<item name="technologylevel" version="1109" />
-	<item name="currency" version="1172" />
 	<item name="traincamp" version="1175" />
 	<item name="recruitdivisor" version="1536" />
 	<item name="explorerecord" version="1536" />
@@ -69,10 +68,8 @@
 	<item name="punish" version="3782" />
 	<item name="heroment" version="3798" />
 	<item name="taskchainrefresh" version="3908" />
-	<item name="innerworld" version="3932" />
 	<item name="itemment" version="3956" />
 	<item name="exchange" version="3978" />
-	<item name="itemrune" version="4072" />
 	<item name="select" version="4077" />
 	<item name="worldmaptext" version="4131" />
 	<item name="realmtime" version="4224" />
@@ -87,8 +84,6 @@
 	<item name="itemdrug" version="4409" />
 	<item name="gamble" version="4410" />
 	<item name="itemtab" version="4412" />
-	<item name="chapter" version="4435" />
-	<item name="status" version="4435" />
 	<item name="heropinchface" version="4477" />
 	<item name="config" version="4513" />
 	<item name="countcost" version="4515" />
@@ -97,69 +92,74 @@
 	<item name="goods" version="4532" />
 	<item name="storeunlock" version="4533" />
 	<item name="store" version="4534" />
-	<item name="heroattribute" version="4571" />
 	<item name="minimap" version="4576" />
 	<item name="battletipstype" version="4582" />
 	<item name="itemconstant" version="4604" />
-	<item name="itembag" version="4607" />
 	<item name="itemweapon" version="4613" />
-	<item name="itemgift" version="4616" />
-	<item name="quality" version="4620" />
 	<item name="recruitrefresh" version="4658" />
-	<item name="formula" version="4674" />
 	<item name="gmcommand" version="4683" />
 	<item name="conditiondefine" version="4695" />
 	<item name="injurytype" version="4697" />
 	<item name="herotransfer" version="4702" />
-	<item name="unlock" version="4715" />
-	<item name="itemtype" version="4725" />
-	<item name="pve" version="4743" />
 	<item name="initialprocess" version="4750" />
-	<item name="taskcondition" version="4763" />
-	<item name="tasktext" version="4763" />
 	<item name="npcskill" version="4765" />
-	<item name="task" version="4769" />
-	<item name="taskchain" version="4781" />
-	<item name="eventparams" version="4784" />
 	<item name="injury" version="4785" />
 	<item name="unlockcondition" version="4793" />
-	<item name="camptext" version="4793" />
 	<item name="npcrand" version="4801" />
-	<item name="multievent" version="4806" />
 	<item name="injuryrandom" version="4808" />
-	<item name="npcgenerate" version="4812" />
 	<item name="errorcode" version="4815" />
-	<item name="tipstext" version="4816" />
 	<item name="heroprofession" version="4824" />
 	<item name="class" version="4824" />
-	<item name="heroconstant" version="4824" />
-	<item name="prompttext" version="4827" />
 	<item name="reward" version="4828" />
 	<item name="smithyweapon" version="4832" />
 	<item name="dialogue" version="4833" />
-	<item name="npcgroup" version="4840" />
-	<item name="herolevel" version="4841" />
-	<item name="heroquality" version="4843" />
-	<item name="herogenerate" version="4847" />
 	<item name="weapontype" version="4850" />
 	<item name="sequence" version="4854" />
-	<item name="story" version="4856" />
-	<item name="granarybuy" version="4857" />
-	<item name="itemtext" version="4859" />
-	<item name="itemcommon" version="4860" />
-	<item name="player" version="4861" />
 	<item name="affixtext" version="4862" />
-	<item name="buildlevel" version="4863" />
-	<item name="heroskill" version="4864" />
 	<item name="constant" version="4865" />
-	<item name="dropgroup" version="4866" />
-	<item name="dropdata" version="4868" />
 	<item name="npc" version="4870" />
-	<item name="rolebasetext" version="4870" />
-	<item name="technology" version="4872" />
-	<item name="dialoguetext" version="4874" />
-	<item name="levelvalue" version="4875" />
-	<item name="realm" version="4879" />
-	<item name="heroweightpool" version="4880" />
-	<item name="uitext" version="4881" />
+	<item name="quality" version="4886" />
+	<item name="multievent" version="4892" />
+	<item name="granarybuy" version="4897" />
+	<item name="innerworld" version="4905" />
+	<item name="chapter" version="4921" />
+	<item name="status" version="4921" />
+	<item name="dialoguetext" version="4940" />
+	<item name="itemrune" version="4946" />
+	<item name="heroattribute" version="4947" />
+	<item name="formula" version="4948" />
+	<item name="itemgift" version="4950" />
+	<item name="heroquality" version="4952" />
+	<item name="itemtext" version="4955" />
+	<item name="story" version="4962" />
+	<item name="unlock" version="4962" />
+	<item name="taskchain" version="4962" />
+	<item name="taskcondition" version="4962" />
+	<item name="tasktext" version="4971" />
+	<item name="task" version="4972" />
+	<item name="currency" version="4976" />
+	<item name="herolevel" version="4981" />
+	<item name="pve" version="4988" />
+	<item name="player" version="4991" />
+	<item name="levelvalue" version="4991" />
+	<item name="npcgenerate" version="4993" />
+	<item name="npcgroup" version="4996" />
+	<item name="itemtype" version="4997" />
+	<item name="itemcommon" version="4997" />
+	<item name="buildlevel" version="4998" />
+	<item name="technology" version="4999" />
+	<item name="eventparams" version="4999" />
+	<item name="camptext" version="4999" />
+	<item name="dropgroup" version="5000" />
+	<item name="realm" version="5000" />
+	<item name="uitext" version="5001" />
+	<item name="itembag" version="5002" />
+	<item name="tipstext" version="5005" />
+	<item name="dropdata" version="5009" />
+	<item name="herogenerate" version="5010" />
+	<item name="heroconstant" version="5011" />
+	<item name="prompttext" version="5012" />
+	<item name="rolebasetext" version="5013" />
+	<item name="heroskill" version="5013" />
+	<item name="heroweightpool" version="5014" />
 </root>

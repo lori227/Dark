@@ -1,19 +1,19 @@
-<root platform="" version="4824">
+<root platform="" version="5011">
 	<item Name="defaultprofession" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="defaultbackground" Key="" Value="1" Channel="0" Service="0" />
 	<item Name="generatedirectattribute" Key="" Value="9" Channel="0" Service="0" />
 	<item Name="generaterandattribute" Key="" Value="2" Channel="0" Service="0" />
 	<item Name="maxdip" Key="" Value="1000" Channel="0" Service="0" />
 	<item Name="maxherocount" Key="" Value="8" Channel="0" Service="0" />
-	<item Name="initherolevellimit" Key="" Value="2" Channel="0" Service="0" />
+	<item Name="initherolevellimit" Key="" Value="30" Channel="0" Service="0" />
 	<item Name="maxherolevel" Key="" Value="30" Channel="0" Service="0" />
 	<item Name="maxactivecount" Key="" Value="20" Channel="0" Service="0" />
 	<item Name="maxcharactercount" Key="" Value="20" Channel="0" Service="0" />
 	<item Name="maxinjurycount" Key="" Value="4" Channel="0" Service="0" />
-	<item Name="maxheroteamcount" Key="" Value="4" Channel="0" Service="0" />
+	<item Name="maxheroteamcount" Key="" Value="3" Channel="0" Service="0" />
 	<item Name="recruitinitcount" Key="" Value="5" Channel="0" Service="0" />
 	<item Name="recruitmaxcount" Key="" Value="5" Channel="0" Service="0" />
-	<item Name="recruitrefresh" Key="" Value="14400" Channel="0" Service="0" />
+	<item Name="recruitrefresh" Key="" Value="3600" Channel="0" Service="0" />
 	<item Name="maxhp_bar" Key="" Value="200" Channel="0" Service="0" />
 	<item Name="maxatk_bar" Key="" Value="150" Channel="0" Service="0" />
 	<item Name="maxdef_bar" Key="" Value="100" Channel="0" Service="0" />
@@ -29,7 +29,7 @@
 	<item Name="herolistbuildid" Key="" Value="200" Channel="0" Service="0" />
 	<item Name="transferleveloffest" Key="" Value="4" Channel="0" Service="0" />
 	<item Name="Powercoefficient_B" Key="" Value="0" Channel="0" Service="0" />
-	<item Name="initclinicnum" Key="" Value="1000" Channel="0" Service="0" />
+	<item Name="initclinicnum" Key="" Value="1800" Channel="0" Service="0" />
 	<item Name="initgranarynum" Key="" Value="50" Channel="0" Service="0" />
 	<item Name="initsmithynum" Key="" Value="1000" Channel="0" Service="0" />
 	<item Name="heronamelength" Key="" Value="40" Channel="0" Service="0" />
