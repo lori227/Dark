@@ -597,10 +597,10 @@ namespace KFrame
 
         // 设置经验
         herolevel = kfhero->Get<uint32>( __STRING__( level ) );
-        kflevelsetting = KFLevelConfig::Instance()->FindSetting( herolevel );
+        kflevelsetting = KFLevelConfig::Instance()->FindSetting( herolevel + 1u );
         if ( kflevelsetting != nullptr )
         {
-            kfhero->Set( __STRING__( exp ), kflevelsetting->_exp );
+            kfhero->Set( __STRING__( totalexp ), kflevelsetting->_exp );
         }
         kfhero->Set( __STRING__( exprate ), kfgeneratesetting->_exp_rate );
         kfhero->Set( __STRING__( custom ), kfgeneratesetting->_custom );

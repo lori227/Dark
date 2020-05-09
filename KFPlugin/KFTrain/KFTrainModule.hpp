@@ -148,7 +148,7 @@ namespace KFrame
         uint32 AddTrainHeroExp( KFEntity* player, KFData* kftrain, const KFTrainSetting* kfsetting, uint32 count, bool isnow = false );
 
         // 添加训练所英雄升级纪录
-        void AddTrainHeroLevelRecord( KFEntity* player, const KFTrainSetting* kfsetting, KFData* kftrain, KFData* kfhero, uint32 newlevel, uint32 addexp );
+        void AddTrainHeroLevelRecord( KFEntity* player, const KFTrainSetting* kfsetting, KFData* kftrain, KFData* kfhero );
 
         // 删除训练所英雄
         void RemoveTrainHero( KFEntity* player, KFData* kftrainrecord, KFData* kftrain );

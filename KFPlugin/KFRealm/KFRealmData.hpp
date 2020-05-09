@@ -9,6 +9,7 @@
 #include "KFZConfig/KFItemConfig.hpp"
 #include "KFZConfig/KFItemTypeConfig.hpp"
 #include "KFZConfig/KFItemBagConfig.hpp"
+#include "KFZConfig/KFLevelConfig.hpp"
 
 namespace KFrame
 {

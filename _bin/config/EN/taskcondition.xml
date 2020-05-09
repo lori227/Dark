@@ -1,4 +1,4 @@
-<root platform="" version="4962">
+<root platform="" version="5047">
 	<item Id="30000200" Condition="unlockbuild" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="200" Limits1="" Limits2="" />
 	<item Id="30000201" Condition="unlockbuild" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="201" Limits1="" Limits2="" />
 	<item Id="30000202" Condition="unlockbuild" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="202" Limits1="" Limits2="" />
@@ -166,8 +166,8 @@
 	<item Id="32000023" Condition="additem" DoneType=">=" DoneValue="5000" Clean="" PlaceLimit="1" Calculate="0" LimitCondition="" Limits="1900002" Limits1="" Limits2="" />
 	<item Id="32000024" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7050501" Limits1="" Limits2="" />
 	<item Id="32000025" Condition="technology" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="7040201" Limits1="" Limits2="" />
-	<item Id="32000026" Condition="smithyweapon" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="weapontype=1801|weapontype=1802|weapontype=1803" Limits1="" Limits2="" />
-	<item Id="32000027" Condition="smithyweapon" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="weapontype=1804|weapontype=1805" Limits1="" Limits2="" />
+	<item Id="32000026" Condition="smithyweapon" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="type=1801|type=1802|type=1803" Limits1="" Limits2="" />
+	<item Id="32000027" Condition="smithyweapon" DoneType=">=" DoneValue="1" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="type=1804|type=1805" Limits1="" Limits2="" />
 	<item Id="32000028" Condition="teamhero" DoneType=">=" DoneValue="2" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="quality&gt;=5" Limits1="posflag=201" Limits2="" />
 	<item Id="32000029" Condition="teamhero" DoneType=">=" DoneValue="4" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="level&gt;=8" Limits1="posflag=201" Limits2="" />
 	<item Id="32000030" Condition="killnpc" DoneType=">=" DoneValue="4" Clean="" PlaceLimit="0" Calculate="0" LimitCondition="" Limits="weapontype=1804|weapontype=1805" Limits1="" Limits2="" />

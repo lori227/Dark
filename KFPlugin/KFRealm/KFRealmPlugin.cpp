@@ -68,5 +68,6 @@ namespace KFrame
         __KF_ADD_CONFIG__( KFRealmTimeConfig );
         __KF_ADD_CONFIG__( KFWeatherConfig );
         __KF_ADD_CONFIG__( KFItemBagConfig );
+        __KF_ADD_CONFIG__( KFLevelConfig );
     }
 }

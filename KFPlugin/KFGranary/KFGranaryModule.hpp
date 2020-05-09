@@ -53,6 +53,9 @@ namespace KFrame
         // 物品数量更新
         __KF_UPDATE_DATA_FUNCTION__( OnItemNumUpdate );
 
+        // 科技生产效率更新
+        __KF_UPDATE_DATA_FUNCTION__( OnAddNumUpdate );
+
         // 增加科技数据
         __KF_EXECUTE_FUNCTION__( OnExecuteGranaryAddData );
 
@@ -83,6 +86,9 @@ namespace KFrame
 
         // 判断粮食的最大拥有限制能添加的个数
         uint32 CalcMaxFootCountAddCount( KFEntity* player, uint32 footitemid );
+
+        // 获取粮食的生产间隔
+        double GetGranaryCdTime( KFEntity* player );
 
     protected:
         // 玩家组件上下文

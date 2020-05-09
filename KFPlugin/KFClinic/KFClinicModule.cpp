@@ -409,18 +409,17 @@ namespace KFrame
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgClinicMedicalFeeReq );
 
-        UInt64List herolist;
+        HeroList herolist;
         for ( auto i = 0u; i < ( uint32 )kfmsg.uuid_size(); ++i )
         {
-            herolist.emplace_back( kfmsg.uuid( i ) );
+            herolist.emplace_back( kfmsg.uuid( i ), 0u );
         }
 
-        // 直接获取费用 tuple
-        auto returndata = CalcClinicCureMoney( player, herolist );
-        auto costmoney = std::get<1>( returndata );
+        auto result = CalcCureHerosData( player, herolist );
+        auto& strcost = std::get<2>( result );
 
         KFMsg::MsgClinicMedicalFeeAck ack;
-        ack.set_element( costmoney != nullptr ? costmoney->GetElement() : _invalid_string );
+        ack.set_element( strcost );
         _kf_player->SendToClient( player, KFMsg::MSG_CLINIC_MEDICAL_FEE_ACK, &ack );
     }
 
@@ -428,85 +427,57 @@ namespace KFrame
     {
         __CLIENT_PROTO_PARSE__( KFMsg::MsgClinicCureReq );
 
-        UInt64List herolist;
+        HeroList herolist;
         for ( auto i = 0u; i < ( uint32 )kfmsg.uuid_size(); ++i )
         {
-            herolist.emplace_back( kfmsg.uuid( i ) );
+            herolist.emplace_back( kfmsg.uuid( i ), 0u );
         }
 
-        auto calcresult = CalcClinicCureMoney( player, herolist );
-        auto& errnum = std::get<0>( calcresult );
-        auto& costmoney = std::get<1>( calcresult );
-        auto& setting = std::get<2>( calcresult );
-        auto& needcurehp = std::get<3>( calcresult );
-
+        auto result = CalcCureHerosData( player, herolist );
+        auto& errnum = std::get<0>( result );
         if ( errnum != KFMsg::Ok )
         {
             return _kf_display->SendToClient( player, errnum );
         }
 
+        auto& decnum = std::get<1>( result );
+        auto& strcost = std::get<2>( result );
+
+        static KFElements _cost_element;
+        _cost_element.Parse( strcost, __FUNC_LINE__ );
+
         // 金钱是否足够
-        auto& dataname = player->RemoveElement( costmoney, _default_multiple, __STRING__( clinic ), 0u, __FUNC_LINE__ );
+        auto& dataname = player->RemoveElement( &_cost_element, _default_multiple, __STRING__( clinic ), 0u, __FUNC_LINE__ );
         if ( !dataname.empty() )
         {
             return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
         }
 
-        auto kfclinic = player->Find( __STRING__( clinic ) );
-        auto num = kfclinic->Get( __STRING__( num ) );
-        auto totaldecnum = 0;
-        auto wanttocure = ( uint32 )kfmsg.uuid_size();
-        for ( auto i = 0u; i < wanttocure && i < setting->_cure_count; i++ )
+        for ( auto iter : herolist )
         {
-            if ( num < setting->_consume_hp_item_count )
-            {
-                break;
-            }
-
-            auto uuid = kfmsg.uuid( i );
-
-            auto kfhero = player->Find( __STRING__( hero ), uuid );
+            auto kfhero = player->Find( __STRING__( hero ), iter.first );
             if ( kfhero == nullptr )
             {
                 continue;
             }
 
-            auto kffight = kfhero->Find( __STRING__( fighter ) );
-            auto hp = kffight->Get( __STRING__( hp ) );
-            auto maxhp = kffight->Get( __STRING__( maxhp ) );
-            if ( hp >= maxhp )
+            if ( iter.second != 0u )
             {
-                continue;
+                auto kffight = kfhero->Find( __STRING__( fighter ) );
+                player->UpdateData( kffight, __STRING__( hp ), KFEnum::Add, iter.second );
             }
-
-            // 计算消耗
-            auto addhp = maxhp - hp;
-            auto count = ( addhp - 1 ) / setting->_hp_item_cure + 1;
-            auto neednum = count * setting->_consume_hp_item_count;
-            if ( num < neednum )
-            {
-                // 道具不足，全部消耗
-                count = num / setting->_consume_hp_item_count;
-                neednum = count * setting->_consume_hp_item_count;
-                addhp = count * setting->_hp_item_cure;
-            }
-
-            num -= neednum;
-            totaldecnum += neednum;
-
-            player->UpdateData( kffight, __STRING__( hp ), KFEnum::Add, addhp );
         }
 
         // 消耗道具
-        player->UpdateData( kfclinic, __STRING__( num ), KFEnum::Dec, totaldecnum );
+        player->UpdateData( __STRING__( clinic ), __STRING__( num ), KFEnum::Dec, decnum );
     }
 
-    KFrame::KFClinicModule::CalcCureMoneyReturn KFClinicModule::CalcClinicCureMoney( KFEntity* player, const UInt64List& herolist )
+    KFClinicModule::CureDataReturn KFClinicModule::CalcCureHerosData( KFEntity* player, HeroList& herolist )
     {
         uint32 errnum = KFMsg::Ok;
-        const KFElements* costmoney = nullptr;
-        const KFClinicSetting* setting = nullptr;
-        uint32 needcurehp = 0u;
+        uint32 decnum = _invalid_int;
+        static std::string coststr;
+        coststr = _invalid_string;;
 
         do
         {
@@ -516,14 +487,8 @@ namespace KFrame
                 break;
             }
 
-            setting = GetClinicSetting( player );
-            if ( setting == nullptr )
-            {
-                errnum = KFMsg::BuildFuncNotActive;
-                break;
-            }
-
-            if ( setting->_hp_item_cure == 0u || setting->_consume_hp_item_count == 0u )
+            auto setting = GetClinicSetting( player );
+            if ( setting == nullptr || setting->_hp_item_cure == 0u || setting->_consume_hp_item_count == 0u )
             {
                 errnum = KFMsg::ClinicSettingError;
                 break;
@@ -543,31 +508,40 @@ namespace KFrame
                 break;
             }
 
-            needcurehp = CalcClinicHerosNeedCurehp( player, herolist );
-            if ( needcurehp == 0u )
+            decnum = CalcCureHerosItemNum( player, herolist );
+            if ( decnum == 0u )
             {
                 errnum = KFMsg::ClinicNotNeedCure;
                 break;
             }
 
-            costmoney = CalcClinicConsumeMoney( player, setting, needcurehp );
-            if ( costmoney == nullptr )
+            coststr = CalcCureHerosCost( player, decnum );
+            if ( coststr == _invalid_string )
             {
                 errnum = KFMsg::FormulaParamError;
                 break;
             }
         } while ( false );
 
-        // costmoney 与 setting 在下层判定指针
-        return std::make_tuple( errnum, costmoney, setting, needcurehp );
+        return std::make_tuple( errnum, decnum, coststr );
     }
 
-    uint32 KFClinicModule::CalcClinicHerosNeedCurehp( KFEntity* player, const UInt64List& herolist )
+    uint32 KFClinicModule::CalcCureHerosItemNum( KFEntity* player, HeroList& herolist )
     {
-        auto needcurehp = 0u;
-        for ( auto& uuid : herolist )
+        auto kfclinic = player->Find( __STRING__( clinic ) );
+        auto num = kfclinic->Get( __STRING__( num ) );
+
+        auto setting = GetClinicSetting( player );
+
+        auto decnum = 0u;
+        for ( auto& iter : herolist )
         {
-            auto kfhero = player->Find( __STRING__( hero ), uuid );
+            if ( num < setting->_consume_hp_item_count )
+            {
+                break;
+            }
+
+            auto kfhero = player->Find( __STRING__( hero ), iter.first );
             if ( kfhero == nullptr )
             {
                 continue;
@@ -576,20 +550,35 @@ namespace KFrame
             auto kffight = kfhero->Find( __STRING__( fighter ) );
             auto hp = kffight->Get( __STRING__( hp ) );
             auto maxhp = kffight->Get( __STRING__( maxhp ) );
-            if ( hp < maxhp )
+            if ( hp == 0u || hp >= maxhp )
             {
-                needcurehp += maxhp - hp;
+                continue;
             }
+
+            // 计算消耗
+            auto addhp = maxhp - hp;
+            auto count = ( addhp - 1 ) / setting->_hp_item_cure + 1;
+            auto neednum = count * setting->_consume_hp_item_count;
+            if ( num < neednum )
+            {
+                // 道具不足，全部消耗
+                count = num / setting->_consume_hp_item_count;
+                neednum = count * setting->_consume_hp_item_count;
+                addhp = count * setting->_hp_item_cure;
+            }
+
+            num -= neednum;
+            decnum += neednum;
+
+            iter.second = addhp;
         }
 
-        return needcurehp;
+        return decnum;
     }
 
-    const KFElements*  KFClinicModule::CalcClinicConsumeMoney( KFEntity* player, const KFClinicSetting* setting, uint32 addhp )
+    const std::string& KFClinicModule::CalcCureHerosCost( KFEntity* player, uint32 num )
     {
-        // *记得 setting 与 addhp 在上层判定
-        static KFElements _clinic_consume_money;
-        _clinic_consume_money.Clear();
+        auto setting = GetClinicSetting( player );
 
         // 公式配置
         auto kfformulaparam = KFFormulaConfig::Instance()->FindFormulaParam( setting->_consume_money_fid );
@@ -597,19 +586,17 @@ namespace KFrame
                 kfformulaparam->_type.empty() ||
                 kfformulaparam->_params._objects.size() < 2u )
         {
-            return nullptr;
+            return _invalid_string;
         }
 
         auto param1 = kfformulaparam->_params._objects[0]->_double_value;
         auto param2 = kfformulaparam->_params._objects[1]->_double_value;
 
         // 基本金币
-        auto moneycount = __MAX__( addhp * param1, param2 );
+        auto moneycount = __MAX__( num * param1, param2 );
         // 实际金币
         moneycount = std::round( moneycount * setting->_scale_consume_money );
 
-        // 费用数据格式
-        KFElementConfig::Instance()->FormatElement( _clinic_consume_money, kfformulaparam->_type, moneycount );
-        return &_clinic_consume_money;
+        return KFElementConfig::Instance()->FormatString( kfformulaparam->_type, moneycount );
     }
 }

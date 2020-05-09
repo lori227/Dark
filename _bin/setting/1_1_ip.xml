@@ -17,7 +17,8 @@
 
   	<!-- vpn 地址-->
   	<Vpns>
-    	<Vpn Zone="4" Ip="183.3.144.83"/>
+    	<Vpn Zone="4" Ip="183.3.144.83" Port="0"/>
+    	<Vpn Zone="5" Ip="183.3.144.83" Port="0"/>
   	</Vpns>
 </Config>
 

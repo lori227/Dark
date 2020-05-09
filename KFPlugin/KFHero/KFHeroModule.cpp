@@ -70,12 +70,21 @@ namespace KFrame
         auto kfherorecord = player->Find( __STRING__( hero ) );
         for ( auto kfhero = kfherorecord->First(); kfhero != nullptr; kfhero = kfherorecord->Next() )
         {
-            auto exp = kfhero->Get<uint32>( __STRING__( exp ) );
             auto level = kfhero->Get<uint32>( __STRING__( level ) );
-            auto curlevel = KFLevelConfig::Instance()->GetLevelByExp( exp, level );
-            if ( curlevel != level )
+            auto kflevelsetting = KFLevelConfig::Instance()->FindSetting( level + 1u );
+            if ( kflevelsetting == nullptr )
             {
-                player->UpdateData( kfhero, __STRING__( level ), KFEnum::Set, curlevel );
+                continue;
+            }
+
+            auto totalexp = kfhero->Get<uint32>( __STRING__( totalexp ) );
+            if ( totalexp != 0u && kflevelsetting->_exp != totalexp )
+            {
+                auto exp = kfhero->Get<uint32>( __STRING__( exp ) );
+                auto newexp = static_cast<double>( exp ) / totalexp * kflevelsetting->_exp;
+
+                player->UpdateData( kfhero, __STRING__( exp ), KFEnum::Set, newexp );
+                player->UpdateData( kfhero, __STRING__( totalexp ), KFEnum::Set, kflevelsetting->_exp );
             }
         }
     }
@@ -172,19 +181,19 @@ namespace KFrame
 
     __KF_UPDATE_DATA_FUNCTION__( KFHeroModule::OnHeroExpUpdate )
     {
+        // GM使用
+        if ( operate != KFEnum::Add )
+        {
+            return;
+        }
+
         auto kfhero = kfdata->GetParent();
         if ( kfhero == nullptr )
         {
             return;
         }
 
-        auto exp = kfdata->Get<uint32>();
-        auto level = kfhero->Get<uint32>( __STRING__( level ) );
-        auto curlevel = KFLevelConfig::Instance()->GetLevelByExp( exp, level );
-        if ( curlevel != level )
-        {
-            player->UpdateData( kfhero, __STRING__( level ), KFEnum::Set, curlevel );
-        }
+        AddExp( player, kfhero, 0u );
     }
 
     void KFHeroModule::UpdateAllHeroMaxLevel( KFEntity* player )
@@ -532,38 +541,69 @@ namespace KFrame
         auto hp = kfhero->Get( __STRING__( fighter ), __STRING__( hp ) );
         if ( hp == 0u )
         {
-            // 英雄已经死亡
+            // hp为0不能增加经验
             return 0u;
         }
 
         auto exprate = kfhero->Get<uint32>( __STRING__( exprate ) );
         if ( exprate == 0u )
         {
-            // 该英雄不能升级
+            // 经验倍率为0
             return 0u;
         }
 
         auto maxlevel = kfhero->Get( __STRING__( maxlevel ) );
-        auto level = kfhero->Get( __STRING__( level ) );
-        if ( level >= maxlevel )
+        auto oldlevel = kfhero->Get( __STRING__( level ) );
+        if ( oldlevel >= maxlevel )
         {
             // 英雄已满级
+            return 0u;
+        }
+
+        auto kflevelsetting = KFLevelConfig::Instance()->FindSetting( oldlevel + 1u );
+        if ( kflevelsetting == nullptr )
+        {
             return 0u;
         }
 
         auto addexp = static_cast<double>( exprate ) / KFRandEnum::TenThousand * exp;
         exp = static_cast<uint32>( addexp + 0.5 );
 
-        auto curexp = kfhero->Get( __STRING__( exp ) );
-        auto maxexp = KFLevelConfig::Instance()->FindSetting( maxlevel )->_exp;
+        auto oldexp = kfhero->Get( __STRING__( exp ) );
+        auto newexp = oldexp + exp;
 
-        if ( curexp + exp > maxexp )
+        auto newlevel = oldlevel;
+        auto totalexp = kflevelsetting->_exp;
+        exp = 0u;
+        while ( newexp >= totalexp )
         {
-            // 经验溢出
-            exp = ( maxexp > curexp ) ? ( maxexp - curexp ) : 0u;
+            newlevel++;
+            newexp -= kflevelsetting->_exp;
+            exp += kflevelsetting->_exp;
+
+            kflevelsetting = KFLevelConfig::Instance()->FindSetting( newlevel + 1u );
+            if ( kflevelsetting == nullptr )
+            {
+                newexp = 0u;
+                break;
+            }
+            totalexp = kflevelsetting->_exp;
+
+            if ( newlevel >= maxlevel )
+            {
+                newexp = 0u;
+                break;
+            }
         }
 
-        player->UpdateData( kfhero, __STRING__( exp ), KFEnum::Add, exp );
+        player->UpdateData( kfhero, __STRING__( exp ), KFEnum::Set, newexp );
+        if ( newlevel != oldlevel )
+        {
+            player->UpdateData( kfhero, __STRING__( level ), KFEnum::Set, newlevel );
+            player->UpdateData( kfhero, __STRING__( totalexp ), KFEnum::Set, totalexp );
+        }
+
+        exp = exp + newexp - oldexp;
         return exp;
     }
 

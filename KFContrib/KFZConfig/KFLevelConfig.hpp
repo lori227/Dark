@@ -32,26 +32,10 @@ namespace KFrame
             _file_name = "herolevel";
         }
 
-        uint32 GetTotalExp()
-        {
-            return _total_exp;
-        }
-
-        uint32 GetLevelByExp( uint32 exp, uint32 level );
-
     protected:
-        // 清空配置
-        virtual void ClearSetting();
 
         // 读取配置
         virtual void ReadSetting( KFNode& xmlnode, KFLevelSetting* kfsetting );
-
-    private:
-        // 总经验
-        uint32 _total_exp = 0u;
-
-        // 经验表(经验 等级)
-        std::map<uint32, uint32> _exp_map;
     };
 }
 

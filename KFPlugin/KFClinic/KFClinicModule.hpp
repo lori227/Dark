@@ -111,18 +111,20 @@ namespace KFrame
         // 检查定时器
         void CheckClinicTimer( KFEntity* player );
 
-        // 获取所选的英雄列表需要的治疗量
-        uint32 CalcClinicHerosNeedCurehp( KFEntity* player, const UInt64List& herolist );
+        // 英雄uuid 回复hp
+        typedef std::list<std::pair< uint64, uint32 >> HeroList;
 
-        // 能否使用治疗所治疗, 返回错误码
-        typedef std::tuple<uint32, const KFElements*, const KFClinicSetting*, uint32> CalcCureMoneyReturn;
-        CalcCureMoneyReturn CalcClinicCureMoney( KFEntity* player, const UInt64List& herolist );
+        // 错误码 消耗材料 消耗货币
+        typedef std::tuple<uint32, uint32, const std::string> CureDataReturn;
 
-        // 获取治疗所花费金币量
-        const KFElements* CalcClinicConsumeMoney( KFEntity* player, const KFClinicSetting* setting, uint32 addhp );
+        // 计算治疗英雄数据
+        CureDataReturn CalcCureHerosData( KFEntity* player, HeroList& herolist );
 
-        // 通用科技效果操作
-        bool CommonAddEffectHandle( KFEntity* player, const KFExecuteData* executedata, const std::string& fieldname );
+        // 计算治疗消耗道具数量
+        uint32 CalcCureHerosItemNum( KFEntity* player, HeroList& herolist );
+
+        // 计算治疗消耗费用
+        const std::string& CalcCureHerosCost( KFEntity* player, uint32 num );
 
     protected:
         // 玩家组件上下文

@@ -215,6 +215,7 @@ namespace KFrame
         __STRING_DEFINE__( granarycritvalue );
         __STRING_DEFINE__( granarycdtime );
         __STRING_DEFINE__( granaryfreebuycount );
+        __STRING_DEFINE__( granarygathernum );
         __STRING_DEFINE__( buycount );
         __STRING_DEFINE__( granarybuy );
         __STRING_DEFINE__( herolevel );
@@ -258,6 +259,7 @@ namespace KFrame
         __STRING_DEFINE__( itemmaxcount );
         __STRING_DEFINE__( position );
         __STRING_DEFINE__( commander );
+        __STRING_DEFINE__( totalexp );
     }
 }
 

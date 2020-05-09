@@ -205,22 +205,20 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::TrainCampIsFinished );
         }
 
-        auto heroid = kfhero->Get<uint32>( __STRING__( id ) );
+        auto herouuid = kfhero->Get<uint32>( __STRING__( uuid ) );
 
         // 获取消耗
         auto lefttime = endtime - calctime;
         auto consume = CalcTrainOneKeyConsume( player, setting, lefttime );
-        auto& dataname = player->RemoveElement( consume, 1u, __STRING__( trainonekey ), heroid, __FUNC_LINE__ );
+        auto& dataname = player->RemoveElement( consume, 1u, __STRING__( trainonekey ), herouuid, __FUNC_LINE__ );
         if ( !dataname.empty() )
         {
             return _kf_display->SendToClient( player, KFMsg::DataNotEnough, dataname );
         }
 
-        auto addcount = ( endtime - calctime ) / setting->_cd_time;
-        if ( addcount == 0u )
-        {
-            addcount = 1u;
-        }
+        auto addcount = lefttime / setting->_cd_time;
+        addcount = __MAX__( addcount, 1u );
+
         AddTrainHeroExp( player, kftrain, setting, addcount, true );
 
         // 取消定时器
@@ -462,7 +460,7 @@ namespace KFrame
         auto kfformulasetting = KFFormulaConfig::Instance()->FindFormulaParam( setting->_onekey_consume_fid );
         if ( kfformulasetting == nullptr ||
                 kfformulasetting->_type.empty() ||
-                kfformulasetting->_params._objects.size() < 2u )
+                kfformulasetting->_params._objects.size() < 3u )
         {
             return nullptr;
         }
@@ -474,10 +472,12 @@ namespace KFrame
         }
 
         auto param2 = kfformulasetting->_params._objects[1]->_double_value;
+        auto param3 = kfformulasetting->_params._objects[2]->_int_value;
         auto leftmin = lefttime / KFTimeEnum::OneMinuteSecond;
 
         // 消耗个数 = 剩余分钟 / 参数1 * 参数2
         auto costnum = static_cast<uint32>( std::round( leftmin / param1 * param2 ) );
+        costnum = __MAX__( costnum, param3 );
         KFElementConfig::Instance()->FormatElement( _element, kfformulasetting->_type, costnum );
         return &_element;
     }
@@ -701,7 +701,7 @@ namespace KFrame
 
     uint32 KFTrainModule::AddTrainHeroExp( KFEntity* player, KFData* kftrain, const KFTrainSetting* kfsetting, uint32 count, bool isnow )
     {
-        if ( count == 0u || kfsetting == nullptr )
+        if ( count == 0u || kfsetting == nullptr || kfsetting->_add_exp == 0u )
         {
             return 0u;
         }
@@ -753,41 +753,27 @@ namespace KFrame
             if ( newlevel > oldlevel )
             {
                 // 发送纪录
-                AddTrainHeroLevelRecord( player, kfsetting, kftrain, kfhero, newlevel, totalexp );
+                AddTrainHeroLevelRecord( player, kfsetting, kftrain, kfhero );
             }
         }
 
         return totalexp;
     }
 
-    void KFTrainModule::AddTrainHeroLevelRecord( KFEntity* player, const KFTrainSetting* kfsetting, KFData* kftrain, KFData* kfhero, uint32 newlevel, uint32 addexp )
+    void KFTrainModule::AddTrainHeroLevelRecord( KFEntity* player, const KFTrainSetting* kfsetting, KFData* kftrain, KFData* kfhero )
     {
-        if ( kfsetting == nullptr || kfsetting->_add_exp == 0u )
-        {
-            return;
-        }
-
         auto upgradetime = kftrain->Get<uint32>( __STRING__( calctime ) );
         if ( !player->IsInited() )
         {
             // 下线期间通过时间升级的, 需要精确计算出升级的时间
-            auto kflevelsetting = KFLevelConfig::Instance()->FindSetting( newlevel );
-            if ( kflevelsetting == nullptr )
-            {
-                return;
-            }
-
-            // 计算升级需要的经验值
-            auto totalexp = kfhero->Get<uint32>( __STRING__( exp ) );
-
-            auto totalcount = ( addexp - 1u ) / kfsetting->_add_exp + 1u;
-            auto count = ( kflevelsetting->_exp - ( totalexp - addexp ) - 1u ) / kfsetting->_add_exp + 1u;
+            auto curexp = kfhero->Get<uint32>( __STRING__( exp ) );
 
             // 推导出升级的具体时间
-            upgradetime -= ( totalcount - count ) * kfsetting->_cd_time;
+            upgradetime -= curexp / kfsetting->_add_exp * kfsetting->_cd_time;
         }
 
-        _kf_record_client->AddCampRecord( player, kfhero, upgradetime, KFMsg::TrainBuild, newlevel );
+        auto level = kfhero->Get<uint32>( __STRING__( level ) );
+        _kf_record_client->AddCampRecord( player, kfhero, upgradetime, KFMsg::TrainBuild, level );
     }
 
 

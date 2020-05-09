@@ -491,7 +491,21 @@ namespace KFrame
             else
             {
                 pbheroclient->set_uuid( pbheroserver->uuid() );
-                pbheroclient->set_exp( pbheroserver->endexp() - pbheroserver->beginexp() );
+
+                auto addexp = 0u;
+                for ( auto i = pbheroserver->beginlevel(); i < pbheroserver->endlevel(); ++i )
+                {
+                    auto kflevelsetting = KFLevelConfig::Instance()->FindSetting( i + 1u );
+                    if ( kflevelsetting == nullptr )
+                    {
+                        break;
+                    }
+
+                    addexp += kflevelsetting->_exp;
+                }
+                addexp = addexp + pbheroserver->endexp() - pbheroserver->beginexp();
+
+                pbheroclient->set_exp( addexp );
                 pbheroclient->set_level( pbheroserver->endlevel() - pbheroserver->beginlevel() );
                 if ( pbheroclient->level() > 0u )
                 {

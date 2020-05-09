@@ -17,6 +17,7 @@
 		<Zone Id="2" LoginId="0" DataId="0" Name="配置服"/>
 		<Zone Id="3" LoginId="0" DataId="0" Name="内网体验服"/>
 		<Zone Id="4" LoginId="0" DataId="0" Name="手机体验服"/>
+		<Zone Id="5" LoginId="0" DataId="0" Name="外网体验服"/>
 
 		<!-- 服务器 -->
 		<Zone Id="11" LoginId="0" DataId="1" Name="小兵服"/>

@@ -14,6 +14,7 @@ namespace KFrame
         __REGISTER_ADD_DATA_2__( __STRING__( build ), KFMsg::WarehouseBuild, &KFGranaryModule::OnAddGranaryBuild );
         __REGISTER_UPDATE_DATA_2__( __STRING__( granary ), __STRING__( num ), &KFGranaryModule::OnItemNumUpdate );
         __REGISTER_UPDATE_DATA_2__( __STRING__( effect ), __STRING__( granarymaxnum ), &KFGranaryModule::OnItemNumUpdate );
+        __REGISTER_UPDATE_DATA_2__( __STRING__( effect ), __STRING__( granaryaddnum ), &KFGranaryModule::OnAddNumUpdate );
 
         __REGISTER_EXECUTE__( __STRING__( granaryaddnum ), &KFGranaryModule::OnExecuteGranaryAddData );
         __REGISTER_EXECUTE__( __STRING__( granarymaxnum ), &KFGranaryModule::OnExecuteGranaryAddData );
@@ -37,6 +38,7 @@ namespace KFrame
         __UN_ADD_DATA_2__( __STRING__( build ), KFMsg::WarehouseBuild );
         __UN_UPDATE_DATA_2__( __STRING__( granary ), __STRING__( num ) );
         __UN_UPDATE_DATA_2__( __STRING__( effect ), __STRING__( granarymaxnum ) );
+        __UN_UPDATE_DATA_2__( __STRING__( effect ), __STRING__( granaryaddnum ) );
 
         __UN_EXECUTE__( __STRING__( granaryaddnum ) );
         __UN_EXECUTE__( __STRING__( granarymaxnum ) );
@@ -121,14 +123,14 @@ namespace KFrame
             return;
         }
 
-        static auto _option = KFGlobal::Instance()->FindConstant( __STRING__( granarycdtime ) );
-        auto cdtime = _option->_uint32_value;
-        if ( cdtime == 0u )
+        auto cdtime = GetGranaryCdTime( player );
+        if ( cdtime == 0 )
         {
             return;
         }
 
-        auto addnum = player->Get<uint32>( __STRING__( effect ), __STRING__( granaryaddnum ) );
+        static auto _num_option = KFGlobal::Instance()->FindConstant( __STRING__( granarygathernum ) );
+        auto addnum = _num_option->_uint32_value;
         auto maxnum = player->Get<uint32>( __STRING__( effect ), __STRING__( granarymaxnum ) );
 
         auto kfgranary = player->Find( __STRING__( granary ) );
@@ -148,10 +150,11 @@ namespace KFrame
         }
         else
         {
-            auto pasttime = nowtime - calctime;
+            auto pasttime = static_cast<double>( nowtime - calctime );
+            auto count = static_cast<uint32>( pasttime / cdtime );
+
             if ( pasttime >= cdtime )
             {
-                auto count = pasttime / cdtime;
                 auto totalnum = count * addnum;
                 if ( num + totalnum >= maxnum )
                 {
@@ -159,12 +162,12 @@ namespace KFrame
                     return;
                 }
 
-                calctime += count * cdtime;
+                calctime += static_cast<uint32>( count * cdtime );
                 player->UpdateData( kfgranary, __STRING__( num ), KFEnum::Add, totalnum );
                 player->UpdateData( kfgranary, __STRING__( calctime ), KFEnum::Set, calctime );
             }
 
-            delaytime = ( cdtime - pasttime % cdtime ) * 1000u;
+            delaytime = ( cdtime - ( pasttime - cdtime * count ) ) * 1000u;
         }
 
         __LOOP_TIMER_1__( player->GetKeyID(), cdtime * 1000u, delaytime, &KFGranaryModule::OnTimerAddItem );
@@ -211,9 +214,8 @@ namespace KFrame
 
     __KF_UPDATE_DATA_FUNCTION__( KFGranaryModule::OnItemNumUpdate )
     {
-        static auto _option = KFGlobal::Instance()->FindConstant( __STRING__( granarycdtime ) );
-        auto cdtime = _option->_uint32_value;
-        if ( cdtime == 0u )
+        auto cdtime = GetGranaryCdTime( player );
+        if ( cdtime == 0 )
         {
             return;
         }
@@ -247,6 +249,37 @@ namespace KFrame
                 __LOOP_TIMER_1__( player->GetKeyID(), cdtime * 1000, 0u, &KFGranaryModule::OnTimerAddItem );
             }
         }
+    }
+
+    __KF_UPDATE_DATA_FUNCTION__( KFGranaryModule::OnAddNumUpdate )
+    {
+        // 取消定时器
+        __UN_TIMER_1__( player->GetKeyID() );
+
+        auto cdtime = GetGranaryCdTime( player );
+        if ( cdtime == 0 )
+        {
+            return;
+        }
+
+        auto maxnum = player->Get<uint32>( __STRING__( effect ), __STRING__( granarymaxnum ) );
+        if ( maxnum == 0u )
+        {
+            return;
+        }
+
+        auto kfgranary = player->Find( __STRING__( granary ) );
+        auto num = kfgranary->Get<uint32>( __STRING__( num ) );
+        if ( num >= maxnum )
+        {
+            return;
+        }
+
+        player->UpdateData( kfgranary, __STRING__( calctime ), KFEnum::Set, KFGlobal::Instance()->_real_time );
+
+        // 物品不满开启定时器
+        __LOOP_TIMER_1__( player->GetKeyID(), cdtime * 1000, 0u, &KFGranaryModule::OnTimerAddItem );
+
     }
 
     uint32 KFGranaryModule::CalcMaxFootCountAddCount( KFEntity* player, uint32 footitemid )
@@ -418,7 +451,9 @@ namespace KFrame
             return;
         }
 
-        auto addnum = player->Get<uint32>( __STRING__( effect ), __STRING__( granaryaddnum ) );
+        static auto _num_option = KFGlobal::Instance()->FindConstant( __STRING__( granarygathernum ) );
+        auto addnum = _num_option->_uint32_value;
+
         auto maxnum = player->Get<uint32>( __STRING__( effect ), __STRING__( granarymaxnum ) );
         if ( addnum == 0u || maxnum == 0u )
         {
@@ -431,5 +466,37 @@ namespace KFrame
 
         player->UpdateData( kfgranary, __STRING__( num ), KFEnum::Add, addnum );
         player->UpdateData( kfgranary, __STRING__( calctime ), KFEnum::Set, KFGlobal::Instance()->_real_time );
+    }
+
+    double KFGranaryModule::GetGranaryCdTime( KFEntity* player )
+    {
+        static auto _cd_option = KFGlobal::Instance()->FindConstant( __STRING__( granarycdtime ) );
+        static auto _num_option = KFGlobal::Instance()->FindConstant( __STRING__( granarygathernum ) );
+
+        auto cdtime = _cd_option->_uint32_value;
+        auto gathernum = _num_option->_uint32_value;
+        if ( cdtime == 0u || gathernum == 0u )
+        {
+            __LOG_ERROR__( "granarycdtime = [{}], granarygathernum = [{}]", cdtime, gathernum );
+            return 0;
+        }
+
+        auto addnum = player->Get<uint32>( __STRING__( effect ), __STRING__( granaryaddnum ) );
+        if ( addnum == 0u )
+        {
+            return 0;
+        }
+
+        static double factor = 0.02;
+        auto time = static_cast<double>( cdtime ) / addnum * gathernum;
+        auto count = static_cast<uint32>( time / factor );
+        time = count * factor;
+
+        //if ( time < KFTimeEnum::OneMinuteSecond )
+        //{
+        //    __LOG_WARN__( "granarycdtime = [{}], less then 60s", time );
+        //}
+
+        return time;
     }
 }
