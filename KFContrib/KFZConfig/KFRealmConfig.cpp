@@ -35,11 +35,8 @@ namespace KFrame
         leveldata._time_id = xmlnode.GetUInt32( "RealmTime", true );
         leveldata._weather_id = xmlnode.GetUInt32( "Weather", true );
 
-        auto strdropvictory = xmlnode.GetString( "DropVictory", true );
-        KFReadSetting::ParseConditionList( strdropvictory, leveldata._victory_drop_list );
-
-        auto strdropfail = xmlnode.GetString( "DropFail", true );
-        KFReadSetting::ParseConditionList( strdropfail, leveldata._fail_drop_list );
+        leveldata._victory_drop_list = xmlnode.GetUInt32Vector( "DropVictory", true );
+        leveldata._fail_drop_list = xmlnode.GetUInt32Vector( "DropFail", true );
 
         leveldata._createion = xmlnode.GetUInt32( "Creation" );
         leveldata._inner_world = xmlnode.GetUInt32( "InnerWorld" );

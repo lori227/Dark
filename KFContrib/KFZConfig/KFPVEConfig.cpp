@@ -9,17 +9,10 @@ namespace KFrame
 
         kfsetting->_dungeon_id_list = xmlnode.GetUInt32Vector( "DungeonId" );
 
-        auto strdropvictory = xmlnode.GetString( "DropVictory", true );
-        KFReadSetting::ParseConditionList( strdropvictory, kfsetting->_victory_drop_list );
-
-        auto strinnerdropvictory = xmlnode.GetString( "InnerDropVictory", true );
-        KFReadSetting::ParseConditionList( strinnerdropvictory, kfsetting->_inner_victory_drop_list );
-
-        auto strdropfail = xmlnode.GetString( "DropFail", true );
-        KFReadSetting::ParseConditionList( strdropfail, kfsetting->_fail_drop_list );
-
-        auto strinnerdropfail = xmlnode.GetString( "InnerDropFail", true );
-        KFReadSetting::ParseConditionList( strinnerdropfail, kfsetting->_inner_fail_drop_list );
+        kfsetting->_victory_drop_list = xmlnode.GetUInt32Vector( "DropVictory", true );
+        kfsetting->_inner_victory_drop_list = xmlnode.GetUInt32Vector( "InnerDropVictory", true );
+        kfsetting->_fail_drop_list = xmlnode.GetUInt32Vector( "DropFail", true );
+        kfsetting->_inner_fail_drop_list = xmlnode.GetUInt32Vector( "InnerDropFail", true );
 
         kfsetting->_consume._str_parse = xmlnode.GetString( "Consume", true );
 

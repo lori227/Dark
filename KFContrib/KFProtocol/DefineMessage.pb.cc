@@ -1019,6 +1019,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreData, innerworldparameter_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreData, playerdata_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreData, npcdata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBExploreData, camera_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData_ExploreEntry_DoNotUse, _has_bits_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::KFMsg::PBRealmData_ExploreEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1131,12 +1132,12 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 243, -1, sizeof(::KFMsg::PBHeroBuffData)},
   { 250, 257, sizeof(::KFMsg::PBExploreData_NpcdataEntry_DoNotUse)},
   { 259, -1, sizeof(::KFMsg::PBExploreData)},
-  { 276, 283, sizeof(::KFMsg::PBRealmData_ExploreEntry_DoNotUse)},
-  { 285, 292, sizeof(::KFMsg::PBRealmData_TownheroEntry_DoNotUse)},
-  { 294, 301, sizeof(::KFMsg::PBRealmData_RunedataEntry_DoNotUse)},
-  { 303, 310, sizeof(::KFMsg::PBRealmData_EventdataEntry_DoNotUse)},
-  { 312, -1, sizeof(::KFMsg::PBRealmData)},
-  { 351, -1, sizeof(::KFMsg::PBPunishData)},
+  { 277, 284, sizeof(::KFMsg::PBRealmData_ExploreEntry_DoNotUse)},
+  { 286, 293, sizeof(::KFMsg::PBRealmData_TownheroEntry_DoNotUse)},
+  { 295, 302, sizeof(::KFMsg::PBRealmData_RunedataEntry_DoNotUse)},
+  { 304, 311, sizeof(::KFMsg::PBRealmData_EventdataEntry_DoNotUse)},
+  { 313, -1, sizeof(::KFMsg::PBRealmData)},
+  { 352, -1, sizeof(::KFMsg::PBPunishData)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -1265,49 +1266,50 @@ void AddDescriptorsImpl() {
       "HerobuffEntry\022\013\n\003key\030\001 \001(\004\022$\n\005value\030\002 \001("
       "\0132\025.KFMsg.PBBuffListData:\0028\001\032B\n\rTeambuff"
       "Entry\022\013\n\003key\030\001 \001(\r\022 \n\005value\030\002 \001(\0132\021.KFMs"
-      "g.PBBuffData:\0028\001\"\363\002\n\rPBExploreData\022\n\n\002id"
+      "g.PBBuffData:\0028\001\"\203\003\n\rPBExploreData\022\n\n\002id"
       "\030\001 \001(\r\022\014\n\004save\030\002 \001(\010\022\016\n\006random\030\003 \001(\r\022\r\n\005"
       "level\030\004 \001(\r\022\022\n\ntotallevel\030\005 \001(\r\022\021\n\tlastl"
       "evel\030\006 \001(\r\022\020\n\010creation\030\007 \001(\r\022\022\n\ninnerwor"
       "ld\030\010 \001(\r\022\022\n\nbirthplace\030\t \001(\r\022\033\n\023innerwor"
       "ldparameter\030\n \001(\r\022.\n\nplayerdata\030\013 \001(\0132\032."
       "KFMsg.PBExplorePlayerData\0222\n\007npcdata\030\014 \003"
-      "(\0132!.KFMsg.PBExploreData.NpcdataEntry\032G\n"
-      "\014NpcdataEntry\022\013\n\003key\030\001 \001(\t\022&\n\005value\030\002 \001("
-      "\0132\027.KFMsg.PBExploreNpcData:\0028\001\"\364\010\n\013PBRea"
-      "lmData\022\n\n\002id\030\001 \001(\r\022\r\n\005level\030\002 \001(\r\022\022\n\nmod"
-      "ulename\030\003 \001(\014\022\020\n\010moduleid\030\004 \001(\004\022\016\n\006statu"
-      "s\030\005 \001(\r\022\021\n\tstarttime\030\006 \001(\004\022\017\n\007usetime\030\007 "
-      "\001(\r\022\r\n\005faith\030\010 \001(\r\022\023\n\013extendlevel\030\t \001(\r\022"
-      ",\n\010herodata\030\n \003(\0132\032.KFMsg.PBBalanceHeroS"
-      "erver\022,\n\010itemdata\030\013 \003(\0132\032.KFMsg.PBBalanc"
-      "eItemServer\022&\n\010loseitem\030\014 \003(\0132\024.KFMsg.PB"
-      "BalanceItem\022\'\n\010buffdata\030\016 \001(\0132\025.KFMsg.PB"
-      "HeroBuffData\0220\n\007explore\030\017 \003(\0132\037.KFMsg.PB"
-      "RealmData.ExploreEntry\022\020\n\010fleerate\030\020 \001(\r"
-      "\022\022\n\ninnerworld\030\021 \001(\r\022\020\n\010selectid\030\022 \001(\r\022\023"
-      "\n\013selectcount\030\023 \001(\r\022\022\n\ntotallevel\030\024 \001(\r\022"
-      "\020\n\010foodstep\030\025 \001(\r\0222\n\010townhero\030\026 \003(\0132 .KF"
-      "Msg.PBRealmData.TownheroEntry\0222\n\010runedat"
-      "a\030\027 \003(\0132 .KFMsg.PBRealmData.RunedataEntr"
-      "y\0224\n\teventdata\030\030 \003(\0132!.KFMsg.PBRealmData"
-      ".EventdataEntry\022\017\n\007weather\030\037 \001(\r\022\030\n\020weat"
-      "hertotalstep\030  \001(\r\022\032\n\022weathercurrentstep"
-      "\030! \001(\r\022\030\n\020weathertotalturn\030\" \001(\r\022\032\n\022weat"
-      "hercurrentturn\030# \001(\r\022\023\n\013nextweather\030$ \001("
-      "\r\022\020\n\010timetype\030) \001(\r\022\025\n\rtimetotalstep\030* \001"
-      "(\r\022\027\n\017timecurrentstep\030+ \001(\r\022\025\n\rtimetotal"
-      "turn\030, \001(\r\022\027\n\017timecurrentturn\030- \001(\r\032D\n\014E"
-      "xploreEntry\022\013\n\003key\030\001 \001(\r\022#\n\005value\030\002 \001(\0132"
-      "\024.KFMsg.PBExploreData:\0028\001\032/\n\rTownheroEnt"
-      "ry\022\013\n\003key\030\001 \001(\004\022\r\n\005value\030\002 \001(\r:\0028\001\032/\n\rRu"
-      "nedataEntry\022\013\n\003key\030\001 \001(\r\022\r\n\005value\030\002 \001(\r:"
-      "\0028\001\0320\n\016EventdataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005va"
-      "lue\030\002 \001(\t:\0028\001\"7\n\014PBPunishData\022\014\n\004name\030\001 "
-      "\001(\014\022\n\n\002id\030\002 \001(\r\022\r\n\005value\030\003 \001(\rb\006proto3"
+      "(\0132!.KFMsg.PBExploreData.NpcdataEntry\022\016\n"
+      "\006camera\030\r \001(\005\032G\n\014NpcdataEntry\022\013\n\003key\030\001 \001"
+      "(\t\022&\n\005value\030\002 \001(\0132\027.KFMsg.PBExploreNpcDa"
+      "ta:\0028\001\"\364\010\n\013PBRealmData\022\n\n\002id\030\001 \001(\r\022\r\n\005le"
+      "vel\030\002 \001(\r\022\022\n\nmodulename\030\003 \001(\014\022\020\n\010modulei"
+      "d\030\004 \001(\004\022\016\n\006status\030\005 \001(\r\022\021\n\tstarttime\030\006 \001"
+      "(\004\022\017\n\007usetime\030\007 \001(\r\022\r\n\005faith\030\010 \001(\r\022\023\n\013ex"
+      "tendlevel\030\t \001(\r\022,\n\010herodata\030\n \003(\0132\032.KFMs"
+      "g.PBBalanceHeroServer\022,\n\010itemdata\030\013 \003(\0132"
+      "\032.KFMsg.PBBalanceItemServer\022&\n\010loseitem\030"
+      "\014 \003(\0132\024.KFMsg.PBBalanceItem\022\'\n\010buffdata\030"
+      "\016 \001(\0132\025.KFMsg.PBHeroBuffData\0220\n\007explore\030"
+      "\017 \003(\0132\037.KFMsg.PBRealmData.ExploreEntry\022\020"
+      "\n\010fleerate\030\020 \001(\r\022\022\n\ninnerworld\030\021 \001(\r\022\020\n\010"
+      "selectid\030\022 \001(\r\022\023\n\013selectcount\030\023 \001(\r\022\022\n\nt"
+      "otallevel\030\024 \001(\r\022\020\n\010foodstep\030\025 \001(\r\0222\n\010tow"
+      "nhero\030\026 \003(\0132 .KFMsg.PBRealmData.Townhero"
+      "Entry\0222\n\010runedata\030\027 \003(\0132 .KFMsg.PBRealmD"
+      "ata.RunedataEntry\0224\n\teventdata\030\030 \003(\0132!.K"
+      "FMsg.PBRealmData.EventdataEntry\022\017\n\007weath"
+      "er\030\037 \001(\r\022\030\n\020weathertotalstep\030  \001(\r\022\032\n\022we"
+      "athercurrentstep\030! \001(\r\022\030\n\020weathertotaltu"
+      "rn\030\" \001(\r\022\032\n\022weathercurrentturn\030# \001(\r\022\023\n\013"
+      "nextweather\030$ \001(\r\022\020\n\010timetype\030) \001(\r\022\025\n\rt"
+      "imetotalstep\030* \001(\r\022\027\n\017timecurrentstep\030+ "
+      "\001(\r\022\025\n\rtimetotalturn\030, \001(\r\022\027\n\017timecurren"
+      "tturn\030- \001(\r\032D\n\014ExploreEntry\022\013\n\003key\030\001 \001(\r"
+      "\022#\n\005value\030\002 \001(\0132\024.KFMsg.PBExploreData:\0028"
+      "\001\032/\n\rTownheroEntry\022\013\n\003key\030\001 \001(\004\022\r\n\005value"
+      "\030\002 \001(\r:\0028\001\032/\n\rRunedataEntry\022\013\n\003key\030\001 \001(\r"
+      "\022\r\n\005value\030\002 \001(\r:\0028\001\0320\n\016EventdataEntry\022\013\n"
+      "\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"7\n\014PBPunis"
+      "hData\022\014\n\004name\030\001 \001(\014\022\n\n\002id\030\002 \001(\r\022\r\n\005value"
+      "\030\003 \001(\rb\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 4358);
+      descriptor, 4374);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "DefineMessage.proto", &protobuf_RegisterTypes);
   ::protobuf_FrameDefineMessage_2eproto::AddDescriptors();
@@ -8123,6 +8125,7 @@ const int PBExploreData::kBirthplaceFieldNumber;
 const int PBExploreData::kInnerworldparameterFieldNumber;
 const int PBExploreData::kPlayerdataFieldNumber;
 const int PBExploreData::kNpcdataFieldNumber;
+const int PBExploreData::kCameraFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 PBExploreData::PBExploreData()
@@ -8143,15 +8146,15 @@ PBExploreData::PBExploreData(const PBExploreData& from)
     playerdata_ = NULL;
   }
   ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&innerworldparameter_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(innerworldparameter_));
+    static_cast<size_t>(reinterpret_cast<char*>(&camera_) -
+    reinterpret_cast<char*>(&id_)) + sizeof(camera_));
   // @@protoc_insertion_point(copy_constructor:KFMsg.PBExploreData)
 }
 
 void PBExploreData::SharedCtor() {
   ::memset(&playerdata_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&innerworldparameter_) -
-      reinterpret_cast<char*>(&playerdata_)) + sizeof(innerworldparameter_));
+      reinterpret_cast<char*>(&camera_) -
+      reinterpret_cast<char*>(&playerdata_)) + sizeof(camera_));
 }
 
 PBExploreData::~PBExploreData() {
@@ -8189,8 +8192,8 @@ void PBExploreData::Clear() {
   }
   playerdata_ = NULL;
   ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&innerworldparameter_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(innerworldparameter_));
+      reinterpret_cast<char*>(&camera_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(camera_));
   _internal_metadata_.Clear();
 }
 
@@ -8379,6 +8382,20 @@ bool PBExploreData::MergePartialFromCodedStream(
         break;
       }
 
+      // int32 camera = 13;
+      case 13: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(104u /* 104 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &camera_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -8510,6 +8527,11 @@ void PBExploreData::SerializeWithCachedSizes(
     }
   }
 
+  // int32 camera = 13;
+  if (this->camera() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(13, this->camera(), output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -8634,6 +8656,11 @@ void PBExploreData::SerializeWithCachedSizes(
     }
   }
 
+  // int32 camera = 13;
+  if (this->camera() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(13, this->camera(), target);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
@@ -8740,6 +8767,13 @@ size_t PBExploreData::ByteSizeLong() const {
         this->innerworldparameter());
   }
 
+  // int32 camera = 13;
+  if (this->camera() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->camera());
+  }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -8801,6 +8835,9 @@ void PBExploreData::MergeFrom(const PBExploreData& from) {
   if (from.innerworldparameter() != 0) {
     set_innerworldparameter(from.innerworldparameter());
   }
+  if (from.camera() != 0) {
+    set_camera(from.camera());
+  }
 }
 
 void PBExploreData::CopyFrom(const ::google::protobuf::Message& from) {
@@ -8839,6 +8876,7 @@ void PBExploreData::InternalSwap(PBExploreData* other) {
   swap(innerworld_, other->innerworld_);
   swap(birthplace_, other->birthplace_);
   swap(innerworldparameter_, other->innerworldparameter_);
+  swap(camera_, other->camera_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 

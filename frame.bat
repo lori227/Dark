@@ -350,8 +350,9 @@ call :CopyInterface KFBasicShard
 call :CopyInterface KFBasicAttribute
 
 rem relation
-rem call :CopyInterface KFRelationClient
-rem call :CopyInterface KFRelationShard
+call :CopyInterface KFRelationClient
+call :CopyInterface KFRelationShard
+call :CopyInterface KFRelationAttribute
 
 rem zone
 call :CopyInterface KFGame

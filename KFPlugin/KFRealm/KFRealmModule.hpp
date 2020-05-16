@@ -86,6 +86,10 @@ namespace KFrame
         // 更新探索事件数据
         __KF_MESSAGE_FUNCTION__( HandleUpdateExploreEventReq );
 
+        // 更新秘境摄像机
+        __KF_MESSAGE_FUNCTION__( HandleUpdateRealmCameraReq );
+
+
     protected:
         // 秘境逻辑事件
         __KF_EXECUTE_FUNCTION__( OnExecuteRealm );

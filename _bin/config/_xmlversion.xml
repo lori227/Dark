@@ -1,4 +1,4 @@
-<root version="5050">
+<root version="5059">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -89,7 +89,6 @@
 	<item name="countcost" version="4515" />
 	<item name="meshconfig" version="4531" />
 	<item name="time" version="4532" />
-	<item name="goods" version="4532" />
 	<item name="storeunlock" version="4533" />
 	<item name="store" version="4534" />
 	<item name="minimap" version="4576" />
@@ -114,7 +113,6 @@
 	<item name="weapontype" version="4850" />
 	<item name="sequence" version="4854" />
 	<item name="affixtext" version="4862" />
-	<item name="constant" version="4865" />
 	<item name="npc" version="4870" />
 	<item name="quality" version="4886" />
 	<item name="multievent" version="4892" />
@@ -129,7 +127,6 @@
 	<item name="heroquality" version="4952" />
 	<item name="itemtext" version="4955" />
 	<item name="story" version="4962" />
-	<item name="unlock" version="4962" />
 	<item name="task" version="4972" />
 	<item name="currency" version="4976" />
 	<item name="herolevel" version="4981" />
@@ -152,7 +149,6 @@
 	<item name="heroskill" version="5016" />
 	<item name="rolebasetext" version="5022" />
 	<item name="npcgroup" version="5024" />
-	<item name="buildlevel" version="5026" />
 	<item name="heroconstant" version="5026" />
 	<item name="technology" version="5032" />
 	<item name="itemconstant" version="5035" />
@@ -162,5 +158,9 @@
 	<item name="tasktext" version="5046" />
 	<item name="taskcondition" version="5047" />
 	<item name="formula" version="5049" />
-	<item name="uitext" version="5050" />
+	<item name="uitext" version="5053" />
+	<item name="unlock" version="5054" />
+	<item name="buildlevel" version="5055" />
+	<item name="goods" version="5057" />
+	<item name="constant" version="5059" />
 </root>

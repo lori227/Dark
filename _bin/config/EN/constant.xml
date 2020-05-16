@@ -1,4 +1,4 @@
-<root platform="" version="4865">
+<root platform="" version="5059">
 	<item Name="playernamelength" Key="" Value="15" Channel="0" Service="0" />
 	<item Name="recruitrefreshtime" Key="" Value="0.4" Channel="0" Service="0" />
 	<item Name="recruittime" Key="" Value="0.4" Channel="0" Service="0" />
@@ -25,4 +25,6 @@
 	<item Name="worldmapmodelrange" Key="" Value="300" Channel="0" Service="0" />
 	<item Name="worldmapmodelscale" Key="" Value="3" Channel="0" Service="0" />
 	<item Name="worldmapcameraspeed" Key="" Value="7500" Channel="0" Service="0" />
+	<item Name="intheworld_type1_show" Key="" Value="8000" Channel="0" Service="0" />
+	<item Name="intheworld_type1_showincrement" Key="" Value="1500" Channel="0" Service="0" />
 </root>

@@ -107,13 +107,13 @@ void AddDescriptorsImpl() {
       "Chapter\020d*=\n\010JumpEnum\022\017\n\013JumpInvalid\020\000\022\t"
       "\n\005Leave\020\001\022\t\n\005Enter\020\002\022\n\n\006Finish\020\003*G\n\rReal"
       "mTimeEnum\022\017\n\013TimeInvalid\020\000\022\013\n\007Morning\020\001\022"
-      "\r\n\tAfternoon\020\002\022\t\n\005Night\020\003*g\n\014FunctionEnu"
-      "m\022\023\n\017FunctionInvalid\020\000\022\017\n\013InnerWorld1\020\001\022"
-      "\017\n\013InnerWorld2\020\002\022\017\n\013InnerWorld3\020\003\022\017\n\013One"
-      "keyEquip\020\004b\006proto3"
+      "\r\n\tAfternoon\020\002\022\t\n\005Night\020\003*z\n\014FunctionEnu"
+      "m\022\023\n\017FunctionInvalid\020\000\022\017\n\013OnekeyEquip\020\001\022"
+      "\016\n\nDarkCorner\020e\022\022\n\016NecklaceEmbryo\020f\022\020\n\014P"
+      "rogressText\020g\022\016\n\nDescButton\020hb\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2098);
+      descriptor, 2117);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "EnumMessage.proto", &protobuf_RegisterTypes);
 }
@@ -463,9 +463,10 @@ bool FunctionEnum_IsValid(int value) {
   switch (value) {
     case 0:
     case 1:
-    case 2:
-    case 3:
-    case 4:
+    case 101:
+    case 102:
+    case 103:
+    case 104:
       return true;
     default:
       return false;

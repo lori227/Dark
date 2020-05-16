@@ -514,16 +514,17 @@ inline bool RealmTimeEnum_Parse(
 }
 enum FunctionEnum {
   FunctionInvalid = 0,
-  InnerWorld1 = 1,
-  InnerWorld2 = 2,
-  InnerWorld3 = 3,
-  OnekeyEquip = 4,
+  OnekeyEquip = 1,
+  DarkCorner = 101,
+  NecklaceEmbryo = 102,
+  ProgressText = 103,
+  DescButton = 104,
   FunctionEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   FunctionEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 LIBPROTOC_EXPORT bool FunctionEnum_IsValid(int value);
 const FunctionEnum FunctionEnum_MIN = FunctionInvalid;
-const FunctionEnum FunctionEnum_MAX = OnekeyEquip;
+const FunctionEnum FunctionEnum_MAX = DescButton;
 const int FunctionEnum_ARRAYSIZE = FunctionEnum_MAX + 1;
 
 LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* FunctionEnum_descriptor();

@@ -2625,6 +2625,12 @@ class LIBPROTOC_EXPORT PBExploreData : public ::google::protobuf::Message /* @@p
   ::google::protobuf::uint32 innerworldparameter() const;
   void set_innerworldparameter(::google::protobuf::uint32 value);
 
+  // int32 camera = 13;
+  void clear_camera();
+  static const int kCameraFieldNumber = 13;
+  ::google::protobuf::int32 camera() const;
+  void set_camera(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:KFMsg.PBExploreData)
  private:
 
@@ -2646,6 +2652,7 @@ class LIBPROTOC_EXPORT PBExploreData : public ::google::protobuf::Message /* @@p
   ::google::protobuf::uint32 innerworld_;
   ::google::protobuf::uint32 birthplace_;
   ::google::protobuf::uint32 innerworldparameter_;
+  ::google::protobuf::int32 camera_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_DefineMessage_2eproto::TableStruct;
 };
@@ -5018,6 +5025,20 @@ inline ::google::protobuf::Map< ::std::string, ::KFMsg::PBExploreNpcData >*
 PBExploreData::mutable_npcdata() {
   // @@protoc_insertion_point(field_mutable_map:KFMsg.PBExploreData.npcdata)
   return npcdata_.MutableMap();
+}
+
+// int32 camera = 13;
+inline void PBExploreData::clear_camera() {
+  camera_ = 0;
+}
+inline ::google::protobuf::int32 PBExploreData::camera() const {
+  // @@protoc_insertion_point(field_get:KFMsg.PBExploreData.camera)
+  return camera_;
+}
+inline void PBExploreData::set_camera(::google::protobuf::int32 value) {
+  
+  camera_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.PBExploreData.camera)
 }
 
 // -------------------------------------------------------------------

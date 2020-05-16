@@ -30,6 +30,7 @@ namespace KFrame
         __REGISTER_MESSAGE__( KFMsg::MSG_INTERACT_ITEM_REQ, &KFRealmModule::HandleInteractItemReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_UPDATE_EXPLORE_EVENT_REQ, &KFRealmModule::HandleUpdateExploreEventReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_REALM_LEVEL_FINISH_REQ, &KFRealmModule::HandleRealmLevelFinishReq );
+        __REGISTER_MESSAGE__( KFMsg::MSG_UPDATE_REALM_CAMERA_REQ, &KFRealmModule::HandleUpdateRealmCameraReq );
     }
 
     void KFRealmModule::BeforeShut()
@@ -57,6 +58,7 @@ namespace KFrame
         __UN_MESSAGE__( KFMsg::MSG_INTERACT_ITEM_REQ );
         __UN_MESSAGE__( KFMsg::MSG_UPDATE_EXPLORE_EVENT_REQ );
         __UN_MESSAGE__( KFMsg::MSG_REALM_LEVEL_FINISH_REQ );
+        __UN_MESSAGE__( KFMsg::MSG_UPDATE_REALM_CAMERA_REQ );
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1046,6 +1048,21 @@ namespace KFrame
         {
             eventdata[iter.first] = iter.second;
         }
+    }
+
+    __KF_MESSAGE_FUNCTION__( KFRealmModule::HandleUpdateRealmCameraReq )
+    {
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgUpdateRealmCameraReq );
+
+        auto kfrealmdata = _realm_data.Find( playerid );
+        if ( kfrealmdata == nullptr )
+        {
+            return _kf_display->SendToClient( player, KFMsg::RealmNotInStatus );
+        }
+
+        auto pbexplore = kfrealmdata->FindExeploreData( kfrealmdata->_data.level() );
+        pbexplore->set_save( true );
+        pbexplore->set_camera( kfmsg.camera() );
     }
 
     const KFRealmLevel* KFRealmModule::FindRealmLevelSetting( KFEntity* player )
