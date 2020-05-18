@@ -6,51 +6,53 @@
 	<!--DataId 数据库的小区id, 0 本小区  不为0则为指定id -->
 	<!--LoginId 登录的小区id, 0 本小区  不为0则为指定id -->
 	<!--Name 游戏服名字-->
+	<!--Flag 游戏服标识-->
+	<!--OpenRecommend 是否开启推荐-->
 	<!--Recommend 推荐服务器 -->
 
 	<!--默认-->
-	<Default LoginId="1" DataId="1" Name="测试服{}区"/>
+	<Default LoginId="1" DataId="1" Name="测试服{}区" Flag="develop" Recommend="0"/>
 
-	<Zones Recommend="1">
+	<Zones OpenRecommend="1">
 		<!-- 公共服务器 -->
-		<Zone Id="1" LoginId="0" DataId="0" Name="开发服"/>
-		<Zone Id="2" LoginId="0" DataId="0" Name="配置服"/>
-		<Zone Id="3" LoginId="0" DataId="0" Name="内网体验服"/>
-		<Zone Id="4" LoginId="0" DataId="0" Name="手机体验服"/>
-		<Zone Id="5" LoginId="0" DataId="0" Name="外网体验服"/>
+		<Zone Id="1" LoginId="0" DataId="0" Name="开发服" Flag="develop" Recommend="1"/>
+		<Zone Id="2" LoginId="0" DataId="0" Name="配置服" Flag="develop" Recommend="0"/>
+		<Zone Id="3" LoginId="0" DataId="0" Name="内网体验服" Flag="develop" Recommend="0"/>
+		<Zone Id="4" LoginId="0" DataId="0" Name="手机体验服" Flag="iostest" Recommend="1"/>
+		<Zone Id="5" LoginId="0" DataId="0" Name="外网体验服" Flag="pctest" Recommend="1"/>
 
 		<!-- 服务器 -->
-		<Zone Id="11" LoginId="0" DataId="1" Name="小兵服"/>
-		<Zone Id="12" LoginId="0" DataId="1" Name="修逵服"/>
-		<Zone Id="13" LoginId="0" DataId="1" Name="浩贤服"/>
+		<Zone Id="11" LoginId="0" DataId="1" Name="小兵服" Flag="develop" Recommend="0"/>
+		<Zone Id="12" LoginId="0" DataId="1" Name="修逵服" Flag="develop" Recommend="0"/>
+		<Zone Id="13" LoginId="0" DataId="1" Name="浩贤服" Flag="develop" Recommend="0"/>
 
 		<!-- 客户端 -->
-		<Zone Id="21" LoginId="0" DataId="1" Name="小杰服"/>
-		<Zone Id="22" LoginId="0" DataId="1" Name="刘双服"/>
-		<Zone Id="23" LoginId="0" DataId="1" Name="队长服"/>
-		<Zone Id="24" LoginId="0" DataId="1" Name="嘉欣服"/>
-		<Zone Id="25" LoginId="0" DataId="1" Name="吴姜服"/>
-		<Zone Id="26" LoginId="0" DataId="1" Name="宝康服"/>
-		<Zone Id="27" LoginId="0" DataId="1" Name="银丽服"/>
-		<Zone Id="28" LoginId="0" DataId="1" Name="林果服"/>
-		<Zone Id="29" LoginId="0" DataId="1" Name="李港服"/>
+		<Zone Id="21" LoginId="0" DataId="1" Name="小杰服" Flag="develop" Recommend="0"/>
+		<Zone Id="22" LoginId="0" DataId="1" Name="刘双服" Flag="develop" Recommend="0"/>
+		<Zone Id="23" LoginId="0" DataId="1" Name="队长服" Flag="develop" Recommend="0"/>
+		<Zone Id="24" LoginId="0" DataId="1" Name="嘉欣服" Flag="develop" Recommend="0"/>
+		<Zone Id="25" LoginId="0" DataId="1" Name="吴姜服" Flag="develop" Recommend="0"/>
+		<Zone Id="26" LoginId="0" DataId="1" Name="宝康服" Flag="develop" Recommend="0"/>
+		<Zone Id="27" LoginId="0" DataId="1" Name="银丽服" Flag="develop" Recommend="0"/>
+		<Zone Id="28" LoginId="0" DataId="1" Name="林果服" Flag="develop" Recommend="0"/>
+		<Zone Id="29" LoginId="0" DataId="1" Name="李港服" Flag="develop" Recommend="0"/>
 
 		<!-- 测试 -->
-		<Zone Id="41" LoginId="0" DataId="1" Name="彭康服"/>
-		<Zone Id="42" LoginId="0" DataId="1" Name="姝灿服"/>
-		<Zone Id="43" LoginId="0" DataId="1" Name="桂聪服"/>
-		<Zone Id="44" LoginId="0" DataId="1" Name="钰茹服"/>
-		<Zone Id="45" LoginId="0" DataId="1" Name="嘉媛服"/>
+		<Zone Id="41" LoginId="0" DataId="1" Name="彭康服" Flag="develop" Recommend="0"/>
+		<Zone Id="42" LoginId="0" DataId="1" Name="姝灿服" Flag="develop" Recommend="0"/>
+		<Zone Id="43" LoginId="0" DataId="1" Name="桂聪服" Flag="develop" Recommend="0"/>
+		<Zone Id="44" LoginId="0" DataId="1" Name="钰茹服" Flag="develop" Recommend="0"/>
+		<Zone Id="45" LoginId="0" DataId="1" Name="嘉媛服" Flag="develop" Recommend="0"/>
 
 		<!-- 策划 -->
-		<Zone Id="61" LoginId="0" DataId="1" Name="鸿志服"/>
-		<Zone Id="62" LoginId="0" DataId="1" Name="梓侨服"/>
-		<Zone Id="63" LoginId="0" DataId="1" Name="佳吟服"/>
-		<Zone Id="64" LoginId="0" DataId="1" Name="李龙服"/>
-		<Zone Id="65" LoginId="0" DataId="1" Name="天力服"/>
-		<Zone Id="66" LoginId="0" DataId="1" Name="斐迪服"/>
-		<Zone Id="67" LoginId="0" DataId="1" Name="世贤服"/>
-		<Zone Id="68" LoginId="0" DataId="1" Name="耀伟服"/>
+		<Zone Id="61" LoginId="0" DataId="1" Name="鸿志服" Flag="develop" Recommend="0"/>
+		<Zone Id="62" LoginId="0" DataId="1" Name="梓侨服" Flag="develop" Recommend="0"/>
+		<Zone Id="63" LoginId="0" DataId="1" Name="佳吟服" Flag="develop" Recommend="0"/>
+		<Zone Id="64" LoginId="0" DataId="1" Name="李龙服" Flag="develop" Recommend="0"/>
+		<Zone Id="65" LoginId="0" DataId="1" Name="天力服" Flag="develop" Recommend="0"/>
+		<Zone Id="66" LoginId="0" DataId="1" Name="斐迪服" Flag="develop" Recommend="0"/>
+		<Zone Id="67" LoginId="0" DataId="1" Name="世贤服" Flag="develop" Recommend="0"/>
+		<Zone Id="68" LoginId="0" DataId="1" Name="耀伟服" Flag="develop" Recommend="0"/>
 
 	</Zones>
 </Config>
