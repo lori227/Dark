@@ -1,4 +1,4 @@
-<root version="5062">
+<root version="5064">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -144,7 +144,6 @@
 	<item name="tipstext" version="5005" />
 	<item name="dropdata" version="5009" />
 	<item name="herogenerate" version="5010" />
-	<item name="prompttext" version="5012" />
 	<item name="heroweightpool" version="5014" />
 	<item name="heroskill" version="5016" />
 	<item name="rolebasetext" version="5022" />
@@ -163,5 +162,6 @@
 	<item name="constant" version="5059" />
 	<item name="category" version="5060" />
 	<item name="uitext" version="5061" />
-	<item name="goods" version="5062" />
+	<item name="prompttext" version="5063" />
+	<item name="goods" version="5064" />
 </root>
