@@ -1,4 +1,4 @@
-<root version="5064">
+<root version="5065">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -163,5 +163,5 @@
 	<item name="category" version="5060" />
 	<item name="uitext" version="5061" />
 	<item name="prompttext" version="5063" />
-	<item name="goods" version="5064" />
+	<item name="goods" version="5065" />
 </root>

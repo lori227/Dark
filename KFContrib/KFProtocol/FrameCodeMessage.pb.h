@@ -110,6 +110,8 @@ enum FrameCodeEnum {
   DataNotEnough = 12109,
   DataIsFull = 12110,
   ElementParseError = 12111,
+  NameCanNotFind = 12112,
+  RoleNotExist = 12113,
   AchieveCanNotFind = 12200,
   AchieveCanNotFindData = 12201,
   AchieveNotDone = 12202,

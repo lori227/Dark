@@ -58,7 +58,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\026FrameCodeMessage.proto\022\005KFMsg*\271\032\n\rFram"
+      "\n\026FrameCodeMessage.proto\022\005KFMsg*\341\032\n\rFram"
       "eCodeEnum\022\t\n\005Error\020\000\022\006\n\002Ok\020\001\022\022\n\rHttpData"
       "Error\020\220N\022\025\n\020AuthDatabaseBusy\020\221N\022\023\n\016AuthS"
       "erverBusy\020\222N\022\023\n\016ZoneServerBusy\020\223N\022\025\n\020Zon"
@@ -89,7 +89,8 @@ void AddDescriptorsImpl() {
       "^\022\024\n\017NameLengthError\020\310^\022\024\n\017NameFilterErr"
       "or\020\311^\022\016\n\tNameEmpty\020\312^\022\023\n\016NameAlreadySet\020"
       "\313^\022\r\n\010SexSetOK\020\314^\022\022\n\rDataNotEnough\020\315^\022\017\n"
-      "\nDataIsFull\020\316^\022\026\n\021ElementParseError\020\317^\022\026"
+      "\nDataIsFull\020\316^\022\026\n\021ElementParseError\020\317^\022\023"
+      "\n\016NameCanNotFind\020\320^\022\021\n\014RoleNotExist\020\321^\022\026"
       "\n\021AchieveCanNotFind\020\250_\022\032\n\025AchieveCanNotF"
       "indData\020\251_\022\023\n\016AchieveNotDone\020\252_\022\033\n\026Achie"
       "veAlreadyReceived\020\253_\022\025\n\020AchieveReceiveOk"
@@ -146,7 +147,7 @@ void AddDescriptorsImpl() {
       "\017FriendLinessAdd\020\204hb\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 3427);
+      descriptor, 3467);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "FrameCodeMessage.proto", &protobuf_RegisterTypes);
 }
@@ -225,6 +226,8 @@ bool FrameCodeEnum_IsValid(int value) {
     case 12109:
     case 12110:
     case 12111:
+    case 12112:
+    case 12113:
     case 12200:
     case 12201:
     case 12202:
