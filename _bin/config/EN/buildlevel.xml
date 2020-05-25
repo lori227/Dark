@@ -1,4 +1,4 @@
-<root platform="" version="5055">
+<root platform="" version="5069">
 	<item Id="202001" BuildId="202" Level="1" Condition="" Technology="7290028,7050601" Consume="" UpgradeTime="0" OnekeyConsume="" UnitTime="0" />
 	<item Id="202002" BuildId="202" Level="2" Condition="" Technology="7050501,7050602" Consume="[[1,1,1800],[2,1900201,2000]]" UpgradeTime="5" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
 	<item Id="202003" BuildId="202" Level="3" Condition="59000202&amp;59000502&amp;59000102" Technology="7050603,7050604" Consume="[[1,1,2000],[2,1900201,3500]]" UpgradeTime="300" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
@@ -154,7 +154,7 @@
 	<item Id="212003" BuildId="212" Level="3" Condition="59000003" Technology="7040101,7040102,7040103,7040204,7040205" Consume="[[1,1,1500],[2,1900201,3000]]" UpgradeTime="300" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
 	<item Id="212004" BuildId="212" Level="4" Condition="59000004&amp;59001101" Technology="7040104,7040206,7040207" Consume="[[1,1,4000],[2,1900201,5000]]" UpgradeTime="450" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
 	<item Id="212005" BuildId="212" Level="5" Condition="59000005" Technology="7040105,7040601,7040602,7040208,7040209" Consume="[[1,1,6000],[2,1900201,10000]]" UpgradeTime="600" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
-	<item Id="212006" BuildId="212" Level="6" Condition="59000006" Technology="7040106,70407017040702,7040210,7040211" Consume="[[1,1,14000],[2,1900201,20000]]" UpgradeTime="1200" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
+	<item Id="212006" BuildId="212" Level="6" Condition="59000006" Technology="7040106,7040701,7040702,7040210,7040211" Consume="[[1,1,14000],[2,1900201,20000]]" UpgradeTime="1200" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
 	<item Id="212007" BuildId="212" Level="7" Condition="59000007" Technology="7040107,7040603,7040212,7040213" Consume="[[1,1,28000],[2,1900201,40000]]" UpgradeTime="2400" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
 	<item Id="212008" BuildId="212" Level="8" Condition="59000008" Technology="7040108,7040703,7040214,7040215" Consume="[[1,1,54000],[2,1900201,80000]]" UpgradeTime="4800" OnekeyConsume="[[1,2,1]]" UnitTime="600" />
 	<item Id="212009" BuildId="212" Level="9" Condition="59000009" Technology="7040109,7040401,7040604" Consume="[[1,1,54000],[2,1900201,80000]]" UpgradeTime="9600" OnekeyConsume="[[1,2,1]]" UnitTime="600" />

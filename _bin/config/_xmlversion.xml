@@ -1,4 +1,4 @@
-<root version="5065">
+<root version="5069">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -158,10 +158,10 @@
 	<item name="taskcondition" version="5047" />
 	<item name="formula" version="5049" />
 	<item name="unlock" version="5054" />
-	<item name="buildlevel" version="5055" />
 	<item name="constant" version="5059" />
 	<item name="category" version="5060" />
-	<item name="uitext" version="5061" />
-	<item name="prompttext" version="5063" />
-	<item name="goods" version="5065" />
+	<item name="goods" version="5066" />
+	<item name="uitext" version="5067" />
+	<item name="prompttext" version="5068" />
+	<item name="buildlevel" version="5069" />
 </root>

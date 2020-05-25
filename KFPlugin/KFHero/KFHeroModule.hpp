@@ -20,6 +20,7 @@
 #include "KFZConfig/KFLevelConfig.hpp"
 #include "KFZConfig/KFProfessionConfig.hpp"
 #include "KFRealm/KFRealmInterface.h"
+#include "KFRealm/KFPVEInterface.h"
 #include "KFZConfig/KFInjuryRandomConfig.hpp"
 
 namespace KFrame

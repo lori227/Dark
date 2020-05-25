@@ -657,8 +657,10 @@ namespace KFrame
 
         if ( operate == KFEnum::Add )
         {
-            auto addhprate = _kf_realm->GetAddHpRate( player );
-            hp = static_cast< uint32 >( std::ceil( addhprate * hp ) );
+            // 回血减少比例
+            auto reducerate = _kf_realm->GetAddHpReduceRate( player );
+            auto addrate = 1.0 - static_cast<double>( reducerate ) / static_cast<double>( KFRandEnum::TenThousand );
+            hp = static_cast< uint32 >( std::ceil( addrate * hp ) );
 
             auto canaddhp = maxhp - nowhp;
             hp = __MIN__( hp, canaddhp );
@@ -676,6 +678,15 @@ namespace KFrame
         {
             auto dechp = ( death ? nowhp : ( nowhp - 1 ) );
             hp = ( hp >= nowhp ? dechp : hp );
+
+            // 扣血增加信仰
+            auto dechpparam = _kf_realm->GetInnerWorldDecHpParam( player );
+            auto param = static_cast<double>( dechpparam ) / static_cast<double>( KFRandEnum::TenThousand );
+            auto addfaith = static_cast<uint32>( std::ceil( param * hp ) );
+            if ( addfaith > 0u )
+            {
+                _kf_pve->OperateFaith( player, KFEnum::Add, addfaith );
+            }
         }
 
         player->UpdateData( kffighter, __STRING__( hp ), operate, hp );

@@ -537,6 +537,27 @@ inline bool FunctionEnum_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<FunctionEnum>(
     FunctionEnum_descriptor(), name, value);
 }
+enum InnerWorldEnum {
+  InnerWorldInvalid = 0,
+  NamelessMist = 1,
+  InnerWorldEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  InnerWorldEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+LIBPROTOC_EXPORT bool InnerWorldEnum_IsValid(int value);
+const InnerWorldEnum InnerWorldEnum_MIN = InnerWorldInvalid;
+const InnerWorldEnum InnerWorldEnum_MAX = NamelessMist;
+const int InnerWorldEnum_ARRAYSIZE = InnerWorldEnum_MAX + 1;
+
+LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* InnerWorldEnum_descriptor();
+inline const ::std::string& InnerWorldEnum_Name(InnerWorldEnum value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    InnerWorldEnum_descriptor(), value);
+}
+inline bool InnerWorldEnum_Parse(
+    const ::std::string& name, InnerWorldEnum* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<InnerWorldEnum>(
+    InnerWorldEnum_descriptor(), name, value);
+}
 // ===================================================================
 
 
@@ -659,6 +680,11 @@ template <> struct is_proto_enum< ::KFMsg::FunctionEnum> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::FunctionEnum>() {
   return ::KFMsg::FunctionEnum_descriptor();
+}
+template <> struct is_proto_enum< ::KFMsg::InnerWorldEnum> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::KFMsg::InnerWorldEnum>() {
+  return ::KFMsg::InnerWorldEnum_descriptor();
 }
 
 }  // namespace protobuf

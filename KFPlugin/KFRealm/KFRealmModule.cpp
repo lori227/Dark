@@ -990,36 +990,61 @@ namespace KFrame
         _kf_drop->Drop( player, droplist, __STRING__( exploredrop ), 0u, __FUNC_LINE__ );
     }
 
-    double KFRealmModule::GetAddHpRate( KFEntity* player )
+    int KFRealmModule::GetAddHpReduceRate( KFEntity* player )
     {
-        double rate = 1.0;
-
         auto realmtown = player->Get<uint32>( __STRING__( realmtown ) );
         if ( realmtown > 0u )
         {
-            return rate;
+            return _invalid_int;
         }
 
         auto kfrealmdata = _realm_data.Find( player->GetKeyID() );
         if ( kfrealmdata == nullptr || !kfrealmdata->IsInnerWorld() )
         {
-            return rate;
+            return _invalid_int;
         }
 
         auto kfrealmsetting = FindRealmLevelSetting( player );
         if ( kfrealmsetting == nullptr )
         {
-            return rate;
+            return _invalid_int;
         }
 
         auto kfworldsetting = KFInnerWorldConfig::Instance()->FindSetting( kfrealmsetting->_inner_world );
         if ( kfworldsetting == nullptr )
         {
-            return rate;
+            return _invalid_int;
         }
 
-        rate -= static_cast<double>( kfworldsetting->_reduced_treatment ) / static_cast<double>( KFRandEnum::TenThousand );
-        return rate;
+        return kfworldsetting->_reduced_treatment;
+    }
+
+    int KFRealmModule::GetInnerWorldDecHpParam( KFEntity* player )
+    {
+        auto realmtown = player->Get<uint32>( __STRING__( realmtown ) );
+        if ( realmtown > 0u )
+        {
+            return _invalid_int;
+        }
+
+        auto kfrealmdata = _realm_data.Find( player->GetKeyID() );
+        if ( kfrealmdata == nullptr || kfrealmdata->IsInnerWorld() )
+        {
+            return _invalid_int;
+        }
+
+        auto kfrealmsetting = FindRealmLevelSetting( player );
+        if ( kfrealmsetting == nullptr )
+        {
+            return _invalid_int;
+        }
+
+        if ( kfrealmsetting->_inner_world != KFMsg::NamelessMist )
+        {
+            return _invalid_int;
+        }
+
+        return kfrealmsetting->_inner_parameter;
     }
 
     __KF_MESSAGE_FUNCTION__( KFRealmModule::HandleInteractItemReq )

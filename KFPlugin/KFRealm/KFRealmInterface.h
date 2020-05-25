@@ -18,8 +18,11 @@ namespace KFrame
         // 判断是否在里世界
         virtual bool IsInnerWorld( KFEntity* player ) = 0;
 
-        // 获取生命回复比列
-        virtual double GetAddHpRate( KFEntity* player ) = 0;
+        // 获取生命回复减少比列
+        virtual int GetAddHpReduceRate( KFEntity* player ) = 0;
+
+        // 获取里世界参数
+        virtual int GetInnerWorldDecHpParam( KFEntity* player ) = 0;
         ////////////////////////////////////////////////////////////////////////////////////
         // 进入秘境
         template< class T >

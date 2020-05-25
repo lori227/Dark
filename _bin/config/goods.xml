@@ -1,4 +1,4 @@
-<root platform="" version="5065">
+<root platform="" version="5066">
 	<item Id="1001" StoreId="100101" Item="[[2,1000017,200]]" MinBuyCount="1" MaxBuyCount="1" BeginTime="" EndTime="" Price="[[1,2,50]]" Discount="[[1,2,40]]" DiscountBeginTime="" DiscountEndTime="" LimitTimeId="2" LimitCount="5" GroupId="0" GroupWeight="0" RefreshCount="" />
 	<item Id="1002" StoreId="100101" Item="[[2,1000101,1]]" MinBuyCount="1" MaxBuyCount="1" BeginTime="" EndTime="" Price="[[1,2,5]]" Discount="[[1,2,5]]" DiscountBeginTime="" DiscountEndTime="" LimitTimeId="2" LimitCount="10" GroupId="0" GroupWeight="0" RefreshCount="" />
 	<item Id="1003" StoreId="100101" Item="[[2,1000101,1]]" MinBuyCount="1" MaxBuyCount="1" BeginTime="" EndTime="" Price="[[1,2,5]]" Discount="[[1,2,5]]" DiscountBeginTime="" DiscountEndTime="" LimitTimeId="2" LimitCount="10" GroupId="0" GroupWeight="0" RefreshCount="" />

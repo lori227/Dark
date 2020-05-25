@@ -37,6 +37,7 @@ namespace KFrame
         __FIND_MODULE__( _kf_execute, KFExecuteInterface );
         __FIND_MODULE__( _kf_generate, KFGenerateInterface );
         __FIND_MODULE__( _kf_realm, KFRealmInterface );
+        __FIND_MODULE__( _kf_pve, KFPVEInterface );
     }
 
     void KFHeroPlugin::AddConfig()

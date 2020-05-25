@@ -33,7 +33,7 @@ namespace protobuf_EnumMessage_2eproto {
 void InitDefaults() {
 }
 
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[20];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[21];
 const ::google::protobuf::uint32 TableStruct::offsets[1] = {};
 static const ::google::protobuf::internal::MigrationSchema* schemas = NULL;
 static const ::google::protobuf::Message* const* file_default_instances = NULL;
@@ -110,10 +110,12 @@ void AddDescriptorsImpl() {
       "\r\n\tAfternoon\020\002\022\t\n\005Night\020\003*z\n\014FunctionEnu"
       "m\022\023\n\017FunctionInvalid\020\000\022\017\n\013OnekeyEquip\020\001\022"
       "\016\n\nDarkCorner\020e\022\022\n\016NecklaceEmbryo\020f\022\020\n\014P"
-      "rogressText\020g\022\016\n\nDescButton\020hb\006proto3"
+      "rogressText\020g\022\016\n\nDescButton\020h*9\n\016InnerWo"
+      "rldEnum\022\025\n\021InnerWorldInvalid\020\000\022\020\n\014Namele"
+      "ssMist\020\001b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2117);
+      descriptor, 2176);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "EnumMessage.proto", &protobuf_RegisterTypes);
 }
@@ -467,6 +469,20 @@ bool FunctionEnum_IsValid(int value) {
     case 102:
     case 103:
     case 104:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::google::protobuf::EnumDescriptor* InnerWorldEnum_descriptor() {
+  protobuf_EnumMessage_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_EnumMessage_2eproto::file_level_enum_descriptors[20];
+}
+bool InnerWorldEnum_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
       return true;
     default:
       return false;

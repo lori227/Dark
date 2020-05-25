@@ -29,13 +29,9 @@
 		<!-- 客户端 -->
 		<Zone Id="21" LoginId="0" DataId="1" Name="小杰服" Flag="develop" Recommend="0"/>
 		<Zone Id="22" LoginId="0" DataId="1" Name="刘双服" Flag="develop" Recommend="0"/>
-		<Zone Id="23" LoginId="0" DataId="1" Name="队长服" Flag="develop" Recommend="0"/>
+		<Zone Id="23" LoginId="0" DataId="1" Name="陈俊服" Flag="develop" Recommend="0"/>
 		<Zone Id="24" LoginId="0" DataId="1" Name="嘉欣服" Flag="develop" Recommend="0"/>
 		<Zone Id="25" LoginId="0" DataId="1" Name="吴姜服" Flag="develop" Recommend="0"/>
-		<Zone Id="26" LoginId="0" DataId="1" Name="宝康服" Flag="develop" Recommend="0"/>
-		<Zone Id="27" LoginId="0" DataId="1" Name="银丽服" Flag="develop" Recommend="0"/>
-		<Zone Id="28" LoginId="0" DataId="1" Name="林果服" Flag="develop" Recommend="0"/>
-		<Zone Id="29" LoginId="0" DataId="1" Name="李港服" Flag="develop" Recommend="0"/>
 
 		<!-- 测试 -->
 		<Zone Id="41" LoginId="0" DataId="1" Name="彭康服" Flag="develop" Recommend="0"/>
@@ -43,6 +39,7 @@
 		<Zone Id="43" LoginId="0" DataId="1" Name="桂聪服" Flag="develop" Recommend="0"/>
 		<Zone Id="44" LoginId="0" DataId="1" Name="钰茹服" Flag="develop" Recommend="0"/>
 		<Zone Id="45" LoginId="0" DataId="1" Name="嘉媛服" Flag="develop" Recommend="0"/>
+		<Zone Id="46" LoginId="0" DataId="1" Name="龙伟服" Flag="develop" Recommend="0"/>
 
 		<!-- 策划 -->
 		<Zone Id="61" LoginId="0" DataId="1" Name="鸿志服" Flag="develop" Recommend="0"/>
