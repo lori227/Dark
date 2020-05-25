@@ -79,8 +79,20 @@ namespace KFrame
         }
 
         // 开始解锁
-        player->UpdateData( kfindexrecord, kfsetting->_index, __STRING__( sort ), KFEnum::Set, kfsetting->_sort );
-        player->UpdateData( kfindexrecord, kfsetting->_index, __STRING__( storeid ), KFEnum::Set, kfsetting->_store_id );
+        auto kfindex = kfindexrecord->Find( kfsetting->_index );
+        if ( kfindex == nullptr )
+        {
+            kfindex = player->CreateData( kfindexrecord );
+            kfindex->Set( __STRING__( index ), kfsetting->_index );
+            kfindex->Set( __STRING__( sort ), kfsetting->_sort );
+            kfindex->Set( __STRING__( storeid ), kfsetting->_store_id );
+            player->AddData( kfindexrecord, kfsetting->_index, kfindex );
+        }
+        else
+        {
+            player->UpdateData( kfindexrecord, kfsetting->_index, __STRING__( sort ), KFEnum::Set, kfsetting->_sort );
+            player->UpdateData( kfindexrecord, kfsetting->_index, __STRING__( storeid ), KFEnum::Set, kfsetting->_store_id );
+        }
     }
 
     bool KFStoreUnlockModule::IsStoreUnlock( KFEntity* player, uint32 storeid )
