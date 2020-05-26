@@ -88,16 +88,16 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::StoreSettingError, kfmsg.storeid() );
         }
 
+        if ( !KFUtility::HaveBitMask( kfsetting->_refresh_type, ( uint32 )KFMsg::RefreshManual ) )
+        {
+            return _kf_display->SendToClient( player, KFMsg::StoreNotRefreshManual );
+        }
+
         auto kfstorerecord = player->Find( __STRING__( store ) );
         switch ( kfmsg.refreshtype() )
         {
         case KFMsg::RefreshByFree:
         {
-            if ( kfsetting->_refresh_type != KFMsg::RefreshManual )
-            {
-                return _kf_display->SendToClient( player, KFMsg::StoreNotRefreshManual );
-            }
-
             // 判断刷新时间
             auto refreshtime = kfstorerecord->Get( kfmsg.storeid(), __STRING__( time ) );
             if ( refreshtime > KFGlobal::Instance()->_real_time )
@@ -214,7 +214,7 @@ namespace KFrame
         for ( auto& iter : KFStoreConfig::Instance()->_settings._objects )
         {
             auto kfsetting = iter.second;
-            if ( kfsetting->_refresh_type != KFMsg::RefreshAuto )
+            if ( !KFUtility::HaveBitMask( kfsetting->_refresh_type, ( uint32 )KFMsg::RefreshAuto ) )
             {
                 continue;
             }
