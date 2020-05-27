@@ -124,9 +124,15 @@ namespace KFrame
             // 设置刷新数量
             if ( refreshtimeid != 0 )
             {
-                ++refreshcount;
+                player->UpdateData( kfstorerecord, kfsetting->_id, __STRING__( refresh ), KFEnum::Add, 1u );
             }
-            player->UpdateData( kfstorerecord, kfsetting->_id, __STRING__( refresh ), KFEnum::Set, refreshcount );
+
+            // 是否要重置时间
+            if ( kfsetting->_is_refresh_reset_time )
+            {
+                auto nexttime = _kf_reset->CalcNextResetTime( KFGlobal::Instance()->_real_time, kfsetting->_refresh_time_id );
+                player->UpdateData( kfstorerecord, kfsetting->_id, __STRING__( time ), KFEnum::Set, nexttime );
+            }
         }
         break;
         default:
@@ -187,7 +193,7 @@ namespace KFrame
             auto count = KFGlobal::Instance()->RandRange( mincount, maxcount, 1u );
             for ( auto i = 0u; i < count; ++i )
             {
-                auto goodstupledata = _kf_goods->RandGoods( groupid, excludelist );
+                auto goodstupledata = _kf_goods->RandGoods( player, groupid, excludelist );
                 auto goodsid = std::get<0>( goodstupledata );
                 auto stock = std::get<1>( goodstupledata );
                 if ( goodsid == 0u || stock == 0u )

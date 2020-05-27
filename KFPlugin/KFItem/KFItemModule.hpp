@@ -77,6 +77,9 @@ namespace KFrame
         // 删除道具数量
         __KF_MESSAGE_FUNCTION__( HandleRemoveItemCountReq );
 
+        // 出售道具
+        __KF_MESSAGE_FUNCTION__( HandleSellItemReq );
+
     protected:
         // 获得道具数量
         __KF_GET_CONFIG_VALUE_FUNCTION__( GetItemTotalCount );

@@ -29,6 +29,9 @@ namespace KFrame
 
         // 刷新花费列表
         UInt32Vector _refresh_cost_list;
+
+        // 手动刷新是否重置时间
+        bool _is_refresh_reset_time = false;
     public:
         // 是否有该商品
         bool IsHaveGoods( uint32 goodsid ) const;

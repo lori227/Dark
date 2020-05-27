@@ -53,6 +53,9 @@ namespace KFrame
         // 执行剧情
         __KF_EXECUTE_FUNCTION__( OnExecuteStory );
 
+        // 创建角色
+        __KF_CREATE_ROLE_FUNCTION__( OnCreateRoleStoryModule );
+
         // 删除对话
         __KF_REMOVE_DATA_FUNCTION__( OnRemoveDialogueCallBack );
 
@@ -64,9 +67,6 @@ namespace KFrame
 
         // 探索结算更新
         __KF_UPDATE_DATA_FUNCTION__( OnUpdateRealmCallBack );
-
-        // 名字更新
-        __KF_UPDATE_STRING_FUNCTION__( OnUpdateNameCallBack );
 
         // 开始剧情请求
         __KF_MESSAGE_FUNCTION__( HandleStartStoryReq );

@@ -7,13 +7,13 @@ namespace KFrame
         _kf_component = _kf_kernel->FindComponent( __STRING__( player ) );
 
         __REGISTER_ENTER_PLAYER__( &KFRoleModule::OnEnterRoleModule );
+        __REGISTER_CREATE_ROLE__( &KFRoleModule::OnCreateRoleModule );
         __REGISTER_UPDATE_DATA_1__( __STRING__( money ), &KFRoleModule::OnUpdateMoneyCallBack );
         __REGISTER_UPDATE_DATA_1__( __STRING__( mainstage ), &KFRoleModule::OnMainStageUpdate );
         __REGISTER_REMOVE_DATA_1__( __STRING__( story ), &KFRoleModule::OnRemoveStoryCallBack );
         __REGISTER_UPDATE_DATA_2__( __STRING__( story ), __STRING__( sequence ), &KFRoleModule::OnUpdateStoryCallBack );
         __REGISTER_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( pveresult ), &KFRoleModule::OnUpdatePVECallBack );
         __REGISTER_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( realmresult ), &KFRoleModule::OnUpdateRealmCallBack );
-        __REGISTER_UPDATE_STRING_2__( __STRING__( basic ), __STRING__( name ), &KFRoleModule::OnUpdateNameCallBack );
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_SET_PLAYER_HEADICON_REQ, &KFRoleModule::HandleSetPlayerHeadIconReq );
@@ -25,13 +25,13 @@ namespace KFrame
     void KFRoleModule::BeforeShut()
     {
         __UN_ENTER_PLAYER__();
+        __UN_CREATE_ROLE__();
         __UN_UPDATE_DATA_1__( __STRING__( money ) );
         __UN_UPDATE_DATA_1__( __STRING__( mainstage ) );
         __UN_REMOVE_DATA_1__( __STRING__( story ) );
         __UN_UPDATE_DATA_2__( __STRING__( story ), __STRING__( sequence ) );
         __UN_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( pveresult ) );
         __UN_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( realmresult ) );
-        __UN_UPDATE_DATA_2__( __STRING__( basic ), __STRING__( name ) );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_SET_PLAYER_HEADICON_REQ );
         __UN_MESSAGE__( KFMsg::MSG_SET_PLAYER_FACTION_REQ );
@@ -67,6 +67,13 @@ namespace KFrame
         auto mainstage = player->Get( __STRING__( mainstage ) );
         OnExecuteInitialProcess( player, mainstage );
     }
+
+    __KF_CREATE_ROLE_FUNCTION__( KFRoleModule::OnCreateRoleModule )
+    {
+        // 设置团长标记
+        player->UpdateData( __STRING__( basic ), __STRING__( commander ), KFEnum::Set, 1u );
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     __KF_UPDATE_DATA_FUNCTION__( KFRoleModule::OnUpdateMoneyCallBack )
@@ -154,15 +161,6 @@ namespace KFrame
         }
 
         AddSequence( player, kfdata->GetParent(), KFMsg::ProcessExplore );
-    }
-
-    __KF_UPDATE_STRING_FUNCTION__( KFRoleModule::OnUpdateNameCallBack )
-    {
-        if ( oldvalue == _invalid_string )
-        {
-            // 设置团长标记
-            player->UpdateData( __STRING__( basic ), __STRING__( commander ), KFEnum::Set, 1u );
-        }
     }
 
     void KFRoleModule::AddSequence( KFEntity* player, KFData* kfdata, uint32 type )

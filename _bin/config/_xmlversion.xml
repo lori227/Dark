@@ -1,4 +1,4 @@
-<root version="5071">
+<root version="5090">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -43,7 +43,6 @@
 	<item name="element" version="1754" />
 	<item name="headportrait" version="1803" />
 	<item name="smithy" version="1935" />
-	<item name="maincamp_camera" version="2016" />
 	<item name="filter" version="2053" />
 	<item name="buildcondition" version="2500" />
 	<item name="train" version="2516" />
@@ -61,7 +60,6 @@
 	<item name="jumpaddress" version="3109" />
 	<item name="option" version="3541" />
 	<item name="RenderCaptureCfg" version="3600" />
-	<item name="buildbasics" version="3600" />
 	<item name="leader" version="3600" />
 	<item name="herorace" version="3604" />
 	<item name="herobackground" version="3610" />
@@ -71,7 +69,6 @@
 	<item name="itemment" version="3956" />
 	<item name="exchange" version="3978" />
 	<item name="select" version="4077" />
-	<item name="worldmaptext" version="4131" />
 	<item name="realmtime" version="4224" />
 	<item name="weather" version="4224" />
 	<item name="herocharacter" version="4273" />
@@ -88,7 +85,6 @@
 	<item name="config" version="4513" />
 	<item name="countcost" version="4515" />
 	<item name="meshconfig" version="4531" />
-	<item name="time" version="4532" />
 	<item name="minimap" version="4576" />
 	<item name="battletipstype" version="4582" />
 	<item name="itemweapon" version="4613" />
@@ -101,9 +97,7 @@
 	<item name="npcskill" version="4765" />
 	<item name="injury" version="4785" />
 	<item name="unlockcondition" version="4793" />
-	<item name="npcrand" version="4801" />
 	<item name="injuryrandom" version="4808" />
-	<item name="errorcode" version="4815" />
 	<item name="heroprofession" version="4824" />
 	<item name="reward" version="4828" />
 	<item name="smithyweapon" version="4832" />
@@ -116,8 +110,6 @@
 	<item name="multievent" version="4892" />
 	<item name="granarybuy" version="4897" />
 	<item name="innerworld" version="4905" />
-	<item name="chapter" version="4921" />
-	<item name="status" version="4921" />
 	<item name="dialoguetext" version="4940" />
 	<item name="itemrune" version="4946" />
 	<item name="heroattribute" version="4947" />
@@ -128,24 +120,20 @@
 	<item name="task" version="4972" />
 	<item name="currency" version="4976" />
 	<item name="herolevel" version="4981" />
-	<item name="pve" version="4988" />
 	<item name="player" version="4991" />
 	<item name="levelvalue" version="4991" />
 	<item name="npcgenerate" version="4993" />
 	<item name="itemtype" version="4997" />
-	<item name="itemcommon" version="4997" />
 	<item name="eventparams" version="4999" />
 	<item name="camptext" version="4999" />
 	<item name="dropgroup" version="5000" />
 	<item name="realm" version="5000" />
 	<item name="itembag" version="5002" />
-	<item name="tipstext" version="5005" />
 	<item name="dropdata" version="5009" />
 	<item name="herogenerate" version="5010" />
 	<item name="heroweightpool" version="5014" />
 	<item name="heroskill" version="5016" />
 	<item name="rolebasetext" version="5022" />
-	<item name="npcgroup" version="5024" />
 	<item name="heroconstant" version="5026" />
 	<item name="technology" version="5032" />
 	<item name="itemconstant" version="5035" />
@@ -154,14 +142,26 @@
 	<item name="tasktext" version="5046" />
 	<item name="taskcondition" version="5047" />
 	<item name="formula" version="5049" />
-	<item name="unlock" version="5054" />
 	<item name="constant" version="5059" />
 	<item name="category" version="5060" />
-	<item name="goods" version="5066" />
 	<item name="prompttext" version="5068" />
 	<item name="buildlevel" version="5069" />
-	<item name="store" version="5070" />
 	<item name="uitext" version="5070" />
 	<item name="storeunlock" version="5071" />
-	<item name="class" version="5071" />
+	<item name="unlock" version="5072" />
+	<item name="class" version="5079" />
+	<item name="tipstext" version="5080" />
+	<item name="errorcode" version="5080" />
+	<item name="time" version="5081" />
+	<item name="store" version="5081" />
+	<item name="chapter" version="5083" />
+	<item name="maincamp_camera" version="5086" />
+	<item name="buildbasics" version="5087" />
+	<item name="goods" version="5088" />
+	<item name="itemcommon" version="5089" />
+	<item name="pve" version="5090" />
+	<item name="npcrand" version="5090" />
+	<item name="status" version="5090" />
+	<item name="npcgroup" version="5090" />
+	<item name="worldmaptext" version="5090" />
 </root>

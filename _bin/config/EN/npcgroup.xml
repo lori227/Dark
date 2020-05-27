@@ -1,8 +1,8 @@
-<root platform="" version="5024">
+<root platform="" version="5090">
 	<item Id="1" Npc="11110001" SpawnModel="" />
 	<item Id="2" Npc="11000001,11000001,11000001,11000004" SpawnModel="" />
-	<item Id="3" Npc="11134001" SpawnModel="" />
-	<item Id="4" Npc="11105002,11105002,11129002,11100002" SpawnModel="" />
+	<item Id="33" Npc="11100002,11100002,11100002" SpawnModel="" />
+	<item Id="4" Npc="11100002,11100002,11100002,11100002" SpawnModel="" />
 	<item Id="5" Npc="11133020,11133020,11112020,11112020,11109020,11109020,11133020,11133020" SpawnModel="" />
 	<item Id="6" Npc="11100001,11105006" SpawnModel="" />
 	<item Id="7" Npc="11110001,11100001,11100001" SpawnModel="" />

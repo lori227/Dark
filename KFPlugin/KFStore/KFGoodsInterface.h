@@ -13,7 +13,7 @@ namespace KFrame
         virtual uint32 BuyGoods( KFEntity* player, uint32 goodsid, uint32 buycount ) = 0;
 
         // 随机一个商品
-        virtual std::tuple<uint32, uint32> RandGoods( uint32 groupid, UInt32Set& excludelist ) = 0;
+        virtual std::tuple<uint32, uint32> RandGoods( KFEntity* player, uint32 groupid, UInt32Set& excludelist ) = 0;
 
     };
     ///////////////////////////////////////////////////////////////////////////////////////

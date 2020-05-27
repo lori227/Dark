@@ -3,6 +3,7 @@
 
 #include "KFItemSetting.hpp"
 #include "KFZConfig/KFConfig.h"
+#include "KFZConfig/KFElementConfig.h"
 
 namespace KFrame
 {
@@ -24,6 +25,9 @@ namespace KFrame
 
         // 加载完成
         virtual void LoadComplete();
+
+        // 全部加载完成
+        virtual void LoadAllComplete();
 
         // 读取通用道具
         void ReadCommonSetting( KFNode& xmlnode, KFItemSetting* kfsetting );

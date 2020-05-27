@@ -58,6 +58,11 @@ namespace KFrame
         // 每次刷新的数量
         uint32 _refresh_count = 0u;
 
+        // 手动刷新是否重置时间
+        bool _is_refresh_reset_time = false;
+
+        // 手动刷新是否重置数量
+        bool _is_refresh_reset_count = false;
     public:
         // 判断是否在出售时间内
         bool CheckInBuyTime( uint64 nowtime ) const;

@@ -1,4 +1,4 @@
-<root platform="" version="4532">
+<root platform="" version="5081">
 	<item Id="1" Type="2" Value="0" Hour="0" />
 	<item Id="2" Type="2" Value="0" Hour="5" />
 	<item Id="3" Type="3" Value="1" Hour="0" />
@@ -9,4 +9,6 @@
 	<item Id="105" Type="6" Value="1" Hour="0" />
 	<item Id="106" Type="6" Value="5" Hour="0" />
 	<item Id="107" Type="6" Value="10" Hour="0" />
+	<item Id="1001" Type="2" Value="0" Hour="5" />
+	<item Id="1002" Type="6" Value="5" Hour="0" />
 </root>

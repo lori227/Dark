@@ -19,6 +19,8 @@ namespace KFrame
         kfsetting->_group_id = xmlnode.GetUInt32( "GroupId" );
         kfsetting->_group_weight = xmlnode.GetUInt32( "GroupWeight" );
         kfsetting->_refresh_count = xmlnode.GetUInt32( "RefreshCount" );
+        kfsetting->_is_refresh_reset_time = xmlnode.GetBoolen( "RefreshResetTime" );
+        kfsetting->_is_refresh_reset_count = xmlnode.GetBoolen( "RefreshResetCount" );
     }
 
     void KFGoodsConfig::LoadAllComplete()

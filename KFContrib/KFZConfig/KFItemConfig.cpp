@@ -57,11 +57,20 @@ namespace KFrame
             auto nextiter = _rune_type_level.find( nextkey );
             if ( nextiter != _rune_type_level.end() )
             {
-                _rune_compound[iter.second] = nextiter->second;
+                _rune_compound[ iter.second ] = nextiter->second;
             }
         }
 
         _rune_type_level.clear();
+    }
+
+    void KFItemConfig::LoadAllComplete()
+    {
+        for ( auto& iter : _settings._objects )
+        {
+            auto kfsetting = iter.second;
+            KFElementConfig::Instance()->ParseElement( kfsetting->_sell_elements, __FILE__, kfsetting->_id );
+        }
     }
 
     void KFItemConfig::ReadCommonSetting( KFNode& xmlnode, KFItemSetting* kfsetting )
@@ -86,9 +95,7 @@ namespace KFrame
         }
         /////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////
-
-        auto strsell = xmlnode.GetString( "Sell", true );
-        kfsetting->_sell_elements.Parse( strsell, __FUNC_LINE__ );
+        kfsetting->_sell_elements._str_parse = xmlnode.GetString( "Sell", true );
 
         kfsetting->_lua_file = xmlnode.GetString( "LuaFile", true );
         auto addfunction = xmlnode.GetString( "AddFunction", true );

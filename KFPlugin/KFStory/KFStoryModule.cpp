@@ -11,12 +11,12 @@ namespace KFrame
         __REGISTER_EXECUTE__( __STRING__( story ), &KFStoryModule::OnExecuteStory );
         __REGISTER_DROP_LOGIC__( __STRING__( story ), &KFStoryModule::OnDropStory );
         __REGISTER_ADD_ELEMENT__( __STRING__( story ), &KFStoryModule::AddStoryElement );
+        __REGISTER_CREATE_ROLE__( &KFStoryModule::OnCreateRoleStoryModule );
 
         __REGISTER_REMOVE_DATA_1__( __STRING__( dialogue ), &KFStoryModule::OnRemoveDialogueCallBack );
         __REGISTER_UPDATE_DATA_2__( __STRING__( story ), __STRING__( sequence ), &KFStoryModule::OnUpdateSequenceCallBack );
         __REGISTER_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( pveresult ), &KFStoryModule::OnUpdatePVECallBack );
         __REGISTER_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( realmresult ), &KFStoryModule::OnUpdateRealmCallBack );
-        __REGISTER_UPDATE_STRING_2__( __STRING__( basic ), __STRING__( name ), &KFStoryModule::OnUpdateNameCallBack );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_START_STORY_REQ, &KFStoryModule::HandleStartStoryReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_UPDATE_STORY_REQ, &KFStoryModule::HandleUpdateStoryReq );
@@ -29,12 +29,12 @@ namespace KFrame
         __UN_EXECUTE__( __STRING__( story ) );
         __UN_DROP_LOGIC__( __STRING__( story ) );
         __UN_ADD_ELEMENT__( __STRING__( story ) );
+        __UN_CREATE_ROLE__();
 
         __UN_REMOVE_DATA_1__( __STRING__( dialogue ) );
         __UN_UPDATE_DATA_2__( __STRING__( story ), __STRING__( sequence ) );
         __UN_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( pveresult ) );
         __UN_UPDATE_DATA_2__( __STRING__( balance ), __STRING__( realmresult ) );
-        __UN_UPDATE_STRING_2__( __STRING__( basic ), __STRING__( name ) );
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_START_STORY_REQ );
         __UN_MESSAGE__( KFMsg::MSG_UPDATE_STORY_REQ );
@@ -191,6 +191,12 @@ namespace KFrame
         }
     }
 
+    __KF_CREATE_ROLE_FUNCTION__( KFStoryModule::OnCreateRoleStoryModule )
+    {
+        // 创建角色
+        AddSequence( player, nullptr, KFMsg::CreateRole );
+    }
+
     __KF_ADD_ELEMENT_FUNCTION__( KFStoryModule::AddStoryElement )
     {
         auto kfelement = kfresult->_element;
@@ -291,15 +297,6 @@ namespace KFrame
         }
 
         AddSequence( player, kfdata->GetParent(), KFMsg::ProcessExplore );
-    }
-
-    __KF_UPDATE_STRING_FUNCTION__( KFStoryModule::OnUpdateNameCallBack )
-    {
-        if ( oldvalue == _invalid_string )
-        {
-            // 创建角色
-            AddSequence( player, kfdata, KFMsg::CreateRole );
-        }
     }
 
     __KF_MESSAGE_FUNCTION__( KFStoryModule::HandleStartStoryReq )

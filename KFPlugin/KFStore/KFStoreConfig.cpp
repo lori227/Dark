@@ -8,6 +8,7 @@ namespace KFrame
         kfsetting->_refresh_type = xmlnode.GetUInt32( "RefreshType" );
         kfsetting->_refresh_time_id = xmlnode.GetUInt32( "RefreshTimeId" );
         kfsetting->_random_type = xmlnode.GetUInt32( "RandomType" );
+        kfsetting->_is_refresh_reset_time = xmlnode.GetBoolen( "RefreshResetTime" );
 
         auto strrefreshgoods = xmlnode.GetString( "RefreshGoods" );
         while ( !strrefreshgoods.empty() )

@@ -39,10 +39,16 @@ namespace KFrame
             }
         }
 
+        if ( removelist.empty() )
+        {
+            return;
+        }
+
         for ( auto goodsid : removelist )
         {
             player->RemoveData( kfgoodsrecord, goodsid, false );
         }
+        _kf_display->DelayToClient( player, KFMsg::StoreGoodsRefreshOk );
     }
 
     uint32 KFGoodsModule::BuyGoods( KFEntity* player, uint32 goodsid, uint32 buycount )
@@ -100,12 +106,32 @@ namespace KFrame
         return KFMsg::StoreBuyOK;
     }
 
-    std::tuple<uint32, uint32> KFGoodsModule::RandGoods( uint32 groupid, UInt32Set& excludelist )
+    std::tuple<uint32, uint32> KFGoodsModule::RandGoods( KFEntity* player, uint32 groupid, UInt32Set& excludelist )
     {
         auto kfgoodsweightdata = KFGoodsConfig::Instance()->RandGroupGoods( groupid, excludelist );
         if ( kfgoodsweightdata == nullptr )
         {
             return std::make_tuple( 0u, 0u );
+        }
+
+        // 是否重置刷新时间和数量
+        auto kfsetting = KFGoodsConfig::Instance()->FindSetting( kfgoodsweightdata->_id );
+        if ( kfsetting != nullptr )
+        {
+            if ( kfsetting->_is_refresh_reset_time )
+            {
+                _kf_reset->ResetTime( player, kfsetting->_limit_buy_time_id );
+            }
+
+            if ( kfsetting->_is_refresh_reset_count )
+            {
+                auto kfgoodsrecord = player->Find( __STRING__( goods ) );
+                auto kfgoods = kfgoodsrecord->Find( kfsetting->_id );
+                if ( kfgoods != nullptr )
+                {
+                    player->UpdateData( kfgoods, __STRING__( value ), KFEnum::Set, 0u );
+                }
+            }
         }
 
         return std::make_tuple( kfgoodsweightdata->_id, kfgoodsweightdata->_refresh_count );

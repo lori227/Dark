@@ -22,6 +22,7 @@ namespace KFrame
         ///////////////////////////////////////////////////////////////////////////////////////////////////
         __REGISTER_MESSAGE__( KFMsg::MSG_REMOVE_ITEM_REQ, &KFItemModule::HandleRemoveItemReq );
         __REGISTER_MESSAGE__( KFMsg::MSG_REMOVE_ITEM_COUNT_REQ, &KFItemModule::HandleRemoveItemCountReq );
+        __REGISTER_MESSAGE__( KFMsg::MSG_SELL_ITEM_REQ, &KFItemModule::HandleSellItemReq );
     }
 
     void KFItemModule::BeforeShut()
@@ -44,6 +45,7 @@ namespace KFrame
         //////////////////////////////////////////////////////////////////////////////////////////////////
         __UN_MESSAGE__( KFMsg::MSG_REMOVE_ITEM_REQ );
         __UN_MESSAGE__( KFMsg::MSG_REMOVE_ITEM_COUNT_REQ );
+        __UN_MESSAGE__( KFMsg::MSG_SELL_ITEM_REQ );
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -962,5 +964,41 @@ namespace KFrame
         {
             kfresult->_is_need_show = false;
         }
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    __KF_MESSAGE_FUNCTION__( KFItemModule::HandleSellItemReq )
+    {
+        __CLIENT_PROTO_PARSE__( KFMsg::MsgSellItemReq );
+
+        auto kfitemrecord = player->Find( kfmsg.name() );
+        auto kfitem = kfitemrecord->Find( kfmsg.uuid() );
+        if ( kfitem == nullptr )
+        {
+            return _kf_display->SendToClient( player, KFMsg::ItemDataNotExist );
+        }
+
+        auto itemid = kfitem->Get<uint32>( kfitemrecord->_data_setting->_config_key_name );
+        auto kfsetting = KFItemConfig::Instance()->FindSetting( itemid );
+        if ( kfsetting == nullptr )
+        {
+            return _kf_display->SendToClient( player, KFMsg::ItemSettingNotExist );
+        }
+
+        if ( kfsetting->_sell_elements.IsEmpty() )
+        {
+            return _kf_display->SendToClient( player, KFMsg::ItemCanNotSell );
+        }
+
+        auto count = kfitem->Get<uint32>( kfitemrecord->_data_setting->_value_key_name );
+
+        // 先删除道具
+        player->RemoveData( kfitemrecord, kfmsg.uuid() );
+
+        // 添加道具
+        player->AddElement( &kfsetting->_sell_elements, count, __STRING__( sell ), itemid, __FUNC_LINE__ );
+        _kf_display->DelayToClient( player, KFMsg::ItemSellOk );
     }
 }
