@@ -36,6 +36,11 @@ namespace KFrame
         // 关闭
         virtual void BeforeShut();
 
+        // 刷新商店
+        virtual void RefreshGoods( KFEntity* player, uint32 storeid );
+
+        // 删除随机商店
+        virtual void RemoveStore( KFEntity* player, uint32 storeid );
     protected:
         // 请求购买商城道具
         __KF_MESSAGE_FUNCTION__( HandleStoreBuyGoodsReq );
@@ -53,6 +58,9 @@ namespace KFrame
         // 刷新商城
         __KF_TIMER_FUNCTION__( OnTimerRefreshStore );
         void StartRefreshStoreTimer( KFEntity* player, uint32 storeid, uint64 refreshtime );
+
+        // 更新商店刷新时间
+        void UpdateStoreRefreshTime( KFEntity* player, const KFStoreSetting* kfsetting, KFData* kfstorerecord );
 
         // 刷新商城道具
         void StoreRefreshGoods( KFEntity* player, const KFStoreSetting* kfsetting, KFData* kfstorerecord );

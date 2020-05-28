@@ -9,6 +9,7 @@
 //    @Date             :    2020-4-16
 ************************************************************************/
 
+#include "KFStoreInterface.h"
 #include "KFStoreUnlockInterface.h"
 #include "KFPlayer/KFPlayerInterface.h"
 #include "KFKernel/KFKernelInterface.h"

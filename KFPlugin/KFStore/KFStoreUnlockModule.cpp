@@ -90,9 +90,17 @@ namespace KFrame
         }
         else
         {
+            // 删除原有的商店物品
+            auto laststoreid = kfindex->Get<uint32>( __STRING__( storeid ) );
+            _kf_store->RemoveStore( player, laststoreid );
+
+            // 更新解锁商店
             player->UpdateData( kfindexrecord, kfsetting->_index, __STRING__( sort ), KFEnum::Set, kfsetting->_sort );
             player->UpdateData( kfindexrecord, kfsetting->_index, __STRING__( storeid ), KFEnum::Set, kfsetting->_store_id );
         }
+
+        // 刷新商品
+        _kf_store->RefreshGoods( player, kfsetting->_store_id );
     }
 
     bool KFStoreUnlockModule::IsStoreUnlock( KFEntity* player, uint32 storeid )

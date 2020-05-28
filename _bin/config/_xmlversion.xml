@@ -1,4 +1,4 @@
-<root version="5090">
+<root version="5096">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -83,7 +83,6 @@
 	<item name="itemtab" version="4412" />
 	<item name="heropinchface" version="4477" />
 	<item name="config" version="4513" />
-	<item name="countcost" version="4515" />
 	<item name="meshconfig" version="4531" />
 	<item name="minimap" version="4576" />
 	<item name="battletipstype" version="4582" />
@@ -115,7 +114,6 @@
 	<item name="heroattribute" version="4947" />
 	<item name="itemgift" version="4950" />
 	<item name="heroquality" version="4952" />
-	<item name="itemtext" version="4955" />
 	<item name="story" version="4962" />
 	<item name="task" version="4972" />
 	<item name="currency" version="4976" />
@@ -154,14 +152,16 @@
 	<item name="errorcode" version="5080" />
 	<item name="time" version="5081" />
 	<item name="store" version="5081" />
-	<item name="chapter" version="5083" />
 	<item name="maincamp_camera" version="5086" />
 	<item name="buildbasics" version="5087" />
-	<item name="goods" version="5088" />
 	<item name="itemcommon" version="5089" />
-	<item name="pve" version="5090" />
-	<item name="npcrand" version="5090" />
-	<item name="status" version="5090" />
-	<item name="npcgroup" version="5090" />
-	<item name="worldmaptext" version="5090" />
+	<item name="itemtext" version="5091" />
+	<item name="goods" version="5092" />
+	<item name="countcost" version="5094" />
+	<item name="chapter" version="5095" />
+	<item name="pve" version="5096" />
+	<item name="npcrand" version="5096" />
+	<item name="status" version="5096" />
+	<item name="npcgroup" version="5096" />
+	<item name="worldmaptext" version="5096" />
 </root>

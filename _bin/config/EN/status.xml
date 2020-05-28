@@ -1,4 +1,4 @@
-<root platform="" version="5090">
+<root platform="" version="5096">
 	<item Id="1" ExecuteName="pve" ExecuteParam1="500004" ExecuteParam2="" ExecuteParam3="" />
 	<item Id="2" ExecuteName="pve" ExecuteParam1="500004" ExecuteParam2="" ExecuteParam3="" />
 	<item Id="3" ExecuteName="pve" ExecuteParam1="500005" ExecuteParam2="" ExecuteParam3="" />
@@ -109,10 +109,10 @@
 	<item Id="902" ExecuteName="pve" ExecuteParam1="500992" ExecuteParam2="" ExecuteParam3="" />
 	<item Id="903" ExecuteName="pve" ExecuteParam1="500993" ExecuteParam2="" ExecuteParam3="" />
 	<item Id="904" ExecuteName="pve" ExecuteParam1="500994" ExecuteParam2="" ExecuteParam3="" />
-	<item Id="905" ExecuteName="realm" ExecuteParam1="90003" ExecuteParam2="1" ExecuteParam3="" />
-	<item Id="906" ExecuteName="realm" ExecuteParam1="90004" ExecuteParam2="1" ExecuteParam3="" />
-	<item Id="907" ExecuteName="realm" ExecuteParam1="90005" ExecuteParam2="1" ExecuteParam3="" />
-	<item Id="908" ExecuteName="realm" ExecuteParam1="90006" ExecuteParam2="1" ExecuteParam3="" />
+	<item Id="905" ExecuteName="pve" ExecuteParam1="500995" ExecuteParam2="" ExecuteParam3="" />
+	<item Id="906" ExecuteName="pve" ExecuteParam1="500996" ExecuteParam2="" ExecuteParam3="" />
+	<item Id="907" ExecuteName="pve" ExecuteParam1="500997" ExecuteParam2="" ExecuteParam3="" />
+	<item Id="908" ExecuteName="pve" ExecuteParam1="500998" ExecuteParam2="" ExecuteParam3="" />
 	<item Id="909" ExecuteName="story" ExecuteParam1="10001" ExecuteParam2="" ExecuteParam3="" />
 	<item Id="910" ExecuteName="story" ExecuteParam1="11007" ExecuteParam2="" ExecuteParam3="" />
 </root>

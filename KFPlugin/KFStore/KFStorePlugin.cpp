@@ -31,6 +31,7 @@ namespace KFrame
         __FIND_MODULE__( _kf_player, KFPlayerInterface );
         __FIND_MODULE__( _kf_display, KFDisplayInterface );
         __FIND_MODULE__( _kf_condition, KFConditionInterface );
+        __FIND_MODULE__( _kf_store, KFStoreInterface );
         __FIND_MODULE__( _kf_goods, KFGoodsInterface );
         __FIND_MODULE__( _kf_store_unlock, KFStoreUnlockInterface );
     }

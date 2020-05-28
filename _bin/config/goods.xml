@@ -1,4 +1,4 @@
-<root platform="" version="5088">
+<root platform="" version="5092">
 	<item Id="1001" StoreId="100101" Item="[[2,1000017,200]]" MinBuyCount="1" MaxBuyCount="1" BeginTime="2018-11-11 00:00:00" EndTime="2021-11-11 00:00:00" Price="[[1,2,50]]" Discount="[[1,2,40]]" DiscountBeginTime="" DiscountEndTime="" LimitTimeId="1001" LimitCount="5" RefreshResetTime="1" RefreshResetCount="1" GroupId="0" GroupWeight="0" RefreshCount="" />
 	<item Id="1002" StoreId="100101" Item="[[2,1000101,1]]" MinBuyCount="1" MaxBuyCount="1" BeginTime="2018-11-11 00:00:00" EndTime="2019-11-11 00:00:00" Price="[[1,2,5]]" Discount="[[1,2,99]]" DiscountBeginTime="" DiscountEndTime="" LimitTimeId="1001" LimitCount="10" RefreshResetTime="1" RefreshResetCount="1" GroupId="0" GroupWeight="0" RefreshCount="" />
 	<item Id="1003" StoreId="100101" Item="[[2,1000101,1]]" MinBuyCount="1" MaxBuyCount="1" BeginTime="2018-11-11 00:00:00" EndTime="2020-5-28 00:00:00" Price="[[1,2,5]]" Discount="[[1,2,5]]" DiscountBeginTime="" DiscountEndTime="" LimitTimeId="1001" LimitCount="10" RefreshResetTime="1" RefreshResetCount="1" GroupId="0" GroupWeight="0" RefreshCount="" />

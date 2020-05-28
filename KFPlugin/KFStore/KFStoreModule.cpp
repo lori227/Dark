@@ -106,8 +106,7 @@ namespace KFrame
             }
 
             // 保存时间
-            auto nexttime = _kf_reset->CalcNextResetTime( KFGlobal::Instance()->_real_time, kfsetting->_refresh_time_id );
-            player->UpdateData( kfstorerecord, kfsetting->_id, __STRING__( time ), KFEnum::Set, nexttime );
+            UpdateStoreRefreshTime( player, kfsetting, kfstorerecord );
         }
         break;
         case KFMsg::RefreshByCost:
@@ -130,8 +129,7 @@ namespace KFrame
             // 是否要重置时间
             if ( kfsetting->_is_refresh_reset_time )
             {
-                auto nexttime = _kf_reset->CalcNextResetTime( KFGlobal::Instance()->_real_time, kfsetting->_refresh_time_id );
-                player->UpdateData( kfstorerecord, kfsetting->_id, __STRING__( time ), KFEnum::Set, nexttime );
+                UpdateStoreRefreshTime( player, kfsetting, kfstorerecord );
             }
         }
         break;
@@ -170,6 +168,24 @@ namespace KFrame
         }
 
         return std::make_tuple( KFMsg::DataNotEnough, 0u );
+    }
+
+    void KFStoreModule::UpdateStoreRefreshTime( KFEntity* player, const KFStoreSetting* kfsetting, KFData* kfstorerecord )
+    {
+        auto nexttime = _kf_reset->CalcNextResetTime( KFGlobal::Instance()->_real_time, kfsetting->_refresh_time_id );
+        player->UpdateData( kfstorerecord, kfsetting->_id, __STRING__( time ), KFEnum::Set, nexttime );
+    }
+
+    void KFStoreModule::RefreshGoods( KFEntity* player, uint32 storeid )
+    {
+        auto kfsetting = KFStoreConfig::Instance()->FindSetting( storeid );
+        if ( kfsetting == nullptr || !KFUtility::HaveBitMask( kfsetting->_refresh_type, ( uint32 )KFMsg::RefreshAuto ) )
+        {
+            return;
+        }
+
+        auto refreshtime = player->Get( __STRING__( store ), kfsetting->_id, __STRING__( time ) );
+        StartRefreshStoreTimer( player, kfsetting->_id, refreshtime );
     }
 
     void KFStoreModule::StoreRefreshGoods( KFEntity* player, const KFStoreSetting* kfsetting, KFData* kfstorerecord )
@@ -212,6 +228,11 @@ namespace KFrame
         }
 
         _kf_display->DelayToClient( player, KFMsg::StoreRefreshOk );
+    }
+
+    void KFStoreModule::RemoveStore( KFEntity* player, uint32 storeid )
+    {
+        player->RemoveData( __STRING__( store ), storeid );
     }
 
     __KF_ENTER_PLAYER_FUNCTION__( KFStoreModule::OnEnterStoreModule )
