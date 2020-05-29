@@ -1,4 +1,4 @@
-<root platform="" version="5096">
+<root platform="" version="5098">
 	<item Id="1" NpcGroup="5" Weight="100" SpawnRule="0" />
 	<item Id="2" NpcGroup="2" Weight="100" SpawnRule="0" />
 	<item Id="3" NpcGroup="3" Weight="100" SpawnRule="0" />
@@ -2536,6 +2536,7 @@
 	<item Id="500996" NpcGroup="6" Weight="100" SpawnRule="0" />
 	<item Id="500997" NpcGroup="7" Weight="100" SpawnRule="0" />
 	<item Id="500998" NpcGroup="8" Weight="100" SpawnRule="0" />
+	<item Id="500999" NpcGroup="9" Weight="100" SpawnRule="0" />
 	<item Id="550101" NpcGroup="91001001" Weight="100" SpawnRule="0" />
 	<item Id="550102" NpcGroup="91001002" Weight="100" SpawnRule="0" />
 	<item Id="550102" NpcGroup="91001003" Weight="100" SpawnRule="0" />

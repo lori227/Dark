@@ -1,4 +1,4 @@
-<root platform="" version="5096">
+<root platform="" version="5098">
 	<item Id="1" ExecuteName="pve" ExecuteParam1="500004" ExecuteParam2="" ExecuteParam3="" />
 	<item Id="2" ExecuteName="pve" ExecuteParam1="500004" ExecuteParam2="" ExecuteParam3="" />
 	<item Id="3" ExecuteName="pve" ExecuteParam1="500005" ExecuteParam2="" ExecuteParam3="" />
@@ -113,6 +113,7 @@
 	<item Id="906" ExecuteName="pve" ExecuteParam1="500996" ExecuteParam2="" ExecuteParam3="" />
 	<item Id="907" ExecuteName="pve" ExecuteParam1="500997" ExecuteParam2="" ExecuteParam3="" />
 	<item Id="908" ExecuteName="pve" ExecuteParam1="500998" ExecuteParam2="" ExecuteParam3="" />
-	<item Id="909" ExecuteName="story" ExecuteParam1="10001" ExecuteParam2="" ExecuteParam3="" />
-	<item Id="910" ExecuteName="story" ExecuteParam1="11007" ExecuteParam2="" ExecuteParam3="" />
+	<item Id="909" ExecuteName="pve" ExecuteParam1="500999" ExecuteParam2="" ExecuteParam3="" />
+	<item Id="910" ExecuteName="story" ExecuteParam1="10001" ExecuteParam2="" ExecuteParam3="" />
+	<item Id="911" ExecuteName="story" ExecuteParam1="11007" ExecuteParam2="" ExecuteParam3="" />
 </root>

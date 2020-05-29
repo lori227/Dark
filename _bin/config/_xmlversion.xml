@@ -1,4 +1,4 @@
-<root version="5096">
+<root version="5098">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -159,9 +159,9 @@
 	<item name="goods" version="5092" />
 	<item name="countcost" version="5094" />
 	<item name="chapter" version="5095" />
-	<item name="pve" version="5096" />
-	<item name="npcrand" version="5096" />
-	<item name="status" version="5096" />
-	<item name="npcgroup" version="5096" />
-	<item name="worldmaptext" version="5096" />
+	<item name="pve" version="5098" />
+	<item name="npcrand" version="5098" />
+	<item name="status" version="5098" />
+	<item name="npcgroup" version="5098" />
+	<item name="worldmaptext" version="5098" />
 </root>
