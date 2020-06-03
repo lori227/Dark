@@ -1,4 +1,4 @@
-<root platform="" version="5094">
+<root platform="" version="5124">
 	<item CostId="1" RefreshTimeId="1" MinCount="1" MaxCount="1" Cost="[[1,1,1000]]" />
 	<item CostId="1" RefreshTimeId="1" MinCount="2" MaxCount="2" Cost="[[1,1,2000]]" />
 	<item CostId="1" RefreshTimeId="1" MinCount="3" MaxCount="4" Cost="[[1,1,4000]]" />

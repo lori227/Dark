@@ -1,4 +1,4 @@
-<root platform="" version="5098">
+<root platform="" version="5112">
 	<item Id="500001" DungeonId="601011" NpcRand="500001" PveTime="1002" Weather="1001" DropVictory="5000001" DropFail="" InnerDropVictory="5900101" InnerDropFail="" Consume="" Durability="0" NormalFlee="0" InnerFlee="0" LevelCoefficient="0" PunishId="111" />
 	<item Id="500002" DungeonId="601012" NpcRand="500002" PveTime="1002" Weather="1001" DropVictory="5000002" DropFail="" InnerDropVictory="" InnerDropFail="" Consume="" Durability="0" NormalFlee="0" InnerFlee="0" LevelCoefficient="0" PunishId="111" />
 	<item Id="500003" DungeonId="601012" NpcRand="500003" PveTime="1002" Weather="1001" DropVictory="5000003" DropFail="" InnerDropVictory="" InnerDropFail="" Consume="" Durability="0" NormalFlee="0" InnerFlee="0" LevelCoefficient="0" PunishId="111" />

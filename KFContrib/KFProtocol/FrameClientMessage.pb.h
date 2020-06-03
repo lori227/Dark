@@ -5054,12 +5054,19 @@ class LIBPROTOC_EXPORT MsgSellItemReq : public ::google::protobuf::Message /* @@
   ::google::protobuf::uint64 uuid() const;
   void set_uuid(::google::protobuf::uint64 value);
 
+  // uint32 count = 3;
+  void clear_count();
+  static const int kCountFieldNumber = 3;
+  ::google::protobuf::uint32 count() const;
+  void set_count(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:KFMsg.MsgSellItemReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr name_;
   ::google::protobuf::uint64 uuid_;
+  ::google::protobuf::uint32 count_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_FrameClientMessage_2eproto::TableStruct;
 };
@@ -6256,11 +6263,25 @@ class LIBPROTOC_EXPORT MsgQueryRankListReq : public ::google::protobuf::Message 
   ::google::protobuf::uint32 rankid() const;
   void set_rankid(::google::protobuf::uint32 value);
 
+  // uint32 start = 2;
+  void clear_start();
+  static const int kStartFieldNumber = 2;
+  ::google::protobuf::uint32 start() const;
+  void set_start(::google::protobuf::uint32 value);
+
+  // uint32 count = 3;
+  void clear_count();
+  static const int kCountFieldNumber = 3;
+  ::google::protobuf::uint32 count() const;
+  void set_count(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:KFMsg.MsgQueryRankListReq)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 rankid_;
+  ::google::protobuf::uint32 start_;
+  ::google::protobuf::uint32 count_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_FrameClientMessage_2eproto::TableStruct;
 };
@@ -6371,12 +6392,19 @@ class LIBPROTOC_EXPORT MsgQueryRankListAck : public ::google::protobuf::Message 
   ::google::protobuf::uint32 rankid() const;
   void set_rankid(::google::protobuf::uint32 value);
 
+  // uint32 selfindex = 3;
+  void clear_selfindex();
+  static const int kSelfindexFieldNumber = 3;
+  ::google::protobuf::uint32 selfindex() const;
+  void set_selfindex(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:KFMsg.MsgQueryRankListAck)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::KFMsg::PBRankDatas* rankdatas_;
   ::google::protobuf::uint32 rankid_;
+  ::google::protobuf::uint32 selfindex_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_FrameClientMessage_2eproto::TableStruct;
 };
@@ -10635,6 +10663,20 @@ inline void MsgSellItemReq::set_uuid(::google::protobuf::uint64 value) {
   // @@protoc_insertion_point(field_set:KFMsg.MsgSellItemReq.uuid)
 }
 
+// uint32 count = 3;
+inline void MsgSellItemReq::clear_count() {
+  count_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgSellItemReq::count() const {
+  // @@protoc_insertion_point(field_get:KFMsg.MsgSellItemReq.count)
+  return count_;
+}
+inline void MsgSellItemReq::set_count(::google::protobuf::uint32 value) {
+  
+  count_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.MsgSellItemReq.count)
+}
+
 // -------------------------------------------------------------------
 
 // MsgViewMailReq
@@ -11084,6 +11126,34 @@ inline void MsgQueryRankListReq::set_rankid(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:KFMsg.MsgQueryRankListReq.rankid)
 }
 
+// uint32 start = 2;
+inline void MsgQueryRankListReq::clear_start() {
+  start_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgQueryRankListReq::start() const {
+  // @@protoc_insertion_point(field_get:KFMsg.MsgQueryRankListReq.start)
+  return start_;
+}
+inline void MsgQueryRankListReq::set_start(::google::protobuf::uint32 value) {
+  
+  start_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.MsgQueryRankListReq.start)
+}
+
+// uint32 count = 3;
+inline void MsgQueryRankListReq::clear_count() {
+  count_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgQueryRankListReq::count() const {
+  // @@protoc_insertion_point(field_get:KFMsg.MsgQueryRankListReq.count)
+  return count_;
+}
+inline void MsgQueryRankListReq::set_count(::google::protobuf::uint32 value) {
+  
+  count_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.MsgQueryRankListReq.count)
+}
+
 // -------------------------------------------------------------------
 
 // MsgQueryRankListAck
@@ -11148,6 +11218,20 @@ inline void MsgQueryRankListAck::set_allocated_rankdatas(::KFMsg::PBRankDatas* r
   }
   rankdatas_ = rankdatas;
   // @@protoc_insertion_point(field_set_allocated:KFMsg.MsgQueryRankListAck.rankdatas)
+}
+
+// uint32 selfindex = 3;
+inline void MsgQueryRankListAck::clear_selfindex() {
+  selfindex_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgQueryRankListAck::selfindex() const {
+  // @@protoc_insertion_point(field_get:KFMsg.MsgQueryRankListAck.selfindex)
+  return selfindex_;
+}
+inline void MsgQueryRankListAck::set_selfindex(::google::protobuf::uint32 value) {
+  
+  selfindex_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.MsgQueryRankListAck.selfindex)
 }
 
 // -------------------------------------------------------------------

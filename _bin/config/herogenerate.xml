@@ -1,4 +1,4 @@
-<root platform="" version="5010">
+<root platform="" version="5107">
 	<item Id="4100004" RacePool="4010003" SexPool="4020003" ProfessionPool="4030003" BackGroundPool="4040001" ActivePool="" CharacterPool="4060003" InnatePool="" AttrId="4080001" QualityPool="4030213" FormulaId="0" RoleDurability="8" Level="1" Custom="0" ExpRate="10000" />
 	<item Id="4100005" RacePool="4010004" SexPool="4020003" ProfessionPool="4030004" BackGroundPool="4040001" ActivePool="" CharacterPool="4060003" InnatePool="" AttrId="4080001" QualityPool="4030213" FormulaId="0" RoleDurability="8" Level="1" Custom="0" ExpRate="10000" />
 	<item Id="4100101" RacePool="4010003" SexPool="4020003" ProfessionPool="4030005" BackGroundPool="4040101" ActivePool="" CharacterPool="4060004" InnatePool="" AttrId="4080001" QualityPool="4030215" FormulaId="0" RoleDurability="4" Level="10" Custom="1" ExpRate="0" />

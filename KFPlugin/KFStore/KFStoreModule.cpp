@@ -52,7 +52,7 @@ namespace KFrame
         }
 
         // 判断刷新商店中是否有该道具
-        auto kfstore = player->Find( __STRING__( store ) );
+        auto kfstore = player->Find( __STRING__( store ), kfmsg.storeid() );
         if ( kfstore == nullptr )
         {
             return _kf_display->SendToClient( player, KFMsg::StoreNotRefresh, kfmsg.storeid() );
@@ -62,12 +62,6 @@ namespace KFrame
         if ( kfgoods == nullptr )
         {
             return _kf_display->SendToClient( player, KFMsg::StoreNotHaveGoods, kfmsg.goodsid() );
-        }
-
-        auto maxcount = kfgoods->Get<uint32>( kfgoods->_data_setting->_value_key_name );
-        if ( maxcount < kfmsg.buycount() )
-        {
-            return _kf_display->SendToClient( player, KFMsg::StoreStockLack );
         }
 
         auto result = _kf_goods->BuyGoods( player, kfmsg.goodsid(), kfmsg.buycount() );
@@ -196,8 +190,23 @@ namespace KFrame
         }
 
         // 商品列表
-        auto kfgoodsrecord = kfstorerecord->Find( kfsetting->_id, __STRING__( goods ) );
-        player->CleanData( kfgoodsrecord, false );
+        auto kfstoregoods = kfstorerecord->Find( kfsetting->_id, __STRING__( goods ) );
+        auto kfgoodsrecord = player->Find( __STRING__( goods ) );
+        UInt32Vector removelist;
+        for ( auto kfgoods = kfstoregoods->First(); kfgoods != nullptr; kfgoods = kfstoregoods->Next() )
+        {
+            if ( kfgoodsrecord->Find( kfgoods->GetKeyID() ) != nullptr )
+            {
+                removelist.emplace_back( kfgoods->GetKeyID() );
+            }
+        }
+
+        for ( auto iter : removelist )
+        {
+            player->RemoveData( kfgoodsrecord, iter );
+        }
+
+        player->CleanData( kfstoregoods, false );
 
         for ( auto& tupledata : kfsetting->_refresh_group_count )
         {
@@ -209,15 +218,14 @@ namespace KFrame
             auto count = KFGlobal::Instance()->RandRange( mincount, maxcount, 1u );
             for ( auto i = 0u; i < count; ++i )
             {
-                auto goodstupledata = _kf_goods->RandGoods( player, groupid, excludelist );
-                auto goodsid = std::get<0>( goodstupledata );
-                auto stock = std::get<1>( goodstupledata );
-                if ( goodsid == 0u || stock == 0u )
+                auto goodsid = _kf_goods->RandGoods( player, groupid, excludelist );
+                if ( goodsid == 0u )
                 {
                     continue;
                 }
 
-                player->UpdateData( kfgoodsrecord, goodsid, kfgoodsrecord->_data_setting->_value_key_name, KFEnum::Add, stock );
+                auto kfgoods = player->CreateData( kfstoregoods );
+                player->AddData( kfstoregoods, goodsid, kfgoods );
 
                 // 判断是否需要排除相同商品
                 if ( kfsetting->_random_type == KFMsg::ExcludeRandom )

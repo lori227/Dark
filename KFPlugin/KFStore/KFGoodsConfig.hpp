@@ -43,20 +43,11 @@ namespace KFrame
         // 限购的数量
         uint32 _limit_buy_count = 0u;
 
-        // 单次购买的最小数量
-        uint32 _min_buy_count = 1u;
-
-        // 单次购买的最大数量
-        uint32 _max_buy_count = 1u;
-
         // 商品组id
         uint32 _group_id = 0u;
 
         // 商品组权重
         uint32 _group_weight = 0u;
-
-        // 每次刷新的数量
-        uint32 _refresh_count = 0u;
 
         // 手动刷新是否重置时间
         bool _is_refresh_reset_time = false;
@@ -81,8 +72,6 @@ namespace KFrame
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     class KFGoodsGroupWeight : public KFWeight
     {
-    public:
-        uint32 _refresh_count = 0u;
     };
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////

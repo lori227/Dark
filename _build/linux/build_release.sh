@@ -3,7 +3,7 @@ mkdir -p ../../_bin/bin/linux/release
 
 sh cp_frame.sh release $1
 
-cd ../../_resource/proto
+cd ../../../Resource/proto
 svn up
 #sh 2.linux.sh
 cd -

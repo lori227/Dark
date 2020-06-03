@@ -993,12 +993,16 @@ namespace KFrame
         }
 
         auto count = kfitem->Get<uint32>( kfitemrecord->_data_setting->_value_key_name );
+        if ( kfmsg.count() == 0u || count < kfmsg.count() )
+        {
+            return _kf_display->SendToClient( player, KFMsg::ItemSellCountError );
+        }
 
-        // 先删除道具
-        player->RemoveData( kfitemrecord, kfmsg.uuid() );
+        // 更新道具数量
+        player->UpdateData( kfitem, kfitemrecord->_data_setting->_value_key_name, KFEnum::Dec, kfmsg.count() );
 
         // 添加道具
-        player->AddElement( &kfsetting->_sell_elements, count, __STRING__( sell ), itemid, __FUNC_LINE__ );
+        player->AddElement( &kfsetting->_sell_elements, kfmsg.count(), __STRING__( sell ), itemid, __FUNC_LINE__ );
         _kf_display->DelayToClient( player, KFMsg::ItemSellOk );
     }
 }

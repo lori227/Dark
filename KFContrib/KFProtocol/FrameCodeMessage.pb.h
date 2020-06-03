@@ -161,6 +161,7 @@ enum FrameCodeEnum {
   ItemTabNotExist = 12620,
   ItemCanNotSell = 12621,
   ItemSellOk = 12622,
+  ItemSellCountError = 12623,
   SignInNotDay = 12700,
   SignInCanNotFind = 12701,
   SignInRewardAlready = 12702,
@@ -209,6 +210,7 @@ enum FrameCodeEnum {
   FriendLinessAdd = 13316,
   ChatNotFriend = 32201,
   ChatFriendNotOnline = 32102,
+  ChatIntervalTimeLimit = 32103,
   FrameCodeEnum_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   FrameCodeEnum_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };

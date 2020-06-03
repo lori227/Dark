@@ -1,10 +1,8 @@
-<root platform="" version="5060">
+<root platform="" version="5122">
 	<item Id="101" ShopId="100101" />
 	<item Id="102" ShopId="100101" />
 	<item Id="103" ShopId="100101" />
 	<item Id="201" ShopId="100102" />
-	<item Id="202" ShopId="100102" />
-	<item Id="203" ShopId="100102" />
 	<item Id="301" ShopId="200101" />
 	<item Id="302" ShopId="200101" />
 	<item Id="303" ShopId="200101" />

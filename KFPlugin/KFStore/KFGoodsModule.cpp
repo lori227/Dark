@@ -65,7 +65,7 @@ namespace KFrame
         }
 
         // 判断购买数量
-        if ( buycount < kfsetting->_min_buy_count || buycount > kfsetting->_max_buy_count )
+        if ( buycount == _invalid_int )
         {
             return KFMsg::StoreBuyCountError;
         }
@@ -73,7 +73,7 @@ namespace KFrame
         // 判断如果是限购商品
         if ( kfsetting->IsLimitBuy() )
         {
-            auto oldcount = player->Get<uint32>( __STRING__( goods ), goodsid, __STRING__( value ) );
+            auto oldcount = player->Get<uint32>( __STRING__( goods ), goodsid, __STRING__( count ) );
             if ( oldcount + buycount > kfsetting->_limit_buy_count )
             {
                 return KFMsg::StoreOutOfLimits;
@@ -98,7 +98,7 @@ namespace KFrame
         // 保存限购数量
         if ( kfsetting->IsLimitBuy() )
         {
-            player->UpdateData( __STRING__( goods ), goodsid, __STRING__( value ), KFEnum::Add, buycount );
+            player->UpdateData( __STRING__( goods ), goodsid, __STRING__( count ), KFEnum::Add, buycount );
         }
 
         // 添加商品
@@ -106,12 +106,12 @@ namespace KFrame
         return KFMsg::StoreBuyOK;
     }
 
-    std::tuple<uint32, uint32> KFGoodsModule::RandGoods( KFEntity* player, uint32 groupid, UInt32Set& excludelist )
+    uint32 KFGoodsModule::RandGoods( KFEntity* player, uint32 groupid, UInt32Set& excludelist )
     {
         auto kfgoodsweightdata = KFGoodsConfig::Instance()->RandGroupGoods( groupid, excludelist );
         if ( kfgoodsweightdata == nullptr )
         {
-            return std::make_tuple( 0u, 0u );
+            return 0u;
         }
 
         // 是否重置刷新时间和数量
@@ -129,11 +129,11 @@ namespace KFrame
                 auto kfgoods = kfgoodsrecord->Find( kfsetting->_id );
                 if ( kfgoods != nullptr )
                 {
-                    player->UpdateData( kfgoods, __STRING__( value ), KFEnum::Set, 0u );
+                    player->UpdateData( kfgoods, __STRING__( count ), KFEnum::Set, 0u );
                 }
             }
         }
 
-        return std::make_tuple( kfgoodsweightdata->_id, kfgoodsweightdata->_refresh_count );
+        return kfgoodsweightdata->_id;
     }
 }

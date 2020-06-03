@@ -14,11 +14,8 @@ namespace KFrame
         kfsetting->_end_discount_time = KFDate::FromString( xmlnode.GetString( "DiscountEndTime" ) );
         kfsetting->_limit_buy_time_id = xmlnode.GetUInt32( "LimitTimeId" );
         kfsetting->_limit_buy_count = xmlnode.GetUInt32( "LimitCount" );
-        kfsetting->_min_buy_count = xmlnode.GetUInt32( "MinBuyCount" );
-        kfsetting->_max_buy_count = xmlnode.GetUInt32( "MaxBuyCount" );
         kfsetting->_group_id = xmlnode.GetUInt32( "GroupId" );
         kfsetting->_group_weight = xmlnode.GetUInt32( "GroupWeight" );
-        kfsetting->_refresh_count = xmlnode.GetUInt32( "RefreshCount" );
         kfsetting->_is_refresh_reset_time = xmlnode.GetBoolen( "RefreshResetTime" );
         kfsetting->_is_refresh_reset_count = xmlnode.GetBoolen( "RefreshResetCount" );
     }
@@ -39,7 +36,6 @@ namespace KFrame
             {
                 auto goodsgroupweight = _goods_group_weight_list.Create( kfgoodssetting->_group_id );
                 auto goodsweightdata = goodsgroupweight->Create( kfgoodssetting->_id, kfgoodssetting->_group_weight );
-                goodsweightdata->_refresh_count = kfgoodssetting->_refresh_count;
             }
         }
     }

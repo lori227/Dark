@@ -33,7 +33,7 @@ namespace KFrame
         virtual uint32 BuyGoods( KFEntity* player, uint32 goodsid, uint32 buycount );
 
         // 随机一个商品
-        virtual std::tuple<uint32, uint32> RandGoods( KFEntity* player, uint32 groupid, UInt32Set& excludelist );
+        virtual uint32 RandGoods( KFEntity* player, uint32 groupid, UInt32Set& excludelist );
     protected:
         // 刷新限购商品
         __KF_RESET_FUNCTION__( OnResetRefreshGoods );
