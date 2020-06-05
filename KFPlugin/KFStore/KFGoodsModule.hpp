@@ -9,6 +9,7 @@
 //    @Date             :    2019-7-27
 ************************************************************************/
 
+#include "KFrameEx.h"
 #include "KFGoodsInterface.h"
 #include "KFKernel/KFKernelInterface.h"
 #include "KFReset/KFResetInterface.h"
@@ -30,10 +31,14 @@ namespace KFrame
         virtual void BeforeShut();
 
         // 购买商品
-        virtual uint32 BuyGoods( KFEntity* player, uint32 goodsid, uint32 buycount );
+        virtual uint32 BuyGoods( KFEntity* player, uint32 goodsid, uint32 index, uint32 buycount );
 
         // 随机一个商品
         virtual uint32 RandGoods( KFEntity* player, uint32 groupid, UInt32Set& excludelist );
+
+        // 获取购买次数
+        uint32 GetHasBuyCount( KFEntity* player, uint32 goodsid, uint32 index );
+
     protected:
         // 刷新限购商品
         __KF_RESET_FUNCTION__( OnResetRefreshGoods );

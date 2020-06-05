@@ -45,7 +45,7 @@ namespace protobuf_FrameClientMessage_2eproto {
 struct LIBPROTOC_EXPORT TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[66];
+  static const ::google::protobuf::internal::ParseTable schema[67];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -170,6 +170,9 @@ LIBPROTOC_EXPORT extern MsgRequestSyncReqDefaultTypeInternal _MsgRequestSyncReq_
 class MsgResultDisplay;
 class MsgResultDisplayDefaultTypeInternal;
 LIBPROTOC_EXPORT extern MsgResultDisplayDefaultTypeInternal _MsgResultDisplay_default_instance_;
+class MsgSellItemAck;
+class MsgSellItemAckDefaultTypeInternal;
+LIBPROTOC_EXPORT extern MsgSellItemAckDefaultTypeInternal _MsgSellItemAck_default_instance_;
 class MsgSellItemReq;
 class MsgSellItemReqDefaultTypeInternal;
 LIBPROTOC_EXPORT extern MsgSellItemReqDefaultTypeInternal _MsgSellItemReq_default_instance_;
@@ -293,6 +296,7 @@ template<> LIBPROTOC_EXPORT ::KFMsg::MsgRemoveItemReq* Arena::CreateMaybeMessage
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgReplyRelationInviteReq* Arena::CreateMaybeMessage<::KFMsg::MsgReplyRelationInviteReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgRequestSyncReq* Arena::CreateMaybeMessage<::KFMsg::MsgRequestSyncReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgResultDisplay* Arena::CreateMaybeMessage<::KFMsg::MsgResultDisplay>(Arena*);
+template<> LIBPROTOC_EXPORT ::KFMsg::MsgSellItemAck* Arena::CreateMaybeMessage<::KFMsg::MsgSellItemAck>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgSellItemReq* Arena::CreateMaybeMessage<::KFMsg::MsgSellItemReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgServerChatReq* Arena::CreateMaybeMessage<::KFMsg::MsgServerChatReq>(Arena*);
 template<> LIBPROTOC_EXPORT ::KFMsg::MsgSetNameReq* Arena::CreateMaybeMessage<::KFMsg::MsgSetNameReq>(Arena*);
@@ -364,6 +368,7 @@ enum FrameClientProtocol {
   MSG_MOVE_ALL_ITEM_REQ = 409,
   MSG_REMOVE_ITEM_COUNT_REQ = 410,
   MSG_SELL_ITEM_REQ = 411,
+  MSG_SELL_ITEM_ACK = 412,
   MSG_USE_ITEM_TO_HERO_REQ = 451,
   MSG_VIEW_MAIL_REQ = 501,
   MSG_DELETE_MAIL_REQ = 502,
@@ -5072,6 +5077,116 @@ class LIBPROTOC_EXPORT MsgSellItemReq : public ::google::protobuf::Message /* @@
 };
 // -------------------------------------------------------------------
 
+class LIBPROTOC_EXPORT MsgSellItemAck : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.MsgSellItemAck) */ {
+ public:
+  MsgSellItemAck();
+  virtual ~MsgSellItemAck();
+
+  MsgSellItemAck(const MsgSellItemAck& from);
+
+  inline MsgSellItemAck& operator=(const MsgSellItemAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  MsgSellItemAck(MsgSellItemAck&& from) noexcept
+    : MsgSellItemAck() {
+    *this = ::std::move(from);
+  }
+
+  inline MsgSellItemAck& operator=(MsgSellItemAck&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgSellItemAck& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const MsgSellItemAck* internal_default_instance() {
+    return reinterpret_cast<const MsgSellItemAck*>(
+               &_MsgSellItemAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    40;
+
+  void Swap(MsgSellItemAck* other);
+  friend void swap(MsgSellItemAck& a, MsgSellItemAck& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline MsgSellItemAck* New() const final {
+    return CreateMaybeMessage<MsgSellItemAck>(NULL);
+  }
+
+  MsgSellItemAck* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<MsgSellItemAck>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const MsgSellItemAck& from);
+  void MergeFrom(const MsgSellItemAck& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(MsgSellItemAck* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint32 itemid = 1;
+  void clear_itemid();
+  static const int kItemidFieldNumber = 1;
+  ::google::protobuf::uint32 itemid() const;
+  void set_itemid(::google::protobuf::uint32 value);
+
+  // uint32 count = 2;
+  void clear_count();
+  static const int kCountFieldNumber = 2;
+  ::google::protobuf::uint32 count() const;
+  void set_count(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:KFMsg.MsgSellItemAck)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 itemid_;
+  ::google::protobuf::uint32 count_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_FrameClientMessage_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
 class LIBPROTOC_EXPORT MsgViewMailReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:KFMsg.MsgViewMailReq) */ {
  public:
   MsgViewMailReq();
@@ -5107,7 +5222,7 @@ class LIBPROTOC_EXPORT MsgViewMailReq : public ::google::protobuf::Message /* @@
                &_MsgViewMailReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    40;
+    41;
 
   void Swap(MsgViewMailReq* other);
   friend void swap(MsgViewMailReq& a, MsgViewMailReq& b) {
@@ -5210,7 +5325,7 @@ class LIBPROTOC_EXPORT MsgDeleteMailReq : public ::google::protobuf::Message /* 
                &_MsgDeleteMailReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    41;
+    42;
 
   void Swap(MsgDeleteMailReq* other);
   friend void swap(MsgDeleteMailReq& a, MsgDeleteMailReq& b) {
@@ -5313,7 +5428,7 @@ class LIBPROTOC_EXPORT MsgQueryMailReq : public ::google::protobuf::Message /* @
                &_MsgQueryMailReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    42;
+    43;
 
   void Swap(MsgQueryMailReq* other);
   friend void swap(MsgQueryMailReq& a, MsgQueryMailReq& b) {
@@ -5409,7 +5524,7 @@ class LIBPROTOC_EXPORT MsgMailRewardReq : public ::google::protobuf::Message /* 
                &_MsgMailRewardReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    43;
+    44;
 
   void Swap(MsgMailRewardReq* other);
   friend void swap(MsgMailRewardReq& a, MsgMailRewardReq& b) {
@@ -5512,7 +5627,7 @@ class LIBPROTOC_EXPORT MsgStoreBuyGoodsReq : public ::google::protobuf::Message 
                &_MsgStoreBuyGoodsReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    44;
+    45;
 
   void Swap(MsgStoreBuyGoodsReq* other);
   friend void swap(MsgStoreBuyGoodsReq& a, MsgStoreBuyGoodsReq& b) {
@@ -5576,9 +5691,15 @@ class LIBPROTOC_EXPORT MsgStoreBuyGoodsReq : public ::google::protobuf::Message 
   ::google::protobuf::uint32 goodsid() const;
   void set_goodsid(::google::protobuf::uint32 value);
 
-  // uint32 buycount = 3;
+  // uint32 index = 3;
+  void clear_index();
+  static const int kIndexFieldNumber = 3;
+  ::google::protobuf::uint32 index() const;
+  void set_index(::google::protobuf::uint32 value);
+
+  // uint32 buycount = 4;
   void clear_buycount();
-  static const int kBuycountFieldNumber = 3;
+  static const int kBuycountFieldNumber = 4;
   ::google::protobuf::uint32 buycount() const;
   void set_buycount(::google::protobuf::uint32 value);
 
@@ -5588,6 +5709,7 @@ class LIBPROTOC_EXPORT MsgStoreBuyGoodsReq : public ::google::protobuf::Message 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 storeid_;
   ::google::protobuf::uint32 goodsid_;
+  ::google::protobuf::uint32 index_;
   ::google::protobuf::uint32 buycount_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_FrameClientMessage_2eproto::TableStruct;
@@ -5629,7 +5751,7 @@ class LIBPROTOC_EXPORT MsgStoreRefreshReq : public ::google::protobuf::Message /
                &_MsgStoreRefreshReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    45;
+    46;
 
   void Swap(MsgStoreRefreshReq* other);
   friend void swap(MsgStoreRefreshReq& a, MsgStoreRefreshReq& b) {
@@ -5739,7 +5861,7 @@ class LIBPROTOC_EXPORT MsgApplyPayOrderReq : public ::google::protobuf::Message 
                &_MsgApplyPayOrderReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    46;
+    47;
 
   void Swap(MsgApplyPayOrderReq* other);
   friend void swap(MsgApplyPayOrderReq& a, MsgApplyPayOrderReq& b) {
@@ -5850,7 +5972,7 @@ class LIBPROTOC_EXPORT MsgApplyPayOrderAck : public ::google::protobuf::Message 
                &_MsgApplyPayOrderAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    47;
+    48;
 
   void Swap(MsgApplyPayOrderAck* other);
   friend void swap(MsgApplyPayOrderAck& a, MsgApplyPayOrderAck& b) {
@@ -5976,7 +6098,7 @@ class LIBPROTOC_EXPORT MsgPayResultReq : public ::google::protobuf::Message /* @
                &_MsgPayResultReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    48;
+    49;
 
   void Swap(MsgPayResultReq* other);
   friend void swap(MsgPayResultReq& a, MsgPayResultReq& b) {
@@ -6109,7 +6231,7 @@ class LIBPROTOC_EXPORT MsgQueryPayReq : public ::google::protobuf::Message /* @@
                &_MsgQueryPayReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    49;
+    50;
 
   void Swap(MsgQueryPayReq* other);
   friend void swap(MsgQueryPayReq& a, MsgQueryPayReq& b) {
@@ -6205,7 +6327,7 @@ class LIBPROTOC_EXPORT MsgQueryRankListReq : public ::google::protobuf::Message 
                &_MsgQueryRankListReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    50;
+    51;
 
   void Swap(MsgQueryRankListReq* other);
   friend void swap(MsgQueryRankListReq& a, MsgQueryRankListReq& b) {
@@ -6322,7 +6444,7 @@ class LIBPROTOC_EXPORT MsgQueryRankListAck : public ::google::protobuf::Message 
                &_MsgQueryRankListAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    51;
+    52;
 
   void Swap(MsgQueryRankListAck* other);
   friend void swap(MsgQueryRankListAck& a, MsgQueryRankListAck& b) {
@@ -6445,7 +6567,7 @@ class LIBPROTOC_EXPORT MsgQueryFriendRankListReq : public ::google::protobuf::Me
                &_MsgQueryFriendRankListReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    52;
+    53;
 
   void Swap(MsgQueryFriendRankListReq* other);
   friend void swap(MsgQueryFriendRankListReq& a, MsgQueryFriendRankListReq& b) {
@@ -6548,7 +6670,7 @@ class LIBPROTOC_EXPORT MsgQueryFriendRankListAck : public ::google::protobuf::Me
                &_MsgQueryFriendRankListAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    53;
+    54;
 
   void Swap(MsgQueryFriendRankListAck* other);
   friend void swap(MsgQueryFriendRankListAck& a, MsgQueryFriendRankListAck& b) {
@@ -6664,7 +6786,7 @@ class LIBPROTOC_EXPORT MsgAddRelationReq : public ::google::protobuf::Message /*
                &_MsgAddRelationReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    54;
+    55;
 
   void Swap(MsgAddRelationReq* other);
   friend void swap(MsgAddRelationReq& a, MsgAddRelationReq& b) {
@@ -6812,7 +6934,7 @@ class LIBPROTOC_EXPORT MsgDelRelationReq : public ::google::protobuf::Message /*
                &_MsgDelRelationReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    55;
+    56;
 
   void Swap(MsgDelRelationReq* other);
   friend void swap(MsgDelRelationReq& a, MsgDelRelationReq& b) {
@@ -6930,7 +7052,7 @@ class LIBPROTOC_EXPORT MsgReplyRelationInviteReq : public ::google::protobuf::Me
                &_MsgReplyRelationInviteReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    56;
+    57;
 
   void Swap(MsgReplyRelationInviteReq* other);
   friend void swap(MsgReplyRelationInviteReq& a, MsgReplyRelationInviteReq& b) {
@@ -7055,7 +7177,7 @@ class LIBPROTOC_EXPORT MsgSetRefuseRelationInviteReq : public ::google::protobuf
                &_MsgSetRefuseRelationInviteReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    57;
+    58;
 
   void Swap(MsgSetRefuseRelationInviteReq* other);
   friend void swap(MsgSetRefuseRelationInviteReq& a, MsgSetRefuseRelationInviteReq& b) {
@@ -7173,7 +7295,7 @@ class LIBPROTOC_EXPORT MsgTaskReceiveReq : public ::google::protobuf::Message /*
                &_MsgTaskReceiveReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    58;
+    59;
 
   void Swap(MsgTaskReceiveReq* other);
   friend void swap(MsgTaskReceiveReq& a, MsgTaskReceiveReq& b) {
@@ -7276,7 +7398,7 @@ class LIBPROTOC_EXPORT MsgTaskRewardReq : public ::google::protobuf::Message /* 
                &_MsgTaskRewardReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    59;
+    60;
 
   void Swap(MsgTaskRewardReq* other);
   friend void swap(MsgTaskRewardReq& a, MsgTaskRewardReq& b) {
@@ -7379,7 +7501,7 @@ class LIBPROTOC_EXPORT MsgTaskRemoveReq : public ::google::protobuf::Message /* 
                &_MsgTaskRemoveReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    60;
+    61;
 
   void Swap(MsgTaskRemoveReq* other);
   friend void swap(MsgTaskRemoveReq& a, MsgTaskRemoveReq& b) {
@@ -7482,7 +7604,7 @@ class LIBPROTOC_EXPORT MsgTaskAddReq : public ::google::protobuf::Message /* @@p
                &_MsgTaskAddReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    61;
+    62;
 
   void Swap(MsgTaskAddReq* other);
   friend void swap(MsgTaskAddReq& a, MsgTaskAddReq& b) {
@@ -7585,7 +7707,7 @@ class LIBPROTOC_EXPORT MsgFriendChatReq : public ::google::protobuf::Message /* 
                &_MsgFriendChatReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    62;
+    63;
 
   void Swap(MsgFriendChatReq* other);
   friend void swap(MsgFriendChatReq& a, MsgFriendChatReq& b) {
@@ -7703,7 +7825,7 @@ class LIBPROTOC_EXPORT MsgTellFriendChat : public ::google::protobuf::Message /*
                &_MsgTellFriendChat_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    63;
+    64;
 
   void Swap(MsgTellFriendChat* other);
   friend void swap(MsgTellFriendChat& a, MsgTellFriendChat& b) {
@@ -7821,7 +7943,7 @@ class LIBPROTOC_EXPORT MsgServerChatReq : public ::google::protobuf::Message /* 
                &_MsgServerChatReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    64;
+    65;
 
   void Swap(MsgServerChatReq* other);
   friend void swap(MsgServerChatReq& a, MsgServerChatReq& b) {
@@ -7932,7 +8054,7 @@ class LIBPROTOC_EXPORT MsgTellServerChat : public ::google::protobuf::Message /*
                &_MsgTellServerChat_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    65;
+    66;
 
   void Swap(MsgTellServerChat* other);
   friend void swap(MsgTellServerChat& a, MsgTellServerChat& b) {
@@ -10679,6 +10801,38 @@ inline void MsgSellItemReq::set_count(::google::protobuf::uint32 value) {
 
 // -------------------------------------------------------------------
 
+// MsgSellItemAck
+
+// uint32 itemid = 1;
+inline void MsgSellItemAck::clear_itemid() {
+  itemid_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgSellItemAck::itemid() const {
+  // @@protoc_insertion_point(field_get:KFMsg.MsgSellItemAck.itemid)
+  return itemid_;
+}
+inline void MsgSellItemAck::set_itemid(::google::protobuf::uint32 value) {
+  
+  itemid_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.MsgSellItemAck.itemid)
+}
+
+// uint32 count = 2;
+inline void MsgSellItemAck::clear_count() {
+  count_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgSellItemAck::count() const {
+  // @@protoc_insertion_point(field_get:KFMsg.MsgSellItemAck.count)
+  return count_;
+}
+inline void MsgSellItemAck::set_count(::google::protobuf::uint32 value) {
+  
+  count_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.MsgSellItemAck.count)
+}
+
+// -------------------------------------------------------------------
+
 // MsgViewMailReq
 
 // uint64 id = 1;
@@ -10767,7 +10921,21 @@ inline void MsgStoreBuyGoodsReq::set_goodsid(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:KFMsg.MsgStoreBuyGoodsReq.goodsid)
 }
 
-// uint32 buycount = 3;
+// uint32 index = 3;
+inline void MsgStoreBuyGoodsReq::clear_index() {
+  index_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgStoreBuyGoodsReq::index() const {
+  // @@protoc_insertion_point(field_get:KFMsg.MsgStoreBuyGoodsReq.index)
+  return index_;
+}
+inline void MsgStoreBuyGoodsReq::set_index(::google::protobuf::uint32 value) {
+  
+  index_ = value;
+  // @@protoc_insertion_point(field_set:KFMsg.MsgStoreBuyGoodsReq.index)
+}
+
+// uint32 buycount = 4;
 inline void MsgStoreBuyGoodsReq::clear_buycount() {
   buycount_ = 0u;
 }
@@ -12101,6 +12269,8 @@ inline void MsgTellServerChat::set_allocated_content(::std::string* content) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

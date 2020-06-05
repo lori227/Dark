@@ -27,6 +27,7 @@ namespace KFrame
     void KFTLogPlugin::AddConfig()
     {
         __KF_ADD_CONFIG__( KFTLogConfig );
+        __KF_ADD_CONFIG__( KFElementConfig );
         __KF_ADD_CONFIG__( KFItemConfig );
         __KF_ADD_CONFIG__( KFCurrencyConfig );
     }

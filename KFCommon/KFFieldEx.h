@@ -260,6 +260,7 @@ namespace KFrame
         __STRING_DEFINE__( position );
         __STRING_DEFINE__( commander );
         __STRING_DEFINE__( totalexp );
+        __STRING_DEFINE__( goodsdata );
     }
 }
 

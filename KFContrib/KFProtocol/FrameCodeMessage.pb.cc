@@ -58,7 +58,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\026FrameCodeMessage.proto\022\005KFMsg*\207\034\n\rFram"
+      "\n\026FrameCodeMessage.proto\022\005KFMsg*\240\034\n\rFram"
       "eCodeEnum\022\t\n\005Error\020\000\022\006\n\002Ok\020\001\022\022\n\rHttpData"
       "Error\020\220N\022\025\n\020AuthDatabaseBusy\020\221N\022\023\n\016AuthS"
       "erverBusy\020\222N\022\023\n\016ZoneServerBusy\020\223N\022\025\n\020Zon"
@@ -134,24 +134,25 @@ void AddDescriptorsImpl() {
       "StoreRefreshTimeError\020\357d\022\023\n\016StoreRefresh"
       "Ok\020\360d\022\032\n\025StoreRefreshTypeError\020\361d\022\032\n\025Sto"
       "reRefreshCostEmpty\020\362d\022\030\n\023StoreGoodsRefre"
-      "shOk\020\363d\022\017\n\nPayIdError\020\310e\022\021\n\014PayDataError"
-      "\020\311e\022\021\n\014RankNotExist\020\254f\022\027\n\022QueryBasicNotE"
-      "xist\020\220g\022\027\n\022MessageFilterError\020\364g\022\024\n\017Rela"
-      "tionAlready\020\365g\022\026\n\021RelationSelfLimit\020\366g\022\026"
-      "\n\021RelationInviteReq\020\367g\022\035\n\030RelationRefuse"
-      "YourInvite\020\370g\022\022\n\rRelationAddOk\020\371g\022\025\n\020Rel"
-      "ationNotExist\020\372g\022\022\n\rRelationDelOk\020\373g\022\031\n\024"
-      "RelationRefuseInvite\020\374g\022\030\n\023RelationTarge"
-      "tLimit\020\375g\022\032\n\025RelationInviteAlready\020\376g\022\030\n"
-      "\023RelationInviteLimit\020\377g\022\025\n\020RelationInvit"
-      "eOk\020\200h\022\033\n\026RelationInviteNotExist\020\201h\022\031\n\024R"
-      "elationSettingError\020\202h\022\026\n\021RelationDataEr"
-      "ror\020\203h\022\024\n\017FriendLinessAdd\020\204h\022\023\n\rChatNotF"
-      "riend\020\311\373\001\022\031\n\023ChatFriendNotOnline\020\346\372\001\022\033\n\025"
-      "ChatIntervalTimeLimit\020\347\372\001b\006proto3"
+      "shOk\020\363d\022\027\n\022StoreBuyIndexError\020\364d\022\017\n\nPayI"
+      "dError\020\310e\022\021\n\014PayDataError\020\311e\022\021\n\014RankNotE"
+      "xist\020\254f\022\027\n\022QueryBasicNotExist\020\220g\022\027\n\022Mess"
+      "ageFilterError\020\364g\022\024\n\017RelationAlready\020\365g\022"
+      "\026\n\021RelationSelfLimit\020\366g\022\026\n\021RelationInvit"
+      "eReq\020\367g\022\035\n\030RelationRefuseYourInvite\020\370g\022\022"
+      "\n\rRelationAddOk\020\371g\022\025\n\020RelationNotExist\020\372"
+      "g\022\022\n\rRelationDelOk\020\373g\022\031\n\024RelationRefuseI"
+      "nvite\020\374g\022\030\n\023RelationTargetLimit\020\375g\022\032\n\025Re"
+      "lationInviteAlready\020\376g\022\030\n\023RelationInvite"
+      "Limit\020\377g\022\025\n\020RelationInviteOk\020\200h\022\033\n\026Relat"
+      "ionInviteNotExist\020\201h\022\031\n\024RelationSettingE"
+      "rror\020\202h\022\026\n\021RelationDataError\020\203h\022\024\n\017Frien"
+      "dLinessAdd\020\204h\022\023\n\rChatNotFriend\020\311\373\001\022\031\n\023Ch"
+      "atFriendNotOnline\020\346\372\001\022\033\n\025ChatIntervalTim"
+      "eLimit\020\347\372\001b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 3633);
+      descriptor, 3658);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "FrameCodeMessage.proto", &protobuf_RegisterTypes);
 }
@@ -307,6 +308,7 @@ bool FrameCodeEnum_IsValid(int value) {
     case 12913:
     case 12914:
     case 12915:
+    case 12916:
     case 13000:
     case 13001:
     case 13100:

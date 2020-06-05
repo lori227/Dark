@@ -187,6 +187,7 @@ enum FrameCodeEnum {
   StoreRefreshTypeError = 12913,
   StoreRefreshCostEmpty = 12914,
   StoreGoodsRefreshOk = 12915,
+  StoreBuyIndexError = 12916,
   PayIdError = 13000,
   PayDataError = 13001,
   RankNotExist = 13100,

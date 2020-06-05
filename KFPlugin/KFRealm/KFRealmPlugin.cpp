@@ -55,7 +55,6 @@ namespace KFrame
         __KF_ADD_CONFIG__( KFElementConfig );
         __KF_ADD_CONFIG__( KFItemConfig );
         __KF_ADD_CONFIG__( KFItemTypeConfig );
-        __KF_ADD_CONFIG__( KFElementConfig );
         __KF_ADD_CONFIG__( KFPunishConfig );
         __KF_ADD_CONFIG__( KFNpcGroupConfig );
         __KF_ADD_CONFIG__( KFNpcRandConfig );

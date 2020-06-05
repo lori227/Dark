@@ -1003,6 +1003,10 @@ namespace KFrame
 
         // 添加道具
         player->AddElement( &kfsetting->_sell_elements, kfmsg.count(), __STRING__( sell ), itemid, __FUNC_LINE__ );
-        _kf_display->DelayToClient( player, KFMsg::ItemSellOk );
+
+        KFMsg::MsgSellItemAck ack;
+        ack.set_itemid( itemid );
+        ack.set_count( kfmsg.count() );
+        _kf_player->SendToClient( player, KFMsg::MSG_SELL_ITEM_ACK, &ack );
     }
 }

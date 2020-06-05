@@ -9,6 +9,7 @@
 //    @Date             :    2019-7-27
 ************************************************************************/
 
+#include "KFrameEx.h"
 #include "KFStoreInterface.h"
 #include "KFGoodsInterface.h"
 #include "KFStoreUnlockInterface.h"

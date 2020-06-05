@@ -1,4 +1,4 @@
-<root platform="" version="5122">
+<root platform="" version="5133">
 	<item Id="100101" RefreshType="0" RefreshTimeId="0" RefreshGoods="" RandomType="0" RefreshCost="" RefreshResetTime="0" />
 	<item Id="100102" RefreshType="3" RefreshTimeId="107" RefreshGoods="1:6-8" RandomType="1" RefreshCost="1" RefreshResetTime="1" />
 	<item Id="200101" RefreshType="0" RefreshTimeId="0" RefreshGoods="2:2-3" RandomType="0" RefreshCost="" RefreshResetTime="0" />

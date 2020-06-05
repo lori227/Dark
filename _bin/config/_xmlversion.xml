@@ -1,4 +1,4 @@
-<root version="5129">
+<root version="5133">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -137,7 +137,6 @@
 	<item name="buildlevel" version="5069" />
 	<item name="storeunlock" version="5071" />
 	<item name="unlock" version="5072" />
-	<item name="class" version="5079" />
 	<item name="maincamp_camera" version="5086" />
 	<item name="buildbasics" version="5087" />
 	<item name="chapter" version="5095" />
@@ -155,13 +154,14 @@
 	<item name="pve" version="5112" />
 	<item name="time" version="5122" />
 	<item name="category" version="5122" />
-	<item name="store" version="5122" />
 	<item name="itemtext" version="5122" />
 	<item name="uitext" version="5122" />
 	<item name="countcost" version="5124" />
 	<item name="refrainrelation" version="5126" />
-	<item name="tipstext" version="5127" />
-	<item name="errorcode" version="5127" />
 	<item name="itemcommon" version="5128" />
 	<item name="goods" version="5129" />
+	<item name="tipstext" version="5130" />
+	<item name="errorcode" version="5130" />
+	<item name="class" version="5131" />
+	<item name="store" version="5133" />
 </root>

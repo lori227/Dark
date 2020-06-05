@@ -19,28 +19,28 @@ namespace KFrame
     __KF_ADD_DATA_FUNCTION__( KFChancelModule::OnAddHero )
     {
         // 添加英雄出生事件
-        _kf_record_client->AddLifeRecord( player, key, KFMsg::HeroBorn );
+        //_kf_record_client->AddLifeRecord( player, key, KFMsg::HeroBorn );
     }
 
     __KF_REMOVE_DATA_FUNCTION__( KFChancelModule::OnRemoveHero )
     {
-        auto hp = kfdata->Get<uint32>( __STRING__( fighter ), __STRING__( hp ) );
-        if ( hp > 0u )
-        {
-            // 删除英雄生平
-            _kf_record_client->DelLifeRecord( player, key );
-        }
-        else
-        {
-            // 更新英雄死亡数据
-            UpdateDeadData( player, kfdata );
+        //auto hp = kfdata->Get<uint32>( __STRING__( fighter ), __STRING__( hp ) );
+        //if ( hp > 0u )
+        //{
+        //    // 删除英雄生平
+        //    _kf_record_client->DelLifeRecord( player, key );
+        //}
+        //else
+        //{
+        //    // 更新英雄死亡数据
+        //    UpdateDeadData( player, kfdata );
 
-            // 添加英雄死亡事件
-            _kf_record_client->AddLifeRecord( player, key, KFMsg::HeroDead );
+        //    // 添加英雄死亡事件
+        //    _kf_record_client->AddLifeRecord( player, key, KFMsg::HeroDead );
 
-            // 添加死亡记录
-            _kf_record_client->AddDeadRecord( player, kfdata );
-        }
+        //    // 添加死亡记录
+        //    _kf_record_client->AddDeadRecord( player, kfdata );
+        //}
     }
 
     void KFChancelModule::UpdateDeadData( KFEntity* player, KFData* kfhero )

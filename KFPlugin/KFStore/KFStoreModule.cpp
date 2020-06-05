@@ -47,8 +47,8 @@ namespace KFrame
                 return _kf_display->SendToClient( player, KFMsg::StoreNotHaveGoods, kfmsg.goodsid() );
             }
 
-            auto result = _kf_goods->BuyGoods( player, kfmsg.goodsid(), kfmsg.buycount() );
-            return _kf_display->SendToClient( player, result );
+            auto result = _kf_goods->BuyGoods( player, kfmsg.goodsid(), 1u, kfmsg.buycount() );
+            return _kf_display->DelayToClient( player, result );
         }
 
         // 判断刷新商店中是否有该道具
@@ -64,13 +64,14 @@ namespace KFrame
             return _kf_display->SendToClient( player, KFMsg::StoreNotHaveGoods, kfmsg.goodsid() );
         }
 
-        auto result = _kf_goods->BuyGoods( player, kfmsg.goodsid(), kfmsg.buycount() );
-        if ( result == KFMsg::StoreBuyOK )
+        auto kfgoodsdata = kfgoods->Find( __STRING__( goodsdata ), kfmsg.index() );
+        if ( kfgoodsdata == nullptr )
         {
-            // 购买成功, 减少库存
-            player->UpdateData( kfgoods, kfgoods->_data_setting->_value_key_name, KFEnum::Dec, kfmsg.buycount() );
+            return _kf_display->SendToClient( player, KFMsg::StoreBuyIndexError );
         }
-        _kf_display->SendToClient( player, result );
+
+        auto result = _kf_goods->BuyGoods( player, kfmsg.goodsid(), kfmsg.index(), kfmsg.buycount() );
+        _kf_display->DelayToClient( player, result );
     }
 
     __KF_MESSAGE_FUNCTION__( KFStoreModule::HandleStoreRefreshReq )
@@ -224,8 +225,19 @@ namespace KFrame
                     continue;
                 }
 
-                auto kfgoods = player->CreateData( kfstoregoods );
-                player->AddData( kfstoregoods, goodsid, kfgoods );
+                auto kfgoods = kfstoregoods->Find( goodsid );
+                if ( kfgoods == nullptr )
+                {
+                    kfgoods = player->CreateData( kfstoregoods );
+                    kfstoregoods->Add( goodsid, kfgoods );
+                    kfgoods = kfstoregoods->Find( goodsid );
+                }
+
+                auto kfgoodsdatarecord = kfgoods->Find( __STRING__( goodsdata ) );
+                auto index = kfgoodsdatarecord->Size() + 1u;
+
+                auto kfgoodsdata = player->CreateData( kfgoodsdatarecord );
+                kfgoodsdatarecord->Add( index, kfgoodsdata );
 
                 // 判断是否需要排除相同商品
                 if ( kfsetting->_random_type == KFMsg::ExcludeRandom )
@@ -234,6 +246,9 @@ namespace KFrame
                 }
             }
         }
+
+        // 数据同步到客户端
+        player->SynAddRecordData( kfstoregoods );
 
         _kf_display->DelayToClient( player, KFMsg::StoreRefreshOk );
     }

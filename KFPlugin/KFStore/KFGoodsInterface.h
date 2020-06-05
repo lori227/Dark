@@ -10,7 +10,7 @@ namespace KFrame
     {
     public:
         // 购买商品
-        virtual uint32 BuyGoods( KFEntity* player, uint32 goodsid, uint32 buycount ) = 0;
+        virtual uint32 BuyGoods( KFEntity* player, uint32 goodsid, uint32 index, uint32 buycount ) = 0;
 
         // 随机一个商品
         virtual uint32 RandGoods( KFEntity* player, uint32 groupid, UInt32Set& excludelist ) = 0;

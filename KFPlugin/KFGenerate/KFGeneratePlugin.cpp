@@ -38,6 +38,7 @@ namespace KFrame
         __KF_ADD_CONFIG__( KFNpcConfig );
         __KF_ADD_CONFIG__( KFNpcSkillConfig );
         __KF_ADD_CONFIG__( KFLevelConfig );
+        __KF_ADD_CONFIG__( KFElementConfig );
         __KF_ADD_CONFIG__( KFItemConfig );
         __KF_ADD_CONFIG__( KFTransferConfig );
         __KF_ADD_CONFIG__( KFWeaponTypeConfig );
