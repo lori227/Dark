@@ -601,12 +601,6 @@ namespace KFrame
     {
         // 设置pveid为0
         player->Set( __STRING__( pveid ), 0u );
-        auto kfrealmdata = static_cast< KFRealmModule* >( _kf_realm )->GetRealmData( player );
-        if ( kfrealmdata == nullptr )
-        {
-            // 清空队伍英雄ep
-            _kf_hero_team->ClearHeroEp( player );
-        }
 
         // 删除纪录
         _pve_record.Remove( player->GetKeyID() );
@@ -912,13 +906,6 @@ namespace KFrame
             if ( hp == 0u )
             {
                 continue;
-            }
-
-            // 更新ep
-            auto kffighter = kfhero->Find( __STRING__( fighter ) );
-            if ( pbdata->ep() != kffighter->Get<uint32>( __STRING__( ep ) ) )
-            {
-                player->UpdateData( kffighter, __STRING__( ep ), KFEnum::Set, pbdata->ep() );
             }
 
             //  更新exp

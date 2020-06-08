@@ -53,9 +53,6 @@ namespace KFrame
         }
 
         UpdateDeadHero( player );
-
-        // 清空队伍英雄ep
-        ClearHeroEp( player );
     }
 
     void KFHeroTeamModule::CheckHeroTeamCount( KFEntity* player )
@@ -243,29 +240,6 @@ namespace KFrame
 
             // 扣除指定耐久度
             player->UpdateData( kfhero, __STRING__( durability ), KFEnum::Dec, durability );
-        }
-    }
-
-    void KFHeroTeamModule::ClearHeroEp( KFEntity* player )
-    {
-        auto kfherorecord = player->Find( __STRING__( hero ) );
-        auto kfteamarray = player->Find( __STRING__( heroteam ) );
-
-        for ( auto kfteam = kfteamarray->First(); kfteam != nullptr; kfteam = kfteamarray->Next() )
-        {
-            auto kfhero = kfherorecord->Find( kfteam->Get<uint64>() );
-            if ( kfhero == nullptr )
-            {
-                continue;
-            }
-
-            // 重置ep为0
-            auto kffighter = kfhero->Find( __STRING__( fighter ) );
-            auto ep = kffighter->Get<uint32>( __STRING__( ep ) );
-            if ( ep != 0u )
-            {
-                player->UpdateData( kffighter, __STRING__( ep ), KFEnum::Set, 0u );
-            }
         }
     }
 

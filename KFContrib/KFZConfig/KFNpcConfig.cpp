@@ -31,21 +31,6 @@ namespace KFrame
             }
         }
 
-        // san
-        auto strsanline = xmlnode.GetString( "RandDip" );
-        while ( !strsanline.empty() )
-        {
-            auto strsan = KFUtility::SplitString( strsanline, __SPLIT_STRING__ );
-            if ( !strsan.empty() )
-            {
-                auto minvalue = KFUtility::SplitValue<uint32>( strsan, __RANGE_STRING__ );
-                auto maxvalue = KFUtility::SplitValue<uint32>( strsan, __DOMAIN_STRING__ );
-                auto weight = KFUtility::SplitValue<uint32>( strsan, __DOMAIN_STRING__ );
-                auto kfweight = kfsetting->_rand_dip_list.Create( 0, weight );
-                kfweight->_range.SetValue( minvalue, maxvalue );
-            }
-        }
-
         // 定制属性列表
         std::list< std::string > keylist;
         xmlnode.GetKeyList( keylist );

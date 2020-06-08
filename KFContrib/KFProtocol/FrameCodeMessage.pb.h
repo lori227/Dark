@@ -160,7 +160,6 @@ enum FrameCodeEnum {
   ItemBagCanNotClean = 12619,
   ItemTabNotExist = 12620,
   ItemCanNotSell = 12621,
-  ItemSellOk = 12622,
   ItemSellCountError = 12623,
   SignInNotDay = 12700,
   SignInCanNotFind = 12701,

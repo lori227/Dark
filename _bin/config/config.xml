@@ -1,4 +1,4 @@
-<root platform="" version="4513">
+<root platform="" version="5134">
 	<item Id="redis" Name="redis" FileName="./setting/{}_{}_redis.xml" Reload="0" ClearData="0" ClearFile="0" ChildFile="0" />
 	<item Id="mongo" Name="mongo" FileName="./setting/{}_{}_mongo.xml" Reload="0" ClearData="0" ClearFile="0" ChildFile="0" />
 	<item Id="mysql" Name="mysql" FileName="./setting/{}_{}_mysql.xml" Reload="0" ClearData="0" ClearFile="0" ChildFile="0" />
@@ -60,6 +60,7 @@
 	<item Id="generate" Name="herogenerate" FileName="./config/herogenerate.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="pinchface" Name="heropinchface" FileName="./config/heropinchface.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="herolevel" Name="herolevel" FileName="./config/herolevel.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
+	<item Id="hero" Name="hero" FileName="./config/hero.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="recruit" Name="recruitrefresh" FileName="./config/recruitrefresh.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="divisor" Name="recruitdivisor" FileName="./config/recruitdivisor.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />
 	<item Id="npc" Name="npcgenerate" FileName="./config/npcgenerate.xml" Reload="1" ClearData="1" ClearFile="0" ChildFile="0" />

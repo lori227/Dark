@@ -1,4 +1,4 @@
-<root version="5133">
+<root version="5137">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -80,7 +80,6 @@
 	<item name="gamble" version="4410" />
 	<item name="itemtab" version="4412" />
 	<item name="heropinchface" version="4477" />
-	<item name="config" version="4513" />
 	<item name="meshconfig" version="4531" />
 	<item name="minimap" version="4576" />
 	<item name="battletipstype" version="4582" />
@@ -147,7 +146,6 @@
 	<item name="heroweightpool" version="5102" />
 	<item name="herorace" version="5102" />
 	<item name="heroquality" version="5102" />
-	<item name="heroprofession" version="5104" />
 	<item name="herogenerate" version="5107" />
 	<item name="heroconstant" version="5110" />
 	<item name="npcgenerate" version="5111" />
@@ -162,6 +160,9 @@
 	<item name="goods" version="5129" />
 	<item name="tipstext" version="5130" />
 	<item name="errorcode" version="5130" />
-	<item name="class" version="5131" />
 	<item name="store" version="5133" />
+	<item name="config" version="5134" />
+	<item name="hero" version="5135" />
+	<item name="class" version="5136" />
+	<item name="heroprofession" version="5137" />
 </root>

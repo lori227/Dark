@@ -54,9 +54,6 @@ namespace KFrame
         // 秘境扣除队伍英雄耐久度
         virtual void DecHeroRealmDurability( KFEntity* player, uint32 durability, const UInt64Set& excludelist );
 
-        // 清空队伍英雄ep
-        virtual void ClearHeroEp( KFEntity* player );
-
         // 操作队伍英雄血量
         virtual void OperateHpValue( KFEntity* player, uint32 operate, uint32 value, const StringUInt64* conditions = nullptr );
 

@@ -5,11 +5,6 @@
 
 namespace KFrame
 {
-    class KFSanWeight : public KFWeight
-    {
-    public:
-        KFRange<uint32> _range;
-    };
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     class KFNpcSetting : public KFIntSetting
@@ -36,9 +31,6 @@ namespace KFrame
 
         // 性格权重池列表
         UInt32Vector _character_pool_list;
-
-        // 侵染值随机
-        KFWeightList< KFSanWeight > _rand_dip_list;
 
         // 初始属性偏转率id
         uint32 _attr_id = 0u;

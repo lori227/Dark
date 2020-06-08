@@ -733,17 +733,6 @@ namespace KFrame
         }
         kfnpc->Set( __STRING__( sex ), sex );
 
-        // 随机侵染值
-        auto dipweightdata = kfnpcsetting->_rand_dip_list.Rand();
-        if ( dipweightdata != nullptr )
-        {
-            kfnpc->Set( __STRING__( dip ), dipweightdata->_range.CalcValue() );
-        }
-        else
-        {
-            __LOG_ERROR__( "npc generateid=[{}] san empty", generateid );
-        }
-
         // 随机性格
         RandWeightData( player, kfnpc, __STRING__( character ), kfnpcsetting->_character_pool_list, false );
 
@@ -1040,7 +1029,7 @@ namespace KFrame
             for ( auto kfchild = kffighter->First(); kfchild != nullptr; kfchild = kffighter->Next() )
             {
                 auto& attrname = kfchild->_data_setting->_name;
-                if ( attrname == __STRING__( hp ) || attrname == __STRING__( ep ) )
+                if ( attrname == __STRING__( hp ) )
                 {
                     continue;
                 }
@@ -1173,7 +1162,7 @@ namespace KFrame
         for ( auto kfchild = kffighter->First(); kfchild != nullptr; kfchild = kffighter->Next() )
         {
             auto& attrname = kfchild->_data_setting->_name;
-            if ( attrname == __STRING__( hp ) || attrname == __STRING__( ep ) )
+            if ( attrname == __STRING__( hp ) )
             {
                 continue;
             }

@@ -1561,12 +1561,6 @@ class LIBPROTOC_EXPORT PBFighterHeroData : public ::google::protobuf::Message /*
   ::google::protobuf::uint32 exp() const;
   void set_exp(::google::protobuf::uint32 value);
 
-  // uint32 ep = 4;
-  void clear_ep();
-  static const int kEpFieldNumber = 4;
-  ::google::protobuf::uint32 ep() const;
-  void set_ep(::google::protobuf::uint32 value);
-
   // @@protoc_insertion_point(class_scope:KFMsg.PBFighterHeroData)
  private:
 
@@ -1574,7 +1568,6 @@ class LIBPROTOC_EXPORT PBFighterHeroData : public ::google::protobuf::Message /*
   ::google::protobuf::uint64 uuid_;
   ::google::protobuf::uint32 hp_;
   ::google::protobuf::uint32 exp_;
-  ::google::protobuf::uint32 ep_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_DefineMessage_2eproto::TableStruct;
 };
@@ -4319,20 +4312,6 @@ inline void PBFighterHeroData::set_exp(::google::protobuf::uint32 value) {
   
   exp_ = value;
   // @@protoc_insertion_point(field_set:KFMsg.PBFighterHeroData.exp)
-}
-
-// uint32 ep = 4;
-inline void PBFighterHeroData::clear_ep() {
-  ep_ = 0u;
-}
-inline ::google::protobuf::uint32 PBFighterHeroData::ep() const {
-  // @@protoc_insertion_point(field_get:KFMsg.PBFighterHeroData.ep)
-  return ep_;
-}
-inline void PBFighterHeroData::set_ep(::google::protobuf::uint32 value) {
-  
-  ep_ = value;
-  // @@protoc_insertion_point(field_set:KFMsg.PBFighterHeroData.ep)
 }
 
 // -------------------------------------------------------------------

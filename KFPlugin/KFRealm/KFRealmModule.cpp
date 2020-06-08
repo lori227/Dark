@@ -743,9 +743,6 @@ namespace KFrame
         // 清除数据
         _realm_data.Remove( player->GetKeyID() );
 
-        // 清空队伍英雄ep
-        _kf_hero_team->ClearHeroEp( player );
-
         // 清除探索内道具背包
         RealmBalanceItem( player, result );
 

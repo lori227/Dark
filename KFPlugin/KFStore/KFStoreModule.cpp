@@ -167,8 +167,15 @@ namespace KFrame
 
     void KFStoreModule::UpdateStoreRefreshTime( KFEntity* player, const KFStoreSetting* kfsetting, KFData* kfstorerecord )
     {
+        auto nowtime = KFGlobal::Instance()->_real_time;
         auto nexttime = _kf_reset->CalcNextResetTime( KFGlobal::Instance()->_real_time, kfsetting->_refresh_time_id );
         player->UpdateData( kfstorerecord, kfsetting->_id, __STRING__( time ), KFEnum::Set, nexttime );
+
+        // 取消定时器
+        __UN_TIMER_2__( player->GetKeyID(), kfsetting->_id );
+
+        // 添加新的定时器
+        StartRefreshStoreTimer( player, kfsetting->_id, nexttime );
     }
 
     void KFStoreModule::RefreshGoods( KFEntity* player, uint32 storeid )
@@ -249,6 +256,7 @@ namespace KFrame
 
         // 数据同步到客户端
         player->SynAddRecordData( kfstoregoods );
+        player->SyncDataToClient();
 
         _kf_display->DelayToClient( player, KFMsg::StoreRefreshOk );
     }

@@ -52,9 +52,6 @@ namespace KFrame
         __STRING_DEFINE__( lock );
         __STRING_DEFINE__( clinic );
         __STRING_DEFINE__( daytime );
-        __STRING_DEFINE__( dip );
-        __STRING_DEFINE__( adddip );
-        __STRING_DEFINE__( decdip );
         __STRING_DEFINE__( npc );
         __STRING_DEFINE__( explore );
         __STRING_DEFINE__( random );
@@ -73,7 +70,6 @@ namespace KFrame
         __STRING_DEFINE__( info );
         __STRING_DEFINE__( hp );
         __STRING_DEFINE__( maxhp );
-        __STRING_DEFINE__( ep );
         __STRING_DEFINE__( num );
         __STRING_DEFINE__( totalnum );
         __STRING_DEFINE__( herocount );
