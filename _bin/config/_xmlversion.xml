@@ -1,4 +1,4 @@
-<root version="5137">
+<root version="5145">
 	<item name="configSimple" version="7" />
 	<item name="CWAssetCfg" version="14" />
 	<item name="buildskin" version="18" />
@@ -113,7 +113,6 @@
 	<item name="task" version="4972" />
 	<item name="currency" version="4976" />
 	<item name="herolevel" version="4981" />
-	<item name="player" version="4991" />
 	<item name="levelvalue" version="4991" />
 	<item name="itemtype" version="4997" />
 	<item name="eventparams" version="4999" />
@@ -121,10 +120,7 @@
 	<item name="dropgroup" version="5000" />
 	<item name="realm" version="5000" />
 	<item name="itembag" version="5002" />
-	<item name="dropdata" version="5009" />
 	<item name="heroskill" version="5016" />
-	<item name="rolebasetext" version="5022" />
-	<item name="technology" version="5032" />
 	<item name="itemconstant" version="5035" />
 	<item name="rank" version="5044" />
 	<item name="taskchain" version="5046" />
@@ -153,7 +149,6 @@
 	<item name="time" version="5122" />
 	<item name="category" version="5122" />
 	<item name="itemtext" version="5122" />
-	<item name="uitext" version="5122" />
 	<item name="countcost" version="5124" />
 	<item name="refrainrelation" version="5126" />
 	<item name="itemcommon" version="5128" />
@@ -162,7 +157,12 @@
 	<item name="errorcode" version="5130" />
 	<item name="store" version="5133" />
 	<item name="config" version="5134" />
-	<item name="hero" version="5135" />
-	<item name="class" version="5136" />
-	<item name="heroprofession" version="5137" />
+	<item name="class" version="5138" />
+	<item name="rolebasetext" version="5140" />
+	<item name="technology" version="5141" />
+	<item name="player" version="5141" />
+	<item name="dropdata" version="5141" />
+	<item name="uitext" version="5143" />
+	<item name="hero" version="5145" />
+	<item name="heroprofession" version="5145" />
 </root>
